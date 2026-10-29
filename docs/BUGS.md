@@ -450,6 +450,8 @@ for good and keeps the original's results:
 - `events_compact` freeing the string pool its callers still use (B8).
 - `diffeng_rle_encode` (the network difference engine) reading one byte past its input; the
   decoded data is the same.
+- Saved unit/city counts and PCM format chunk extents (BF-091/BF-111/BF-305):
+  [evidence and focused regression](bugfix-evidence-files.md).
 - `net_send_message`'s stack buffers, too small for the largest messages.
 - `spaceship_wnd_launch`'s local, smaller than the star field object built in it.
 

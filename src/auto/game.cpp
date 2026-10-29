@@ -2504,6 +2504,12 @@ i32 __cdecl save_read_units_cities(int version,iptr file)
   size_t nread;
   iptr unit;
   
+  /* BF-091: reject serialized counts before any record read or ID fixup.
+   * Use this port's backing (2048 units, 256 cities), not another build's limits. */
+  if (game.num_units < 0 || game.num_units > (int)(sizeof power_graph_history_block.units / sizeof(Unit)) ||
+      game.num_cities < 0 || game.num_cities > (int)(sizeof cities / sizeof(City))) {
+    return 0;
+  }
   if (version < 0x2a) {
     if (version == 0x29) {
       for (unit = 0; unit < game.num_units; unit++) {
