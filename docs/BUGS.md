@@ -451,6 +451,8 @@ for good and keeps the original's results:
 - `diffeng_rle_encode` (the network difference engine) reading one byte past its input; the
   decoded data is the same.
 - `net_send_message`'s stack buffers, too small for the largest messages.
+- Receive envelopes, discovery/chat payloads and diagnostic reads:
+  [evidence, focused regression and remaining work](bugfix-evidence-network.md).
 - `spaceship_wnd_launch`'s local, smaller than the star field object built in it.
 
 ## Uninitialised locals that are not bugs
