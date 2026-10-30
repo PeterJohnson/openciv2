@@ -455,6 +455,8 @@ for good and keeps the original's results:
 - Saved unit/city counts and PCM format chunk extents (BF-091/BF-111/BF-305):
   [evidence and focused regression](bugfix-evidence-files.md).
 - `net_send_message`'s stack buffers, too small for the largest messages.
+- Receive envelopes, discovery/chat payloads and diagnostic reads:
+  [evidence, focused regression and remaining work](bugfix-evidence-network.md).
 - `spaceship_wnd_launch`'s local, smaller than the star field object built in it.
 
 ## Uninitialised locals that are not bugs

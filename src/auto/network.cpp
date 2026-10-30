@@ -2,6 +2,61 @@
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
 
+/* Receive boundaries (independent reconstruction BF-177/179/180/183/223/246/280).
+ * Memory safety applies in classic and network games too (docs/BUGS.md).
+ * The captured size, not the packet's advertised size, bounds every read.
+ * This first tranche checks the envelope, discovery and chat; other message
+ * bodies still need their own bounds checks. */
+static int net_received_message_valid(const void *data,uint size)
+{
+  u32 header[4];
+  if (data == 0 || size < sizeof header) {
+    return 0;
+  }
+  memcpy(header,data,sizeof header);
+  if (header[0] != 0x66606660 ||
+      header[1] >= sizeof net.nm_recv_counts_by_type / sizeof net.nm_recv_counts_by_type[0]) {
+    return 0;
+  }
+  if (header[1] == NM_DATAGRAM) {
+    if (size < sizeof(NetNamedMsg)) {
+      return 0;
+    }
+    const NetNamedMsg *named = (const NetNamedMsg *)data;
+    if ((uint)named->inner_type >= sizeof net.nm_recv_counts_by_type / sizeof net.nm_recv_counts_by_type[0] ||
+        !memchr(named->address,0,sizeof named->address) ||
+        !memchr(named->name,0,sizeof named->name) ||
+        !memchr(named->address2,0,sizeof named->address2)) {
+      return 0;
+    }
+    if (named->inner_type == NM_SERVER_INFO) {
+      if (size < sizeof(NetServerInfoMsg)) {
+        return 0;
+      }
+      const NetGameInfo *info = &((const NetServerInfoMsg *)data)->game;
+      if (!memchr(info->host_address,0,sizeof info->host_address) ||
+          !memchr(info->version,0,sizeof info->version) ||
+          !memchr(info->game_name,0,sizeof info->game_name) ||
+          !memchr(info->host_name,0,sizeof info->host_name) ||
+          !memchr(info->scenario_name,0,sizeof info->scenario_name)) {
+        return 0;
+      }
+    }
+  }
+  if (header[1] == NM_CHAT) {
+    if (size <= sizeof(NetMsg) || size - sizeof(NetMsg) > 257) {
+      return 0;
+    }
+    const NetMsg *msg = (const NetMsg *)data;
+    if ((uint)msg->args[0] >= 8 || (uint)msg->args[1] >= 8 ||
+        !memchr((const char *)data + sizeof(NetMsg),0,size - sizeof(NetMsg))) {
+      return 0;
+    }
+  }
+  return 1;
+}
+
+
 /* 00421f40 auto */
 i8 NetSession::is_host()
 
@@ -5173,6 +5228,11 @@ void NetSession::process_messages(int max_msgs,int wait_mode)
       if (civ == '\0') break;
       if (msg == (int *)0x0) {
         ((ErrorContext *)((i8 *)&err_report_ctx_block.err_report_ctx))->report(7,(iptr)&str_pdata_null,(iptr)&str_d_ss_franklinton_netmgr_poll_cpp_3,0x195);
+      }
+      /* BF-280: dequeue's captured size must cover reads before counters/dispatch. */
+      if (!net_received_message_valid(msg,msg_size)) {
+        operator_delete(msg);
+        continue;
       }
       msg_hdr = msg;
       if (*msg == 0x66606660) {
@@ -16797,7 +16857,7 @@ void __cdecl net_on_broadcast_receive(void *data,ushort size,long header)
   int *msg = (int *)data;
   int cmp;
   
-  if (size < 0x10) {
+  if (!net_received_message_valid(data,size)) {
     dbg_log((const char *)&str_broadcastreceivefunc_killed_message_tiny);
   }
   else if (*msg == 0x66606660) {
@@ -16821,7 +16881,7 @@ void __cdecl net_on_secure_receive(ushort conn_id,void *data,unsigned long size,
 {
   int *msg = (int *)data;
   size_t len;
-  int *scan_ptr;
+  int candidate[4];
   uptr byte_idx;
   uptr offset;
   char num_buf[32];
@@ -16829,8 +16889,11 @@ void __cdecl net_on_secure_receive(ushort conn_id,void *data,unsigned long size,
   uint byte_val;
   int *header;
   
-  if (3 < size) {
+  if (data != 0 && 3 < size) {
     if (*msg == 0x66606660) {
+      if (!net_received_message_valid(data,size)) {
+        return;
+      }
       net.msg_queue.enqueue(conn_id & 0xffff,(NetMsg *)msg,size);
       net.last_recv_callback_size = size;
       net.last_queued_send_seq = net_send_sequence;
@@ -16873,21 +16936,28 @@ void __cdecl net_on_secure_receive(ushort conn_id,void *data,unsigned long size,
       }
       dbg_log((const char *)&str_empty_184);
       net_last_recv_msg_type = -1;
-      scan_ptr = msg;
-      for (offset = 0; offset < 0x20; offset++) {
-        if (*scan_ptr == 0x66606660) {
-          header = scan_ptr;
+      /* BF-179: a diagnostic candidate must contain the entire header too. */
+      for (offset = 0; offset < 0x20 && offset <= size && size - offset >= sizeof candidate; offset++) {
+        memcpy(candidate,(char *)msg + offset,sizeof candidate);
+        if (candidate[0] == 0x66606660) {
+          header = candidate;
           dbg_log((const char *)&str_potential_offset_message_found);
           __itoa(offset,num_buf,10);
           dbg_logf_str((const char *)&str_offset_s_bytes,(const char *)num_buf);
-          dbg_logf_str((const char *)&str_type_s,(const char *)(((char *)&str_nm_datagram) + header[1] * 0x20));
+          /* BF-181: a peer's type is not an unchecked diagnostic-name index. */
+          if ((uint)header[1] < sizeof str_nm_datagram / 0x20) {
+            dbg_logf_str((const char *)&str_type_s,(const char *)(((char *)&str_nm_datagram) + header[1] * 0x20));
+          }
+          else {
+            __itoa(header[1],num_buf,10);
+            dbg_logf_str((const char *)&str_type_s,num_buf);
+          }
           __ultoa(header[2],num_buf,10);
           dbg_logf_str((const char *)&str_size_s_bytes,(const char *)num_buf);
           __ultoa(header[3],num_buf,10);
           dbg_logf_str((const char *)&str_sequence_number_s_2,(const char *)num_buf);
           break;
         }
-        scan_ptr = (int *)((int)scan_ptr + 1);
       }
     }
   }
