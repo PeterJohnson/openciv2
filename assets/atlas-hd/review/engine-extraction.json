@@ -1,0 +1,299 @@
+{
+  "repository": "richardpenman-civ2",
+  "functions": [
+    {
+      "name": "MapView::update_layout",
+      "file": "src/auto/mapview.cpp",
+      "line": 1356,
+      "sha256": "9689b6c296ea4e04eaf969cf43682ef59b9dbca413d0d9813d25b4b33b4ead4e"
+    },
+    {
+      "name": "MapView::tile_to_screen",
+      "file": "src/auto/mapview.cpp",
+      "line": 1490,
+      "sha256": "3bb245f2326984f7334ea98107d2445c1e01e321cc84e9bf9376fff6e59f7532"
+    },
+    {
+      "name": "MapView::draw_tile_ocean",
+      "file": "src/auto/mapview.cpp",
+      "line": 1507,
+      "sha256": "b7136f54e786fb8b819e248f77303be5bc3dbdf835f3edc044690993832d6f51"
+    },
+    {
+      "name": "MapView::draw_tile_land",
+      "file": "src/auto/mapview.cpp",
+      "line": 1549,
+      "sha256": "34d2bc26b7df336ffeba79a92845c93c9efdf99b9dc0842ff4d797bfee67ff27"
+    },
+    {
+      "name": "MapView::draw_tile_roads",
+      "file": "src/auto/mapview.cpp",
+      "line": 1687,
+      "sha256": "321feaa3282ccabd6300342f8447c03e92533b7c6315d66a0c27df01f82447c8"
+    },
+    {
+      "name": "MapView::draw_tile_specials",
+      "file": "src/auto/mapview.cpp",
+      "line": 1766,
+      "sha256": "74f71359d872ef1fe9b6255069bbf8af29d3c521100b358650aa39b1ad4d93ca"
+    },
+    {
+      "name": "MapView::draw_tile_unexplored_edges",
+      "file": "src/auto/mapview.cpp",
+      "line": 1809,
+      "sha256": "3274ed50fcafd282119fa64ee4a17db1a5dce608dba3e958ccd64c118d53d177"
+    },
+    {
+      "name": "MapView::draw_tile_terrain",
+      "file": "src/auto/mapview.cpp",
+      "line": 1892,
+      "sha256": "26b4e0466b3aa0598460bb2bf6e3754cbf3002f184c0a7491a8064c5da37382e"
+    },
+    {
+      "name": "MapView::draw_tile_city",
+      "file": "src/auto/mapview.cpp",
+      "line": 2014,
+      "sha256": "69b852dbc93dd9e001a67220585c26d5322000f9e2088139b6da037739200791"
+    },
+    {
+      "name": "MapView::draw_unit_stacked",
+      "file": "src/auto/mapview.cpp",
+      "line": 2045,
+      "sha256": "866857e44d53779f22272959fd3e566657760d37292b17c205e8faad6fef1cb9"
+    },
+    {
+      "name": "MapView::draw_unit_blinking",
+      "file": "src/auto/mapview.cpp",
+      "line": 2053,
+      "sha256": "6f0e3074912a4a552649f3ea9c2f3af6badebc219365c90abbb3d3e1475f7ea9"
+    },
+    {
+      "name": "MapView::draw_stack_unit",
+      "file": "src/auto/mapview.cpp",
+      "line": 2079,
+      "sha256": "75aa52b0fbc4771ff3483501da0c10a9b0e57596aa879a5f53c4afa14fe5d46b"
+    },
+    {
+      "name": "MapView::draw_tile_units",
+      "file": "src/auto/mapview.cpp",
+      "line": 2106,
+      "sha256": "7093e5fe15103e28e0359a1acb063aef6d8ea97aeb120a022a5e69963fc5e435"
+    },
+    {
+      "name": "MapView::draw_tile",
+      "file": "src/auto/mapview.cpp",
+      "line": 2174,
+      "sha256": "3859ba8f28a822e0426ed002a7e2084d1fef301aea7d02dee1a838598a2a32fc"
+    },
+    {
+      "name": "MapView::draw_all_tiles",
+      "file": "src/auto/mapview.cpp",
+      "line": 2382,
+      "sha256": "8cbeffc361b12e10949982f5598a5dfdc866003484b0e37f85a804e06ae3b07f"
+    },
+    {
+      "name": "MapView::zoom_scale",
+      "file": "src/auto/mapview.cpp",
+      "line": 2573,
+      "sha256": "a22d0c9b2926f247fd6c76c4992f69921260e8e1b7e52e18c76752c0f3521558"
+    },
+    {
+      "name": "MapView::apply_zoom",
+      "file": "src/auto/mapview.cpp",
+      "line": 2583,
+      "sha256": "dd56b14deaa807d71335b760346b7e9028d9f4c119ad66afb7051cabca4cd7ff"
+    },
+    {
+      "name": "tile_calc_coast_masks",
+      "file": "src/auto/map.cpp",
+      "line": 3338,
+      "sha256": "6dd97e4221f2d69e0951c4801b5714382758b0db95c3d62a7f0824fa1332255d"
+    },
+    {
+      "name": "map_wrap_x",
+      "file": "src/auto/map.cpp",
+      "line": 6445,
+      "sha256": "0b453f6a64318c4bf97b2a7cbf9005d1adb6f829685d19572154ff395fc6e070"
+    },
+    {
+      "name": "gfx_zoom_scale",
+      "file": "src/auto/graphics.cpp",
+      "line": 1938,
+      "sha256": "770b20d2c3403435c47988a8b79fc92c9717ab9df1d64c102d28b4dbc85d1dbc"
+    },
+    {
+      "name": "gfx_set_zoom_scale",
+      "file": "src/auto/graphics.cpp",
+      "line": 1970,
+      "sha256": "820253db8f3f7b6406a75bddb2672a63f060507dee7f6088c309c966327490ed"
+    },
+    {
+      "name": "gfx_reset_zoom_scale",
+      "file": "src/auto/graphics.cpp",
+      "line": 1978,
+      "sha256": "010c1247da39ec7fda84d02533018b1330f90cef1dc28d2927c9d0355c1a9e65"
+    },
+    {
+      "name": "Sprite::draw",
+      "file": "src/auto/graphics.cpp",
+      "line": 8374,
+      "sha256": "e85f1f544c4fa3600b866c8ab4ea73892ad87111d405d20afdc491beffdb35ea"
+    },
+    {
+      "name": "Sprite::draw_silhouette",
+      "file": "src/auto/graphics.cpp",
+      "line": 8390,
+      "sha256": "88d59ee43bd067505344ca28dacd399ef01346663c5e2c52be189bcd01e8f264"
+    },
+    {
+      "name": "gfx_draw_unit",
+      "file": "src/auto/graphics.cpp",
+      "line": 2954,
+      "sha256": "d843951c1d2427d843f6e6156bfa8d4c35b33657fb3667807cda5174fad43b62"
+    },
+    {
+      "name": "gfx_draw_city",
+      "file": "src/auto/graphics.cpp",
+      "line": 3236,
+      "sha256": "71d505c94a67a65267891d8de2e2de47937edbf6f8acb5a253929465c1be7ea5"
+    },
+    {
+      "name": "CityViewWindow::classify_site",
+      "file": "src/auto/city.cpp",
+      "line": 4368,
+      "sha256": "e70c429468a615fb8dafa44f31b7aa51376c835f52266fecb8ce800995c36f96"
+    },
+    {
+      "name": "CityViewWindow::layout_buildings",
+      "file": "src/auto/city.cpp",
+      "line": 4451,
+      "sha256": "4a0e0bfd2379cb4b7592ab4cfe38716823f61c908ad92d222f6fede8164fd6ac"
+    },
+    {
+      "name": "CityViewWindow::draw_buildings",
+      "file": "src/auto/city.cpp",
+      "line": 4647,
+      "sha256": "76dbd85676a64215853cf29372c4809529a5102b4e17b3b31be3ac81b29dd7ce"
+    },
+    {
+      "name": "CityViewWindow::take_wonder_slot",
+      "file": "src/auto/city.cpp",
+      "line": 4666,
+      "sha256": "63b0bb7bae6c877a7e8800ed3c429c1368a6c787044b79ae51dae69b9d299e3a"
+    },
+    {
+      "name": "CityViewWindow::take_improvement_slot",
+      "file": "src/auto/city.cpp",
+      "line": 4687,
+      "sha256": "7aaf5f4c43e76ebeb8edac317700e3981a052415e568cd0bb5c7fb789e066c91"
+    },
+    {
+      "name": "CityViewWindow::place_improvement",
+      "file": "src/auto/city.cpp",
+      "line": 4708,
+      "sha256": "4d9872fb454b97519c57ecf0ca7f024ced8e6605c528c9ed5af0d5b8cd62fa45"
+    },
+    {
+      "name": "CityViewWindow::place_wonder",
+      "file": "src/auto/city.cpp",
+      "line": 4724,
+      "sha256": "04f8ebd09de8aa2ec37bdca1425f91ca86e46d1c4b74d0a49b266149d7b2bb16"
+    },
+    {
+      "name": "CityViewWindow::place_large_house",
+      "file": "src/auto/city.cpp",
+      "line": 4740,
+      "sha256": "53b92b1b1dd30d4c123252ec80ddef656036fcb7a5a69d95ef691685685c6598"
+    },
+    {
+      "name": "CityViewWindow::place_small_house",
+      "file": "src/auto/city.cpp",
+      "line": 4753,
+      "sha256": "b61543062430396b0b7e0515de5b0be6ac4e8bf30652c9587fb192ba3470fac3"
+    },
+    {
+      "name": "CityViewWindow::place_large_empty_lot",
+      "file": "src/auto/city.cpp",
+      "line": 4766,
+      "sha256": "13527b154f6a11031b47d5910d762eb2f080069560294c22457ff12eebb8b94e"
+    },
+    {
+      "name": "CityViewWindow::place_empty_lot",
+      "file": "src/auto/city.cpp",
+      "line": 4779,
+      "sha256": "3f5cd23cf5e5831e8c89dc4750a6e4eb0d226052c1b1badcac8aa9827fe3f350"
+    },
+    {
+      "name": "ThroneRoomWindow::render",
+      "file": "src/auto/reports.cpp",
+      "line": 4103,
+      "sha256": "955b9386783f0012318768e16af3c71e388412de1b9e50aacb9ddbfcd3d02849"
+    },
+    {
+      "name": "rng_next_unit",
+      "file": "src/game/random.cpp",
+      "line": 9,
+      "sha256": "1ef7b4fb93d466bb67ffa08b53aec3fa98c4c8d06a03e2ae39a6a4d72ae5f072"
+    },
+    {
+      "name": "rand_range",
+      "file": "src/game/random.cpp",
+      "line": 16,
+      "sha256": "46a43c38d2373e846417de6728ebb7f6fe54bcbae4929059be420f783e88cdcb"
+    },
+    {
+      "name": "rng_set_seed",
+      "file": "src/auto/support.cpp",
+      "line": 502,
+      "sha256": "9bc65434b65867acc3671ed8f0913793ac0b98099c4e0967dc94c4d06b041f9e"
+    }
+  ],
+  "tables": [
+    {
+      "name": "diag_neighbor_bits_block",
+      "line": 3371,
+      "sha256": "071c6e05e7ec595e755e59180d59d7c240c875ba5a7905f744a404491fc876ca"
+    },
+    {
+      "name": "dir_dx_table_block",
+      "line": 3372,
+      "sha256": "f54b14c0bc27d214a36d78a5adfe47b57d475dbd71aa460e873957378bb4eb4f"
+    },
+    {
+      "name": "dir_dy_table_block",
+      "line": 3373,
+      "sha256": "cf64bc375cf2de42d0ce09d01fd3f2bbbae932a5f8ecf5f94c68bd192ce27927"
+    },
+    {
+      "name": "cityview_improvement_art_x_block",
+      "line": 3361,
+      "sha256": "bd90a28720a98c0777578598c7994f72ff6025cbf8d4be61c46e556bcf990795"
+    },
+    {
+      "name": "cityview_slot_x_table_block",
+      "line": 3362,
+      "sha256": "45a1a5eb4a31303085dd8ce8ff1550cebe71ac8413f3c0bab85cf44acca0af7e"
+    },
+    {
+      "name": "throneroom_piece_rect_x_block",
+      "line": 3359,
+      "sha256": "29477ad75024119db6552c5b8cb77627857361494a357df61e4daf6503e82d1a"
+    },
+    {
+      "name": "throneroom_piece4_rect_x_block",
+      "line": 3360,
+      "sha256": "ed124af96533840b18545c3bca46231101025066fb84aa3f95bbf8422445e73a"
+    }
+  ],
+  "sourceHashes": {
+    "src/auto/mapview.cpp": "0b65340871630a2c9ebbf6f07c8668383e7ef25b555373244e7cc6ea97168b67",
+    "src/auto/map.cpp": "132d846fd28bfdc8e45c4dec654665bfd47daec7d1050ccfec8c533feba12756",
+    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
+    "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+    "src/auto/reports.cpp": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
+    "src/game/random.cpp": "75f4e2fd30777142a5c5fc465e46bb6f2f294b52532fb2beadd54de602c0e682",
+    "src/auto/support.cpp": "84c9680d9df3983beaa1daacadf6595e93c5a3fe6b31af1d836f08ba423118a9",
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e"
+  },
+  "bodyPolicy": "unchanged text, LF normalized, with #line source mapping"
+}

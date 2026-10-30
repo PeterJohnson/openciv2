@@ -1,0 +1,74 @@
+{
+  "source": "google/fonts",
+  "revision": "6157dfaa640ca5738b4d1a7070fe389c3036d7fc",
+  "retrieved": "2026-10-30",
+  "license": "SIL Open Font License 1.1; license text retained per family",
+  "files": [
+    {
+      "file": "fonts/notosans/NotoSans[wdth,wght].ttf",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosans/NotoSans%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "bfb7bb691513f12e734dc346c03a03f784912432d7e3fa8e56efcf906fe86b3d",
+      "bytes": 2049096
+    },
+    {
+      "file": "fonts/notosans/NotoSans-Italic[wdth,wght].ttf",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosans/NotoSans-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "58e6e0ebd1931b29a365aa2d3e2ee9a9e831a3af7cf3ad1462d4e72154f0b291",
+      "bytes": 2322640
+    },
+    {
+      "file": "fonts/notosans/OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosans/OFL.txt",
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "bytes": 4396
+    },
+    {
+      "file": "fonts/notosans/METADATA.pb",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosans/METADATA.pb",
+      "sha256": "9fd9566184e9833ae3a33b8950e2782a8abb1f0a9d6fb2c51b3fb615f2d78cfe",
+      "bytes": 32340
+    },
+    {
+      "file": "fonts/notoserif/NotoSerif[wdth,wght].ttf",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notoserif/NotoSerif%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "4d8e6761424656867019081a1a01336f3cb086982682698714054fc33f782713",
+      "bytes": 1887192
+    },
+    {
+      "file": "fonts/notoserif/NotoSerif-Italic[wdth,wght].ttf",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notoserif/NotoSerif-Italic%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "e87acbc6c0efd0d9a20d6a8cbbda2b266c14be3a3a6f5af8ec9d7b2460570ad1",
+      "bytes": 2448496
+    },
+    {
+      "file": "fonts/notoserif/OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notoserif/OFL.txt",
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "bytes": 4396
+    },
+    {
+      "file": "fonts/notoserif/METADATA.pb",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notoserif/METADATA.pb",
+      "sha256": "659cf6a2475eabfa3e3bbb92e3ed15c604e6fb035b3b1057d469cc88e67357bb",
+      "bytes": 29397
+    },
+    {
+      "file": "fonts/notosansmono/NotoSansMono[wdth,wght].ttf",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosansmono/NotoSansMono%5Bwdth%2Cwght%5D.ttf",
+      "sha256": "2cb2adb378a8f574213e23df697050b83c54c27df465a2015552740b2769a081",
+      "bytes": 1708408
+    },
+    {
+      "file": "fonts/notosansmono/OFL.txt",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosansmono/OFL.txt",
+      "sha256": "cee9892f9f0cc8fe882c9e9537ee6a89621d86ee7ceaf70b02e2b2b1c25c061a",
+      "bytes": 4396
+    },
+    {
+      "file": "fonts/notosansmono/METADATA.pb",
+      "source": "https://raw.githubusercontent.com/google/fonts/6157dfaa640ca5738b4d1a7070fe389c3036d7fc/ofl/notosansmono/METADATA.pb",
+      "sha256": "b352d8a4620ee1378cbd268a9c326172f87ed5fda8da7d7519a1857209a4a335",
+      "bytes": 28985
+    }
+  ]
+}

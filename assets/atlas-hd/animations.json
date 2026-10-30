@@ -1,0 +1,56 @@
+{
+  "animations": [
+    {
+      "id": "explosion",
+      "loop": false,
+      "frameMs": 80,
+      "files": [
+        "sprites/effects/explosion-0.png",
+        "sprites/effects/explosion-1.png",
+        "sprites/effects/explosion-2.png",
+        "sprites/effects/explosion-3.png",
+        "sprites/effects/explosion-4.png",
+        "sprites/effects/explosion-5.png",
+        "sprites/effects/explosion-6.png",
+        "sprites/effects/explosion-7.png"
+      ],
+      "anchorPolicy": "Use the recorded source-cell center and sprite crop offset. Timing is a proposed art playback rate, not a recovered engine contract."
+    },
+    {
+      "id": "splash",
+      "loop": false,
+      "frameMs": 85,
+      "files": [
+        "sprites/effects/splash-0.png",
+        "sprites/effects/splash-1.png",
+        "sprites/effects/splash-2.png",
+        "sprites/effects/splash-3.png",
+        "sprites/effects/splash-4.png",
+        "sprites/effects/splash-5.png",
+        "sprites/effects/splash-6.png",
+        "sprites/effects/splash-7.png"
+      ],
+      "anchorPolicy": "Use the recorded source-cell center and sprite crop offset. Timing is a proposed art playback rate, not a recovered engine contract."
+    },
+    {
+      "id": "nuclear",
+      "loop": false,
+      "frameMs": 110,
+      "files": [
+        "sprites/effects/nuclear-0.png",
+        "sprites/effects/nuclear-1.png",
+        "sprites/effects/nuclear-2.png",
+        "sprites/effects/nuclear-3.png",
+        "sprites/effects/nuclear-4.png",
+        "sprites/effects/nuclear-5.png",
+        "sprites/effects/nuclear-6.png",
+        "sprites/effects/nuclear-7.png",
+        "sprites/effects/nuclear-8.png",
+        "sprites/effects/nuclear-9.png",
+        "sprites/effects/nuclear-10.png"
+      ],
+      "anchorPolicy": "Use the recorded source-cell center and sprite crop offset. Timing is a proposed art playback rate, not a recovered engine contract."
+    }
+  ],
+  "notes": "The legacy game uses still unit sprites; no walking animations are required by the inventoried loaders."
+}

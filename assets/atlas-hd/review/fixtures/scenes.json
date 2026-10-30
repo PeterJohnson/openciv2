@@ -1,0 +1,147 @@
+[
+  {
+    "id": "district",
+    "title": "District · roads, rails, fields and units",
+    "camera": {
+      "ox": 26,
+      "oy": 30,
+      "cols": 16,
+      "rows": 24,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/district.txt"
+  },
+  {
+    "id": "close",
+    "title": "Close view · approximately 10 × 10 tile spans",
+    "camera": {
+      "ox": 28,
+      "oy": 32,
+      "cols": 10,
+      "rows": 20,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/close.txt"
+  },
+  {
+    "id": "coast",
+    "title": "Coast · bay, islet, narrow channel and estuary",
+    "camera": {
+      "ox": 30,
+      "oy": 70,
+      "cols": 14,
+      "rows": 24,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/coast.txt"
+  },
+  {
+    "id": "region",
+    "title": "Region · simplified transport and landmarks",
+    "camera": {
+      "ox": 0,
+      "oy": 0,
+      "cols": 32,
+      "rows": 64,
+      "zoom": -4
+    },
+    "tileWidth": 32,
+    "mode": "map",
+    "fixture": "review/fixtures/region.txt"
+  },
+  {
+    "id": "world",
+    "title": "World · all 128 × 128 staggered coordinates",
+    "camera": {
+      "ox": 0,
+      "oy": 0,
+      "cols": 64,
+      "rows": 128,
+      "zoom": -6
+    },
+    "tileWidth": 16,
+    "mode": "map",
+    "fixture": "review/fixtures/world.txt"
+  },
+  {
+    "id": "city-coastal",
+    "title": "City panorama · coastal",
+    "mode": "city",
+    "site": "coastal",
+    "fixture": "review/fixtures/city-coastal.txt"
+  },
+  {
+    "id": "city-river",
+    "title": "City panorama · river",
+    "mode": "city",
+    "site": "river",
+    "fixture": "review/fixtures/city-river.txt"
+  },
+  {
+    "id": "city-inland",
+    "title": "City panorama · inland",
+    "mode": "city",
+    "site": "inland",
+    "fixture": "review/fixtures/city-inland.txt"
+  },
+  {
+    "id": "throne-early",
+    "title": "throne early",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-early.txt",
+    "levels": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bonus": 0,
+    "complete": 0
+  },
+  {
+    "id": "throne-mixed",
+    "title": "throne mixed",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-mixed.txt",
+    "levels": [
+      3,
+      2,
+      4,
+      2,
+      1,
+      3,
+      2,
+      4
+    ],
+    "bonus": 0,
+    "complete": 0
+  },
+  {
+    "id": "throne-complete",
+    "title": "throne complete",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-complete.txt",
+    "levels": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "bonus": 127,
+    "complete": 1
+  }
+]

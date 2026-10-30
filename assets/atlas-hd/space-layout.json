@@ -1,0 +1,629 @@
+{
+  "canvas": [
+    2000,
+    1150
+  ],
+  "background": "backgrounds/space-yard-native.png",
+  "maxCounts": [
+    39,
+    8,
+    8,
+    4,
+    4,
+    4
+  ],
+  "countOrder": [
+    "structural",
+    "propulsion",
+    "fuel",
+    "habitation",
+    "life-support",
+    "solar"
+  ],
+  "source": "src/data/gamedata.cpp:3384; limits are further constrained by source gameplay rules",
+  "slots": [
+    {
+      "kind": "structural",
+      "index": 0,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 390,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 1,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 480,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 2,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 570,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 3,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 660,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 4,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 750,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 5,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 840,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 6,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 930,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 7,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1020,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 8,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1110,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 9,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1200,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 10,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1290,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 11,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1380,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 12,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1470,
+      "y": 300,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 13,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 390,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 14,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 480,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 15,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 570,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 16,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 660,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 17,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 750,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 18,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 840,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 19,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 930,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 20,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1020,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 21,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1110,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 22,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1200,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 23,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1290,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 24,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1380,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 25,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1470,
+      "y": 430,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 26,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 390,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 27,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 480,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 28,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 570,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 29,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 660,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 30,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 750,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 31,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 840,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 32,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 930,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 33,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1020,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 34,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1110,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 35,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1200,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 36,
+      "asset": "sprites/spaceship/structural-cross.png",
+      "x": 1290,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 37,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1380,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "structural",
+      "index": 38,
+      "asset": "sprites/spaceship/structural-spine.png",
+      "x": 1470,
+      "y": 560,
+      "width": 100,
+      "height": 65
+    },
+    {
+      "kind": "propulsion",
+      "index": 0,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 450,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 1,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 575,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 2,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 700,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 3,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 825,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 4,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 950,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 5,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 1075,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 6,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 1200,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "propulsion",
+      "index": 7,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 1325,
+      "y": 760,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 0,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 450,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 1,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 575,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 2,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 700,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 3,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 825,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 4,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 950,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 5,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 1075,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 6,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 1200,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "fuel",
+      "index": 7,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 1325,
+      "y": 650,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "habitation",
+      "index": 0,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 450,
+      "y": 120,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "habitation",
+      "index": 1,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 575,
+      "y": 120,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "habitation",
+      "index": 2,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 700,
+      "y": 120,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "habitation",
+      "index": 3,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 825,
+      "y": 120,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "life-support",
+      "index": 0,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 450,
+      "y": 30,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "life-support",
+      "index": 1,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 575,
+      "y": 30,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "life-support",
+      "index": 2,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 700,
+      "y": 30,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "life-support",
+      "index": 3,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 825,
+      "y": 30,
+      "width": 110,
+      "height": 80
+    },
+    {
+      "kind": "solar",
+      "index": 0,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 450,
+      "y": 900,
+      "width": 200,
+      "height": 100
+    },
+    {
+      "kind": "solar",
+      "index": 1,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 575,
+      "y": 900,
+      "width": 200,
+      "height": 100
+    },
+    {
+      "kind": "solar",
+      "index": 2,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 700,
+      "y": 900,
+      "width": 200,
+      "height": 100
+    },
+    {
+      "kind": "solar",
+      "index": 3,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 825,
+      "y": 900,
+      "width": 200,
+      "height": 100
+    }
+  ]
+}

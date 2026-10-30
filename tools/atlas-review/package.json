@@ -1,0 +1,7 @@
+{
+  "name": "atlas-hd-review",
+  "private": true,
+  "description": "Standalone artwork review; no game runtime dependency",
+  "engines": { "node": ">=20.9" },
+  "dependencies": { "sharp": "0.35.5" }
+}

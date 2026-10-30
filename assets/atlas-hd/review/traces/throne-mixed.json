@@ -1,0 +1,81 @@
+{
+  "mode": "throne",
+  "width": 640,
+  "height": 480,
+  "zoom": 0,
+  "rngFinal": 17,
+  "commands": [
+    {
+      "asset": "palace-resource/107",
+      "x": 136,
+      "y": 0,
+      "width": 348,
+      "height": 298,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/111",
+      "x": 0,
+      "y": 276,
+      "width": 640,
+      "height": 204,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/118",
+      "x": 203,
+      "y": 305,
+      "width": 217,
+      "height": 175,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/121",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 303,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/125",
+      "x": 176,
+      "y": 0,
+      "width": 276,
+      "height": 195,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/132",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 310,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/136",
+      "x": 298,
+      "y": 233,
+      "width": 40,
+      "height": 72,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "palace-resource/143",
+      "x": 0,
+      "y": 0,
+      "width": 640,
+      "height": 480,
+      "color": -1,
+      "text": ""
+    }
+  ]
+}

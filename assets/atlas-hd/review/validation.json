@@ -1,0 +1,60 @@
+{
+  "status": "pass",
+  "checks": [
+    {
+      "name": "Source hashes and 41 unchanged extracted function bodies",
+      "count": 41,
+      "status": "pass"
+    },
+    {
+      "name": "Debug/Release topology, remembered state, city endpoints and zoom audit",
+      "count": 787,
+      "status": "pass"
+    },
+    {
+      "name": "Saved scene traces equal fresh Debug and Release output",
+      "count": 12,
+      "status": "pass"
+    },
+    {
+      "name": "Canonical asset paths, recorded hashes and master references",
+      "count": 2205,
+      "status": "pass"
+    },
+    {
+      "name": "Overview icon and mip hashes",
+      "count": 67,
+      "status": "pass"
+    },
+    {
+      "name": "Inventory replacement references",
+      "count": 5173,
+      "status": "pass"
+    },
+    {
+      "name": "PNG compatibility bindings",
+      "count": 404,
+      "status": "pass"
+    },
+    {
+      "name": "Three-stage review image dimensions",
+      "count": 39,
+      "status": "pass"
+    },
+    {
+      "name": "Proposed ground and network visibility isolation",
+      "count": 2,
+      "status": "pass"
+    },
+    {
+      "name": "NE-first engine to N-first authoring mask conversion",
+      "count": 256,
+      "status": "pass"
+    }
+  ],
+  "limits": [
+    "Renderer command selection, geometry and order are sourced; legacy palette blitting and game window typography are adapter boundaries.",
+    "Fixtures are supplied state, not initialized gameplay or a full runtime regression.",
+    "No frame-rate claim: image generation timings include CPU offline authoring."
+  ]
+}

@@ -1,0 +1,407 @@
+{
+  "description": "Overview icons and prebaked material mip levels",
+  "entries": [
+    {
+      "file": "map/lod/city.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "d1775501ce6e6ceed21669ca89e7620924ae0d05b079258b3de7efdf13190e84"
+    },
+    {
+      "file": "map/lod/mine.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "426336204dd26c483de4a2008c93cbf46bcb1a48c19b75f5537da21a4055dd90"
+    },
+    {
+      "file": "map/lod/unit.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "780d9da0aa86e010dd38141b7c6897e4a14131c55ded5938de85541d8fc5de79"
+    },
+    {
+      "file": "map/variations/mips/desert-0-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "b8d50ecd94b418a2acf5553aa497039cda300496922c86b65fd491d54bcf5939"
+    },
+    {
+      "file": "map/variations/mips/desert-0-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "7c47706c4749ab9dcbc23f98e2de4e2713f83bf57b5b2f3198aa01bfd9e417a6"
+    },
+    {
+      "file": "map/variations/mips/desert-0-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "16ebd79b74a764c35c925157d14cd2a5bf7cc2ed664514fc1e08e97fb55b3019"
+    },
+    {
+      "file": "map/variations/mips/desert-0-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "03faf452d134d80310b5b9a4a3d2649af9bc761b7e210da325cbb56808bd4e82"
+    },
+    {
+      "file": "map/variations/mips/desert-1-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "89c6d32f74306786e55c5f07a5d199498b7355992b546b30ffaba07c62e797e9"
+    },
+    {
+      "file": "map/variations/mips/desert-1-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "988f0ff95d20fbcfed7a6afdd5a1018b786a0cf8034bd91e04bfab3e7f82b831"
+    },
+    {
+      "file": "map/variations/mips/desert-1-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "2d24fc8bc8cca30504eae515f0341bcf20781b42262f1ee97fc2856660e58060"
+    },
+    {
+      "file": "map/variations/mips/desert-1-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "dc63e8e9302d2894e0ff8feeed04d56a537874c3828aff722d54bf1c07b785e7"
+    },
+    {
+      "file": "map/variations/mips/desert-2-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "758d318f4695ca20eba25abd9fae168174b0e91a1f55e4e956f2acd12ece9045"
+    },
+    {
+      "file": "map/variations/mips/desert-2-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "134cd19ccfdf657e9f54dbb551f0d4bcbaf22ba68aac09e9f2856ae6a2fe035a"
+    },
+    {
+      "file": "map/variations/mips/desert-2-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "78c7faa5c7824f55bdb92049912a9003e17016c20b5cb7dba280c3a830915403"
+    },
+    {
+      "file": "map/variations/mips/desert-2-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "c4d2ae80f68c802c888bd5361f99174d4a9c4edc495811995d6a1adcb8c8e9ec"
+    },
+    {
+      "file": "map/variations/mips/desert-3-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "7106fe62dc912dfd1368f3389afaa18d3841bffc1a6b52798166f30d7a7c8d2b"
+    },
+    {
+      "file": "map/variations/mips/desert-3-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "07c4be04686032c70f95dca025ae5f9007a4d78be46b292a70906d53361366f7"
+    },
+    {
+      "file": "map/variations/mips/desert-3-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "755adaf59422824bffb3fb45d1bb39ac34044865b8a417f94793a1b664069505"
+    },
+    {
+      "file": "map/variations/mips/desert-3-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "262c8c924aec7ba727b922c12ea5e1c2d7bded6ba637a7d951cd83bd3daaff67"
+    },
+    {
+      "file": "map/variations/mips/grassland-0-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "0db9a58f06ad307a73288b75071f975ed73189afa4f8556a8f21bd1cf536a0f1"
+    },
+    {
+      "file": "map/variations/mips/grassland-0-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "cb8102ae1eea52b54124c45b11dc82fe859edb1b93059cfb397c0187ab56e411"
+    },
+    {
+      "file": "map/variations/mips/grassland-0-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "76e1504818fe20bd57fe342d05455d05e9bb8edc960ee885fde3fb25af5231d7"
+    },
+    {
+      "file": "map/variations/mips/grassland-0-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "c25ef0be55f61cf7d591d989b5e8c820d693bb6e3b3ab8dd5276eed8e0278e10"
+    },
+    {
+      "file": "map/variations/mips/grassland-1-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "a9c56d97838b5c23ffd848f247f39951814ac3d27d57e851f90b8f8e836b2f3c"
+    },
+    {
+      "file": "map/variations/mips/grassland-1-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "4e263b9f74ebc889c7b6829ca402d4989ad7df25c96d3a08c3e1f7d8a53ce63d"
+    },
+    {
+      "file": "map/variations/mips/grassland-1-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "c55b789f28441ba024533796ef71286801965dc4032e466304a5627690eb509a"
+    },
+    {
+      "file": "map/variations/mips/grassland-1-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "816423d8f065cabfe0b3ffa8bd0f39660336b121c271d0a029557e605a7064c1"
+    },
+    {
+      "file": "map/variations/mips/grassland-2-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "292eaebe075b8ebffccd85d8900e75d815e081a2ca02bf14eda88ead525077b6"
+    },
+    {
+      "file": "map/variations/mips/grassland-2-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "5b0cb75d096382da7a7cd15d62161930e358a7c04a56fc5f6286f07b25c6d3a6"
+    },
+    {
+      "file": "map/variations/mips/grassland-2-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "8c55ad9ebaea185f6055b7a8423203b815224c5cd7b1234c80c064ab9abe8c80"
+    },
+    {
+      "file": "map/variations/mips/grassland-2-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "480fa8785a25c82b5e734d9f4bacff250a143849f67244cb8cf6bbda02d21dfd"
+    },
+    {
+      "file": "map/variations/mips/grassland-3-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "a7fda3b905245fdab7c72924e57a2c0da1e1f4fb4dad75729486cb7ecf9f9232"
+    },
+    {
+      "file": "map/variations/mips/grassland-3-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "e45ace98d3d1be3793a48dfd85bee2026829f7fd1b437342cf146f284befd244"
+    },
+    {
+      "file": "map/variations/mips/grassland-3-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "5d52bd11789a6aff6a4d0a98c2824cf03edb477d4e32f4868218123f9241e5f1"
+    },
+    {
+      "file": "map/variations/mips/grassland-3-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "339242bc4bb1e215daa5d973553d79bddbbc68cb89f95a5e1dda4f4f00cdeeac"
+    },
+    {
+      "file": "map/variations/mips/ocean-0-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "7d055ca57cfd1ac9c41ab193da5ae8b5d06bc20ef33fc58475607961fca5439e"
+    },
+    {
+      "file": "map/variations/mips/ocean-0-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "e1e7424dac2ef7fcea981b9822764149c9e2a72243f698653ae614bc57692760"
+    },
+    {
+      "file": "map/variations/mips/ocean-0-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "b4184f0762f25e62dd18f0ae8cac5c7c73a5a33a55b616336f88b1c1aa002f13"
+    },
+    {
+      "file": "map/variations/mips/ocean-0-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "b4052b4f95069da2d6cb71c90db6f9efe159a5f68d13bb7eb330bdcd815407dd"
+    },
+    {
+      "file": "map/variations/mips/ocean-1-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "836cda2caa564abc38f38d60419728e681522836925457e608ef3f855684593f"
+    },
+    {
+      "file": "map/variations/mips/ocean-1-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "783097121d94d6958627bdca186fe457b5231026926479df45e8b5bf502f77b0"
+    },
+    {
+      "file": "map/variations/mips/ocean-1-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "e52fb7ee1740800829f03618618c58f34ac6075adc05772502fb0eb07dddbda8"
+    },
+    {
+      "file": "map/variations/mips/ocean-1-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "9862e7eb6312a5bea10b88c7c191f46f20153888eb65d8f0f61106b04df90636"
+    },
+    {
+      "file": "map/variations/mips/ocean-2-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "ea9ee4e134af78f1b8ae787bfdb5796e13c481fdacee97723e09b9e3fcd0e7cd"
+    },
+    {
+      "file": "map/variations/mips/ocean-2-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "c2035e85b356a8bf32f778b2fe0f8f0af1e26518b84dc405c1a59e46c5a1f157"
+    },
+    {
+      "file": "map/variations/mips/ocean-2-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "96ecc70574cc84712d83a54b9a56fee9d3826f9b06cc09055bf800e13ffb8cf3"
+    },
+    {
+      "file": "map/variations/mips/ocean-2-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "afbd3abbf3789ba88291d09a1648867661e4e65a77b1020ec66936dfa8f3f5a9"
+    },
+    {
+      "file": "map/variations/mips/ocean-3-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "3dfa5b3fb5c56a0bb5c7969a05fcba3b57ae96ec61172ad3994aa72ea781f2a1"
+    },
+    {
+      "file": "map/variations/mips/ocean-3-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "47464fe5017f869f8e4c4fe32c2acb09f134b07f4d5f1f93ae403cd6bb7e0c1d"
+    },
+    {
+      "file": "map/variations/mips/ocean-3-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "4560222cfda54c7ce3aae6162f780038022e0d0b82237856b9b8cd28ad68e362"
+    },
+    {
+      "file": "map/variations/mips/ocean-3-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "2b8ac4235836b54d91e96eb32ad559d8d15c1d56cf947a10c79d676f23230679"
+    },
+    {
+      "file": "map/variations/mips/plains-0-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "9d5499de1b96aa8e007d520fe3b31f4caffdfe5380460c8dd0a84deea67e2c1c"
+    },
+    {
+      "file": "map/variations/mips/plains-0-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "1fa564d46e3be496474139e928c6fcc87be287639156c1971cce8eb0fed196fe"
+    },
+    {
+      "file": "map/variations/mips/plains-0-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "52ebd1aff99db05d81adc92a00ef7982d1e520910ae49bfb6c30b555849528e8"
+    },
+    {
+      "file": "map/variations/mips/plains-0-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "ef3aac4ac13057fc6c1285a282705ed1f78b38cc9abf58996c61dcc29274cdf8"
+    },
+    {
+      "file": "map/variations/mips/plains-1-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "73e625bb7c3f66f3be4b4e12d8015343e15cf3d727695b02fda38f066615cc60"
+    },
+    {
+      "file": "map/variations/mips/plains-1-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "afaacc7a06e7f93dbc2d6c22bcff836c6ab3cb319fb2f287526b3a9af35f6a88"
+    },
+    {
+      "file": "map/variations/mips/plains-1-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "97bb5eb277023dfb9b2b618972951b120b694c1a10cc3e9ed0c0557bc5fba7ad"
+    },
+    {
+      "file": "map/variations/mips/plains-1-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "5d53aad423cfeddeea39e90fbcdbbcdcda79011d6ec79fe912ae8c506b117ada"
+    },
+    {
+      "file": "map/variations/mips/plains-2-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "ad8966fc7e51c2cd4227566c0211f9e2d58d4033c3b5840cb4826359afa3c6fb"
+    },
+    {
+      "file": "map/variations/mips/plains-2-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "e2d34d58b20b5c5120b2fefb6997bbdef9b8042fc39dda786a59119bef469efd"
+    },
+    {
+      "file": "map/variations/mips/plains-2-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "79775f3e34ab0d2057d87ec5ab4d2f5ab723b05b6e1bcb886f58cbcb6f0c400a"
+    },
+    {
+      "file": "map/variations/mips/plains-2-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "42ea07438d445e37ba22d9b16804815ca8c57baf12fda45fb6838868612f0074"
+    },
+    {
+      "file": "map/variations/mips/plains-3-128.png",
+      "width": 128,
+      "height": 128,
+      "sha256": "9a1214bfd728725acd0c962c66f2ca8f3ee894b24ba9b00a30ca7917b3a7b33c"
+    },
+    {
+      "file": "map/variations/mips/plains-3-16.png",
+      "width": 16,
+      "height": 16,
+      "sha256": "b1e47cf12b74293bad1e6ce9ade50ca7a3dbc0efa1226e2feee87da8fa650b6b"
+    },
+    {
+      "file": "map/variations/mips/plains-3-32.png",
+      "width": 32,
+      "height": 32,
+      "sha256": "1923c030027619dd9dc3bd23ae5737300a1eeab548dd3422195431ef19b4c221"
+    },
+    {
+      "file": "map/variations/mips/plains-3-64.png",
+      "width": 64,
+      "height": 64,
+      "sha256": "3e060de001b1619921c4311e8b65840574b882469bc79940ca4725051ad91443"
+    }
+  ]
+}

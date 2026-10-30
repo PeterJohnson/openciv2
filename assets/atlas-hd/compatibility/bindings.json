@@ -1,0 +1,2452 @@
+{
+  "schemaVersion": 1,
+  "description": "Review PNG adapter. Native boxes, new alpha pixels; not a production loader.",
+  "directionOrder": [
+    "NE",
+    "E",
+    "SE",
+    "S",
+    "SW",
+    "W",
+    "NW",
+    "N"
+  ],
+  "unitShieldAnchor": [
+    48,
+    4
+  ],
+  "cityFlagAnchor": [
+    48,
+    4
+  ],
+  "citySizeBoxAnchor": [
+    27,
+    36
+  ],
+  "bindings": {
+    "terrain/0": {
+      "file": "compatibility/terrain/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/1": {
+      "file": "compatibility/terrain/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/2": {
+      "file": "compatibility/terrain/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/3": {
+      "file": "compatibility/terrain/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/4": {
+      "file": "compatibility/terrain/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/5": {
+      "file": "compatibility/terrain/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/6": {
+      "file": "compatibility/terrain/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/7": {
+      "file": "compatibility/terrain/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/8": {
+      "file": "compatibility/terrain/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/9": {
+      "file": "compatibility/terrain/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "terrain/10": {
+      "file": "compatibility/terrain/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "coast/0/0": {
+      "file": "compatibility/coast/0/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/1": {
+      "file": "compatibility/coast/0/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/2": {
+      "file": "compatibility/coast/0/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/3": {
+      "file": "compatibility/coast/0/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/4": {
+      "file": "compatibility/coast/0/4.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/5": {
+      "file": "compatibility/coast/0/5.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/6": {
+      "file": "compatibility/coast/0/6.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/0/7": {
+      "file": "compatibility/coast/0/7.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/0": {
+      "file": "compatibility/coast/1/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/1": {
+      "file": "compatibility/coast/1/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/2": {
+      "file": "compatibility/coast/1/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/3": {
+      "file": "compatibility/coast/1/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/4": {
+      "file": "compatibility/coast/1/4.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/5": {
+      "file": "compatibility/coast/1/5.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/6": {
+      "file": "compatibility/coast/1/6.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/1/7": {
+      "file": "compatibility/coast/1/7.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/0": {
+      "file": "compatibility/coast/2/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/1": {
+      "file": "compatibility/coast/2/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/2": {
+      "file": "compatibility/coast/2/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/3": {
+      "file": "compatibility/coast/2/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/4": {
+      "file": "compatibility/coast/2/4.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/5": {
+      "file": "compatibility/coast/2/5.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/6": {
+      "file": "compatibility/coast/2/6.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/2/7": {
+      "file": "compatibility/coast/2/7.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/0": {
+      "file": "compatibility/coast/3/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/1": {
+      "file": "compatibility/coast/3/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/2": {
+      "file": "compatibility/coast/3/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/3": {
+      "file": "compatibility/coast/3/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/4": {
+      "file": "compatibility/coast/3/4.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/5": {
+      "file": "compatibility/coast/3/5.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/6": {
+      "file": "compatibility/coast/3/6.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "coast/3/7": {
+      "file": "compatibility/coast/3/7.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/0/0": {
+      "file": "compatibility/dither/0/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/0/1": {
+      "file": "compatibility/dither/0/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/0/2": {
+      "file": "compatibility/dither/0/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/0/3": {
+      "file": "compatibility/dither/0/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/1/0": {
+      "file": "compatibility/dither/1/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/1/1": {
+      "file": "compatibility/dither/1/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/1/2": {
+      "file": "compatibility/dither/1/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/1/3": {
+      "file": "compatibility/dither/1/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/2/0": {
+      "file": "compatibility/dither/2/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/2/1": {
+      "file": "compatibility/dither/2/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/2/2": {
+      "file": "compatibility/dither/2/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/2/3": {
+      "file": "compatibility/dither/2/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/3/0": {
+      "file": "compatibility/dither/3/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/3/1": {
+      "file": "compatibility/dither/3/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/3/2": {
+      "file": "compatibility/dither/3/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/3/3": {
+      "file": "compatibility/dither/3/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/4/0": {
+      "file": "compatibility/dither/4/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/4/1": {
+      "file": "compatibility/dither/4/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/4/2": {
+      "file": "compatibility/dither/4/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/4/3": {
+      "file": "compatibility/dither/4/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/5/0": {
+      "file": "compatibility/dither/5/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/5/1": {
+      "file": "compatibility/dither/5/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/5/2": {
+      "file": "compatibility/dither/5/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/5/3": {
+      "file": "compatibility/dither/5/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/6/0": {
+      "file": "compatibility/dither/6/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/6/1": {
+      "file": "compatibility/dither/6/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/6/2": {
+      "file": "compatibility/dither/6/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/6/3": {
+      "file": "compatibility/dither/6/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/7/0": {
+      "file": "compatibility/dither/7/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/7/1": {
+      "file": "compatibility/dither/7/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/7/2": {
+      "file": "compatibility/dither/7/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/7/3": {
+      "file": "compatibility/dither/7/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/8/0": {
+      "file": "compatibility/dither/8/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/8/1": {
+      "file": "compatibility/dither/8/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/8/2": {
+      "file": "compatibility/dither/8/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/8/3": {
+      "file": "compatibility/dither/8/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/9/0": {
+      "file": "compatibility/dither/9/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/9/1": {
+      "file": "compatibility/dither/9/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/9/2": {
+      "file": "compatibility/dither/9/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/9/3": {
+      "file": "compatibility/dither/9/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/10/0": {
+      "file": "compatibility/dither/10/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/10/1": {
+      "file": "compatibility/dither/10/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/10/2": {
+      "file": "compatibility/dither/10/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/10/3": {
+      "file": "compatibility/dither/10/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/11/0": {
+      "file": "compatibility/dither/11/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/11/1": {
+      "file": "compatibility/dither/11/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/11/2": {
+      "file": "compatibility/dither/11/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/11/3": {
+      "file": "compatibility/dither/11/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/12/0": {
+      "file": "compatibility/dither/12/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/12/1": {
+      "file": "compatibility/dither/12/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/12/2": {
+      "file": "compatibility/dither/12/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "dither/12/3": {
+      "file": "compatibility/dither/12/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "road/0": {
+      "file": "compatibility/road/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/1": {
+      "file": "compatibility/road/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/2": {
+      "file": "compatibility/road/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/3": {
+      "file": "compatibility/road/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/4": {
+      "file": "compatibility/road/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/5": {
+      "file": "compatibility/road/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/6": {
+      "file": "compatibility/road/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/7": {
+      "file": "compatibility/road/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "road/8": {
+      "file": "compatibility/road/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/0": {
+      "file": "compatibility/rail/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/1": {
+      "file": "compatibility/rail/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/2": {
+      "file": "compatibility/rail/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/3": {
+      "file": "compatibility/rail/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/4": {
+      "file": "compatibility/rail/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/5": {
+      "file": "compatibility/rail/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/6": {
+      "file": "compatibility/rail/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/7": {
+      "file": "compatibility/rail/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "rail/8": {
+      "file": "compatibility/rail/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/0": {
+      "file": "compatibility/river/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/1": {
+      "file": "compatibility/river/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/2": {
+      "file": "compatibility/river/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/3": {
+      "file": "compatibility/river/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/4": {
+      "file": "compatibility/river/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/5": {
+      "file": "compatibility/river/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/6": {
+      "file": "compatibility/river/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/7": {
+      "file": "compatibility/river/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/8": {
+      "file": "compatibility/river/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/9": {
+      "file": "compatibility/river/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/10": {
+      "file": "compatibility/river/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/11": {
+      "file": "compatibility/river/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/12": {
+      "file": "compatibility/river/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/13": {
+      "file": "compatibility/river/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/14": {
+      "file": "compatibility/river/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "river/15": {
+      "file": "compatibility/river/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "mouth/0": {
+      "file": "compatibility/mouth/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "fog/0": {
+      "file": "compatibility/fog/0.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "mouth/1": {
+      "file": "compatibility/mouth/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "fog/1": {
+      "file": "compatibility/fog/1.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "mouth/2": {
+      "file": "compatibility/mouth/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "fog/2": {
+      "file": "compatibility/fog/2.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "mouth/3": {
+      "file": "compatibility/mouth/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "fog/3": {
+      "file": "compatibility/fog/3.png",
+      "nativeWidth": 32,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "feature/forest/0": {
+      "file": "compatibility/feature/forest/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-0.png"
+    },
+    "feature/forest/1": {
+      "file": "compatibility/feature/forest/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-1.png"
+    },
+    "feature/forest/2": {
+      "file": "compatibility/feature/forest/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-2.png"
+    },
+    "feature/forest/3": {
+      "file": "compatibility/feature/forest/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-3.png"
+    },
+    "feature/forest/4": {
+      "file": "compatibility/feature/forest/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-0.png"
+    },
+    "feature/forest/5": {
+      "file": "compatibility/feature/forest/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-1.png"
+    },
+    "feature/forest/6": {
+      "file": "compatibility/feature/forest/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-2.png"
+    },
+    "feature/forest/7": {
+      "file": "compatibility/feature/forest/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-3.png"
+    },
+    "feature/forest/8": {
+      "file": "compatibility/feature/forest/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-0.png"
+    },
+    "feature/forest/9": {
+      "file": "compatibility/feature/forest/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-1.png"
+    },
+    "feature/forest/10": {
+      "file": "compatibility/feature/forest/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-2.png"
+    },
+    "feature/forest/11": {
+      "file": "compatibility/feature/forest/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-3.png"
+    },
+    "feature/forest/12": {
+      "file": "compatibility/feature/forest/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-0.png"
+    },
+    "feature/forest/13": {
+      "file": "compatibility/feature/forest/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-1.png"
+    },
+    "feature/forest/14": {
+      "file": "compatibility/feature/forest/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-2.png"
+    },
+    "feature/forest/15": {
+      "file": "compatibility/feature/forest/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/forest-3.png"
+    },
+    "feature/hills/0": {
+      "file": "compatibility/feature/hills/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-0.png"
+    },
+    "feature/hills/1": {
+      "file": "compatibility/feature/hills/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-1.png"
+    },
+    "feature/hills/2": {
+      "file": "compatibility/feature/hills/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-2.png"
+    },
+    "feature/hills/3": {
+      "file": "compatibility/feature/hills/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-3.png"
+    },
+    "feature/hills/4": {
+      "file": "compatibility/feature/hills/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-0.png"
+    },
+    "feature/hills/5": {
+      "file": "compatibility/feature/hills/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-1.png"
+    },
+    "feature/hills/6": {
+      "file": "compatibility/feature/hills/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-2.png"
+    },
+    "feature/hills/7": {
+      "file": "compatibility/feature/hills/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-3.png"
+    },
+    "feature/hills/8": {
+      "file": "compatibility/feature/hills/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-0.png"
+    },
+    "feature/hills/9": {
+      "file": "compatibility/feature/hills/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-1.png"
+    },
+    "feature/hills/10": {
+      "file": "compatibility/feature/hills/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-2.png"
+    },
+    "feature/hills/11": {
+      "file": "compatibility/feature/hills/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-3.png"
+    },
+    "feature/hills/12": {
+      "file": "compatibility/feature/hills/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-0.png"
+    },
+    "feature/hills/13": {
+      "file": "compatibility/feature/hills/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-1.png"
+    },
+    "feature/hills/14": {
+      "file": "compatibility/feature/hills/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-2.png"
+    },
+    "feature/hills/15": {
+      "file": "compatibility/feature/hills/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/hills-3.png"
+    },
+    "feature/mountains/0": {
+      "file": "compatibility/feature/mountains/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-0.png"
+    },
+    "feature/mountains/1": {
+      "file": "compatibility/feature/mountains/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-1.png"
+    },
+    "feature/mountains/2": {
+      "file": "compatibility/feature/mountains/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-2.png"
+    },
+    "feature/mountains/3": {
+      "file": "compatibility/feature/mountains/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-3.png"
+    },
+    "feature/mountains/4": {
+      "file": "compatibility/feature/mountains/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-0.png"
+    },
+    "feature/mountains/5": {
+      "file": "compatibility/feature/mountains/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-1.png"
+    },
+    "feature/mountains/6": {
+      "file": "compatibility/feature/mountains/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-2.png"
+    },
+    "feature/mountains/7": {
+      "file": "compatibility/feature/mountains/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-3.png"
+    },
+    "feature/mountains/8": {
+      "file": "compatibility/feature/mountains/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-0.png"
+    },
+    "feature/mountains/9": {
+      "file": "compatibility/feature/mountains/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-1.png"
+    },
+    "feature/mountains/10": {
+      "file": "compatibility/feature/mountains/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-2.png"
+    },
+    "feature/mountains/11": {
+      "file": "compatibility/feature/mountains/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-3.png"
+    },
+    "feature/mountains/12": {
+      "file": "compatibility/feature/mountains/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-0.png"
+    },
+    "feature/mountains/13": {
+      "file": "compatibility/feature/mountains/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-1.png"
+    },
+    "feature/mountains/14": {
+      "file": "compatibility/feature/mountains/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-2.png"
+    },
+    "feature/mountains/15": {
+      "file": "compatibility/feature/mountains/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/features/mountains-3.png"
+    },
+    "improvement/irrigation": {
+      "file": "compatibility/improvement/irrigation.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/map-overlays/irrigation.png"
+    },
+    "improvement/farmland": {
+      "file": "compatibility/improvement/farmland.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/map-overlays/farmland.png"
+    },
+    "improvement/mine": {
+      "file": "compatibility/improvement/mine.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/map-overlays/mine.png"
+    },
+    "improvement/pollution": {
+      "file": "compatibility/improvement/pollution.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/map-overlays/pollution.png"
+    },
+    "improvement/village": {
+      "file": "compatibility/improvement/village.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/map-overlays/village.png"
+    },
+    "improvement/fortress": {
+      "file": "compatibility/improvement/fortress.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/map-overlays/fortress.png"
+    },
+    "improvement/airbase": {
+      "file": "compatibility/improvement/airbase.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/map-overlays/airbase.png"
+    },
+    "improvement/airbase-occupied": {
+      "file": "compatibility/improvement/airbase-occupied.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": null
+    },
+    "improvement/fortified": {
+      "file": "compatibility/improvement/fortified.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": null
+    },
+    "improvement/disorder": {
+      "file": "compatibility/improvement/disorder.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": null
+    },
+    "unit/0": {
+      "file": "compatibility/unit/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/settlers.png"
+    },
+    "unit/1": {
+      "file": "compatibility/unit/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/engineers.png"
+    },
+    "unit/2": {
+      "file": "compatibility/unit/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/warriors.png"
+    },
+    "unit/3": {
+      "file": "compatibility/unit/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/phalanx.png"
+    },
+    "unit/4": {
+      "file": "compatibility/unit/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/archers.png"
+    },
+    "unit/5": {
+      "file": "compatibility/unit/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/legion.png"
+    },
+    "unit/6": {
+      "file": "compatibility/unit/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/pikemen.png"
+    },
+    "unit/7": {
+      "file": "compatibility/unit/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/musketeers.png"
+    },
+    "unit/8": {
+      "file": "compatibility/unit/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/fanatics.png"
+    },
+    "unit/9": {
+      "file": "compatibility/unit/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/partisans.png"
+    },
+    "unit/10": {
+      "file": "compatibility/unit/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/alpine-troops.png"
+    },
+    "unit/11": {
+      "file": "compatibility/unit/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/riflemen.png"
+    },
+    "unit/12": {
+      "file": "compatibility/unit/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/marines.png"
+    },
+    "unit/13": {
+      "file": "compatibility/unit/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/paratroopers.png"
+    },
+    "unit/14": {
+      "file": "compatibility/unit/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/mechanized-infantry.png"
+    },
+    "unit/15": {
+      "file": "compatibility/unit/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/horsemen.png"
+    },
+    "unit/16": {
+      "file": "compatibility/unit/16.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/chariot.png"
+    },
+    "unit/17": {
+      "file": "compatibility/unit/17.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/elephant.png"
+    },
+    "unit/18": {
+      "file": "compatibility/unit/18.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/crusaders.png"
+    },
+    "unit/19": {
+      "file": "compatibility/unit/19.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/knights.png"
+    },
+    "unit/20": {
+      "file": "compatibility/unit/20.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/dragoons.png"
+    },
+    "unit/21": {
+      "file": "compatibility/unit/21.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/cavalry.png"
+    },
+    "unit/22": {
+      "file": "compatibility/unit/22.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/armor.png"
+    },
+    "unit/23": {
+      "file": "compatibility/unit/23.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/catapult.png"
+    },
+    "unit/24": {
+      "file": "compatibility/unit/24.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/cannon.png"
+    },
+    "unit/25": {
+      "file": "compatibility/unit/25.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/artillery.png"
+    },
+    "unit/26": {
+      "file": "compatibility/unit/26.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/howitzer.png"
+    },
+    "unit/27": {
+      "file": "compatibility/unit/27.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/fighter.png"
+    },
+    "unit/28": {
+      "file": "compatibility/unit/28.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/bomber.png"
+    },
+    "unit/29": {
+      "file": "compatibility/unit/29.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/helicopter.png"
+    },
+    "unit/30": {
+      "file": "compatibility/unit/30.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/stealth-fighter.png"
+    },
+    "unit/31": {
+      "file": "compatibility/unit/31.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/stealth-bomber.png"
+    },
+    "unit/32": {
+      "file": "compatibility/unit/32.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/trireme.png"
+    },
+    "unit/33": {
+      "file": "compatibility/unit/33.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/caravel.png"
+    },
+    "unit/34": {
+      "file": "compatibility/unit/34.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/galleon.png"
+    },
+    "unit/35": {
+      "file": "compatibility/unit/35.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/frigate.png"
+    },
+    "unit/36": {
+      "file": "compatibility/unit/36.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/ironclad.png"
+    },
+    "unit/37": {
+      "file": "compatibility/unit/37.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/destroyer.png"
+    },
+    "unit/38": {
+      "file": "compatibility/unit/38.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/cruiser.png"
+    },
+    "unit/39": {
+      "file": "compatibility/unit/39.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/aegis-cruiser.png"
+    },
+    "unit/40": {
+      "file": "compatibility/unit/40.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/battleship.png"
+    },
+    "unit/41": {
+      "file": "compatibility/unit/41.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/submarine.png"
+    },
+    "unit/42": {
+      "file": "compatibility/unit/42.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/carrier.png"
+    },
+    "unit/43": {
+      "file": "compatibility/unit/43.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/transport.png"
+    },
+    "unit/44": {
+      "file": "compatibility/unit/44.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/cruise-missile.png"
+    },
+    "unit/45": {
+      "file": "compatibility/unit/45.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/nuclear-missile.png"
+    },
+    "unit/46": {
+      "file": "compatibility/unit/46.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/diplomat.png"
+    },
+    "unit/47": {
+      "file": "compatibility/unit/47.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/spy.png"
+    },
+    "unit/48": {
+      "file": "compatibility/unit/48.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/caravan.png"
+    },
+    "unit/49": {
+      "file": "compatibility/unit/49.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/freight.png"
+    },
+    "unit/50": {
+      "file": "compatibility/unit/50.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/explorer.png"
+    },
+    "unit/51": {
+      "file": "compatibility/unit/51.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/extra-land.png"
+    },
+    "unit/52": {
+      "file": "compatibility/unit/52.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/extra-ship.png"
+    },
+    "unit/53": {
+      "file": "compatibility/unit/53.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/extra-air.png"
+    },
+    "unit/54": {
+      "file": "compatibility/unit/54.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-1.png"
+    },
+    "unit/55": {
+      "file": "compatibility/unit/55.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-2.png"
+    },
+    "unit/56": {
+      "file": "compatibility/unit/56.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-3.png"
+    },
+    "unit/57": {
+      "file": "compatibility/unit/57.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-4.png"
+    },
+    "unit/58": {
+      "file": "compatibility/unit/58.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-5.png"
+    },
+    "unit/59": {
+      "file": "compatibility/unit/59.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-6.png"
+    },
+    "unit/60": {
+      "file": "compatibility/unit/60.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-7.png"
+    },
+    "unit/61": {
+      "file": "compatibility/unit/61.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/test-unit-8.png"
+    },
+    "unit/62": {
+      "file": "compatibility/unit/62.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/scout-alt.png"
+    },
+    "unit/63": {
+      "file": "compatibility/unit/63.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/units/merchant-alt.png"
+    },
+    "city/0": {
+      "file": "compatibility/city/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-1.png"
+    },
+    "city/1": {
+      "file": "compatibility/city/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-1-walled.png"
+    },
+    "city/2": {
+      "file": "compatibility/city/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-2.png"
+    },
+    "city/3": {
+      "file": "compatibility/city/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-2-walled.png"
+    },
+    "city/4": {
+      "file": "compatibility/city/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-3.png"
+    },
+    "city/5": {
+      "file": "compatibility/city/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-3-walled.png"
+    },
+    "city/6": {
+      "file": "compatibility/city/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-4.png"
+    },
+    "city/7": {
+      "file": "compatibility/city/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/bronze-4-walled.png"
+    },
+    "city/8": {
+      "file": "compatibility/city/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-1.png"
+    },
+    "city/9": {
+      "file": "compatibility/city/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-1-walled.png"
+    },
+    "city/10": {
+      "file": "compatibility/city/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-2.png"
+    },
+    "city/11": {
+      "file": "compatibility/city/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-2-walled.png"
+    },
+    "city/12": {
+      "file": "compatibility/city/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-3.png"
+    },
+    "city/13": {
+      "file": "compatibility/city/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-3-walled.png"
+    },
+    "city/14": {
+      "file": "compatibility/city/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-4.png"
+    },
+    "city/15": {
+      "file": "compatibility/city/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/classical-4-walled.png"
+    },
+    "city/16": {
+      "file": "compatibility/city/16.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-1.png"
+    },
+    "city/17": {
+      "file": "compatibility/city/17.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-1-walled.png"
+    },
+    "city/18": {
+      "file": "compatibility/city/18.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-2.png"
+    },
+    "city/19": {
+      "file": "compatibility/city/19.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-2-walled.png"
+    },
+    "city/20": {
+      "file": "compatibility/city/20.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-3.png"
+    },
+    "city/21": {
+      "file": "compatibility/city/21.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-3-walled.png"
+    },
+    "city/22": {
+      "file": "compatibility/city/22.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-4.png"
+    },
+    "city/23": {
+      "file": "compatibility/city/23.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/east-asian-4-walled.png"
+    },
+    "city/24": {
+      "file": "compatibility/city/24.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-1.png"
+    },
+    "city/25": {
+      "file": "compatibility/city/25.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-1-walled.png"
+    },
+    "city/26": {
+      "file": "compatibility/city/26.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-2.png"
+    },
+    "city/27": {
+      "file": "compatibility/city/27.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-2-walled.png"
+    },
+    "city/28": {
+      "file": "compatibility/city/28.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-3.png"
+    },
+    "city/29": {
+      "file": "compatibility/city/29.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-3-walled.png"
+    },
+    "city/30": {
+      "file": "compatibility/city/30.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-4.png"
+    },
+    "city/31": {
+      "file": "compatibility/city/31.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/medieval-4-walled.png"
+    },
+    "city/32": {
+      "file": "compatibility/city/32.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-1.png"
+    },
+    "city/33": {
+      "file": "compatibility/city/33.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-1-walled.png"
+    },
+    "city/34": {
+      "file": "compatibility/city/34.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-2.png"
+    },
+    "city/35": {
+      "file": "compatibility/city/35.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-2-walled.png"
+    },
+    "city/36": {
+      "file": "compatibility/city/36.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-3.png"
+    },
+    "city/37": {
+      "file": "compatibility/city/37.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-3-walled.png"
+    },
+    "city/38": {
+      "file": "compatibility/city/38.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-4.png"
+    },
+    "city/39": {
+      "file": "compatibility/city/39.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/industrial-4-walled.png"
+    },
+    "city/40": {
+      "file": "compatibility/city/40.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-1.png"
+    },
+    "city/41": {
+      "file": "compatibility/city/41.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-1-walled.png"
+    },
+    "city/42": {
+      "file": "compatibility/city/42.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-2.png"
+    },
+    "city/43": {
+      "file": "compatibility/city/43.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-2-walled.png"
+    },
+    "city/44": {
+      "file": "compatibility/city/44.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-3.png"
+    },
+    "city/45": {
+      "file": "compatibility/city/45.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-3-walled.png"
+    },
+    "city/46": {
+      "file": "compatibility/city/46.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-4.png"
+    },
+    "city/47": {
+      "file": "compatibility/city/47.png",
+      "nativeWidth": 64,
+      "nativeHeight": 48,
+      "source": "sprites/cities/modern-4-walled.png"
+    },
+    "resource/0": {
+      "file": "compatibility/resource/0.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/oasis.png"
+    },
+    "resource/1": {
+      "file": "compatibility/resource/1.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/desert-oil.png"
+    },
+    "resource/2": {
+      "file": "compatibility/resource/2.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/buffalo.png"
+    },
+    "resource/3": {
+      "file": "compatibility/resource/3.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/wheat.png"
+    },
+    "resource/4": {
+      "file": "compatibility/resource/4.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/grassland-shield.png"
+    },
+    "resource/5": {
+      "file": "compatibility/resource/5.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/grassland-shield.png"
+    },
+    "resource/6": {
+      "file": "compatibility/resource/6.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/pheasant.png"
+    },
+    "resource/7": {
+      "file": "compatibility/resource/7.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/silk.png"
+    },
+    "resource/8": {
+      "file": "compatibility/resource/8.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/coal.png"
+    },
+    "resource/9": {
+      "file": "compatibility/resource/9.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/wine.png"
+    },
+    "resource/10": {
+      "file": "compatibility/resource/10.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/gold.png"
+    },
+    "resource/11": {
+      "file": "compatibility/resource/11.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/iron.png"
+    },
+    "resource/12": {
+      "file": "compatibility/resource/12.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/game.png"
+    },
+    "resource/13": {
+      "file": "compatibility/resource/13.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/furs.png"
+    },
+    "resource/14": {
+      "file": "compatibility/resource/14.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/ivory.png"
+    },
+    "resource/15": {
+      "file": "compatibility/resource/15.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/glacier-oil.png"
+    },
+    "resource/16": {
+      "file": "compatibility/resource/16.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/peat.png"
+    },
+    "resource/17": {
+      "file": "compatibility/resource/17.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/spice.png"
+    },
+    "resource/18": {
+      "file": "compatibility/resource/18.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/gems.png"
+    },
+    "resource/19": {
+      "file": "compatibility/resource/19.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/fruit.png"
+    },
+    "resource/20": {
+      "file": "compatibility/resource/20.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/fish.png"
+    },
+    "resource/21": {
+      "file": "compatibility/resource/21.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/whales.png"
+    },
+    "resource/shield": {
+      "file": "compatibility/resource/shield.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": "sprites/resources/grassland-shield.png"
+    },
+    "fog/full": {
+      "file": "compatibility/fog/full.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "grid": {
+      "file": "compatibility/grid.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "grid/radius": {
+      "file": "compatibility/grid/radius.png",
+      "nativeWidth": 64,
+      "nativeHeight": 32,
+      "source": null
+    },
+    "shield": {
+      "file": "compatibility/shield.png",
+      "nativeWidth": 12,
+      "nativeHeight": 20,
+      "source": null
+    },
+    "flag/0": {
+      "file": "compatibility/flag/0.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/1": {
+      "file": "compatibility/flag/1.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/2": {
+      "file": "compatibility/flag/2.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/3": {
+      "file": "compatibility/flag/3.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/4": {
+      "file": "compatibility/flag/4.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/5": {
+      "file": "compatibility/flag/5.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/6": {
+      "file": "compatibility/flag/6.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "flag/7": {
+      "file": "compatibility/flag/7.png",
+      "nativeWidth": 8,
+      "nativeHeight": 16,
+      "source": null
+    },
+    "lot/large/1": {
+      "file": "compatibility/lot/large/1.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": null
+    },
+    "lot/small/2": {
+      "file": "compatibility/lot/small/2.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": null
+    },
+    "lot/large/2": {
+      "file": "compatibility/lot/large/2.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": null
+    },
+    "house/large/1": {
+      "file": "compatibility/house/large/1.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/city-details/industrial-1.png"
+    },
+    "building/5": {
+      "file": "compatibility/building/5.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/marketplace.png"
+    },
+    "house/small/2": {
+      "file": "compatibility/house/small/2.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/city-details/industrial-2.png"
+    },
+    "house/large/0": {
+      "file": "compatibility/house/large/0.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/city-details/industrial-0.png"
+    },
+    "lot/large/0": {
+      "file": "compatibility/lot/large/0.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": null
+    },
+    "house/small/1": {
+      "file": "compatibility/house/small/1.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/city-details/industrial-1.png"
+    },
+    "house/small/0": {
+      "file": "compatibility/house/small/0.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/city-details/industrial-0.png"
+    },
+    "building/1": {
+      "file": "compatibility/building/1.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/palace.png"
+    },
+    "building/3": {
+      "file": "compatibility/building/3.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/granary.png"
+    },
+    "lot/small/0": {
+      "file": "compatibility/lot/small/0.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": null
+    },
+    "building/14": {
+      "file": "compatibility/building/14.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/colosseum.png"
+    },
+    "building/7": {
+      "file": "compatibility/building/7.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/courthouse.png"
+    },
+    "building/4": {
+      "file": "compatibility/building/4.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/temple.png"
+    },
+    "building/2": {
+      "file": "compatibility/building/2.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/barracks.png"
+    },
+    "building/20": {
+      "file": "compatibility/building/20.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/hydro-plant.png"
+    },
+    "lot/small/3": {
+      "file": "compatibility/lot/small/3.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": null
+    },
+    "house/small/3": {
+      "file": "compatibility/house/small/3.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/city-details/industrial-3.png"
+    },
+    "wonder/0": {
+      "file": "compatibility/wonder/0.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/wonders/pyramids.png"
+    },
+    "building/16": {
+      "file": "compatibility/building/16.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/manufacturing-plant.png"
+    },
+    "lot/large/3": {
+      "file": "compatibility/lot/large/3.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": null
+    },
+    "building/28": {
+      "file": "compatibility/building/28.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/coastal-fortress.png"
+    },
+    "house/large/3": {
+      "file": "compatibility/house/large/3.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/city-details/industrial-3.png"
+    },
+    "wonder/10": {
+      "file": "compatibility/wonder/10.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/wonders/chapel.png"
+    },
+    "house/large/2": {
+      "file": "compatibility/house/large/2.png",
+      "nativeWidth": 158,
+      "nativeHeight": 114,
+      "source": "sprites/city-details/industrial-2.png"
+    },
+    "building/12": {
+      "file": "compatibility/building/12.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": "sprites/buildings/university.png"
+    },
+    "building/8": {
+      "file": "compatibility/building/8.png",
+      "nativeWidth": 357,
+      "nativeHeight": 78,
+      "source": "sprites/buildings/city-walls.png"
+    },
+    "building/30": {
+      "file": "compatibility/building/30.png",
+      "nativeWidth": 220,
+      "nativeHeight": 100,
+      "source": "sprites/buildings/harbor.png"
+    },
+    "building/34": {
+      "file": "compatibility/building/34.png",
+      "nativeWidth": 367,
+      "nativeHeight": 118,
+      "source": "sprites/buildings/port-facility.png"
+    },
+    "building/31": {
+      "file": "compatibility/building/31.png",
+      "nativeWidth": 105,
+      "nativeHeight": 105,
+      "source": "sprites/buildings/offshore-platform.png"
+    },
+    "wonder/3": {
+      "file": "compatibility/wonder/3.png",
+      "nativeWidth": 76,
+      "nativeHeight": 133,
+      "source": "sprites/wonders/lighthouse.png"
+    },
+    "lot/small/1": {
+      "file": "compatibility/lot/small/1.png",
+      "nativeWidth": 123,
+      "nativeHeight": 82,
+      "source": null
+    },
+    "palace-resource/105": {
+      "file": "compatibility/palace-resource/105.png",
+      "nativeWidth": 322,
+      "nativeHeight": 318,
+      "source": "sprites/palace/arch-1.png"
+    },
+    "palace-resource/110": {
+      "file": "compatibility/palace-resource/110.png",
+      "nativeWidth": 640,
+      "nativeHeight": 203,
+      "source": "sprites/palace/rug-1.png"
+    },
+    "palace-resource/115": {
+      "file": "compatibility/palace-resource/115.png",
+      "nativeWidth": 640,
+      "nativeHeight": 180,
+      "source": "sprites/palace/dais-1.png"
+    },
+    "palace-resource/120": {
+      "file": "compatibility/palace-resource/120.png",
+      "nativeWidth": 640,
+      "nativeHeight": 296,
+      "source": "sprites/palace/columns-1.png"
+    },
+    "palace-resource/125": {
+      "file": "compatibility/palace-resource/125.png",
+      "nativeWidth": 276,
+      "nativeHeight": 195,
+      "source": "sprites/palace/tapestry-1.png"
+    },
+    "palace-resource/130": {
+      "file": "compatibility/palace-resource/130.png",
+      "nativeWidth": 640,
+      "nativeHeight": 311,
+      "source": "sprites/palace/brazier-1.png"
+    },
+    "palace-resource/135": {
+      "file": "compatibility/palace-resource/135.png",
+      "nativeWidth": 125,
+      "nativeHeight": 39,
+      "source": "sprites/palace/throne-1.png"
+    },
+    "palace-resource/140": {
+      "file": "compatibility/palace-resource/140.png",
+      "nativeWidth": 640,
+      "nativeHeight": 480,
+      "source": "sprites/palace/ceiling-medallion-1.png"
+    },
+    "palace-resource/107": {
+      "file": "compatibility/palace-resource/107.png",
+      "nativeWidth": 348,
+      "nativeHeight": 298,
+      "source": "sprites/palace/arch-3.png"
+    },
+    "palace-resource/111": {
+      "file": "compatibility/palace-resource/111.png",
+      "nativeWidth": 640,
+      "nativeHeight": 204,
+      "source": "sprites/palace/rug-2.png"
+    },
+    "palace-resource/118": {
+      "file": "compatibility/palace-resource/118.png",
+      "nativeWidth": 217,
+      "nativeHeight": 175,
+      "source": "sprites/palace/dais-4.png"
+    },
+    "palace-resource/121": {
+      "file": "compatibility/palace-resource/121.png",
+      "nativeWidth": 640,
+      "nativeHeight": 303,
+      "source": "sprites/palace/columns-2.png"
+    },
+    "palace-resource/132": {
+      "file": "compatibility/palace-resource/132.png",
+      "nativeWidth": 640,
+      "nativeHeight": 310,
+      "source": "sprites/palace/brazier-3.png"
+    },
+    "palace-resource/136": {
+      "file": "compatibility/palace-resource/136.png",
+      "nativeWidth": 40,
+      "nativeHeight": 72,
+      "source": "sprites/palace/throne-2.png"
+    },
+    "palace-resource/143": {
+      "file": "compatibility/palace-resource/143.png",
+      "nativeWidth": 640,
+      "nativeHeight": 480,
+      "source": "sprites/palace/ceiling-medallion-4.png"
+    },
+    "palace-resource/108": {
+      "file": "compatibility/palace-resource/108.png",
+      "nativeWidth": 267,
+      "nativeHeight": 325,
+      "source": "sprites/palace/arch-4.png"
+    },
+    "palace-resource/113": {
+      "file": "compatibility/palace-resource/113.png",
+      "nativeWidth": 640,
+      "nativeHeight": 204,
+      "source": "sprites/palace/rug-4.png"
+    },
+    "palace-resource/160": {
+      "file": "compatibility/palace-resource/160.png",
+      "nativeWidth": 640,
+      "nativeHeight": 43,
+      "source": "sprites/palace/bonus-0.png"
+    },
+    "palace-resource/123": {
+      "file": "compatibility/palace-resource/123.png",
+      "nativeWidth": 640,
+      "nativeHeight": 298,
+      "source": "sprites/palace/columns-4.png"
+    },
+    "palace-resource/161": {
+      "file": "compatibility/palace-resource/161.png",
+      "nativeWidth": 449,
+      "nativeHeight": 240,
+      "source": "sprites/palace/bonus-1.png"
+    },
+    "palace-resource/162": {
+      "file": "compatibility/palace-resource/162.png",
+      "nativeWidth": 640,
+      "nativeHeight": 67,
+      "source": "sprites/palace/bonus-2.png"
+    },
+    "palace-resource/128": {
+      "file": "compatibility/palace-resource/128.png",
+      "nativeWidth": 234,
+      "nativeHeight": 299,
+      "source": "sprites/palace/tapestry-4.png"
+    },
+    "palace-resource/163": {
+      "file": "compatibility/palace-resource/163.png",
+      "nativeWidth": 192,
+      "nativeHeight": 155,
+      "source": "sprites/palace/bonus-3.png"
+    },
+    "palace-resource/133": {
+      "file": "compatibility/palace-resource/133.png",
+      "nativeWidth": 640,
+      "nativeHeight": 313,
+      "source": "sprites/palace/brazier-4.png"
+    },
+    "palace-resource/138": {
+      "file": "compatibility/palace-resource/138.png",
+      "nativeWidth": 122,
+      "nativeHeight": 151,
+      "source": "sprites/palace/throne-4.png"
+    },
+    "palace-resource/164": {
+      "file": "compatibility/palace-resource/164.png",
+      "nativeWidth": 312,
+      "nativeHeight": 70,
+      "source": "sprites/palace/bonus-4.png"
+    },
+    "palace-resource/165": {
+      "file": "compatibility/palace-resource/165.png",
+      "nativeWidth": 576,
+      "nativeHeight": 65,
+      "source": "sprites/palace/bonus-5.png"
+    },
+    "palace-resource/166": {
+      "file": "compatibility/palace-resource/166.png",
+      "nativeWidth": 640,
+      "nativeHeight": 342,
+      "source": "sprites/palace/bonus-6.png"
+    }
+  }
+}

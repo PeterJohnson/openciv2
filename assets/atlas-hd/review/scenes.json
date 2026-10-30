@@ -1,0 +1,403 @@
+[
+  {
+    "id": "district",
+    "title": "District · roads, rails, fields and units",
+    "camera": {
+      "ox": 26,
+      "oy": 30,
+      "cols": 16,
+      "rows": 24,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/district.txt",
+    "current": "review/images/district-current.png",
+    "hd": "review/images/district-hd.png",
+    "proposed": "review/images/district-proposed.png",
+    "currentSize": [
+      2048,
+      768
+    ],
+    "hdSize": [
+      4096,
+      1536
+    ],
+    "proposedSize": [
+      4096,
+      1536
+    ],
+    "commandCount": 1193,
+    "buildMilliseconds": 40997
+  },
+  {
+    "id": "close",
+    "title": "Close view · approximately 10 × 10 tile spans",
+    "camera": {
+      "ox": 28,
+      "oy": 32,
+      "cols": 10,
+      "rows": 20,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/close.txt",
+    "current": "review/images/close-current.png",
+    "hd": "review/images/close-hd.png",
+    "proposed": "review/images/close-proposed.png",
+    "currentSize": [
+      1280,
+      640
+    ],
+    "hdSize": [
+      2560,
+      1280
+    ],
+    "proposedSize": [
+      2560,
+      1280
+    ],
+    "commandCount": 600,
+    "buildMilliseconds": 23264,
+    "exports4k": {
+      "current": "review/4k/close-current.png",
+      "hd": "review/4k/close-hd.png",
+      "proposed": "review/4k/close-proposed.png"
+    }
+  },
+  {
+    "id": "transport",
+    "title": "Transport · isolated, pair, bend, crossing and mixed networks",
+    "mode": "plate",
+    "current": "review/images/transport-current.png",
+    "currentSize": [
+      2560,
+      640
+    ],
+    "hd": "review/images/transport-hd.png",
+    "hdSize": [
+      2560,
+      640
+    ],
+    "proposed": "review/images/transport-proposed.png",
+    "proposedSize": [
+      2560,
+      640
+    ]
+  },
+  {
+    "id": "coast",
+    "title": "Coast · bay, islet, narrow channel and estuary",
+    "camera": {
+      "ox": 30,
+      "oy": 70,
+      "cols": 14,
+      "rows": 24,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/coast.txt",
+    "current": "review/images/coast-current.png",
+    "hd": "review/images/coast-hd.png",
+    "proposed": "review/images/coast-proposed.png",
+    "currentSize": [
+      1792,
+      768
+    ],
+    "hdSize": [
+      3584,
+      1536
+    ],
+    "proposedSize": [
+      3584,
+      1536
+    ],
+    "commandCount": 1065,
+    "buildMilliseconds": 33906,
+    "exports4k": {
+      "current": "review/4k/coast-current.png",
+      "hd": "review/4k/coast-hd.png",
+      "proposed": "review/4k/coast-proposed.png"
+    }
+  },
+  {
+    "id": "repetition",
+    "title": "Terrain repetition · fixed tiles to stable world variation",
+    "mode": "map",
+    "camera": {
+      "ox": 2,
+      "oy": 2,
+      "cols": 8,
+      "rows": 16,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "fixture": "review/fixtures/repetition.txt",
+    "current": "review/images/repetition-current.png",
+    "currentSize": [
+      1024,
+      512
+    ],
+    "hd": "review/images/repetition-hd.png",
+    "hdSize": [
+      2048,
+      1024
+    ],
+    "proposed": "review/images/repetition-proposed.png",
+    "proposedSize": [
+      2048,
+      1024
+    ]
+  },
+  {
+    "id": "region",
+    "title": "Region · simplified transport and landmarks",
+    "camera": {
+      "ox": 0,
+      "oy": 0,
+      "cols": 32,
+      "rows": 64,
+      "zoom": -4
+    },
+    "tileWidth": 32,
+    "mode": "map",
+    "fixture": "review/fixtures/region.txt",
+    "current": "review/images/region-current.png",
+    "hd": "review/images/region-hd.png",
+    "proposed": "review/images/region-proposed.png",
+    "currentSize": [
+      1024,
+      512
+    ],
+    "hdSize": [
+      2048,
+      1024
+    ],
+    "proposedSize": [
+      2048,
+      1024
+    ],
+    "commandCount": 4165,
+    "buildMilliseconds": 13471
+  },
+  {
+    "id": "world",
+    "title": "World · all 128 × 128 staggered coordinates",
+    "camera": {
+      "ox": 0,
+      "oy": 0,
+      "cols": 64,
+      "rows": 128,
+      "zoom": -6
+    },
+    "tileWidth": 16,
+    "mode": "map",
+    "fixture": "review/fixtures/world.txt",
+    "current": "review/images/world-current.png",
+    "hd": "review/images/world-hd.png",
+    "proposed": "review/images/world-proposed.png",
+    "currentSize": [
+      1024,
+      512
+    ],
+    "hdSize": [
+      2048,
+      1024
+    ],
+    "proposedSize": [
+      2048,
+      1024
+    ],
+    "commandCount": 10719,
+    "buildMilliseconds": 12702
+  },
+  {
+    "id": "city-coastal",
+    "title": "City panorama · coastal",
+    "mode": "city",
+    "site": "coastal",
+    "fixture": "review/fixtures/city-coastal.txt",
+    "current": "review/images/city-coastal-current.png",
+    "hd": "review/images/city-coastal-hd.png",
+    "proposed": "review/images/city-coastal-proposed.png",
+    "currentSize": [
+      1280,
+      480
+    ],
+    "hdSize": [
+      2560,
+      960
+    ],
+    "proposedSize": [
+      2560,
+      960
+    ],
+    "commandCount": 57,
+    "buildMilliseconds": 1894,
+    "exports4k": {
+      "current": "review/4k/city-coastal-current.png",
+      "hd": "review/4k/city-coastal-hd.png",
+      "proposed": "review/4k/city-coastal-proposed.png"
+    }
+  },
+  {
+    "id": "city-river",
+    "title": "City panorama · river",
+    "mode": "city",
+    "site": "river",
+    "fixture": "review/fixtures/city-river.txt",
+    "current": "review/images/city-river-current.png",
+    "hd": "review/images/city-river-hd.png",
+    "proposed": "review/images/city-river-proposed.png",
+    "currentSize": [
+      1280,
+      480
+    ],
+    "hdSize": [
+      2560,
+      960
+    ],
+    "proposedSize": [
+      2560,
+      960
+    ],
+    "commandCount": 53,
+    "buildMilliseconds": 983
+  },
+  {
+    "id": "city-inland",
+    "title": "City panorama · inland",
+    "mode": "city",
+    "site": "inland",
+    "fixture": "review/fixtures/city-inland.txt",
+    "current": "review/images/city-inland-current.png",
+    "hd": "review/images/city-inland-hd.png",
+    "proposed": "review/images/city-inland-proposed.png",
+    "currentSize": [
+      1280,
+      480
+    ],
+    "hdSize": [
+      2560,
+      960
+    ],
+    "proposedSize": [
+      2560,
+      960
+    ],
+    "commandCount": 57,
+    "buildMilliseconds": 760
+  },
+  {
+    "id": "throne-early",
+    "title": "throne early",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-early.txt",
+    "levels": [
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "bonus": 0,
+    "complete": 0,
+    "current": "review/images/throne-early-current.png",
+    "hd": "review/images/throne-early-hd.png",
+    "proposed": "review/images/throne-early-proposed.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "commandCount": 8,
+    "buildMilliseconds": 1065
+  },
+  {
+    "id": "throne-mixed",
+    "title": "throne mixed",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-mixed.txt",
+    "levels": [
+      3,
+      2,
+      4,
+      2,
+      1,
+      3,
+      2,
+      4
+    ],
+    "bonus": 0,
+    "complete": 0,
+    "current": "review/images/throne-mixed-current.png",
+    "hd": "review/images/throne-mixed-hd.png",
+    "proposed": "review/images/throne-mixed-proposed.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "commandCount": 8,
+    "buildMilliseconds": 1069
+  },
+  {
+    "id": "throne-complete",
+    "title": "throne complete",
+    "mode": "throne",
+    "fixture": "review/fixtures/throne-complete.txt",
+    "levels": [
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4,
+      4
+    ],
+    "bonus": 127,
+    "complete": 1,
+    "current": "review/images/throne-complete-current.png",
+    "hd": "review/images/throne-complete-hd.png",
+    "proposed": "review/images/throne-complete-proposed.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "commandCount": 15,
+    "buildMilliseconds": 1175,
+    "exports4k": {
+      "current": "review/4k/throne-complete-current.png",
+      "hd": "review/4k/throne-complete-hd.png",
+      "proposed": "review/4k/throne-complete-proposed.png"
+    }
+  }
+]

@@ -5,6 +5,14 @@ Goal: reconstruct the source of *Sid Meier's Civilization II: Multiplayer Gold E
 and prove it behaves exactly like the original binary: the same screens, pixel for pixel,
 and the same random numbers, call for call, on recorded games.
 
+## Replacement graphics review
+
+The [Atlas HD gallery](assets/atlas-hd/index.html) presents the consolidated replacement art and
+three rendering stages: legacy resolution, HD-only support with unchanged composition rules,
+and additional cohesion proposals. [Build instructions and scope](assets/atlas-hd/README.md)
+include the standalone source-derived renderer and scoped upgrade recommendations.
+This art-review branch does not change the game renderer or asset loader.
+
 ## Download and play
 
 You need your own copy of Civilization II Multiplayer Gold Edition: installed, on CD, or a

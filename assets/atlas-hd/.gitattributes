@@ -1,0 +1,9 @@
+# Preserve authored SVG bytes pinned by sourceSha256. PNGs and fonts are binary.
+*.png binary
+*.ttf binary
+*.svg -text
+*.json text eol=lf
+*.md text eol=lf
+*.html text eol=lf
+*.js text eol=lf
+fonts/**/OFL.txt -text
