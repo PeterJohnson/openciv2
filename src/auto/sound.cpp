@@ -401,13 +401,36 @@ void __cdecl snd_waveout_error_box(uint error_code)
   return;
 }
 
+/* BF-111/BF-305: only the first 16 fmt bytes are retained. Extensions are
+ * consumed, never read into adjacent locals; truncation is still a read error.
+ * Return the loaders' existing error codes (10 format, 8 read). */
+static int snd_read_pcm_format(HMMIO mmio,DWORD size,WAVEFORMATEX *format)
+{
+  char discard[256];
+  LONG prefix = size < 16 ? (LONG)size : 16;
+  if (mmioRead(mmio,(HPSTR)format,prefix) != prefix) {
+    return 8;
+  }
+  if (size < 16) {
+    return 10;
+  }
+  size -= 16;
+  while (size != 0) {
+    LONG count = size < sizeof discard ? (LONG)size : (LONG)sizeof discard;
+    if (mmioRead(mmio,discard,count) != count) {
+      return 8;
+    }
+    size -= count;
+  }
+  return 0;
+}
+
 /* 005d4c5f auto */
 i16 __cdecl snd_wave_load_file(LPSTR filename,i32 unused,i32 flags,SoundDoneFn done_callback)
 
 {
   i16 result;
   MMRESULT mmio_result;
-  DWORD bytes_read;
   int n;
   _MMIOINFO *p_Var5;
   _MMCKINFO *p_Var6;
@@ -437,8 +460,8 @@ i16 __cdecl snd_wave_load_file(LPSTR filename,i32 unused,i32 flags,SoundDoneFn d
       mmio_result = mmioDescend(mmio,&chunk,&riff_chunk,0x10);
       if (mmio_result == 0) {
         fmt_size = chunk.cksize;
-        bytes_read = mmioRead(mmio,(HPSTR)&wave_format,chunk.cksize);
-        if (bytes_read == fmt_size) {
+        result = (i16)snd_read_pcm_format(mmio,fmt_size,&wave_format);
+        if (result == 0) {
           if ((wave_format.nSamplesPerSec == 0x5622) && (wave_format.wBitsPerSample == 8)) {
             mmioAscend(mmio,&chunk,0);
             chunk.ckid = 0x61746164;
@@ -507,8 +530,10 @@ i16 __cdecl snd_wave_load_file(LPSTR filename,i32 unused,i32 flags,SoundDoneFn d
           }
         }
         else {
+          if (result == 10) {
+            snd_show_error(10);
+          }
           mmioClose(mmio,0);
-          result = 8;
         }
       }
       else {
@@ -530,7 +555,6 @@ i16 __cdecl snd_wave_open_stream(LPSTR filename,i32 unused,i32 flags)
 {
   i16 result;
   MMRESULT mmio_result;
-  DWORD bytes_read;
   int n;
   _MMIOINFO *p_Var5;
   _MMCKINFO *p_Var6;
@@ -559,8 +583,8 @@ i16 __cdecl snd_wave_open_stream(LPSTR filename,i32 unused,i32 flags)
       mmio_result = mmioDescend(file_mmio,&chunk,&riff_chunk,0x10);
       if (mmio_result == 0) {
         fmt_size = chunk.cksize;
-        bytes_read = mmioRead(file_mmio,(HPSTR)&wave_format,chunk.cksize);
-        if (bytes_read == fmt_size) {
+        result = (i16)snd_read_pcm_format(file_mmio,fmt_size,&wave_format);
+        if (result == 0) {
           if ((wave_format.nSamplesPerSec == 0x5622) && (wave_format.wBitsPerSample == 8)) {
             mmioAscend(file_mmio,&chunk,0);
             chunk.ckid = 0x61746164;
@@ -638,8 +662,10 @@ i16 __cdecl snd_wave_open_stream(LPSTR filename,i32 unused,i32 flags)
           }
         }
         else {
+          if (result == 10) {
+            snd_show_error(10);
+          }
           mmioClose(file_mmio,0);
-          result = 8;
         }
       }
       else {
