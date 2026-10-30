@@ -120,7 +120,7 @@ visible material choices, and no navigational ambiguity at narrow channels.
 
 ## 4. Zoom and level of detail
 
-**Review: close, region and full-world presets.** The current two baseline stages
+**Review: close, tactical, region and full-world presets.** The current two baseline stages
 retain the native -7…8 zoom rules and abrupt feature cutoffs. The additional
 prototype keeps transport readable with simple lines and substitutes small city
 and unit markers at overview scales. Its world image uses quiet material colors
@@ -137,12 +137,13 @@ Suggested starting thresholds in **logical tile width**, to tune with playtests:
 | Tile width | Representation |
 | --- | --- |
 | ≥ 128 logical px | Full terrain detail, readable individual sprites, field details, rail sleepers |
-| 64–127 px | Regular sprites, subdued field texture, limited labels |
-| 32–63 px | Sparse terrain features, simple transport lines, city and unit markers |
+| 48–127 px | Full native unit/city frames and badges; subdued terrain detail |
+| 32–47 px | Sparse terrain features, simple transport lines, city and unit markers |
 | < 32 px | Quiet terrain colors, major routes, cities and grouped unit markers; selected objects remain explicit |
 
 The prototype uses 64 px for field detail and 48 px for tall features and marker
-substitution. It demonstrates still-frame endpoints, **not** animated transition
+substitution. Above that threshold, unit/city sizes and anchors are exactly those
+of the source object renderer, not reduced custom boxes. It demonstrates still-frame endpoints, **not** animated transition
 hysteresis, label collision or unit clustering. Production should add a small
 hysteresis band (for example ±10%) and crossfade visual layers without changing
 selection. Keep label priorities stable: selection, active unit, cities, then
@@ -178,6 +179,103 @@ gameplay meaning. Define occlusion intentionally so a last-drawn room decoration
 does not obscure the throne. Include empty, partial, mixed and complete states.
 The review tool's compatibility bank demonstrates that new art can already be
 composed inside native boxes; the extra metadata gives it a more natural scale.
+
+
+## 6. Diplomacy audience: density first, readable columns second
+
+**Review: Diplomacy, all three stages.** Current source: government-dependent
+640×480 art, a 225×275 portrait at `(208,57)`, military rank minus one repeated
+icons at `(45,130)` and six technology slots at `(485,130)`. The source uses
+31-pixel row spacing, era-dependent category crops and a narrow 58-pixel text
+box. These rules come from `DiploLeaderWindow` in `src/auto/diplomacy.cpp`.
+
+**HD-only scope:** supply RGBA backgrounds, portraits and category sprites at
+higher density while keeping those logical rectangles. Replace palette entry
+copying with explicit color masks. Keep static portraits as the supported
+replacement-art path; an animated herald is a separate media decision.
+
+**Additional scope:** add contrast panels behind the two side columns, a portrait
+safe area and measured, wrapping labels. Keep the portrait's existing size; make
+the columns fit their data rather than distorting the leader. Separate the icon
+rectangle from the label rectangle and make the whole row the hit target.
+The proposed preview demonstrates the contrast panels and wider name area.
+Future dialog choices should occupy a distinct measured text panel, preserve
+keyboard navigation and never overlap the portrait. No synthetic conversation
+choices are presented as a native diplomacy dialog in this review.
+
+**Acceptance:** all seven governments and four eras; ranks 1 and 8; zero/six
+known technologies; short and long localized names; 100–300% density; static
+portrait framing; input regions and treaty/embassy visibility. Validate the
+actual dialog path separately from this static leader-window fixture.
+
+## 7. Spacecraft: retain the assembly state, introduce attachment metadata
+
+**Review: Spacecraft assembly and complete.** The existing renderer executes 88
+part rows in `src/game/bigframes.cpp`. It chooses filled/empty resources using
+two count sets, selects one structural frame and composes into a 457×304 surface
+at `(175,99)`. `src/auto/spaceship.cpp` adds statistics from `(10,40)`, the status
+line near y=449 and buttons at y=417. This split-crop contract was designed for
+one particular sheet arrangement; independent replacement module drawings can
+overlap or float even when every source position is reproduced faithfully.
+
+**HD-only scope:** retain the exact part thresholds, crop rectangles, composition
+order, buffer and status/button geometry, with higher-density RGBA images and
+transparent empty attachments. The first two previews isolate that change.
+
+**Additional scope:** define logical attachment ports, a shared component scale,
+truss layers, occlusion order and an empty/installed state for each port. Use one
+whole component image where the old sheet required several crop fragments.
+`space-layout.json` now contains the proposed four-bay layout; the preview uses
+the same supplied six part counts. Draw connectors behind components, use a
+quiet assembly background, and group statistics with explicit values and meters.
+This remains a fixed 2D illustration assembled from sprites. Structural counts
+must control the enabled truss/ports; do not infer legal attachment state from
+whether a sprite happens to be visible. Keep launch eligibility in gameplay.
+
+The mockup demonstrates ports, empty slots and a common visual scale. Its sample
+stats are declared inputs, not simulated travel/success calculations. Production
+must retain `spaceship_calc_stats` and source attachment limits unchanged.
+
+**Acceptance:** empty, partial and maximum counts, every filled/empty threshold,
+structural stages, clipped edges, supported/future ports, launch-state button
+visibility, paused typing/full-text presentation, and matching values before
+and after resizing. Render the same state with both layouts during migration.
+
+## 8. City management: preserve the dashboard, reduce stockpile clutter
+
+**Review: City window and crowded city.** This is `CityWindow`, not the separate
+`CityViewWindow` panorama. `layout_rects` partitions a 636×421 content area into
+citizens, resource map, food, production, supported units, improvement list and
+info panel. `apply_size` currently switches among half, native and 1.5× layouts;
+citizens and stockpiles compress through `ui_calc_item_spacing` when crowded.
+
+**HD-only scope:** retain panel coordinates, source citizen ordering, stockpile
+capacity, production selection, unit cells, list order and scroll position.
+Scale image density and text rasterization independently from `view_scale`;
+update clipping and mouse coordinates through the same DPI transform. The
+previews execute the original stockpile, citizen and list algorithms.
+
+**Additional scope:** keep the recognizable panel arrangement and citizen art,
+but give panels shared borders, consistent text contrast and measured labels.
+Offer numerical food/shield meters with a visible granary threshold instead of
+hundreds of tiny overlapping icons. Preserve exact numbers and make the original
+icon display an optional presentation mode. The prototype shows these meters
+and simpler resource bars; it does not change city calculations.
+
+For a later independently scoped layout pass, replace the three hard size jumps
+with logical minimum sizes, allow the improvements list to gain rows on taller
+windows, and page or wrap crowded citizens with an explicit total. Do not shrink
+all citizens and unit sprites to force a fit. Keep the worked-tile map's exact
+21-cell picking geometry. The present preview retains the native citizen row,
+so population-28 overlap remains visible as a documented follow-up rather than
+being silently hidden by smaller sprites. Happiness/support modes and actual
+button/click handlers still need runtime integration checks.
+
+**Acceptance:** populations 1, 12, 28 and maximum supported size; specialists,
+anger/disorder, empty/full/overflow stockpiles, unit versus improvement production,
+long building names, list scrolling, all three info modes and 100–300% DPI.
+Use game-owned values for every displayed quantity; rounding or aggregation must
+not change food retention, production progress, upkeep or orders.
 
 ## Delivery order, memory and profiling
 

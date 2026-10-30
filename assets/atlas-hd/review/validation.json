@@ -7,18 +7,33 @@
       "status": "pass"
     },
     {
+      "name": "Window source hashes and 23 unchanged extracted function bodies",
+      "count": 23,
+      "status": "pass"
+    },
+    {
       "name": "Debug/Release topology, remembered state, city endpoints and zoom audit",
       "count": 787,
       "status": "pass"
     },
     {
       "name": "Saved scene traces equal fresh Debug and Release output",
-      "count": 12,
+      "count": 18,
+      "status": "pass"
+    },
+    {
+      "name": "Detailed map object commands preserve native sprite size, placement and selection",
+      "count": 19,
+      "status": "pass"
+    },
+    {
+      "name": "Window HD-only preserves every bound artwork rectangle",
+      "count": 5,
       "status": "pass"
     },
     {
       "name": "Canonical asset paths, recorded hashes and master references",
-      "count": 2205,
+      "count": 2212,
       "status": "pass"
     },
     {
@@ -38,7 +53,7 @@
     },
     {
       "name": "Three-stage review image dimensions",
-      "count": 39,
+      "count": 57,
       "status": "pass"
     },
     {

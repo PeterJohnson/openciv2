@@ -28,6 +28,20 @@
     "fixture": "review/fixtures/close.txt"
   },
   {
+    "id": "tactical",
+    "title": "Tactical · medium zoom with full-size units and cities",
+    "camera": {
+      "ox": 28,
+      "oy": 32,
+      "cols": 16,
+      "rows": 24,
+      "zoom": 0
+    },
+    "tileWidth": 64,
+    "mode": "map",
+    "fixture": "review/fixtures/tactical.txt"
+  },
+  {
     "id": "coast",
     "title": "Coast · bay, islet, narrow channel and estuary",
     "camera": {

@@ -28,7 +28,7 @@
       1536
     ],
     "commandCount": 1193,
-    "buildMilliseconds": 40997
+    "buildMilliseconds": 39594
   },
   {
     "id": "close",
@@ -59,7 +59,7 @@
       1280
     ],
     "commandCount": 600,
-    "buildMilliseconds": 23264,
+    "buildMilliseconds": 23085,
     "exports4k": {
       "current": "review/4k/close-current.png",
       "hd": "review/4k/close-hd.png",
@@ -87,40 +87,35 @@
     ]
   },
   {
-    "id": "coast",
-    "title": "Coast · bay, islet, narrow channel and estuary",
+    "id": "tactical",
+    "title": "Tactical · medium zoom with full-size units and cities",
     "camera": {
-      "ox": 30,
-      "oy": 70,
-      "cols": 14,
+      "ox": 28,
+      "oy": 32,
+      "cols": 16,
       "rows": 24,
-      "zoom": 8
+      "zoom": 0
     },
-    "tileWidth": 128,
+    "tileWidth": 64,
     "mode": "map",
-    "fixture": "review/fixtures/coast.txt",
-    "current": "review/images/coast-current.png",
-    "hd": "review/images/coast-hd.png",
-    "proposed": "review/images/coast-proposed.png",
+    "fixture": "review/fixtures/tactical.txt",
+    "current": "review/images/tactical-current.png",
+    "hd": "review/images/tactical-hd.png",
+    "proposed": "review/images/tactical-proposed.png",
     "currentSize": [
-      1792,
-      768
+      1024,
+      384
     ],
     "hdSize": [
-      3584,
-      1536
+      2048,
+      768
     ],
     "proposedSize": [
-      3584,
-      1536
+      2048,
+      768
     ],
-    "commandCount": 1065,
-    "buildMilliseconds": 33906,
-    "exports4k": {
-      "current": "review/4k/coast-current.png",
-      "hd": "review/4k/coast-hd.png",
-      "proposed": "review/4k/coast-proposed.png"
-    }
+    "commandCount": 1215,
+    "buildMilliseconds": 10645
   },
   {
     "id": "repetition",
@@ -152,6 +147,42 @@
     ]
   },
   {
+    "id": "coast",
+    "title": "Coast · bay, islet, narrow channel and estuary",
+    "camera": {
+      "ox": 30,
+      "oy": 70,
+      "cols": 14,
+      "rows": 24,
+      "zoom": 8
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "fixture": "review/fixtures/coast.txt",
+    "current": "review/images/coast-current.png",
+    "hd": "review/images/coast-hd.png",
+    "proposed": "review/images/coast-proposed.png",
+    "currentSize": [
+      1792,
+      768
+    ],
+    "hdSize": [
+      3584,
+      1536
+    ],
+    "proposedSize": [
+      3584,
+      1536
+    ],
+    "commandCount": 1065,
+    "buildMilliseconds": 32315,
+    "exports4k": {
+      "current": "review/4k/coast-current.png",
+      "hd": "review/4k/coast-hd.png",
+      "proposed": "review/4k/coast-proposed.png"
+    }
+  },
+  {
     "id": "region",
     "title": "Region · simplified transport and landmarks",
     "camera": {
@@ -180,7 +211,7 @@
       1024
     ],
     "commandCount": 4165,
-    "buildMilliseconds": 13471
+    "buildMilliseconds": 12637
   },
   {
     "id": "world",
@@ -211,7 +242,7 @@
       1024
     ],
     "commandCount": 10719,
-    "buildMilliseconds": 12702
+    "buildMilliseconds": 11350
   },
   {
     "id": "city-coastal",
@@ -235,7 +266,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 1894,
+    "buildMilliseconds": 1721,
     "exports4k": {
       "current": "review/4k/city-coastal-current.png",
       "hd": "review/4k/city-coastal-hd.png",
@@ -264,7 +295,7 @@
       960
     ],
     "commandCount": 53,
-    "buildMilliseconds": 983
+    "buildMilliseconds": 717
   },
   {
     "id": "city-inland",
@@ -288,7 +319,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 760
+    "buildMilliseconds": 729
   },
   {
     "id": "throne-early",
@@ -323,7 +354,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1065
+    "buildMilliseconds": 1002
   },
   {
     "id": "throne-mixed",
@@ -358,7 +389,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1069
+    "buildMilliseconds": 959
   },
   {
     "id": "throne-complete",
@@ -393,11 +424,160 @@
       960
     ],
     "commandCount": 15,
-    "buildMilliseconds": 1175,
+    "buildMilliseconds": 1151,
     "exports4k": {
       "current": "review/4k/throne-complete-current.png",
       "hd": "review/4k/throne-complete-hd.png",
       "proposed": "review/4k/throne-complete-proposed.png"
     }
+  },
+  {
+    "id": "diplomacy",
+    "mode": "diplomacy",
+    "title": "Diplomacy · leader portrait and intelligence columns",
+    "fixture": "review/fixtures/diplomacy.txt",
+    "windowEngine": true,
+    "source": "src/auto/diplomacy.cpp:4629–5047",
+    "current": "review/images/diplomacy-current.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hd": "review/images/diplomacy-hd.png",
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposed": "review/images/diplomacy-proposed.png",
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
+    "commandCount": 20
+  },
+  {
+    "id": "spacecraft-assembly",
+    "mode": "spaceship",
+    "title": "Spacecraft · incomplete assembly and empty attachments",
+    "counts": [
+      25,
+      4,
+      4,
+      1,
+      1,
+      1
+    ],
+    "ready": true,
+    "fixture": "review/fixtures/spacecraft-assembly.txt",
+    "windowEngine": true,
+    "source": "src/game/bigframes.cpp:587–1563; src/auto/spaceship.cpp:541–712,867–944",
+    "current": "review/images/spacecraft-assembly-current.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hd": "review/images/spacecraft-assembly-hd.png",
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposed": "review/images/spacecraft-assembly-proposed.png",
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
+    "commandCount": 43
+  },
+  {
+    "id": "spacecraft-complete",
+    "mode": "spaceship",
+    "title": "Spacecraft · completed assembly and launch status",
+    "counts": [
+      39,
+      8,
+      8,
+      4,
+      4,
+      4
+    ],
+    "ready": true,
+    "fixture": "review/fixtures/spacecraft-complete.txt",
+    "windowEngine": true,
+    "source": "src/game/bigframes.cpp:587–1563; src/auto/spaceship.cpp:541–712,867–944",
+    "current": "review/images/spacecraft-complete-current.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hd": "review/images/spacecraft-complete-hd.png",
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposed": "review/images/spacecraft-complete-proposed.png",
+    "proposedSize": [
+      1280,
+      960
+    ],
+    "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
+    "commandCount": 67
+  },
+  {
+    "id": "city-window",
+    "mode": "city-window",
+    "title": "City window · citizens, yields, production and improvements",
+    "population": 12,
+    "food": 79,
+    "shields": 53,
+    "fixture": "review/fixtures/city-window.txt",
+    "windowEngine": true,
+    "source": "src/auto/city.cpp:12165–12430,13485–13803,13817–14085,14087–14205,14448–14695,15101–15149",
+    "current": "review/images/city-window-current.png",
+    "currentSize": [
+      636,
+      421
+    ],
+    "hd": "review/images/city-window-hd.png",
+    "hdSize": [
+      1272,
+      842
+    ],
+    "proposed": "review/images/city-window-proposed.png",
+    "proposedSize": [
+      1272,
+      842
+    ],
+    "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
+    "commandCount": 205
+  },
+  {
+    "id": "city-window-crowded",
+    "mode": "city-window",
+    "title": "City window · crowded citizens and nearly full stockpiles",
+    "population": 28,
+    "food": 260,
+    "shields": 107,
+    "fixture": "review/fixtures/city-window-crowded.txt",
+    "windowEngine": true,
+    "source": "src/auto/city.cpp:12165–12430,13485–13803,13817–14085,14087–14205,14448–14695,15101–15149",
+    "current": "review/images/city-window-crowded-current.png",
+    "currentSize": [
+      636,
+      421
+    ],
+    "hd": "review/images/city-window-crowded-hd.png",
+    "hdSize": [
+      1272,
+      842
+    ],
+    "proposed": "review/images/city-window-crowded-proposed.png",
+    "proposedSize": [
+      1272,
+      842
+    ],
+    "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
+    "commandCount": 472
   }
 ]

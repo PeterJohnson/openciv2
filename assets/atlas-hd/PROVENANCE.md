@@ -20,6 +20,10 @@ is retained alongside the earlier masters. Native sprite crops are preserved;
 compatibility frames and mockups resize and composite those crops deliberately.
 
 Functional graphics are authored SVG geometry with corresponding PNG renders.
+The seven components in `interface/windows/` are authored in `windows.cjs`;
+window composites reuse retained portraits, backgrounds, units and module art.
+The spacecraft truss/attachment drawing is new vector geometry. No source-game
+window screenshot or resource bitmap was used as a pixel input.
 The retained SVGs are editable sources. `tools/atlas-review/art.cjs` defines the
 shared terrain and transport geometry. The standalone adapter adds coast
 quarters, dither masks, logical sprite frames and three small overview icons.

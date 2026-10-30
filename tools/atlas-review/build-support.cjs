@@ -53,6 +53,7 @@ async function main() {
                 tileWidth : 64
             };
             const file = C.path.join(C.pack, `review/fixtures/transport-${row}-${col}.txt`);
+            scene.fixture = `review/fixtures/transport-${row}-${col}.txt`;
             C.write(file, F.serialize(w, scene.camera));
             const trace = C.engine('map', file);
             C.json(C.path.join(C.pack, `review/traces/transport-${row}-${col}.json`), trace);

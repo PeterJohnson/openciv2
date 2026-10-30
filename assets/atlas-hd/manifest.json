@@ -52655,6 +52655,97 @@
           "height": 294
         }
       }
+    },
+    {
+      "id": "windows.panel",
+      "label": "panel",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/panel.png",
+      "vector": "interface/windows/panel.svg",
+      "width": 256,
+      "height": 128,
+      "sha256": "5c517c4fa7954f58bd804ab7c9d0e21ed8b9e3bc320311fc0cdec16304a2cf35",
+      "sourceSha256": "777348b4a6ac9a051cc2822d5fd253c359f19937239880383e42c49ee8edbd0c"
+    },
+    {
+      "id": "windows.inset",
+      "label": "inset",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/inset.png",
+      "vector": "interface/windows/inset.svg",
+      "width": 256,
+      "height": 128,
+      "sha256": "45a01da367b44223abc8bd355c639f4635bf19b68ff9c9d63f43ee189405ee86",
+      "sourceSha256": "b98eca93cdf82ff8ed6b218c54c534cecebb3633b43595171ef483678ceba24a"
+    },
+    {
+      "id": "windows.food-meter",
+      "label": "food meter",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/food-meter.png",
+      "vector": "interface/windows/food-meter.svg",
+      "width": 320,
+      "height": 28,
+      "sha256": "8427444f0b43d9dfc44a8d79df3f2b7eef5a4494b7cd4100393b10fbd6909e77",
+      "sourceSha256": "4d3a22525e0c148b1047f05589126b46ed1ad0155e5484bfa41ee2404ab469aa"
+    },
+    {
+      "id": "windows.production-meter",
+      "label": "production meter",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/production-meter.png",
+      "vector": "interface/windows/production-meter.svg",
+      "width": 320,
+      "height": 28,
+      "sha256": "8d5bd09637a1a5cf9446476cb9b5e8ce7f2468910531d3a81711171f0ece4759",
+      "sourceSha256": "5d1a749132b73d6c859d5ffc3f3ac3503a2bcc35989bb24b87d315cc106a63b5"
+    },
+    {
+      "id": "windows.attachment-empty",
+      "label": "attachment empty",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/attachment-empty.png",
+      "vector": "interface/windows/attachment-empty.svg",
+      "width": 96,
+      "height": 64,
+      "sha256": "7e668a349e277cc63dd9201eb2ed7d5a66af46d74177d3954b88a7b2548c4ea7",
+      "sourceSha256": "0582cc67f8f2eb7b00175c384658979b255e47896f0545ff13454851cd3bec47"
+    },
+    {
+      "id": "windows.ship-connector",
+      "label": "ship connector",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/ship-connector.png",
+      "vector": "interface/windows/ship-connector.svg",
+      "width": 128,
+      "height": 64,
+      "sha256": "41a4a824723ff269cf32d49ff034c88ac45e8c62d50ce29b6c14ea639e0c772c",
+      "sourceSha256": "834ee4ef65f55bf0931b5964ec8d5bf151473232179faed8d612fdf59e37185e"
+    },
+    {
+      "id": "windows.window-action",
+      "label": "window action",
+      "description": "Authored 2D window composition component; proposed engine metadata",
+      "category": "window components",
+      "kind": "interface",
+      "file": "interface/windows/window-action.png",
+      "vector": "interface/windows/window-action.svg",
+      "width": 192,
+      "height": 48,
+      "sha256": "911ea3aff60352bad2cf80d05d2b37da7a0c9a1308fc80a214258b9438c2e673",
+      "sourceSha256": "03bc51c861369b926698ccc93ae63578322d111da2e0612af178e32442dbc9bf"
     }
   ]
 }

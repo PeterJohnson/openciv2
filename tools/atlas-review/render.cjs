@@ -38,9 +38,9 @@ function rect(dst, c) {
         }
 }
 
-async function baseline(trace, scene, bindings, {density = 1, native = true} = {}) {
+async function baseline(trace, scene, bindings, {density = 1, native = true, transparent = false} = {}) {
     const W = trace.width * density, H = trace.height * density;
-    let dst = clear(W, H, [ 12, 22, 23, 255 ]);
+    let dst = clear(W, H, transparent ? [ 0, 0, 0, 0 ] : [ 12, 22, 23, 255 ]);
     if (scene.mode === 'city')
         dst = await raw(path.join(pack, `backgrounds/city-${scene.site}-native.png`), W, H);
     if (scene.mode === 'throne')
@@ -256,28 +256,16 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
                 const p = await cached(`icon:${type}:${density}`,
                                        () => raw(path.join(pack, `map/lod/${type}.png`), size, size));
                 blit(dst, p, x - p.width / 2, y - p.height / 2);
-            } else {
-                const isCity = t.c >= 0, name = isCity ? 'city/14' : 'unit/' + t.u,
-                      width = tw * (isCity ? .82 : .50), height = tw * (isCity ? .62 : .52);
-                const sh =
-                    await cached(`shadow:${width}`,
-                                 () => raw(Buffer.from(svg(
-                                     Math.round(width), Math.round(width / 3),
-                                     `<ellipse cx="${width / 2}" cy="${width / 6}" rx="${width * .40}" ry="${
-                                         width * .12}" fill="#182721" opacity=".22"/>`))));
-                blit(dst, sh, x - width / 2, y - sh.height / 2 + tw * .10);
-                await draw(name, t, width, height);
-                if (!isCity) {
-                    const p = await cached(
-                        'team',
-                        () => raw(Buffer.from(svg(
-                            12, 12,
-                            '<circle cx="6" cy="6" r="4" fill="#d7b96e" stroke="#263532" stroke-width="2"/>'))));
-                    blit(dst, p, x + width * .27, y - height * .65);
-                }
             }
         }
     }
+    if (logicalTw >= 48) {
+        const objects = C.engine('objects', path.join(pack, scene.fixture));
+        const layer = await baseline(objects, {mode : 'objects'}, bindings,
+                                     {density, native : false, transparent : true});
+        blit(dst, await raw(layer), 0, 0);
+    }
+
     return png(dst);
 }
 

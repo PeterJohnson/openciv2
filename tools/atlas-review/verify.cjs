@@ -1,6 +1,7 @@
 const assert = require('node:assert/strict');
 const C = require('./common.cjs');
 const R = require('./render.cjs');
+const {windowEngine} = require('./windows.cjs');
 
 async function main() {
     const results = [];
@@ -13,6 +14,11 @@ async function main() {
         assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
     assert.equal(extraction.functions.length, 41);
     pass('Source hashes and 41 unchanged extracted function bodies', 41);
+    const windows = C.read(C.path.join(C.pack, 'review/window-extraction.json'));
+    assert.equal(windows.functions.length, 23);
+    for (const [file, hash] of Object.entries(windows.sourceHashes))
+        assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
+    pass('Window source hashes and 23 unchanged extracted function bodies', 23);
     const file = C.path.join(C.pack, 'review/fixtures/close.txt'), debug = C.engine('audit', file, 'Debug'),
           release = C.engine('audit', file, 'Release');
     assert.deepEqual(debug, release);
@@ -61,8 +67,8 @@ async function main() {
     const scenes = C.read(C.path.join(C.pack, 'review/scenes.json'));
     let traced = 0;
     for (const s of scenes.filter(s => s.fixture)) {
-        const f = C.path.join(C.pack, s.fixture), a = C.engine(s.mode, f, 'Debug'),
-              b = C.engine(s.mode, f, 'Release');
+        const f = C.path.join(C.pack, s.fixture), engine = s.windowEngine ? windowEngine : C.engine,
+              a = engine(s.mode, f, 'Debug'), b = engine(s.mode, f, 'Release');
         assert.deepEqual(a, b, s.id);
         assert.deepEqual(b, C.read(C.path.join(C.pack, `review/traces/${s.id}.json`)), s.id + ' saved trace');
         if (s.mode === 'map')
@@ -70,6 +76,31 @@ async function main() {
         traced++;
     }
     pass('Saved scene traces equal fresh Debug and Release output', traced);
+    let objectCount = 0;
+    for (const s of scenes.filter(s => s.mode === 'map' && s.tileWidth >= 48)) {
+        const f = C.path.join(C.pack, s.fixture), native = C.engine('map', f),
+              objects = C.engine('objects', f);
+        assert.deepEqual(objects, C.engine('objects', f, 'Debug'), s.id + ' object D/R');
+        const core = c => /^(unit|city)\//.test(c.asset) && c.x + c.width > 0 && c.y + c.height > 0 &&
+                          c.x < native.width && c.y < native.height;
+        assert.deepEqual(objects.commands.filter(core), native.commands.filter(core),
+                         s.id + ' unchanged unit/city selection, anchors and dimensions');
+        objectCount += objects.commands.filter(core).length;
+        C.json(C.path.join(C.pack, `review/traces/${s.id}-objects.json`), objects);
+    }
+    assert(objectCount > 0);
+    pass('Detailed map object commands preserve native sprite size, placement and selection', objectCount);
+    const plans = C.read(C.path.join(C.pack, 'review/window-draw-plans.json'));
+    for (const s of scenes.filter(s => s.windowEngine)) {
+        assert.deepEqual(plans[s.id + '-current'], plans[s.id + '-hd'],
+                         s.id + ' legacy/HD logical asset rectangles');
+        for (const stage of ['current', 'hd', 'proposed'])
+            for (const op of plans[s.id + '-' + stage]) {
+                assert(C.fs.existsSync(C.path.join(C.pack, op.file)), op.file);
+                assert(op.width > 0 && op.height > 0);
+            }
+    }
+    pass('Window HD-only preserves every bound artwork rectangle', scenes.filter(s => s.windowEngine).length);
     const m = C.read(C.path.join(C.pack, 'manifest.json'));
     for (const e of m.entries) {
         assert(C.fs.existsSync(C.path.join(C.pack, e.file)), e.file);

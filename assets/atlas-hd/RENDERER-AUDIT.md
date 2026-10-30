@@ -111,7 +111,7 @@ source conditions.
   Release command traces;
 - fresh Debug/Release equality for every saved main scene trace;
 - canonical paths, hashes and master references, all 5,173 inventory replacement
-  references, 404 PNG compatibility bindings and all 39 three-stage images;
+  references, 404 PNG compatibility bindings and all 57 three-stage images;
 - direction conversion and focused proposed-renderer visibility isolation.
 
 These are finite renderer/asset checks. They do not establish all possible unit
@@ -119,3 +119,60 @@ stack, combat, editor, scenario or multiplayer behavior. No application source
 has changed, so a full game runtime regression would not qualify this art-side
 prototype. Future integration must test actual font metrics, input transforms,
 wrapped maps, ownership/visibility transitions and resource-loader completeness.
+
+## Window renderer extension
+
+`extract-windows.py` runs the map/scene extractor and adds **23 unchanged bodies**
+to a second MSVC x86 executable, `atlas-windows.exe`. Together the executables
+compile 64 source bodies. [Window extraction metadata](review/window-extraction.json)
+pins their actual source paths, lines and hashes. There is no dependency on the
+sibling project's renderer.
+
+| Window | Source behavior executed | Explicit review boundary |
+| --- | --- | --- |
+| Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data and text shaping are supplied. No AVI herald or diplomacy decision-dialog execution. |
+| Spacecraft | `render_ship_init_rows`, `render_ship_load_surfaces`, `render_ship_draw_part`, `render_ship` in `src/game/bigframes.cpp:587–1563` | All 88 source rows, count thresholds, filled/empty resource choices and layer order execute. The 457×304 framebuffer at `(175,99)` is flattened for PNG output. Palette, lifetime, title, stats text and controls are drawing adapters. Stats are declared fixture values, not a spaceship simulation. |
+| City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Map/yield panel, units-present details, controls, window chrome and font metrics are marked adapters. Other info modes throw rather than invent a result. |
+| Spacing | `ui_calc_item_spacing` in `src/auto/window.cpp:4031` and `sprite_draw_spaced_row` in `src/auto/graphics.cpp:2710` | Real overlap, fit and remainder arithmetic for citizens and stockpile icons; the new backend supplies sprite pixels. |
+
+The diplomacy source uses government resources `200 + government`, military
+resource 215 with era columns at `era*109+1`, 108×30 rows spaced by 31 pixels,
+and a 225×275 portrait at `(208,57)`. Its technology column begins at `(485,130)`
+with a 58×20 text region at `(531,137)`. The source word-wrap helper reads prior
+buffer contents in one branch; this review explicitly substitutes deterministic
+fixture text instead of pretending to recover that state. The six advance IDs,
+depths and categories are fixture inputs, not reconstructed research progression.
+
+The spacecraft renderer is in **`src/game/bigframes.cpp`**, not the modal-loop
+file alone. Core rows 0–6 precede the selected structural frame from rows 7–30;
+part rows 31–87 follow it. Original crop rectangles select new part artwork;
+the truss graphic is newly authored. Current and HD-only preserve every selected
+rectangle and order. The recommended layout deliberately replaces the split-crop
+art contract with one component per attachment port. `space-layout.json` is this
+**proposed** metadata, not a recovered native layout. Structural readiness and
+part counts stay explicit; gameplay limits and launch rules are not changed.
+
+The city adapter's 21 ordered tile positions follow
+`src/data/gamedata.cpp:1736–1737` and `draw_resource_map`/`draw_resource_tiles`.
+Its yield values and unit-present detail panel are supplied presentation data.
+They are not claimed as execution of the full city recalculation or those panel
+bodies. The native list and stockpile functions do execute, including compressed
+icon spacing at population 28. Optional extras and interactive hit testing are
+outside this fixture. A full game build remains the future integration test.
+
+The word **Legacy** means replacement art at native drawing resolution, never
+original-game pixels. Legacy and HD-only window stages consume the same native
+trace and identical logical artwork rectangles; only physical density changes.
+The gallery notes these limits so they cannot be mistaken for gameplay captures.
+
+## Map object size contract
+
+For logical tile widths of 48 pixels and above, the proposal replays a separate
+native object trace from `draw_tile_city` and `draw_tile_units`. It uses the same
+64×48 logical unit/city frames, selected sprite IDs, zoom arithmetic, anchors,
+shields, health bars, flags and population labels as HD-only. It no longer fits
+units to half a tile or cities to 82% of a tile. Ground/network/feature passes
+still change; overview markers below 48 pixels remain an explicit LOD policy.
+The tactical 64-pixel and close/district 128-pixel scenes exercise this contract.
+Fresh Debug/Release object traces and matching visible sprite rectangles are
+checked by `verify.cjs` and saved beside the other traces.

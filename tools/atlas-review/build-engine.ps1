@@ -4,8 +4,11 @@ $repoRoot=(Resolve-Path (Join-Path $PSScriptRoot '../..')).Path
 $out=Join-Path $repoRoot ('build/atlas-review/'+$Configuration)
 New-Item -ItemType Directory -Force $out | Out-Null
 $python=Get-Command python -ErrorAction SilentlyContinue
-if (-not $python) { $python=Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe' } else { $python=$python.Source }
-& $python (Join-Path $PSScriptRoot 'extract-engine.py')
+if (-not $python -or $python.Source -match '\\WindowsApps\\') {
+    $python=Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'
+    if (-not (Test-Path -LiteralPath $python)) { throw 'Python 3.10+ is required; the Windows Store alias is not an interpreter' }
+} else { $python=$python.Source }
+& $python (Join-Path $PSScriptRoot 'extract-windows.py')
 if ($LASTEXITCODE -ne 0) { throw 'Renderer extraction failed' }
 $vswhere='C:/Program Files (x86)/Microsoft Visual Studio/Installer/vswhere.exe'
 $installation=& $vswhere -latest -products '*' -requires Microsoft.VisualStudio.Component.VC.Tools.x86.x64 -property installationPath
@@ -21,4 +24,14 @@ $batch=Join-Path $out 'compile.cmd'
 [IO.File]::WriteAllText($batch, '@echo off'+"`r`n"+'call "'+$vcvars+'" x86 >nul'+"`r`n"+$command+"`r`n"+'exit /b %errorlevel%'+"`r`n",[Text.UTF8Encoding]::new($false))
 & cmd.exe /d /c $batch
 if ($LASTEXITCODE -ne 0) { throw 'Standalone renderer build failed' }
+Write-Output $exe
+
+$main=Join-Path $PSScriptRoot 'window-main.cpp'
+$exe=Join-Path $out 'atlas-windows.exe'
+$obj=Join-Path $out 'atlas-windows.obj'
+$pdb=Join-Path $out 'atlas-windows.pdb'
+$command='cl /nologo /std:c++17 /EHsc /W3 '+$flags+' /D_CRT_SECURE_NO_WARNINGS /I"'+(Join-Path $repoRoot 'build/atlas-review/generated')+'" /I"'+(Join-Path $repoRoot 'src/include')+'" "'+$main+'" /Fe:"'+$exe+'" /Fo:"'+$obj+'" /Fd:"'+$pdb+'" /link /MACHINE:X86'
+[IO.File]::WriteAllText($batch, '@echo off'+"`r`n"+'call "'+$vcvars+'" x86 >nul'+"`r`n"+$command+"`r`n"+'exit /b %errorlevel%'+"`r`n",[Text.UTF8Encoding]::new($false))
+& cmd.exe /d /c $batch
+if ($LASTEXITCODE -ne 0) { throw 'Standalone window renderer build failed' }
 Write-Output $exe

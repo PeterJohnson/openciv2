@@ -1,0 +1,151 @@
+{
+  "repository": "richardpenman-civ2",
+  "functions": [
+    {
+      "name": "SpaceshipWindow::render_ship_init_rows",
+      "file": "src/game/bigframes.cpp",
+      "line": 587,
+      "sha256": "008aadb647e6f9e29f6c6a52d92a5a2d17c35d103209629f63730dbf7bef44f3"
+    },
+    {
+      "name": "SpaceshipWindow::render_ship_load_surfaces",
+      "file": "src/game/bigframes.cpp",
+      "line": 1327,
+      "sha256": "c2f63287a1f226ce725d440dcc19108dc7f11f0fd363ac78117e94b67f1542ce"
+    },
+    {
+      "name": "SpaceshipWindow::render_ship_draw_part",
+      "file": "src/game/bigframes.cpp",
+      "line": 1390,
+      "sha256": "fce06a83870f77bb599abbf12b20bdd270f91f6df0d86ba02c78afa074b85336"
+    },
+    {
+      "name": "SpaceshipWindow::render_ship",
+      "file": "src/game/bigframes.cpp",
+      "line": 1490,
+      "sha256": "b3bfb8067013a4c0d161c31d989ddcd0eedd2c6e7f5d67e69aad7b38c0029ed2"
+    },
+    {
+      "name": "DiploLeaderWindow::init_main_art",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 4629,
+      "sha256": "bdae2177fdcd47319293af7df7fa8d1fa2d82327f759dea0385c8090f4019837"
+    },
+    {
+      "name": "DiploLeaderWindow::init_military",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 4670,
+      "sha256": "862be8d17d83bffc69c3d0c4ebf2d8f8f4887a0440a281a8c6bafdce13b8bf76"
+    },
+    {
+      "name": "DiploLeaderWindow::science_rank_top_techs",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 4721,
+      "sha256": "94f45949df257dc4e5ee406926f29dd3db0a9874dc4092cfb98d142bbb4c71a1"
+    },
+    {
+      "name": "DiploLeaderWindow::init_science",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 4907,
+      "sha256": "65c93b1e6447e23eab3ac605c57b78f3d6e15329e3f502b8d4e30a3181c2af27"
+    },
+    {
+      "name": "DiploLeaderWindow::init_portrait",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 5014,
+      "sha256": "624d2acdc8fe5b99ea624708d84d6f999ee0fa905471dc5294cfb8cff160d8f8"
+    },
+    {
+      "name": "CityWindow::scale",
+      "file": "src/auto/city.cpp",
+      "line": 17254,
+      "sha256": "0cc9272abee52cbd8349d21af3e90e1c16ad234985463bec48d541548aadc5ad"
+    },
+    {
+      "name": "CityWindow::set_scaled_rect",
+      "file": "src/auto/city.cpp",
+      "line": 15119,
+      "sha256": "3d4989ce239a15baa449d94d9ab8586149c34fa53ae99a9486fe7675fe0b7db4"
+    },
+    {
+      "name": "CityWindow::layout_rects",
+      "file": "src/auto/city.cpp",
+      "line": 15133,
+      "sha256": "1d352998d1e5dfe09edb44c17814da45274f6e41c087c17a5d2c0a2f1888a8fd"
+    },
+    {
+      "name": "CityWindow::draw_citizen_row",
+      "file": "src/auto/city.cpp",
+      "line": 12165,
+      "sha256": "6d7297c379dce4ec5c339ccec43337ecbd7c3520414f8b8c577617ade67f36ef"
+    },
+    {
+      "name": "CityWindow::draw_citizens",
+      "file": "src/auto/city.cpp",
+      "line": 12354,
+      "sha256": "d7c433a24ff563c9a91d554ce0f046c2ede1180b7343588ffd6880c4a47c4e90"
+    },
+    {
+      "name": "CityWindow::draw_food_box",
+      "file": "src/auto/city.cpp",
+      "line": 13549,
+      "sha256": "e181061a541d1891f7092e2102a32ef9281fe6786a11274ce522893d0555d0a9"
+    },
+    {
+      "name": "CityWindow::draw_production",
+      "file": "src/auto/city.cpp",
+      "line": 13652,
+      "sha256": "08da28c9cbcb13e0b5da3b28593e3053f0402bfdcdb66fd8d752431c21dc295b"
+    },
+    {
+      "name": "city_window_draw_icon_row",
+      "file": "src/auto/city.cpp",
+      "line": 17244,
+      "sha256": "0b677896c91fb73e0b7f196fbed196286ac1004195afbfcc91d39e24dc283b98"
+    },
+    {
+      "name": "CityWindow::draw_all",
+      "file": "src/auto/city.cpp",
+      "line": 15101,
+      "sha256": "fccc2a3a437c8b08fcbcf79206d4fcba3594f75560b2ba210487f66bd3306ce5"
+    },
+    {
+      "name": "CityWindow::draw_info_panel",
+      "file": "src/auto/city.cpp",
+      "line": 15075,
+      "sha256": "7128bb73a462a9a820d7a0c828215d7984ce9662ac4a12fac02b169c9f404f1c"
+    },
+    {
+      "name": "CityWindow::draw_supported_units",
+      "file": "src/auto/city.cpp",
+      "line": 13817,
+      "sha256": "c0e3919ce881ebd4fde9a8074224573ec0894e18510c49c7f89d38a81fd4ae37"
+    },
+    {
+      "name": "CityWindow::draw_improvements",
+      "file": "src/auto/city.cpp",
+      "line": 14087,
+      "sha256": "30e0b57d03126d7e701168118573acfd0754082fe9d29701e6816cf0bbd7854c"
+    },
+    {
+      "name": "ui_calc_item_spacing",
+      "file": "src/auto/window.cpp",
+      "line": 4031,
+      "sha256": "f351018bd8e21e144dc5d36ee9d0d8bb3ab272f9326f13908eebf9c7d8c40baf"
+    },
+    {
+      "name": "sprite_draw_spaced_row",
+      "file": "src/auto/graphics.cpp",
+      "line": 2710,
+      "sha256": "1fddb3ddc1a11af20ec1b9c86fbe8dc9e5d0b24dc6b8c11da061de7fdf1dabb3"
+    }
+  ],
+  "sourceHashes": {
+    "src/game/bigframes.cpp": "447a935bd25b9c1189e537a8c2e6ed6d36522353c694a2aecf6d2db596f3bb5e",
+    "src/auto/diplomacy.cpp": "63b7df3dcdaccd7f72e01d6525d4bc23e2292b516c2fa22c41ecffa0bb3ac1af",
+    "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+    "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
+    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69"
+  },
+  "bodyPolicy": "unchanged text, LF normalized, with #line source mapping"
+}

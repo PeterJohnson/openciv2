@@ -14,11 +14,11 @@ The new branch contains no game source or loader changes.
 | --- | ---: | --- |
 | Painted sprites | 575 | Units, cities, buildings, wonders, resources, citizens, advisors, leaders, diplomacy, palace, effects, spaceship and setup art |
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
-| Interface assets | 491 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
+| Interface assets | 498 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,205 primary entries are indexed in [manifest.json](manifest.json).
+The 2,212 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -43,8 +43,13 @@ silently included in that claim.
    world-space materials and river/coast sampling, quieter overview detail,
    object anchors and site-aware scene placement.
 
-There are 13 scene comparisons: district, close view, transport matrix, coast,
-terrain repetition, region, full world, three city sites and three throne stages.
+There are 19 scene comparisons: district, close and tactical map views, transport
+matrix, coast, terrain repetition, region, full world, three city panoramas, three
+throne stages, diplomacy, two spacecraft states and two city management windows.
+Detailed map views retain the native unit/city frame size, anchor and badges; only
+overview views substitute markers. The city management window is separate from
+the panorama. See the [window audit](RENDERER-AUDIT.md#window-renderer-extension)
+for native bodies versus explicit panel and typography adapters.
 The close camera spans ten full tile widths by ten full tile heights (200 cells
 on the staggered lattice). The whole-world fixture has 8,192 valid cells in a
 128×128 coordinate domain. Twelve 3840×2160 review exports are available for
@@ -69,6 +74,7 @@ Run from the repository root:
 ./tools/atlas-review/build-engine.ps1 -Configuration Release
 node tools/atlas-review/build-review.cjs
 node tools/atlas-review/build-support.cjs
+node tools/atlas-review/windows.cjs
 node tools/atlas-review/verify.cjs
 node tools/atlas-review/build-gallery.cjs
 ```
@@ -87,6 +93,19 @@ The native executable can also emit an individual command trace:
 ./build/atlas-review/Release/atlas-engine.exe city assets/atlas-hd/review/fixtures/city-coastal.txt
 ./build/atlas-review/Release/atlas-engine.exe throne assets/atlas-hd/review/fixtures/throne-complete.txt
 ```
+
+The window executable uses the same build configurations:
+
+```powershell
+./build/atlas-review/Release/atlas-windows.exe diplomacy assets/atlas-hd/review/fixtures/diplomacy.txt
+./build/atlas-review/Release/atlas-windows.exe spaceship assets/atlas-hd/review/fixtures/spacecraft-assembly.txt
+./build/atlas-review/Release/atlas-windows.exe city-window assets/atlas-hd/review/fixtures/city-window.txt
+```
+
+Run `windows.cjs` after the other image builders: it adds the five window scenes
+to the existing scene index. It also refreshes seven editable SVG/PNG window
+components, `space-layout.json`, and the recorded artwork draw plans. No dated
+or alternate asset-pack directories are created.
 
 See [renderer boundaries](RENDERER-AUDIT.md),
 [scoped upgrade recommendations](RENDER-UPGRADES.md),

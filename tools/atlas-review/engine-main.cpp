@@ -166,7 +166,7 @@ int main(int argc, char** argv) {
             fixture_tile(9, 7).known = 18;
             v.draw_tile_roads(0, 0, 0, 8, 8, 1, 18);
             output(0, 0, "audit");
-        } else if (mode == "map") {
+        } else if ((mode == "map" || mode == "objects")) {
             MapView v;
             int cols, rows, viewer, grid;
             in >> map.width >> map.height >> v.zoom_u >> v.origin_x_uptr >> v.origin_y_uptr >> cols >> rows >>
@@ -219,7 +219,21 @@ int main(int argc, char** argv) {
             v.cached_zoom = v.zoom_u;
             v.update_layout();
             commands.clear();
-            v.draw_all_tiles(viewer);
+            if (mode == "objects") {
+                for (int ty = 0; ty < map.height; ty++) {
+                    for (int tx = ty & 1; tx < map.width; tx += 2) {
+                        int sx, sy;
+                        v.tile_to_screen((iptr)&sx, (iptr)&sy, tx, ty);
+                        if (sx + v.tile_width_u < 0 || sx >= v.client_width || sy + v.tile_height_u < 0 ||
+                            sy - v.half_tile_height_u >= v.client_height)
+                            continue;
+                        v.draw_tile_city(sx, sy, tx, ty);
+                        v.draw_tile_units(sx, sy, tx, ty);
+                    }
+                }
+            } else {
+                v.draw_all_tiles(viewer);
+            }
             output(v.client_width, v.client_height, "map", v.zoom_u);
         } else if (mode == "city") {
             CityViewWindow v;

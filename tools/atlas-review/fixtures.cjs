@@ -110,6 +110,12 @@ function buildFixtures() {
             tileWidth : 128
         },
         {
+            id : 'tactical',
+            title : 'Tactical · medium zoom with full-size units and cities',
+            camera : {ox : 28, oy : 32, cols : 16, rows : 24, zoom : 0},
+            tileWidth : 64
+        },
+        {
             id : 'coast',
             title : 'Coast · bay, islet, narrow channel and estuary',
             camera : {ox : 30, oy : 70, cols : 14, rows : 24, zoom : 8},
