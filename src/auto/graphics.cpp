@@ -1684,6 +1684,7 @@ int __cdecl gfx_load_bmp_640x480(iptr surface,const char *filename,int first_col
             }
           }
           else if (info.compression == 1) {
+            col = 0;  /* BF-073: the first RLE delta has no preceding X writer. */
             row = info.height2 - 1;
             dst = (char *)((DibSurface *)surface)->pixel_ptr(0,row);
             while( true ) {
@@ -1812,6 +1813,7 @@ int __cdecl gfx_save_bmp_640x480(iptr surface,const char *filename,int first_col
     bmp_palette[i * 4] = 0;
     bmp_palette[i * 4 + 1] = bmp_palette[i * 4];
     bmp_palette[i * 4 + 2] = bmp_palette[i * 4 + 1];
+    bmp_palette[i * 4 + 3] = 0;  /* BF-011: reserved bytes must not expose stack contents. */
   }
   for (i = 0xec; i < 0xfa; i++) {
     bmp_palette[i * 4] = 0xff;

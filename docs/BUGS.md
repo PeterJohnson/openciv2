@@ -447,6 +447,8 @@ games: the state fixes are on there (MGE has no play by e-mail: docs/STATUS.md).
 These do not change the game when the original "gets away with them", so OpenCiv2 fixes them
 for good and keeps the original's results:
 
+- BMP export reserved bytes and the initial RLE8 cursor (BF-011/BF-073):
+  [evidence and focused regression](bugfix-evidence-bitmap.md).
 - `events_compact` freeing the string pool its callers still use (B8).
 - `diffeng_rle_encode` (the network difference engine) reading one byte past its input; the
   decoded data is the same.
