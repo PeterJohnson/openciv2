@@ -20,5 +20,6 @@ __pycache__/
 /tools/toolchain/
 /tools/docker-ext/*.tar.gz
 
-# Copyrighted original art: local review inputs/derivatives, never distributed.
+# Original source sheets, extracted sprites, local traces and contact sheets.
+# Only composed scene renders are tracked separately in review/original-scenes/.
 /assets/atlas-hd/review/original-local/

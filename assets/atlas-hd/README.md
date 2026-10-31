@@ -2,8 +2,9 @@
 
 Open [the offline review gallery](index.html). Use **All four stages** to compare
 original artwork, replacement art at native resolution, HD only, and HD with
-additional cohesion. No server is required. The three replacement-art stages are
-checked in; original-art comparisons are built locally from your installed game.
+additional cohesion. No server is required. All four in-game scene comparison
+stages are checked in. Rebuilding original-art scenes requires an installed game;
+viewing them does not.
 
 This is one selected library on `new-graphics`, based on
 `bd89036`. Earlier iterations remain on `codex/atlas-hd-graphics` at `2fe6f3f`.
@@ -155,14 +156,20 @@ future integration work. No new Ghidra facts or annotations are introduced.
 
 ## Original game art comparison
 
-Original artwork has separate rights from Atlas HD. The original stage is a
-local review aid and is **not part of the replacement pack or its license**.
-Its PNGs, bindings, traces and hashes live in the ignored
-`review/original-local/` directory. Do not stage, package or redistribute that
-directory. A fresh checkout shows a clear unavailable message for that stage
-until its owner builds it from their installed game. All 22 scenes have this
-fourth comparison, including both city windows, both spacecraft states, the
-transport plate, and all saved-game maps.
+The 22 composed original-art scene comparisons and four 4K exports are checked
+in under [review/original-scenes](review/original-scenes/README.md), as authorized
+for reviewing the in-game mockups. This includes both city windows, both
+spacecraft states, city panoramas, thrones, the composed transport test views
+and all saved-game maps. A fresh checkout displays all four stages without an
+installed game. `renders.json` records dimensions and hashes; `data.js` supplies
+the gallery index.
+
+Original artwork has separate rights from Atlas HD. These scene references are
+**not replacement assets and are outside the replacement pack's license**.
+Source sheets, extracted sprite crops, bindings, traces and the original citizen
+contact sheet remain ignored in `review/original-local/`; they are not included
+in this exception. The canonical manifest, replacement bindings and game source
+do not depend on any original-art render.
 
 From the repository root, with Python + Pillow, Node + sharp and MSVC x86:
 
@@ -277,8 +284,9 @@ are introduced.
 refreshes the review and validates all 44 slots against Debug/Release traces,
 continuous gender alternation and the six replacement window variants. Optional
 fixture input `citizens <era 0..3> <angry count>` follows the 21 worked-tile rows;
-these values are supplied review state, not a technology simulation. Original
-review imagery stays in `review/original-local/` and is never packaged.
+these values are supplied review state, not a technology simulation. The original
+citizen contact sheet stays in `review/original-local/`; only composed in-game
+scene renders qualify for the checked-in original-art comparison exception.
 
 ## Enhanced city panorama scale
 

@@ -1,4 +1,4 @@
-// Fourth review stage: only local original pixels, with the same native fixtures.
+// Fourth review stage: composed original-art scenes from local inputs and the same native fixtures.
 // Deliberately absent from the replacement-art manifest and compatibility bank.
 const C = require('./common.cjs');
 const R = require('./render.cjs');
@@ -6,6 +6,7 @@ const W = require('./windows.cjs');
 const E = require('./economy.cjs');
 const {spawnSync} = require('node:child_process');
 const local = 'review/original-local/';
+const rendered = 'review/original-scenes/';
 const meta = C.read(C.path.join(C.pack, local, 'bindings.json'));
 const bindings = meta.bindings;
 const scenes = C.read(C.path.join(C.pack, 'review/scenes.json'));
@@ -170,7 +171,7 @@ async function main() {
         const result = s.windowEngine
                            ? await windowScene(s)
                            : {buffer : s.mode === 'plate' ? await transport() : await mapOrView(s)};
-        const name = local + `images/${s.id}.png`;
+        const name = rendered + `images/${s.id}.png`;
         C.write(C.path.join(C.pack, name), result.buffer);
         const m = await C.sharp(result.buffer).metadata();
         if (m.width !== s.currentSize[0] || m.height !== s.currentSize[1])
@@ -183,13 +184,14 @@ async function main() {
         if (result.ops)
             plans[s.id] = result.ops;
         if (s.exports4k) {
-            const file = local + `4k/${s.id}.png`;
+            const file = rendered + `4k/${s.id}.png`;
             C.write(C.path.join(C.pack, file),
                     await C.sharp(result.buffer)
                         .resize(3840, 2160, {fit : 'contain', kernel : 'nearest', background : '#101c1c'})
                         .png()
                         .toBuffer());
             records[s.id].export4k = file;
+            records[s.id].export4kSha256 = C.sha(C.fs.readFileSync(C.path.join(C.pack, file)));
         }
         console.log(s.id, m.width + 'x' + m.height);
     }
@@ -220,7 +222,8 @@ async function main() {
         nativeDebugReleaseTraces : parity,
         sourceHashes : meta.sources
     });
-    C.write(C.path.join(C.pack, local, 'data.js'),
+    C.json(C.path.join(C.pack, rendered, 'renders.json'), records);
+    C.write(C.path.join(C.pack, rendered, 'data.js'),
             'window.ATLAS_ORIGINAL_REVIEW=' + JSON.stringify(records) + ';\n');
     console.log('Verified', Object.keys(records).length, 'original scenes;', parity, 'native D/R traces;',
                 used.size, 'original bindings used.');

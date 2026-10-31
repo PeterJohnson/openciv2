@@ -233,12 +233,14 @@ standalone program loads or runs the full game.
 
 ## Original-art replay
 
-`original-assets.py` and `original.cjs` add an optional fourth comparison for all
-22 scenes. Original pixels and derivatives remain in the ignored
-`review/original-local/` directory. Neither the game source nor the replacement
-library depends on these files. The gallery loads the local scene index if
-present and otherwise explains how to build it; it never substitutes new art
-under an original-art label.
+`original-assets.py` and `original.cjs` provide the fourth comparison for all
+22 scenes. Composed scene PNGs, four 4K exports and their gallery index/hashes
+are tracked in `review/original-scenes/` under the user's scene-only review
+exception. Source sheets, extracted sprites, local traces and contact sheets
+remain ignored in `review/original-local/`. Neither the game source nor the
+replacement library depends on these files. The gallery loads the committed
+render index, so viewing the scenes does not require an installed game; it never
+substitutes new art under an original-art label.
 
 The geometry comes from this checkout's `gfx_load_terrain_sprites`,
 `gfx_load_city_sprites`, `gfx_load_unit_sprites` and icon/people loaders in
@@ -359,7 +361,7 @@ It does not execute technology research or infer era from the displayed year.
 `citizens.cjs` now maps all 44 native IDs to the retained paired/specialist
 portraits. The previous replacement backend discarded era and gender. The
 industrial normal fixture and modern crowded fixture preserve the same source
-selection in all four stages, including the ignored local original-art replay.
+selection in all four stages, including the original-art scene replay.
 Enhanced-only mood/profession badges draw after the full row, inside the same
 portrait frames, preventing later overlapping citizens from hiding earlier cues.
 [Citizen validation](review/citizen-validation.json) checks four source D/R

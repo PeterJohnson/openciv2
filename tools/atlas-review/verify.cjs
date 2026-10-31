@@ -143,7 +143,28 @@ async function main() {
     pass(
         'Real-save dimensions, live records, source hashes and all-tile native resource checks in both builds',
         saved.tiles.length);
+    const originals = C.read(C.path.join(C.pack, 'review/original-scenes/renders.json'));
+    assert.deepEqual(Object.keys(originals).sort(), scenes.map(s => s.id).sort());
+    for (const s of scenes) {
+        const r = originals[s.id];
+        assert.equal(r.original, `review/original-scenes/images/${s.id}.png`);
+        const bytes = C.fs.readFileSync(C.path.join(C.pack, r.original)),
+              size = await C.sharp(bytes).metadata();
+        assert.equal(C.sha(bytes), r.sha256, s.id + ' original render');
+        assert.deepEqual([ size.width, size.height ], s.currentSize, s.id + ' original dimensions');
+        assert.deepEqual(r.originalSize, s.currentSize);
+        if (r.export4k) {
+            assert.equal(r.export4k, `review/original-scenes/4k/${s.id}.png`);
+            const bytes4k = C.fs.readFileSync(C.path.join(C.pack, r.export4k)),
+                  size4k = await C.sharp(bytes4k).metadata();
+            assert.equal(C.sha(bytes4k), r.export4kSha256);
+            assert.deepEqual([ size4k.width, size4k.height ], [ 3840, 2160 ]);
+        }
+    }
+    pass('Committed original-art scene renders, dimensions and hashes', scenes.length);
     const m = C.read(C.path.join(C.pack, 'manifest.json'));
+    assert(!m.entries.some(e => e.file.startsWith('review/original-')),
+           'Original renders are not replacement assets');
     for (const e of m.entries) {
         assert(C.fs.existsSync(C.path.join(C.pack, e.file)), e.file);
         if (e.sha256)

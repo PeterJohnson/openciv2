@@ -42,6 +42,11 @@
       "status": "pass"
     },
     {
+      "name": "Committed original-art scene renders, dimensions and hashes",
+      "count": 22,
+      "status": "pass"
+    },
+    {
       "name": "Canonical asset paths, recorded hashes and master references",
       "count": 2231,
       "status": "pass"

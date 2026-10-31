@@ -65,17 +65,22 @@ it is not an exhaustive visual comparison against all existing works. Historical
 subjects are newly illustrated. Existing game data, audio, video and arbitrary
 scenario/expansion artwork remain outside this graphics delivery.
 
-## Local original-art comparisons
+## Original-art scene comparisons
 
-The optional fourth stage reads the user's original GIF sheets and GIF resources
-inside CV.DLL, PV.DLL, MK.DLL and SS.DLL. It crops and composites those pixels
-solely into `review/original-local/`, which is ignored by Git. Those files are
-original-game derivatives, excluded from the Atlas HD manifest, coverage bank,
-replacement bindings and license. The checked-in gallery and extraction/replay
-code contain no original image bytes. A recipient supplies their own installation
-to build the comparison. The local binding index records source SHA-256 hashes,
-resource IDs, crop rectangles and output hashes. These previews are trace
-replays with documented adapters, not original-game screen captures.
+The fourth stage reads the user's original GIF sheets and GIF resources inside
+CV.DLL, PV.DLL, MK.DLL and SS.DLL. Source sheets, extracted sprite crops, bindings,
+traces and citizen contact sheets remain in the ignored `review/original-local/`
+directory. The user authorized checking in only the composed in-game scene
+mockups: 22 comparison renders and four 4K exports now live in
+`review/original-scenes/`, with a render-only gallery index and hashes.
+
+These original-game derivatives remain excluded from the Atlas HD asset manifest,
+coverage bank, replacement bindings and replacement license. No original pixels
+have been incorporated into the replacement library. An installed game is needed
+to rebuild the comparisons, but not to view the committed renders. The local
+binding index records source SHA-256 hashes, resource IDs, crop rectangles and
+output hashes. These previews are trace replays with documented adapters, not
+original-game screen captures.
 
 ## Map readability revision
 
