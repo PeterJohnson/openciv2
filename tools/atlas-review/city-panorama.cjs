@@ -1,4 +1,4 @@
-const C = require('./common.cjs');
+const C = require('./common.cjs'), Typography = require('./typography.cjs');
 const metadataFile = C.path.join(C.pack, 'city/panorama/layout.json');
 const cache = new Map();
 
@@ -17,7 +17,7 @@ async function layout(trace, scene) {
     const objects = [];
     for (let index = 0; index < trace.commands.length; index++) {
         const c = trace.commands[index];
-        if (c.asset.startsWith('lot/'))
+        if (c.asset.startsWith('lot/') || c.asset === 'text')
             continue;
         const [family, id, variant] = c.asset.split('/'), isHouse = family === 'house',
                            sizeId =
@@ -208,6 +208,9 @@ async function render(trace, scene) {
         const a = await artwork(o.artId);
         C.blit(dst, await C.raw(a.data, o.width, o.height), o.x, o.y);
     }
+    const titles = trace.commands.filter(c => c.asset === 'text');
+    for (const c of titles)
+        await Typography.draw(dst, c, 2, c.color === 10 ? '#101919' : '#f4eee1');
     return {buffer : await C.png(dst), plan};
 }
 

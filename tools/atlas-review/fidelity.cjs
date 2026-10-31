@@ -3,6 +3,14 @@ const assert = require('node:assert/strict');
 
 const evidence = [
     [
+        'tools/atlas-review/typography.cjs', 1,
+        'Replacement-native and HD-only retain smooth fonts fitted to the source text spans and clipping.'
+    ],
+    [
+        'tools/atlas-review/verify-typography.cjs', 1,
+        'Font isolation and final enhanced map-name/panorama-title pixels are regression checked.'
+    ],
+    [
         'src/auto/diplomacy.cpp', 4766,
         'science_draw_tech now executes unchanged, including measured fitting, colors and two-line layout.'
     ],
@@ -19,7 +27,7 @@ const evidence = [
     ],
     [
         'tools/atlas-review/native-windows.cjs', 1,
-        'Original and HD-only windows share this native-content backend; enhanced remains separate.'
+        'Original/replacement windows share source content geometry but select bitmap/smooth fonts explicitly; enhanced remains separate.'
     ],
     [ 'src/auto/city.cpp', 12699, 'The four resource bar helpers and their parent now execute unchanged.' ],
     [
@@ -227,7 +235,7 @@ async function build() {
                                            : 'Mockup detail'}</h3><div class="viewport"><canvas id="${
                          k}Crop"></canvas></div></section>`)
                 .join('')}</div></section>
-<h2>Reference font metrics now used</h2><p>The source diplomacy font is face 0 (Times New Roman), height 11. Its 13-pixel cell and 10-pixel ascent come from the reference font bank. Native text now uses these glyph masks and drawing advances. The old fixed-width estimate is retained below only to explain the discrepancy that was corrected.</p><table><thead><tr><th>String</th><th>Reference measured width</th><th>Reference drawing advance</th><th>Previous shim estimate at 1×</th></tr></thead><tbody>${
+<h2>Reference font metrics now used</h2><p>The source diplomacy font is face 0 (Times New Roman), height 11. Its 13-pixel cell and 10-pixel ascent come from the reference font bank. Original-art text uses these glyph masks and drawing advances. Replacement-native and HD-only use smooth replacement fonts fitted to the source logical text spans; enhanced scenes retain those fonts and their map labels/panorama titles. The old fixed-width estimate is retained below only to explain the discrepancy that was corrected.</p><table><thead><tr><th>String</th><th>Reference measured width</th><th>Reference drawing advance</th><th>Previous shim estimate at 1×</th></tr></thead><tbody>${
         table}</tbody></table><p class="muted">${
         e(fonts
               .limits)} Widths are pixels, not a pixel-diff result. Even selecting the same family name is insufficient without the matching font data, baseline, clipping, shadow, palette and antialiasing path.</p>
@@ -239,7 +247,8 @@ async function build() {
             .join(
                 '')}</ul><p><a href="fidelity.json">Image dimensions, hashes, font measurements and evidence index</a> · <a href="../FIDELITY-AUDIT.md">Audit and repair scope</a></p></details></main>
 <script>const rows=${
-        JSON.stringify(rows).replaceAll('<', '\\u003c')};const el=id=>document.getElementById(id);let epoch=0;
+        JSON.stringify(rows).replaceAll('<',
+                                        '\\u003c')};const el=id=>document.getElementById(id);let epoch=0;
 function scale(){for(const k of ['reference','mockup']){const img=el(k),z=el('zoom').value;img.className=z==='fit'?'fit':'';img.style.width=z==='fit'?'':img.naturalWidth*Number(z)+'px';}}
 function show(){const id=++epoch,r=rows[Number(el('scene').value)];el('provenance').textContent=r.provenance;el('findings').replaceChildren();for(const t of r.findings){const li=document.createElement('li');li.textContent=t;el('findings').append(li);}el('focus').hidden=!r.crops;el('focusCaption').textContent=r.focus||'';for(const [i,k] of ['reference','mockup'].entries()){const img=el(k),m=r[k+'Info'];el(k+'Caption').textContent=m.width+' × '+m.height+' · '+r[k];img.alt=r.title+' — '+(i?'original-art mockup':'runtime screenshot');img.onload=()=>{if(id!==epoch)return;scale();if(r.crops){const [x,y,w,h]=r.crops[i],canvas=el(k+'Crop');canvas.width=w*2;canvas.height=h*2;const ctx=canvas.getContext('2d');ctx.imageSmoothingEnabled=false;ctx.drawImage(img,x,y,w,h,0,0,w*2,h*2);}};img.src='../../../'+r[k];}}
 el('scene').onchange=show;el('zoom').onchange=scale;show();</script></html>`;

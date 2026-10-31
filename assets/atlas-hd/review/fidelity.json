@@ -196,6 +196,18 @@
   },
   "sourceEvidence": [
     {
+      "file": "tools/atlas-review/typography.cjs",
+      "line": 1,
+      "fact": "Replacement-native and HD-only retain smooth fonts fitted to the source text spans and clipping.",
+      "sha256": "56daa154d18921d28d506c5aa4c28a82043f8ea30a5ea46b8d279ff41e875eca"
+    },
+    {
+      "file": "tools/atlas-review/verify-typography.cjs",
+      "line": 1,
+      "fact": "Font isolation and final enhanced map-name/panorama-title pixels are regression checked.",
+      "sha256": "a956771047ae58db0b69b5db372b74b2c68bf51e5c83e9077b82cd846aa1a118"
+    },
+    {
       "file": "src/auto/diplomacy.cpp",
       "line": 4766,
       "fact": "science_draw_tech now executes unchanged, including measured fitting, colors and two-line layout.",
@@ -217,13 +229,13 @@
       "file": "tools/atlas-review/font.cjs",
       "line": 1,
       "fact": "Native bitmap replay uses the reference glyph masks, bearings and clip rectangles.",
-      "sha256": "1113596aa2b281bb1ec9a65404057f480cffd6d00fd5df28cb0f99d3f2a0344d"
+      "sha256": "3d95bca291c8a2657911d2680786264e8eb29ad47cab7a09e46895ef97447159"
     },
     {
       "file": "tools/atlas-review/native-windows.cjs",
       "line": 1,
-      "fact": "Original and HD-only windows share this native-content backend; enhanced remains separate.",
-      "sha256": "4ee3bed05c398f3e62f29f54b30711861a17f3d477256f490f4f2c6f376b9d10"
+      "fact": "Original/replacement windows share source content geometry but select bitmap/smooth fonts explicitly; enhanced remains separate.",
+      "sha256": "1095048912f7cad4bce46c8f003e53d19941dd7bcb514462a273484e63c9f6e2"
     },
     {
       "file": "src/auto/city.cpp",
@@ -271,7 +283,7 @@
       "file": "tools/atlas-review/verify-native.cjs",
       "line": 1,
       "fact": "Focused native typography/layout checks supplement source-body and D/R validation.",
-      "sha256": "8a96f799620d745919d5d3f375d265bf3d2da858bd0117e9094ca1b3318643c9"
+      "sha256": "304657bd001a82e6bddb59209e911b9fecb5f7c6668c3b9491ccbf42926210ad"
     }
   ],
   "remainingScenes": [

@@ -1,5 +1,5 @@
 const C = require('./common.cjs');
-const Font = require('./font.cjs');
+const Typography = require('./typography.cjs');
 const {fs, path, pack, sharp, svg, art, raw, clear, blit, png, asset, fit} = C;
 const cache = new Map();
 const faction = [ '#e6dfc3', '#d66b57', '#63b194', '#9e87ca', '#6e9ed0', '#d8bd60', '#dc994d', '#b7c7ce' ];
@@ -56,7 +56,8 @@ async function baseline(trace, scene, bindings, {
     transparent = false,
     palette = color,
     background = null,
-    legacyText = false
+    legacyText = false,
+    originalText = false
 } = {}) {
     const W = trace.width * density, H = trace.height * density;
     let dst = clear(W, H, transparent ? [ 0, 0, 0, 0 ] : [ 12, 22, 23, 255 ]);
@@ -99,7 +100,7 @@ async function baseline(trace, scene, bindings, {
             continue;
         }
         if (c.asset === 'text' && !legacyText) {
-            Font.draw(dst, command, density, palette(c.color));
+            await Typography.draw(dst, command, density, palette(c.color), originalText);
             continue;
         }
         if (c.asset === 'text') {
@@ -370,13 +371,22 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
         blit(dst, await raw(layer), 0, 0);
     }
 
+    // Labels are a final overlay at every LOD, independent of the object pass.
+    const labels = await mapLabels(scene, density);
+    blit(dst, await raw(labels.buffer), 0, 0);
     return png(dst);
 }
 
+async function mapLabels(scene, density = 2) {
+    const trace = C.engine('city-labels', path.join(pack, scene.fixture));
+    const dst = clear(trace.width * density, trace.height * density);
+    for (const c of trace.commands)
+        await Typography.draw(dst, c, density, color(c.color));
+    return {buffer : await png(dst), commands : trace.commands};
+}
+
 async function proposedCity(trace, scene, bindings) {
-    return (await require('./city-panorama.cjs')
-                .render({...trace, commands : trace.commands.filter(c => c.asset !== 'text')}, scene))
-        .buffer;
+    return (await require('./city-panorama.cjs').render(trace, scene)).buffer;
 }
 
 async function proposedThrone(scene) {
@@ -425,6 +435,7 @@ async function supportingArt() {
 module.exports = {
     baseline,
     proposedMap,
+    mapLabels,
     proposedCity,
     proposedThrone,
     supportingArt,

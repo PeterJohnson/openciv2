@@ -7,7 +7,7 @@ stages are checked in. Rebuilding original-art scenes requires an installed game
 viewing them does not.
 
 [Compare these original-art mockups with runtime screenshots](review/fidelity.html).
-The audit confirms font, panel and omitted-overlay differences; the current
+The audit records corrected fonts, panels and restored text overlays; the
 standalone renders are not pixel-equivalent game screenshots. See the
 [fidelity findings and correction scope](FIDELITY-AUDIT.md).
 
@@ -194,11 +194,18 @@ hashes and verifies inputs remain unchanged. The replay verifies all scene
 sizes, binding hashes and original map/city/throne Debug/Release trace equality.
 Rerun these commands after changing fixtures or source renderer extraction.
 
-The original and HD-only stages use the same corrected native-content path:
-reference glyphs/metrics, source knowledge fitting and economy bars, source
+The original and HD-only stages use the same corrected content geometry:
+reference metrics, source knowledge fitting and economy bars, source
 resource terrain, saved map names and panorama titles. Enhanced compositions
 remain separate. Original CITY.GIF and SS resource 499 supply the original
 backgrounds; cropped original button art and per-window palettes remain local.
+
+Replacement-native and HD-only previews use smooth replacement fonts fitted to
+source text spans; only original-art previews use the reference bitmap glyphs.
+Enhanced map city names and panorama titles are final overlays above the artwork.
+[Typography checks](review/typography-validation.json) cover font separation, HD
+rasterization and label pixels in the saved-map and panorama renders.
+
 The city preview is a content rectangle, without application title/border
 chrome. Herald animation and identical-state runtime pixel parity remain
 unverified. See [fidelity corrections and validation](FIDELITY-AUDIT.md).

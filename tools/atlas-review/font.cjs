@@ -1,5 +1,5 @@
 // 8-bit DIB glyph replay, matching src/platform/text.c (CIV2_WINE_TEXT unset).
-// HD changes raster density only: logical metrics and clip rectangles stay fixed.
+// Original-art replay only. Replacement typography lives in typography.cjs.
 const C = require('./common.cjs');
 const bytes = C.fs.readFileSync(C.path.join(C.root, 'data/native/fonts.bin'));
 if (bytes.subarray(0, 8).toString() !== 'C2FONTS2')

@@ -78,7 +78,8 @@ async function main() {
         assert.deepEqual(plan, stored[s.id], 'Stored layout must match renderer');
         assert.deepEqual(
             plan.objects.map(o => o.sourceIndex).sort((a, b) => a - b),
-            trace.commands.map((c, i) => c.asset.startsWith('lot/') ? -1 : i).filter(i => i >= 0));
+            trace.commands.map((c, i) => c.asset.startsWith('lot/') || c.asset === 'text' ? -1 : i)
+                .filter(i => i >= 0));
         let last = -Infinity;
         for (const o of plan.objects) {
             if (!o.wall) {

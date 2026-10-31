@@ -68,7 +68,7 @@ async function main() {
         fontBankSha256 : F.sha256,
         metrics : samples,
         clippedInkPixels : ink,
-        hdTextPixelsCompared : 40 * 18 * 4,
+        originalDensityPixelsCompared : 40 * 18 * 4,
         twoLineKnowledgeDraws : lines.length,
         nativeKnowledgeDraws : 12,
         nativeEconomyBarY : [ 75, 116, 140, 181 ],

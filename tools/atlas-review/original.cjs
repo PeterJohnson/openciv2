@@ -89,6 +89,7 @@ async function mapOrView(s, id = s.id) {
             file(c.asset);
     }
     return R.baseline(trace, s, bindings, {
+        originalText : true,
         palette : n => meta.palette[String(n & 255)],
         background : trace.originalBackground ? C.path.join(C.pack, file('background/' + id)) : null
     });

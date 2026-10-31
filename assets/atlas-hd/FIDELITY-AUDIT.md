@@ -13,7 +13,7 @@ claim of whole-frame pixel parity with a live game capture.
 
 | Area | Native/original and HD-only behavior |
 | --- | --- |
-| Fonts | Read `data/native/fonts.bin`, the same glyph bank used by `src/platform/text.c`. Carry face, pixel height, style, drawing advances, cell height, bearings, clipping and palette colors through the trace. No SVG font substitution in native text. HD preserves logical metrics and scales the indexed glyph masks. |
+| Fonts | Original-art previews replay `data/native/fonts.bin`, including reference glyphs, advances, bearings and clipping. Replacement-native and HD-only previews use the smooth Noto Sans/DejaVu Sans font stack, fitted to the same source text spans, wrapping, anchors and clips. HD rasterizes the replacement font at output density. Enhanced views retain replacement typography. |
 | Diplomacy | Execute unchanged `science_draw_tech` for measured fitting, truncation, two-line labels, shadows and era colors. Remove invented envoy, government and column captions. Retain source military repetition and category artwork. |
 | City economy | Execute unchanged food, shields, trade, distribution and parent resource-map functions. Source spacing, bar partitions, shortages/surpluses and labels replace the six redesigned rows. |
 | City resource map | Execute `draw_resource_tiles` and the map terrain renderer, including neighbor joins and the radius edge, before unchanged worked-tile yield drawing. The small city's terrain and yield values remain explicit synthetic inputs. |
@@ -51,11 +51,13 @@ supported named fixtures avoid that branch; additional names must supply valid
 caller state or stop. Tests include safe two-line “Iron Working” and “Code of
 Laws” cases, plus measured truncation of the six main fixture names.
 
-The font bank comes from the project's Wine reference environment. This target
-uses its 1-bit masks and drawing advances, not the separate antialiased path or
-an arbitrary Windows installation's fonts. HD increases image density without
-changing text layout. Sharper antialiased typography remains a separate engine
-choice requiring its own reference capture.
+The original-art font bank comes from the project's Wine reference environment.
+Only original-art previews replay its 1-bit masks. Replacement-native and HD-only
+use smooth replacement fonts while retaining the source's logical spans and
+clipping; this is an intentional artwork substitution, not original-font pixel
+parity. Enhanced map labels are a final pass at every detail level, including the
+world view; panorama titles are drawn after buildings and walls. Their text comes
+from the same source traces and fixtures as the original-art views.
 
 No fresh executable capture was obtained: the prior computer-use launch timed
 out at app approval. Spacecraft and throne-room scenes still have no paired
@@ -80,5 +82,10 @@ the enhanced boundary. Results are in [native-validation.json](review/native-val
 For subsequent native-only corrections, `node tools/atlas-review/refresh-native.cjs`
 refreshes the existing native/HD images, traces and exports without writing the
 enhanced PNGs. Then rebuild local originals, verification and the gallery/audit.
-The [preservation record](review/native-preservation.json) checks every source
-file and 27 existing enhanced PNGs against the pre-change snapshot.
+`verify-typography.cjs` checks original/replacement font isolation, smooth HD
+rasterization, clipping, and visible label pixels in all three saved-map and
+three panorama enhanced renders. Results are in
+[typography-validation.json](review/typography-validation.json).
+The [preservation record](review/native-preservation.json) checks every game-source
+file and original-art scene PNG against the snapshot before this typography fix.
+Enhanced scene artwork is retained; its missing map labels and titles are restored.

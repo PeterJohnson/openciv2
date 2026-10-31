@@ -41,7 +41,7 @@ part of the compiled standalone renderer.
 ## Runtime screenshot comparison
 
 [The fidelity audit](FIDELITY-AUDIT.md) compares four checked-in native OpenCiv2
-runtime screenshots with the corrected original-art mockups. Native text now uses
+runtime screenshots with the corrected original-art mockups. Original-art text uses
 the reference glyph bank, diplomacy fitting and city economy helpers execute
 unchanged, and map names/panorama titles are restored. Those fixtures are not
 identical game states, so no whole-image error percentage is reported.
@@ -66,9 +66,10 @@ throne runtime parity remain unverified; no fresh capture was obtained.
   the original indexed palette, trimmed sprite storage or binary row blitter.
   Palette replacement is represented by designated colors in the review backend.
   Antialiasing, resampling and alpha compositing are newly supplied.
-- Native text uses the repository's indexed reference font bank and drawing
-  advances. Enhanced text retains its independent design backend. City names
-  execute unchanged source code. Window chrome, input/picking masks, combat
+- Original-art text uses the repository's indexed reference font bank and drawing
+  advances. Replacement-native/HD use smooth replacement fonts fitted to those
+  logical spans and clips. Enhanced text retains its independent design backend.
+  City names execute unchanged source code. Window chrome, input/picking masks, combat
   animation, networking, sound and optional extra UI remain outside this fixture.
 - Native and HD-only city panorama content uses actual site-dependent slot
   selection, cosmetic random numbers, art crop dimensions and draw order. New
@@ -141,7 +142,7 @@ sibling project's renderer.
 
 | Window | Source behavior executed | Explicit review boundary |
 | --- | --- | --- |
-| Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data is supplied; source fitting and native glyph replay execute. No AVI herald or diplomacy decision-dialog execution. |
+| Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data is supplied; source fitting executes; original-art uses bitmap glyphs, replacements use smooth fonts in the same logical spans. No AVI herald or diplomacy decision-dialog execution. |
 | Spacecraft | `render_ship_init_rows`, `render_ship_load_surfaces`, `render_ship_draw_part`, `render_ship` in `src/game/bigframes.cpp:587–1563` | All 88 source rows, count thresholds, filled/empty resource choices and layer order execute. The 457×304 framebuffer at `(175,99)` is flattened for PNG output. Palette, lifetime, title, stats text and controls are drawing adapters. Stats are declared fixture values, not a spaceship simulation. |
 | City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_resource_yields`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Resource terrain and economy helpers execute unchanged; source-derived present-unit/control painting and full window chrome remain explicit boundaries. Other info modes throw rather than invent a result. |
 | Spacing | `ui_calc_item_spacing` in `src/auto/window.cpp:4031` and `sprite_draw_spaced_row` in `src/auto/graphics.cpp:2710` | Real overlap, fit and remainder arithmetic for citizens and stockpile icons; the new backend supplies sprite pixels. |
@@ -317,7 +318,7 @@ Spacecraft uses SS 499 (`spaceship.cpp:314`), and native ordered split crops are
 clipped to the 457×304 assembly surface before copying to (175,99). City windows
 use the 636×421 CITY.GIF crop from `city.cpp:11940–11942`, exact citizens and
 14/10-pixel economy icons. Resource bars and terrain dispatch now execute source
-bodies; native labels use the reference glyph bank. Controls and present-unit
+bodies; original-art labels use the reference glyph bank. Controls and present-unit
 state retain the finite presentation boundary described in FIDELITY-AUDIT.md.
 This does not claim pixel-exact full-game window capture.
 
@@ -347,7 +348,7 @@ The replacement palette adapter distinguishes primary/mid faction colors and
 health colors. Shield artwork contains both faction mask colors. Unit order
 text is centered at the native shield text anchor in the standalone backend;
 this corrects the prior left/top interpretation, including original-art replays.
-Native fonts use the reference bank; native and HD-only use identical logical
+Original-art fonts use the reference bank; native and HD-only use identical logical
 commands. Enhanced text remains on its independent presentation path.
 `readableBadges` modifies only the proposal's badge group: 1.35x scale, separated
 rear plate, a plus sign for a source-indicated stack, and foreground placement.

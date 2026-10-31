@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "replacementFamily": "Noto Sans,DejaVu Sans,sans-serif",
+  "smoothHdPixels": 1441,
+  "freshlyRasterizedPixels": 2643,
+  "originalGlyphsUnchanged": true,
+  "replacementClipPreserved": true,
+  "overlays": [
+    {
+      "scene": "saved-close",
+      "labels": 12,
+      "probes": 75190
+    },
+    {
+      "scene": "saved-region",
+      "labels": 19,
+      "probes": 39349
+    },
+    {
+      "scene": "saved-world",
+      "labels": 69,
+      "probes": 5309
+    },
+    {
+      "scene": "city-coastal",
+      "title": "Asteria:  A.D. 1788",
+      "probes": 13043
+    },
+    {
+      "scene": "city-river",
+      "title": "Asteria:  A.D. 1788",
+      "probes": 13043
+    },
+    {
+      "scene": "city-inland",
+      "title": "Asteria:  A.D. 1788",
+      "probes": 13043
+    }
+  ]
+}

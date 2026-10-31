@@ -548,7 +548,7 @@ async function buildWindows() {
             plans[s.id + '-' + stage] = result.ops;
         }
         s.note =
-            'Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.';
+            'Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.';
         s.commandCount = trace.commands.length;
         scenes.push(s);
         console.log(s.id, trace.commands.length, 'native commands');

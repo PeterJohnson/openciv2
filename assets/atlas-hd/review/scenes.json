@@ -145,8 +145,7 @@
     "proposedSize": [
       2048,
       1024
-    ],
-    "commandCount": 153
+    ]
   },
   {
     "id": "district",
@@ -177,7 +176,7 @@
       1536
     ],
     "commandCount": 1213,
-    "buildMilliseconds": 35640
+    "buildMilliseconds": 35280
   },
   {
     "id": "close",
@@ -208,7 +207,7 @@
       1280
     ],
     "commandCount": 614,
-    "buildMilliseconds": 21759,
+    "buildMilliseconds": 20985,
     "exports4k": {
       "current": "review/4k/close-current.png",
       "hd": "review/4k/close-hd.png",
@@ -244,7 +243,7 @@
       768
     ],
     "commandCount": 1235,
-    "buildMilliseconds": 9766
+    "buildMilliseconds": 9578
   },
   {
     "id": "coast",
@@ -275,7 +274,7 @@
       1536
     ],
     "commandCount": 1065,
-    "buildMilliseconds": 29215,
+    "buildMilliseconds": 28863,
     "exports4k": {
       "current": "review/4k/coast-current.png",
       "hd": "review/4k/coast-hd.png",
@@ -311,7 +310,7 @@
       1024
     ],
     "commandCount": 4180,
-    "buildMilliseconds": 10413
+    "buildMilliseconds": 10516
   },
   {
     "id": "world",
@@ -342,7 +341,7 @@
       1024
     ],
     "commandCount": 10734,
-    "buildMilliseconds": 9310
+    "buildMilliseconds": 9130
   },
   {
     "id": "city-coastal",
@@ -366,7 +365,7 @@
       960
     ],
     "commandCount": 59,
-    "buildMilliseconds": 6281,
+    "buildMilliseconds": 6315,
     "exports4k": {
       "current": "review/4k/city-coastal-current.png",
       "hd": "review/4k/city-coastal-hd.png",
@@ -395,7 +394,7 @@
       960
     ],
     "commandCount": 55,
-    "buildMilliseconds": 5149
+    "buildMilliseconds": 5212
   },
   {
     "id": "city-inland",
@@ -419,7 +418,7 @@
       960
     ],
     "commandCount": 59,
-    "buildMilliseconds": 5521
+    "buildMilliseconds": 5602
   },
   {
     "id": "throne-early",
@@ -454,7 +453,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1074
+    "buildMilliseconds": 1075
   },
   {
     "id": "throne-mixed",
@@ -489,7 +488,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1001
+    "buildMilliseconds": 977
   },
   {
     "id": "throne-complete",
@@ -524,7 +523,7 @@
       960
     ],
     "commandCount": 15,
-    "buildMilliseconds": 1191,
+    "buildMilliseconds": 1175,
     "exports4k": {
       "current": "review/4k/throne-complete-current.png",
       "hd": "review/4k/throne-complete-hd.png",
@@ -553,7 +552,7 @@
       1280,
       960
     ],
-    "note": "Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.",
+    "note": "Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.",
     "commandCount": 32
   },
   {
@@ -587,7 +586,7 @@
       1280,
       960
     ],
-    "note": "Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.",
+    "note": "Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.",
     "commandCount": 43
   },
   {
@@ -621,7 +620,7 @@
       1280,
       960
     ],
-    "note": "Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.",
+    "note": "Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.",
     "commandCount": 67
   },
   {
@@ -651,7 +650,7 @@
       1272,
       842
     ],
-    "note": "Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.",
+    "note": "Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.",
     "commandCount": 369
   },
   {
@@ -681,7 +680,7 @@
       1272,
       842
     ],
-    "note": "Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.",
+    "note": "Source layout and resource bars with smooth replacement fonts fitted to source text spans; original-art previews retain reference bitmap fonts. See window audit for exact scope.",
     "commandCount": 668
   }
 ]
