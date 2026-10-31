@@ -4,9 +4,9 @@ Open [the offline review gallery](index.html). Start with **Legacy → HD only**
 then switch to **HD only → HD + cohesion**. No server or original game data is
 required to view the checked-in previews.
 
-This is one selected library on `codex/atlas-hd-unified-review`, based on
+This is one selected library on `new-graphics`, based on
 `bd89036`. Earlier iterations remain on `codex/atlas-hd-graphics` at `2fe6f3f`.
-The new branch contains no game source or loader changes.
+The graphics branch contains no game source or loader changes.
 
 ## Contents
 
@@ -14,11 +14,11 @@ The new branch contains no game source or loader changes.
 | --- | ---: | --- |
 | Painted sprites | 575 | Units, cities, buildings, wonders, resources, citizens, advisors, leaders, diplomacy, palace, effects, spaceship and setup art |
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
-| Interface assets | 498 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
+| Interface assets | 503 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,212 primary entries are indexed in [manifest.json](manifest.json).
+The 2,217 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -43,7 +43,7 @@ silently included in that claim.
    world-space materials and river/coast sampling, quieter overview detail,
    object anchors and site-aware scene placement.
 
-There are 19 scene comparisons: district, close and tactical map views, transport
+There are 22 scene comparisons: three real-save map views plus district, close and tactical map views, transport
 matrix, coast, terrain repetition, region, full world, three city panoramas, three
 throne stages, diplomacy, two spacecraft states and two city management windows.
 Detailed map views retain the native unit/city frame size, anchor and badges; only
@@ -56,6 +56,30 @@ on the staggered lattice). The whole-world fixture has 8,192 valid cells in a
 the close map, coast, coastal city and complete throne room, at all three stages.
 These exports preserve aspect ratio and can resample the native art; they do not
 claim additional native 4K detail.
+
+## City economy and real-save maps
+
+The city window uses six distinct [economy symbols](review/economy-symbols.png):
+the retained full wheat sheaf, blue production shield, opposed trade arrows, gold coin, luxury gem
+and science beaker. Coins also identify the improvement-list sale/upkeep action.
+The old mixed grain/shield terrain special and gold ore no longer serve as city
+economy icons. Native 14-pixel rows and 10-pixel worked-tile icons share these
+silhouettes. See [semantic bindings](interface/economy/bindings.json).
+
+The first three map scenes use `he_a1788.sav`: a 150×120 staggered world with
+9,000 tiles, all 11 terrain kinds, 69 cities, 223 live units (290 allocated unit
+records), 597 road tiles, 282 rail tiles and 320 special-resource tiles. Close,
+regional and complete-world cameras share the same imported state in every
+stage. Fog is deliberately disabled for this all-map art review. The importer
+preserves terrain, improvements, city sizes/styles/walls, unit types/stacks and
+damage; source functions select resources and display units. No saved game or
+original image file is needed to rebuild: the bounded imported state and input
+hashes are retained in [saved-world.json](review/fixtures/saved-world.json).
+
+`import-save.py SAVE RULES.TXT` is an optional read-only refresh step. It accepts
+the observed version-44 normal-save layout, checks bounds and stack links, and
+records the input hashes. It does not support arbitrary scenario/network/save
+versions. The original save and rules file are not included in this art pack.
 
 ## Rebuild
 
@@ -75,6 +99,7 @@ Run from the repository root:
 node tools/atlas-review/build-review.cjs
 node tools/atlas-review/build-support.cjs
 node tools/atlas-review/windows.cjs
+node tools/atlas-review/saved-map.cjs
 node tools/atlas-review/verify.cjs
 node tools/atlas-review/build-gallery.cjs
 ```

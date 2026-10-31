@@ -1,5 +1,104 @@
 [
   {
+    "id": "saved-close",
+    "title": "1788 save · cities, resources and developed landscape",
+    "camera": {
+      "ox": 120,
+      "oy": 70,
+      "cols": 12,
+      "rows": 22,
+      "zoom": 8,
+      "viewer": -1
+    },
+    "tileWidth": 128,
+    "mode": "map",
+    "saveBased": true,
+    "fixture": "review/fixtures/saved-close.txt",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "current": "review/images/saved-close-current.png",
+    "currentSize": [
+      1536,
+      704
+    ],
+    "hd": "review/images/saved-close-hd.png",
+    "hdSize": [
+      3072,
+      1408
+    ],
+    "proposed": "review/images/saved-close-proposed.png",
+    "proposedSize": [
+      3072,
+      1408
+    ],
+    "commandCount": 2043
+  },
+  {
+    "id": "saved-region",
+    "title": "1788 save · regional settlement and transport",
+    "camera": {
+      "ox": 104,
+      "oy": 60,
+      "cols": 22,
+      "rows": 36,
+      "zoom": 0,
+      "viewer": -1
+    },
+    "tileWidth": 64,
+    "mode": "map",
+    "saveBased": true,
+    "fixture": "review/fixtures/saved-region.txt",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "current": "review/images/saved-region-current.png",
+    "currentSize": [
+      1408,
+      576
+    ],
+    "hd": "review/images/saved-region-hd.png",
+    "hdSize": [
+      2816,
+      1152
+    ],
+    "proposed": "review/images/saved-region-proposed.png",
+    "proposedSize": [
+      2816,
+      1152
+    ],
+    "commandCount": 4703
+  },
+  {
+    "id": "saved-world",
+    "title": "1788 save · complete 150 × 120 world",
+    "camera": {
+      "ox": 0,
+      "oy": 0,
+      "cols": 75,
+      "rows": 120,
+      "zoom": -6,
+      "viewer": -1
+    },
+    "tileWidth": 16,
+    "mode": "map",
+    "saveBased": true,
+    "fixture": "review/fixtures/saved-world.txt",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "current": "review/images/saved-world-current.png",
+    "currentSize": [
+      1200,
+      480
+    ],
+    "hd": "review/images/saved-world-hd.png",
+    "hdSize": [
+      2400,
+      960
+    ],
+    "proposed": "review/images/saved-world-proposed.png",
+    "proposedSize": [
+      2400,
+      960
+    ],
+    "commandCount": 10665
+  },
+  {
     "id": "district",
     "title": "District · roads, rails, fields and units",
     "camera": {
@@ -28,7 +127,7 @@
       1536
     ],
     "commandCount": 1193,
-    "buildMilliseconds": 39594
+    "buildMilliseconds": 44211
   },
   {
     "id": "close",
@@ -59,7 +158,7 @@
       1280
     ],
     "commandCount": 600,
-    "buildMilliseconds": 23085,
+    "buildMilliseconds": 25500,
     "exports4k": {
       "current": "review/4k/close-current.png",
       "hd": "review/4k/close-hd.png",
@@ -115,7 +214,7 @@
       768
     ],
     "commandCount": 1215,
-    "buildMilliseconds": 10645
+    "buildMilliseconds": 11558
   },
   {
     "id": "repetition",
@@ -175,7 +274,7 @@
       1536
     ],
     "commandCount": 1065,
-    "buildMilliseconds": 32315,
+    "buildMilliseconds": 35720,
     "exports4k": {
       "current": "review/4k/coast-current.png",
       "hd": "review/4k/coast-hd.png",
@@ -211,7 +310,7 @@
       1024
     ],
     "commandCount": 4165,
-    "buildMilliseconds": 12637
+    "buildMilliseconds": 13787
   },
   {
     "id": "world",
@@ -242,7 +341,7 @@
       1024
     ],
     "commandCount": 10719,
-    "buildMilliseconds": 11350
+    "buildMilliseconds": 12433
   },
   {
     "id": "city-coastal",
@@ -266,7 +365,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 1721,
+    "buildMilliseconds": 1932,
     "exports4k": {
       "current": "review/4k/city-coastal-current.png",
       "hd": "review/4k/city-coastal-hd.png",
@@ -295,7 +394,7 @@
       960
     ],
     "commandCount": 53,
-    "buildMilliseconds": 717
+    "buildMilliseconds": 737
   },
   {
     "id": "city-inland",
@@ -319,7 +418,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 729
+    "buildMilliseconds": 761
   },
   {
     "id": "throne-early",
@@ -354,7 +453,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1002
+    "buildMilliseconds": 1081
   },
   {
     "id": "throne-mixed",
@@ -389,7 +488,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 959
+    "buildMilliseconds": 1128
   },
   {
     "id": "throne-complete",
@@ -424,7 +523,7 @@
       960
     ],
     "commandCount": 15,
-    "buildMilliseconds": 1151,
+    "buildMilliseconds": 1302,
     "exports4k": {
       "current": "review/4k/throne-complete-current.png",
       "hd": "review/4k/throne-complete-hd.png",
@@ -550,7 +649,7 @@
       842
     ],
     "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
-    "commandCount": 205
+    "commandCount": 236
   },
   {
     "id": "city-window-crowded",
@@ -578,6 +677,6 @@
       842
     ],
     "note": "Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.",
-    "commandCount": 472
+    "commandCount": 503
   }
 ]

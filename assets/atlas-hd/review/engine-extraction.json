@@ -246,6 +246,34 @@
       "file": "src/auto/support.cpp",
       "line": 502,
       "sha256": "9bc65434b65867acc3671ed8f0913793ac0b98099c4e0967dc94c4d06b041f9e"
+    },
+    {
+      "name": "tile_resource",
+      "file": "src/auto/map.cpp",
+      "line": 7151,
+      "namespace": "save_native",
+      "sha256": "a9a9bfca666c3afdfee53cd5090f33f2e434fcbc89aa4e2cdee6fd6cd0b71f08"
+    },
+    {
+      "name": "tile_has_hut",
+      "file": "src/auto/map.cpp",
+      "line": 7195,
+      "namespace": "save_native",
+      "sha256": "68a8b804fc59938775e445d6f3485798d8ad5156a8f2f2ef7e77199a9b42783c"
+    },
+    {
+      "name": "tile_grassland_has_shield",
+      "file": "src/auto/map.cpp",
+      "line": 1345,
+      "namespace": "save_native",
+      "sha256": "3666d9f0b49f9a51aca617c1379660767d43ff921dd87c58b2304087c1909928"
+    },
+    {
+      "name": "unit_stack_pick_display_unit",
+      "file": "src/auto/unit.cpp",
+      "line": 3659,
+      "namespace": "save_native",
+      "sha256": "1d53afbe1dea19cc1ffe34df5856f80cd0888e2413b9289a4dcab502f837c5b0"
     }
   ],
   "tables": [
@@ -293,7 +321,8 @@
     "src/auto/reports.cpp": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
     "src/game/random.cpp": "75f4e2fd30777142a5c5fc465e46bb6f2f294b52532fb2beadd54de602c0e682",
     "src/auto/support.cpp": "84c9680d9df3983beaa1daacadf6595e93c5a3fe6b31af1d836f08ba423118a9",
-    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e"
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e",
+    "src/auto/unit.cpp": "c3a4804c895662a5a61cc5b9319a74295cbdf74ca0462d042755865d69cf3790"
   },
   "bodyPolicy": "unchanged text, LF normalized, with #line source mapping"
 }

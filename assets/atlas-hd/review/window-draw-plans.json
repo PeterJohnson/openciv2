@@ -2504,193 +2504,410 @@
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 297,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 306,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 315,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 324,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 333,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 342,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 351,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 297,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 306,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 315,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 324,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 333,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 342,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 351,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 360,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 297,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 306,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 315,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 324,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 333,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 297,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 306,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 297,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 306,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 315,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 324,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 333,
       "y": 178,
       "width": 13,
       "height": 13
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -3253,371 +3470,371 @@
       "height": 20
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 266,
       "width": 14,
@@ -3631,7 +3848,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -3645,7 +3862,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -3659,7 +3876,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -3673,7 +3890,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -3687,7 +3904,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -3701,7 +3918,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -3715,7 +3932,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -3729,7 +3946,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -3743,7 +3960,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -3757,7 +3974,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -3771,7 +3988,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -4109,193 +4326,410 @@
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 297,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 306,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 315,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 324,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 333,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 342,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 351,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 297,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 306,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 315,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 324,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 333,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 342,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 351,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 360,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 297,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 306,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 315,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 324,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 333,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 297,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 306,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 297,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 306,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 315,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 324,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 333,
       "y": 178,
       "width": 13,
       "height": 13
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -4858,371 +5292,371 @@
       "height": 20
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 266,
       "width": 14,
@@ -5236,7 +5670,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -5250,7 +5684,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -5264,7 +5698,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -5278,7 +5712,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -5292,7 +5726,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -5306,7 +5740,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -5320,7 +5754,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -5334,7 +5768,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -5348,7 +5782,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -5362,7 +5796,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -5376,7 +5810,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -5651,6 +6085,265 @@
       "height": 24
     },
     {
+      "file": "sprites/resources/wheat.png",
+      "x": 282,
+      "y": 68,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 282,
+      "y": 90,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 282,
+      "y": 112,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 282,
+      "y": 134,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 282,
+      "y": 156,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 282,
+      "y": 178,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
       "file": "sprites/buildings/library.png",
       "x": 516,
       "y": 183,
@@ -5665,7 +6358,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -5679,7 +6372,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -5693,7 +6386,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -5707,7 +6400,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -5721,7 +6414,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -5735,7 +6428,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -5749,7 +6442,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -5763,7 +6456,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -5777,7 +6470,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -5791,7 +6484,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -5805,7 +6498,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -5831,6 +6524,20 @@
       "y": 234,
       "width": 48,
       "height": 36
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 521,
+      "y": 169,
+      "width": 22,
+      "height": 22
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 521,
+      "y": 363,
+      "width": 22,
+      "height": 22
     }
   ],
   "city-window-crowded-current": [
@@ -6255,193 +6962,410 @@
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 297,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 306,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 315,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 324,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 333,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 342,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 351,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 297,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 306,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 315,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 324,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 333,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 342,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 351,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 360,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 297,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 306,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 315,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 324,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 333,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 297,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 306,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 297,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 306,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 315,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 324,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 333,
       "y": 178,
       "width": 13,
       "height": 13
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -8271,749 +9195,749 @@
       "height": 20
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 322,
       "width": 14,
@@ -9027,7 +9951,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -9041,7 +9965,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -9055,7 +9979,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -9069,7 +9993,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -9083,7 +10007,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -9097,7 +10021,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -9111,7 +10035,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -9125,7 +10049,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -9139,7 +10063,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -9153,7 +10077,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -9167,7 +10091,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -9617,193 +10541,410 @@
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 297,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 306,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 315,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 324,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 333,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 342,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 351,
       "y": 90,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 297,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 306,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 315,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 324,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 333,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 342,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 351,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/trade.png",
       "x": 360,
       "y": 112,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 297,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 306,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 315,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 324,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/gold.png",
       "x": 333,
       "y": 134,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 297,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/luxury.png",
       "x": 306,
       "y": 156,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 297,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 306,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 315,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 324,
       "y": 178,
       "width": 13,
       "height": 13
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/science.png",
       "x": 333,
       "y": 178,
       "width": 13,
       "height": 13
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -11633,749 +12774,749 @@
       "height": 20
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 210,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 224,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 238,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 252,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 266,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 280,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 294,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 605,
       "y": 308,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 445,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 459,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 474,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 488,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 503,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 517,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 532,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 546,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 561,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 575,
       "y": 322,
       "width": 14,
       "height": 14
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 590,
       "y": 322,
       "width": 14,
@@ -12389,7 +13530,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -12403,7 +13544,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -12417,7 +13558,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -12431,7 +13572,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -12445,7 +13586,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -12459,7 +13600,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -12473,7 +13614,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -12487,7 +13628,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -12501,7 +13642,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -12515,7 +13656,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -12529,7 +13670,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -12916,6 +14057,265 @@
       "height": 24
     },
     {
+      "file": "sprites/resources/wheat.png",
+      "x": 282,
+      "y": 68,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 282,
+      "y": 90,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 282,
+      "y": 112,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 282,
+      "y": 134,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 282,
+      "y": 156,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 282,
+      "y": 178,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 92,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 99,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 106,
+      "y": 103,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 71,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 81,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 123,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 115,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 37,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 47,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 57,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 95,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 105,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 133,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 143,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 153,
+      "y": 127,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 61,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 68,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 75,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 82,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 109,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 116,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 123,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 130,
+      "y": 139,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 85,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 95,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 105,
+      "y": 151,
+      "width": 10,
+      "height": 10
+    },
+    {
       "file": "sprites/buildings/library.png",
       "x": 516,
       "y": 183,
@@ -12930,7 +14330,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 11,
       "y": 256,
       "width": 10,
@@ -12944,7 +14344,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 54,
       "y": 256,
       "width": 10,
@@ -12958,7 +14358,7 @@
       "height": 30
     },
     {
-      "file": "sprites/resources/grassland-shield.png",
+      "file": "interface/economy/production.png",
       "x": 97,
       "y": 256,
       "width": 10,
@@ -12972,7 +14372,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 306,
       "width": 12,
@@ -12986,7 +14386,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 318,
       "width": 12,
@@ -13000,7 +14400,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 330,
       "width": 12,
@@ -13014,7 +14414,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 342,
       "width": 12,
@@ -13028,7 +14428,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 354,
       "width": 12,
@@ -13042,7 +14442,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 366,
       "width": 12,
@@ -13056,7 +14456,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 378,
       "width": 12,
@@ -13070,7 +14470,7 @@
       "height": 10
     },
     {
-      "file": "sprites/resources/gold.png",
+      "file": "interface/economy/gold.png",
       "x": 154,
       "y": 390,
       "width": 12,
@@ -13096,6 +14496,20 @@
       "y": 234,
       "width": 48,
       "height": 36
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 521,
+      "y": 169,
+      "width": 22,
+      "height": 22
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 521,
+      "y": 363,
+      "width": 22,
+      "height": 22
     }
   ]
 }

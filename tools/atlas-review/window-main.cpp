@@ -268,7 +268,7 @@ struct SpaceshipWindow {
 static_assert(offsetof(SpaceshipWindow, backing) == 0, "Source offset backing");
 
 struct {
-    int size = 12, owner = 1, food_box = 79, shield_box = 53;
+    int x = 40, y = 40, size = 12, owner = 1, food_box = 79, shield_box = 53;
     signed char building = -12;
 } cities[1];
 
@@ -289,6 +289,14 @@ struct {
 struct {
     int specialist_count = 2, food_box_rows = 10, shield_rows = 10, happy_count = 4, unhappy_count = 2,
         angry_count = 0, settler_food_cost = 1;
+
+    union {
+        int tile_yields[3]{};
+
+        struct {
+            int tile_food, tile_shields, tile_trade;
+        };
+    };
 } city_calc;
 
 struct {
@@ -308,7 +316,7 @@ struct {
 } tax_rate_icon_sprites_block;
 
 struct {
-    Sprite small_resource_icon_sprites, small_shield_icon_sprite;
+    Sprite small_resource_icon_sprites, small_shield_icon_sprite, small_trade_icon_sprite;
 } small_resource_icon_sprites_block;
 
 Sprite small_unhappy_icon_sprite, unhappy_suppressed_icon_sprite;
@@ -399,6 +407,27 @@ bool bugfix_ui() {
 
 constexpr int X_CITY_ATTITUDE = 23;
 constexpr int X_SUPPORT_LIST = 11, X_SUPPORT_SORT = 16;
+#include "window-yield-tables.inc"
+
+struct {
+    i8 city_tile_dx_table[48], city_tile_dy_table[48];
+} dir_dy_table_block;
+
+struct YieldFixture {
+    int worked, amount[3];
+} yieldFixture[21];
+
+int map_wrap_x(int x) {
+    return (x + 128) % 128;
+}
+
+int city_tile_worked(int, int n) {
+    return yieldFixture[n].worked;
+}
+
+void city_calc_tile_yields(int, int n, int) {
+    std::copy(yieldFixture[n].amount, yieldFixture[n].amount + 3, city_calc.tile_yields);
+}
 struct CityWindow;
 
 void extras_draw_supported_units(CityWindow*, int) {
@@ -480,6 +509,7 @@ struct CityWindow {
     int draw_citizen_row(int, int, i32, int, int, int);
     void draw_citizens(int, i32);
     void draw_food_box(int);
+    void draw_resource_yields(int, int, int, int, int);
     void draw_production(int);
     void draw_all(i32);
     void draw_info_panel(int);
@@ -499,6 +529,7 @@ struct CityWindow {
 
     void draw_resource_map(int) {
         panel("adapter-resource-map", (iptr)&resource_map_rect);
+        draw_resource_yields(48, 24, 12, resource_map_rect + 77, resource_map_rect_top + 59);
     }
 
     void draw_button_area(int) {
@@ -627,6 +658,27 @@ int main(int argc, char** argv) {
                 war_icon_sprite_block.shield_icon_sprite;
             small_resource_icon_sprites_block.small_shield_icon_sprite.w = 10;
             small_resource_icon_sprites_block.small_shield_icon_sprite.h = 10;
+            std::memcpy(dir_dy_table_block.city_tile_dx_table, dir_dy_table_block_init + 16, 48);
+            std::memcpy(dir_dy_table_block.city_tile_dy_table, dir_dy_table_block_init + 64, 48);
+            for (int i = 0; i < 21; i++) {
+                auto& f = yieldFixture[i];
+                in >> f.worked >> f.amount[0] >> f.amount[1] >> f.amount[2];
+                if (!in || f.worked < 0 || f.worked > 1)
+                    throw std::runtime_error("Worked-tile fixture required");
+                for (int a : f.amount)
+                    if (a < 0 || a > 6)
+                        throw std::runtime_error("Yield fixture domain");
+            }
+            Sprite* small[] = {&small_resource_icon_sprites_block.small_resource_icon_sprites,
+                               &small_resource_icon_sprites_block.small_shield_icon_sprite,
+                               &small_resource_icon_sprites_block.small_trade_icon_sprite};
+            for (int i = 0; i < 3; i++) {
+                small[i]->id = 11 + i;
+                small[i]->w = 10;
+                small[i]->h = 10;
+            }
+            small_unhappy_icon_sprite.id = 14;
+            small_unhappy_icon_sprite.w = small_unhappy_icon_sprite.h = 10;
             v.layout_rects();
             v.draw_all(0);
             output(mode, 636, 421);

@@ -22,6 +22,12 @@ compatibility frames and mockups resize and composite those crops deliberately.
 Functional graphics are authored SVG geometry with corresponding PNG renders.
 The seven components in `interface/windows/` are authored in `windows.cjs`;
 window composites reuse retained portraits, backgrounds, units and module art.
+Five `interface/economy/` symbols are original SVG geometry from
+`economy.cjs`; food retains the existing painted `sprites/resources/wheat.png`. `docs/screenshots/city.png` was visually inspected to verify
+semantic roles; none of its pixels or shapes were traced or reused.
+The real-save maps import gameplay data from `he_a1788.sav` and numeric rule
+fields, with hashes retained in the fixture. No save file, original rules file
+or image input is included; the renderer still comes from this repository.
 The spacecraft truss/attachment drawing is new vector geometry. No source-game
 window screenshot or resource bitmap was used as a pixel input.
 The retained SVGs are editable sources. `tools/atlas-review/art.cjs` defines the

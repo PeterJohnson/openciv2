@@ -2002,7 +2002,7 @@
       "file": "compatibility/resource/shield.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/resources/grassland-shield.png"
+      "source": "interface/economy/production.png"
     },
     "fog/full": {
       "file": "compatibility/fog/full.png",

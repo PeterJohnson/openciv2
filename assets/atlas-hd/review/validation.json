@@ -2,13 +2,13 @@
   "status": "pass",
   "checks": [
     {
-      "name": "Source hashes and 41 unchanged extracted function bodies",
-      "count": 41,
+      "name": "Source hashes and 45 unchanged extracted function bodies",
+      "count": 45,
       "status": "pass"
     },
     {
-      "name": "Window source hashes and 23 unchanged extracted function bodies",
-      "count": 23,
+      "name": "Window source hashes and 24 unchanged extracted function bodies",
+      "count": 24,
       "status": "pass"
     },
     {
@@ -18,12 +18,12 @@
     },
     {
       "name": "Saved scene traces equal fresh Debug and Release output",
-      "count": 18,
+      "count": 21,
       "status": "pass"
     },
     {
       "name": "Detailed map object commands preserve native sprite size, placement and selection",
-      "count": 19,
+      "count": 79,
       "status": "pass"
     },
     {
@@ -32,8 +32,18 @@
       "status": "pass"
     },
     {
+      "name": "All six economy roles and exact native 10px worked-tile yield counts",
+      "count": 2,
+      "status": "pass"
+    },
+    {
+      "name": "Real-save dimensions, live records, source hashes and all-tile native resource checks in both builds",
+      "count": 9000,
+      "status": "pass"
+    },
+    {
       "name": "Canonical asset paths, recorded hashes and master references",
-      "count": 2212,
+      "count": 2217,
       "status": "pass"
     },
     {
@@ -53,7 +63,7 @@
     },
     {
       "name": "Three-stage review image dimensions",
-      "count": 57,
+      "count": 66,
       "status": "pass"
     },
     {

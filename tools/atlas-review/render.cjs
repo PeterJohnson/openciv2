@@ -98,7 +98,7 @@ async function baseline(trace, scene, bindings, {density = 1, native = true, tra
 
 function lookup(w) {
     const m = new Map(w.tiles.map(t => [t.x + ',' + t.y, t]));
-    return (x, y) => m.get(x + ',' + y);
+    return (x, y) => m.get((w.wrap ? (x % w.width + w.width) % w.width : x) + ',' + y);
 }
 
 function topology(get, t, viewer = 1) {
@@ -247,6 +247,10 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
                 await draw('improvement/fortress', t, tw * .60, tw * .45);
             if ((f & 66) === 66)
                 await draw('improvement/airbase', t, tw * .75, tw * .56);
+            if (terrain === 2 && t.s)
+                await draw('resource/shield', t, tw, tw / 2);
+            if (t.h)
+                await draw('improvement/village', t, tw * .50, tw * .30);
             if (t.r)
                 await draw('resource/' + (terrain * 2 + t.r - 1), t, tw * .50, tw * .25, -tw * .10);
         }

@@ -266,7 +266,12 @@ For a later independently scoped layout pass, replace the three hard size jumps
 with logical minimum sizes, allow the improvements list to gain rows on taller
 windows, and page or wrap crowded citizens with an explicit total. Do not shrink
 all citizens and unit sprites to force a fit. Keep the worked-tile map's exact
-21-cell picking geometry. The present preview retains the native citizen row,
+21-cell picking geometry. Use a shared semantic symbol bank: food sheaf,
+production shield, trade arrows, gold coin, luxury gem and science beaker.
+Terrain specials (grain/shield, gold ore) must not substitute for economy roles.
+Keep silhouette and color consistent between summary rows, stockpiles, upkeep,
+sale actions and the small worked-tile food/shield/trade overlays. Density-only
+support changes raster detail, not which symbol or logical rectangle is used. The present preview retains the native citizen row,
 so population-28 overlap remains visible as a documented follow-up rather than
 being silently hidden by smaller sprites. Happiness/support modes and actual
 button/click handlers still need runtime integration checks.

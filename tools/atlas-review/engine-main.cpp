@@ -2,6 +2,10 @@
 #include "engine-tables.inc"
 #include "engine-bodies.inc"
 
+namespace save_native {
+#include "save-bodies.inc"
+}
+
 void initialize() {
 #define TABLE(n) std::memcpy(&n, n##_init, sizeof(n##_init) - 1)
     TABLE(diag_neighbor_bits_block);
@@ -187,9 +191,9 @@ int main(int argc, char** argv) {
             v.field_304 = 0;
             int x, y, t, flags, known, visible, res, hut, city, unit, shield;
             while (in >> x >> y >> t >> flags >> known >> visible >> res >> hut >> city >> unit >> shield) {
-                if (!map_in_bounds(x, y) || (t & 15) > 10 || t < 0 || t > 138 || flags < 0 || flags > 255 ||
-                    known < 0 || known > 255 || res < 0 || res > 2 || city < -1 || city >= 16 || unit < -1 ||
-                    unit >= 64)
+                if (!map_in_bounds(x, y) || (t & 15) > 10 || t < 0 || t > 255 || flags < 0 || flags > 255 ||
+                    known < 0 || known > 255 || res < 0 || res > 2 || city < -1 || city >= 256 || unit < -1 ||
+                    unit >= 2048)
                     throw std::runtime_error("Tile fixture domain");
                 auto& a = fixture_tile(x, y);
                 a.raw[0] = u8(t);
@@ -210,8 +214,97 @@ int main(int argc, char** argv) {
                 if (unit >= 0) {
                     units[unit].x = x;
                     units[unit].y = y;
-                    units[unit].type = unit;
+                    units[unit].type = unit % 64;
                 }
+            }
+            if (!in.eof()) {
+                in.clear();
+                std::string tag;
+                while (in >> tag) {
+                    int n, a;
+                    if (tag == "STATE") {
+                        savedGame = true;
+                        in >> map.seed >> game.rules >> game.difficulty >> game.human_players >>
+                            human_civ[0] >> game.active_unit;
+                        if (map.seed < 0 || map.seed > 65535 || human_civ[0] < 0 || human_civ[0] > 7)
+                            throw std::runtime_error("Saved state domain");
+                        game.reveal_map = 1;
+                        std::memset(improvements, 0, sizeof(improvements));
+                    } else if (tag == "TYPE") {
+                        in >> n;
+                        if (n < 0 || n >= 64)
+                            throw std::runtime_error("Unit type index");
+                        in >> unit_types[n].domain >> unit_types[n].hit_points;
+                        if (unit_types[n].domain < 0 || unit_types[n].domain > 2 ||
+                            unit_types[n].hit_points < 1 || unit_types[n].hit_points > 127)
+                            throw std::runtime_error("Unit type fields");
+                    } else if (tag == "CIV") {
+                        in >> n;
+                        if (n < 0 || n >= 8)
+                            throw std::runtime_error("Civ index");
+                        in >> civs[n].tribe;
+                        if (civs[n].tribe < 0 || civs[n].tribe >= 32)
+                            throw std::runtime_error("Tribe index");
+                        in >> leaders[civs[n].tribe].city_style >> civ_names[n].city_style;
+                        for (auto& b : civs[n].advances) {
+                            in >> a;
+                            b = u8(a);
+                        }
+                    } else if (tag == "CITY") {
+                        in >> n;
+                        if (n < 0 || n >= 256)
+                            throw std::runtime_error("City index");
+                        auto& c = cities[n];
+                        unsigned int flags;
+                        in >> c.x >> c.y >> c.owner >> c.size >> flags >> c.known_to;
+                        c.flags = int(flags);
+                        if (!map_in_bounds(c.x, c.y) || c.owner < 0 || c.owner > 7 || c.size < 1 ||
+                            c.size > 127)
+                            throw std::runtime_error("City fields");
+                        for (auto& b : c.revealed_size) {
+                            in >> a;
+                            b = char(a);
+                        }
+                        for (int k = 0; k < 5; k++) {
+                            in >> a;
+                            for (int bit = 0; bit < 8; bit++)
+                                improvements[n][k * 8 + bit] = (a >> bit) & 1;
+                        }
+                    } else if (tag == "UNIT") {
+                        in >> n;
+                        if (n < 0 || n >= 2048)
+                            throw std::runtime_error("Unit index");
+                        auto& u = units[n];
+                        in >> u.x >> u.y >> u.type >> u.owner >> u.flags >> u.visibility >> u.damage >>
+                            u.orders >> u.prev_in_stack >> u.next_in_stack >> u.ai_task;
+                        if (!map_in_bounds(u.x, u.y) || u.type < 0 || u.type >= 64 || u.owner < 0 ||
+                            u.owner > 7 || u.prev_in_stack < -1 || u.prev_in_stack >= 2048 ||
+                            u.next_in_stack < -1 || u.next_in_stack >= 2048)
+                            throw std::runtime_error("Unit fields");
+                    } else if (tag == "WONDER") {
+                        in >> n;
+                        if (n < 0 || n >= 28)
+                            throw std::runtime_error("Wonder index");
+                        in >> game.wonder_city[n];
+                    } else if (tag == "OWNER") {
+                        in >> x >> y >> a;
+                        if (!map_in_bounds(x, y) || a < 0 || a > 15)
+                            throw std::runtime_error("Tile owner");
+                        fixture_tile(x, y).owner = a;
+                    } else
+                        throw std::runtime_error("Unknown metadata record");
+                    if (!in)
+                        throw std::runtime_error("Truncated metadata");
+                }
+            }
+            if (savedGame) {
+                for (int ty = 0; ty < map.height; ty++)
+                    for (int tx = ty & 1; tx < map.width; tx += 2) {
+                        auto& a = fixture_tile(tx, ty);
+                        if (a.resource != tile_resource(tx, ty) || a.hut != tile_has_hut(tx, ty) ||
+                            a.shield != int(tile_grassland_has_shield(tx, ty)))
+                            throw std::runtime_error("Importer/native resource mismatch");
+                    }
             }
             v.client_width = cols * v.tile_width_u;
             v.client_height = rows * v.half_tile_height_u;

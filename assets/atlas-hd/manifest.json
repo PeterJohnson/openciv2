@@ -52746,6 +52746,71 @@
       "height": 48,
       "sha256": "911ea3aff60352bad2cf80d05d2b37da7a0c9a1308fc80a214258b9438c2e673",
       "sourceSha256": "03bc51c861369b926698ccc93ae63578322d111da2e0612af178e32442dbc9bf"
+    },
+    {
+      "id": "economy.production",
+      "label": "production",
+      "description": "City economy production symbol; also used at native 10/14 logical pixels",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/production.png",
+      "vector": "interface/economy/production.svg",
+      "width": 256,
+      "height": 256,
+      "sha256": "4bc5f4d7cb1347aca8a42f999f605e21cc7bf54a7fb4561d562ff2cfffdda260",
+      "sourceSha256": "84ea5eec4901295693a7995619c4097bf1ce733b81ee97a5a750964a2856eb08"
+    },
+    {
+      "id": "economy.trade",
+      "label": "trade",
+      "description": "City economy trade symbol; also used at native 10/14 logical pixels",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/trade.png",
+      "vector": "interface/economy/trade.svg",
+      "width": 256,
+      "height": 256,
+      "sha256": "7408f9c2cdd75538837b000984859effb9fae1f2d29fa3ba0763b96edf96e699",
+      "sourceSha256": "ecc6ffdc9d0347a05de7459ea0cd4438b6eebf496027b3b1027e99aec7932f3e"
+    },
+    {
+      "id": "economy.gold",
+      "label": "gold",
+      "description": "City economy gold symbol; also used at native 10/14 logical pixels",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/gold.png",
+      "vector": "interface/economy/gold.svg",
+      "width": 256,
+      "height": 256,
+      "sha256": "bba6ce924bef0bb52d1054511c5de7419e2f84c44034a68a6ccc0ff9c6f110cc",
+      "sourceSha256": "47ff61f44c0a0bf9bcad5fbd562b96addd862aeae7986d1daa152ae122ea6bbb"
+    },
+    {
+      "id": "economy.luxury",
+      "label": "luxury",
+      "description": "City economy luxury symbol; also used at native 10/14 logical pixels",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/luxury.png",
+      "vector": "interface/economy/luxury.svg",
+      "width": 256,
+      "height": 256,
+      "sha256": "a81843f4ffc2f4084369504e22537d0c4618f91a54e36a5c9d0915640e911718",
+      "sourceSha256": "13e360a8050200aab91798d7828d62eee69653d699d7b6a0f23a73011bdb5538"
+    },
+    {
+      "id": "economy.science",
+      "label": "science",
+      "description": "City economy science symbol; also used at native 10/14 logical pixels",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/science.png",
+      "vector": "interface/economy/science.svg",
+      "width": 256,
+      "height": 256,
+      "sha256": "d2f31e9699b8624326216595e9c77a4481b9e7fa643660bdd99fd86f4c44b1a7",
+      "sourceSha256": "43d69572af2315410b936f6d8a97c45ee16aa2920ba494a7a74dfa6418f0589a"
     }
   ]
 }

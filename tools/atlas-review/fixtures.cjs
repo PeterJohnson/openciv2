@@ -87,7 +87,8 @@ function serialize(w, camera) {
     const {zoom = 8, ox = 26, oy = 30, cols = 10, rows = 20, viewer = 1, grid = 0} = camera;
     return [
         [ w.width, w.height, zoom, ox, oy, cols, rows, viewer, grid ].join(' '),
-        ...w.tiles.map(t => [t.x, t.y, t.t, t.f, t.k, t.v, t.r, t.h, t.c, t.u, t.s].join(' '))
+        ...w.tiles.map(t => [t.x, t.y, t.t, t.f, t.k, t.v, t.r, t.h, t.c, t.u, t.s].join(' ')),
+        ...(w.records || []), ...(w.records ? w.tiles.map(t => `OWNER ${t.x} ${t.y} ${t.owner}`) : [])
     ].join('\n') +
            '\n';
 }

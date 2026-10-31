@@ -163,7 +163,7 @@ async function buildBindings(traces) {
               e = entries.find(e => e.mapping?.terrainSpecialSlots?.includes(slot));
         await bitmap('resource/' + n, 64, 32, path.join(pack, e.file), .55);
     }
-    await bitmap('resource/shield', 64, 32, asset('resources.grassland-shield'), .45);
+    await bitmap('resource/shield', 64, 32, asset('economy.production'), .45);
     await save('fog/full',
                Buffer.from(svg(512, 256, '<path d="M256 0L512 128L256 256L0 128Z" fill="#0b1516"/>')));
     for (const name of ['grid', 'grid/radius'])

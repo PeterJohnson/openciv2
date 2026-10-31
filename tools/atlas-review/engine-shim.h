@@ -113,7 +113,7 @@ struct Unit {
         prev_in_stack = -1, next_in_stack = -1, ai_task = 0;
 };
 
-Unit unit_storage[65];
+Unit unit_storage[2049];
 Unit* units = unit_storage + 1;
 
 struct {
@@ -125,11 +125,12 @@ struct City {
     char revealed_size[8]{8, 8, 8, 8, 8, 8, 8, 8};
 };
 
-City cities[16];
+City cities[256];
 
 struct {
     char throne_room[12]{};
     int tribe = 0;
+    u8 advances[13]{};
 } civs[8];
 
 struct {
@@ -140,11 +141,21 @@ struct {
     char key = '-';
 } order_names[16];
 
+bool savedGame = false;
+
+namespace save_native {
+int tile_resource(int, int);
+int tile_has_hut(int, int);
+unsigned int tile_grassland_has_shield(int, int);
+int unit_stack_pick_display_unit(int);
+}
+
 int human_civ[1] = {1}, moving_units_mode = 0, map_show_hidden_terrain = 0, g_nr_seed = 17;
 
 struct Tile {
     u8 raw[2]{2, 0};
     u8 known = 0;
+    int owner = 15;
     int visible = 1, resource = 0, hut = 0, city = -1, unit = -1, shield = 0;
 };
 
@@ -201,8 +212,21 @@ int unit_is_selectable(int n) {
     return n >= 0 && units[n].x >= 0;
 }
 
-int unit_stack_pick_display_unit(int n) {
+int unit_stack_first(int n) {
+    for (int count = 0; n >= 0 && units[n].prev_in_stack >= 0; count++) {
+        if (count >= 2048)
+            throw std::runtime_error("Stack cycle");
+        n = units[n].prev_in_stack;
+    }
     return n;
+}
+
+int tile_is_ocean(int x, int y) {
+    return tile_terrain(x, y) == 10;
+}
+
+int unit_stack_pick_display_unit(int n) {
+    return savedGame ? save_native::unit_stack_pick_display_unit(n) : n;
 }
 
 int tile_unit_owner(int x, int y) {
@@ -211,23 +235,24 @@ int tile_unit_owner(int x, int y) {
 }
 
 int tile_owner(int x, int y) {
-    return tile_unit_owner(x, y);
+    return savedGame ? (fixture_tile(x, y).owner == 15 ? -1 : fixture_tile(x, y).owner)
+                     : tile_unit_owner(x, y);
 }
 
 int tile_airbase_owner(int x, int y) {
-    return (tile_improvements(x, y) & 0x42) == 0x42 ? 1 : -1;
+    return (tile_improvements(x, y) & 0x42) == 0x42 ? (savedGame ? tile_owner(x, y) : 1) : -1;
 }
 
 int tile_resource(int x, int y) {
-    return fixture_tile(x, y).resource;
+    return savedGame ? save_native::tile_resource(x, y) : fixture_tile(x, y).resource;
 }
 
 int tile_has_hut(int x, int y) {
-    return fixture_tile(x, y).hut;
+    return savedGame ? save_native::tile_has_hut(x, y) : fixture_tile(x, y).hut;
 }
 
 int tile_grassland_has_shield(int x, int y) {
-    return fixture_tile(x, y).shield;
+    return savedGame ? save_native::tile_grassland_has_shield(x, y) : fixture_tile(x, y).shield;
 }
 
 int dist_from_deltas(int x, int y) {
@@ -238,19 +263,22 @@ int map_distance_diag(int x, int y, int a, int b) {
     return (std::abs(x - a) + std::abs(y - b)) / 2;
 }
 
-bool improvements[16][40]{};
+bool improvements[256][40]{};
 
 int city_has_improvement(int c, int i) {
     return improvements[c][i];
 }
 
-int civ_has_wonder(int, int) {
-    return 0;
+int civ_has_wonder(int c, int w) {
+    int city = game.wonder_city[w];
+    return savedGame && city >= 0 && city < 256 && cities[city].owner == c;
 }
 
 int artEra = 1;
 
-int civ_has_advance(int, int tech) {
+int civ_has_advance(int c, int tech) {
+    if (savedGame)
+        return (civs[c].advances[tech / 8] >> (tech & 7)) & 1;
     return (tech == ADV_INDUSTRIALIZATION && artEra >= 2) ||
            ((tech == ADV_AUTOMOBILE || tech == ADV_ELECTRONICS) && artEra >= 3);
 }

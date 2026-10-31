@@ -1,13 +1,13 @@
 # Standalone renderer audit
 
 The source is **this repository**, `richardpenman-civ2`, at `bd89036`; no renderer
-from the sibling `C:\Projects\civ2` project is used. The latter was only the
-agent's scratch workspace. [Extraction metadata](review/engine-extraction.json)
+from the sibling `C:\Projects\civ2` project is used. The latter supplies only scratch storage and the read-only gameplay save/rules
+inputs; none of its renderer code is used. [Extraction metadata](review/engine-extraction.json)
 pins the source file hashes, function names, source line numbers and body hashes.
 
 ## What is compiled
 
-`tools/atlas-review/extract-engine.py` extracts 41 complete function bodies
+`tools/atlas-review/extract-engine.py` extracts 45 complete function bodies
 without rewriting them, apart from LF normalization and added `#line` mappings.
 It also copies seven named table initializers plus the city wonder-slot pool.
 The result compiles as MSVC x86 in Debug and Release. The extraction is performed
@@ -111,7 +111,7 @@ source conditions.
   Release command traces;
 - fresh Debug/Release equality for every saved main scene trace;
 - canonical paths, hashes and master references, all 5,173 inventory replacement
-  references, 404 PNG compatibility bindings and all 57 three-stage images;
+  references, 404 PNG compatibility bindings and all 66 three-stage images;
 - direction conversion and focused proposed-renderer visibility isolation.
 
 These are finite renderer/asset checks. They do not establish all possible unit
@@ -122,9 +122,9 @@ wrapped maps, ownership/visibility transitions and resource-loader completeness.
 
 ## Window renderer extension
 
-`extract-windows.py` runs the map/scene extractor and adds **23 unchanged bodies**
+`extract-windows.py` runs the map/scene extractor and adds **24 unchanged bodies**
 to a second MSVC x86 executable, `atlas-windows.exe`. Together the executables
-compile 64 source bodies. [Window extraction metadata](review/window-extraction.json)
+compile 69 source bodies. [Window extraction metadata](review/window-extraction.json)
 pins their actual source paths, lines and hashes. There is no dependency on the
 sibling project's renderer.
 
@@ -132,7 +132,7 @@ sibling project's renderer.
 | --- | --- | --- |
 | Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data and text shaping are supplied. No AVI herald or diplomacy decision-dialog execution. |
 | Spacecraft | `render_ship_init_rows`, `render_ship_load_surfaces`, `render_ship_draw_part`, `render_ship` in `src/game/bigframes.cpp:587–1563` | All 88 source rows, count thresholds, filled/empty resource choices and layer order execute. The 457×304 framebuffer at `(175,99)` is flattened for PNG output. Palette, lifetime, title, stats text and controls are drawing adapters. Stats are declared fixture values, not a spaceship simulation. |
-| City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Map/yield panel, units-present details, controls, window chrome and font metrics are marked adapters. Other info modes throw rather than invent a result. |
+| City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_resource_yields`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Map terrain and economy totals panel, units-present details, controls, window chrome and font metrics are marked adapters. Other info modes throw rather than invent a result. |
 | Spacing | `ui_calc_item_spacing` in `src/auto/window.cpp:4031` and `sprite_draw_spaced_row` in `src/auto/graphics.cpp:2710` | Real overlap, fit and remainder arithmetic for citizens and stockpile icons; the new backend supplies sprite pixels. |
 
 The diplomacy source uses government resources `200 + government`, military
@@ -154,9 +154,11 @@ part counts stay explicit; gameplay limits and launch rules are not changed.
 
 The city adapter's 21 ordered tile positions follow
 `src/data/gamedata.cpp:1736–1737` and `draw_resource_map`/`draw_resource_tiles`.
-Its yield values and unit-present detail panel are supplied presentation data.
-They are not claimed as execution of the full city recalculation or those panel
-bodies. The native list and stockpile functions do execute, including compressed
+Its worked flags and food/shield/trade values are supplied fixture data, read
+from the fixture file. The unchanged `draw_resource_yields` body draws their
+10×10 icons with native centering and overlap. Its direction and display tables
+are extracted from `gamedata.cpp`. Full city yield recalculation, economy summary
+rows and the units-present detail panel remain adapters. The native list and stockpile functions do execute, including compressed
 icon spacing at population 28. Optional extras and interactive hit testing are
 outside this fixture. A full game build remains the future integration test.
 
@@ -176,3 +178,50 @@ still change; overview markers below 48 pixels remain an explicit LOD policy.
 The tactical 64-pixel and close/district 128-pixel scenes exercise this contract.
 Fresh Debug/Release object traces and matching visible sprite rectangles are
 checked by `verify.cjs` and saved beside the other traces.
+
+## Semantic economy binding audit
+
+`docs/screenshots/city.png` was inspected for meaning and presentation only; it
+is never composited or sampled. `src/auto/graphics.cpp:854–895` defines separate
+14×14 resource and rate symbols and a contiguous 10×10 food/shield/trade bank.
+`src/auto/city.cpp:12821–13419` uses separate food, shield, trade, coin and science
+rows; `14186` uses the coin in the improvement list. The prior review incorrectly
+bound several of these to the mixed grassland special or gold ore.
+
+`economy.cjs` authors five new SVG silhouettes and PNGs and retains the fuller
+painted wheat for food. Native food/production,
+supported-unit upkeep, improvement coins, economy rows and worked-tile overlays
+bind to the corresponding symbol. Proposed meters retain the same symbols.
+The fixture still supplies values; this correction does not claim city simulation
+or exact reproduction of the screenshot's fonts, art or summary-row layout.
+
+## Real gameplay save boundary
+
+The map import is the actual `he_a1788.sav`, read from the local game's
+`midgame1` save directory, with numeric style/domain/hit-point data from its
+`RULES.TXT`. The files are read-only and are not distributed. The committed
+`saved-world.json` records input SHA-256 values, section offsets/hashes, source
+hashes and the complete imported map/records needed for replay. Units with zero
+IDs are free slots: 223 of 290 allocated records are live; all 69 cities are live.
+
+The parser follows this checkout's `tools/xdnet/savecmp.py`, `civ2types.h`,
+`save_read_game`, `save_read_units_cities` and `map_read`; support is deliberately
+limited to the observed version-44 normal-save layout. Cameras are selected
+deterministically for varied developed terrain. No tile or object is added to
+improve composition. All three stages explicitly use the same all-map view;
+fog is disabled for art inspection rather than represented as player knowledge.
+
+Four additional unchanged bodies run in the `save_native` namespace:
+`tile_resource`, `tile_has_hut`, `tile_grassland_has_shield` and
+`unit_stack_pick_display_unit`. Imported resource/hut/shield flags are checked
+against those source formulas over all 9,000 cells in Debug and Release. The
+adapter supplies validated stack links, tile owners, civ advances, city
+improvements and unit stats; source selection chooses city size/style/walls,
+top unit, health and stack badges. Proposal ground lookups wrap horizontally. The grassland production overlay
+uses the same shield silhouette; detailed proposed maps retain those markers
+and source-selected huts.
+
+This remains a render-state replay. Map labels, original palette colors, order
+glyphs, exact text metrics and interactive camera/gameplay execution remain
+backend/fixture limits. The data is diverse gameplay state, not a claim that the
+standalone program loads or runs the full game.

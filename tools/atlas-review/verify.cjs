@@ -2,6 +2,7 @@ const assert = require('node:assert/strict');
 const C = require('./common.cjs');
 const R = require('./render.cjs');
 const {windowEngine} = require('./windows.cjs');
+const E = require('./economy.cjs');
 
 async function main() {
     const results = [];
@@ -12,13 +13,13 @@ async function main() {
     const extraction = C.read(C.path.join(C.pack, 'review/engine-extraction.json'));
     for (const [file, hash] of Object.entries(extraction.sourceHashes))
         assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
-    assert.equal(extraction.functions.length, 41);
-    pass('Source hashes and 41 unchanged extracted function bodies', 41);
+    assert.equal(extraction.functions.length, 45);
+    pass('Source hashes and 45 unchanged extracted function bodies', 45);
     const windows = C.read(C.path.join(C.pack, 'review/window-extraction.json'));
-    assert.equal(windows.functions.length, 23);
+    assert.equal(windows.functions.length, 24);
     for (const [file, hash] of Object.entries(windows.sourceHashes))
         assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
-    pass('Window source hashes and 23 unchanged extracted function bodies', 23);
+    pass('Window source hashes and 24 unchanged extracted function bodies', 24);
     const file = C.path.join(C.pack, 'review/fixtures/close.txt'), debug = C.engine('audit', file, 'Debug'),
           release = C.engine('audit', file, 'Release');
     assert.deepEqual(debug, release);
@@ -71,7 +72,7 @@ async function main() {
               a = engine(s.mode, f, 'Debug'), b = engine(s.mode, f, 'Release');
         assert.deepEqual(a, b, s.id);
         assert.deepEqual(b, C.read(C.path.join(C.pack, `review/traces/${s.id}.json`)), s.id + ' saved trace');
-        if (s.mode === 'map')
+        if (s.mode === 'map' && !s.saveBased)
             assert(!b.commands.some(c => c.asset === 'unit/0'), 'Empty fixtures must not draw settlers');
         traced++;
     }
@@ -101,6 +102,47 @@ async function main() {
             }
     }
     pass('Window HD-only preserves every bound artwork rectangle', scenes.filter(s => s.windowEngine).length);
+    for (const s of scenes.filter(s => s.mode === 'city-window')) {
+        for (const stage of ['current', 'hd', 'proposed']) {
+            const ops = plans[s.id + '-' + stage];
+            for (const role of E.roles)
+                assert(ops.some(op => op.file === E.file(role)), s.id + stage + role);
+            assert(!ops.some(op => /sprites\/resources\/(grassland-shield|gold)\.png/.test(op.file)),
+                   'Production and coins must not use mixed grassland or gold-ore sprites');
+        }
+        const commands = C.read(C.path.join(C.pack, `review/traces/${s.id}.json`)).commands;
+        const start = commands.findIndex(c => c.asset === 'adapter-resource-map') + 1;
+        const end = commands.findIndex((c, i) => i >= start && c.asset === 'panel');
+        const yields = commands.slice(start, end);
+        const expected = [ 0, 0, 0 ];
+        for (const line of E.yieldFixture.trim().split('\n')) {
+            const [worked, ...amount] = line.split(' ').map(Number);
+            if (worked)
+                amount.forEach((n, i) => expected[i] += n);
+        }
+        for (let i = 0; i < 3; i++) {
+            const commands = yields.filter(c => c.asset === `icon/${11 + i}`);
+            assert.equal(commands.length, expected[i], s.id + ' native tile yield multiplicity');
+            assert(commands.every(c => c.width === 10 && c.height === 10));
+        }
+    }
+    pass('All six economy roles and exact native 10px worked-tile yield counts', 2);
+    const saved = C.read(C.path.join(C.pack, 'review/fixtures/saved-world.json'));
+    assert.equal(saved.tiles.length, saved.width / 2 * saved.height);
+    assert.equal(saved.provenance.year, 1788);
+    assert.equal(saved.cities.length, 69);
+    assert.equal(saved.units.length, 223);
+    assert.equal(saved.provenance.inputRecordCounts.units, 290);
+    assert.equal(new Set(saved.tiles.map(t => t.t & 15)).size, 11);
+    assert.equal(scenes.filter(s => s.saveBased).length, 3);
+    for (const [file, hash] of Object.entries(saved.provenance.sourceHashes))
+        assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
+    const lookup = R.lookup(saved);
+    assert.equal(lookup(-2, 10), lookup(saved.width - 2, 10),
+                 'Proposed ground wraps the saved cylindrical world');
+    pass(
+        'Real-save dimensions, live records, source hashes and all-tile native resource checks in both builds',
+        saved.tiles.length);
     const m = C.read(C.path.join(C.pack, 'manifest.json'));
     for (const e of m.entries) {
         assert(C.fs.existsSync(C.path.join(C.pack, e.file)), e.file);

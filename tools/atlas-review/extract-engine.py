@@ -53,5 +53,12 @@ for filename,names in {'mapview':['diag_neighbor_bits_block'],'ai':['dir_dx_tabl
   headers.append(declaration)
 (OUT/'engine-structures.inc').write_text('#pragma pack(push,1)\n'+'\n'.join(headers)+'\n#pragma pack(pop)\n',encoding='utf8',newline='\n')
 files['src/data/gamedata.cpp']=hashlib.sha256((ROOT/'src/data/gamedata.cpp').read_bytes()).hexdigest()
+saveparts=[]
+for file,names in {'src/auto/map.cpp':['tile_resource','tile_has_hut','tile_grassland_has_shield'],'src/auto/unit.cpp':['unit_stack_pick_display_unit']}.items():
+ raw=(ROOT/file).read_bytes();files[file]=hashlib.sha256(raw).hexdigest();text=raw.decode('utf8').replace('\r\n','\n')
+ for name in names:
+  body,line=extract(text,name);saveparts.append(f'#line {line} "{file}"\n{body}\n')
+  functions.append(dict(name=name,file=file,line=line,namespace='save_native',sha256=hashlib.sha256(body.encode()).hexdigest()))
+(OUT/'save-bodies.inc').write_text('\n'.join(saveparts),encoding='utf8',newline='\n')
 (OUT/'extraction.json').write_text(json.dumps(dict(repository='richardpenman-civ2',functions=functions,tables=tablemeta,sourceHashes=files,bodyPolicy='unchanged text, LF normalized, with #line source mapping'),indent=2)+'\n',newline='\n')
 print(f'Extracted {len(functions)} unchanged function bodies and {len(tables)} table initializers')

@@ -86,6 +86,12 @@
       "sha256": "d7c433a24ff563c9a91d554ce0f046c2ede1180b7343588ffd6880c4a47c4e90"
     },
     {
+      "name": "CityWindow::draw_resource_yields",
+      "file": "src/auto/city.cpp",
+      "line": 12599,
+      "sha256": "078036a55840dc411c9f2a393d11266561dbb43d499db5e6824b294b84caaa2d"
+    },
+    {
       "name": "CityWindow::draw_food_box",
       "file": "src/auto/city.cpp",
       "line": 13549,
@@ -145,7 +151,8 @@
     "src/auto/diplomacy.cpp": "63b7df3dcdaccd7f72e01d6525d4bc23e2292b516c2fa22c41ecffa0bb3ac1af",
     "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
     "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
-    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69"
+    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e"
   },
   "bodyPolicy": "unchanged text, LF normalized, with #line source mapping"
 }

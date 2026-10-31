@@ -1,4 +1,5 @@
 const C = require('./common.cjs');
+const E = require('./economy.cjs');
 const {spawnSync} = require('node:child_process');
 const {fs, path, pack, sharp, svg, raw, clear, blit, png, fit} = C;
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
@@ -336,8 +337,6 @@ async function resourceMap(p, x, y) {
         await p.image(bindings['terrain/' + (i % 7 === 0 ? 4 : 2)].file, px, py, 48, 24, {contain : false});
         if (i === 10)
             await p.image(bindings['city/14'].file, px, py - 12, 48, 36, {contain : false});
-        else if (i % 3 === 0)
-            await p.text('2', px + 13, py + 4, 16, 8, '#eff0bd', 'middle');
     }
 }
 
@@ -382,29 +381,28 @@ async function city(trace, scene, proposed, density) {
                 await p.image(citizenFile(id), x, y, w, h);
             else if (id >= 200)
                 await p.image(`sprites/buildings/${buildingFiles[id - 201] || 'library'}.png`, x, y, w, h);
-            else if (id === 3)
-                await p.image('sprites/resources/gold.png', x, y, w, h);
-            else if (!proposed || w <= 10)
-                await p.image(id === 1 ? 'sprites/resources/wheat.png'
-                                       : 'sprites/resources/grassland-shield.png',
-                              x, y, w, h);
+            else if (E.nativeRoles[id] && (!proposed || id >= 3 || w <= 10))
+                await p.image(E.file(E.nativeRoles[id]), x, y, w, h,
+                              {contain : E.nativeRoles[id] !== 'food' ? false : true});
+            else if (id === 14)
+                await p.image(citizenFile(104), x, y, w, h);
         } else if (c.asset === 'adapter-resource-map') {
             await p.box(x, y, w, h, '#1b332ccc', '#6b816b');
             await resourceMap(p, x, y);
             await p.text('City resources', x + 7, y + 121, 188, 11, '#e9d9aa', 'middle');
             const labels = [ 'Food', 'Shields', 'Trade', 'Taxes', 'Luxury', 'Science' ];
+            const roles = [ 'food', 'production', 'trade', 'gold', 'luxury', 'science' ];
             const amounts = [ '28  +4', '16  +12', '24', '10', '4', '10' ];
             for (let i = 0; i < 6; i++) {
                 await p.text(labels[i], x + 213, y + 7 + i * 22, 92, 11);
                 if (proposed) {
+                    await p.image(E.file(roles[i]), x + 282, y + 7 + i * 22, 14, 14, {contain : false});
                     await p.box(x + 299, y + 10 + i * 22, 68, 7, '#132e28', '#506b58');
                     await p.box(x + 299, y + 10 + i * 22, [ 61, 43, 52, 33, 14, 33 ][i], 7,
                                 i === 0 ? '#a9bc7a' : '#9ab9a9', '#9ab9a9');
                 } else
                     for (let j = 0; j < [ 9, 7, 8, 5, 2, 5 ][i]; j++)
-                        await p.image(i === 0 ? 'sprites/resources/wheat.png'
-                                              : 'sprites/resources/grassland-shield.png',
-                                      x + 297 + j * 9, y + 7 + i * 22, 13, 13);
+                        await p.image(E.file(roles[i]), x + 297 + j * 9, y + 7 + i * 22, 13, 13);
                 await p.text(amounts[i], x + 379, y + 7 + i * 22, 55, 11);
             }
         } else if (c.asset === 'adapter-supported') {
@@ -440,6 +438,8 @@ async function city(trace, scene, proposed, density) {
     }
     if (proposed) {
         const food = scene.food, capacity = (scene.population + 1) * 10, shields = scene.shields;
+        await p.image(E.file('food'), 521, 169, 22, 22);
+        await p.image(E.file('production'), 521, 363, 22, 22, {contain : false});
         await p.text(`${food} / ${capacity} food`, 449, 41, 174, 14, '#d7e3b7', 'middle');
         await p.box(451, 73, 167, 18, '#132c25', '#8da578', 3);
         await p.box(453, 75, Math.max(2, 163 * food / capacity), 14, '#a7bb7d', '#a7bb7d', 2);
@@ -501,6 +501,7 @@ const sceneDefs = [
 
 async function buildWindows() {
     await windowAssets();
+    await E.build();
     C.json(path.join(pack, 'space-layout.json'), shipLayout());
     const scenes =
         C.read(path.join(pack, 'review/scenes.json')).filter(s => !sceneDefs.some(d => d.id === s.id));
@@ -512,7 +513,7 @@ async function buildWindows() {
             windowEngine : true,
             source : sources[def.mode]
         };
-        C.write(path.join(pack, s.fixture), s.fixtureText);
+        C.write(path.join(pack, s.fixture), s.fixtureText + (s.mode === 'city-window' ? E.yieldFixture : ''));
         delete s.fixtureText;
         const trace = windowEngine(s.mode, path.join(pack, s.fixture));
         C.json(path.join(pack, `review/traces/${s.id}.json`), trace);
