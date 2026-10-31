@@ -340,6 +340,32 @@ material variation, not a simulation of flow direction, catchments or erosion.
 orders, width variation and hidden-state isolation in `review/river-validation.json`.
 The native source renderer and original-art replay remain unchanged.
 
+## Citizen sprite selection
+
+`gfx_load_people_sheet` (`src/auto/graphics.cpp:999-1044`) loads four 11-sprite
+rows at 27x30 pixels. `CityWindow::draw_citizen_row`
+(`src/auto/city.cpp:12165-12284`) indexes `era * 11`, with slots 0/1 happy,
+2/3 content, 4/5 unhappy, 6/7 angry and 8/9/10 specialist types 1/2/3.
+The ordinary `citizen_num & 1` alternation continues across mood groups. There
+is no equivalent gender toggle for specialists. The separate small happiness
+report uses one 11-sprite row; that report is outside the current window fixture.
+
+`civ_city_style_era` (`src/auto/civ.cpp:2907-2930`) returns 3 for Electronics
+and Automobile, otherwise 2 for Industrialization, otherwise 1 for Invention
+and Philosophy, otherwise 0. The standalone harness accepts the resulting era
+as explicit fixture state. Its original fixed era 2 default remains available.
+It does not execute technology research or infer era from the displayed year.
+
+`citizens.cjs` now maps all 44 native IDs to the retained paired/specialist
+portraits. The previous replacement backend discarded era and gender. The
+industrial normal fixture and modern crowded fixture preserve the same source
+selection in all four stages, including the ignored local original-art replay.
+Enhanced-only mood/profession badges draw after the full row, inside the same
+portrait frames, preventing later overlapping citizens from hiding earlier cues.
+[Citizen validation](review/citizen-validation.json) checks four source D/R
+traces, all 44 slots, continuous gender order across odd mood boundaries, all
+three specialists and six window variants.
+
 ## Enhanced city scale and visibility
 
 `city-panorama.cjs` consumes the unchanged `CityViewWindow` trace. It retains every

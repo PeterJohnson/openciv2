@@ -434,8 +434,11 @@ void extras_draw_supported_units(CityWindow*, int) {
     throw std::runtime_error("Unqualified extras list");
 }
 
+// Supplied renderer input; the game derives this value from civilization advances.
+int suppliedCityEra = 2;
+
 int civ_city_style_era(int) {
-    return 2;
+    return suppliedCityEra;
 }
 
 int city_specialist_type(int, int i) {
@@ -624,8 +627,8 @@ int main(int argc, char** argv) {
                 city_calc.unhappy_count >> city_calc.specialist_count;
             if (!in || cities[0].size < 1 || cities[0].size > 40 || cities[0].food_box < 0 ||
                 cities[0].food_box > (cities[0].size + 1) * 10 || cities[0].shield_box < 0 ||
-                cities[0].shield_box > 120 || city_calc.specialist_count < 0 || city_calc.happy_count < 0 ||
-                city_calc.unhappy_count < 0 ||
+                cities[0].shield_box > 120 || city_calc.specialist_count < 0 ||
+                city_calc.specialist_count > 3 || city_calc.happy_count < 0 || city_calc.unhappy_count < 0 ||
                 city_calc.happy_count + city_calc.unhappy_count + city_calc.specialist_count > cities[0].size)
                 throw std::runtime_error("City fixture domain");
             for (int i = 0; i < 44; i++) {
@@ -668,6 +671,14 @@ int main(int argc, char** argv) {
                 for (int a : f.amount)
                     if (a < 0 || a > 6)
                         throw std::runtime_error("Yield fixture domain");
+            }
+            // Optional explicit review state after the 21 worked-tile rows.
+            std::string option;
+            if (in >> option) {
+                if (option != "citizens" || !(in >> suppliedCityEra >> city_calc.angry_count) ||
+                    suppliedCityEra < 0 || suppliedCityEra > 3 || city_calc.angry_count < 0 ||
+                    city_calc.angry_count > city_calc.unhappy_count)
+                    throw std::runtime_error("Citizen era/mood fixture domain");
             }
             Sprite* small[] = {&small_resource_icon_sprites_block.small_resource_icon_sprites,
                                &small_resource_icon_sprites_block.small_shield_icon_sprite,

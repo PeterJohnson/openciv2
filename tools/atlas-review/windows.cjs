@@ -1,5 +1,6 @@
 const C = require('./common.cjs');
 const E = require('./economy.cjs');
+const Citizens = require('./citizens.cjs');
 const {spawnSync} = require('node:child_process');
 const {fs, path, pack, sharp, svg, raw, clear, blit, png, fit} = C;
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
@@ -340,19 +341,8 @@ async function resourceMap(p, x, y, original = null) {
     }
 }
 
-function citizenFile(id) {
-    const n = (id - 100) % 11, mood = n < 2     ? 'happy'
-                                      : n < 4   ? 'content'
-                                      : n < 6   ? 'unhappy'
-                                      : n < 8   ? 'angry'
-                                      : n === 8 ? 'entertainer'
-                                      : n === 9 ? 'tax-collector'
-                                                : 'scientist';
-    return `sprites/citizens/industrial-${mood}.png`;
-}
-
 async function city(trace, scene, proposed, density, original = null) {
-    const p = original?.painter || new Painter(636, 421, density);
+    const p = original?.painter || new Painter(636, 421, density), citizenCues = [];
     await p.image('backgrounds/parchment-native.png', 0, 0, 636, 421, {contain : false});
     await p.box(0, 0, 636, 421, proposed ? '#233c36ee' : '#2e413bdd', '#a28d60');
     for (const c of trace.commands) {
@@ -382,15 +372,17 @@ async function city(trace, scene, proposed, density, original = null) {
                               {contain : false, opacity : c.shade ? .28 : 1});
                 continue;
             }
-            if (id >= 100 && id < 144)
-                await p.image(citizenFile(id), x, y, w, h);
-            else if (id >= 200)
+            if (id >= 100 && id < 144) {
+                await Citizens.draw(p, id, x, y, w, h, false);
+                if (proposed)
+                    citizenCues.push({id, x, y, w, h});
+            } else if (id >= 200)
                 await p.image(`sprites/buildings/${buildingFiles[id - 201] || 'library'}.png`, x, y, w, h);
             else if (E.nativeRoles[id] && (!proposed || id >= 3 || w <= 10))
                 await p.image(E.file(E.nativeRoles[id]), x, y, w, h,
                               {contain : E.nativeRoles[id] !== 'food' ? false : true});
             else if (id === 14)
-                await p.image(citizenFile(104), x, y, w, h);
+                await p.image('sprites/citizens/industrial-unhappy.png', x, y, w, h);
         } else if (c.asset === 'adapter-resource-map') {
             await p.box(x, y, w, h, '#1b332ccc', '#6b816b');
             await resourceMap(p, x, y, original);
@@ -458,6 +450,10 @@ async function city(trace, scene, proposed, density, original = null) {
                      'middle');
         await p.text('Surplus +12 shields / turn', 449, 328, 174, 10, '#b6c9b9', 'middle');
     }
+    // Native overlap can cover a portrait's lower-right edge. Draw all cues
+    // after the entire row so later citizens cannot hide earlier mood markers.
+    for (const c of citizenCues)
+        await Citizens.badge(p, c.id, c.x, c.y, c.w, c.h);
     return {buffer : await p.finish(), ops : p.ops};
 }
 
@@ -488,7 +484,9 @@ const sceneDefs = [
         id : 'city-window',
         mode : 'city-window',
         title : 'City window · citizens, yields, production and improvements',
-        fixtureText : '12 79 53 4 2 2\n',
+        fixtureText : '12 79 53 3 3 3\n',
+        citizenEra : 2,
+        angry : 1,
         population : 12,
         food : 79,
         shields : 53
@@ -498,6 +496,8 @@ const sceneDefs = [
         mode : 'city-window',
         title : 'City window · crowded citizens and nearly full stockpiles',
         fixtureText : '28 260 107 10 6 3\n',
+        citizenEra : 3,
+        angry : 2,
         population : 28,
         food : 260,
         shields : 107
@@ -507,6 +507,7 @@ const sceneDefs = [
 async function buildWindows() {
     await windowAssets();
     await E.build();
+    await Citizens.buildAssets();
     C.json(path.join(pack, 'space-layout.json'), shipLayout());
     const scenes =
         C.read(path.join(pack, 'review/scenes.json')).filter(s => !sceneDefs.some(d => d.id === s.id));
@@ -518,7 +519,10 @@ async function buildWindows() {
             windowEngine : true,
             source : sources[def.mode]
         };
-        C.write(path.join(pack, s.fixture), s.fixtureText + (s.mode === 'city-window' ? E.yieldFixture : ''));
+        C.write(path.join(pack, s.fixture),
+                s.fixtureText + (s.mode === 'city-window'
+                                     ? E.yieldFixture + `citizens ${s.citizenEra} ${s.angry}\n`
+                                     : ''));
         delete s.fixtureText;
         const trace = windowEngine(s.mode, path.join(pack, s.fixture));
         C.json(path.join(pack, `review/traces/${s.id}.json`), trace);
@@ -541,6 +545,7 @@ async function buildWindows() {
     }
     C.json(path.join(pack, 'review/window-draw-plans.json'), plans);
     C.json(path.join(pack, 'review/scenes.json'), scenes);
+    await Citizens.review(module.exports);
     fs.copyFileSync(path.join(C.root, 'build/atlas-review/generated/window-extraction.json'),
                     path.join(pack, 'review/window-extraction.json'));
 }

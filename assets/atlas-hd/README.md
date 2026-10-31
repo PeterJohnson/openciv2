@@ -17,10 +17,11 @@ The graphics branch contains no game source or loader changes.
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
 | Interface assets | 503 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
+| Citizen mood/profession cues | 7 | Shape-distinct SVG/PNG badges for the enhanced city window |
 | City panorama wall assembly | 7 | Separate rear and foreground SVG/PNG curtain walls for the three city sites, plus a frontal painted gate |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,224 primary entries are indexed in [manifest.json](manifest.json).
+The 2,231 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -247,6 +248,37 @@ fixed curve endpoints, continuous water across adjoining masks in both draw
 orders, width variation and hidden-state isolation. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons.
+
+## Citizen eras, gender and readability
+
+[Compare all four stages for every citizen](review/citizens.html). The source
+loads four rows of 11 portraits. Each row contains male/female pairs for happy,
+content, unhappy and angry citizens, then entertainer, tax collector and scientist.
+Ordinary gender alternation continues across mood boundaries; specialist roles
+have a single portrait per era. Era follows technology, not the calendar:
+ancient by default; Invention plus Philosophy; Industrialization; Electronics plus
+Automobile (the last condition takes precedence).
+
+The replacement library already contains all 32 paired portraits and 12 era
+specialists. `windows.cjs` now retains the source sprite's era and pair index via
+[explicit bindings](interface/citizens/bindings.json), instead of collapsing them
+to one industrial portrait per mood. The normal window demonstrates the industrial
+set and all three specialists; the crowded window demonstrates the modern set.
+All four stages use the same selected fixture state.
+
+Only the enhanced variant adds small mood/profession badges within the existing
+citizen frames. Expressions and profession props remain visible; badge shapes
+supplement color. The badge pass follows the complete portrait row so crowding
+cannot paint over earlier indicators. Native and HD-only keep the source order,
+27x30 logical frames and overlap. No new portrait pixels or game source changes
+are introduced.
+
+`windows.cjs` rebuilds the windows, cues and era review. `citizens.cjs` alone
+refreshes the review and validates all 44 slots against Debug/Release traces,
+continuous gender alternation and the six replacement window variants. Optional
+fixture input `citizens <era 0..3> <angry count>` follows the 21 worked-tile rows;
+these values are supplied review state, not a technology simulation. Original
+review imagery stays in `review/original-local/` and is never packaged.
 
 ## Enhanced city panorama scale
 

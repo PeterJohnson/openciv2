@@ -1,0 +1,368 @@
+{
+  "source": [
+    "src/auto/city.cpp:12165-12284",
+    "src/auto/graphics.cpp:999-1044",
+    "src/auto/civ.cpp:2907-2930"
+  ],
+  "eraRequirements": [
+    "default",
+    "Invention AND Philosophy",
+    "Industrialization",
+    "Electronics AND Automobile"
+  ],
+  "ordinaryOrder": "Continuous man/woman alternation across mood groups; specialists use one role portrait per era.",
+  "bindings": [
+    {
+      "id": 100,
+      "era": "ancient",
+      "slot": 0,
+      "role": "happy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/ancient-happy-man.png"
+    },
+    {
+      "id": 101,
+      "era": "ancient",
+      "slot": 1,
+      "role": "happy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/ancient-happy-woman.png"
+    },
+    {
+      "id": 102,
+      "era": "ancient",
+      "slot": 2,
+      "role": "content",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/ancient-content-man.png"
+    },
+    {
+      "id": 103,
+      "era": "ancient",
+      "slot": 3,
+      "role": "content",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/ancient-content-woman.png"
+    },
+    {
+      "id": 104,
+      "era": "ancient",
+      "slot": 4,
+      "role": "unhappy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/ancient-unhappy-man.png"
+    },
+    {
+      "id": 105,
+      "era": "ancient",
+      "slot": 5,
+      "role": "unhappy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/ancient-unhappy-woman.png"
+    },
+    {
+      "id": 106,
+      "era": "ancient",
+      "slot": 6,
+      "role": "angry",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/ancient-angry-man.png"
+    },
+    {
+      "id": 107,
+      "era": "ancient",
+      "slot": 7,
+      "role": "angry",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/ancient-angry-woman.png"
+    },
+    {
+      "id": 108,
+      "era": "ancient",
+      "slot": 8,
+      "role": "entertainer",
+      "gender": null,
+      "file": "sprites/citizens/ancient-entertainer.png"
+    },
+    {
+      "id": 109,
+      "era": "ancient",
+      "slot": 9,
+      "role": "tax-collector",
+      "gender": null,
+      "file": "sprites/citizens/ancient-tax-collector.png"
+    },
+    {
+      "id": 110,
+      "era": "ancient",
+      "slot": 10,
+      "role": "scientist",
+      "gender": null,
+      "file": "sprites/citizens/ancient-scientist.png"
+    },
+    {
+      "id": 111,
+      "era": "medieval",
+      "slot": 0,
+      "role": "happy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/medieval-happy-man.png"
+    },
+    {
+      "id": 112,
+      "era": "medieval",
+      "slot": 1,
+      "role": "happy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/medieval-happy-woman.png"
+    },
+    {
+      "id": 113,
+      "era": "medieval",
+      "slot": 2,
+      "role": "content",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/medieval-content-man.png"
+    },
+    {
+      "id": 114,
+      "era": "medieval",
+      "slot": 3,
+      "role": "content",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/medieval-content-woman.png"
+    },
+    {
+      "id": 115,
+      "era": "medieval",
+      "slot": 4,
+      "role": "unhappy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/medieval-unhappy-man.png"
+    },
+    {
+      "id": 116,
+      "era": "medieval",
+      "slot": 5,
+      "role": "unhappy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/medieval-unhappy-woman.png"
+    },
+    {
+      "id": 117,
+      "era": "medieval",
+      "slot": 6,
+      "role": "angry",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/medieval-angry-man.png"
+    },
+    {
+      "id": 118,
+      "era": "medieval",
+      "slot": 7,
+      "role": "angry",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/medieval-angry-woman.png"
+    },
+    {
+      "id": 119,
+      "era": "medieval",
+      "slot": 8,
+      "role": "entertainer",
+      "gender": null,
+      "file": "sprites/citizens/medieval-entertainer.png"
+    },
+    {
+      "id": 120,
+      "era": "medieval",
+      "slot": 9,
+      "role": "tax-collector",
+      "gender": null,
+      "file": "sprites/citizens/medieval-tax-collector.png"
+    },
+    {
+      "id": 121,
+      "era": "medieval",
+      "slot": 10,
+      "role": "scientist",
+      "gender": null,
+      "file": "sprites/citizens/medieval-scientist.png"
+    },
+    {
+      "id": 122,
+      "era": "industrial",
+      "slot": 0,
+      "role": "happy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/industrial-happy-man.png"
+    },
+    {
+      "id": 123,
+      "era": "industrial",
+      "slot": 1,
+      "role": "happy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/industrial-happy-woman.png"
+    },
+    {
+      "id": 124,
+      "era": "industrial",
+      "slot": 2,
+      "role": "content",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/industrial-content-man.png"
+    },
+    {
+      "id": 125,
+      "era": "industrial",
+      "slot": 3,
+      "role": "content",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/industrial-content-woman.png"
+    },
+    {
+      "id": 126,
+      "era": "industrial",
+      "slot": 4,
+      "role": "unhappy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/industrial-unhappy-man.png"
+    },
+    {
+      "id": 127,
+      "era": "industrial",
+      "slot": 5,
+      "role": "unhappy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/industrial-unhappy-woman.png"
+    },
+    {
+      "id": 128,
+      "era": "industrial",
+      "slot": 6,
+      "role": "angry",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/industrial-angry-man.png"
+    },
+    {
+      "id": 129,
+      "era": "industrial",
+      "slot": 7,
+      "role": "angry",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/industrial-angry-woman.png"
+    },
+    {
+      "id": 130,
+      "era": "industrial",
+      "slot": 8,
+      "role": "entertainer",
+      "gender": null,
+      "file": "sprites/citizens/industrial-entertainer.png"
+    },
+    {
+      "id": 131,
+      "era": "industrial",
+      "slot": 9,
+      "role": "tax-collector",
+      "gender": null,
+      "file": "sprites/citizens/industrial-tax-collector.png"
+    },
+    {
+      "id": 132,
+      "era": "industrial",
+      "slot": 10,
+      "role": "scientist",
+      "gender": null,
+      "file": "sprites/citizens/industrial-scientist.png"
+    },
+    {
+      "id": 133,
+      "era": "modern",
+      "slot": 0,
+      "role": "happy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/modern-happy-man.png"
+    },
+    {
+      "id": 134,
+      "era": "modern",
+      "slot": 1,
+      "role": "happy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/modern-happy-woman.png"
+    },
+    {
+      "id": 135,
+      "era": "modern",
+      "slot": 2,
+      "role": "content",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/modern-content-man.png"
+    },
+    {
+      "id": 136,
+      "era": "modern",
+      "slot": 3,
+      "role": "content",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/modern-content-woman.png"
+    },
+    {
+      "id": 137,
+      "era": "modern",
+      "slot": 4,
+      "role": "unhappy",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/modern-unhappy-man.png"
+    },
+    {
+      "id": 138,
+      "era": "modern",
+      "slot": 5,
+      "role": "unhappy",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/modern-unhappy-woman.png"
+    },
+    {
+      "id": 139,
+      "era": "modern",
+      "slot": 6,
+      "role": "angry",
+      "gender": "man",
+      "file": "sprites/citizen-pairs/modern-angry-man.png"
+    },
+    {
+      "id": 140,
+      "era": "modern",
+      "slot": 7,
+      "role": "angry",
+      "gender": "woman",
+      "file": "sprites/citizen-pairs/modern-angry-woman.png"
+    },
+    {
+      "id": 141,
+      "era": "modern",
+      "slot": 8,
+      "role": "entertainer",
+      "gender": null,
+      "file": "sprites/citizens/modern-entertainer.png"
+    },
+    {
+      "id": 142,
+      "era": "modern",
+      "slot": 9,
+      "role": "tax-collector",
+      "gender": null,
+      "file": "sprites/citizens/modern-tax-collector.png"
+    },
+    {
+      "id": 143,
+      "era": "modern",
+      "slot": 10,
+      "role": "scientist",
+      "gender": null,
+      "file": "sprites/citizens/modern-scientist.png"
+    }
+  ]
+}

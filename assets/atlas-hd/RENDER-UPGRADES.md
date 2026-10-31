@@ -280,6 +280,14 @@ Scale image density and text rasterization independently from `view_scale`;
 update clipping and mouse coordinates through the same DPI transform. The
 previews execute the original stockpile, citizen and list algorithms.
 
+**Citizen selection:** preserve all 44 source slots, including continuous
+male/female alternation across mood groups and the technology-selected era.
+Specialists select one role portrait per era. Native/HD-only use the same
+portrait binding; a small mood or profession cue is an optional enhanced layer.
+Draw those cues after the complete portrait row so overlap does not hide them.
+The [four-era comparison](review/citizens.html) shows the distinction at native
+size and enlarged, with original artwork available locally.
+
 **Additional scope:** keep the recognizable panel arrangement and citizen art,
 but give panels shared borders, consistent text contrast and measured labels.
 Offer numerical food/shield meters with a visible granary threshold instead of

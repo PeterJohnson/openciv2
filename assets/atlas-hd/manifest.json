@@ -52657,6 +52657,109 @@
       }
     },
     {
+      "id": "city-panorama.gate",
+      "file": "city/panorama/gate.png",
+      "width": 1716,
+      "height": 916,
+      "kind": "generated",
+      "category": "city / panorama",
+      "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
+      "source": {
+        "record": "authoring/city-gate.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
+      "id": "city-panorama.wall-coastal-rear",
+      "file": "city/panorama/walls/coastal-rear.png",
+      "vector": "city/panorama/walls/coastal-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "c5b31d90feff8b5922b3a457b62174db14f55f94ef30d1ba5d23124dac84957d",
+      "sourceSha256": "d25b649b4c3719960ba91d654fc888b6ddb9696a8e4c1f3bcb34e5482372e619",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-coastal-front",
+      "file": "city/panorama/walls/coastal-front.png",
+      "vector": "city/panorama/walls/coastal-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "caf52d66bcb61c07a87e9252b5881b718a8441cc66944932466c2c1f3cb6ea0e",
+      "sourceSha256": "6bfdf657e75673833c94ec4d8e2060d5d3821e8af0d8df9e5f16180de1d7c400",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-river-rear",
+      "file": "city/panorama/walls/river-rear.png",
+      "vector": "city/panorama/walls/river-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "a8da9a166ab3c4b1598e48d722ee6a2f918125258390fb337044c43743271bf9",
+      "sourceSha256": "1bad712ebd4eecfe3e5f5f9e0e9b8659741db7c1ce73ee9b0c1b6dc8faa39596",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-river-front",
+      "file": "city/panorama/walls/river-front.png",
+      "vector": "city/panorama/walls/river-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "abe1cd90de24baa6f2169e8501dcf642414df6c0118cc3a8bf7aab0838d38cb0",
+      "sourceSha256": "eaf72d00b6daeb04820c39bc5a40b8b0caed67fad8f07338a2efcf86e6c92a61",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-inland-rear",
+      "file": "city/panorama/walls/inland-rear.png",
+      "vector": "city/panorama/walls/inland-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "5c71b890aea4e8e22ff2b79a89f06d12d734527578c7da7c8a08d55f7606e085",
+      "sourceSha256": "ff5b2dfa214a97eb30d3182895c58fb8792b6a369018bf934b129b472421ab97",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-inland-front",
+      "file": "city/panorama/walls/inland-front.png",
+      "vector": "city/panorama/walls/inland-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "1e8514132d8e9058f62f9623a7e72fa045b4506e281effc67e208feb1f5a698e",
+      "sourceSha256": "5d63ebd0fcfcf941c9092f2f3e717b0d02376c1a5ab4889f3a9a8755646e2bd9",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
       "id": "windows.panel",
       "label": "panel",
       "description": "Authored 2D window composition component; proposed engine metadata",
@@ -52815,107 +52918,88 @@
       "sourceSha256": "43d69572af2315410b936f6d8a97c45ee16aa2920ba494a7a74dfa6418f0589a"
     },
     {
-      "id": "city-panorama.gate",
-      "file": "city/panorama/gate.png",
-      "width": 1716,
-      "height": 916,
-      "kind": "generated",
-      "category": "city / panorama",
-      "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
-      "source": {
-        "record": "authoring/city-gate.json",
-        "tool": "built-in image_gen"
-      }
+      "id": "citizen-cue.happy",
+      "label": "happy",
+      "category": "citizen cues",
+      "kind": "vector",
+      "file": "interface/citizens/happy.png",
+      "vector": "interface/citizens/happy.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "7ed91aa91756329ee8f99793ed971a1c51c432e24914e7548286319858869d43",
+      "sourceSha256": "04c9ff54ef9ce6ebc96feaccfbb45ebf922d58ce948dfb9af822dcf09daf2b34"
     },
     {
-      "id": "city-panorama.wall-coastal-rear",
-      "file": "city/panorama/walls/coastal-rear.png",
-      "vector": "city/panorama/walls/coastal-rear.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.content",
+      "label": "content",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "c5b31d90feff8b5922b3a457b62174db14f55f94ef30d1ba5d23124dac84957d",
-      "sourceSha256": "d25b649b4c3719960ba91d654fc888b6ddb9696a8e4c1f3bcb34e5482372e619",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/content.png",
+      "vector": "interface/citizens/content.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "01c1b5cfdb0cc80e0a2a0f7a83c60dfe83627b7bcfb737d4ce05455d4dca69f2",
+      "sourceSha256": "7b789d4acdef8233ef36bde61b9bcf46ada1d14351f8f73cf1539738eb07cd94"
     },
     {
-      "id": "city-panorama.wall-coastal-front",
-      "file": "city/panorama/walls/coastal-front.png",
-      "vector": "city/panorama/walls/coastal-front.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.unhappy",
+      "label": "unhappy",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "caf52d66bcb61c07a87e9252b5881b718a8441cc66944932466c2c1f3cb6ea0e",
-      "sourceSha256": "6bfdf657e75673833c94ec4d8e2060d5d3821e8af0d8df9e5f16180de1d7c400",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/unhappy.png",
+      "vector": "interface/citizens/unhappy.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "2634dbe272e42c2133c0e3bb7db8a90a25c4bc415272fe69571b395d9732f95c",
+      "sourceSha256": "430a5eca99371734a5b9588e5e74a521fe592bd82765a0bf6654aa38de661464"
     },
     {
-      "id": "city-panorama.wall-river-rear",
-      "file": "city/panorama/walls/river-rear.png",
-      "vector": "city/panorama/walls/river-rear.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.angry",
+      "label": "angry",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "a8da9a166ab3c4b1598e48d722ee6a2f918125258390fb337044c43743271bf9",
-      "sourceSha256": "1bad712ebd4eecfe3e5f5f9e0e9b8659741db7c1ce73ee9b0c1b6dc8faa39596",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/angry.png",
+      "vector": "interface/citizens/angry.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "303e446b3be0f2ece442ea8b5919ff4eff35b7d005bf7c0cd7cc7f5a478c89be",
+      "sourceSha256": "30a63358ad0648fad1ec58fa3653fd1c2815b36be31ee8f09d05782c573bdfcf"
     },
     {
-      "id": "city-panorama.wall-river-front",
-      "file": "city/panorama/walls/river-front.png",
-      "vector": "city/panorama/walls/river-front.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.entertainer",
+      "label": "entertainer",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "abe1cd90de24baa6f2169e8501dcf642414df6c0118cc3a8bf7aab0838d38cb0",
-      "sourceSha256": "eaf72d00b6daeb04820c39bc5a40b8b0caed67fad8f07338a2efcf86e6c92a61",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/entertainer.png",
+      "vector": "interface/citizens/entertainer.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "2c499c89ee0e733fb3d69ee2e135a87951c0a59969b1de9ac2e04926ab79624e",
+      "sourceSha256": "5adbbee067542633c434caee289e8251a721bf96af4d094177c6bb328e23614d"
     },
     {
-      "id": "city-panorama.wall-inland-rear",
-      "file": "city/panorama/walls/inland-rear.png",
-      "vector": "city/panorama/walls/inland-rear.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.tax-collector",
+      "label": "tax-collector",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "5c71b890aea4e8e22ff2b79a89f06d12d734527578c7da7c8a08d55f7606e085",
-      "sourceSha256": "ff5b2dfa214a97eb30d3182895c58fb8792b6a369018bf934b129b472421ab97",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/tax-collector.png",
+      "vector": "interface/citizens/tax-collector.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "b54d50b71e8eb0ed38b0acce57f9f0695c29e2a96106edd27f3811c759743047",
+      "sourceSha256": "51e3e5a173f6501d0595dbdfeb35bde40568ac294f2650705d866d59e4fad159"
     },
     {
-      "id": "city-panorama.wall-inland-front",
-      "file": "city/panorama/walls/inland-front.png",
-      "vector": "city/panorama/walls/inland-front.svg",
-      "width": 2560,
-      "height": 960,
+      "id": "citizen-cue.scientist",
+      "label": "scientist",
+      "category": "citizen cues",
       "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "1e8514132d8e9058f62f9623a7e72fa045b4506e281effc67e208feb1f5a698e",
-      "sourceSha256": "5d63ebd0fcfcf941c9092f2f3e717b0d02376c1a5ab4889f3a9a8755646e2bd9",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
+      "file": "interface/citizens/scientist.png",
+      "vector": "interface/citizens/scientist.svg",
+      "width": 128,
+      "height": 128,
+      "sha256": "250449950c94461eb35ca1afe3c956ace1307d82ffd9b000d685bf8e44929dd4",
+      "sourceSha256": "201345e8f615e219d243bf527c3609371b3dbd010389e56c1355a9173b476494"
     }
   ]
 }

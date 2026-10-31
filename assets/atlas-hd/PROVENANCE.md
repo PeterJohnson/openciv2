@@ -98,3 +98,9 @@ Freeciv imagery was supplied. [The authoring record](authoring/city-gate.json)
 contains the complete prompt, input revision/hashes and unchanged generated
 output hash. Its alpha is preserved. The earlier angled gate remains the
 native/HD-only asset; the enhanced assembly uses explicit tower attachment points.
+
+Citizen selection reuses the retained `citizen-pairs-01/02` and `citizens-01/02`
+painted masters and extracted sprites. No new generated portraits are introduced.
+The seven mood/profession cues are authored SVG geometry in `citizens.cjs`.
+Original citizen contact-sheet pixels appear only in ignored local review output;
+none are sampled into the replacement portraits or cue graphics.
