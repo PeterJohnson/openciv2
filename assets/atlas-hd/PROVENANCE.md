@@ -124,3 +124,20 @@ reference hash and output hashes. Banking, Engineering, Navigation and Physics
 reuse existing replacement artwork. Numeric advance IDs/categories were read
 from this repository's enum and the local base rules; no original artwork was
 supplied to the generator or incorporated into the replacement icons.
+
+## Flat agricultural overlays
+
+`sprites/map-overlays/irrigation.png` and `farmland.png` are retained full-resolution
+transparent outputs from the built-in `image_gen` tool. The irrigation edit used
+only our previous irrigation sprite; farmland used the new irrigation image for
+composition/style and our previous farmland sprite for its subject. The
+[generation record](authoring/agricultural-fields.json) preserves both complete
+prompts, input roles/revisions and output hashes. No original-game or Freeciv
+image was supplied to either generation. Older compact garden crops remain only
+as unselected subjects in the retained multi-subject master and in Git history.
+Compatibility frames resize the selected new images without recoloring them.
+
+`review/irrigation-cities.png` juxtaposes crops from the four composed in-game
+saved-map scenes. Its original-art column has the same restricted reference-only
+status as `review/original-scenes/`; this comparison is outside the replacement
+asset manifest and replacement-art license.

@@ -265,6 +265,14 @@ function readableBadges(trace) {
     return {...trace, commands};
 }
 
+function fieldCommands(trace, logicalTileWidth) {
+    // Keep the enhanced overview cutoff, but take field selection and registration
+    // from draw_tile_land, including neighboring fields carried beneath cities.
+    return logicalTileWidth >= 64 ? trace.commands.filter(c => c.asset === 'improvement/irrigation' ||
+                                                               c.asset === 'improvement/farmland')
+                                  : [];
+}
+
 async function proposedMap(w, scene, trace, bindings, density = 2) {
     const {ox, oy, cols, rows, viewer = 1} = scene.camera, logicalTw = scene.tileWidth,
                                         tw = logicalTw * density, W = cols * tw, H = rows * tw / 4;
@@ -287,12 +295,11 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
         blit(dst, im, x - width / 2, y - height + tw * .18 + dy);
     };
     // Rivers, fields and corridor underlays precede tall objects. Ground is already complete.
-    for (const t of visible) {
-        const [x, y] = pos(t), f = viewer < 1 ? t.f : t.k;
-        if (logicalTw >= 64 && (f & 12) === 4)
-            await draw('improvement/irrigation', t, tw * .88, tw * .44);
-        if (logicalTw >= 64 && (f & 12) === 12)
-            await draw('improvement/farmland', t, tw * .88, tw * .44);
+    const fields = fieldCommands(trace, logicalTw);
+    if (fields.length) {
+        const layer = await baseline({...trace, commands : fields}, {mode : 'fields'}, bindings,
+                                     {density, native : false, transparent : true});
+        blit(dst, await raw(layer), 0, 0);
     }
     const roadTex = fs.readFileSync(path.join(pack, 'map/materials/road.png')).toString('base64');
     // Paint every rail bed before any steel so neighboring tiles cannot erase
@@ -439,6 +446,7 @@ async function supportingArt() {
 
 module.exports = {
     baseline,
+    fieldCommands,
     proposedMap,
     mapLabels,
     proposedCity,

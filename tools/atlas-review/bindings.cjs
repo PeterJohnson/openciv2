@@ -66,6 +66,10 @@ async function variationAssets() {
     return records;
 }
 
+async function fieldBitmap(name) {
+    return sharp(asset('map-overlays.' + name)).resize(512, 256, {fit : 'fill'}).png().toBuffer();
+}
+
 async function buildBindings(traces) {
     await art.loadMaterials(path.join(pack, 'map'));
     for (let t = 0; t < 11; t++)
@@ -151,9 +155,13 @@ async function buildBindings(traces) {
     for (const family of ['forest', 'hills', 'mountains'])
         for (let i = 0; i < 16; i++)
             await bitmap(`feature/${family}/${i}`, 64, 32, asset(`features.${family}-${i % 4}`));
-    for (const name of ['irrigation', 'farmland', 'mine', 'pollution', 'village', 'fortress', 'airbase'])
+    // Flat field overlays occupy the full terrain frame; tall-object fitting hides them beneath cities.
+    for (const name of ['irrigation', 'farmland'])
+        await save(`improvement/${name}`, await fieldBitmap(name), 64, 32,
+                   `sprites/map-overlays/${name}.png`);
+    for (const name of ['mine', 'pollution', 'village', 'fortress', 'airbase'])
         await bitmap(`improvement/${name}`, 64, [ 'fortress', 'airbase' ].includes(name) ? 48 : 32,
-                     asset('map-overlays.' + name), name === 'irrigation' || name === 'farmland' ? .96 : .80);
+                     asset('map-overlays.' + name), .80);
     await save('improvement/airbase-occupied', bank.get('improvement/airbase'), 64, 48);
     await save(
         'improvement/fortified',
@@ -293,5 +301,6 @@ async function buildBindings(traces) {
 
 module.exports = {
     variationAssets,
+    fieldBitmap,
     buildBindings
 };

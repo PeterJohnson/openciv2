@@ -96,6 +96,13 @@ the observed version-44 normal-save layout, checks bounds and stack links, and
 records the input hashes. It does not support arbitrary scenario/network/save
 versions. The original save and rules file are not included in this art pack.
 
+The flat irrigation and farmland overlays now reach the tile's outer edges so
+they remain visible around unchanged city sprites. The enhanced stage also
+retains the native rule that carries neighboring fields beneath a city.
+[Compare Carlisle and Gloucester in all four stages](review/irrigation-cities.png).
+The comparison contains only crops of the permitted composed original-art scene;
+its original-art column is excluded from the replacement pack's license.
+
 ## Rebuild
 
 The standalone renderer requires Windows, MSVC x86 C++ build tools, a Windows
@@ -123,8 +130,11 @@ node tools/atlas-review/build-gallery.cjs
 renderer or fixtures change. Full builds recreate it. Build products and
 extracted source bodies remain in ignored `build/atlas-review/`. Review images,
 fixtures, hashes and traces are deliberately versioned. The primary retained
-sprite files are exact native crops; the rebuild reuses them and their retained
-masters instead of making a new image-generation request.
+sprite files are retained native crops or full generated images; the rebuild reuses
+them and their retained masters instead of making a new image-generation request.
+After field-art edits, run `fields-review.cjs`, `verify-fields.cjs` and
+`build-gallery.cjs` in `tools/atlas-review/`. The field review refreshes the five
+affected maps and the Carlisle/Gloucester comparison without changing fixtures.
 
 The native executable can also emit an individual command trace:
 

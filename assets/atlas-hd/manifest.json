@@ -7693,60 +7693,46 @@
     {
       "id": "map-overlays.irrigation",
       "label": "irrigation",
-      "description": "Low isometric irrigated crop plot with water channels",
+      "description": "Flat full-tile irrigation fields with visible crop rows and water channels at the outer edges",
       "category": "map-overlays",
       "file": "sprites/map-overlays/irrigation.png",
-      "width": 300,
-      "height": 237,
-      "sha256": "c52e14528688b9b0c27fe662a8ef79cfdc5d019e721887871d437d6c06accd39",
+      "width": 1774,
+      "height": 887,
+      "sha256": "2dc573a0bcb09df23d0d7aef77307f0646b5fc970147be1d3417dfcb6fed3e5d",
       "source": {
-        "sheet": "map-overlays-01",
-        "slot": 0,
-        "rect": {
-          "left": 7,
-          "top": 44,
-          "width": 300,
-          "height": 237
-        },
-        "master": "authoring/masters/map-overlays-01.png"
+        "tool": "built-in image_gen",
+        "record": "authoring/agricultural-fields.json"
       },
       "mapping": null,
       "suggestedAnchor": "center",
       "alpha": {
-        "transparent": 23488,
-        "opaque": 2,
-        "nearOpaque": 34143,
-        "translucent": 47610
+        "transparent": 827203,
+        "opaque": 169,
+        "nearOpaque": 717540,
+        "translucent": 746166
       },
       "kind": "sprite"
     },
     {
       "id": "map-overlays.farmland",
       "label": "farmland",
-      "description": "Low isometric agricultural field with neat crop rows",
+      "description": "Flat full-tile farmland fields with visible crop rows and water channels at the outer edges",
       "category": "map-overlays",
       "file": "sprites/map-overlays/farmland.png",
-      "width": 303,
-      "height": 234,
-      "sha256": "20b438b31c91ec3aa0883c24557c27fc6e48f4accc8178c7a315331fa93bdf1b",
+      "width": 1774,
+      "height": 887,
+      "sha256": "c2a34efb19902961b5387b8621b1a93de63b930cc1276643e94232c409209f22",
       "source": {
-        "sheet": "map-overlays-01",
-        "slot": 1,
-        "rect": {
-          "left": 320,
-          "top": 46,
-          "width": 303,
-          "height": 234
-        },
-        "master": "authoring/masters/map-overlays-01.png"
+        "tool": "built-in image_gen",
+        "record": "authoring/agricultural-fields.json"
       },
       "mapping": null,
       "suggestedAnchor": "center",
       "alpha": {
-        "transparent": 24937,
-        "opaque": 9,
-        "nearOpaque": 31511,
-        "translucent": 45956
+        "transparent": 792673,
+        "opaque": 258,
+        "nearOpaque": 748594,
+        "translucent": 780607
       },
       "kind": "sprite"
     },

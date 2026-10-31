@@ -1,0 +1,542 @@
+{
+  "status": "pass",
+  "sourceCases": [
+    {
+      "label": "none",
+      "expected": null
+    },
+    {
+      "label": "SE irrigation",
+      "expected": "irrigation"
+    },
+    {
+      "label": "SW farmland",
+      "expected": "farmland"
+    },
+    {
+      "label": "mixed neighbors",
+      "expected": "farmland"
+    }
+  ],
+  "silhouetteVisibility": [
+    {
+      "family": "irrigation",
+      "city": 0,
+      "visibleNativePixels": 122
+    },
+    {
+      "family": "irrigation",
+      "city": 1,
+      "visibleNativePixels": 155
+    },
+    {
+      "family": "irrigation",
+      "city": 2,
+      "visibleNativePixels": 77
+    },
+    {
+      "family": "irrigation",
+      "city": 3,
+      "visibleNativePixels": 121
+    },
+    {
+      "family": "irrigation",
+      "city": 4,
+      "visibleNativePixels": 53
+    },
+    {
+      "family": "irrigation",
+      "city": 5,
+      "visibleNativePixels": 151
+    },
+    {
+      "family": "irrigation",
+      "city": 6,
+      "visibleNativePixels": 109
+    },
+    {
+      "family": "irrigation",
+      "city": 7,
+      "visibleNativePixels": 138
+    },
+    {
+      "family": "irrigation",
+      "city": 8,
+      "visibleNativePixels": 78
+    },
+    {
+      "family": "irrigation",
+      "city": 9,
+      "visibleNativePixels": 170
+    },
+    {
+      "family": "irrigation",
+      "city": 10,
+      "visibleNativePixels": 104
+    },
+    {
+      "family": "irrigation",
+      "city": 11,
+      "visibleNativePixels": 235
+    },
+    {
+      "family": "irrigation",
+      "city": 12,
+      "visibleNativePixels": 70
+    },
+    {
+      "family": "irrigation",
+      "city": 13,
+      "visibleNativePixels": 228
+    },
+    {
+      "family": "irrigation",
+      "city": 14,
+      "visibleNativePixels": 104
+    },
+    {
+      "family": "irrigation",
+      "city": 15,
+      "visibleNativePixels": 214
+    },
+    {
+      "family": "irrigation",
+      "city": 16,
+      "visibleNativePixels": 119
+    },
+    {
+      "family": "irrigation",
+      "city": 17,
+      "visibleNativePixels": 155
+    },
+    {
+      "family": "irrigation",
+      "city": 18,
+      "visibleNativePixels": 119
+    },
+    {
+      "family": "irrigation",
+      "city": 19,
+      "visibleNativePixels": 272
+    },
+    {
+      "family": "irrigation",
+      "city": 20,
+      "visibleNativePixels": 96
+    },
+    {
+      "family": "irrigation",
+      "city": 21,
+      "visibleNativePixels": 176
+    },
+    {
+      "family": "irrigation",
+      "city": 22,
+      "visibleNativePixels": 149
+    },
+    {
+      "family": "irrigation",
+      "city": 23,
+      "visibleNativePixels": 145
+    },
+    {
+      "family": "irrigation",
+      "city": 24,
+      "visibleNativePixels": 175
+    },
+    {
+      "family": "irrigation",
+      "city": 25,
+      "visibleNativePixels": 246
+    },
+    {
+      "family": "irrigation",
+      "city": 26,
+      "visibleNativePixels": 131
+    },
+    {
+      "family": "irrigation",
+      "city": 27,
+      "visibleNativePixels": 300
+    },
+    {
+      "family": "irrigation",
+      "city": 28,
+      "visibleNativePixels": 144
+    },
+    {
+      "family": "irrigation",
+      "city": 29,
+      "visibleNativePixels": 173
+    },
+    {
+      "family": "irrigation",
+      "city": 30,
+      "visibleNativePixels": 138
+    },
+    {
+      "family": "irrigation",
+      "city": 31,
+      "visibleNativePixels": 202
+    },
+    {
+      "family": "irrigation",
+      "city": 32,
+      "visibleNativePixels": 311
+    },
+    {
+      "family": "irrigation",
+      "city": 33,
+      "visibleNativePixels": 113
+    },
+    {
+      "family": "irrigation",
+      "city": 34,
+      "visibleNativePixels": 238
+    },
+    {
+      "family": "irrigation",
+      "city": 35,
+      "visibleNativePixels": 177
+    },
+    {
+      "family": "irrigation",
+      "city": 36,
+      "visibleNativePixels": 175
+    },
+    {
+      "family": "irrigation",
+      "city": 37,
+      "visibleNativePixels": 138
+    },
+    {
+      "family": "irrigation",
+      "city": 38,
+      "visibleNativePixels": 144
+    },
+    {
+      "family": "irrigation",
+      "city": 39,
+      "visibleNativePixels": 160
+    },
+    {
+      "family": "irrigation",
+      "city": 40,
+      "visibleNativePixels": 230
+    },
+    {
+      "family": "irrigation",
+      "city": 41,
+      "visibleNativePixels": 160
+    },
+    {
+      "family": "irrigation",
+      "city": 42,
+      "visibleNativePixels": 170
+    },
+    {
+      "family": "irrigation",
+      "city": 43,
+      "visibleNativePixels": 182
+    },
+    {
+      "family": "irrigation",
+      "city": 44,
+      "visibleNativePixels": 189
+    },
+    {
+      "family": "irrigation",
+      "city": 45,
+      "visibleNativePixels": 166
+    },
+    {
+      "family": "irrigation",
+      "city": 46,
+      "visibleNativePixels": 136
+    },
+    {
+      "family": "irrigation",
+      "city": 47,
+      "visibleNativePixels": 161
+    },
+    {
+      "family": "farmland",
+      "city": 0,
+      "visibleNativePixels": 144
+    },
+    {
+      "family": "farmland",
+      "city": 1,
+      "visibleNativePixels": 179
+    },
+    {
+      "family": "farmland",
+      "city": 2,
+      "visibleNativePixels": 93
+    },
+    {
+      "family": "farmland",
+      "city": 3,
+      "visibleNativePixels": 147
+    },
+    {
+      "family": "farmland",
+      "city": 4,
+      "visibleNativePixels": 69
+    },
+    {
+      "family": "farmland",
+      "city": 5,
+      "visibleNativePixels": 175
+    },
+    {
+      "family": "farmland",
+      "city": 6,
+      "visibleNativePixels": 128
+    },
+    {
+      "family": "farmland",
+      "city": 7,
+      "visibleNativePixels": 161
+    },
+    {
+      "family": "farmland",
+      "city": 8,
+      "visibleNativePixels": 98
+    },
+    {
+      "family": "farmland",
+      "city": 9,
+      "visibleNativePixels": 194
+    },
+    {
+      "family": "farmland",
+      "city": 10,
+      "visibleNativePixels": 126
+    },
+    {
+      "family": "farmland",
+      "city": 11,
+      "visibleNativePixels": 260
+    },
+    {
+      "family": "farmland",
+      "city": 12,
+      "visibleNativePixels": 83
+    },
+    {
+      "family": "farmland",
+      "city": 13,
+      "visibleNativePixels": 252
+    },
+    {
+      "family": "farmland",
+      "city": 14,
+      "visibleNativePixels": 128
+    },
+    {
+      "family": "farmland",
+      "city": 15,
+      "visibleNativePixels": 240
+    },
+    {
+      "family": "farmland",
+      "city": 16,
+      "visibleNativePixels": 133
+    },
+    {
+      "family": "farmland",
+      "city": 17,
+      "visibleNativePixels": 181
+    },
+    {
+      "family": "farmland",
+      "city": 18,
+      "visibleNativePixels": 150
+    },
+    {
+      "family": "farmland",
+      "city": 19,
+      "visibleNativePixels": 298
+    },
+    {
+      "family": "farmland",
+      "city": 20,
+      "visibleNativePixels": 117
+    },
+    {
+      "family": "farmland",
+      "city": 21,
+      "visibleNativePixels": 201
+    },
+    {
+      "family": "farmland",
+      "city": 22,
+      "visibleNativePixels": 176
+    },
+    {
+      "family": "farmland",
+      "city": 23,
+      "visibleNativePixels": 171
+    },
+    {
+      "family": "farmland",
+      "city": 24,
+      "visibleNativePixels": 195
+    },
+    {
+      "family": "farmland",
+      "city": 25,
+      "visibleNativePixels": 271
+    },
+    {
+      "family": "farmland",
+      "city": 26,
+      "visibleNativePixels": 147
+    },
+    {
+      "family": "farmland",
+      "city": 27,
+      "visibleNativePixels": 327
+    },
+    {
+      "family": "farmland",
+      "city": 28,
+      "visibleNativePixels": 166
+    },
+    {
+      "family": "farmland",
+      "city": 29,
+      "visibleNativePixels": 199
+    },
+    {
+      "family": "farmland",
+      "city": 30,
+      "visibleNativePixels": 159
+    },
+    {
+      "family": "farmland",
+      "city": 31,
+      "visibleNativePixels": 227
+    },
+    {
+      "family": "farmland",
+      "city": 32,
+      "visibleNativePixels": 353
+    },
+    {
+      "family": "farmland",
+      "city": 33,
+      "visibleNativePixels": 129
+    },
+    {
+      "family": "farmland",
+      "city": 34,
+      "visibleNativePixels": 274
+    },
+    {
+      "family": "farmland",
+      "city": 35,
+      "visibleNativePixels": 201
+    },
+    {
+      "family": "farmland",
+      "city": 36,
+      "visibleNativePixels": 209
+    },
+    {
+      "family": "farmland",
+      "city": 37,
+      "visibleNativePixels": 163
+    },
+    {
+      "family": "farmland",
+      "city": 38,
+      "visibleNativePixels": 164
+    },
+    {
+      "family": "farmland",
+      "city": 39,
+      "visibleNativePixels": 186
+    },
+    {
+      "family": "farmland",
+      "city": 40,
+      "visibleNativePixels": 255
+    },
+    {
+      "family": "farmland",
+      "city": 41,
+      "visibleNativePixels": 188
+    },
+    {
+      "family": "farmland",
+      "city": 42,
+      "visibleNativePixels": 196
+    },
+    {
+      "family": "farmland",
+      "city": 43,
+      "visibleNativePixels": 209
+    },
+    {
+      "family": "farmland",
+      "city": 44,
+      "visibleNativePixels": 218
+    },
+    {
+      "family": "farmland",
+      "city": 45,
+      "visibleNativePixels": 191
+    },
+    {
+      "family": "farmland",
+      "city": 46,
+      "visibleNativePixels": 156
+    },
+    {
+      "family": "farmland",
+      "city": 47,
+      "visibleNativePixels": 187
+    }
+  ],
+  "savedCases": [
+    {
+      "scene": "saved-close",
+      "stage": "current",
+      "visibleFieldPixels": 476,
+      "fractionOfTile": 0.058
+    },
+    {
+      "scene": "saved-close",
+      "stage": "hd",
+      "visibleFieldPixels": 2077,
+      "fractionOfTile": 0.063
+    },
+    {
+      "scene": "saved-close",
+      "stage": "proposed",
+      "visibleFieldPixels": 2066,
+      "fractionOfTile": 0.063
+    },
+    {
+      "scene": "saved-region",
+      "stage": "current",
+      "visibleFieldPixels": 102,
+      "fractionOfTile": 0.05
+    },
+    {
+      "scene": "saved-region",
+      "stage": "hd",
+      "visibleFieldPixels": 443,
+      "fractionOfTile": 0.054
+    },
+    {
+      "scene": "saved-region",
+      "stage": "proposed",
+      "visibleFieldPixels": 363,
+      "fractionOfTile": 0.044
+    }
+  ],
+  "limits": "Static fixtures and isolated city silhouettes; not an arbitrary interactive occlusion guarantee. Enhanced overview widths below 64 logical pixels omit fields."
+}

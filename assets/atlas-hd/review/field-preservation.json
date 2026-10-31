@@ -1,0 +1,14 @@
+{
+  "status": "pass",
+  "baselineCommit": "7453154efe0852b9a313b15b2aae9b24abe01350",
+  "method": "SHA-256 comparison against the pre-change snapshot; original scenes also freshly regenerated and checked against Debug source traces.",
+  "unchangedFiles": {
+    "src/": 148,
+    "assets/atlas-hd/compatibility/city/": 48,
+    "assets/atlas-hd/review/original-scenes/": 26,
+    "assets/atlas-hd/review/fixtures/": 38,
+    "assets/atlas-hd/review/traces/": 43
+  },
+  "changedFiles": [],
+  "limits": "Static standalone-renderer fixtures; no claim of arbitrary live-game occlusion or whole-frame runtime parity."
+}

@@ -478,3 +478,36 @@ search stops the review rather than silently hiding a label.
 standalone configurations, then run `refresh-city-labels.cjs`, `verify-city-labels.cjs`,
 `verify-typography.cjs`, `verify.cjs`, `build-gallery.cjs` and `fidelity.cjs`.
 Only standalone tools, metadata and review outputs change; game source is untouched.
+
+## Fields beneath cities
+
+`MapView::draw_tile_land` (`src/auto/mapview.cpp:1653–1677`) draws irrigation or
+farmland beneath some cities even when the city tile has neither improvement bit.
+For the city-without-airbase branch, it examines the SE/SW neighbors (direction
+indices 2 and 4), retaining the native precedence between irrigation and farmland.
+Both Carlisle and Gloucester have `f=k=3` in the retained save. Carlisle has an
+irrigated SW neighbor and receives a field command; Gloucester does not. No save
+bits or fixture data were changed to create the distinction.
+
+The former enhanced renderer tested only each tile's own improvement bits and
+omitted this city-neighbor behavior. `render.cjs::fieldCommands` now takes field
+selection and rectangles directly from the unchanged source map trace. It keeps
+the enhanced 64-logical-pixel field-detail cutoff, and composites fields before
+roads, rails and objects. Native/HD selection and ordering remain unchanged.
+
+The two replacement field sprites are now flat, broad 2:1 terrain diamonds with
+crop rows and water channels extending into their outer wings. Their derived
+bindings fill the 64×32 terrain frame instead of using the tall-object fitting
+helper. City sprites, city frame sizes, flags and population anchors are unchanged.
+
+`fields-review.cjs` refreshes the five affected maps and the
+[four-stage Carlisle/Gloucester comparison](review/irrigation-cities.png).
+`verify-fields.cjs` checks Debug/Release city-neighbor cases, all map field
+selections and rectangles, 96 city/field silhouette combinations, and the actual
+final pixels at close/regional zoom in all three replacement stages. Its
+counterfactual removes only Carlisle's field command, so neighboring irrigation
+cannot falsely satisfy the visibility check. The two city-window resource-map
+fixtures contain no fields and need no image refresh. Results and limits are in
+[field-validation.json](review/field-validation.json); unchanged source, city
+sprites, original scenes and fixture/trace files are recorded in
+[field-preservation.json](review/field-preservation.json).

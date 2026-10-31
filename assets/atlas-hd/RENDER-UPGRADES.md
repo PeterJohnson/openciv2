@@ -74,8 +74,15 @@ turnout/bridge artwork.
 
 Irrigation and farmland need the same ground plane and a reserved transport
 corridor. Mines should occupy a consistent side of the tile instead of hiding
-the entire route. The prototype draws fields first and moves tall features away
-from the centerline. Additional bridge decks, approaches and road/river crossing
+the entire route. The prototype uses flat full-tile field sprites, draws fields
+first and moves tall features away from the centerline. Preserve the native
+city-neighbor rule when separating ground and object passes: the enhanced
+renderer now reuses the field commands selected by `draw_tile_land`, including
+the field beneath Carlisle, while Gloucester remains bare. Merely checking the
+city tile's irrigation bits loses this effect. Keep city sizes unchanged and
+reserve visible crop/channel detail at the field perimeter. See the
+[four-stage comparison](review/irrigation-cities.png) and
+[occlusion checks](review/field-validation.json). Additional bridge decks, approaches and road/river crossing
 rules are a remaining extension: the current prototype demonstrates river
 continuity, but does not claim complete bridge or turnout design.
 
