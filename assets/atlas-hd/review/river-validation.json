@@ -1,0 +1,11 @@
+{
+  "nativeBindingsMatchCanonical": 16,
+  "fixedEndpointCases": 96,
+  "pairedDrawOrderCases": 24,
+  "continuousWaterSamples": 312,
+  "widthRange": [
+    0.04316201554446452,
+    0.0789969353728721
+  ],
+  "hiddenStateIsolation": true
+}

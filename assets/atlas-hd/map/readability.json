@@ -21,6 +21,11 @@
       "metal"
     ]
   },
+  "river": {
+    "path": "broad cubic bends, fixed connected endpoints and tangents",
+    "banks": "variable width, broken gravel and vegetation, textured green-blue water",
+    "proposed": "world-space width variation and shoreline water blending"
+  },
   "resources": {
     "frame": [
       512,

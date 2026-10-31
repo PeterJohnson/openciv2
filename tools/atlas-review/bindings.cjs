@@ -125,8 +125,8 @@ async function buildBindings(traces) {
         }
     for (let i = 0; i < 16; i++) {
         const file = path.join(pack, `map/networks/river/${i.toString(16).padStart(2, '0')}.png`);
-        // Network filenames use decimal masks in the canonical bank; discover that below if necessary.
-        const e = entries.find(e => e.file?.includes('/river/') && e.mask === i);
+        // Resolve the canonical river bank by family/mask, including its authored bank textures.
+        const e = entries.find(e => e.family === 'river' && e.mask === i);
         const input = e ? path.join(pack, e.file) : file;
         if (fs.existsSync(input))
             await save(`river/${i}`, await sharp(input)

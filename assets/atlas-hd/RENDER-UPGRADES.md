@@ -105,6 +105,14 @@ Prefer a deterministic edge/vertex representation for production: adjacent
 chunks share the same coast crossing and tangent. Resolve diagonal saddle cases
 consistently, and provide tests for one-tile islands, bays, narrow channels,
 concave corners and map wrapping. Keep narrow channels readable at overview LOD.
+The river prototype uses broad cubic bends with fixed connection endpoints and
+tangents, replacing the transport paths' tight elbows. A world-space width field
+widens and narrows channels continuously; bank textures mix gravel and vegetation
+instead of uniform pale borders. Inland water has finer texture and a subdued
+green tint, fading into the existing coastal water near a mouth. The native/HD
+16-mask bank uses the same curve family with edge widths pinned for compatibility.
+The proposal varies width and bend phase in world coordinates, never camera space.
+
 Coasts and rivers should share water color, shallow-water range, shore width and
 mouth opening. Do not use an opaque diamond cutout as a tall terrain feature.
 

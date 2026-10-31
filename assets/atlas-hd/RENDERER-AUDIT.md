@@ -319,3 +319,21 @@ it changes no movement state and does not claim physical turnout simulation.
 orders at all eight edges, and all 256 masks (including isolated artwork in the
 transport plate). Its pixel probe failed on the former capped arm artwork.
 No native game source bodies or original-art bindings change.
+
+## River artwork and sampler
+
+`riverCurve` supplies broad cubic bends for the four NE/SE/SW/NW river ports.
+Every native mask retains its logical 64x32 sprite frame and uses the matching
+crop of the canonical 576x320 padded SVG/PNG. Family/mask lookup replaces a stale
+directory-name match that had selected the generator fallback instead of that
+canonical artwork. Source sprite selection and river-mouth slot aliases remain
+unchanged; the new textures are used by native and HD-only review stages.
+
+The proposed sampler uses the same connection masks and curve family with bend
+phase and channel width sampled in fixed world coordinates. Fine spatial buckets
+bound the cost of the denser curve segments. River banks suppress ocean foam
+inland and blend back to coastal water at mouths. This is visual geometry and
+material variation, not a simulation of flow direction, catchments or erosion.
+`verify-rivers.cjs` records native crop equality, edge continuity in both draw
+orders, width variation and hidden-state isolation in `review/river-validation.json`.
+The native source renderer and original-art replay remain unchanged.

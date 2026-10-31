@@ -204,6 +204,12 @@ and the former desert-filled blank dither slot. Fish, whales and other resource
 sprites are trimmed and centered inside their logical tile frame; the proposal
 no longer fits them into a second, half-size frame.
 
+Rivers use broad bends, variable widths, textured water and irregular gravel and
+vegetated banks. The 16 native river sprites keep their four connection ports;
+the proposed ground pass adds stable world-space variation and blends river
+water into the coastline. Native/HD river bindings now use the canonical bank
+directly, including its bank textures.
+
 Faction shields have a larger filled silhouette within their existing native
 frame, contrasting rims and distinct primary/mid colors. Health and order marks
 are readable; stacked units keep the source's repeated-shield indicator. The
@@ -224,6 +230,7 @@ node tools/atlas-review/saved-map.cjs
 node tools/atlas-review/verify.cjs
 node tools/atlas-review/verify-map-style.cjs
 node tools/atlas-review/verify-rail-joins.cjs
+node tools/atlas-review/verify-rivers.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
@@ -233,3 +240,9 @@ shore continuity, ocean-resource centering and preserved unit/city frames.
 [Rail validation](review/rail-connectivity-validation.json) checks actual PNG
 steel continuity at native arm centers and proposed shared boundaries in both
 draw orders, plus every rail mask's endpoints.
+
+[River validation](review/river-validation.json) checks all 16 native bindings,
+fixed curve endpoints, continuous water across adjoining masks in both draw
+orders, width variation and hidden-state isolation. To rebuild only river art,
+use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
+the comparisons.

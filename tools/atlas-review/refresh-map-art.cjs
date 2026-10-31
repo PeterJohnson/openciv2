@@ -9,7 +9,17 @@ async function main() {
     let count = 0;
     for (const e of m.entries) {
         let bytes;
-        if (e.id.startsWith('map.networks.road-') || e.id.startsWith('map.networks.rail-')) {
+        if (process.argv.includes('--rivers-only') && !e.id.startsWith('map.networks.river-'))
+            continue;
+        if (e.id.startsWith('map.networks.river-')) {
+            const readTexture = name =>
+                C.fs.readFileSync(C.path.join(C.pack, `map/materials/${name}.png`)).toString('base64');
+            const source =
+                C.art.river(e.mask, readTexture('ocean'), readTexture('sand'), readTexture('grassland'));
+            C.write(C.path.join(C.pack, e.vector), source);
+            e.sourceSha256 = C.sha(Buffer.from(source));
+            bytes = await C.sharp(Buffer.from(source)).png().toBuffer();
+        } else if (e.id.startsWith('map.networks.road-') || e.id.startsWith('map.networks.rail-')) {
             const source = C.art.infrastructure(e.family, e.mask, texture);
             C.write(C.path.join(C.pack, e.vector), source);
             e.sourceSha256 = C.sha(Buffer.from(source));
@@ -51,6 +61,11 @@ async function main() {
             path : 'straight approaches; continuous through routes with short junction bends',
             nativeArms : 'flush center cuts; no false dead-end caps',
             proposedPasses : [ 'bed', 'sleepers', 'metal' ]
+        },
+        river : {
+            path : 'broad cubic bends, fixed connected endpoints and tangents',
+            banks : 'variable width, broken gravel and vegetation, textured green-blue water',
+            proposed : 'world-space width variation and shoreline water blending'
         },
         resources : {frame : [ 512, 256 ], anchor : [ 256, 128 ], oceanFill : .72, landFill : .58},
         badges : {

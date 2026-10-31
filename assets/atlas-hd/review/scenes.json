@@ -127,7 +127,7 @@
       1536
     ],
     "commandCount": 1201,
-    "buildMilliseconds": 34869
+    "buildMilliseconds": 35345
   },
   {
     "id": "close",
@@ -158,7 +158,7 @@
       1280
     ],
     "commandCount": 606,
-    "buildMilliseconds": 21814,
+    "buildMilliseconds": 20863,
     "exports4k": {
       "current": "review/4k/close-current.png",
       "hd": "review/4k/close-hd.png",
@@ -214,7 +214,7 @@
       768
     ],
     "commandCount": 1223,
-    "buildMilliseconds": 9598
+    "buildMilliseconds": 9756
   },
   {
     "id": "repetition",
@@ -274,7 +274,7 @@
       1536
     ],
     "commandCount": 1065,
-    "buildMilliseconds": 25922,
+    "buildMilliseconds": 29260,
     "exports4k": {
       "current": "review/4k/coast-current.png",
       "hd": "review/4k/coast-hd.png",
@@ -310,7 +310,7 @@
       1024
     ],
     "commandCount": 4168,
-    "buildMilliseconds": 9754
+    "buildMilliseconds": 10527
   },
   {
     "id": "world",
@@ -341,7 +341,7 @@
       1024
     ],
     "commandCount": 10722,
-    "buildMilliseconds": 8274
+    "buildMilliseconds": 9653
   },
   {
     "id": "city-coastal",
@@ -365,7 +365,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 1819,
+    "buildMilliseconds": 1774,
     "exports4k": {
       "current": "review/4k/city-coastal-current.png",
       "hd": "review/4k/city-coastal-hd.png",
@@ -394,7 +394,7 @@
       960
     ],
     "commandCount": 53,
-    "buildMilliseconds": 748
+    "buildMilliseconds": 723
   },
   {
     "id": "city-inland",
@@ -418,7 +418,7 @@
       960
     ],
     "commandCount": 57,
-    "buildMilliseconds": 798
+    "buildMilliseconds": 749
   },
   {
     "id": "throne-early",
@@ -453,7 +453,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1086
+    "buildMilliseconds": 1058
   },
   {
     "id": "throne-mixed",
@@ -488,7 +488,7 @@
       960
     ],
     "commandCount": 8,
-    "buildMilliseconds": 1005
+    "buildMilliseconds": 1023
   },
   {
     "id": "throne-complete",
@@ -523,7 +523,7 @@
       960
     ],
     "commandCount": 15,
-    "buildMilliseconds": 1205,
+    "buildMilliseconds": 1225,
     "exports4k": {
       "current": "review/4k/throne-complete-current.png",
       "hd": "review/4k/throne-complete-hd.png",

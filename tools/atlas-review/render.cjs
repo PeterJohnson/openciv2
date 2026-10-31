@@ -160,12 +160,25 @@ function riverSegments(w, get) {
                     mask |= 1 << i;
             });
             const U = (t.x + t.y) / 2, V = (t.y - t.x) / 2;
-            for (const r of art.curve(C.gameToArtMask(mask))) {
-                const points = r.points.map(([ x, y ]) => [U + x / 512 + y / 256, V - x / 512 + y / 256]);
+            const riverMask = [ 0, 2, 4, 6 ].reduce((m, bit, i) => m | ((mask >> bit & 1) << i), 0);
+            for (const r of art.riverCurve(riverMask, [ U, V ])) {
+                const points = r.points.map(p => art.riverUV(p).map((v, i) => v + (i ? V : U)));
                 for (let i = 1; i < points.length; i++) {
-                    const segment = {a : points[i - 1], b : points[i], width : .055};
-                    for (let y = Math.floor(V) - 1; y <= Math.floor(V) + 1; y++)
-                        for (let x = Math.floor(U) - 1; x <= Math.floor(U) + 1; x++) {
+                    const a = points[i - 1], b = points[i], width = art.riverWidth(...a),
+                          endWidth = art.riverWidth(...b), padding = Math.max(width, endWidth) * 1.7;
+                    const segment = {
+                        a,
+                        b,
+                        width,
+                        endWidth,
+                        left : Math.min(a[0], b[0]) - padding,
+                        right : Math.max(a[0], b[0]) + padding,
+                        top : Math.min(a[1], b[1]) - padding,
+                        bottom : Math.max(a[1], b[1]) + padding
+                    };
+                    // Fine buckets bound the per-pixel work for densely sampled curves.
+                    for (let y = Math.floor(segment.top * 4); y <= Math.floor(segment.bottom * 4); y++)
+                        for (let x = Math.floor(segment.left * 4); x <= Math.floor(segment.right * 4); x++) {
                             const key = x + ',' + y;
                             if (!buckets.has(key))
                                 buckets.set(key, []);
@@ -188,7 +201,8 @@ function groundPixel(get, wx, wy, lod = 64, rivers = null) {
         t = t?.v ? t : nearest;
         return {land : (t.t & 15) === 10 ? 0 : 1, material : C.terrainNames[t.t & 15]};
     });
-    return art.surface(u, v, corners, 'sand', rivers?.get(cu + ',' + cv) || [], lod);
+    return art.surface(u, v, corners, 'sand', rivers?.get(Math.floor(u * 4) + ',' + Math.floor(v * 4)) || [],
+                       lod);
 }
 
 // Change only status graphics, never the unit/city sprite frame or selection.
