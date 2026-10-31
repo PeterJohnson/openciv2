@@ -8,35 +8,35 @@
       "height": 480
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 130,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 161,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 192,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 223,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 254,
       "width": 108,
@@ -101,35 +101,35 @@
       "height": 480
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 130,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 161,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 192,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 223,
       "width": 108,
       "height": 30
     },
     {
-      "file": "sprites/units/riflemen.png",
+      "file": "sprites/advances/military-industrial.png",
       "x": 45,
       "y": 254,
       "width": 108,
@@ -208,39 +208,11 @@
       "height": 251
     },
     {
-      "file": "sprites/units/riflemen.png",
-      "x": 48,
-      "y": 130,
-      "width": 40,
-      "height": 27
-    },
-    {
-      "file": "sprites/units/riflemen.png",
-      "x": 48,
-      "y": 161,
-      "width": 40,
-      "height": 27
-    },
-    {
-      "file": "sprites/units/riflemen.png",
-      "x": 48,
-      "y": 192,
-      "width": 40,
-      "height": 27
-    },
-    {
-      "file": "sprites/units/riflemen.png",
-      "x": 48,
-      "y": 223,
-      "width": 40,
-      "height": 27
-    },
-    {
-      "file": "sprites/units/riflemen.png",
-      "x": 48,
-      "y": 254,
-      "width": 40,
-      "height": 27
+      "file": "sprites/advances/military-industrial.png",
+      "x": 50,
+      "y": 166,
+      "width": 92,
+      "height": 85
     },
     {
       "file": "sprites/knowledge/electricity.png",

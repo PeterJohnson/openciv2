@@ -572,7 +572,7 @@ std::string quote(const std::string& s) {
     return r + '"';
 }
 
-void output(const std::string& mode, int w, int h) {
+void output(const std::string& mode, int w, int h, int styleEra = -1, int powerRank = 0) {
     std::cout << "{\"mode\":" << quote(mode) << ",\"width\":" << w << ",\"height\":" << h
               << ",\"commands\":[";
     bool comma = false;
@@ -585,7 +585,10 @@ void output(const std::string& mode, int w, int h) {
                   << ",\"resource\":" << c.resource << ",\"sx\":" << c.sx << ",\"sy\":" << c.sy
                   << ",\"target\":" << c.target << ",\"shade\":" << c.shade << '}';
     }
-    std::cout << "]}\n";
+    std::cout << ']';
+    if (mode == "diplomacy")
+        std::cout << ",\"styleEra\":" << styleEra << ",\"powerRank\":" << powerRank;
+    std::cout << "}\n";
 }
 
 int main(int argc, char** argv) {
@@ -601,7 +604,7 @@ int main(int argc, char** argv) {
             in >> civs[2].government >> civs[2].leader_portrait >> v.style_era >> game.power_rank[2];
             if (!in || civs[2].government < 0 || civs[2].government > 6 || civs[2].leader_portrait < 0 ||
                 civs[2].leader_portrait > 20 || v.style_era < 0 || v.style_era > 3 ||
-                game.power_rank[2] < 1 || game.power_rank[2] > 8)
+                game.power_rank[2] < 1 || game.power_rank[2] > 7)
                 throw std::runtime_error("Diplomacy fixture domain");
             int advanceCount = 0;
             if (!(in >> advanceCount) || advanceCount < 0 || advanceCount > 100)
@@ -620,7 +623,7 @@ int main(int argc, char** argv) {
             v.init_military();
             v.init_science();
             v.init_portrait();
-            output(mode, 640, 480);
+            output(mode, 640, 480, v.style_era, game.power_rank[v.leader_civ]);
         } else if (mode == "spaceship") {
             SpaceshipWindow v;
             const int maximum[] = {39, 8, 8, 4, 4, 4};

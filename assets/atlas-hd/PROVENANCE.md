@@ -110,6 +110,12 @@ The seven mood/profession cues are authored SVG geometry in `citizens.cjs`.
 Original citizen contact-sheet pixels appear only in ignored local review output;
 none are sampled into the replacement portraits or cue graphics.
 
+The diplomacy power indicator reuses the four existing military category
+sprites. Its six-segment scale is authored UI geometry. No new raster artwork
+is generated; no original weapon pixels are incorporated. The English power
+labels and rank selection are documented from the foreign-minister source and
+the installed `LABELS.TXT`, independently of the replacement artwork.
+
 The Medicine and Electricity knowledge icons in `sprites/knowledge/` were
 generated with built-in image_gen using only `authoring/masters/advances-01.png`
 as an authored style reference. Generated pixels and alpha are retained unchanged.

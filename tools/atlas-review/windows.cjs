@@ -2,6 +2,7 @@ const C = require('./common.cjs');
 const E = require('./economy.cjs');
 const Citizens = require('./citizens.cjs');
 const Knowledge = require('./knowledge.cjs');
+const Military = require('./military.cjs');
 const {spawnSync} = require('node:child_process');
 const {fs, path, pack, sharp, svg, raw, clear, blit, png, fit} = C;
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
@@ -150,6 +151,8 @@ async function diplomacy(trace, proposed, density) {
     await p.text(governments[bg.resource - 200].toUpperCase(), 184, 337, 272, 13, '#e7cf98', 'middle');
     await p.text('MILITARY', 35, 108, 130, 12, '#f0dfb2', 'middle');
     await p.text('KNOWLEDGE', 477, 108, 130, 12, '#f0dfb2', 'middle');
+    if (proposed)
+        await Military.enhanced(p, trace);
     for (const c of trace.commands) {
         if (c.asset === 'tech-label') {
             const name = Knowledge.advance(+c.text).name;
@@ -161,15 +164,16 @@ async function diplomacy(trace, proposed, density) {
                               c.y, c.width, c.height);
             } else if (c.resource === 215) {
                 const military = c.sy === 156;
-                const file = military   ? 'sprites/units/riflemen.png'
+                // Repeated weapons are a power rating, never a list of units.
+                if (military && proposed)
+                    continue;
+                const file = military   ? Military.categoryFile(c)
                              : proposed ? Knowledge.advance(+c.text).file
                                         : Knowledge.categoryFile(c);
                 if (proposed)
-                    await p.image(file, military ? c.x + 3 : 483, c.y, military ? 40 : 27, 27);
+                    await p.image(file, 483, c.y, 27, 27);
                 else
                     await p.image(file, c.x, c.y, military ? c.width : 42, c.height);
-                if (proposed && military)
-                    await p.text('Regiment', c.x + 48, c.y + 8, 77, 10, '#d8d9bc');
             }
         }
     }
@@ -503,6 +507,7 @@ async function buildWindows() {
     await E.build();
     await Citizens.buildAssets();
     Knowledge.build();
+    Military.build();
     C.json(path.join(pack, 'space-layout.json'), shipLayout());
     const scenes =
         C.read(path.join(pack, 'review/scenes.json')).filter(s => !sceneDefs.some(d => d.id === s.id));
@@ -542,6 +547,7 @@ async function buildWindows() {
     C.json(path.join(pack, 'review/scenes.json'), scenes);
     await Citizens.review(module.exports);
     await Knowledge.review(module.exports);
+    await Military.review(module.exports);
     fs.copyFileSync(path.join(C.root, 'build/atlas-review/generated/window-extraction.json'),
                     path.join(pack, 'review/window-extraction.json'));
 }

@@ -148,6 +148,27 @@ now match `AdvanceId` in `src/include/enums.h`; categories use the inspected bas
 research progression. The former placeholder ID/name pairing and modulo-five
 category assignment have been removed from the standalone harness.
 
+The military column (`init_military`, `diplomacy.cpp:4670-4724`) repeats the
+resource-215 crop `(era*109+1,156,108,30)` exactly `power_rank - 1` times at
+`(45,130+i*31)`. It emits no per-row text. `civ_update_power_ranks`
+(`src/auto/civ.cpp:2993-3077`) assigns ranks 1 through 7; it ranks overall
+civilization power, with scenario-objective handling, rather than enumerating
+units. The standalone input domain is corrected from 1..8 to 1..7. Explicit
+`styleEra` and `powerRank` metadata preserve the meaning even when rank 1 and
+zero advances produce no resource-215 draws. Source function bodies are unchanged.
+
+Native/HD now bind the era-specific replacement military symbol, retaining
+the repetition without invented unit labels. Enhanced rendering uses one emblem,
+six rating segments and one label from the foreign-minister scale
+(`src/auto/reports.cpp:1576-1577`, label index `0xe3 + rank`; English labels
+Pathetic through Supreme). The enhanced audience label is an addition, not
+original audience text. The fixture's rank 6 is Mighty: five symbols/segments.
+[Military checks](review/military-validation.json) cover all 28 era/rank pairs,
+exact source crop/placement/count, D/R equality, all three replacement bindings,
+and eight invalid-input rejections. The original-art replay already had the
+correct unlabeled repeated weapons. No new original investigation annotations
+or game source edits are required for these review-adapter corrections.
+
 The source `science_draw_tech` (`diplomacy.cpp:4778-4779`) selects
 `category_sprites[advances[advance].category]`. `init_science` loads the five rows
 from resource 215: categories 0/1/2/3/4 use sheet Y 32/63/94/1/125 and X

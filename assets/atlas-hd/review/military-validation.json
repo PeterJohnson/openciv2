@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "eraRankCases": 28,
+  "debugReleaseEqual": true,
+  "invalidFixturesRejected": 8,
+  "sourceDomain": [
+    1,
+    7
+  ],
+  "nativeSymbolCounts": [
+    0,
+    6
+  ],
+  "enhancedSegments": 6,
+  "fixture": {
+    "era": "industrial",
+    "rank": 6,
+    "label": "Mighty",
+    "file": "sprites/advances/military-industrial.png",
+    "filled": 5,
+    "segments": 6
+  },
+  "preservedNativeRectangles": true,
+  "replacementStages": 3,
+  "limits": "Source draw trace and supplied rank only, not full-game ranking or diplomacy execution."
+}

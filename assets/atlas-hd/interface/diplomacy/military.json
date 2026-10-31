@@ -1,0 +1,75 @@
+{
+  "sources": [
+    "src/auto/diplomacy.cpp:4670-4724",
+    "src/auto/civ.cpp:2993-3077",
+    "src/auto/reports.cpp:1576-1577"
+  ],
+  "labels": "Foreign minister label indices 0xe3 + rank; English LABELS.TXT lines 245-251.",
+  "ranks": [
+    {
+      "rank": 1,
+      "label": "Pathetic",
+      "nativeSymbols": 0
+    },
+    {
+      "rank": 2,
+      "label": "Weak",
+      "nativeSymbols": 1
+    },
+    {
+      "rank": 3,
+      "label": "Inadequate",
+      "nativeSymbols": 2
+    },
+    {
+      "rank": 4,
+      "label": "Moderate",
+      "nativeSymbols": 3
+    },
+    {
+      "rank": 5,
+      "label": "Strong",
+      "nativeSymbols": 4
+    },
+    {
+      "rank": 6,
+      "label": "Mighty",
+      "nativeSymbols": 5
+    },
+    {
+      "rank": 7,
+      "label": "Supreme",
+      "nativeSymbols": 6
+    }
+  ],
+  "eras": [
+    {
+      "era": "ancient",
+      "sourceX": 1,
+      "sourceY": 156,
+      "file": "sprites/advances/military-ancient.png"
+    },
+    {
+      "era": "medieval",
+      "sourceX": 110,
+      "sourceY": 156,
+      "file": "sprites/advances/military-medieval.png"
+    },
+    {
+      "era": "industrial",
+      "sourceX": 219,
+      "sourceY": 156,
+      "file": "sprites/advances/military-industrial.png"
+    },
+    {
+      "era": "modern",
+      "sourceX": 328,
+      "sourceY": 156,
+      "file": "sprites/advances/military-modern.png"
+    }
+  ],
+  "meaning": "Relative civilization power rank, not a roster, unit type, unit count or absolute combat-strength score.",
+  "native": "Repeat one era-specific weapon symbol rank minus one times; no per-row labels.",
+  "enhanced": "One era emblem, one overall rating label, and six segments with rank minus one filled.",
+  "limits": "Supplied fixture rank. No simulation of ranking and no change to game source. English rating label is an enhanced addition to the audience, reused from the foreign-minister report."
+}

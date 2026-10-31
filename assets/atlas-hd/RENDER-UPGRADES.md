@@ -209,7 +209,7 @@ visibility during interaction. The offline prototype makes no frame-rate claim.
 ## 6. Diplomacy audience: density first, readable columns second
 
 **Review: Diplomacy, all four stages.** Current source: government-dependent
-640×480 art, a 225×275 portrait at `(208,57)`, military rank minus one repeated
+640×480 art, a 225×275 portrait at `(208,57)`, overall power rank minus one repeated
 icons at `(45,130)` and six technology slots at `(485,130)`. The source uses
 31-pixel row spacing, era-dependent category crops and a narrow 58-pixel text
 box. These rules come from `DiploLeaderWindow` in `src/auto/diplomacy.cpp`.
@@ -224,6 +224,13 @@ safe area and measured, wrapping labels. Keep the portrait's existing size; make
 the columns fit their data rather than distorting the leader. Separate the icon
 rectangle from the label rectangle and make the whole row the hit target.
 The proposed preview demonstrates the contrast panels and wider name area.
+Treat the military column as an ordinal civilization-power indicator. Preserve
+the source's era selection and rank 1..7; do not imply a troop roster or attach
+unit names to its repeated weapon symbols. The enhanced preview replaces the
+repeated symbols with one era emblem, a single foreign-minister rating label
+(Pathetic through Supreme), and six segments filled `rank - 1` times. This is
+relative power, not an absolute force count or a combat prediction. Bind the
+label through localization metadata; the review uses the inspected English set.
 Select enhanced knowledge artwork by stable advance ID: the fixture now shows
 a coin, governor, mortar, astrolabe, atom and electrical coil for its six advances.
 Retain the five native era/category icons as the baseline and as an explicit
@@ -234,7 +241,7 @@ Future dialog choices should occupy a distinct measured text panel, preserve
 keyboard navigation and never overlap the portrait. No synthetic conversation
 choices are presented as a native diplomacy dialog in this review.
 
-**Acceptance:** all seven governments and four eras; ranks 1 and 8; zero/six
+**Acceptance:** all seven governments and four eras; ranks 1 and 7; zero/six
 known technologies; short and long localized names; 100–300% density; static
 portrait framing; input regions and treaty/embassy visibility. Validate the
 actual dialog path separately from this static leader-window fixture.

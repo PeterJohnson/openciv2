@@ -257,6 +257,28 @@ orders, width variation and hidden-state isolation. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons.
 
+## Diplomacy power indicator
+
+The original military column repeats an era-specific weapon symbol
+`power_rank - 1` times. It has no unit names and does not describe army
+composition. The source rank ranges from 1 (Pathetic) to 7 (Supreme); the review
+fixture's rank 6 means Mighty and produces five symbols.
+
+Native and HD-only previews retain the source's repetition and rectangles,
+using the existing ancient shield/sword, medieval helmet/crossbow, industrial
+cannon and modern radar artwork. The enhanced column uses one era emblem,
+the overall rating label and six segments with the same number filled as native
+symbols. The labels follow the foreign-minister report's English ratings;
+adding them to the audience is a proposed readability improvement. “Regiment”
+and the hard-coded rifleman are removed.
+
+[Compare eras and rating extremes](review/military-ratings.png),
+[inspect bindings](interface/diplomacy/military.json), or
+[read validation](review/military-validation.json). `windows.cjs` rebuilds the
+scenes and runs `military.cjs` checks across all four eras and seven valid ranks
+in Debug/Release, including the empty-symbol case and invalid input rejection.
+The rank is supplied fixture state; no army or research simulation is claimed.
+
 ## Diplomacy knowledge icons
 
 The original renderer uses five era-specific categories (Military, Economic,
