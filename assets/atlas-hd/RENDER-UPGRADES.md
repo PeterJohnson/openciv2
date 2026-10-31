@@ -177,8 +177,11 @@ fog, correct wrap, labels without severe overlap and stable sprite ordering.
 
 **Review: the three city sites and early/mixed/complete throne stages.** HD-only
 preserves every source slot and layer. The additional city view keeps the source
-selection and order, but remaps base anchors into the new background's land-safe
-area and adjusts depth scale. The throne prototype assigns explicit back-to-front
+selection, assigns relative physical sizes from `city/panorama/layout.json`, and
+places larger landmarks before fitting smaller structures around their visible
+silhouettes. Drawing then sorts by ground-contact depth, independently of slot
+allocation. Rear and foreground curtain walls surround the settlement, with the
+gate in the foreground. The throne prototype assigns explicit back-to-front
 layers and floor anchors to the same selected upgrade levels. Neither requires
 3D geometry.
 
@@ -188,8 +191,16 @@ in `CityViewWindow::layout_buildings` and `ThroneRoomWindow::render`. Permit a s
 to refer to a composed layer (for example paired columns) without changing its
 gameplay meaning. Define occlusion intentionally so a last-drawn room decoration
 does not obscure the throne. Include empty, partial, mixed and complete states.
-The review tool's compatibility bank demonstrates that new art can already be
-composed inside native boxes; the extra metadata gives it a more natural scale.
+The compatibility bank remains the native-layout baseline. For the panorama
+upgrade, keep canonical sprite aspect ratios, define sizes independently of sheet
+rectangles, and use the native slot as a preferred anchor rather than an enforced
+bounding box. The prototype defines all 38 improvements and 28 wonders in house
+units; pyramids and the coliseum have substantially larger footprints than housing.
+Keep allocation order separate from painter order. Include enlarged bounds in
+clipping, scrolling and picking, and composite the wall's rear/front layers around
+the other objects. A production implementation should cache silhouette occupancy
+and layout results, validate crowded selections and preserve selected-building
+visibility during interaction. The offline prototype makes no frame-rate claim.
 
 
 ## 6. Diplomacy audience: density first, readable columns second

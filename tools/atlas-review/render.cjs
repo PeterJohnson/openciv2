@@ -364,19 +364,7 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
 }
 
 async function proposedCity(trace, scene, bindings) {
-    const factor = 2, W = 2560, H = 960,
-          dst = await raw(path.join(pack, `backgrounds/city-${scene.site}-native.png`), W, H);
-    for (const c of trace.commands) {
-        if (c.asset.startsWith('lot/'))
-            continue;
-        // Preserve the source-selected building and slot order; map its base into a site art-safe area.
-        const cx = (c.x + c.width / 2) / 1280, cy = (c.y + c.height) / 480;
-        const px = (.06 + cx * .87) * W, py = (.21 + cy * .70) * H;
-        const depth = .68 + cy * .34, w = c.width * factor * .88 * depth, h = c.height * factor * .88 * depth;
-        const p = await sprite(c.asset, Math.round(w), Math.round(h), bindings);
-        blit(dst, p, px - p.width / 2, py - p.height);
-    }
-    return png(dst);
+    return (await require('./city-panorama.cjs').render(trace, scene)).buffer;
 }
 
 async function proposedThrone(scene) {

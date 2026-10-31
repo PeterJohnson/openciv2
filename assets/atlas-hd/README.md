@@ -17,9 +17,10 @@ The graphics branch contains no game source or loader changes.
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
 | Interface assets | 503 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
+| City panorama wall layers | 6 | Separate rear and foreground SVG/PNG curtain walls for the three city sites |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,217 primary entries are indexed in [manifest.json](manifest.json).
+The 2,223 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -246,3 +247,32 @@ fixed curve endpoints, continuous water across adjoining masks in both draw
 orders, width variation and hidden-state isolation. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons.
+
+## Enhanced city panorama scale
+
+The enhanced coastal, river and inland panoramas use explicit relative sizes from
+[city/panorama/layout.json](city/panorama/layout.json). At equal depth, the pyramid
+complex is 6.2 house-widths, the coliseum 4.7 and the city gate 3.0. Rear and front
+curtain walls extend across the settlement. These are illustrative relative sizes,
+not surveyed architectural dimensions. The canonical painted sprites retain their
+aspect ratios instead of being fitted into the original small improvement slots.
+
+Source selection is retained, including every house and improvement. Larger
+landmarks reserve space first, placement accounts for transparent sprite areas,
+and normal objects draw from back to front by their ground-contact Y coordinate.
+The rear wall draws before buildings; the foreground wall and gate draw last.
+The original, replacement-native and HD-only panoramas retain the source layout.
+
+Rebuild this proposal and its coastal 4K export without rebuilding the map:
+
+```powershell
+node tools/atlas-review/city-panorama.cjs
+node tools/atlas-review/verify-city-panorama.cjs
+node tools/atlas-review/build-gallery.cjs
+```
+
+The same proposal runs from `build-review.cjs`; run `city-panorama.cjs` after a full
+build to refresh reusable wall layers, manifest hashes and saved layout plans.
+[Layout plans](review/city-panorama-plans.json) and
+[validation](review/city-panorama-validation.json) record selection, relative
+widths, visible sprite fractions, depth order and unchanged native/HD render hashes.

@@ -1,0 +1,584 @@
+{
+  "sizeDefinitions": 66,
+  "emptyScenePreservesBackground": true,
+  "results": [
+    {
+      "scene": "city-coastal",
+      "sourceSelectedObjects": 38,
+      "relativeWidthRatios": {
+        "pyramids": 4.988888888888889,
+        "colosseum": 3.7333333333333334,
+        "gate": 2.611111111111111
+      },
+      "minimumVisibleFraction": 0.9106466574038727,
+      "nativeHashes": {
+        "current": "0ca6a698bf20f7b5dbfb86b34333dba3095af605a68f27c0064eadbf6b596640",
+        "hd": "aa417e8225ac1c8a1dcd439b9a168ce22d887433279a716c88e4f5ac4dd2e46c"
+      },
+      "visibility": [
+        {
+          "sourceIndex": 52,
+          "asset": "building/8",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 56,
+          "asset": "wonder/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 54,
+          "asset": "building/34",
+          "visibleFraction": 0.9837604525450788
+        },
+        {
+          "sourceIndex": 50,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 48,
+          "asset": "house/large/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 46,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 45,
+          "asset": "house/large/3",
+          "visibleFraction": 0.9999483722269428
+        },
+        {
+          "sourceIndex": 38,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 41,
+          "asset": "wonder/10",
+          "visibleFraction": 0.9950678761920163
+        },
+        {
+          "sourceIndex": 44,
+          "asset": "house/large/2",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 25,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 49,
+          "asset": "building/12",
+          "visibleFraction": 0.9999725089716637
+        },
+        {
+          "sourceIndex": 21,
+          "asset": "building/4",
+          "visibleFraction": 0.9938173453562399
+        },
+        {
+          "sourceIndex": 24,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9817800370524211
+        },
+        {
+          "sourceIndex": 29,
+          "asset": "house/small/3",
+          "visibleFraction": 0.9999999799893008
+        },
+        {
+          "sourceIndex": 53,
+          "asset": "building/30",
+          "visibleFraction": 0.9758998913866849
+        },
+        {
+          "sourceIndex": 7,
+          "asset": "house/large/0",
+          "visibleFraction": 0.9999991270347386
+        },
+        {
+          "sourceIndex": 51,
+          "asset": "house/small/0",
+          "visibleFraction": 0.947039189891291
+        },
+        {
+          "sourceIndex": 28,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9655972647194482
+        },
+        {
+          "sourceIndex": 30,
+          "asset": "house/large/1",
+          "visibleFraction": 0.9984653721977159
+        },
+        {
+          "sourceIndex": 19,
+          "asset": "house/small/0",
+          "visibleFraction": 0.9912473024706978
+        },
+        {
+          "sourceIndex": 6,
+          "asset": "house/large/1",
+          "visibleFraction": 0.9903907653062075
+        },
+        {
+          "sourceIndex": 13,
+          "asset": "house/small/2",
+          "visibleFraction": 0.9998702707094418
+        },
+        {
+          "sourceIndex": 31,
+          "asset": "wonder/0",
+          "visibleFraction": 0.9954992296468465
+        },
+        {
+          "sourceIndex": 3,
+          "asset": "house/large/1",
+          "visibleFraction": 0.9622121413340522
+        },
+        {
+          "sourceIndex": 22,
+          "asset": "building/2",
+          "visibleFraction": 0.9820788722022687
+        },
+        {
+          "sourceIndex": 20,
+          "asset": "building/7",
+          "visibleFraction": 0.9631462566403082
+        },
+        {
+          "sourceIndex": 12,
+          "asset": "house/small/0",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 15,
+          "asset": "building/3",
+          "visibleFraction": 0.9888879559224938
+        },
+        {
+          "sourceIndex": 11,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9974990806319177
+        },
+        {
+          "sourceIndex": 18,
+          "asset": "building/14",
+          "visibleFraction": 0.9982081158266671
+        },
+        {
+          "sourceIndex": 23,
+          "asset": "building/20",
+          "visibleFraction": 0.9780023315984583
+        },
+        {
+          "sourceIndex": 5,
+          "asset": "house/small/2",
+          "visibleFraction": 0.9999391634042576
+        },
+        {
+          "sourceIndex": 55,
+          "asset": "building/31",
+          "visibleFraction": 0.9106466574038727
+        },
+        {
+          "sourceIndex": 34,
+          "asset": "building/28",
+          "visibleFraction": 0.9584071676656984
+        },
+        {
+          "sourceIndex": 32,
+          "asset": "building/16",
+          "visibleFraction": 0.9612727777464636
+        },
+        {
+          "sourceIndex": 14,
+          "asset": "building/1",
+          "visibleFraction": 0.9999956603006102
+        },
+        {
+          "sourceIndex": 4,
+          "asset": "building/5",
+          "visibleFraction": 0.9999560743941864
+        }
+      ]
+    },
+    {
+      "scene": "city-river",
+      "sourceSelectedObjects": 34,
+      "relativeWidthRatios": {
+        "pyramids": 5.295454545454546,
+        "colosseum": 3.8181818181818183,
+        "gate": 2.6704545454545454
+      },
+      "minimumVisibleFraction": 0.906230913058591,
+      "nativeHashes": {
+        "current": "670a2dd3fd9a8cf755fae952422e674344eef5f6d4e409242682c7f1809ba31c",
+        "hd": "71bf596101d6307fcfebed278dd5089100252a0e6a5a0e0c3414cd39cc2ddac3"
+      },
+      "visibility": [
+        {
+          "sourceIndex": 51,
+          "asset": "building/8",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 22,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 20,
+          "asset": "house/small/3",
+          "visibleFraction": 0.906230913058591
+        },
+        {
+          "sourceIndex": 29,
+          "asset": "house/small/0",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 23,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 12,
+          "asset": "house/small/0",
+          "visibleFraction": 0.926872284880615
+        },
+        {
+          "sourceIndex": 49,
+          "asset": "house/large/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 46,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 44,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 47,
+          "asset": "wonder/10",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 39,
+          "asset": "house/large/0",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 19,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9661497272491251
+        },
+        {
+          "sourceIndex": 13,
+          "asset": "house/small/2",
+          "visibleFraction": 0.953083355276469
+        },
+        {
+          "sourceIndex": 41,
+          "asset": "house/large/3",
+          "visibleFraction": 0.9101351464318136
+        },
+        {
+          "sourceIndex": 11,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9186453359980401
+        },
+        {
+          "sourceIndex": 45,
+          "asset": "wonder/0",
+          "visibleFraction": 0.978371964397107
+        },
+        {
+          "sourceIndex": 8,
+          "asset": "house/large/3",
+          "visibleFraction": 0.9798866657870259
+        },
+        {
+          "sourceIndex": 40,
+          "asset": "house/large/2",
+          "visibleFraction": 0.9504444910047203
+        },
+        {
+          "sourceIndex": 50,
+          "asset": "building/20",
+          "visibleFraction": 0.9998677600167231
+        },
+        {
+          "sourceIndex": 17,
+          "asset": "building/4",
+          "visibleFraction": 0.9999993763740574
+        },
+        {
+          "sourceIndex": 15,
+          "asset": "building/7",
+          "visibleFraction": 0.9999790617727689
+        },
+        {
+          "sourceIndex": 7,
+          "asset": "house/large/2",
+          "visibleFraction": 0.9695772838484776
+        },
+        {
+          "sourceIndex": 21,
+          "asset": "house/small/0",
+          "visibleFraction": 0.9891512481024702
+        },
+        {
+          "sourceIndex": 16,
+          "asset": "building/3",
+          "visibleFraction": 0.9757751932066268
+        },
+        {
+          "sourceIndex": 28,
+          "asset": "building/14",
+          "visibleFraction": 0.9890875878181442
+        },
+        {
+          "sourceIndex": 42,
+          "asset": "building/16",
+          "visibleFraction": 0.9639337146487995
+        },
+        {
+          "sourceIndex": 5,
+          "asset": "house/small/2",
+          "visibleFraction": 0.9999999941290276
+        },
+        {
+          "sourceIndex": 2,
+          "asset": "house/large/2",
+          "visibleFraction": 0.9993556602609985
+        },
+        {
+          "sourceIndex": 48,
+          "asset": "building/12",
+          "visibleFraction": 0.9976780395829292
+        },
+        {
+          "sourceIndex": 6,
+          "asset": "house/large/2",
+          "visibleFraction": 0.9997807576250894
+        },
+        {
+          "sourceIndex": 4,
+          "asset": "building/5",
+          "visibleFraction": 0.9999985429555323
+        },
+        {
+          "sourceIndex": 14,
+          "asset": "building/1",
+          "visibleFraction": 0.9750173865485346
+        },
+        {
+          "sourceIndex": 3,
+          "asset": "wonder/3",
+          "visibleFraction": 0.9759530680596387
+        },
+        {
+          "sourceIndex": 18,
+          "asset": "building/2",
+          "visibleFraction": 0.9519743912218877
+        }
+      ]
+    },
+    {
+      "scene": "city-inland",
+      "sourceSelectedObjects": 34,
+      "relativeWidthRatios": {
+        "pyramids": 4.934065934065934,
+        "colosseum": 3.7032967032967035,
+        "gate": 2.5824175824175826
+      },
+      "minimumVisibleFraction": 0.962060126919523,
+      "nativeHashes": {
+        "current": "4273daddd44ca20a9b3f88a12bc1eaf790f93d96e700fa623f1be3f66aa82556",
+        "hd": "6cbe64dd972fd93fd70f0d81a39e996d0c12f17eb29aa23294968f239b80edce"
+      },
+      "visibility": [
+        {
+          "sourceIndex": 51,
+          "asset": "building/8",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 47,
+          "asset": "house/large/2",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 28,
+          "asset": "house/small/2",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 44,
+          "asset": "house/large/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 43,
+          "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 40,
+          "asset": "house/large/0",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 42,
+          "asset": "house/large/2",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 45,
+          "asset": "wonder/10",
+          "visibleFraction": 0.9733045343709307
+        },
+        {
+          "sourceIndex": 48,
+          "asset": "house/small/0",
+          "visibleFraction": 0.9746893040840728
+        },
+        {
+          "sourceIndex": 46,
+          "asset": "building/7",
+          "visibleFraction": 0.9640594747852286
+        },
+        {
+          "sourceIndex": 27,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 16,
+          "asset": "building/4",
+          "visibleFraction": 0.9843924282812057
+        },
+        {
+          "sourceIndex": 49,
+          "asset": "house/large/1",
+          "visibleFraction": 0.997814055731063
+        },
+        {
+          "sourceIndex": 37,
+          "asset": "house/large/1",
+          "visibleFraction": 0.9997403402781463
+        },
+        {
+          "sourceIndex": 36,
+          "asset": "house/large/2",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 29,
+          "asset": "house/large/3",
+          "visibleFraction": 0.999980226385733
+        },
+        {
+          "sourceIndex": 21,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 19,
+          "asset": "house/small/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 5,
+          "asset": "house/large/1",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 26,
+          "asset": "house/small/0",
+          "visibleFraction": 0.98438078651218
+        },
+        {
+          "sourceIndex": 17,
+          "asset": "building/2",
+          "visibleFraction": 0.9999925466028347
+        },
+        {
+          "sourceIndex": 12,
+          "asset": "house/small/2",
+          "visibleFraction": 0.9999998177836676
+        },
+        {
+          "sourceIndex": 30,
+          "asset": "wonder/0",
+          "visibleFraction": 0.9981792649449257
+        },
+        {
+          "sourceIndex": 31,
+          "asset": "building/14",
+          "visibleFraction": 0.9773661989125084
+        },
+        {
+          "sourceIndex": 14,
+          "asset": "building/12",
+          "visibleFraction": 0.985210140086866
+        },
+        {
+          "sourceIndex": 11,
+          "asset": "house/small/0",
+          "visibleFraction": 0.980282226857
+        },
+        {
+          "sourceIndex": 3,
+          "asset": "building/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 25,
+          "asset": "house/small/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 15,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9718758936488356
+        },
+        {
+          "sourceIndex": 4,
+          "asset": "building/5",
+          "visibleFraction": 0.9967530074449048
+        },
+        {
+          "sourceIndex": 10,
+          "asset": "building/16",
+          "visibleFraction": 0.9825449031143562
+        },
+        {
+          "sourceIndex": 18,
+          "asset": "building/20",
+          "visibleFraction": 0.9687636649650773
+        },
+        {
+          "sourceIndex": 2,
+          "asset": "wonder/3",
+          "visibleFraction": 0.962060126919523
+        },
+        {
+          "sourceIndex": 13,
+          "asset": "building/1",
+          "visibleFraction": 0.9875001504723403
+        }
+      ]
+    }
+  ]
+}

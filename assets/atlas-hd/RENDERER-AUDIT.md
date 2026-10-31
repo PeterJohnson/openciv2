@@ -61,9 +61,11 @@ part of the compiled standalone renderer.
   animation, networking, sound and optional extra UI are not runtime-qualified.
   The fixture disables those optional paths. The delivered fonts are catalog
   resources, not a claim of original GDI text equivalence.
-- City panorama content uses actual site-dependent slot selection, cosmetic
-  random numbers, art crop dimensions and draw order. New background plates and
-  building crops supply the pixels. The native panorama is 1280×480; the window's
+- Native and HD-only city panorama content uses actual site-dependent slot
+  selection, cosmetic random numbers, art crop dimensions and draw order. New
+  background plates and building crops supply the pixels. The enhanced panorama
+  retains source-selected content but applies explicit relative sizes, silhouette
+  clearance, ground-contact ordering and separate wall layers. The native panorama is 1280×480; the window's
   horizontal scroll presentation is outside the fixture.
 - Throne content uses the actual resource order, `x-1/y-1` draw positions, crop
   sizes and bonus conditions in a 640×480 surface. The new furnishing assignments
@@ -337,3 +339,25 @@ material variation, not a simulation of flow direction, catchments or erosion.
 `verify-rivers.cjs` records native crop equality, edge continuity in both draw
 orders, width variation and hidden-state isolation in `review/river-validation.json`.
 The native source renderer and original-art replay remain unchanged.
+
+## Enhanced city scale and visibility
+
+`city-panorama.cjs` consumes the unchanged `CityViewWindow` trace. It retains every
+non-lot command and its source index; empty-lot tint sprites are omitted as in the
+earlier proposal. Relative widths for all improvements and wonders come from
+`city/panorama/layout.json`, independent of the native 123x82 and 158x114 slots.
+Trimmed canonical sprites preserve their aspect ratio and use a shared perspective
+scale. Large landmarks reserve space first. A coarse alpha-occupancy map guides
+placement around actual silhouettes rather than transparent rectangular corners.
+
+The native source uses slot-index draw order (`city.cpp:4647`). The proposal
+instead sorts normal objects by their ground-contact Y position, with source index
+as a stable tie-breaker after X. Rear curtain walls precede all objects; foreground
+curtains and the existing gate sprite draw last. One source city-walls improvement
+controls the complete assembly. Original/native/HD-only stages keep the original
+slot and order contract; no game source changes are included.
+
+`verify-city-panorama.cjs` checks all size definitions, exact source selection,
+in-frame rectangles, painter order, substantial landmark/house ratios and actual
+remaining alpha-visible area after occlusion. It independently re-renders the six
+native/HD panoramas and compares their hashes with the retained images.

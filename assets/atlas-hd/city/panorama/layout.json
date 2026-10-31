@@ -1,0 +1,325 @@
+{
+  "version": 1,
+  "description": "Illustrative relative widths in house units; compressed panorama scale, not surveyed real-world dimensions. All sources retain their painted aspect ratio.",
+  "houseWidth": 80,
+  "houses": {
+    "small": {
+      "width": 1
+    },
+    "large": {
+      "width": 1.25
+    }
+  },
+  "ordering": "Rear perimeter; source-selected buildings sorted by ground-contact Y; front perimeter and gate.",
+  "placement": "Reserve larger landmarks first, score overlap and distance from native slots; keep every selected object.",
+  "buildings": {
+    "buildings.palace": {
+      "width": 2.6
+    },
+    "buildings.barracks": {
+      "width": 2.6
+    },
+    "buildings.granary": {
+      "width": 1.8
+    },
+    "buildings.temple": {
+      "width": 2.4
+    },
+    "buildings.marketplace": {
+      "width": 2.5
+    },
+    "buildings.library": {
+      "width": 2.5
+    },
+    "buildings.courthouse": {
+      "width": 2.4
+    },
+    "buildings.city-walls": {
+      "width": 3.0
+    },
+    "buildings.aqueduct": {
+      "width": 5.0
+    },
+    "buildings.bank": {
+      "width": 2.5
+    },
+    "buildings.cathedral": {
+      "width": 3.8
+    },
+    "buildings.university": {
+      "width": 3.4
+    },
+    "buildings.mass-transit": {
+      "width": 3.8
+    },
+    "buildings.colosseum": {
+      "width": 4.7
+    },
+    "buildings.factory": {
+      "width": 3.8
+    },
+    "buildings.manufacturing-plant": {
+      "width": 4.1
+    },
+    "buildings.sdi-defense": {
+      "width": 2.2
+    },
+    "buildings.recycling-center": {
+      "width": 3.2
+    },
+    "buildings.power-plant": {
+      "width": 3.8
+    },
+    "buildings.hydro-plant": {
+      "width": 4.3
+    },
+    "buildings.nuclear-plant": {
+      "width": 4.0
+    },
+    "buildings.stock-exchange": {
+      "width": 3.0
+    },
+    "buildings.sewer-system": {
+      "width": 3.2
+    },
+    "buildings.supermarket": {
+      "width": 2.8
+    },
+    "buildings.superhighways": {
+      "width": 5.5
+    },
+    "buildings.research-lab": {
+      "width": 3.0
+    },
+    "buildings.sam-battery": {
+      "width": 2.5
+    },
+    "buildings.coastal-fortress": {
+      "width": 3.0
+    },
+    "buildings.solar-plant": {
+      "width": 4.4
+    },
+    "buildings.harbor": {
+      "width": 4.0
+    },
+    "buildings.offshore-platform": {
+      "width": 3.0
+    },
+    "buildings.airport": {
+      "width": 6.0
+    },
+    "buildings.police-station": {
+      "width": 2.3
+    },
+    "buildings.port-facility": {
+      "width": 4.2
+    },
+    "buildings.spaceship-structural": {
+      "width": 3.0
+    },
+    "buildings.spaceship-component": {
+      "width": 3.0
+    },
+    "buildings.spaceship-module": {
+      "width": 3.0
+    },
+    "buildings.capitalization": {
+      "width": 2.6
+    },
+    "wonders.pyramids": {
+      "width": 6.2
+    },
+    "wonders.hanging-gardens": {
+      "width": 4.8
+    },
+    "wonders.colossus": {
+      "width": 2.5
+    },
+    "wonders.lighthouse": {
+      "width": 2.0
+    },
+    "wonders.great-library": {
+      "width": 4.0
+    },
+    "wonders.oracle": {
+      "width": 4.3
+    },
+    "wonders.great-wall": {
+      "width": 6.5
+    },
+    "wonders.war-academy": {
+      "width": 4.0
+    },
+    "wonders.crusade": {
+      "width": 3.6
+    },
+    "wonders.embassy": {
+      "width": 3.5
+    },
+    "wonders.chapel": {
+      "width": 4.4
+    },
+    "wonders.copernicus-observatory": {
+      "width": 3.0
+    },
+    "wonders.expedition": {
+      "width": 4.0
+    },
+    "wonders.theatre": {
+      "width": 4.4
+    },
+    "wonders.leonardo-workshop": {
+      "width": 3.5
+    },
+    "wonders.bach-cathedral": {
+      "width": 4.3
+    },
+    "wonders.newton-college": {
+      "width": 3.8
+    },
+    "wonders.trading-company": {
+      "width": 4.2
+    },
+    "wonders.darwin-voyage": {
+      "width": 3.6
+    },
+    "wonders.liberty": {
+      "width": 2.3
+    },
+    "wonders.eiffel-tower": {
+      "width": 2.6
+    },
+    "wonders.womens-suffrage": {
+      "width": 3.6
+    },
+    "wonders.hoover-dam": {
+      "width": 6.0
+    },
+    "wonders.manhattan-project": {
+      "width": 4.7
+    },
+    "wonders.united-nations": {
+      "width": 4.0
+    },
+    "wonders.apollo-program": {
+      "width": 4.0
+    },
+    "wonders.seti-program": {
+      "width": 4.2
+    },
+    "wonders.cure-for-cancer": {
+      "width": 3.7
+    }
+  },
+  "sites": {
+    "coastal": {
+      "land": [
+        0.16,
+        0.45,
+        0.77,
+        0.8
+      ],
+      "waterfront": [
+        0.82,
+        0.48,
+        0.93,
+        0.84
+      ],
+      "gate": [
+        0.48,
+        0.92
+      ],
+      "perimeter": [
+        [
+          0.1,
+          0.88
+        ],
+        [
+          0.14,
+          0.4
+        ],
+        [
+          0.78,
+          0.3
+        ],
+        [
+          0.81,
+          0.88
+        ]
+      ]
+    },
+    "river": {
+      "land": [
+        0.23,
+        0.48,
+        0.86,
+        0.8
+      ],
+      "waterfront": [
+        0.23,
+        0.48,
+        0.86,
+        0.8
+      ],
+      "gate": [
+        0.52,
+        0.92
+      ],
+      "perimeter": [
+        [
+          0.16,
+          0.88
+        ],
+        [
+          0.21,
+          0.44
+        ],
+        [
+          0.91,
+          0.29
+        ],
+        [
+          0.93,
+          0.88
+        ]
+      ]
+    },
+    "inland": {
+      "land": [
+        0.16,
+        0.43,
+        0.85,
+        0.8
+      ],
+      "waterfront": [
+        0.16,
+        0.43,
+        0.85,
+        0.8
+      ],
+      "gate": [
+        0.5,
+        0.92
+      ],
+      "perimeter": [
+        [
+          0.1,
+          0.88
+        ],
+        [
+          0.14,
+          0.38
+        ],
+        [
+          0.91,
+          0.3
+        ],
+        [
+          0.93,
+          0.88
+        ]
+      ]
+    }
+  }
+}

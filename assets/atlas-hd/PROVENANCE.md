@@ -87,3 +87,8 @@ the replacement library. Resource changes center the retained generated sprites.
 Faction shield geometry/colors are authored in the replacement binding/backend.
 The 35% badge enlargement and stack-marker layout belong only to the standalone
 cohesion proposal, with the source unit/city frames preserved.
+
+City panorama curtain walls are authored SVG geometry from `city-panorama.cjs`,
+textured with the retained `map/materials/stone.png`. Their six PNG renders add no
+external imagery. The gate, buildings and wonders reuse the canonical painted
+sprites with explicit relative-size metadata.
