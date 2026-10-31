@@ -22,8 +22,13 @@ compatibility frames and mockups resize and composite those crops deliberately.
 Functional graphics are authored SVG geometry with corresponding PNG renders.
 The seven components in `interface/windows/` are authored in `windows.cjs`;
 window composites reuse retained portraits, backgrounds, units and module art.
-Five `interface/economy/` symbols are original SVG geometry from
-`economy.cjs`; food retains the existing painted `sprites/resources/wheat.png`. `docs/screenshots/city.png` was visually inspected to verify
+Four `interface/economy/` symbols are original SVG geometry from
+`economy.cjs`; food retains the existing painted `sprites/resources/wheat.png`.
+The antique `interface/economy/gold.png` is a retained transparent image generated
+with built-in `image_gen`, referencing only the prior authored coin and the
+painted wheat for style. Its profile and ornament are invented. The
+[coin generation record](authoring/economy-gold.json) preserves the full prompt
+and reference roles. Rebuilds reuse these exact pixels. `docs/screenshots/city.png` was visually inspected to verify
 semantic roles; none of its pixels or shapes were traced or reused.
 The real-save maps import gameplay data from `he_a1788.sav` and numeric rule
 fields, with hashes retained in the fixture. No save file, original rules file

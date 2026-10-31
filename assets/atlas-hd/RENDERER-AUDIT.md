@@ -188,8 +188,8 @@ is never composited or sampled. `src/auto/graphics.cpp:854–895` defines separa
 rows; `14186` uses the coin in the improvement list. The prior review incorrectly
 bound several of these to the mixed grassland special or gold ore.
 
-`economy.cjs` authors five new SVG silhouettes and PNGs and retains the fuller
-painted wheat for food. Native food/production,
+`economy.cjs` authors four SVG silhouettes and PNGs and retains the fuller
+painted wheat for food and a painted antique gold coin. Native food/production,
 supported-unit upkeep, improvement coins, economy rows and worked-tile overlays
 bind to the corresponding symbol. Proposed meters retain the same symbols.
 The fixture still supplies values; this correction does not claim city simulation
@@ -220,6 +220,8 @@ improvements and unit stats; source selection chooses city size/style/walls,
 top unit, health and stack badges. Proposal ground lookups wrap horizontally. The grassland production overlay
 uses the same shield silhouette; detailed proposed maps retain those markers
 and source-selected huts.
+The coin is a raster-art replacement within the existing native 14-pixel boxes;
+HD-only changes image density, while tax and improvement-list semantics stay the same.
 
 This remains a render-state replay. Map labels, original palette colors, order
 glyphs, exact text metrics and interactive camera/gameplay execution remain

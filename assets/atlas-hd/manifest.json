@@ -52748,6 +52748,21 @@
       "sourceSha256": "03bc51c861369b926698ccc93ae63578322d111da2e0612af178e32442dbc9bf"
     },
     {
+      "id": "economy.gold",
+      "label": "Antique gold coin",
+      "description": "Painted hand-struck gold coin with an invented laurel-crowned profile and beaded rim; tax and improvement sale/upkeep symbol",
+      "category": "economy symbols",
+      "kind": "interface",
+      "file": "interface/economy/gold.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "e92ba5f976a69c450ab88042ed697af93e9cbf51cdab64db14f072f35956c812",
+      "source": {
+        "method": "built-in image_gen",
+        "record": "authoring/economy-gold.json"
+      }
+    },
+    {
       "id": "economy.production",
       "label": "production",
       "description": "City economy production symbol; also used at native 10/14 logical pixels",
@@ -52772,19 +52787,6 @@
       "height": 256,
       "sha256": "7408f9c2cdd75538837b000984859effb9fae1f2d29fa3ba0763b96edf96e699",
       "sourceSha256": "ecc6ffdc9d0347a05de7459ea0cd4438b6eebf496027b3b1027e99aec7932f3e"
-    },
-    {
-      "id": "economy.gold",
-      "label": "gold",
-      "description": "City economy gold symbol; also used at native 10/14 logical pixels",
-      "category": "economy symbols",
-      "kind": "interface",
-      "file": "interface/economy/gold.png",
-      "vector": "interface/economy/gold.svg",
-      "width": 256,
-      "height": 256,
-      "sha256": "bba6ce924bef0bb52d1054511c5de7419e2f84c44034a68a6ccc0ff9c6f110cc",
-      "sourceSha256": "47ff61f44c0a0bf9bcad5fbd562b96addd862aeae7986d1daa152ae122ea6bbb"
     },
     {
       "id": "economy.luxury",

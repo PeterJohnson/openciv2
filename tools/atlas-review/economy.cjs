@@ -1,4 +1,4 @@
-// Semantic city economy sprites. Retain the painted wheat; author distinct symbols for other roles.
+// Semantic city economy sprites. Retain painted wheat and antique gold; author distinct symbols for other roles.
 const C = require('./common.cjs');
 const roles = [ 'food', 'production', 'trade', 'gold', 'luxury', 'science' ];
 const nativeRoles = {
@@ -28,8 +28,6 @@ const shapes = {
         '<path d="M10 8L32 4L54 8V31Q52 48 32 60Q12 48 10 31Z" fill="#699dbb" stroke="#192f43" stroke-width="5"/><path d="M17 14L32 11L47 14V30Q45 42 32 51Q19 42 17 30Z" fill="#88bed7"/><path d="M32 12V51Q45 42 47 30V14Z" fill="#527f9e"/>',
     trade :
         '<path d="M5 14H40V5L59 23L40 40V31H5Z" fill="#e5be64" stroke="#473a27" stroke-width="3"/><path d="M59 50H24V59L5 41L24 24V33H59Z" fill="#98c3b6" stroke="#253e39" stroke-width="3"/>',
-    gold :
-        '<circle cx="32" cy="32" r="27" fill="#d29d39" stroke="#49351d" stroke-width="4"/><circle cx="32" cy="32" r="20" fill="#f3cc67" stroke="#ac772a" stroke-width="3"/><path d="M36 17Q19 17 20 33Q21 48 37 46M15 29H35M15 36H34" fill="none" stroke="#9a6827" stroke-width="5"/><path d="M16 16Q30 5 45 17" fill="none" stroke="#ffedab" stroke-width="3"/>',
     luxury :
         '<path d="M6 23L19 8H45L58 23L32 57Z" fill="#bb8da7" stroke="#422e43" stroke-width="4"/><path d="M6 23H58M19 8L23 23L32 57L41 23L45 8M23 23L32 8L41 23" fill="none" stroke="#f0d8e8" stroke-width="3"/>',
     science :
@@ -40,7 +38,24 @@ async function build() {
     const entries = [];
     shapes.food = '<image width="64" height="64" href="data:image/png;base64,' +
                   C.fs.readFileSync(C.path.join(C.pack, file('food'))).toString('base64') + '"/>';
-    for (const role of roles.filter(role => role !== 'food')) {
+    const gold = C.fs.readFileSync(C.path.join(C.pack, file('gold')));
+    const goldMeta = await C.sharp(gold).metadata();
+    shapes.gold =
+        '<image width="64" height="64" href="data:image/png;base64,' + gold.toString('base64') + '"/>';
+    entries.push({
+        id : 'economy.gold',
+        label : 'Antique gold coin',
+        description :
+            'Painted hand-struck gold coin with an invented laurel-crowned profile and beaded rim; tax and improvement sale/upkeep symbol',
+        category : 'economy symbols',
+        kind : 'interface',
+        file : file('gold'),
+        width : goldMeta.width,
+        height : goldMeta.height,
+        sha256 : C.sha(gold),
+        source : {method : 'built-in image_gen', record : 'authoring/economy-gold.json'}
+    });
+    for (const role of roles.filter(role => !['food', 'gold'].includes(role))) {
         const source = C.svg(64, 64, shapes[role]);
         const vector = `interface/economy/${role}.svg`,
               b = await C.sharp(Buffer.from(source)).resize(256, 256).png().toBuffer();

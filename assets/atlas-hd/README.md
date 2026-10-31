@@ -60,7 +60,7 @@ claim additional native 4K detail.
 ## City economy and real-save maps
 
 The city window uses six distinct [economy symbols](review/economy-symbols.png):
-the retained full wheat sheaf, blue production shield, opposed trade arrows, gold coin, luxury gem
+the retained full wheat sheaf, blue production shield, opposed trade arrows, painted antique gold coin, luxury gem
 and science beaker. Coins also identify the improvement-list sale/upkeep action.
 The old mixed grain/shield terrain special and gold ore no longer serve as city
 economy icons. Native 14-pixel rows and 10-pixel worked-tile icons share these
