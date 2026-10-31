@@ -1,0 +1,12 @@
+{
+  "status": "pass",
+  "baselineCommit": "6b2ac6e6dc3a28357c4c463d7288068c99f0cb44",
+  "method": "SHA-256 comparison with the pre-change snapshot after regenerating original-art scenes; original native traces also checked against the rebuilt Debug renderer.",
+  "gameSourceFiles": 148,
+  "originalScenePNGs": 26,
+  "originalScenes": 22,
+  "originalExports4k": 4,
+  "originalNativeDebugReleaseTraces": 26,
+  "changedFiles": [],
+  "limits": "Standalone fixture and byte-preservation checks; no claim of whole-frame live-game runtime parity."
+}

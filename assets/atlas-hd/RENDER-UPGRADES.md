@@ -155,7 +155,12 @@ Suggested starting thresholds in **logical tile width**, to tune with playtests:
 The prototype uses 64 px for field detail and 48 px for tall features and marker
 substitution. Above that threshold, unit/city sizes and anchors are exactly those
 of the source object renderer, not reduced custom boxes. It demonstrates still-frame endpoints, **not** animated transition
-hysteresis, label collision or unit clustering. Production should add a small
+hysteresis or unit clustering. The static enhanced renderer now resolves city
+population/name collisions against unit tags and other labels using bounded,
+deterministic placement; population boxes draw in the final overlay pass.
+Replacement-native/HD use per-sprite authored size-box anchors. Inspect the
+[anchor sheet](review/city-size-anchors.png) and
+[label checks](review/city-label-validation.json). Production should add a small
 hysteresis band (for example ±10%) and crossfade visual layers without changing
 selection. Keep label priorities stable: selection, active unit, cities, then
 optional detail. Group markers in stable world-space cells and show counts; do

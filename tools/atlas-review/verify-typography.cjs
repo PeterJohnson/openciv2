@@ -65,8 +65,9 @@ async function main() {
         const debug = C.engine('city-labels', C.path.join(C.pack, s.fixture), 'Debug');
         assert.deepEqual(layer.commands, debug.commands, 'Label source trace agrees in D/R');
         const native = C.read(C.path.join(C.pack, `review/traces/${s.id}.json`));
-        assert.deepEqual(native.commands.slice(-layer.commands.length), layer.commands,
-                         'Enhanced labels preserve source name selection and positions');
+        assert.deepEqual(
+            native.commands.slice(-layer.commands.length), layer.commands,
+            'Source name selection and preferred positions precede enhanced collision placement');
         const probes = await checkOverlay(s.proposed, layer.buffer);
         overlays.push({scene : s.id, labels : new Set(layer.commands.map(c => c.text)).size, probes});
     }

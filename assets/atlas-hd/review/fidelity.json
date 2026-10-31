@@ -205,7 +205,7 @@
       "file": "tools/atlas-review/verify-typography.cjs",
       "line": 1,
       "fact": "Font isolation and final enhanced map-name/panorama-title pixels are regression checked.",
-      "sha256": "a956771047ae58db0b69b5db372b74b2c68bf51e5c83e9077b82cd846aa1a118"
+      "sha256": "664ba50a152dc98ddeebfa15e5389ee7b7c127cc0450d07e5a8f3caf9b03c853"
     },
     {
       "file": "src/auto/diplomacy.cpp",

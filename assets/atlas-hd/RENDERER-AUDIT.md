@@ -447,3 +447,34 @@ in-frame rectangles, painter order, substantial landmark/house ratios and actual
 remaining alpha-visible area after occlusion. It checks opaque gate/wall contact
 strips on both towers in all three sites. It independently re-renders the six
 native/HD panoramas and compares their hashes with the retained images.
+
+## City population badge placement
+
+Replacement/native and HD-only stages use 48 explicit entries in
+[`map/city-anchors.json`](map/city-anchors.json). Anchors are selected from each
+replacement silhouette, then visually reviewed; the large walled industrial
+variant has an upper-west adjustment for the saved-game active-unit overlap.
+The 26×16 envelope is the three-digit box at the 64×48 reference frame, not a
+promise that original zoom rules keep every label inside a miniature city.
+Original-art replays still load their own sheet markers. Source drawing order,
+population selection, digit fitting and sprite frames are retained in native/HD.
+
+Enhanced views separate the source city-size frame/fill/digits from the object
+pass. Unit tags and stack marks reserve space first, then population badges,
+then city names. A deterministic bounded search chooses the nearest free
+position; labels draw after scenery and objects. Partially visible labels move
+inside the viewport, while city badges whose tile center is outside the view and
+wholly offscreen names stay out of view. At overview widths below 48 logical
+pixels, the existing city-marker/name representation still omits numeric badges.
+No sprite is shrunk or moved. This is a static proposal: temporal label hysteresis
+and arbitrary dense interactive states are not qualified. Exhausting the bounded
+search stops the review rather than silently hiding a label.
+
+[Anchor contact sheet](review/city-size-anchors.png),
+[per-scene placement plans](review/city-label-layouts.json) and
+[validation](review/city-label-validation.json) accompany the existing maps.
+`node tools/atlas-review/city-anchors.cjs` refreshes the contact sheet;
+`--author` explicitly reselects anchors after artwork changes. Rebuild both
+standalone configurations, then run `refresh-city-labels.cjs`, `verify-city-labels.cjs`,
+`verify-typography.cjs`, `verify.cjs`, `build-gallery.cjs` and `fidelity.cjs`.
+Only standalone tools, metadata and review outputs change; game source is untouched.

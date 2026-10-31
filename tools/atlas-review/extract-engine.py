@@ -62,4 +62,8 @@ for file,names in {'src/auto/map.cpp':['tile_resource','tile_has_hut','tile_gras
   functions.append(dict(name=name,file=file,line=line,namespace='save_native',sha256=hashlib.sha256(body.encode()).hexdigest()))
 (OUT/'save-bodies.inc').write_text('\n'.join(saveparts),encoding='utf8',newline='\n')
 (OUT/'extraction.json').write_text(json.dumps(dict(repository='richardpenman-civ2',functions=functions,tables=tablemeta,sourceHashes=files,bodyPolicy='unchanged text, LF normalized, with #line source mapping'),indent=2)+'\n',newline='\n')
+anchors=json.loads((ROOT/'assets/atlas-hd/map/city-anchors.json').read_text())['variants']
+assert [v['index'] for v in anchors]==list(range(48))
+assert all(0<=v['sizeBox'][0]<=41 and 0<=v['sizeBox'][1]<=32 for v in anchors)
+(OUT/'city-anchors.inc').write_text('static constexpr int replacementCityAnchors[48][2] = {\n'+',\n'.join('{'+','.join(map(str,v['sizeBox']))+'}' for v in anchors)+'\n};\n',newline='\n')
 print(f'Extracted {len(functions)} unchanged function bodies and {len(tables)} table initializers')

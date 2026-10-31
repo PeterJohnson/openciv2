@@ -1,0 +1,95 @@
+{
+  "status": "pass",
+  "variants": 48,
+  "distinctAnchors": 17,
+  "edgeCases": [
+    "two/three digits",
+    "unit collision",
+    "label collision",
+    "viewport edge",
+    "determinism",
+    "bounded exhaustion"
+  ],
+  "results": [
+    {
+      "scene": "saved-close",
+      "nativeBadges": 12,
+      "enhancedBadges": 11,
+      "names": 11,
+      "moved": 7,
+      "verifiedOverlayPixels": 106296
+    },
+    {
+      "scene": "saved-region",
+      "nativeBadges": 19,
+      "enhancedBadges": 19,
+      "names": 19,
+      "moved": 10,
+      "verifiedOverlayPixels": 55517
+    },
+    {
+      "scene": "saved-world",
+      "nativeBadges": 67,
+      "enhancedBadges": 0,
+      "names": 69,
+      "moved": 0,
+      "verifiedOverlayPixels": 5309
+    },
+    {
+      "scene": "repetition",
+      "nativeBadges": 0,
+      "enhancedBadges": 0,
+      "names": 0,
+      "moved": 0,
+      "verifiedOverlayPixels": 0
+    },
+    {
+      "scene": "district",
+      "nativeBadges": 3,
+      "enhancedBadges": 3,
+      "names": 3,
+      "moved": 1,
+      "verifiedOverlayPixels": 19089
+    },
+    {
+      "scene": "close",
+      "nativeBadges": 2,
+      "enhancedBadges": 2,
+      "names": 2,
+      "moved": 1,
+      "verifiedOverlayPixels": 12667
+    },
+    {
+      "scene": "tactical",
+      "nativeBadges": 3,
+      "enhancedBadges": 3,
+      "names": 3,
+      "moved": 2,
+      "verifiedOverlayPixels": 5661
+    },
+    {
+      "scene": "coast",
+      "nativeBadges": 0,
+      "enhancedBadges": 0,
+      "names": 0,
+      "moved": 0,
+      "verifiedOverlayPixels": 0
+    },
+    {
+      "scene": "region",
+      "nativeBadges": 3,
+      "enhancedBadges": 0,
+      "names": 3,
+      "moved": 0,
+      "verifiedOverlayPixels": 606
+    },
+    {
+      "scene": "world",
+      "nativeBadges": 3,
+      "enhancedBadges": 0,
+      "names": 3,
+      "moved": 0,
+      "verifiedOverlayPixels": 146
+    }
+  ]
+}

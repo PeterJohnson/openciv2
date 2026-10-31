@@ -19,10 +19,6 @@
     48,
     4
   ],
-  "citySizeBoxAnchor": [
-    27,
-    36
-  ],
   "bindings": {
     "terrain/0": {
       "file": "compatibility/terrain/0.png",
@@ -2448,5 +2444,6 @@
       "nativeHeight": 342,
       "source": "sprites/palace/bonus-6.png"
     }
-  }
+  },
+  "citySizeBoxAnchors": "map/city-anchors.json"
 }

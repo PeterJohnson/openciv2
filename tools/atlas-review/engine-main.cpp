@@ -1,5 +1,6 @@
 #include "engine-shim.h"
 #include "engine-tables.inc"
+#include "city-anchors.inc"
 #include "engine-bodies.inc"
 
 namespace save_native {
@@ -68,8 +69,8 @@ void initialize() {
     }
     for (int i = 0; i < 48; i++) {
         named(gfx_sheet_surface_block.city_sprites[i], "city/" + std::to_string(i), 64, 48);
-        road_sprites_block.city_label_y_offsets[i] = 36;
-        road_sprites_block.city_size_box_x_offsets[i] = 27;
+        road_sprites_block.city_label_y_offsets[i] = replacementCityAnchors[i][1];
+        road_sprites_block.city_size_box_x_offsets[i] = replacementCityAnchors[i][0];
         peace_treaty_icon_sprite_block.city_flag_x_offsets[i] = 48;
         peace_treaty_icon_sprite_block.city_flag_y_offsets[i] = 4;
     }
@@ -241,7 +242,7 @@ int main(int argc, char** argv) {
             fixture_tile(9, 7).known = 18;
             v.draw_tile_roads(0, 0, 0, 8, 8, 1, 18);
             output(0, 0, "audit");
-        } else if ((mode == "map" || mode == "objects" || mode == "city-labels")) {
+        } else if ((mode == "map" || mode == "objects" || mode == "city-labels" || mode == "city-sizes")) {
             MapView v;
             int cols, rows, viewer, grid;
             in >> map.width >> map.height >> v.zoom_u >> v.origin_x_uptr >> v.origin_y_uptr >> cols >> rows >>
@@ -395,7 +396,7 @@ int main(int argc, char** argv) {
             commands.clear();
             if (mode == "city-labels") {
                 v.draw_city_names(0, 0, -1);
-            } else if (mode == "objects") {
+            } else if (mode == "objects" || mode == "city-sizes") {
                 for (int ty = 0; ty < map.height; ty++) {
                     for (int tx = ty & 1; tx < map.width; tx += 2) {
                         int sx, sy;
@@ -404,7 +405,8 @@ int main(int argc, char** argv) {
                             sy - v.half_tile_height_u >= v.client_height)
                             continue;
                         v.draw_tile_city(sx, sy, tx, ty);
-                        v.draw_tile_units(sx, sy, tx, ty);
+                        if (mode == "objects")
+                            v.draw_tile_units(sx, sy, tx, ty);
                     }
                 }
             } else {

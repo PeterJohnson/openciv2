@@ -9,12 +9,12 @@
     {
       "scene": "saved-close",
       "labels": 12,
-      "probes": 75190
+      "probes": 106296
     },
     {
       "scene": "saved-region",
       "labels": 19,
-      "probes": 39349
+      "probes": 55517
     },
     {
       "scene": "saved-world",

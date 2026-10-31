@@ -1,5 +1,6 @@
 const C = require('./common.cjs');
 const Typography = require('./typography.cjs');
+const CityLabels = require('./city-labels.cjs');
 const {fs, path, pack, sharp, svg, art, raw, clear, blit, png, asset, fit} = C;
 const cache = new Map();
 const faction = [ '#e6dfc3', '#d66b57', '#63b194', '#9e87ca', '#6e9ed0', '#d8bd60', '#dc994d', '#b7c7ce' ];
@@ -366,8 +367,9 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
     }
     if (logicalTw >= 48) {
         const objects = C.engine('objects', path.join(pack, scene.fixture));
-        const layer = await baseline(readableBadges(objects), {mode : 'objects'}, bindings,
-                                     {density, native : false, transparent : true, legacyText : true});
+        const layer =
+            await baseline(CityLabels.splitCityBadges(readableBadges(objects)).trace, {mode : 'objects'},
+                           bindings, {density, native : false, transparent : true, legacyText : true});
         blit(dst, await raw(layer), 0, 0);
     }
 
@@ -379,10 +381,13 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
 
 async function mapLabels(scene, density = 2) {
     const trace = C.engine('city-labels', path.join(pack, scene.fixture));
-    const dst = clear(trace.width * density, trace.height * density);
-    for (const c of trace.commands)
-        await Typography.draw(dst, c, density, color(c.color));
-    return {buffer : await png(dst), commands : trace.commands};
+    const sizes = C.engine('city-sizes', path.join(pack, scene.fixture));
+    const objects = readableBadges(C.engine('objects', path.join(pack, scene.fixture)));
+    const plan = CityLabels.layout(scene, sizes, trace, objects);
+    const commands = plan.items.flatMap(item => item.commands);
+    const buffer = await baseline({...trace, commands}, {mode : 'labels'}, {},
+                                  {density, native : false, transparent : true});
+    return {buffer, commands : trace.commands, plan};
 }
 
 async function proposedCity(trace, scene, bindings) {

@@ -202,7 +202,10 @@ backgrounds; cropped original button art and per-window palettes remain local.
 
 Replacement-native and HD-only previews use smooth replacement fonts fitted to
 source text spans; only original-art previews use the reference bitmap glyphs.
-Enhanced map city names and panorama titles are final overlays above the artwork.
+Enhanced map city names and population badges are final overlays with collision
+placement; panorama titles remain above the artwork. Replacement-native/HD use
+per-sprite city-size anchors. Inspect the [anchor sheet](review/city-size-anchors.png)
+and [population-label checks](review/city-label-validation.json).
 [Typography checks](review/typography-validation.json) cover font separation, HD
 rasterization and label pixels in the saved-map and panorama renders.
 

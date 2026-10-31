@@ -285,7 +285,7 @@ async function buildBindings(traces) {
         directionOrder : [ 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N' ],
         unitShieldAnchor : [ 48, 4 ],
         cityFlagAnchor : [ 48, 4 ],
-        citySizeBoxAnchor : [ 27, 36 ],
+        citySizeBoxAnchors : 'map/city-anchors.json',
         bindings : bindingIndex
     });
     return bindingIndex;

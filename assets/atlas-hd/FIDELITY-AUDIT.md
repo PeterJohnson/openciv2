@@ -18,7 +18,7 @@ claim of whole-frame pixel parity with a live game capture.
 | City economy | Execute unchanged food, shields, trade, distribution and parent resource-map functions. Source spacing, bar partitions, shortages/surpluses and labels replace the six redesigned rows. |
 | City resource map | Execute `draw_resource_tiles` and the map terrain renderer, including neighbor joins and the radius edge, before unchanged worked-tile yield drawing. The small city's terrain and yield values remain explicit synthetic inputs. |
 | City controls | Restore Buy/Change to the production panel, the eight bottom controls, and the improvement scrollbar at the source's scale-2 coordinates. Present-unit heading, positions and home abbreviation use the source single-row branch. |
-| Map | Execute `draw_city_names`, `tile_in_view`, `map_tile_in_box` and `map_x_in_span`. Saved maps now carry real city names. Zoom font selection and unit/city text use the reference metrics. Original names use the source secondary faction palette entry. |
+| Map | Execute `draw_city_names`, `tile_in_view`, `map_tile_in_box` and `map_x_in_span`. Saved maps now carry real city names. Zoom font selection and unit/city text use the reference metrics. Replacement size boxes use per-sprite anchors; original-art retains its own sheet markers. Enhanced size/name overlays resolve label collisions separately. Original names use the source secondary faction palette entry. |
 | Panorama | Restore the source's Times 36 bold title, 40-pixel title band and two palette passes. The supplied title is “Asteria:  A.D. 1788”, matching this synthetic fixture's identity, not the London screenshot. |
 | Spacecraft | Keep source assembly order/clipping. Restore source title composition, Times 24/20/16 bold fonts, typewriter line spacing and label/value colors, status band and button coordinates. Original buttons use the original resource crops with native labels. Statistics remain declared fixture values. |
 
@@ -88,4 +88,7 @@ three panorama enhanced renders. Results are in
 [typography-validation.json](review/typography-validation.json).
 The [preservation record](review/native-preservation.json) checks every game-source
 file and original-art scene PNG against the snapshot before this typography fix.
-Enhanced scene artwork is retained; its missing map labels and titles are restored.
+The latest population-badge check also records source/original-scene preservation in
+[city-label-preservation.json](review/city-label-preservation.json). Enhanced
+city-size boxes now draw in a protected final pass alongside placed city names;
+the panorama/title correction remains unchanged.
