@@ -10,6 +10,9 @@ assets or new artwork covered by the replacement library's license. They remain
 outside the canonical asset manifest, coverage bank and compatibility bindings.
 The renders use standalone source-trace replays with the documented panel/text
 adapters; they are not screenshots of a running original game.
+[Runtime comparison](../fidelity.html) shows confirmed differences in typography,
+panels and omitted overlays; [the audit](../../FIDELITY-AUDIT.md) defines the
+remaining work before a pixel-equivalence claim.
 
 - `images/`: composed scene PNGs at the original renderer dimensions.
 - `4k/`: presentation resamples of selected scenes; no additional source detail.

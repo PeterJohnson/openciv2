@@ -6,6 +6,11 @@ additional cohesion. No server is required. All four in-game scene comparison
 stages are checked in. Rebuilding original-art scenes requires an installed game;
 viewing them does not.
 
+[Compare these original-art mockups with runtime screenshots](review/fidelity.html).
+The audit confirms font, panel and omitted-overlay differences; the current
+standalone renders are not pixel-equivalent game screenshots. See the
+[fidelity findings and correction scope](FIDELITY-AUDIT.md).
+
 This is one selected library on `new-graphics`, based on
 `bd89036`. Earlier iterations remain on `codex/atlas-hd-graphics` at `2fe6f3f`.
 The graphics branch contains no game source or loader changes.

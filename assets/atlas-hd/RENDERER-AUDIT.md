@@ -38,6 +38,17 @@ palette-keyed row blitting, clipping and a scaled-size guard below 1,025 pixels.
 That legacy DIB backend is deliberately the replacement boundary, not a claimed
 part of the compiled standalone renderer.
 
+## Runtime screenshot comparison
+
+[The fidelity audit](FIDELITY-AUDIT.md) compares four checked-in native OpenCiv2
+runtime screenshots with these original-art mockups. It confirms substituted
+fonts/metrics/colors, eight-character diplomacy truncation, redesigned city
+resource rows/controls, omitted map names and an omitted panorama title.
+Those fixtures are not identical game states, so no whole-image error percentage
+is reported. [Open the paired scenes and text details](review/fidelity.html).
+The fresh original-executable capture was not obtained because computer-use
+app approval timed out; spacecraft/throne runtime parity is still unverified.
+
 ## Explicit adapter boundaries
 
 - `engine-shim.h` supplies finite fixture state and records drawing operations.
