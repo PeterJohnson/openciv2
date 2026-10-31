@@ -481,6 +481,30 @@
       "height": 114,
       "color": -1,
       "text": ""
+    },
+    {
+      "asset": "text",
+      "x": 450,
+      "y": 0,
+      "width": 0,
+      "height": 42,
+      "color": 10,
+      "text": "Asteria:  A.D. 1788",
+      "face": 0,
+      "fontHeight": 36,
+      "style": 1
+    },
+    {
+      "asset": "text",
+      "x": 449,
+      "y": -1,
+      "width": 0,
+      "height": 42,
+      "color": 26,
+      "text": "Asteria:  A.D. 1788",
+      "face": 0,
+      "fontHeight": 36,
+      "style": 1
     }
   ]
 }

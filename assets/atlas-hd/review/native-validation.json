@@ -1,0 +1,40 @@
+{
+  "status": "pass",
+  "target": "Native indexed font path, default drawing advances; content fixtures, not full runtime pixel parity",
+  "fontBankSha256": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb",
+  "metrics": [
+    [
+      "III",
+      12
+    ],
+    [
+      "WWW",
+      33
+    ],
+    [
+      "NAVIGATION",
+      75
+    ],
+    [
+      "MEDICINE",
+      61
+    ],
+    [
+      "ELECTRICITY",
+      79
+    ]
+  ],
+  "clippedInkPixels": 65,
+  "hdTextPixelsCompared": 2880,
+  "twoLineKnowledgeDraws": 8,
+  "nativeKnowledgeDraws": 12,
+  "nativeEconomyBarY": [
+    75,
+    116,
+    140,
+    181
+  ],
+  "separateEnhancedTrace": true,
+  "savedCityNameScenes": 3,
+  "panoramaTitlePasses": 2
+}

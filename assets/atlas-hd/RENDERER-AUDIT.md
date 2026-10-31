@@ -7,7 +7,7 @@ pins the source file hashes, function names, source line numbers and body hashes
 
 ## What is compiled
 
-`tools/atlas-review/extract-engine.py` extracts 45 complete function bodies
+`tools/atlas-review/extract-engine.py` extracts 50 complete function bodies
 without rewriting them, apart from LF normalization and added `#line` mappings.
 It also copies seven named table initializers plus the city wonder-slot pool.
 The result compiles as MSVC x86 in Debug and Release. The extraction is performed
@@ -41,13 +41,12 @@ part of the compiled standalone renderer.
 ## Runtime screenshot comparison
 
 [The fidelity audit](FIDELITY-AUDIT.md) compares four checked-in native OpenCiv2
-runtime screenshots with these original-art mockups. It confirms substituted
-fonts/metrics/colors, eight-character diplomacy truncation, redesigned city
-resource rows/controls, omitted map names and an omitted panorama title.
-Those fixtures are not identical game states, so no whole-image error percentage
-is reported. [Open the paired scenes and text details](review/fidelity.html).
-The fresh original-executable capture was not obtained because computer-use
-app approval timed out; spacecraft/throne runtime parity is still unverified.
+runtime screenshots with the corrected original-art mockups. Native text now uses
+the reference glyph bank, diplomacy fitting and city economy helpers execute
+unchanged, and map names/panorama titles are restored. Those fixtures are not
+identical game states, so no whole-image error percentage is reported.
+[Open the paired scenes and text details](review/fidelity.html). Spacecraft and
+throne runtime parity remain unverified; no fresh capture was obtained.
 
 ## Explicit adapter boundaries
 
@@ -67,11 +66,10 @@ app approval timed out; spacecraft/throne runtime parity is still unverified.
   the original indexed palette, trimmed sprite storage or binary row blitter.
   Palette replacement is represented by designated colors in the review backend.
   Antialiasing, resampling and alpha compositing are newly supplied.
-- Map font metrics are deterministic fixture approximations; glyphs use a
-  substitute font. Window chrome, city-name labels, input/picking masks, combat
-  animation, networking, sound and optional extra UI are not runtime-qualified.
-  The fixture disables those optional paths. The delivered fonts are catalog
-  resources, not a claim of original GDI text equivalence.
+- Native text uses the repository's indexed reference font bank and drawing
+  advances. Enhanced text retains its independent design backend. City names
+  execute unchanged source code. Window chrome, input/picking masks, combat
+  animation, networking, sound and optional extra UI remain outside this fixture.
 - Native and HD-only city panorama content uses actual site-dependent slot
   selection, cosmetic random numbers, art crop dimensions and draw order. New
   background plates and building crops supply the pixels. The enhanced panorama
@@ -135,25 +133,27 @@ wrapped maps, ownership/visibility transitions and resource-loader completeness.
 
 ## Window renderer extension
 
-`extract-windows.py` runs the map/scene extractor and adds **24 unchanged bodies**
+`extract-windows.py` runs the map/scene extractor and adds **30 unchanged bodies**
 to a second MSVC x86 executable, `atlas-windows.exe`. Together the executables
-compile 69 source bodies. [Window extraction metadata](review/window-extraction.json)
+compile 80 source bodies. [Window extraction metadata](review/window-extraction.json)
 pins their actual source paths, lines and hashes. There is no dependency on the
 sibling project's renderer.
 
 | Window | Source behavior executed | Explicit review boundary |
 | --- | --- | --- |
-| Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data and text shaping are supplied. No AVI herald or diplomacy decision-dialog execution. |
+| Diplomacy | `init_main_art`, `init_military`, `science_rank_top_techs`, `init_science`, `init_portrait` in `src/auto/diplomacy.cpp:4629–5047` | Static audience only; GIF/palette/window allocation become PNG commands. Technology category/name data is supplied; source fitting and native glyph replay execute. No AVI herald or diplomacy decision-dialog execution. |
 | Spacecraft | `render_ship_init_rows`, `render_ship_load_surfaces`, `render_ship_draw_part`, `render_ship` in `src/game/bigframes.cpp:587–1563` | All 88 source rows, count thresholds, filled/empty resource choices and layer order execute. The 457×304 framebuffer at `(175,99)` is flattened for PNG output. Palette, lifetime, title, stats text and controls are drawing adapters. Stats are declared fixture values, not a spaceship simulation. |
-| City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_resource_yields`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Map terrain and economy totals panel, units-present details, controls, window chrome and font metrics are marked adapters. Other info modes throw rather than invent a result. |
+| City management | `scale`, `set_scaled_rect`, `layout_rects`, `draw_all`, `draw_info_panel`, `draw_citizens`, `draw_citizen_row`, `draw_resource_yields`, `draw_food_box`, `draw_production`, `draw_supported_units`, `draw_improvements` and `city_window_draw_icon_row` in `src/auto/city.cpp` | Native 636×421 content at `view_scale=2`. Supplied city population, moods, stockpiles, building, unit and improvement state. Resource terrain and economy helpers execute unchanged; source-derived present-unit/control painting and full window chrome remain explicit boundaries. Other info modes throw rather than invent a result. |
 | Spacing | `ui_calc_item_spacing` in `src/auto/window.cpp:4031` and `sprite_draw_spaced_row` in `src/auto/graphics.cpp:2710` | Real overlap, fit and remainder arithmetic for citizens and stockpile icons; the new backend supplies sprite pixels. |
 
 The diplomacy source uses government resources `200 + government`, military
 resource 215 with era columns at `era*109+1`, 108×30 rows spaced by 31 pixels,
 and a 225×275 portrait at `(208,57)`. Its technology column begins at `(485,130)`
 with a 58×20 text region at `(531,137)`. The source word-wrap helper reads prior
-buffer contents in one branch; this review explicitly substitutes deterministic
-fixture text instead of pretending to recover that state. The six advance IDs
+buffer contents only in the branch where a multiword first word overflows.
+Supported fixtures avoid that branch; the unchanged helper executes with native
+metrics, including safe two-line test names. Other input labels stop unless
+their caller state is qualified. The six advance IDs
 now match `AdvanceId` in `src/include/enums.h`; categories use the inspected base
 `RULES.TXT` values. Ranking depths remain supplied fixture input, not reconstructed
 research progression. The former placeholder ID/name pairing and modulo-five
@@ -211,8 +211,8 @@ The city adapter's 21 ordered tile positions follow
 Its worked flags and food/shield/trade values are supplied fixture data, read
 from the fixture file. The unchanged `draw_resource_yields` body draws their
 10×10 icons with native centering and overlap. Its direction and display tables
-are extracted from `gamedata.cpp`. Full city yield recalculation, economy summary
-rows and the units-present detail panel remain adapters. The native list and stockpile functions do execute, including compressed
+are extracted from `gamedata.cpp`. Economy summary rows and resource-terrain dispatch now execute unchanged. Full
+city yield recalculation and the units-present detail state remain supplied. The native list and stockpile functions do execute, including compressed
 icon spacing at population 28. Optional extras and interactive hit testing are
 outside this fixture. A full game build remains the future integration test.
 
@@ -278,9 +278,9 @@ and source-selected huts.
 The coin is a raster-art replacement within the existing native 14-pixel boxes;
 HD-only changes image density, while tax and improvement-list semantics stay the same.
 
-This remains a render-state replay. Map labels, replacement-stage palette approximations, order
-glyphs, exact text metrics and interactive camera/gameplay execution remain
-backend/fixture limits. The data is diverse gameplay state, not a claim that the
+This remains a render-state replay. Saved map labels and native font metrics
+now execute; replacement palette choices, supplied order state and interactive
+camera/gameplay execution remain backend/fixture limits. The data is diverse gameplay state, not a claim that the
 standalone program loads or runs the full game.
 
 ## Original-art replay
@@ -302,8 +302,8 @@ the alternate-key mask operation and quarter order. City sprite indexing is
 style × 8 + size × 2 + walls. The original optional native mode reads the unit
 shield and city flag/size-box registration scans from `unit.cpp:906` and
 `city.cpp:4009,4034`; flags are 14×22 and disorder is 30×30. It supplies the
-original sheet-derived civ primary/mid colors. Default replacement traces retain
-their existing metadata unchanged.
+original sheet-derived civ primary/mid/secondary colors. Replacement sprites
+retain their own art registration metadata.
 
 City panorama and throne crop rectangles are captured at the native
 `Sprite::grab_from_surface` boundary, including selected resource IDs. Original
@@ -316,9 +316,10 @@ color at runtime index 145. This is the static audience fixture; no AVI is read.
 Spacecraft uses SS 499 (`spaceship.cpp:314`), and native ordered split crops are
 clipped to the 457×304 assembly surface before copying to (175,99). City windows
 use the 636×421 CITY.GIF crop from `city.cpp:11940–11942`, exact citizens and
-14/10-pixel economy icons. The existing fixture summary rows, resource-map
-terrain, unit panels, labels, buttons and font metrics remain explicit adapters;
-this does not claim pixel-exact full-game window capture.
+14/10-pixel economy icons. Resource bars and terrain dispatch now execute source
+bodies; native labels use the reference glyph bank. Controls and present-unit
+state retain the finite presentation boundary described in FIDELITY-AUDIT.md.
+This does not claim pixel-exact full-game window capture.
 
 Local verification covers all 22 output dimensions, four 3840×2160 exports,
 all extracted PNG hashes, unchanged original input hashes and 26 original-mode
@@ -346,7 +347,8 @@ The replacement palette adapter distinguishes primary/mid faction colors and
 health colors. Shield artwork contains both faction mask colors. Unit order
 text is centered at the native shield text anchor in the standalone backend;
 this corrects the prior left/top interpretation, including original-art replays.
-Fonts remain approximate. Native and HD-only use identical logical commands.
+Native fonts use the reference bank; native and HD-only use identical logical
+commands. Enhanced text remains on its independent presentation path.
 `readableBadges` modifies only the proposal's badge group: 1.35x scale, separated
 rear plate, a plus sign for a source-indicated stack, and foreground placement.
 Unit/city selection, image frames and anchors are unchanged and checked directly.

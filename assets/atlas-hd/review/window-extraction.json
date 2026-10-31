@@ -44,6 +44,12 @@
       "sha256": "94f45949df257dc4e5ee406926f29dd3db0a9874dc4092cfb98d142bbb4c71a1"
     },
     {
+      "name": "DiploLeaderWindow::science_draw_tech",
+      "file": "src/auto/diplomacy.cpp",
+      "line": 4766,
+      "sha256": "f285ab35e5b3310567b7e18d99a15787deb3a823f5db880baaec3d3bb9758e59"
+    },
+    {
       "name": "DiploLeaderWindow::init_science",
       "file": "src/auto/diplomacy.cpp",
       "line": 4907,
@@ -90,6 +96,36 @@
       "file": "src/auto/city.cpp",
       "line": 12599,
       "sha256": "078036a55840dc411c9f2a393d11266561dbb43d499db5e6824b294b84caaa2d"
+    },
+    {
+      "name": "CityWindow::draw_resource_food",
+      "file": "src/auto/city.cpp",
+      "line": 12700,
+      "sha256": "9f20836c283286420e1e342c84f2e8ccf677dd808f06c885b77e93f1931773f9"
+    },
+    {
+      "name": "CityWindow::draw_resource_shields",
+      "file": "src/auto/city.cpp",
+      "line": 12894,
+      "sha256": "6a9890e693c2beb124aaf977c792db8f5ea1c3cbbd40c70d17b1e81cc937c42c"
+    },
+    {
+      "name": "CityWindow::draw_resource_trade",
+      "file": "src/auto/city.cpp",
+      "line": 13150,
+      "sha256": "9238ea3bd6403bfd79fb9768343d7e7bcdf7156bc317c98c1c0cab2d3d9ae38e"
+    },
+    {
+      "name": "CityWindow::draw_resource_rates",
+      "file": "src/auto/city.cpp",
+      "line": 13276,
+      "sha256": "102ea8eb8a2a589d2093f4614f27fd8b346d676467846513f1e1bcdfe69cc092"
+    },
+    {
+      "name": "CityWindow::draw_resource_map",
+      "file": "src/auto/city.cpp",
+      "line": 13485,
+      "sha256": "aa76555e4a7a63df982c50980e45aa1cbf54c960ea5de870648e160e1dfd73a8"
     },
     {
       "name": "CityWindow::draw_food_box",
@@ -152,7 +188,9 @@
     "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
     "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
     "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
-    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e"
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e",
+    "data/native/fonts.bin": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb",
+    "src/platform/text.c": "6ec96e7e8bcd7aafe2dff015fd5648ecfddf3495dfe34c2856f94b6fc335e98a"
   },
   "bodyPolicy": "unchanged text, LF normalized, with #line source mapping"
 }

@@ -2,13 +2,13 @@
   "status": "pass",
   "checks": [
     {
-      "name": "Source hashes and 45 unchanged extracted function bodies",
-      "count": 45,
+      "name": "Source hashes and 50 unchanged extracted function bodies",
+      "count": 50,
       "status": "pass"
     },
     {
-      "name": "Window source hashes and 24 unchanged extracted function bodies",
-      "count": 24,
+      "name": "Window source hashes and 30 unchanged extracted function bodies",
+      "count": 30,
       "status": "pass"
     },
     {

@@ -146,7 +146,7 @@ def main():
         x=1+15*i
         crop(f'flag/{i}','CITIES.GIF',x,425,14,22)
         crop(f'flag/{i}/dark','CITIES.GIF',x,448,14,22)
-        anchors.append([(images['CITIES.GIF'].getpixel((x+dx,429))+10)%256 for dx in (3,6)])
+        anchors.append([(images['CITIES.GIF'].getpixel((x+dx,429))+10)%256 for dx in (3,6)]+[(images['CITIES.GIF'].getpixel((x,423))+10)%256])
     for name,x in [('fortified',143),('fortress',208),('airbase',273),('airbase-occupied',338)]:
         crop('improvement/'+name,'CITIES.GIF',x,423,64,48)
     crop('grid','ICONS.GIF',199,289)
@@ -155,6 +155,10 @@ def main():
     for role,x,y in [('food',1,305),('production',16,305),('trade',31,305),('gold',16,320),('luxury',1,320),('science',31,320)]:
         crop('economy/'+role,'ICONS.GIF',x,y,14,14)
     for id,role in [(1,'food'),(2,'production'),(3,'gold')]: bindings[f'icon/{id}']=bindings['economy/'+role]
+    for id,role in [(20,'trade'),(21,'luxury'),(22,'science'),(24,'food'),(26,'production')]: bindings[f'icon/{id}']=bindings['economy/'+role]
+    for id,x in [(23,1),(25,16),(27,31)]:crop(f'icon/{id}','ICONS.GIF',x,290,14,14)
+    crop('ship-close','ss.dll/497',107,1,52,36)
+    crop('ship-launch','ss.dll/497',69,38,67,36)
     for id in range(11,15): crop(f'icon/{id}','ICONS.GIF',49+11*(id-11),334,10,10)
     for i in range(44): crop(f'icon/{100+i}','PEOPLE.GIF',2+28*(i%11),6+31*(i//11),27,30)
     for i in range(38): crop(f'icon/{201+i}','ICONS.GIF',343+37*(i%8),1+21*(i//8),36,20)
@@ -167,6 +171,7 @@ def main():
             crop(f'house/{size}/{i}','cv.dll/310',1+xstep*i,231 if size=='large' else 512,w,h)
     # Actual native sprite crop rectangles and original registration points.
     (OUT/'anchors.txt').write_text('\n'.join(' '.join(map(str,a)) for a in anchors)+'\n')
+    window_palettes={}
     scenes=json.loads((PACK/'review/scenes.json').read_text(encoding='utf-8'))
     for s in scenes:
         if s['mode']=='plate':
@@ -202,6 +207,9 @@ def main():
                 for key in [f'mk.dll/{bgid}',f'mk.dll/{portrait}','mk.dll/215']:
                     images[key].putpalette(palette)
 
+            palette_source='CITY.GIF' if s['mode']=='city-window' else 'ss.dll/499' if s['mode']=='spaceship' else f'mk.dll/{bgid}'
+            pal=images[palette_source].getpalette()
+            window_palettes['city' if s['mode']=='city-window' else s['mode']]={str((i+10)%256):'#'+''.join(f'{v:02x}' for v in pal[3*i:3*i+3]) for i in range(256)}
             for i,c in enumerate(trace['commands']):
                 if c['asset']=='background':
                     source=f'{dll}.dll/{c["resource"]}'
@@ -214,7 +222,12 @@ def main():
     # Shield placeholders are special low palette slots from the unit sheet.
     unitpal=images['UNITS.GIF'].getpalette()
     for i in (251,252): colors[str((i+10)%256)]='#'+''.join(f'{v:02x}' for v in unitpal[3*i:3*i+3])
-    result=dict(description='Local original-game pixel derivatives; excluded from redistribution',sources=source_hashes,bindings=bindings,palette=colors)
+    # GamePalette retains the stock system entries outside GIF load range 10..245.
+    # RGB values from src/platform/video.c:402 (COLORREF order in gdi.c:189).
+    system_tail=['#fffBf0','#a0a0a4','#808080','#ff0000','#00ff00','#ffff00','#0000ff','#ff00ff','#00ffff','#ffffff']
+    for p in window_palettes.values():
+        for i,color in enumerate(system_tail):p[str(246+i)]=color.lower()
+    result=dict(description='Local original-game pixel derivatives; excluded from redistribution',sources=source_hashes,bindings=bindings,palette=colors,windowPalettes=window_palettes)
     (OUT/'bindings.json').write_text(json.dumps(result,indent=2)+'\n')
     for name,digest in source_hashes.items():
         if hashlib.sha256((game/name).read_bytes()).hexdigest()!=digest: raise ValueError('Source changed')

@@ -1,4 +1,5 @@
 const C = require('./common.cjs');
+const Font = require('./font.cjs');
 const {fs, path, pack, sharp, svg, art, raw, clear, blit, png, asset, fit} = C;
 const cache = new Map();
 const faction = [ '#e6dfc3', '#d66b57', '#63b194', '#9e87ca', '#6e9ed0', '#d8bd60', '#dc994d', '#b7c7ce' ];
@@ -49,9 +50,14 @@ function rect(dst, c, palette = color) {
         }
 }
 
-async function baseline(
-    trace, scene, bindings,
-    {density = 1, native = true, transparent = false, palette = color, background = null} = {}) {
+async function baseline(trace, scene, bindings, {
+    density = 1,
+    native = true,
+    transparent = false,
+    palette = color,
+    background = null,
+    legacyText = false
+} = {}) {
     const W = trace.width * density, H = trace.height * density;
     let dst = clear(W, H, transparent ? [ 0, 0, 0, 0 ] : [ 12, 22, 23, 255 ]);
     if (background)
@@ -90,6 +96,10 @@ async function baseline(
         }
         if (c.asset === 'rect' || c.asset === 'frame') {
             rect(dst, c, palette);
+            continue;
+        }
+        if (c.asset === 'text' && !legacyText) {
+            Font.draw(dst, command, density, palette(c.color));
             continue;
         }
         if (c.asset === 'text') {
@@ -356,7 +366,7 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
     if (logicalTw >= 48) {
         const objects = C.engine('objects', path.join(pack, scene.fixture));
         const layer = await baseline(readableBadges(objects), {mode : 'objects'}, bindings,
-                                     {density, native : false, transparent : true});
+                                     {density, native : false, transparent : true, legacyText : true});
         blit(dst, await raw(layer), 0, 0);
     }
 
@@ -364,7 +374,9 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
 }
 
 async function proposedCity(trace, scene, bindings) {
-    return (await require('./city-panorama.cjs').render(trace, scene)).buffer;
+    return (await require('./city-panorama.cjs')
+                .render({...trace, commands : trace.commands.filter(c => c.asset !== 'text')}, scene))
+        .buffer;
 }
 
 async function proposedThrone(scene) {

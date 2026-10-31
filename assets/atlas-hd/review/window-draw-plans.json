@@ -273,14 +273,14 @@
       "height": 480
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 178,
       "y": 170,
       "width": 43,
       "height": 51
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 393,
       "y": 104,
       "width": 61,
@@ -322,7 +322,7 @@
       "height": 78
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 442,
       "y": 117,
       "width": 33,
@@ -336,35 +336,35 @@
       "height": 32
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/life-support.png",
       "x": 529,
       "y": 225,
       "width": 55,
       "height": 42
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/solar.png",
       "x": 431,
       "y": 199,
       "width": 74,
       "height": 36
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/habitation.png",
       "x": 431,
       "y": 206,
       "width": 69,
       "height": 58
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/solar.png",
       "x": 458,
       "y": 233,
       "width": 80,
       "height": 47
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 178,
       "y": 200,
       "width": 62,
@@ -399,14 +399,14 @@
       "height": 40
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/life-support.png",
       "x": 328,
       "y": 310,
       "width": 57,
       "height": 53
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 497,
       "y": 253,
       "width": 78,
@@ -420,7 +420,7 @@
       "height": 26
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 548,
       "y": 280,
       "width": 49,
@@ -504,7 +504,7 @@
       "height": 64
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 428,
       "y": 279,
       "width": 66,
@@ -518,7 +518,7 @@
       "height": 29
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 461,
       "y": 316,
       "width": 52,
@@ -562,14 +562,14 @@
       "height": 480
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 178,
       "y": 170,
       "width": 43,
       "height": 51
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 393,
       "y": 104,
       "width": 61,
@@ -611,7 +611,7 @@
       "height": 78
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 442,
       "y": 117,
       "width": 33,
@@ -625,35 +625,35 @@
       "height": 32
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/life-support.png",
       "x": 529,
       "y": 225,
       "width": 55,
       "height": 42
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/solar.png",
       "x": 431,
       "y": 199,
       "width": 74,
       "height": 36
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/habitation.png",
       "x": 431,
       "y": 206,
       "width": 69,
       "height": 58
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/solar.png",
       "x": 458,
       "y": 233,
       "width": 80,
       "height": 47
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 178,
       "y": 200,
       "width": 62,
@@ -688,14 +688,14 @@
       "height": 40
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/life-support.png",
       "x": 328,
       "y": 310,
       "width": 57,
       "height": 53
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 497,
       "y": 253,
       "width": 78,
@@ -709,7 +709,7 @@
       "height": 26
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 548,
       "y": 280,
       "width": 49,
@@ -793,7 +793,7 @@
       "height": 64
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/fuel.png",
       "x": 428,
       "y": 279,
       "width": 66,
@@ -807,7 +807,7 @@
       "height": 29
     },
     {
-      "file": "interface/windows/attachment-empty.png",
+      "file": "sprites/spaceship/propulsion.png",
       "x": 461,
       "y": 316,
       "width": 52,
@@ -2266,11 +2266,60 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 77,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 53,
+      "y": 84,
+      "width": 48,
+      "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 101,
       "y": 84,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 125,
+      "y": 84,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2280,11 +2329,39 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/0.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 29,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 96,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2294,11 +2371,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 149,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 5,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2315,11 +2413,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 108,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 173,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2334,6 +2474,20 @@
       "y": 120,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/city/14.png",
@@ -2350,11 +2504,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 5,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2371,11 +2546,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 132,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 173,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2385,11 +2602,25 @@
       "height": 24
     },
     {
+      "file": "compatibility/fog/2.png",
+      "x": 29,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 144,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2399,11 +2630,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 149,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 53,
       "y": 156,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 53,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -2413,256 +2665,11 @@
       "height": 24
     },
     {
-      "file": "sprites/resources/wheat.png",
-      "x": 297,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 306,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 315,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 324,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 333,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 342,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 351,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 360,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 369,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 297,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 306,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 315,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 324,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 333,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 342,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 351,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 297,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 306,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 315,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 324,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 333,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 342,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 351,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 360,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 297,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 306,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 315,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 324,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 333,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 297,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 306,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 297,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 306,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 315,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 324,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 333,
-      "y": 178,
-      "width": 13,
-      "height": 13
+      "file": "compatibility/fog/1.png",
+      "x": 125,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -2880,6 +2887,650 @@
       "y": 151,
       "width": 10,
       "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 206,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 213,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 220,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 227,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 234,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 241,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 248,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 255,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 262,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 269,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 276,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 283,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 290,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 297,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 304,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 311,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 318,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 325,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 332,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 339,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 346,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 353,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 360,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 367,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 394,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 401,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 408,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 415,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 206,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 219,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 232,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 245,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 272,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 285,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 298,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 311,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 324,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 337,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 350,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 363,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 376,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 389,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 402,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 415,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 206,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 215,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 224,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 233,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 242,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 251,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 260,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 269,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 278,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 287,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 296,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 305,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 314,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 323,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 332,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 341,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 350,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 359,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 368,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 377,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 386,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 395,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 404,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 413,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 206,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 214,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 222,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 230,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 238,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 246,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 254,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 262,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 270,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 278,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 299,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 307,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 315,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 323,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 343,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 351,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 359,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 367,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 375,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 383,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 391,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 399,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 407,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 415,
+      "y": 141,
+      "width": 14,
+      "height": 14
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -4088,11 +4739,60 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 77,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 53,
+      "y": 84,
+      "width": 48,
+      "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 101,
       "y": 84,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 125,
+      "y": 84,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4102,11 +4802,39 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/0.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 29,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 96,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4116,11 +4844,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 149,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 5,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4137,11 +4886,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 108,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 173,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4156,6 +4947,20 @@
       "y": 120,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/city/14.png",
@@ -4172,11 +4977,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 5,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4193,11 +5019,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 132,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 173,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4207,11 +5075,25 @@
       "height": 24
     },
     {
+      "file": "compatibility/fog/2.png",
+      "x": 29,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 144,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4221,11 +5103,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 149,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 53,
       "y": 156,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 53,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -4235,256 +5138,11 @@
       "height": 24
     },
     {
-      "file": "sprites/resources/wheat.png",
-      "x": 297,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 306,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 315,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 324,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 333,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 342,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 351,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 360,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 369,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 297,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 306,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 315,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 324,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 333,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 342,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 351,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 297,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 306,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 315,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 324,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 333,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 342,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 351,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 360,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 297,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 306,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 315,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 324,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 333,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 297,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 306,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 297,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 306,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 315,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 324,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 333,
-      "y": 178,
-      "width": 13,
-      "height": 13
+      "file": "compatibility/fog/1.png",
+      "x": 125,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -4702,6 +5360,650 @@
       "y": 151,
       "width": 10,
       "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 206,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 213,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 220,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 227,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 234,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 241,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 248,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 255,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 262,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 269,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 276,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 283,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 290,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 297,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 304,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 311,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 318,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 325,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 332,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 339,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 346,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 353,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 360,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 367,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 394,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 401,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 408,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 415,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 206,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 219,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 232,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 245,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 272,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 285,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 298,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 311,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 324,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 337,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 350,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 363,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 376,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 389,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 402,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 415,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 206,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 215,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 224,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 233,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 242,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 251,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 260,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 269,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 278,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 287,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 296,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 305,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 314,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 323,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 332,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 341,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 350,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 359,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 368,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 377,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 386,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 395,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 404,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 413,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 206,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 214,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 222,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 230,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 238,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 246,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 254,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 262,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 270,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 278,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 299,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 307,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 315,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 323,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 343,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 351,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 359,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 367,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 375,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 383,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 391,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 399,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 407,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 415,
+      "y": 141,
+      "width": 14,
+      "height": 14
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -6808,11 +8110,60 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 77,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 53,
+      "y": 84,
+      "width": 48,
+      "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 101,
       "y": 84,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 125,
+      "y": 84,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6822,11 +8173,39 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/0.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 29,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 96,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6836,11 +8215,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 149,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 5,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6857,11 +8257,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 108,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 173,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6876,6 +8318,20 @@
       "y": 120,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/city/14.png",
@@ -6892,11 +8348,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 5,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6913,11 +8390,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 132,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 173,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6927,11 +8446,25 @@
       "height": 24
     },
     {
+      "file": "compatibility/fog/2.png",
+      "x": 29,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 144,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6941,11 +8474,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 149,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 53,
       "y": 156,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 53,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -6955,256 +8509,11 @@
       "height": 24
     },
     {
-      "file": "sprites/resources/wheat.png",
-      "x": 297,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 306,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 315,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 324,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 333,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 342,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 351,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 360,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 369,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 297,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 306,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 315,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 324,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 333,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 342,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 351,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 297,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 306,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 315,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 324,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 333,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 342,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 351,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 360,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 297,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 306,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 315,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 324,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 333,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 297,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 306,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 297,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 306,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 315,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 324,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 333,
-      "y": 178,
-      "width": 13,
-      "height": 13
+      "file": "compatibility/fog/1.png",
+      "x": 125,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -7422,6 +8731,874 @@
       "y": 151,
       "width": 10,
       "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 206,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 209,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 212,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 215,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 218,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 221,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 224,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 227,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 230,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 233,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 236,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 239,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 242,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 245,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 248,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 251,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 254,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 257,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 260,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 263,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 266,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 269,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 272,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 275,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 278,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 281,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 284,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 287,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 290,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 293,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 296,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 299,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 302,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 305,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 308,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 311,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 314,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 317,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 320,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 323,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 326,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 329,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 332,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 335,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 338,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 341,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 344,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 347,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 350,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 353,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 356,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 359,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 362,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 365,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 368,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 371,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 406,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 409,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 412,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 415,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 206,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 219,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 232,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 245,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 272,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 285,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 298,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 311,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 324,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 337,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 350,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 363,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 376,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 389,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 402,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 415,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 206,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 215,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 224,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 233,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 242,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 251,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 260,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 269,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 278,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 287,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 296,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 305,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 314,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 323,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 332,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 341,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 350,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 359,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 368,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 377,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 386,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 395,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 404,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 413,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 206,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 214,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 222,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 230,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 238,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 246,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 254,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 262,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 270,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 278,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 299,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 307,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 315,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 323,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 343,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 351,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 359,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 367,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 375,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 383,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 391,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 399,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 407,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 415,
+      "y": 141,
+      "width": 14,
+      "height": 14
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -10387,11 +12564,60 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 77,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 53,
+      "y": 84,
+      "width": 48,
+      "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 53,
+      "y": 84,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 101,
       "y": 84,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 125,
+      "y": 84,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10401,11 +12627,39 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/0.png",
+      "x": 53,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 29,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 96,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 77,
+      "y": 96,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10415,11 +12669,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 149,
+      "y": 96,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/3.png",
+      "x": 5,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10436,11 +12711,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 108,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 108,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 108,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/0.png",
+      "x": 173,
+      "y": 108,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10455,6 +12772,20 @@
       "y": 120,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/1.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/city/14.png",
@@ -10471,11 +12802,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/2.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 120,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 5,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 5,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10492,11 +12844,53 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/2/0.png",
+      "x": 125,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/1.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/2.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/dither/2/3.png",
+      "x": 101,
+      "y": 132,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/feature/hills/0.png",
+      "x": 101,
+      "y": 132,
+      "width": 48,
+      "height": 24
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 149,
       "y": 132,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 173,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10506,11 +12900,25 @@
       "height": 24
     },
     {
+      "file": "compatibility/fog/2.png",
+      "x": 29,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 77,
       "y": 144,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/dither/4/0.png",
+      "x": 101,
+      "y": 144,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10520,11 +12928,32 @@
       "height": 24
     },
     {
+      "file": "compatibility/dither/4/3.png",
+      "x": 125,
+      "y": 144,
+      "width": 24,
+      "height": 12
+    },
+    {
+      "file": "compatibility/fog/1.png",
+      "x": 149,
+      "y": 156,
+      "width": 24,
+      "height": 12
+    },
+    {
       "file": "compatibility/terrain/2.png",
       "x": 53,
       "y": 156,
       "width": 48,
       "height": 24
+    },
+    {
+      "file": "compatibility/fog/2.png",
+      "x": 53,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "compatibility/terrain/2.png",
@@ -10534,256 +12963,11 @@
       "height": 24
     },
     {
-      "file": "sprites/resources/wheat.png",
-      "x": 297,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 306,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 315,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 324,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 333,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 342,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 351,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 360,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "sprites/resources/wheat.png",
-      "x": 369,
-      "y": 68,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 297,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 306,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 315,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 324,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 333,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 342,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/production.png",
-      "x": 351,
-      "y": 90,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 297,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 306,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 315,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 324,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 333,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 342,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 351,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/trade.png",
-      "x": 360,
-      "y": 112,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 297,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 306,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 315,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 324,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/gold.png",
-      "x": 333,
-      "y": 134,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 297,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/luxury.png",
-      "x": 306,
-      "y": 156,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 297,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 306,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 315,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 324,
-      "y": 178,
-      "width": 13,
-      "height": 13
-    },
-    {
-      "file": "interface/economy/science.png",
-      "x": 333,
-      "y": 178,
-      "width": 13,
-      "height": 13
+      "file": "compatibility/fog/1.png",
+      "x": 125,
+      "y": 168,
+      "width": 24,
+      "height": 12
     },
     {
       "file": "sprites/resources/wheat.png",
@@ -11001,6 +13185,874 @@
       "y": 151,
       "width": 10,
       "height": 10
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 206,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 209,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 212,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 215,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 218,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 221,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 224,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 227,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 230,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 233,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 236,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 239,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 242,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 245,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 248,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 251,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 254,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 257,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 260,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 263,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 266,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 269,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 272,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 275,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 278,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 281,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 284,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 287,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 290,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 293,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 296,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 299,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 302,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 305,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 308,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 311,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 314,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 317,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 320,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 323,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 326,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 329,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 332,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 335,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 338,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 341,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 344,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 347,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 350,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 353,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 356,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 359,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 362,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 365,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 368,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 371,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 406,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 409,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 412,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "sprites/resources/wheat.png",
+      "x": 415,
+      "y": 76,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 206,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 219,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 232,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 245,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 272,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 285,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 298,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 311,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 324,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 337,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 350,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 363,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 376,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 389,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 402,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/production.png",
+      "x": 415,
+      "y": 182,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 206,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 215,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 224,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 233,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 242,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 251,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 260,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 269,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 278,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 287,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 296,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 305,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 314,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 323,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 332,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 341,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 350,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 359,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 368,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 377,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 386,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 395,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 404,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/trade.png",
+      "x": 413,
+      "y": 117,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 206,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 214,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 222,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 230,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 238,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 246,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 254,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 262,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 270,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/gold.png",
+      "x": 278,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 299,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 307,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 315,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "x": 323,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 343,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 351,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 359,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 367,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 375,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 383,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 391,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 399,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 407,
+      "y": 141,
+      "width": 14,
+      "height": 14
+    },
+    {
+      "file": "interface/economy/science.png",
+      "x": 415,
+      "y": 141,
+      "width": 14,
+      "height": 14
     },
     {
       "file": "sprites/resources/wheat.png",

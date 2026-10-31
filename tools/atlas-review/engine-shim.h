@@ -63,11 +63,8 @@ struct DibSurface {
     void draw_text(iptr, const char*, int, int, int);
 };
 
-struct GameFont {
-    int text_width(const char*);
-    int font_cached_height();
-    void set(int, int) {};
-};
+#include "native-font.h"
+GameFont* activeFont = nullptr;
 
 struct {
     GameFont map_label_font;
@@ -117,11 +114,12 @@ Unit unit_storage[2049];
 Unit* units = unit_storage + 1;
 
 struct {
-    int domain = 0, hit_points = 10;
+    int domain = 0, hit_points = 10, attack = 1;
 } unit_types[64];
 
 struct City {
     int x = 0, y = 0, owner = 1, size = 8, id = 1, known_to = 255, flags = 0;
+    char name[64]{};
     char revealed_size[8]{8, 8, 8, 8, 8, 8, 8, 8};
 };
 
@@ -284,7 +282,7 @@ int civ_has_advance(int c, int tech) {
 }
 
 bool originalArt = false;
-int originalPrimary[8]{}, originalMid[8]{};
+int originalPrimary[8]{}, originalMid[8]{}, originalSecondary[8]{};
 
 struct SourceCrop {
     int resource, x, y, width, height;
@@ -295,6 +293,10 @@ int originalBackground = 0;
 
 int civ_color_primary(int c) {
     return originalArt ? originalPrimary[c] : 200 + c;
+}
+
+int civ_color_secondary(int c) {
+    return originalArt ? originalSecondary[c] : 200 + c;
 }
 
 int civ_color_mid(int c) {
@@ -336,6 +338,7 @@ struct {
 Sprite tile_direction_mask_sprite;
 
 struct {
+    Sprite map_cursor_sprite;
     Sprite terrain_dither_sprites[13 * 4];
     Sprite unexplored_dither_sprites[4];
 } map_cursor_sprite_block;
@@ -423,15 +426,24 @@ struct Command {
     std::string name;
     int x, y, w, h, tx, ty, color;
     std::string text;
+    int face = 0, fontHeight = 11, style = 0;
 };
 
 std::vector<Command> commands;
 
 void record(std::string name, int x, int y, int w, int h, int color = -1, std::string text = "") {
     commands.push_back({name, x, y, w, h, currentX, currentY, color, text});
+    if (name == "text" && activeFont && !enhancedBoundary) {
+        auto& c = commands.back();
+        c.face = activeFont->face;
+        c.fontHeight = activeFont->height;
+        c.style = activeFont->style;
+    }
 }
 
 void gfx_set_scale_ratio(int n, int d) {
+    legacyScaleNum = n;
+    legacyScaleDen = d;
     scaleNum = n;
     scaleDen = d;
 }
@@ -446,32 +458,77 @@ void gfx_set_draw_target(iptr) {}
 
 void text_set_surface(iptr) {}
 
-void text_set_font(iptr) {}
+void text_set_font(iptr f) {
+    activeFont = (GameFont*)f;
+}
+
+int foreground = 10, shadow = -1, shadowX = 0, shadowY = 0;
 
 void gfx_set_text_color_index(int c) {
     textColor = c;
 }
 
-void text_set_colors(int c, int, int, int) {
-    textColor = c;
+void text_set_colors(int fg, int sh, int dx, int dy) {
+    textColor = fg;
+    foreground = fg;
+    shadow = sh;
+    if (dx >= 0)
+        shadowX = dx;
+    if (dy >= 0)
+        shadowY = dy;
 }
 
-void gfx_select_zoom_font(int) {}
-
-int GameFont::text_width(const char* t) {
-    return int(std::strlen(t)) * std::max(3, 6 * scaleNum / scaleDen);
-}
-
-int GameFont::font_cached_height() {
-    return std::max(5, 10 * scaleNum / scaleDen);
+void gfx_select_zoom_font(int z) {
+    int size = gfx_zoom_scale(32, z) / 3;
+    if (size == 10)
+        size = 11;
+    status_window_block.map_label_font.set(1, size);
+    activeFont = &status_window_block.map_label_font;
 }
 
 void gfx_draw_text(const char* t, int x, int y) {
-    record("text", x, y, 0, std::max(5, 10 * scaleNum / scaleDen), textColor, t);
+    if (enhancedBoundary) {
+        record("text", x, y, 0, std::max(5, 10 * scaleNum / scaleDen), textColor, t);
+        return;
+    }
+    if (!activeFont)
+        throw std::runtime_error("No selected text font");
+    if (shadow >= 0)
+        record("text", x + shadowX, y + shadowY, 0, activeFont->font_cached_height(), shadow, t);
+    if (foreground >= 0)
+        record("text", x, y, 0, activeFont->font_cached_height(), foreground, t);
 }
 
-void DibSurface::draw_text(iptr, const char* t, int x, int y, int) {
+int text_draw_shadowed(iptr, const char* t, int x, int y) {
     gfx_draw_text(t, x, y);
+    return x + activeFont->text_width(t);
+}
+
+void DibSurface::draw_text(iptr font, const char* t, int x, int y, int flags) {
+    if (enhancedBoundary) {
+        gfx_draw_text(t, x, y);
+        return;
+    }
+    auto saved = activeFont;
+    activeFont = (GameFont*)font;
+    int w = activeFont->text_width(t), h = activeFont->font_cached_height();
+    if (!(flags & 1))
+        x -= w / 2;
+    if (flags & 2)
+        x -= w / 2;
+    if (!(flags & 4))
+        y -= h / 2;
+    if (flags & 8)
+        y -= h / 2;
+    record("text", x, y, 0, h, textColor, t);
+    activeFont = saved;
+}
+
+int map_x_in_span(int, int, int);
+int map_tile_in_box(int, int, int, int, int, int);
+
+int map_distance(int, int, int, int) {
+    throw std::runtime_error("Only full-view city labels qualified");
 }
 
 void DibSurface::replace_color(iptr r, int from, int to) {
@@ -614,6 +671,7 @@ struct MapView : DibSurface {
     DibSurface map_surface, overlay_surface;
     int map_surface_head = 0, overlay_surface_head = 0;
     GameFont tile_font, tile_small_font;
+    GameFont& tile_font_head = tile_font;
     void update_layout();
     void tile_to_screen(iptr, iptr, int, int);
     void draw_tile_ocean(iptr, int, int, iptr, int, int, u32, u32);
@@ -632,7 +690,23 @@ struct MapView : DibSurface {
     i32 zoom_scale(i32);
     void apply_zoom();
 
-    void draw_city_names(int, int, int) {} // Window-label typography is explicitly outside this fixture.
+    void draw_city_names(int, int, int);
+    int tile_in_view(int, int);
+};
+
+struct {
+    MapView map_views;
+} map_views_block;
+
+struct {
+    i8 tile_flags[21]{};
+} city_calc;
+
+extern i8 city_resmap_draw_dx_table[24], city_resmap_draw_dy_table[24];
+
+struct CityWindow {
+    int city_index = 0, map_zoom_level = -2;
+    void draw_resource_tiles(int, int, int, int);
 };
 
 #pragma pack(push, 1)

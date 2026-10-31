@@ -13,13 +13,13 @@ async function main() {
     const extraction = C.read(C.path.join(C.pack, 'review/engine-extraction.json'));
     for (const [file, hash] of Object.entries(extraction.sourceHashes))
         assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
-    assert.equal(extraction.functions.length, 45);
-    pass('Source hashes and 45 unchanged extracted function bodies', 45);
+    assert.equal(extraction.functions.length, 50);
+    pass('Source hashes and 50 unchanged extracted function bodies', 50);
     const windows = C.read(C.path.join(C.pack, 'review/window-extraction.json'));
-    assert.equal(windows.functions.length, 24);
+    assert.equal(windows.functions.length, 30);
     for (const [file, hash] of Object.entries(windows.sourceHashes))
         assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.root, file))), hash, file);
-    pass('Window source hashes and 24 unchanged extracted function bodies', 24);
+    pass('Window source hashes and 30 unchanged extracted function bodies', 30);
     const file = C.path.join(C.pack, 'review/fixtures/close.txt'), debug = C.engine('audit', file, 'Debug'),
           release = C.engine('audit', file, 'Release');
     assert.deepEqual(debug, release);
@@ -111,7 +111,7 @@ async function main() {
                    'Production and coins must not use mixed grassland or gold-ore sprites');
         }
         const commands = C.read(C.path.join(C.pack, `review/traces/${s.id}.json`)).commands;
-        const start = commands.findIndex(c => c.asset === 'adapter-resource-map') + 1;
+        const start = commands.findIndex(c => c.asset === 'native-resource-terrain') + 1;
         const end = commands.findIndex((c, i) => i >= start && c.asset === 'panel');
         const yields = commands.slice(start, end);
         const expected = [ 0, 0, 0 ];

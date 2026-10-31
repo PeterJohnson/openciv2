@@ -4,7 +4,6 @@ const C = require('./common.cjs');
 const R = require('./render.cjs');
 const W = require('./windows.cjs');
 const E = require('./economy.cjs');
-const Knowledge = require('./knowledge.cjs');
 const {spawnSync} = require('node:child_process');
 const local = 'review/original-local/';
 const rendered = 'review/original-scenes/';
@@ -25,7 +24,7 @@ function nativeTrace(id) {
     return C.read(C.path.join(C.pack, local, 'traces', id + '.json'));
 }
 
-// Use the existing city panel adapter with original icons/backdrop. No generated
+// Bind the shared native-content backend to original icons/backdrops. No generated
 // artwork fallback: every image request must resolve to an original binding.
 const aliases = new Map();
 for (const role of E.roles)
@@ -55,78 +54,32 @@ class OriginalPainter extends W.Painter {
         used.add(binding);
         this.ops.push({file : original, x, y, width : w, height : h});
         const p = await C.raw(C.path.join(C.pack, original), w, h, 'nearest');
-        if (options.opacity !== undefined && options.opacity < 1) {
+        if (options.silhouette) {
             for (let i = 0; i < p.data.length; i += 4) {
                 // Source shaded citizen pass is a dark silhouette behind its regular sprite.
                 p.data[i] = p.data[i + 1] = p.data[i + 2] = 0;
-                p.data[i + 3] = Math.round(p.data[i + 3] * options.opacity);
             }
         }
         C.blit(this.dst, p, x, y);
     }
 
-    async box(x, y, w, h) {
-        if (!this.city)
-            await super.box(x, y, w, h, '#606060', '#b7b7a7', 0);
-        // City begin_draw restores these exact regions from CITY.GIF; do not paint
-        // replacement green panels over the original background.
-    }
-
-    async text(s, x, y, w, size = 12, color, align = 'start') {
-        await super.text(s, x + 1, y + 1, w, size, '#101010', align);
-        await super.text(s, x, y, w, size, '#f1e6ba', align);
-    }
-
-    async button(label, x, y, w, h = 25) {
-        await super.box(x, y, w, h, '#909080', '#e0d9b2', 0);
-        await this.text(label, x, y + 5, w, 11, null, 'middle');
+    async text() {
+        throw Error('Original native text must use the reference glyph backend');
     }
 }
 
 async function windowScene(s) {
     const trace = C.read(C.path.join(C.pack, `review/traces/${s.id}.json`));
     const p = new OriginalPainter(trace.width, trace.height, s.mode === 'city-window');
-    if (s.mode === 'city-window')
-        return W.city(trace, s, false, 1, {painter : p, bindings});
-    await p.image(file(s.mode === 'spaceship' ? 'ship-background' : 'background/' + s.id), 0, 0, 640, 480);
-    if (s.mode === 'diplomacy') {
-        for (const [i, c] of trace.commands.entries()) {
-            if (c.asset === 'resource')
-                await p.image(file(`window/${s.id}/${i}`), c.x, c.y, c.width, c.height);
-            else if (c.asset === 'tech-label')
-                await p.text(Knowledge.advance(+c.text).name.slice(0, 8).toUpperCase(), c.x, c.y, c.width, 9);
-        }
-        await p.text('ASTERIAN ENVOY', 184, 16, 272, 17, null, 'middle');
-        await p.text('COMMUNISM', 184, 337, 272, 13, null, 'middle');
-        await p.text('MILITARY', 35, 108, 130, 12, null, 'middle');
-        await p.text('KNOWLEDGE', 477, 108, 130, 12, null, 'middle');
-    } else {
-        // Native render_ship composites its ordered crops into a 457 x 304 DIB,
-        // then copies that DIB to (175,99); clip at the offscreen bounds first.
-        const layer = new OriginalPainter(457, 304);
-        layer.dst = C.clear(457, 304);
-        for (const [i, c] of trace.commands.entries()) {
-            if (c.asset === 'resource' && c.target === -100)
-                await layer.image(file(`window/${s.id}/${i}`), c.x, c.y, c.width, c.height);
-        }
-        C.blit(p.dst, layer.dst, 175, 99);
-        p.ops.push(...layer.ops.map(o => ({...o, x : o.x + 175, y : o.y + 99})));
-        await p.text('ASTERIAN STARSHIP', 12, 9, 616, 20, null, 'middle');
-        const names = [ 'Structural', 'Propulsion', 'Fuel', 'Habitation', 'Life support', 'Solar' ];
-        for (let i = 0; i < 6; i++) {
-            await p.text(names[i], 12, 43 + i * 22, 141, 13);
-            await p.text(String(s.counts[i]), 144, 43 + i * 22, 22, 13);
-        }
-        for (const [i, label] of [`Population: ${s.counts[3] * 10},000`, 'Support: 100%', 'Energy: 100%',
-                                  'Mass: 19,600 t', 'Fuel: 100%', 'Flight: 15.0 years']
-                 .entries())
-            await p.text(label, 12, 194 + i * 22, 154, 11);
-        await p.button('Close', 501, 417, 52, 36);
-        await p.button(s.ready ? 'Launch' : 'Not ready', 559, 417, 67, 36);
-        await p.text(s.ready ? 'Launch success: 100%' : 'Incomplete spacecraft', 3, 454, 634, 14, null,
-                     'middle');
-    }
-    return {buffer : await p.finish(), ops : p.ops};
+    return require('./native-windows.cjs')
+        .render(trace, s, p, {
+            painter : p,
+            bindings,
+            palette : meta.windowPalettes[s.mode === 'city-window' ? 'city'
+                                          : s.mode === 'spaceship' ? 'spaceship'
+                                                                   : 'diplomacy']
+        },
+                W.resourceMap);
 }
 
 async function mapOrView(s, id = s.id) {

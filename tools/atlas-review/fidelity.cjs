@@ -2,65 +2,47 @@ const C = require('./common.cjs');
 const assert = require('node:assert/strict');
 
 const evidence = [
-    [ 'src/auto/diplomacy.cpp', 4933, 'Knowledge labels select face 0, size 11, and era-dependent colors.' ],
+    [
+        'src/auto/diplomacy.cpp', 4766,
+        'science_draw_tech now executes unchanged, including measured fitting, colors and two-line layout.'
+    ],
     [
         'src/auto/graphics.cpp', 7886,
-        'font_handle_create maps face 0 to Times New Roman, negative pixel height, regular/bold style.'
+        'Font face/height/style selection uses the repository reference metrics.'
     ],
     [
-        'src/platform/text.c', 1,
-        'The port uses reference glyphs/metrics and separate 1-bit and antialiased text paths.'
+        'src/platform/text.c', 245, 'The chosen indexed path uses drawing advances with CIV2_WINE_TEXT unset.'
     ],
     [
-        'src/platform/text.c', 245,
-        'CIV2_WINE_TEXT selects measured advances; normal port layout uses drawing advances.'
+        'tools/atlas-review/font.cjs', 1,
+        'Native bitmap replay uses the reference glyph masks, bearings and clip rectangles.'
     ],
     [
-        'tools/atlas-review/windows.cjs', 51,
-        'Window text requests a generic SVG font stack and uses a simplified baseline.'
+        'tools/atlas-review/native-windows.cjs', 1,
+        'Original and HD-only windows share this native-content backend; enhanced remains separate.'
     ],
+    [ 'src/auto/city.cpp', 12699, 'The four resource bar helpers and their parent now execute unchanged.' ],
     [
-        'tools/atlas-review/original.cjs', 75,
-        'OriginalPainter substitutes one global light text color and dark shadow.'
+        'src/auto/city.cpp', 12524,
+        'The city resource terrain dispatcher now executes with source map tile drawing.'
     ],
+    [ 'src/auto/city.cpp', 16965, 'Native city control coordinates are taken from create_controls.' ],
     [
-        'tools/atlas-review/original.cjs', 97,
-        'Knowledge names are sliced to eight characters, not fitted using source metrics.'
-    ],
-    [
-        'tools/atlas-review/window-main.cpp', 218,
-        'science_draw_tech is a stub: selection and rectangles survive, shaping does not.'
-    ],
-    [ 'tools/atlas-review/window-main.cpp', 372, 'text_set_colors is a no-op in the window harness.' ],
-    [
-        'tools/atlas-review/engine-shim.h', 459,
-        'Zoom font selection is a no-op; width is strlen times an estimated character width.'
-    ],
-    [ 'tools/atlas-review/render.cjs', 95, 'Map text uses SVG monospace glyphs and a heuristic baseline.' ],
-    [ 'tools/atlas-review/engine-shim.h', 635, 'Map city-name drawing is a no-op.' ],
-    [
-        'tools/atlas-review/window-main.cpp', 538,
-        'Resource terrain, buttons and present-unit details are adapter methods.'
-    ],
-    [
-        'tools/atlas-review/windows.cjs', 325,
-        'The city resource map uses a supplied repeating terrain pattern.'
+        'src/auto/mapview.cpp', 2234,
+        'draw_city_names now executes, with real saved-city names and native metrics.'
     ],
     [
         'src/auto/city.cpp', 4809,
-        'CityViewWindow::draw_title draws city name/year with two palette-colored passes.'
+        'Panorama title boundary follows the source title band, font, alignment and two palette passes.'
     ],
     [
-        'tools/atlas-review/engine-main.cpp', 412,
-        'City panorama harness calls layout/draw_buildings and emits a 1280x480 scene without draw_title.'
+        'src/auto/spaceship.cpp', 630,
+        'Spacecraft static completed typing follows the source font, line spacing and colors.'
     ],
+    [ 'src/game/unwind.cpp', 191, 'Original spacecraft buttons use the source crops and native labels.' ],
     [
-        'tools/atlas-review/original.cjs', 99,
-        'Diplomacy heading, government and column captions are added by the mockup.'
-    ],
-    [
-        'tools/atlas-review/original.cjs', 114,
-        'Spacecraft title, statistics and buttons are supplied by the adapter.'
+        'tools/atlas-review/verify-native.cjs', 1,
+        'Focused native typography/layout checks supplement source-body and D/R validation.'
     ]
 ];
 const scenes = [
@@ -72,9 +54,9 @@ const scenes = [
         provenance :
             'Repository README identifies this as a native OpenCiv2 runtime screenshot. Different leader, era, government, technology list and power rank from the mockup.',
         findings : [
-            'Text face, color, size, baseline and wrapping differ. The screenshot has small dark multi-line knowledge labels; the mockup has pale, single-line truncated labels.',
-            'ASTERIAN ENVOY, COMMUNISM and the MILITARY/KNOWLEDGE captions are extra adapter text, not text emitted by the extracted audience routines.',
-            'The runtime screenshot includes the animated herald. The mockup exercises only the static audience. Different artwork selections reflect supplied state, not proof of a crop or palette bug.'
+            "Corrected: reference Times glyphs, source measured fitting/truncation, shadow passes and era colors replace the generic SVG labels.",
+            "Corrected: invented envoy, government and column captions were removed from native/original and HD-only.",
+            "Static audience only. Herald movies are absent from the installed input set; leader, era, research and rank differ from the runtime screenshot."
         ],
         crops : [ [ 479, 128, 124, 189 ], [ 479, 128, 124, 189 ] ],
         focus :
@@ -88,10 +70,9 @@ const scenes = [
         provenance :
             'Runtime screenshot is the full desktop/window at 1024x768. The mockup is a 636x421 content fixture at view_scale=2. Population, yields, improvements and units differ.',
         findings : [
-            'Fonts and shadows differ, and the original text colors are replaced by one pale color. Text metrics and label strings are simplified.',
-            'The runtime economy panel has the original food, trade/distribution and shield rows. The mockup substitutes six separate role rows. This is a layout difference, not merely a font mismatch.',
-            'The mockup changes button arrangement and omits the title bar, scrollbars and several original controls. Its resource terrain and present-unit details are supplied adapters.',
-            'Native citizen/yield/stockpile draw selection is retained for the supplied state; those tests do not validate the entire city window.'
+            "Corrected: reference Arial metrics, palette text colors and shadows; native food, trade/distribution and shield bars now execute unchanged.",
+            "Corrected: resource terrain uses the source dispatcher and neighbor joins. Buy/Change and the bottom controls use native scale-2 coordinates.",
+            "Content rectangle only: platform window chrome is excluded. The runtime screenshot uses a larger scale and different city state; present units and control painting retain explicit finite backends."
         ],
         crops : [ [ 337, 174, 351, 243 ], [ 202, 61, 233, 145 ] ],
         focus :
@@ -105,11 +86,11 @@ const scenes = [
         provenance :
             'Runtime screenshot is London, June 1940, in a 1024x479 viewport. The mockup is a synthetic 1280x480 coastal composition with a different building set.',
         findings : [
-            'The runtime draws the city name and year at the top. The mockup omits CityViewWindow::draw_title entirely.',
-            'Viewport/camera, building inventory and city size differ. Matching artwork and native slot routines alone do not establish equal placement for these different inputs.'
+            "Corrected: city name/year title with source Times 36 bold, title band and two palette passes.",
+            "Synthetic Asteria 1788 has a different viewport, camera and building inventory from London 1940. Those inputs must be aligned before pixel comparison."
         ],
         crops : [ [ 260, 0, 510, 60 ], [ 385, 0, 510, 60 ] ],
-        focus : 'Title band: present in the game screenshot; no title draw occurs in the mockup.'
+        focus : 'Title band: restored; city, date and viewport remain different supplied inputs.'
     },
     {
         id : 'map',
@@ -119,9 +100,8 @@ const scenes = [
         provenance :
             'Runtime screenshot is the June 1940 scenario with full UI. The mockup uses the real 1788 save, a different viewport/zoom, and deliberately disables fog.',
         findings : [
-            'City names, window chrome, minimap and status panels are present in the runtime screenshot and omitted by this map fixture.',
-            'Badge/size text uses approximate widths and SVG monospace glyphs. The source font selection, glyph masks and exact text metrics are not executed.',
-            'Terrain, coastline and network selection tests remain useful, but this is not a matching-save/matching-camera pixel comparison.'
+            "Corrected: extracted city-name drawing uses real saved-city names. Unit/city badge text now uses source zoom fonts and reference glyph metrics.",
+            "The 1788 save and camera differ from the June 1940 screenshot. Full application chrome, minimap and status panels are outside the map-content crop."
         ]
     }
 ];
@@ -192,7 +172,7 @@ async function build() {
         return {file, line, fact, sha256 : C.sha(bytes)};
     });
     const data = {
-        status : 'confirmed discrepancies; pixel equivalence not established',
+        status : 'native text/layout corrections applied; runtime pixel equivalence remains unverified',
         references :
             'Four checked-in native OpenCiv2 runtime screenshots, identified in repository README.md. They are not newly captured original-executable screenshots.',
         freshOriginalCapture :
@@ -207,7 +187,7 @@ async function build() {
                 id : 'spacecraft',
                 status : 'source audit only; no runtime screenshot in docs/screenshots',
                 finding :
-                    'Native assembly crop order executes, but title, statistics, text metrics and controls are adapters.'
+                    'Native assembly crop order executes. Source-derived title, text, status and controls now use reference glyphs; statistics remain fixture inputs.'
             },
             {
                 id : 'throne',
@@ -226,7 +206,7 @@ async function build() {
                       .join('');
     const html = `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Runtime fidelity · Atlas HD</title>
 <style>:root{color-scheme:dark}*{box-sizing:border-box}body{margin:0;background:#101c1c;color:#eee5cf;font:16px/1.55 system-ui,sans-serif}main{max-width:1500px;margin:auto;padding:28px}h1,h2{font-family:Georgia,serif}h1{font-size:38px;margin:10px 0}h2{margin-top:32px}a{color:#e2c485}p{max-width:1050px}.notice{padding:14px 18px;background:#2f3025;border-left:4px solid #d9b877}.controls{display:flex;gap:24px;flex-wrap:wrap;margin:25px 0}label{display:grid;gap:6px}select{padding:8px;background:#263d38;color:inherit;border:1px solid #65776a;font:inherit}button:focus-visible,select:focus-visible,a:focus-visible{outline:3px solid #d9b877}.pair{display:grid;grid-template-columns:1fr 1fr;gap:18px}.panel{min-width:0;background:#182b28;border:1px solid #536454;border-radius:5px}h3{font-size:16px;margin:12px 16px}.viewport{overflow:auto;max-height:720px;background:#080e0f}img{display:block;image-rendering:pixelated}img.fit{width:100%;height:auto}canvas{display:block;image-rendering:pixelated}.caption{font-size:13px;color:#bcc8b7;margin:10px 16px}li{margin:8px 0;max-width:1100px}table{border-collapse:collapse;width:100%;max-width:1000px}th,td{padding:9px;border:1px solid #536454;text-align:left;font-size:14px}.muted{color:#bac6b6}code{color:#edce91}details{margin:22px 0;border:1px solid #536454;padding:14px}summary{cursor:pointer}#focus[hidden]{display:none}@media(max-width:800px){.pair{grid-template-columns:1fr}main{padding:16px}h1{font-size:30px}}</style>
-<main><a href="../index.html">← Graphics review</a><h1>Original artwork is not yet a runtime match</h1><p>The standalone review executes selected source draw routines, then supplies text, panels and parts of the scene through adapters. Comparing the original-art scenes to actual runtime screenshots confirms differences beyond font choice.</p>
+<main><a href="../index.html">← Graphics review</a><h1>Native rendering corrections applied</h1><p>Original and HD-only scenes now use the repository font bank, source knowledge fitting, native city economy bars and resource terrain, map city names and panorama titles. Enhanced compositions retain their separate renderer. The comparisons below show the corrected original-art scenes.</p>
 <p class="notice">References below are existing <strong>native OpenCiv2 screenshots</strong> from the repository, not fresh captures of the installed original executable. Saves, era, viewport and scale are not aligned. This is a visual/source audit; no pixel-parity score is claimed. The live original-game launch hit an app-approval timeout.</p>
 <div class="controls"><label>Scene<select id="scene">${
         rows.map((r, i) => `<option value="${i}">${e(r.title)}</option>`)
@@ -247,12 +227,12 @@ async function build() {
                                            : 'Mockup detail'}</h3><div class="viewport"><canvas id="${
                          k}Crop"></canvas></div></section>`)
                 .join('')}</div></section>
-<h2>The font difference is measurable</h2><p>The source diplomacy font is face 0 (Times New Roman), height 11. Its 13-pixel cell and 10-pixel ascent come from the reference font bank. The review instead substitutes SVG text and bypasses the source wrapping. Map text also estimates every character at six pixels at 1×.</p><table><thead><tr><th>String</th><th>Reference measured width</th><th>Reference drawing advance</th><th>Map shim estimate at 1×</th></tr></thead><tbody>${
+<h2>Reference font metrics now used</h2><p>The source diplomacy font is face 0 (Times New Roman), height 11. Its 13-pixel cell and 10-pixel ascent come from the reference font bank. Native text now uses these glyph masks and drawing advances. The old fixed-width estimate is retained below only to explain the discrepancy that was corrected.</p><table><thead><tr><th>String</th><th>Reference measured width</th><th>Reference drawing advance</th><th>Previous shim estimate at 1×</th></tr></thead><tbody>${
         table}</tbody></table><p class="muted">${
         e(fonts
               .limits)} Widths are pixels, not a pixel-diff result. Even selecting the same family name is insufficient without the matching font data, baseline, clipping, shadow, palette and antialiasing path.</p>
-<h2>What is not visually verified yet</h2><p>Spacecraft and throne-room scenes have source-trace checks but no matching runtime screenshot here. Spacecraft text, statistics and controls remain adapters. A clean Debug/Release trace comparison proves repeatability of the standalone harness, not equality to the game's finished framebuffer.</p>
-<h2>Order of repair</h2><ol><li>Lock one save/state, era, viewport, zoom, platform/font environment and capture frame. Capture the same content rectangle in the real game and standalone review.</li><li>Carry font face, height, weight, palette colors, alignment and clip rectangles through the trace. Reuse the target repository's text backend and its measured/drawing advances; remove eight-character truncation and execute the source wrapping path with its caller state.</li><li>Restore source city economy panels, controls and resource-map drawing. Add the missing map names and panorama title. Separate intentionally static diplomacy from herald/video parity.</li><li>Compare dimensions and exact pixels for matching cases, saving difference images and mismatched bounding boxes. Keep HD and enhancement variants separate from this native acceptance gate.</li></ol>
+<h2>What is not visually verified yet</h2><p>Spacecraft and throne-room scenes have source-trace checks but no matching runtime screenshot here. Spacecraft typography and controls now follow source geometry with declared fixture statistics. A clean Debug/Release trace comparison proves repeatability of the standalone harness, not equality to the game's finished framebuffer.</p>
+<h2>Validation and remaining scope</h2><p><a href="native-validation.json">Native validation</a> covers measured widths, source two-line labels, clipped glyphs at both densities, native economy bar positions, saved names and title passes. Original and HD-only share logical layouts. City content excludes application title/border chrome; control painting and finite present-unit state remain explicit adapters.</p><p>A runtime pixel gate still requires identical save/state, camera, content rectangle, font mode and capture frame. No fresh live capture was obtained. Herald animation and unpaired spacecraft/throne scenes remain visually unverified.</p>
 <details><summary>Source evidence</summary><ul>${
         sourceEvidence
             .map(r => `<li><a href="${link(r.file, r.line)}">${e(r.file)}:${r.line}</a> — ${e(r.fact)}</li>`)
@@ -271,7 +251,7 @@ el('scene').onchange=show;el('zoom').onchange=scale;show();</script></html>`;
     }
     new (require('node:vm').Script)(html.match(/<script>([\s\S]*)<\/script>/)[1]);
     console.log(
-        'Fidelity audit built: 4 runtime/mockup pairs, 3 bounded detail pairs, 5 font measurements, 18 source references. Pixel parity not claimed.');
+        'Fidelity audit built: 4 runtime/mockup pairs, 3 bounded detail pairs, 5 font measurements, 13 source references. Pixel parity not claimed.');
 }
 
 build().catch(e => {

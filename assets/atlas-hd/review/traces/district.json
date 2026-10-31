@@ -3823,12 +3823,15 @@
     },
     {
       "asset": "text",
-      "x": 1452,
-      "y": 224,
+      "x": 1448,
+      "y": 212,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "-"
+      "text": "-",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "unit/11",
@@ -4455,8 +4458,8 @@
       "asset": "frame",
       "x": 246,
       "y": 328,
-      "width": 17,
-      "height": 22,
+      "width": 18,
+      "height": 26,
       "color": 10,
       "text": ""
     },
@@ -4464,19 +4467,34 @@
       "asset": "rect",
       "x": 247,
       "y": 329,
-      "width": 15,
-      "height": 20,
+      "width": 16,
+      "height": 24,
       "color": 201,
       "text": ""
+    },
+    {
+      "asset": "text",
+      "x": 249,
+      "y": 329,
+      "width": 0,
+      "height": 24,
+      "color": 10,
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "text",
       "x": 248,
       "y": 329,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "8"
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "terrain/2",
@@ -4788,8 +4806,8 @@
       "asset": "frame",
       "x": 1142,
       "y": 328,
-      "width": 17,
-      "height": 22,
+      "width": 18,
+      "height": 26,
       "color": 10,
       "text": ""
     },
@@ -4797,19 +4815,34 @@
       "asset": "rect",
       "x": 1143,
       "y": 329,
-      "width": 15,
-      "height": 20,
+      "width": 16,
+      "height": 24,
       "color": 201,
       "text": ""
+    },
+    {
+      "asset": "text",
+      "x": 1145,
+      "y": 329,
+      "width": 0,
+      "height": 24,
+      "color": 10,
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "text",
       "x": 1144,
       "y": 329,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "8"
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "terrain/2",
@@ -5614,12 +5647,15 @@
     },
     {
       "asset": "text",
-      "x": 1068,
-      "y": 352,
+      "x": 1064,
+      "y": 340,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "-"
+      "text": "-",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "unit/19",
@@ -6361,12 +6397,15 @@
     },
     {
       "asset": "text",
-      "x": 556,
-      "y": 416,
+      "x": 552,
+      "y": 404,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "-"
+      "text": "-",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "unit/1",
@@ -6757,12 +6796,15 @@
     },
     {
       "asset": "text",
-      "x": 1964,
-      "y": 416,
+      "x": 1960,
+      "y": 404,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "-"
+      "text": "-",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "unit/35",
@@ -7434,8 +7476,8 @@
       "asset": "frame",
       "x": 1526,
       "y": 520,
-      "width": 17,
-      "height": 22,
+      "width": 18,
+      "height": 26,
       "color": 10,
       "text": ""
     },
@@ -7443,19 +7485,34 @@
       "asset": "rect",
       "x": 1527,
       "y": 521,
-      "width": 15,
-      "height": 20,
+      "width": 16,
+      "height": 24,
       "color": 201,
       "text": ""
+    },
+    {
+      "asset": "text",
+      "x": 1529,
+      "y": 521,
+      "width": 0,
+      "height": 24,
+      "color": 10,
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "text",
       "x": 1528,
       "y": 521,
       "width": 0,
-      "height": 20,
+      "height": 24,
       "color": 10,
-      "text": "8"
+      "text": "8",
+      "face": 1,
+      "fontHeight": 21,
+      "style": 0
     },
     {
       "asset": "terrain/1",
@@ -10813,6 +10870,114 @@
       "height": 32,
       "color": -1,
       "text": ""
+    },
+    {
+      "asset": "text",
+      "x": 200,
+      "y": 338,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 1",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 202,
+      "y": 336,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 1",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 200,
+      "y": 336,
+      "width": 0,
+      "height": 44,
+      "color": 201,
+      "text": "City 1",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1096,
+      "y": 338,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 2",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1098,
+      "y": 336,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 2",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1096,
+      "y": 336,
+      "width": 0,
+      "height": 44,
+      "color": 201,
+      "text": "City 2",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1480,
+      "y": 530,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 3",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1482,
+      "y": 528,
+      "width": 0,
+      "height": 44,
+      "color": 10,
+      "text": "City 3",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
+    },
+    {
+      "asset": "text",
+      "x": 1480,
+      "y": 528,
+      "width": 0,
+      "height": 44,
+      "color": 201,
+      "text": "City 3",
+      "face": 0,
+      "fontHeight": 38,
+      "style": 0
     }
   ]
 }

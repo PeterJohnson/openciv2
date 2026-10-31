@@ -2,6 +2,18 @@
   "repository": "richardpenman-civ2",
   "functions": [
     {
+      "name": "MapView::tile_in_view",
+      "file": "src/auto/mapview.cpp",
+      "line": 2222,
+      "sha256": "2149b2a92f91e04df13080aae7d6ec75f76d6e72ddd0c0a0770ca752089ae3eb"
+    },
+    {
+      "name": "MapView::draw_city_names",
+      "file": "src/auto/mapview.cpp",
+      "line": 2234,
+      "sha256": "4d4a12ff48696a39ccd738736c2a04f930cfeb76ef9731a2357793bb9a3462b8"
+    },
+    {
       "name": "MapView::update_layout",
       "file": "src/auto/mapview.cpp",
       "line": 1356,
@@ -116,6 +128,18 @@
       "sha256": "0b453f6a64318c4bf97b2a7cbf9005d1adb6f829685d19572154ff395fc6e070"
     },
     {
+      "name": "map_x_in_span",
+      "file": "src/auto/map.cpp",
+      "line": 3390,
+      "sha256": "6fc42cdf9f21f84993c617a51cab33e207e8937e564a696735ec09646114ac75"
+    },
+    {
+      "name": "map_tile_in_box",
+      "file": "src/auto/map.cpp",
+      "line": 3416,
+      "sha256": "56cbf452d9e8982b8f730a2c0ffa81a31896a879bdee901a5047533c31b8917a"
+    },
+    {
       "name": "gfx_zoom_scale",
       "file": "src/auto/graphics.cpp",
       "line": 1938,
@@ -156,6 +180,12 @@
       "file": "src/auto/graphics.cpp",
       "line": 3236,
       "sha256": "71d505c94a67a65267891d8de2e2de47937edbf6f8acb5a253929465c1be7ea5"
+    },
+    {
+      "name": "CityWindow::draw_resource_tiles",
+      "file": "src/auto/city.cpp",
+      "line": 12524,
+      "sha256": "af59471b9d41b409cfde746ded57e5b5e045228003c841334cf09acec7a6b2e2"
     },
     {
       "name": "CityViewWindow::classify_site",

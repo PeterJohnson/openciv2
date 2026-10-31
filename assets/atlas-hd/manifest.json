@@ -52369,6 +52369,139 @@
       "category": "map / shadows"
     },
     {
+      "id": "city-panorama.gate",
+      "file": "city/panorama/gate.png",
+      "width": 1716,
+      "height": 916,
+      "kind": "generated",
+      "category": "city / panorama",
+      "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
+      "source": {
+        "record": "authoring/city-gate.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
+      "id": "city-panorama.wall-coastal-rear",
+      "file": "city/panorama/walls/coastal-rear.png",
+      "vector": "city/panorama/walls/coastal-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "c5b31d90feff8b5922b3a457b62174db14f55f94ef30d1ba5d23124dac84957d",
+      "sourceSha256": "d25b649b4c3719960ba91d654fc888b6ddb9696a8e4c1f3bcb34e5482372e619",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-coastal-front",
+      "file": "city/panorama/walls/coastal-front.png",
+      "vector": "city/panorama/walls/coastal-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "caf52d66bcb61c07a87e9252b5881b718a8441cc66944932466c2c1f3cb6ea0e",
+      "sourceSha256": "6bfdf657e75673833c94ec4d8e2060d5d3821e8af0d8df9e5f16180de1d7c400",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-river-rear",
+      "file": "city/panorama/walls/river-rear.png",
+      "vector": "city/panorama/walls/river-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "a8da9a166ab3c4b1598e48d722ee6a2f918125258390fb337044c43743271bf9",
+      "sourceSha256": "1bad712ebd4eecfe3e5f5f9e0e9b8659741db7c1ce73ee9b0c1b6dc8faa39596",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-river-front",
+      "file": "city/panorama/walls/river-front.png",
+      "vector": "city/panorama/walls/river-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "abe1cd90de24baa6f2169e8501dcf642414df6c0118cc3a8bf7aab0838d38cb0",
+      "sourceSha256": "eaf72d00b6daeb04820c39bc5a40b8b0caed67fad8f07338a2efcf86e6c92a61",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-inland-rear",
+      "file": "city/panorama/walls/inland-rear.png",
+      "vector": "city/panorama/walls/inland-rear.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "5c71b890aea4e8e22ff2b79a89f06d12d734527578c7da7c8a08d55f7606e085",
+      "sourceSha256": "ff5b2dfa214a97eb30d3182895c58fb8792b6a369018bf934b129b472421ab97",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "city-panorama.wall-inland-front",
+      "file": "city/panorama/walls/inland-front.png",
+      "vector": "city/panorama/walls/inland-front.svg",
+      "width": 2560,
+      "height": 960,
+      "kind": "vector",
+      "category": "city / panorama",
+      "sha256": "1e8514132d8e9058f62f9623a7e72fa045b4506e281effc67e208feb1f5a698e",
+      "sourceSha256": "5d63ebd0fcfcf941c9092f2f3e717b0d02376c1a5ab4889f3a9a8755646e2bd9",
+      "source": {
+        "generator": "tools/atlas-review/city-panorama.cjs",
+        "material": "map/materials/stone.png"
+      }
+    },
+    {
+      "id": "knowledge.medicine",
+      "file": "sprites/knowledge/medicine.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7da718175122e7604d6721df7c64aa0d3ef11d30128b9d238f2492f8bc08ed3f",
+      "alphaPreserved": true,
+      "label": "Medicine",
+      "kind": "generated",
+      "category": "knowledge advances",
+      "source": {
+        "record": "authoring/knowledge.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
+      "id": "knowledge.electricity",
+      "file": "sprites/knowledge/electricity.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0781e9c4cf633c1e663f03dccb846c4f13dc8adf999dd9057dbe341c028a2ad6",
+      "alphaPreserved": true,
+      "label": "Electricity",
+      "kind": "generated",
+      "category": "knowledge advances",
+      "source": {
+        "record": "authoring/knowledge.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
       "id": "map.variations.grassland-0",
       "kind": "map",
       "category": "map / variations",
@@ -52654,139 +52787,6 @@
           "width": 294,
           "height": 294
         }
-      }
-    },
-    {
-      "id": "city-panorama.gate",
-      "file": "city/panorama/gate.png",
-      "width": 1716,
-      "height": 916,
-      "kind": "generated",
-      "category": "city / panorama",
-      "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
-      "source": {
-        "record": "authoring/city-gate.json",
-        "tool": "built-in image_gen"
-      }
-    },
-    {
-      "id": "city-panorama.wall-coastal-rear",
-      "file": "city/panorama/walls/coastal-rear.png",
-      "vector": "city/panorama/walls/coastal-rear.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "c5b31d90feff8b5922b3a457b62174db14f55f94ef30d1ba5d23124dac84957d",
-      "sourceSha256": "d25b649b4c3719960ba91d654fc888b6ddb9696a8e4c1f3bcb34e5482372e619",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "city-panorama.wall-coastal-front",
-      "file": "city/panorama/walls/coastal-front.png",
-      "vector": "city/panorama/walls/coastal-front.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "caf52d66bcb61c07a87e9252b5881b718a8441cc66944932466c2c1f3cb6ea0e",
-      "sourceSha256": "6bfdf657e75673833c94ec4d8e2060d5d3821e8af0d8df9e5f16180de1d7c400",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "city-panorama.wall-river-rear",
-      "file": "city/panorama/walls/river-rear.png",
-      "vector": "city/panorama/walls/river-rear.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "a8da9a166ab3c4b1598e48d722ee6a2f918125258390fb337044c43743271bf9",
-      "sourceSha256": "1bad712ebd4eecfe3e5f5f9e0e9b8659741db7c1ce73ee9b0c1b6dc8faa39596",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "city-panorama.wall-river-front",
-      "file": "city/panorama/walls/river-front.png",
-      "vector": "city/panorama/walls/river-front.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "abe1cd90de24baa6f2169e8501dcf642414df6c0118cc3a8bf7aab0838d38cb0",
-      "sourceSha256": "eaf72d00b6daeb04820c39bc5a40b8b0caed67fad8f07338a2efcf86e6c92a61",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "city-panorama.wall-inland-rear",
-      "file": "city/panorama/walls/inland-rear.png",
-      "vector": "city/panorama/walls/inland-rear.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "5c71b890aea4e8e22ff2b79a89f06d12d734527578c7da7c8a08d55f7606e085",
-      "sourceSha256": "ff5b2dfa214a97eb30d3182895c58fb8792b6a369018bf934b129b472421ab97",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "city-panorama.wall-inland-front",
-      "file": "city/panorama/walls/inland-front.png",
-      "vector": "city/panorama/walls/inland-front.svg",
-      "width": 2560,
-      "height": 960,
-      "kind": "vector",
-      "category": "city / panorama",
-      "sha256": "1e8514132d8e9058f62f9623a7e72fa045b4506e281effc67e208feb1f5a698e",
-      "sourceSha256": "5d63ebd0fcfcf941c9092f2f3e717b0d02376c1a5ab4889f3a9a8755646e2bd9",
-      "source": {
-        "generator": "tools/atlas-review/city-panorama.cjs",
-        "material": "map/materials/stone.png"
-      }
-    },
-    {
-      "id": "knowledge.medicine",
-      "file": "sprites/knowledge/medicine.png",
-      "width": 1254,
-      "height": 1254,
-      "sha256": "7da718175122e7604d6721df7c64aa0d3ef11d30128b9d238f2492f8bc08ed3f",
-      "alphaPreserved": true,
-      "label": "Medicine",
-      "kind": "generated",
-      "category": "knowledge advances",
-      "source": {
-        "record": "authoring/knowledge.json",
-        "tool": "built-in image_gen"
-      }
-    },
-    {
-      "id": "knowledge.electricity",
-      "file": "sprites/knowledge/electricity.png",
-      "width": 1254,
-      "height": 1254,
-      "sha256": "0781e9c4cf633c1e663f03dccb846c4f13dc8adf999dd9057dbe341c028a2ad6",
-      "alphaPreserved": true,
-      "label": "Electricity",
-      "kind": "generated",
-      "category": "knowledge advances",
-      "source": {
-        "record": "authoring/knowledge.json",
-        "tool": "built-in image_gen"
       }
     },
     {

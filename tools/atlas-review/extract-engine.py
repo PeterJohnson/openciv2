@@ -5,10 +5,10 @@ ROOT=Path(__file__).resolve().parents[2]
 OUT=ROOT/'build/atlas-review/generated'
 OUT.mkdir(parents=True,exist_ok=True)
 selection={
- 'src/auto/mapview.cpp':['MapView::update_layout','MapView::tile_to_screen','MapView::draw_tile_ocean','MapView::draw_tile_land','MapView::draw_tile_roads','MapView::draw_tile_specials','MapView::draw_tile_unexplored_edges','MapView::draw_tile_terrain','MapView::draw_tile_city','MapView::draw_unit_stacked','MapView::draw_unit_blinking','MapView::draw_stack_unit','MapView::draw_tile_units','MapView::draw_tile','MapView::draw_all_tiles','MapView::zoom_scale','MapView::apply_zoom'],
- 'src/auto/map.cpp':['tile_calc_coast_masks','map_wrap_x'],
+ 'src/auto/mapview.cpp':['MapView::tile_in_view','MapView::draw_city_names','MapView::update_layout','MapView::tile_to_screen','MapView::draw_tile_ocean','MapView::draw_tile_land','MapView::draw_tile_roads','MapView::draw_tile_specials','MapView::draw_tile_unexplored_edges','MapView::draw_tile_terrain','MapView::draw_tile_city','MapView::draw_unit_stacked','MapView::draw_unit_blinking','MapView::draw_stack_unit','MapView::draw_tile_units','MapView::draw_tile','MapView::draw_all_tiles','MapView::zoom_scale','MapView::apply_zoom'],
+ 'src/auto/map.cpp':['tile_calc_coast_masks','map_wrap_x','map_x_in_span','map_tile_in_box'],
  'src/auto/graphics.cpp':['gfx_zoom_scale','gfx_set_zoom_scale','gfx_reset_zoom_scale','Sprite::draw','Sprite::draw_silhouette','gfx_draw_unit','gfx_draw_city'],
- 'src/auto/city.cpp':['CityViewWindow::classify_site','CityViewWindow::layout_buildings','CityViewWindow::draw_buildings','CityViewWindow::take_wonder_slot','CityViewWindow::take_improvement_slot','CityViewWindow::place_improvement','CityViewWindow::place_wonder','CityViewWindow::place_large_house','CityViewWindow::place_small_house','CityViewWindow::place_large_empty_lot','CityViewWindow::place_empty_lot'],
+ 'src/auto/city.cpp':['CityWindow::draw_resource_tiles','CityViewWindow::classify_site','CityViewWindow::layout_buildings','CityViewWindow::draw_buildings','CityViewWindow::take_wonder_slot','CityViewWindow::take_improvement_slot','CityViewWindow::place_improvement','CityViewWindow::place_wonder','CityViewWindow::place_large_house','CityViewWindow::place_small_house','CityViewWindow::place_large_empty_lot','CityViewWindow::place_empty_lot'],
  'src/auto/reports.cpp':['ThroneRoomWindow::render'],
  'src/game/random.cpp':['rng_next_unit','rand_range'],
  'src/auto/support.cpp':['rng_set_seed']}
@@ -40,6 +40,7 @@ for name in tables:
  decl.append(match.group());tablemeta.append(dict(name=name,line=g.count('\n',0,match.start())+1,sha256=hashlib.sha256(match.group().encode()).hexdigest()))
 empty=re.search(r'char str_empty\[908\] = "(?:\\.|[^"\\])*";',g).group()
 decl.append(empty)
+for axis in ['x','y']:decl.append(re.search(r'i8 city_resmap_draw_d'+axis+r'_table\[24\] = \{[^}]*\};',g).group())
 (OUT/'engine-tables.inc').write_text('\n'.join(decl),encoding='utf8',newline='\n')
 headers=[]
 for filename,names in {'mapview':['diag_neighbor_bits_block'],'ai':['dir_dx_table_block','dir_dy_table_block'],'city':['cityview_improvement_art_x_block','cityview_slot_x_table_block'],'reports':['throneroom_piece4_rect_x_block'],'misc':['throneroom_piece_rect_x_block']}.items():

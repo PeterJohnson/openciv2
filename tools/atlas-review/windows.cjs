@@ -1,4 +1,5 @@
 const C = require('./common.cjs');
+const Native = require('./native-windows.cjs');
 const E = require('./economy.cjs');
 const Citizens = require('./citizens.cjs');
 const Knowledge = require('./knowledge.cjs');
@@ -20,8 +21,9 @@ const sources = {
         'src/auto/city.cpp:12165–12430,13485–13803,13817–14085,14087–14205,14448–14695,15101–15149'
 };
 
-function windowEngine(mode, file, config = 'Release') {
-    const r = spawnSync(path.join(C.root, 'build/atlas-review', config, 'atlas-windows.exe'), [ mode, file ],
+function windowEngine(mode, file, config = 'Release', enhanced = false) {
+    const r = spawnSync(path.join(C.root, 'build/atlas-review', config, 'atlas-windows.exe'),
+                        [ mode, file, ...(enhanced ? [ "--enhanced" ] : []) ],
                         {encoding : 'utf8', maxBuffer : 32 * 1024 * 1024});
     if (r.error || r.status !== 0)
         throw Error(r.error || r.stderr || `Native window exit ${r.status}`);
@@ -156,8 +158,8 @@ async function diplomacy(trace, proposed, density) {
     for (const c of trace.commands) {
         if (c.asset === 'tech-label') {
             const name = Knowledge.advance(+c.text).name;
-            await p.text(proposed ? name : name.slice(0, 8).toUpperCase(), proposed ? 515 : c.x,
-                         proposed ? c.y + 1 : c.y, proposed ? 92 : c.width, proposed ? 11 : 9);
+            await p.text(name, proposed ? 515 : c.x, proposed ? c.y + 1 : c.y, proposed ? 92 : c.width,
+                         proposed ? 11 : 9);
         } else if (c.asset === 'resource') {
             if (c.resource >= 220 && c.resource <= 263) {
                 await p.image(`sprites/leaders/leader-${String(c.resource - 220).padStart(2, '0')}.png`, c.x,
@@ -334,6 +336,9 @@ async function resourceMap(p, x, y, original = null) {
 }
 
 async function city(trace, scene, proposed, density, original = null) {
+    if (!proposed)
+        return Native.render(trace, scene, original?.painter || new Painter(636, 421, density), original,
+                             resourceMap);
     const p = original?.painter || new Painter(636, 421, density), citizenCues = [];
     await p.image('backgrounds/parchment-native.png', 0, 0, 636, 421, {contain : false});
     await p.box(0, 0, 636, 421, proposed ? '#233c36ee' : '#2e413bdd', '#a28d60');
@@ -526,11 +531,16 @@ async function buildWindows() {
         delete s.fixtureText;
         const trace = windowEngine(s.mode, path.join(pack, s.fixture));
         C.json(path.join(pack, `review/traces/${s.id}.json`), trace);
+        const enhancedTrace = windowEngine(s.mode, path.join(pack, s.fixture), 'Release', true);
+        C.json(path.join(pack, `review/traces/${s.id}-enhanced.json`), enhancedTrace);
         for (const stage of ['current', 'hd', 'proposed']) {
             const proposed = stage === 'proposed', d = stage === 'current' ? 1 : 2;
-            const result = s.mode === 'diplomacy'   ? await diplomacy(trace, proposed, d)
-                           : s.mode === 'spaceship' ? await ship(trace, s, proposed, d)
-                                                    : await city(trace, s, proposed, d);
+            const result = !proposed
+                               ? await Native.render(trace, s, new Painter(trace.width, trace.height, d),
+                                                     null, resourceMap)
+                           : s.mode === 'diplomacy' ? await diplomacy(enhancedTrace, proposed, d)
+                           : s.mode === 'spaceship' ? await ship(enhancedTrace, s, proposed, d)
+                                                    : await city(enhancedTrace, s, proposed, d);
             const file = `review/images/${s.id}-${stage}.png`;
             C.write(path.join(pack, file), result.buffer);
             s[stage] = file;
@@ -538,7 +548,7 @@ async function buildWindows() {
             plans[s.id + '-' + stage] = result.ops;
         }
         s.note =
-            'Native source layout and selected draw algorithms; supplied artwork, text metrics and marked panel adapters. See window audit for exact scope.';
+            'Native source layout and selected draw algorithms; reference font bank, source resource bars and explicit fixture boundaries. See window audit for exact scope.';
         s.commandCount = trace.commands.length;
         scenes.push(s);
         console.log(s.id, trace.commands.length, 'native commands');
@@ -562,5 +572,6 @@ module.exports = {
     windowEngine,
     sceneDefs,
     Painter,
+    resourceMap,
     city
 };

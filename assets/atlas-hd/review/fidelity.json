@@ -1,5 +1,5 @@
 {
-  "status": "confirmed discrepancies; pixel equivalence not established",
+  "status": "native text/layout corrections applied; runtime pixel equivalence remains unverified",
   "references": "Four checked-in native OpenCiv2 runtime screenshots, identified in repository README.md. They are not newly captured original-executable screenshots.",
   "freshOriginalCapture": "Not obtained: computer-use app approval timed out when launching an isolated copy of the installed executable. No live screenshot or runtime-parity claim is made.",
   "comparison": "Unpaired states/viewports. No whole-image pixel-difference score or pass/fail parity threshold.",
@@ -11,9 +11,9 @@
       "mockup": "assets/atlas-hd/review/original-scenes/images/diplomacy.png",
       "provenance": "Repository README identifies this as a native OpenCiv2 runtime screenshot. Different leader, era, government, technology list and power rank from the mockup.",
       "findings": [
-        "Text face, color, size, baseline and wrapping differ. The screenshot has small dark multi-line knowledge labels; the mockup has pale, single-line truncated labels.",
-        "ASTERIAN ENVOY, COMMUNISM and the MILITARY/KNOWLEDGE captions are extra adapter text, not text emitted by the extracted audience routines.",
-        "The runtime screenshot includes the animated herald. The mockup exercises only the static audience. Different artwork selections reflect supplied state, not proof of a crop or palette bug."
+        "Corrected: reference Times glyphs, source measured fitting/truncation, shadow passes and era colors replace the generic SVG labels.",
+        "Corrected: invented envoy, government and column captions were removed from native/original and HD-only.",
+        "Static audience only. Herald movies are absent from the installed input set; leader, era, research and rank differ from the runtime screenshot."
       ],
       "crops": [
         [
@@ -38,7 +38,7 @@
       "mockupInfo": {
         "width": 640,
         "height": 480,
-        "sha256": "9fad9e6b418e9cba82b3a53c2c0973422c6f58ee1c245cde9c8708cdac03c813"
+        "sha256": "2b5dcbd9804534b7f6b5b90b5237c6feb105dc7727856d58069217f4dbb8370a"
       }
     },
     {
@@ -48,10 +48,9 @@
       "mockup": "assets/atlas-hd/review/original-scenes/images/city-window.png",
       "provenance": "Runtime screenshot is the full desktop/window at 1024x768. The mockup is a 636x421 content fixture at view_scale=2. Population, yields, improvements and units differ.",
       "findings": [
-        "Fonts and shadows differ, and the original text colors are replaced by one pale color. Text metrics and label strings are simplified.",
-        "The runtime economy panel has the original food, trade/distribution and shield rows. The mockup substitutes six separate role rows. This is a layout difference, not merely a font mismatch.",
-        "The mockup changes button arrangement and omits the title bar, scrollbars and several original controls. Its resource terrain and present-unit details are supplied adapters.",
-        "Native citizen/yield/stockpile draw selection is retained for the supplied state; those tests do not validate the entire city window."
+        "Corrected: reference Arial metrics, palette text colors and shadows; native food, trade/distribution and shield bars now execute unchanged.",
+        "Corrected: resource terrain uses the source dispatcher and neighbor joins. Buy/Change and the bottom controls use native scale-2 coordinates.",
+        "Content rectangle only: platform window chrome is excluded. The runtime screenshot uses a larger scale and different city state; present units and control painting retain explicit finite backends."
       ],
       "crops": [
         [
@@ -76,7 +75,7 @@
       "mockupInfo": {
         "width": 636,
         "height": 421,
-        "sha256": "5b557bf85674424ff57afe630be21ec6b461c0d565a686e90327a19b3c3b7ed8"
+        "sha256": "c7bbfeece359a550691ff293e664d9a71ab26e54d967719f3396ec1915d9be4a"
       }
     },
     {
@@ -86,8 +85,8 @@
       "mockup": "assets/atlas-hd/review/original-scenes/images/city-coastal.png",
       "provenance": "Runtime screenshot is London, June 1940, in a 1024x479 viewport. The mockup is a synthetic 1280x480 coastal composition with a different building set.",
       "findings": [
-        "The runtime draws the city name and year at the top. The mockup omits CityViewWindow::draw_title entirely.",
-        "Viewport/camera, building inventory and city size differ. Matching artwork and native slot routines alone do not establish equal placement for these different inputs."
+        "Corrected: city name/year title with source Times 36 bold, title band and two palette passes.",
+        "Synthetic Asteria 1788 has a different viewport, camera and building inventory from London 1940. Those inputs must be aligned before pixel comparison."
       ],
       "crops": [
         [
@@ -103,7 +102,7 @@
           60
         ]
       ],
-      "focus": "Title band: present in the game screenshot; no title draw occurs in the mockup.",
+      "focus": "Title band: restored; city, date and viewport remain different supplied inputs.",
       "referenceInfo": {
         "width": 1024,
         "height": 479,
@@ -112,7 +111,7 @@
       "mockupInfo": {
         "width": 1280,
         "height": 480,
-        "sha256": "a51c87ae45a56a1db90a6fd2af0051ca0b564ddcf33c30237223cf3e67d1b912"
+        "sha256": "1c00981e3d4d599b0f5cbff87911d9bff81911a77b6ed0ef1b3c4eec350429d4"
       }
     },
     {
@@ -122,9 +121,8 @@
       "mockup": "assets/atlas-hd/review/original-scenes/images/saved-close.png",
       "provenance": "Runtime screenshot is the June 1940 scenario with full UI. The mockup uses the real 1788 save, a different viewport/zoom, and deliberately disables fog.",
       "findings": [
-        "City names, window chrome, minimap and status panels are present in the runtime screenshot and omitted by this map fixture.",
-        "Badge/size text uses approximate widths and SVG monospace glyphs. The source font selection, glyph masks and exact text metrics are not executed.",
-        "Terrain, coastline and network selection tests remain useful, but this is not a matching-save/matching-camera pixel comparison."
+        "Corrected: extracted city-name drawing uses real saved-city names. Unit/city badge text now uses source zoom fonts and reference glyph metrics.",
+        "The 1788 save and camera differ from the June 1940 screenshot. Full application chrome, minimap and status panels are outside the map-content crop."
       ],
       "referenceInfo": {
         "width": 1024,
@@ -134,7 +132,7 @@
       "mockupInfo": {
         "width": 1536,
         "height": 704,
-        "sha256": "bf588fe2de9225a57fbd17e384563f516928a58ec933f9d01d8b6570fc8e49ee"
+        "sha256": "368ed40ef58c39322ee0e10e1ae2acede243f777ff1ee2a363fff0aa3170066f"
       }
     }
   ],
@@ -199,118 +197,88 @@
   "sourceEvidence": [
     {
       "file": "src/auto/diplomacy.cpp",
-      "line": 4933,
-      "fact": "Knowledge labels select face 0, size 11, and era-dependent colors.",
+      "line": 4766,
+      "fact": "science_draw_tech now executes unchanged, including measured fitting, colors and two-line layout.",
       "sha256": "63b7df3dcdaccd7f72e01d6525d4bc23e2292b516c2fa22c41ecffa0bb3ac1af"
     },
     {
       "file": "src/auto/graphics.cpp",
       "line": 7886,
-      "fact": "font_handle_create maps face 0 to Times New Roman, negative pixel height, regular/bold style.",
+      "fact": "Font face/height/style selection uses the repository reference metrics.",
       "sha256": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69"
     },
     {
       "file": "src/platform/text.c",
-      "line": 1,
-      "fact": "The port uses reference glyphs/metrics and separate 1-bit and antialiased text paths.",
-      "sha256": "6ec96e7e8bcd7aafe2dff015fd5648ecfddf3495dfe34c2856f94b6fc335e98a"
-    },
-    {
-      "file": "src/platform/text.c",
       "line": 245,
-      "fact": "CIV2_WINE_TEXT selects measured advances; normal port layout uses drawing advances.",
+      "fact": "The chosen indexed path uses drawing advances with CIV2_WINE_TEXT unset.",
       "sha256": "6ec96e7e8bcd7aafe2dff015fd5648ecfddf3495dfe34c2856f94b6fc335e98a"
     },
     {
-      "file": "tools/atlas-review/windows.cjs",
-      "line": 51,
-      "fact": "Window text requests a generic SVG font stack and uses a simplified baseline.",
-      "sha256": "7fe0620355715798cd4ce70c52397a86dac9d08bd9b79e7dbbb67f17180cb60f"
+      "file": "tools/atlas-review/font.cjs",
+      "line": 1,
+      "fact": "Native bitmap replay uses the reference glyph masks, bearings and clip rectangles.",
+      "sha256": "1113596aa2b281bb1ec9a65404057f480cffd6d00fd5df28cb0f99d3f2a0344d"
     },
     {
-      "file": "tools/atlas-review/original.cjs",
-      "line": 75,
-      "fact": "OriginalPainter substitutes one global light text color and dark shadow.",
-      "sha256": "535e2a284dc283858051ef4ef0e2321b7e2dd8f3c9fbcc3ed983384c3c56b425"
+      "file": "tools/atlas-review/native-windows.cjs",
+      "line": 1,
+      "fact": "Original and HD-only windows share this native-content backend; enhanced remains separate.",
+      "sha256": "4ee3bed05c398f3e62f29f54b30711861a17f3d477256f490f4f2c6f376b9d10"
     },
     {
-      "file": "tools/atlas-review/original.cjs",
-      "line": 97,
-      "fact": "Knowledge names are sliced to eight characters, not fitted using source metrics.",
-      "sha256": "535e2a284dc283858051ef4ef0e2321b7e2dd8f3c9fbcc3ed983384c3c56b425"
+      "file": "src/auto/city.cpp",
+      "line": 12699,
+      "fact": "The four resource bar helpers and their parent now execute unchanged.",
+      "sha256": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc"
     },
     {
-      "file": "tools/atlas-review/window-main.cpp",
-      "line": 218,
-      "fact": "science_draw_tech is a stub: selection and rectangles survive, shaping does not.",
-      "sha256": "c39319f429e251801d361bfe84199daf1a8548f32326ddba6a41e854a7788cb7"
+      "file": "src/auto/city.cpp",
+      "line": 12524,
+      "fact": "The city resource terrain dispatcher now executes with source map tile drawing.",
+      "sha256": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc"
     },
     {
-      "file": "tools/atlas-review/window-main.cpp",
-      "line": 372,
-      "fact": "text_set_colors is a no-op in the window harness.",
-      "sha256": "c39319f429e251801d361bfe84199daf1a8548f32326ddba6a41e854a7788cb7"
+      "file": "src/auto/city.cpp",
+      "line": 16965,
+      "fact": "Native city control coordinates are taken from create_controls.",
+      "sha256": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc"
     },
     {
-      "file": "tools/atlas-review/engine-shim.h",
-      "line": 459,
-      "fact": "Zoom font selection is a no-op; width is strlen times an estimated character width.",
-      "sha256": "1d3cd4062c9be14a59e2ead004fcf5104a0d3b6678bd36ef34bf376a826368f7"
-    },
-    {
-      "file": "tools/atlas-review/render.cjs",
-      "line": 95,
-      "fact": "Map text uses SVG monospace glyphs and a heuristic baseline.",
-      "sha256": "d2c7ecf59908c18a95843f592e5649f1ea913ecee334570b798bc29de56b305e"
-    },
-    {
-      "file": "tools/atlas-review/engine-shim.h",
-      "line": 635,
-      "fact": "Map city-name drawing is a no-op.",
-      "sha256": "1d3cd4062c9be14a59e2ead004fcf5104a0d3b6678bd36ef34bf376a826368f7"
-    },
-    {
-      "file": "tools/atlas-review/window-main.cpp",
-      "line": 538,
-      "fact": "Resource terrain, buttons and present-unit details are adapter methods.",
-      "sha256": "c39319f429e251801d361bfe84199daf1a8548f32326ddba6a41e854a7788cb7"
-    },
-    {
-      "file": "tools/atlas-review/windows.cjs",
-      "line": 325,
-      "fact": "The city resource map uses a supplied repeating terrain pattern.",
-      "sha256": "7fe0620355715798cd4ce70c52397a86dac9d08bd9b79e7dbbb67f17180cb60f"
+      "file": "src/auto/mapview.cpp",
+      "line": 2234,
+      "fact": "draw_city_names now executes, with real saved-city names and native metrics.",
+      "sha256": "0b65340871630a2c9ebbf6f07c8668383e7ef25b555373244e7cc6ea97168b67"
     },
     {
       "file": "src/auto/city.cpp",
       "line": 4809,
-      "fact": "CityViewWindow::draw_title draws city name/year with two palette-colored passes.",
+      "fact": "Panorama title boundary follows the source title band, font, alignment and two palette passes.",
       "sha256": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc"
     },
     {
-      "file": "tools/atlas-review/engine-main.cpp",
-      "line": 412,
-      "fact": "City panorama harness calls layout/draw_buildings and emits a 1280x480 scene without draw_title.",
-      "sha256": "5c33cf4b5136db0d113023ce3045bf881f7836789ffd89ca752f18e38384f35e"
+      "file": "src/auto/spaceship.cpp",
+      "line": 630,
+      "fact": "Spacecraft static completed typing follows the source font, line spacing and colors.",
+      "sha256": "8f08d2fcc0c390170b4200468ac61397961f38b0e29225789e34caccbc256522"
     },
     {
-      "file": "tools/atlas-review/original.cjs",
-      "line": 99,
-      "fact": "Diplomacy heading, government and column captions are added by the mockup.",
-      "sha256": "535e2a284dc283858051ef4ef0e2321b7e2dd8f3c9fbcc3ed983384c3c56b425"
+      "file": "src/game/unwind.cpp",
+      "line": 191,
+      "fact": "Original spacecraft buttons use the source crops and native labels.",
+      "sha256": "bedae9878690415133d5b8b298ad6b0a6af29dda37bda841655b4aacb7939af9"
     },
     {
-      "file": "tools/atlas-review/original.cjs",
-      "line": 114,
-      "fact": "Spacecraft title, statistics and buttons are supplied by the adapter.",
-      "sha256": "535e2a284dc283858051ef4ef0e2321b7e2dd8f3c9fbcc3ed983384c3c56b425"
+      "file": "tools/atlas-review/verify-native.cjs",
+      "line": 1,
+      "fact": "Focused native typography/layout checks supplement source-body and D/R validation.",
+      "sha256": "8a96f799620d745919d5d3f375d265bf3d2da858bd0117e9094ca1b3318643c9"
     }
   ],
   "remainingScenes": [
     {
       "id": "spacecraft",
       "status": "source audit only; no runtime screenshot in docs/screenshots",
-      "finding": "Native assembly crop order executes, but title, statistics, text metrics and controls are adapters."
+      "finding": "Native assembly crop order executes. Source-derived title, text, status and controls now use reference glyphs; statistics remain fixture inputs."
     },
     {
       "id": "throne",

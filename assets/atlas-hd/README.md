@@ -194,13 +194,14 @@ hashes and verifies inputs remain unchanged. The replay verifies all scene
 sizes, binding hashes and original map/city/throne Debug/Release trace equality.
 Rerun these commands after changing fixtures or source renderer extraction.
 
-The original stage uses the same supplied window state and panel/text adapters
-as the other stages. Original CITY.GIF provides its actual panel background;
-SS resource 499 provides the spacecraft background; resource-selected portraits,
-ship crops and city sprites replace the new-art bindings. Font rasterization,
-city summary rows and static diplomacy text remain review adapters. Animated
-heralds, gameplay execution and full native window chrome are outside this
-comparison. See the [original replay audit](RENDERER-AUDIT.md#original-art-replay).
+The original and HD-only stages use the same corrected native-content path:
+reference glyphs/metrics, source knowledge fitting and economy bars, source
+resource terrain, saved map names and panorama titles. Enhanced compositions
+remain separate. Original CITY.GIF and SS resource 499 supply the original
+backgrounds; cropped original button art and per-window palettes remain local.
+The city preview is a content rectangle, without application title/border
+chrome. Herald animation and identical-state runtime pixel parity remain
+unverified. See [fidelity corrections and validation](FIDELITY-AUDIT.md).
 
 ## Map readability refinements
 

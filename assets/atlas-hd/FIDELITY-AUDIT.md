@@ -1,107 +1,84 @@
-# Original-art mockup versus runtime fidelity
+# Standalone native-content fidelity
 
-**Finding: the current original-art renders are not pixel-equivalent game
-screenshots.** Fonts differ, and several panels, controls, text labels and
-overlays are supplied or omitted by the standalone adapter. Extracting selected
-draw routines preserves their command selection and geometry; it does not
-include every caller, font/GDI operation, window control or final compositor.
+The original-art and HD-only mockups now share a corrected native rendering
+path. Enhanced compositions use their own trace/backend and retain their
+designs. No game source is changed.
 
-[Open the visual comparison](review/fidelity.html). It includes four runtime
-screenshots beside the existing mockups, three magnified detail comparisons,
-and font measurements. [The evidence index](review/fidelity.json) records image
-dimensions/hashes and source references. This audit changes neither game source
-nor the existing scene images.
+[Open the runtime comparison](review/fidelity.html) or the
+[four-stage graphics review](index.html). The baseline target is the target
+repository's indexed DIB text path, with `CIV2_WINE_TEXT` unset. This is not a
+claim of whole-frame pixel parity with a live game capture.
 
-## Reference scope
+## Corrections
 
-The references are `docs/screenshots/diplomacy.png`, `city.png`, `city-view.png`
-and `europe-1940.png` in **richardpenman-civ2**. The repository README identifies
-these as screenshots of the native OpenCiv2 build. They show a running game, but
-are not fresh screenshots of the installed original Windows executable.
+| Area | Native/original and HD-only behavior |
+| --- | --- |
+| Fonts | Read `data/native/fonts.bin`, the same glyph bank used by `src/platform/text.c`. Carry face, pixel height, style, drawing advances, cell height, bearings, clipping and palette colors through the trace. No SVG font substitution in native text. HD preserves logical metrics and scales the indexed glyph masks. |
+| Diplomacy | Execute unchanged `science_draw_tech` for measured fitting, truncation, two-line labels, shadows and era colors. Remove invented envoy, government and column captions. Retain source military repetition and category artwork. |
+| City economy | Execute unchanged food, shields, trade, distribution and parent resource-map functions. Source spacing, bar partitions, shortages/surpluses and labels replace the six redesigned rows. |
+| City resource map | Execute `draw_resource_tiles` and the map terrain renderer, including neighbor joins and the radius edge, before unchanged worked-tile yield drawing. The small city's terrain and yield values remain explicit synthetic inputs. |
+| City controls | Restore Buy/Change to the production panel, the eight bottom controls, and the improvement scrollbar at the source's scale-2 coordinates. Present-unit heading, positions and home abbreviation use the source single-row branch. |
+| Map | Execute `draw_city_names`, `tile_in_view`, `map_tile_in_box` and `map_x_in_span`. Saved maps now carry real city names. Zoom font selection and unit/city text use the reference metrics. Original names use the source secondary faction palette entry. |
+| Panorama | Restore the source's Times 36 bold title, 40-pixel title band and two palette passes. The supplied title is “Asteria:  A.D. 1788”, matching this synthetic fixture's identity, not the London screenshot. |
+| Spacecraft | Keep source assembly order/clipping. Restore source title composition, Times 24/20/16 bold fonts, typewriter line spacing and label/value colors, status band and button coordinates. Original buttons use the original resource crops with native labels. Statistics remain declared fixture values. |
 
-A separate copy of the installed original game was prepared for inspection;
-computer-use app approval timed out at launch. No fresh original-executable
-capture was obtained. This is an explicit validation limit, not a successful
-runtime comparison.
+`extract-engine.py` now records 50 unchanged bodies and `extract-windows.py`
+records 30. `draw_resource_map` is compiled under the standalone-only symbol
+`draw_resource_map_native` so the enhanced adapter remains independent; its
+recorded source body is unchanged. Supplied state, bitmap replay and the
+documented presentation boundaries are not included in this count.
 
-The existing reference screenshots and review fixtures have different saves,
-eras, populations, research, camera positions and display scales. Their full
-images cannot meaningfully be subtracted to produce a renderer-error percentage.
-Observed typography, omitted content and adapter differences are reported below;
-unmatched scene state is not classified as a renderer defect. Spacecraft and
-throne-room parity remain visually unverified because this screenshot set has
-no corresponding runtime captures.
+## Evidence and acceptance limits
 
-## Confirmed differences
+The comparison references `docs/screenshots/diplomacy.png`, `city.png`,
+`city-view.png` and `europe-1940.png` in **richardpenman-civ2**. The repository
+identifies them as native OpenCiv2 runtime screenshots. Their saves, eras,
+populations, cameras and display scales differ from the review fixtures.
+Consequently no whole-image error percentage or pixel-equivalence claim is made.
 
-| Area | Runtime/source behavior | Mockup behavior | Consequence |
-| --- | --- | --- | --- |
-| Diplomacy typography | `init_science` selects face 0, size 11. `font_handle_create` maps face 0 to Times New Roman. `science_draw_tech` measures, wraps/truncates, shadows and uses an era palette color. | `GameFont::init` is empty; the draw helper is a stub. `OriginalPainter` uses the SVG font stack with one pale color/shadow. Knowledge names are cut to eight characters and drawn at size 9. | Different face, metrics, baseline, color, line count and truncation. |
-| Diplomacy content | The runtime screenshot includes a herald/video layer and the native static art. | Static audience only; invented envoy/government/column captions are added by `original.cjs`. | The original-art scene contains text the extracted renderer did not emit and omits the animation layer. |
-| City economy | Runtime has native food, trade/distribution and shield bars, source labels and controls. | Six separate resource-role rows, simplified labels, supplied terrain/unit details and a different button arrangement. | More than a font discrepancy: the original-art replay reuses a redesigned panel adapter. |
-| City framing | Runtime screenshot includes title, borders, scrollbars and full controls. Source supports scaled city content. | A 636×421 content-only fixture at `view_scale=2`; no complete window lifecycle/chrome. | Viewport/scale and UI completeness must be aligned before pixel comparison. |
-| Map text | Game selects fonts by zoom and draws names, badge text and full map UI. | Width is estimated as character count × six pixels at 1×; SVG monospace glyphs are drawn. `draw_city_names` is a no-op. | Both glyphs and text bounds differ; city names are absent. |
-| City panorama | `CityViewWindow::draw_title` draws name/year in two colored passes. | Harness calls building layout/draw methods without the title and emits a wider synthetic panorama. | Missing title is confirmed; different building inventory and camera are unpaired state, not measured placement errors. |
-| Spacecraft | Full window includes source text, stats and controls around the source assembly image. | Assembly commands execute; title, stats, font metrics and buttons are supplied. | Source evidence identifies incomplete coverage; no visual parity claim without a runtime capture. |
-| Throne room | Resource order and crop selection depend on actual furnishing state and window context. | Selected source routines execute on supplied state. | Existing order checks remain useful; final-frame equality is unverified. |
+The city mockup is the 636×421 **content rectangle** at `view_scale=2`; the
+reference screenshot includes application chrome at a larger scale. Full
+window title/border lifecycle, interactive control states and platform-specific
+scrollbar painting are not captured by this renderer. Its raised controls use
+an explicit classic control backend with source geometry. Present units use a
+supplied three-unit stack; the fixture has no trade routes or pollution. Unit
+portraits are bound art rather than a gameplay simulation.
 
-The user-visible heading “Original game artwork” describes the image source,
-not pixel equivalence. The gallery now links this audit prominently so the
-comparison's limits are visible without opening the detailed renderer notes.
+Diplomacy is the static audience state. The installed input set contains no
+herald movies, so animation is not represented. `science_draw_tech` has a
+prior-buffer branch for a multiword name whose first word is too long. The
+supported named fixtures avoid that branch; additional names must supply valid
+caller state or stop. Tests include safe two-line “Iron Working” and “Code of
+Laws” cases, plus measured truncation of the six main fixture names.
 
-## Fonts: why changing the family name alone is insufficient
+The font bank comes from the project's Wine reference environment. This target
+uses its 1-bit masks and drawing advances, not the separate antialiased path or
+an arbitrary Windows installation's fonts. HD increases image density without
+changing text layout. Sharper antialiased typography remains a separate engine
+choice requiring its own reference capture.
 
-The target repository already contains `src/platform/text.c` and the
-`data/native/fonts.bin` / `fonts_aa.bin` reference glyph banks. They preserve
-per-character measured advances, drawing advances, bearings, baseline metrics,
-clipping and separate indexed/antialiased rendering. The banks were captured
-from the project's Wine reference environment; they are not proof of identical
-glyphs on every Windows installation.
+No fresh executable capture was obtained: the prior computer-use launch timed
+out at app approval. Spacecraft and throne-room scenes still have no paired
+runtime screenshots here. A future runtime gate needs identical save/state,
+camera, content rectangle, font mode and capture frame, then framebuffer pixel
+comparison. Source/Debug/Release checks do not replace that gate.
 
-The audit reads the regular Times New Roman reference at height 11. Its cell
-height is 13 and ascent is 10. `III` measures 12 pixels, while `WWW` measures 33;
-the map shim assigns both 18 pixels at 1×. `NAVIGATION` measures 77 pixels and
-has a 75-pixel drawing advance. These figures demonstrate the lost metrics;
-they are not measurements of the diplomacy SVG fallback or a whole-scene diff.
+## Rebuild and checks
 
-The port's `CIV2_WINE_TEXT` setting deliberately selects reference measured
-advances, while normal port rendering uses drawing advances. A fidelity target
-must specify which behavior, font bank, antialiasing/palette path and display
-scale it is matching. Merely requesting “Times New Roman” in SVG still leaves
-font substitution, advance widths, hinting, clipping and shadows uncontrolled.
+Build both configurations with `tools/atlas-review/build-engine.ps1`. Rebuild
+`build-review.cjs --reuse-bindings`, `saved-map.cjs`, `windows.cjs`, `build-support.cjs`, local original
+bindings, `original.cjs`, `build-gallery.cjs` and `fidelity.cjs` in that order.
+Only composed original-art scene renders are committed; extracted original
+sprites, palettes and binding tables remain ignored.
 
-## Scoped correction and acceptance plan
+`verify.cjs` checks source hashes, Debug/Release traces, native/HD artwork
+rectangles, source topology and asset integrity. `verify-native.cjs` additionally
+checks fixed font metrics, clipped glyphs at both densities, source two-line
+knowledge drawing, economic bar coordinates, real-save labels, title passes and
+the enhanced boundary. Results are in [native-validation.json](review/native-validation.json).
 
-1. **Create an identical-input baseline.** Choose one saved game and explicit
-   city, leader, government/era, spacecraft state and throne state. Record camera,
-   logical viewport, game zoom, display density, selected UI options, font backend
-   and capture frame. Compare equal content rectangles, with window chrome
-   tested separately. Freeze or separately classify the animated herald layer.
-2. **Restore text fidelity.** Carry source font identity/height/style, colors,
-   rectangle/alignment and clipping through the trace. Reuse the target text
-   backend and glyph bank instead of SVG fallback and `strlen` estimates. Execute
-   source knowledge fitting with real caller state, including the documented
-   prior-buffer branch; do not invent a “correct” initial value to make a fixture
-   match. Check long names, narrow letters, wide letters and two-line labels.
-3. **Replace panel adapters.** Capture the actual city economy, resource map,
-   present-unit and control draw paths. Add city-name and panorama-title paths.
-   Remove mockup-only captions from the original and native-equivalence stages.
-   Keep intentionally enhanced composition in the enhancement stage.
-4. **Add a runtime pixel gate.** Require equal dimensions, aligned state and
-   exact framebuffer pixels for a small set of native scenes. Retain expected
-   frames, difference images and mismatched bounding boxes. Do not treat D/R
-   command agreement or a source-function count as this acceptance test. Test
-   HD density and enhancement behavior separately after the native match.
-
-No game-source change is needed to conduct this audit or to improve the
-standalone review backend. The next fidelity implementation should use this
-repository's rendering code and platform text implementation.
-
-## Validation of this audit
-
-`node tools/atlas-review/fidelity.cjs` rebuilds the offline comparison and JSON
-evidence. It checks all eight scene-image paths and dimensions, bounds of all
-six detail crops, hashes the referenced images/source files/font bank, parses
-all 688 bitmap-font records to the file boundary, checks the five measurement
-samples, resolves local HTML links and compiles the viewer script. These are
-artifact/evidence checks, not runtime-parity tests.
+For subsequent native-only corrections, `node tools/atlas-review/refresh-native.cjs`
+refreshes the existing native/HD images, traces and exports without writing the
+enhanced PNGs. Then rebuild local originals, verification and the gallery/audit.
+The [preservation record](review/native-preservation.json) checks every source
+file and 27 existing enhanced PNGs against the pre-change snapshot.

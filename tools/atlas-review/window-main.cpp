@@ -1,6 +1,7 @@
 // Fixture and drawing boundary for unchanged source window bodies.
 // No game source is compiled with modified bodies, and no original image is loaded.
 #include <algorithm>
+#include <cctype>
 #include <cstddef>
 #include <cstring>
 #include <fstream>
@@ -32,6 +33,8 @@ using tagRECT = RECT;
 struct Command {
     std::string asset, text;
     int x, y, w, h, resource, sx, sy, target, shade;
+    int face = 0, fontHeight = 11, style = 0, color = 10;
+    RECT clip{-100000, -100000, 100000, 100000};
 };
 
 std::vector<Command> commands;
@@ -54,7 +57,37 @@ void gfx_reset_zoom_scale() {
     zoom = 0;
 }
 
+#include "native-font.h"
+GameFont city_font;
+GameFont* activeFont = &city_font;
+int textColor = 10, foreground = 10, shadow = -1, shadowX = 0, shadowY = 0;
+
+void gfx_set_text_color_index(int c) {
+    textColor = c;
+}
+
+void text_set_font(iptr p) {
+    activeFont = (GameFont*)p;
+}
+
 struct DibSurface {
+    void draw_text_in_rect(iptr font, const char* text, RECT* r, int flags) {
+        auto f = (GameFont*)font;
+        int x = r->left, y = r->top;
+        if (flags == 0) {
+            x += (r->right - r->left - f->text_width(text)) / 2;
+            y += (r->bottom - r->top - f->font_cached_height()) / 2;
+        } else if (flags & 2)
+            x = r->right - f->text_width(text);
+        emit("native-text", x, y, f->text_width(text), f->font_cached_height(), text);
+        auto& c = commands.back();
+        c.face = f->face;
+        c.fontHeight = f->height;
+        c.style = f->style;
+        c.color = textColor;
+        c.clip = *r;
+    }
+
     int resource = 0, target = 0;
 
     int load_gif_resource(int r, int, int, iptr) {
@@ -143,12 +176,6 @@ struct GamePalette {
     void set_rgb(int, int, iptr) {}
 };
 
-struct GameFont {
-    void init(int, int) {}
-
-    void destroy() {}
-};
-
 struct {
     GamePalette game_palette;
 } game_palette_block;
@@ -158,7 +185,7 @@ char str_empty_103 = 0;
 int human_civ[1] = {1};
 
 struct {
-    int government = 3, leader_portrait = 0;
+    int government = 3, leader_portrait = 0, tax_rate = 4, science_rate = 4;
     byte treaties[8]{};
 } civs[8];
 
@@ -202,6 +229,37 @@ void OffsetRect(RECT* r, int x, int y) {
     r->bottom += y;
 }
 
+const char* label_string(const char*);
+
+void str_clear(char* s) {
+    *s = 0;
+}
+
+void str_append(char* s, const char* t) {
+    std::strcat(s, t);
+}
+
+void CharUpperA(char* s) {
+    for (; *s; ++s)
+        *s = char(std::toupper((unsigned char)*s));
+}
+
+int lstrlenA(const char* s) {
+    return int(std::strlen(s));
+}
+
+void CopyRect(RECT* dst, const RECT* src) {
+    *dst = *src;
+}
+
+const char str_empty_104[] = " ", str_empty_105[] = "...", str_empty_106[] = "...", str_empty_107[] = "...",
+           str_empty_144[] = "+";
+
+struct {
+    char category = 0;
+    const char* name = nullptr;
+} advances[100];
+
 struct DiploLeaderWindow {
     int leader_civ = 2, style_era = 2;
     DibSurface surface;
@@ -214,14 +272,8 @@ struct DiploLeaderWindow {
     i32 init_portrait();
     void science_rank_top_techs(int (&)[13], int&);
 
-    // Text shaping is a backend substitution; source chooses six advances and their row positions.
-    void science_draw_tech(iptr advance, GameFont&, Sprite* categories, i8* ctx, int x, int y, RECT& r, int,
-                           int*, i8*, CHAR*, CHAR*, CHAR*) {
-        categories[suppliedAdvanceCategories[advance]].draw((iptr)ctx, (iptr)leader_surface, x, y);
-        // Preserve identity for enhanced per-advance artwork, independent of row order.
-        commands.back().text = std::to_string(advance);
-        emit("tech-label", r.left, r.top, r.right - r.left, r.bottom - r.top, std::to_string(advance));
-    }
+    void science_draw_tech(iptr, GameFont&, Sprite (&)[5], i8 (&)[16], i32, int, tagRECT&, int, int (&)[13],
+                           i8 (&)[4], CHAR (&)[252], CHAR (&)[53], CHAR (&)[51]);
 };
 
 struct {
@@ -292,6 +344,9 @@ struct {
 } units[3];
 
 struct {
+    int settlers_supported = 0, yield_totals[3]{28, 16, 24}, food_routes_in = 0, food_routes_out = 0,
+        shield_support = 4, total_shields = 16, shield_waste = 0, total_trade = 24, trade_corruption = 0,
+        building_content = 0, tax_total = 10, lux_total = 4, science_total = 10;
     int specialist_count = 2, food_box_rows = 10, shield_rows = 10, happy_count = 4, unhappy_count = 2,
         angry_count = 0, settler_food_cost = 1;
 
@@ -309,7 +364,8 @@ struct {
 } road_sprites_block;
 
 struct {
-    Sprite resource_icon_sprites, shield_icon_sprite;
+    Sprite resource_icon_sprites, shield_icon_sprite, trade_icon_sprite, resource_shortage_icon_sprites,
+        food_surplus, shield_shortage_icon_sprite, shield_surplus, trade_corruption_icon_sprite;
 } war_icon_sprite_block;
 
 struct {
@@ -317,7 +373,7 @@ struct {
 } caption_close_button_sprite_block;
 
 struct {
-    Sprite gold_coin_icon_sprite;
+    Sprite gold_coin_icon_sprite, tax_rate_icon_sprites, science_icon_sprite;
 } tax_rate_icon_sprites_block;
 
 struct {
@@ -369,33 +425,158 @@ void rect_inflate(iptr p, int x, int y) {
     rect_deflate(p, -x, -y);
 }
 
-void text_set_colors(int, int, int, int) {}
+struct {
+    int food_per_citizen = 2;
+} cosmic;
+
+void text_set_colors(int fg, int sh, int dx, int dy) {
+    foreground = fg;
+    shadow = sh;
+    if (dx >= 0)
+        shadowX = dx;
+    if (dy >= 0)
+        shadowY = dy;
+}
+
+int native_text(const char* text, int x, int y) {
+    for (int pass = 0; pass < 2; ++pass) {
+        int color = pass ? foreground : shadow;
+        if (color < 0)
+            continue;
+        emit("native-text", x + (pass ? 0 : shadowX), y + (pass ? 0 : shadowY), activeFont->text_width(text),
+             activeFont->font_cached_height(), text);
+        auto& c = commands.back();
+        c.face = activeFont->face;
+        c.fontHeight = activeFont->height;
+        c.style = activeFont->style;
+        c.color = color;
+    }
+    return x + activeFont->text_width(text);
+}
+
+void gfx_target_fill_rect(int x, int y, int w, int h, int color) {
+    emit("native-fill", x, y, w, h);
+    commands.back().color = color;
+}
 
 const char* label_string(const char* p) {
     return p ? p : "Food storage";
 }
 
 void gfx_draw_text_centered(const char* p, int x, int y, int w) {
-    emit("text", x, y, w, 12, p);
+    if (enhancedBoundary)
+        emit("text", x, y, w, 12, p);
+    else
+        native_text(p, x + (w / 2 - (activeFont->text_width(p) + (shadow < 0 ? 0 : std::abs(shadowX))) / 2),
+                    y);
 }
 
 void text_clear() {
     textbuf.buf[0] = 0;
 }
 
+const char* native_label(int n) {
+    switch (n) {
+    case 0x3f:
+        return "City Resources";
+    case 0x193:
+        return "Citizens";
+    case 0x1bf:
+        return "Units Supported";
+    case 0x1c0:
+        return "City Improvements";
+    case 0x1c2:
+        return "Resource Map";
+    case 0x1c3:
+        return "Units Present";
+    case 0x40:
+        return "Food";
+    case 0x41:
+        return "Surplus";
+    case 0x43:
+        return "Waste";
+    case 0x44:
+        return "Production";
+    case 0x45:
+        return "Trade";
+    case 0x46:
+        return "Corruption";
+    case 0x47:
+        return "Tax";
+    case 0x48:
+        return "Lux";
+    case 0x49:
+        return "Sci";
+    case 0x4a:
+        return "Hunger";
+    case 0x4b:
+        return "Shortage";
+    case 0xcc:
+        return "Support";
+    case 0xa9:
+        return "Caravans";
+    case 0x5d:
+        return "Tithes";
+    default:
+        throw std::runtime_error("Unsupplied label " + std::to_string(n));
+    }
+}
+
+void text_append(const char* p) {
+    std::strcat(textbuf.buf, p);
+}
+
 void text_append_label(int n) {
-    std::strcpy(textbuf.buf, n == 0x193   ? "Citizens"
-                             : n == 0x1bf ? "Supported units"
-                             : n == 0x1c0 ? "Improvements"
-                                          : "Specialists");
+    if (enhancedBoundary)
+        std::strcpy(textbuf.buf, n == 0x193   ? "Citizens"
+                                 : n == 0x1bf ? "Supported units"
+                                 : n == 0x1c0 ? "Improvements"
+                                              : "Specialists");
+    else
+        text_append(native_label(n));
 }
 
 void text_append_string_id(const char* p) {
-    std::strcpy(textbuf.buf, p);
+    if (enhancedBoundary)
+        std::strcpy(textbuf.buf, p);
+    else
+        text_append(p);
 }
 
-void gfx_draw_text(const char* p, int x, int y) {
-    emit("text-left", x, y, 130, 11, p);
+void text_append_int(int n) {
+    text_append(std::to_string(n).c_str());
+}
+
+void text_append_colon() {
+    text_append(": ");
+}
+
+void text_append_space() {
+    text_append(" ");
+}
+
+void text_append_percent() {
+    text_append("%");
+}
+
+void text_append_lparen() {
+    text_append("(");
+}
+
+void text_append_rparen() {
+    text_append(")");
+}
+
+int gfx_draw_text(const char* p, int x, int y) {
+    if (enhancedBoundary) {
+        emit("text-left", x, y, 130, 11, p);
+        return x + 130;
+    }
+    return native_text(p, x, y);
+}
+
+int gfx_draw_text_right(const char* p, int x, int y, int w) {
+    return native_text(p, x + w - activeFont->text_width(p) - (shadow < 0 ? 0 : std::abs(shadowX)), y);
 }
 
 int extra_ui(int) {
@@ -462,13 +643,14 @@ void gfx_draw_unit(iptr, int n, int, int x, int y, int z, int) {
     emit("unit/" + std::to_string(n), x, y, gfx_zoom_scale(64, z), gfx_zoom_scale(48, z));
 }
 
-void city_draw_bevel_rect(iptr p, int, int) {
+void city_draw_bevel_rect(iptr p, int a, int b) {
     auto r = (RECT*)p;
-    emit("bevel", r->left, r->top, rect_width(r), rect_height(r));
+    emit("bevel", r->left, r->top, rect_width(r), rect_height(r), "", 0, a, b);
 }
 
-void city_draw_hline(int x, int end, int y, int) {
+void city_draw_hline(int x, int end, int y, int color) {
     emit("line", x, y, end - x, 1);
+    commands.back().color = color;
 }
 
 int ui_calc_item_spacing(int, int, int, iptr, iptr);
@@ -493,6 +675,7 @@ struct Scrollbar {
 
 struct CityWindow {
     DibSurface surface; // Generic target routing only; not the real class layout.
+    int resource_bar_height = 0, map_zoom_level = -2;
     int view_scale = 2, margin_x_2 = 0, client_x = 0, client_y = 0, content_offset_y = 0;
     int is_closed = 0, redraw_suspended = 0, redraw_deferred = 0, city_index = 0, info_panel_mode = 0;
     PANEL(citizens_rect);
@@ -535,9 +718,22 @@ struct CityWindow {
         emit(name, r->left, r->top, rect_width(r), rect_height(r));
     }
 
-    void draw_resource_map(int) {
-        panel("adapter-resource-map", (iptr)&resource_map_rect);
-        draw_resource_yields(48, 24, 12, resource_map_rect + 77, resource_map_rect_top + 59);
+    void draw_resource_food(int, int, uint);
+    void draw_resource_shields(int, int, uint, uint&);
+    void draw_resource_trade(int, int, uint, uint);
+    void draw_resource_rates(int, int, uint);
+    void draw_resource_map_native(int);
+
+    void draw_resource_map(int blit) {
+        if (enhancedBoundary) {
+            panel("adapter-resource-map", (iptr)&resource_map_rect);
+            draw_resource_yields(48, 24, 12, resource_map_rect + 77, resource_map_rect_top + 59);
+        } else
+            draw_resource_map_native(blit);
+    }
+
+    void draw_resource_tiles(int, int, int, int) {
+        panel("native-resource-terrain", (iptr)&resource_map_rect);
     }
 
     void draw_button_area(int) {
@@ -583,7 +779,14 @@ void output(const std::string& mode, int w, int h, int styleEra = -1, int powerR
         std::cout << "{\"asset\":" << quote(c.asset) << ",\"text\":" << quote(c.text) << ",\"x\":" << c.x
                   << ",\"y\":" << c.y << ",\"width\":" << c.w << ",\"height\":" << c.h
                   << ",\"resource\":" << c.resource << ",\"sx\":" << c.sx << ",\"sy\":" << c.sy
-                  << ",\"target\":" << c.target << ",\"shade\":" << c.shade << '}';
+                  << ",\"target\":" << c.target << ",\"shade\":" << c.shade;
+        if (c.asset == "native-text")
+            std::cout << ",\"face\":" << c.face << ",\"fontHeight\":" << c.fontHeight
+                      << ",\"style\":" << c.style << ",\"clip\":[" << c.clip.left << ',' << c.clip.top << ','
+                      << c.clip.right << ',' << c.clip.bottom << ']';
+        if (c.asset == "native-text" || c.asset == "native-fill" || c.asset == "line")
+            std::cout << ",\"color\":" << c.color;
+        std::cout << '}';
     }
     std::cout << ']';
     if (mode == "diplomacy")
@@ -593,8 +796,9 @@ void output(const std::string& mode, int w, int h, int styleEra = -1, int powerR
 
 int main(int argc, char** argv) {
     try {
-        if (argc != 3)
+        if (argc != 3 && argc != 4)
             throw std::runtime_error("usage: atlas-windows diplomacy|spaceship|city-window fixture.txt");
+        enhancedBoundary = argc == 4 && std::string(argv[3]) == "--enhanced";
         std::ifstream in(argv[2]);
         if (!in)
             throw std::runtime_error("Missing fixture");
@@ -621,7 +825,54 @@ int main(int argc, char** argv) {
             v.surface.target = 1;
             v.init_main_art();
             v.init_military();
-            v.init_science();
+            const char* advanceNames[100]{};
+            advanceNames[39] = "Iron Working";
+            advanceNames[12] = "Code of Laws";
+            advanceNames[6] = "Banking";
+            advanceNames[25] = "Engineering";
+            advanceNames[50] = "Medicine";
+            advanceNames[57] = "Navigation";
+            advanceNames[61] = "Physics";
+            advanceNames[23] = "Electricity";
+            for (int id = 0; id < 100; ++id) {
+                advances[id].category = char(suppliedAdvanceCategories[id]);
+                advances[id].name = advanceNames[id];
+                if (suppliedAdvances[id] && !advanceNames[id])
+                    throw std::runtime_error("Unsupplied advance label");
+            }
+            if (enhancedBoundary) {
+                int top[13], count = 0;
+                std::fill(top, top + 13, -1);
+                v.science_rank_top_techs(top, count);
+                const int ys[] = {32, 63, 94, 1, 125};
+                int row = 0;
+                for (int slot = 5; slot >= 0; --slot)
+                    if (top[slot * 2] >= 0) {
+                        int id = top[slot * 2];
+                        emit("resource", 485, 130 + 31 * row, 108, 30, std::to_string(id), 215,
+                             v.style_era * 109 + 1, ys[suppliedAdvanceCategories[id]], 1);
+                        emit("tech-label", 531, 137 + 31 * row, 58, 20, std::to_string(id));
+                        ++row;
+                    }
+            } else {
+                const auto first = commands.size();
+                v.init_science();
+                int top[13], count = 0;
+                std::fill(top, top + 13, -1);
+                v.science_rank_top_techs(top, count);
+                int slot = 5;
+                std::vector<Command> labels;
+                for (size_t i = first; i < commands.size(); ++i)
+                    if (commands[i].asset == "resource") {
+                        while (slot >= 0 && top[slot * 2] < 0)
+                            --slot;
+                        auto& c = commands[i];
+                        c.text = std::to_string(top[slot * 2]);
+                        labels.push_back({"tech-label", c.text, 531, c.y + 7, 58, 20, 0, 0, 0, 0, 0});
+                        --slot;
+                    }
+                commands.insert(commands.end(), labels.begin(), labels.end());
+            }
             v.init_portrait();
             output(mode, 640, 480, v.style_era, game.power_rank[v.leader_civ]);
         } else if (mode == "spaceship") {
@@ -641,6 +892,9 @@ int main(int argc, char** argv) {
             output(mode, 640, 480);
         } else if (mode == "city-window") {
             CityWindow v;
+            city_font.set_styled(1, 12, 1);
+            if (!enhancedBoundary)
+                label_table.string_ids[0x2b] = "Food Storage";
             in >> cities[0].size >> cities[0].food_box >> cities[0].shield_box >> city_calc.happy_count >>
                 city_calc.unhappy_count >> city_calc.specialist_count;
             if (!in || cities[0].size < 1 || cities[0].size > 40 || cities[0].food_box < 0 ||
@@ -708,6 +962,21 @@ int main(int argc, char** argv) {
             }
             small_unhappy_icon_sprite.id = 14;
             small_unhappy_icon_sprite.w = small_unhappy_icon_sprite.h = 10;
+            if (!enhancedBoundary) {
+                Sprite* bank[] = {&war_icon_sprite_block.trade_icon_sprite,
+                                  &tax_rate_icon_sprites_block.tax_rate_icon_sprites,
+                                  &tax_rate_icon_sprites_block.science_icon_sprite,
+                                  &war_icon_sprite_block.resource_shortage_icon_sprites,
+                                  &war_icon_sprite_block.food_surplus,
+                                  &war_icon_sprite_block.shield_shortage_icon_sprite,
+                                  &war_icon_sprite_block.shield_surplus,
+                                  &war_icon_sprite_block.trade_corruption_icon_sprite};
+                for (int i = 0; i < 8; ++i) {
+                    *bank[i] = war_icon_sprite_block.resource_icon_sprites;
+                    bank[i]->id = 20 + i;
+                }
+                city_calc.yield_totals[0] = cities[0].size * 2 + 4;
+            }
             v.layout_rects();
             v.draw_all(0);
             output(mode, 636, 421);

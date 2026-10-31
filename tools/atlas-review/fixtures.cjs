@@ -92,7 +92,7 @@ function serialize(w, camera) {
     return [
         [ w.width, w.height, zoom, ox, oy, cols, rows, viewer, grid ].join(' '),
         ...w.tiles.map(t => [t.x, t.y, t.t, t.f, t.k, t.v, t.r, t.h, t.c, t.u, t.s].join(' ')),
-        ...(w.records || []),
+        ...(w.records || []), ...(w.cities || []).map(c => `CITYNAME ${c.index} ${c.name}`),
         ...(w.records ? w.tiles.filter(t => t.owner !== undefined).map(t => `OWNER ${t.x} ${t.y} ${t.owner}`)
                       : [])
     ].join('\n') +

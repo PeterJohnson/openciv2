@@ -93,7 +93,7 @@ void load_original(const char* file) {
             peace_treaty_icon_sprite_block.city_flag_y_offsets[i] >>
             road_sprites_block.city_size_box_x_offsets[i] >> road_sprites_block.city_label_y_offsets[i];
     for (int i = 0; i < 8; i++) {
-        in >> originalPrimary[i] >> originalMid[i];
+        in >> originalPrimary[i] >> originalMid[i] >> originalSecondary[i];
         for (int dark = 0; dark < 2; dark++)
             named(editor_tile_backdrop_sprite_block.civ_flag_sprites[i * 2 + dark],
                   "flag/" + std::to_string(i) + (dark ? "/dark" : ""), 14, 22);
@@ -123,7 +123,11 @@ void output(int width, int height, const std::string& mode, int zoom = 0) {
         comma = true;
         std::cout << "{\"asset\":" << quote(c.name) << ",\"x\":" << c.x << ",\"y\":" << c.y
                   << ",\"width\":" << c.w << ",\"height\":" << c.h << ",\"color\":" << c.color
-                  << ",\"text\":" << quote(c.text) << '}';
+                  << ",\"text\":" << quote(c.text);
+        if (c.name == "text" && !enhancedBoundary)
+            std::cout << ",\"face\":" << c.face << ",\"fontHeight\":" << c.fontHeight
+                      << ",\"style\":" << c.style;
+        std::cout << '}';
     }
     std::cout << ']';
     if (originalArt) {
@@ -154,7 +158,34 @@ int main(int argc, char** argv) {
         if (!in)
             throw std::runtime_error("Fixture missing");
         std::string mode = argv[1];
-        if (mode == "audit") {
+        enhancedBoundary = mode == "objects";
+        if (mode == "resource-terrain") {
+            int population;
+            if (!(in >> population) || population < 1 || population > 40)
+                throw std::runtime_error("City terrain fixture domain");
+            map.width = 128;
+            map.height = 128;
+            tiles.resize(map.width * map.height);
+            cities[0].x = 40;
+            cities[0].y = 40;
+            cities[0].size = population;
+            for (int i = 0; i < 21; ++i) {
+                int dx = city_resmap_draw_dx_table[i], dy = city_resmap_draw_dy_table[i];
+                auto& t = fixture_tile(40 + dx, 40 + dy);
+                t.raw[0] = i % 7 == 0 ? 4 : 2;
+                if (dx == 0 && dy == 0) {
+                    t.city = 0;
+                    t.raw[1] = t.known = 2;
+                    for (int j = 0; j < 21; ++j)
+                        if (dir_dy_table_block.city_tile_dx_table[j] == 0 &&
+                            dir_dy_table_block.city_tile_dy_table[j] == 0)
+                            city_calc.tile_flags[j] = 8;
+                }
+            }
+            CityWindow v;
+            v.draw_resource_tiles(24, 12, 77, 59);
+            output(200, 138, mode);
+        } else if (mode == "audit") {
             map.width = 16;
             map.height = 16;
             tiles.resize(256);
@@ -246,6 +277,7 @@ int main(int argc, char** argv) {
                 a.unit = unit;
                 a.shield = shield;
                 if (city >= 0) {
+                    std::snprintf(cities[city].name, sizeof(cities[city].name), "City %d", city + 1);
                     cities[city].x = x;
                     cities[city].y = y;
                     game.num_cities = std::max(game.num_cities, city + 1);
@@ -310,6 +342,15 @@ int main(int argc, char** argv) {
                             for (int bit = 0; bit < 8; bit++)
                                 improvements[n][k * 8 + bit] = (a >> bit) & 1;
                         }
+                    } else if (tag == "CITYNAME") {
+                        in >> n;
+                        if (n < 0 || n >= 256)
+                            throw std::runtime_error("City name index");
+                        std::string name;
+                        std::getline(in >> std::ws, name);
+                        if (name.size() > 63)
+                            throw std::runtime_error("City name length");
+                        std::strcpy(cities[n].name, name.c_str());
                     } else if (tag == "UNIT") {
                         in >> n;
                         if (n < 0 || n >= 2048)
@@ -411,6 +452,16 @@ int main(int argc, char** argv) {
             }
             v.layout_buildings();
             v.draw_buildings();
+            // Presentation boundary of CityViewWindow::draw_title: supplied city/year,
+            // exact font, 40-pixel title rectangle, centered text and two palette passes.
+            GameFont title;
+            title.set_styled(0, 36, 1);
+            activeFont = &title;
+            const char* caption = "Asteria:  A.D. 1788";
+            int x = (1280 - title.text_width(caption)) / 2, y = (40 - title.font_cached_height()) / 2;
+            record("text", x + 1, y + 1, 0, title.font_cached_height(), 10, caption);
+            record("text", x, y, 0, title.font_cached_height(), 26, caption);
+            activeFont = nullptr;
             output(1280, 480, "city");
         } else if (mode == "throne") {
             ThroneRoomWindow v;
