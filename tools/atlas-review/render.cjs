@@ -19,7 +19,7 @@ async function sprite(name, w, h, bindings, native = false) {
     const b = bindings[name];
     if (!b)
         throw Error('Unbound renderer sprite ' + name);
-    return cached(`${name}:${w}:${h}:${native}`, async () => {
+    return cached(`${b.file}:${name}:${w}:${h}:${native}`, async () => {
         let input = path.join(pack, b.file);
         if (native)
             input = await sharp(input).resize(b.nativeWidth, b.nativeHeight, {fit : 'fill'}).png().toBuffer();
@@ -27,8 +27,8 @@ async function sprite(name, w, h, bindings, native = false) {
     });
 }
 
-function rect(dst, c) {
-    const rgb = hex(color(c.color));
+function rect(dst, c, palette = color) {
+    const rgb = hex(palette(c.color));
     for (let y = Math.max(0, c.y); y < Math.min(dst.height, c.y + c.height); y++)
         for (let x = Math.max(0, c.x); x < Math.min(dst.width, c.x + c.width); x++) {
             if (c.asset === 'frame' && x !== c.x && y !== c.y && x !== c.x + c.width - 1 &&
@@ -38,12 +38,16 @@ function rect(dst, c) {
         }
 }
 
-async function baseline(trace, scene, bindings, {density = 1, native = true, transparent = false} = {}) {
+async function baseline(
+    trace, scene, bindings,
+    {density = 1, native = true, transparent = false, palette = color, background = null} = {}) {
     const W = trace.width * density, H = trace.height * density;
     let dst = clear(W, H, transparent ? [ 0, 0, 0, 0 ] : [ 12, 22, 23, 255 ]);
-    if (scene.mode === 'city')
+    if (background)
+        dst = await raw(background, W, H, 'nearest');
+    else if (scene.mode === 'city')
         dst = await raw(path.join(pack, `backgrounds/city-${scene.site}-native.png`), W, H);
-    if (scene.mode === 'throne')
+    if (!background && scene.mode === 'throne')
         dst = await raw(path.join(pack, 'backgrounds/palace-room-native.png'), W, H);
     for (const command of trace.commands) {
         const c = {
@@ -54,11 +58,11 @@ async function baseline(trace, scene, bindings, {density = 1, native = true, tra
             height : command.height * density
         };
         if (c.asset === 'clear') {
-            dst = clear(W, H, [...hex(color(c.color)), 255 ]);
+            dst = clear(W, H, [...hex(palette(c.color)), 255 ]);
             continue;
         }
         if (c.asset === 'replace') {
-            const from = hex(color(+c.text)), to = hex(color(c.color));
+            const from = hex(palette(+c.text)), to = hex(palette(c.color));
             for (let y = Math.max(0, c.y); y < Math.min(dst.height, c.y + c.height); y++)
                 for (let x = Math.max(0, c.x); x < Math.min(dst.width, c.x + c.width); x++) {
                     const i = (y * dst.width + x) * 4;
@@ -69,7 +73,7 @@ async function baseline(trace, scene, bindings, {density = 1, native = true, tra
             continue;
         }
         if (c.asset === 'rect' || c.asset === 'frame') {
-            rect(dst, c);
+            rect(dst, c, palette);
             continue;
         }
         if (c.asset === 'text') {
@@ -77,7 +81,7 @@ async function baseline(trace, scene, bindings, {density = 1, native = true, tra
             const p =
                 await raw(Buffer.from(svg(w, h + 3,
                                           `<text x="0" y="${h * .83}" font-family="monospace" font-size="${
-                                              h}" fill="${color(c.color)}">${c.text}</text>`)));
+                                              h}" fill="${palette(c.color)}">${c.text}</text>`)));
             blit(dst, p, c.x, c.y);
             continue;
         }
@@ -86,7 +90,7 @@ async function baseline(trace, scene, bindings, {density = 1, native = true, tra
         let p = await sprite(c.asset, c.width, c.height, bindings, native);
         if (c.color >= 0) {
             p = {...p, data : Buffer.from(p.data)};
-            const rgb = hex(color(c.color));
+            const rgb = hex(palette(c.color));
             for (let i = 0; i < p.data.length; i += 4)
                 for (let k = 0; k < 3; k++)
                     p.data[i + k] = rgb[k];

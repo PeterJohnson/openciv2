@@ -190,7 +190,7 @@ async function main() {
             const meta = await C.sharp(C.path.join(C.pack, s[k])).metadata();
             assert.deepEqual([ meta.width, meta.height ], s[k + 'Size'], s.id + k);
         }
-    pass('Three-stage review image dimensions', scenes.length * 3);
+    pass('Three replacement-stage review image dimensions', scenes.length * 3);
     await C.art.loadMaterials(C.path.join(C.pack, 'map'));
     C.art.setVariations(true);
     const world = C.read(C.path.join(C.pack, 'review/fixtures/world.json')), get = R.lookup(world);

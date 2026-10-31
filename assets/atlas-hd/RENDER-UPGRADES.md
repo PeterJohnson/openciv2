@@ -8,7 +8,7 @@ work. The game source is unchanged.
 
 ## 1. HD image support — the first, independent change
 
-**Review: every scene, Legacy → HD only.** The exact source command stream is
+**Review: every scene, Replacement native → HD only.** The exact source command stream is
 replayed with the same geometry, order, visibility and zoom gates. Higher native
 image resolution and a 2× display-density backing surface improve fine detail,
 but repeated ground, coast-quarter shapes and separately overlaid road arms
@@ -183,7 +183,7 @@ composed inside native boxes; the extra metadata gives it a more natural scale.
 
 ## 6. Diplomacy audience: density first, readable columns second
 
-**Review: Diplomacy, all three stages.** Current source: government-dependent
+**Review: Diplomacy, all four stages.** Current source: government-dependent
 640×480 art, a 225×275 portrait at `(208,57)`, military rank minus one repeated
 icons at `(45,130)` and six technology slots at `(485,130)`. The source uses
 31-pixel row spacing, era-dependent category crops and a narrow 58-pixel text

@@ -111,7 +111,7 @@ source conditions.
   Release command traces;
 - fresh Debug/Release equality for every saved main scene trace;
 - canonical paths, hashes and master references, all 5,173 inventory replacement
-  references, 404 PNG compatibility bindings and all 66 three-stage images;
+  references, 404 PNG compatibility bindings and all 66 replacement-stage images;
 - direction conversion and focused proposed-renderer visibility isolation.
 
 These are finite renderer/asset checks. They do not establish all possible unit
@@ -162,8 +162,8 @@ rows and the units-present detail panel remain adapters. The native list and sto
 icon spacing at population 28. Optional extras and interactive hit testing are
 outside this fixture. A full game build remains the future integration test.
 
-The word **Legacy** means replacement art at native drawing resolution, never
-original-game pixels. Legacy and HD-only window stages consume the same native
+**Replacement native resolution** uses new art at native drawing resolution.
+The replacement-native and HD-only window stages consume the same native
 trace and identical logical artwork rectangles; only physical density changes.
 The gallery notes these limits so they cannot be mistaken for gameplay captures.
 
@@ -208,7 +208,7 @@ The parser follows this checkout's `tools/xdnet/savecmp.py`, `civ2types.h`,
 `save_read_game`, `save_read_units_cities` and `map_read`; support is deliberately
 limited to the observed version-44 normal-save layout. Cameras are selected
 deterministically for varied developed terrain. No tile or object is added to
-improve composition. All three stages explicitly use the same all-map view;
+improve composition. All stages explicitly use the same all-map view;
 fog is disabled for art inspection rather than represented as player knowledge.
 
 Four additional unchanged bodies run in the `save_native` namespace:
@@ -223,7 +223,49 @@ and source-selected huts.
 The coin is a raster-art replacement within the existing native 14-pixel boxes;
 HD-only changes image density, while tax and improvement-list semantics stay the same.
 
-This remains a render-state replay. Map labels, original palette colors, order
+This remains a render-state replay. Map labels, replacement-stage palette approximations, order
 glyphs, exact text metrics and interactive camera/gameplay execution remain
 backend/fixture limits. The data is diverse gameplay state, not a claim that the
 standalone program loads or runs the full game.
+
+## Original-art replay
+
+`original-assets.py` and `original.cjs` add an optional fourth comparison for all
+22 scenes. Original pixels and derivatives remain in the ignored
+`review/original-local/` directory. Neither the game source nor the replacement
+library depends on these files. The gallery loads the local scene index if
+present and otherwise explains how to build it; it never substitutes new art
+under an original-art label.
+
+The geometry comes from this checkout's `gfx_load_terrain_sprites`,
+`gfx_load_city_sprites`, `gfx_load_unit_sprites` and icon/people loaders in
+`src/auto/graphics.cpp`. GIF indices add ten with byte wrapping, so raw 253 and
+255 become the runtime transparency keys 7 and 9. Dither construction replays
+the alternate-key mask operation and quarter order. City sprite indexing is
+style × 8 + size × 2 + walls. The original optional native mode reads the unit
+shield and city flag/size-box registration scans from `unit.cpp:906` and
+`city.cpp:4009,4034`; flags are 14×22 and disorder is 30×30. It supplies the
+original sheet-derived civ primary/mid colors. Default replacement traces retain
+their existing metadata unchanged.
+
+City panorama and throne crop rectangles are captured at the native
+`Sprite::grab_from_surface` boundary, including selected resource IDs. Original
+city background selection uses native terrain kind and era, including the
+superhighways override; the fixture's industrial house/lot bank comes from CV
+310. Thrones begin with PV 100. Diplomacy replays native background, portrait,
+military and science crops, with the shared palette ranges from
+`DiploLeaderWindow::init_main_art` and `init_portrait`, including the leader civ
+color at runtime index 145. This is the static audience fixture; no AVI is read.
+Spacecraft uses SS 499 (`spaceship.cpp:314`), and native ordered split crops are
+clipped to the 457×304 assembly surface before copying to (175,99). City windows
+use the 636×421 CITY.GIF crop from `city.cpp:11940–11942`, exact citizens and
+14/10-pixel economy icons. The existing fixture summary rows, resource-map
+terrain, unit panels, labels, buttons and font metrics remain explicit adapters;
+this does not claim pixel-exact full-game window capture.
+
+Local verification covers all 22 output dimensions, four 3840×2160 exports,
+all extracted PNG hashes, unchanged original input hashes and 26 original-mode
+map/city/throne Debug/Release traces. Every image operation resolves to a local
+original binding and missing sprites fail the build. The original renderer
+path is checked by `original.cjs`; `verify.cjs` separately checks the replacement
+path and unchanged native source bodies.

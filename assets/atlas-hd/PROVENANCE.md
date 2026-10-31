@@ -9,7 +9,7 @@ selected into the catalog.
 
 Painted artwork was created with the built-in `image_gen` tool from written
 subject descriptions. Earlier repair edits referenced only artwork generated for
-this collection. No original-game or Freeciv image was supplied, copied, traced,
+this collection. For the replacement artwork, no original-game or Freeciv image was supplied, copied, traced,
 recolored, enlarged or incorporated. Code and image-resource header metadata
 were inspected for roles, IDs, dimensions and composition contracts only.
 
@@ -39,7 +39,7 @@ The retained SVGs are editable sources. `tools/atlas-review/art.cjs` defines the
 shared terrain and transport geometry. The standalone adapter adds coast
 quarters, dither masks, logical sprite frames and three small overview icons.
 The new material variants have explicit crops and mip PNGs. No game image is an
-input to the standalone build or preview pipeline.
+input to the replacement-art build or its three preview stages.
 
 Native dimensions and hashes are recorded in the catalog. The 3840×2160 exports
 are presentation resamples; they do not create additional native detail. Source
@@ -64,3 +64,15 @@ The originality statement describes the recorded inputs and authoring process;
 it is not an exhaustive visual comparison against all existing works. Historical
 subjects are newly illustrated. Existing game data, audio, video and arbitrary
 scenario/expansion artwork remain outside this graphics delivery.
+
+## Local original-art comparisons
+
+The optional fourth stage reads the user's original GIF sheets and GIF resources
+inside CV.DLL, PV.DLL, MK.DLL and SS.DLL. It crops and composites those pixels
+solely into `review/original-local/`, which is ignored by Git. Those files are
+original-game derivatives, excluded from the Atlas HD manifest, coverage bank,
+replacement bindings and license. The checked-in gallery and extraction/replay
+code contain no original image bytes. A recipient supplies their own installation
+to build the comparison. The local binding index records source SHA-256 hashes,
+resource IDs, crop rectangles and output hashes. These previews are trace
+replays with documented adapters, not original-game screen captures.

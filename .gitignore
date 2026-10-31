@@ -19,3 +19,6 @@ __pycache__/
 # Downloaded toolchain (tools/fetch-toolchain.sh)
 /tools/toolchain/
 /tools/docker-ext/*.tar.gz
+
+# Copyrighted original art: local review inputs/derivatives, never distributed.
+/assets/atlas-hd/review/original-local/

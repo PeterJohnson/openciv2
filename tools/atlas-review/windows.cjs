@@ -326,12 +326,12 @@ function shipLayout() {
     };
 }
 
-async function resourceMap(p, x, y) {
+async function resourceMap(p, x, y, original = null) {
     // create_controls at city.cpp:17053 selects zoom -2 for view_scale=2.
     // draw_resource_map supplies (5+3*24,11+4*12); the source tables order 21 cells.
     const dx = [ -1, 1, -2, 0, 2, -3, -1, 1, 3, -2, 0, 2, -3, -1, 1, 3, -2, 0, 2, -1, 1 ];
     const dy = [ -3, -3, -2, -2, -2, -1, -1, -1, -1, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 3, 3 ];
-    const bindings = C.read(path.join(pack, 'compatibility/bindings.json')).bindings;
+    const bindings = original?.bindings || C.read(path.join(pack, 'compatibility/bindings.json')).bindings;
     for (let i = 0; i < 21; i++) {
         const px = x + 77 + dx[i] * 24, py = y + 59 + dy[i] * 12;
         await p.image(bindings['terrain/' + (i % 7 === 0 ? 4 : 2)].file, px, py, 48, 24, {contain : false});
@@ -351,8 +351,8 @@ function citizenFile(id) {
     return `sprites/citizens/industrial-${mood}.png`;
 }
 
-async function city(trace, scene, proposed, density) {
-    const p = new Painter(636, 421, density);
+async function city(trace, scene, proposed, density, original = null) {
+    const p = original?.painter || new Painter(636, 421, density);
     await p.image('backgrounds/parchment-native.png', 0, 0, 636, 421, {contain : false});
     await p.box(0, 0, 636, 421, proposed ? '#233c36ee' : '#2e413bdd', '#a28d60');
     for (const c of trace.commands) {
@@ -375,8 +375,13 @@ async function city(trace, scene, proposed, density) {
             await p.image(`sprites/units/${fixtureUnits[+c.asset.split('/')[1]]}.png`, x, y, w, h);
         } else if (c.asset.startsWith('icon/')) {
             const id = +c.asset.split('/')[1];
-            if (c.shade)
+            if (c.shade && !original)
                 continue;
+            if (original) {
+                await p.image(original.bindings['icon/' + id].file, x, y, w, h,
+                              {contain : false, opacity : c.shade ? .28 : 1});
+                continue;
+            }
             if (id >= 100 && id < 144)
                 await p.image(citizenFile(id), x, y, w, h);
             else if (id >= 200)
@@ -388,7 +393,7 @@ async function city(trace, scene, proposed, density) {
                 await p.image(citizenFile(104), x, y, w, h);
         } else if (c.asset === 'adapter-resource-map') {
             await p.box(x, y, w, h, '#1b332ccc', '#6b816b');
-            await resourceMap(p, x, y);
+            await resourceMap(p, x, y, original);
             await p.text('City resources', x + 7, y + 121, 188, 11, '#e9d9aa', 'middle');
             const labels = [ 'Food', 'Shields', 'Trade', 'Taxes', 'Luxury', 'Science' ];
             const roles = [ 'food', 'production', 'trade', 'gold', 'luxury', 'science' ];
@@ -548,5 +553,7 @@ if (require.main === module)
 module.exports = {
     buildWindows,
     windowEngine,
-    sceneDefs
+    sceneDefs,
+    Painter,
+    city
 };

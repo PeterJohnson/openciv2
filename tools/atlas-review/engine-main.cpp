@@ -80,6 +80,29 @@ void initialize() {
     units[-1].visibility = 0; // Explicit empty-stack sentinel backing for this fixture.
 }
 
+// Optional original-sheet metadata; replacement review fixtures retain their own anchors.
+void load_original(const char* file) {
+    std::ifstream in(file);
+    if (!in)
+        throw std::runtime_error("Original anchors missing");
+    originalArt = true;
+    for (int i = 0; i < 63; i++)
+        in >> road_sprites_block.unit_shield_x_offsets[i] >> road_sprites_block.unit_shield_y_offsets[i];
+    for (int i = 0; i < 48; i++)
+        in >> peace_treaty_icon_sprite_block.city_flag_x_offsets[i] >>
+            peace_treaty_icon_sprite_block.city_flag_y_offsets[i] >>
+            road_sprites_block.city_size_box_x_offsets[i] >> road_sprites_block.city_label_y_offsets[i];
+    for (int i = 0; i < 8; i++) {
+        in >> originalPrimary[i] >> originalMid[i];
+        for (int dark = 0; dark < 2; dark++)
+            named(editor_tile_backdrop_sprite_block.civ_flag_sprites[i * 2 + dark],
+                  "flag/" + std::to_string(i) + (dark ? "/dark" : ""), 14, 22);
+    }
+    if (!in)
+        throw std::runtime_error("Truncated original metadata");
+    named(fortify_overlay_sprites_block.city_disorder_icon_sprite, "improvement/disorder", 30, 30);
+}
+
 std::string quote(const std::string& s) {
     std::string o = "\"";
     for (char c : s) {
@@ -102,14 +125,31 @@ void output(int width, int height, const std::string& mode, int zoom = 0) {
                   << ",\"width\":" << c.w << ",\"height\":" << c.h << ",\"color\":" << c.color
                   << ",\"text\":" << quote(c.text) << '}';
     }
-    std::cout << "]}\n";
+    std::cout << ']';
+    if (originalArt) {
+        std::cout << ",\"originalBackground\":" << originalBackground << ",\"sourceCrops\":{";
+        bool sep = false;
+        for (const auto& pair : sourceCrops) {
+            if (sep)
+                std::cout << ',';
+            sep = true;
+            const auto& c = pair.second;
+            std::cout << quote(pair.first) << ":[" << c.resource << ',' << c.x << ',' << c.y << ',' << c.width
+                      << ',' << c.height << ']';
+        }
+        std::cout << '}';
+    }
+    std::cout << "}\n";
 }
 
 int main(int argc, char** argv) {
     try {
         initialize();
+        if (argc == 4)
+            load_original(argv[3]);
         if (argc < 3)
-            throw std::runtime_error("usage: atlas-engine map|city|throne fixture.txt");
+            throw std::runtime_error(
+                "usage: atlas-engine map|city|throne fixture.txt [original-anchors.txt]");
         std::ifstream in(argv[2]);
         if (!in)
             throw std::runtime_error("Fixture missing");
@@ -353,6 +393,7 @@ int main(int argc, char** argv) {
                     throw std::runtime_error("City improvement domain");
             }
             v.classify_site();
+            originalBackground = 340 + 5 * v.terrain_kind + (improvements[0][IMP_SUPERHIGHWAYS] ? 3 : artEra);
             std::memcpy(v.improvement_slot_tables, cityview_slot_x_table_block.cityview_slot_tables_init,
                         0x174);
             std::memcpy(v.improvement_slot_tables + 0x174, str_empty, 0x120);
@@ -373,6 +414,7 @@ int main(int argc, char** argv) {
             output(1280, 480, "city");
         } else if (mode == "throne") {
             ThroneRoomWindow v;
+            originalBackground = 100;
             int n;
             for (int i = 0; i < 9; i++) {
                 if (!(in >> n) || n < 0 || n > (i == 8 ? 127 : 4))

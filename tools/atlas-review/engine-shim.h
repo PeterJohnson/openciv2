@@ -283,12 +283,22 @@ int civ_has_advance(int c, int tech) {
            ((tech == ADV_AUTOMOBILE || tech == ADV_ELECTRONICS) && artEra >= 3);
 }
 
+bool originalArt = false;
+int originalPrimary[8]{}, originalMid[8]{};
+
+struct SourceCrop {
+    int resource, x, y, width, height;
+};
+
+std::map<std::string, SourceCrop> sourceCrops;
+int originalBackground = 0;
+
 int civ_color_primary(int c) {
-    return 200 + c;
+    return originalArt ? originalPrimary[c] : 200 + c;
 }
 
 int civ_color_mid(int c) {
-    return 210 + c;
+    return originalArt ? originalMid[c] : 210 + c;
 }
 
 enum { X_SENTRY_GREY, X_WORK_COUNTER };
@@ -553,12 +563,16 @@ void Sprite::grab_from_surface(iptr surface, uint, int x, int y, int width, int 
             if (q[0] == x && q[1] == y && q[2] == width && q[3] == height) {
                 named(*this, (r == 300 ? "building/" : "wonder/") + std::to_string(i + (r == 300 ? 1 : 0)),
                       width, height);
+                if (originalArt)
+                    sourceCrops[spriteNames.at(id)] = {r, x, y, width, height};
                 return;
             }
         }
         throw std::runtime_error("Unmapped city art crop");
     }
     named(*this, "palace-resource/" + std::to_string(r), width, height);
+    if (originalArt)
+        sourceCrops[spriteNames.at(id)] = {r, x, y, width, height};
 }
 
 void surface_ctor(DibSurface* s) {

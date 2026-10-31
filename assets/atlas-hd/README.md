@@ -1,8 +1,9 @@
 # Atlas HD
 
-Open [the offline review gallery](index.html). Start with **Legacy → HD only**,
-then switch to **HD only → HD + cohesion**. No server or original game data is
-required to view the checked-in previews.
+Open [the offline review gallery](index.html). Use **All four stages** to compare
+original artwork, replacement art at native resolution, HD only, and HD with
+additional cohesion. No server is required. The three replacement-art stages are
+checked in; original-art comparisons are built locally from your installed game.
 
 This is one selected library on `new-graphics`, based on
 `bd89036`. Earlier iterations remain on `codex/atlas-hd-graphics` at `2fe6f3f`.
@@ -31,15 +32,19 @@ coverage, not that the unchanged game can already run without original images.
 Scenario-specific images, video, audio and third-party expansion content are not
 silently included in that claim.
 
-## Three rendering stages
+## Four rendering stages
 
-1. **Legacy resolution:** source-selected commands, new art reduced to native
+1. **Original game artwork:** original image sheets and embedded resources, replayed
+   at native resolution with the same fixtures and cameras. Original city/flag and
+   unit/shield registration points come from their sheet markers. This is a local
+   source-renderer replay, not a screenshot captured from the original executable.
+2. **Replacement native resolution:** source-selected commands, new art reduced to native
    sprite boxes, source zoom scaling and nearest-neighbor enlargement.
-2. **HD only:** the identical command trace, with larger RGBA images and a 2×
+3. **HD only:** the identical command trace, with larger RGBA images and a 2×
    display-density backing surface. Layout, road arms, coast quarters, source
    ordering, visibility and zoom gates stay the same. This is the expected first
    engine upgrade, simulated by the review backend.
-3. **HD + cohesion:** a separate art-side prototype adds shared network geometry,
+4. **HD + cohesion:** a separate art-side prototype adds shared network geometry,
    world-space materials and river/coast sampling, quieter overview detail,
    object anchors and site-aware scene placement.
 
@@ -53,7 +58,8 @@ for native bodies versus explicit panel and typography adapters.
 The close camera spans ten full tile widths by ten full tile heights (200 cells
 on the staggered lattice). The whole-world fixture has 8,192 valid cells in a
 128×128 coordinate domain. Twelve 3840×2160 review exports are available for
-the close map, coast, coastal city and complete throne room, at all three stages.
+the close map, coast, coastal city and complete throne room, at the three replacement
+stages. Building the original comparisons adds four corresponding 4K exports.
 These exports preserve aspect ratio and can resample the native art; they do not
 claim additional native 4K detail.
 
@@ -144,3 +150,39 @@ in scope 1. Compatibility bindings cover the displayed fixtures; the primary
 catalog and coverage map cover the broader art roles. Gameplay initialization,
 all window layouts and a complete runtime replacement-resource test remain
 future integration work. No new Ghidra facts or annotations are introduced.
+
+## Original game art comparison
+
+Original artwork has separate rights from Atlas HD. The original stage is a
+local review aid and is **not part of the replacement pack or its license**.
+Its PNGs, bindings, traces and hashes live in the ignored
+`review/original-local/` directory. Do not stage, package or redistribute that
+directory. A fresh checkout shows a clear unavailable message for that stage
+until its owner builds it from their installed game. All 22 scenes have this
+fourth comparison, including both city windows, both spacecraft states, the
+transport plate, and all saved-game maps.
+
+From the repository root, with Python + Pillow, Node + sharp and MSVC x86:
+
+```powershell
+./tools/atlas-review/build-engine.ps1 -Configuration Debug
+./tools/atlas-review/build-engine.ps1 -Configuration Release
+python tools/atlas-review/original-assets.py --game 'C:/path/to/your/Civ2'
+node tools/atlas-review/original.cjs
+node tools/atlas-review/build-gallery.cjs
+```
+
+`CIV2_GAME` can supply the installed game directory instead of `--game`.
+The extractor reads seven original GIF sheets plus CV/PV/MK/SS DLL image
+resources without executing them. It checks crop bounds, records input/output
+hashes and verifies inputs remain unchanged. The replay verifies all scene
+sizes, binding hashes and original map/city/throne Debug/Release trace equality.
+Rerun these commands after changing fixtures or source renderer extraction.
+
+The original stage uses the same supplied window state and panel/text adapters
+as the other stages. Original CITY.GIF provides its actual panel background;
+SS resource 499 provides the spacecraft background; resource-selected portraits,
+ship crops and city sprites replace the new-art bindings. Font rasterization,
+city summary rows and static diplomacy text remain review adapters. Animated
+heralds, gameplay execution and full native window chrome are outside this
+comparison. See the [original replay audit](RENDERER-AUDIT.md#original-art-replay).

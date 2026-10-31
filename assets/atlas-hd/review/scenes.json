@@ -14,7 +14,7 @@
     "mode": "map",
     "saveBased": true,
     "fixture": "review/fixtures/saved-close.txt",
-    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all stages. Terrain, resources, improvements and object state come from the save; replacement stages use no original images.",
     "current": "review/images/saved-close-current.png",
     "currentSize": [
       1536,
@@ -47,7 +47,7 @@
     "mode": "map",
     "saveBased": true,
     "fixture": "review/fixtures/saved-region.txt",
-    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all stages. Terrain, resources, improvements and object state come from the save; replacement stages use no original images.",
     "current": "review/images/saved-region-current.png",
     "currentSize": [
       1408,
@@ -80,7 +80,7 @@
     "mode": "map",
     "saveBased": true,
     "fixture": "review/fixtures/saved-world.txt",
-    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.",
+    "note": "Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all stages. Terrain, resources, improvements and object state come from the save; replacement stages use no original images.",
     "current": "review/images/saved-world-current.png",
     "currentSize": [
       1200,

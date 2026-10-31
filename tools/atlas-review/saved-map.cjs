@@ -57,7 +57,7 @@ async function build() {
         scene.saveBased = true;
         scene.fixture = `review/fixtures/${scene.id}.txt`;
         scene.note =
-            `Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all three stages. Terrain, resources, improvements and object state come from the save; original images are never read.`;
+            `Real save he_a1788.sav · 1788 · 9,000 cells, 69 cities, 223 live units (290 allocated records). All-map art review: fog disabled in all stages. Terrain, resources, improvements and object state come from the save; replacement stages use no original images.`;
         C.write(C.path.join(C.pack, scene.fixture), F.serialize(w, scene.camera));
         const trace = C.engine('map', C.path.join(C.pack, scene.fixture));
         C.json(C.path.join(C.pack, `review/traces/${scene.id}.json`), trace);
