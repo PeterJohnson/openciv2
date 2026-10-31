@@ -435,15 +435,21 @@ async function city(trace, scene, proposed, density, original = null) {
     }
     if (proposed) {
         const food = scene.food, capacity = (scene.population + 1) * 10, shields = scene.shields;
-        await p.image(E.file('food'), 521, 169, 22, 22);
-        await p.image(E.file('production'), 521, 363, 22, 22, {contain : false});
-        await p.text(`${food} / ${capacity} food`, 449, 41, 174, 14, '#d7e3b7', 'middle');
+        // Reserve adjacent icon/text boxes on the same stockpile summary row.
+        // These rows stay inside food (y=0..167) and production (y=167..356),
+        // clear of the source production heading/artwork and button panel.
+        const stockpileLabel = async (role, label, y, color) => {
+            const x = 449, iconSize = 22, gap = 8, rowWidth = 174;
+            await p.image(E.file(role), x, y, iconSize, iconSize, {contain : role === 'food'});
+            await p.text(label, x + iconSize + gap, y + 1, rowWidth - iconSize - gap, 14, color);
+        };
+        await stockpileLabel('food', `${food} / ${capacity} food`, 40, '#d7e3b7');
         await p.box(451, 73, 167, 18, '#132c25', '#8da578', 3);
         await p.box(453, 75, Math.max(2, 163 * food / capacity), 14, '#a7bb7d', '#a7bb7d', 2);
         await p.vector('<path d="M534 72V92" stroke="#f3dba3" stroke-width="2"/>');
         await p.text('Granary · half retained', 449, 104, 174, 11, '#c8d4ac', 'middle');
         await p.text('Surplus +4 food / turn', 449, 132, 174, 11, '#c8d4ac', 'middle');
-        await p.text(`${shields} / 120 shields`, 449, 228, 174, 14, '#c0dbd6', 'middle');
+        await stockpileLabel('production', `${shields} / 120 shields`, 227, '#c0dbd6');
         await p.box(451, 260, 167, 18, '#152b2b', '#81a39e', 3);
         await p.box(453, 262, Math.max(2, 163 * shields / 120), 14, '#88aeaa', '#88aeaa', 2);
         await p.text(`Library · ${Math.ceil((120 - shields) / 12)} turns`, 449, 298, 174, 12, '#d5ddbe',

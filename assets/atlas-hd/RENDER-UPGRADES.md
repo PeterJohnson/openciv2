@@ -293,7 +293,10 @@ but give panels shared borders, consistent text contrast and measured labels.
 Offer numerical food/shield meters with a visible granary threshold instead of
 hundreds of tiny overlapping icons. Preserve exact numbers and make the original
 icon display an optional presentation mode. The prototype shows these meters
-and simpler resource bars; it does not change city calculations.
+and simpler resource bars; it does not change city calculations. Reserve separate,
+adjacent icon and numeric-label boxes within each stockpile panel. Keep them clear
+of the production heading/artwork, meter and button panel; do not position them
+using coordinates from the old icon-grid layout.
 
 For a later independently scoped layout pass, replace the three hard size jumps
 with logical minimum sizes, allow the improvements list to gain rows on taller

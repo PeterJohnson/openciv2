@@ -6527,15 +6527,15 @@
     },
     {
       "file": "sprites/resources/wheat.png",
-      "x": 521,
-      "y": 169,
+      "x": 449,
+      "y": 40,
       "width": 22,
       "height": 22
     },
     {
       "file": "interface/economy/production.png",
-      "x": 521,
-      "y": 363,
+      "x": 449,
+      "y": 227,
       "width": 22,
       "height": 22
     },
@@ -14583,15 +14583,15 @@
     },
     {
       "file": "sprites/resources/wheat.png",
-      "x": 521,
-      "y": 169,
+      "x": 449,
+      "y": 40,
       "width": 22,
       "height": 22
     },
     {
       "file": "interface/economy/production.png",
-      "x": 521,
-      "y": 363,
+      "x": 449,
+      "y": 227,
       "width": 22,
       "height": 22
     },
