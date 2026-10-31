@@ -300,3 +300,22 @@ Its metadata supplies real `prev_in_stack`/`next_in_stack` values, allowing the
 unchanged source `gfx_draw_unit` stack branch to execute in all four stages.
 The imported 1788 save is unchanged. No new reconstruction/Ghidra facts or game
 source changes are claimed by this artwork work.
+
+## Rail continuity
+
+The replacement nine-slot rail bank keeps the native draw trace, slot dimensions
+and endpoints. Directional arms now end flush at the tile center: the previous
+backward spur and rounded end cap obscured the other arm's steel, most visibly
+with the stronger ballast contrast. The isolated slot retains its end treatment.
+Native bends retain the source's independent-arm limitations.
+
+The proposal draws rail beds for all visible tiles, then sleepers, then metal.
+This prevents a later tile's ballast from erasing an earlier track at a shared
+edge or geometric crossing. Junction masks use complete through routes instead
+of steel strips terminating at the center. This is a visual connection policy;
+it changes no movement state and does not claim physical turnout simulation.
+
+`verify-rail-joins.cjs` checks exported native PNG joins, both proposed draw
+orders at all eight edges, and all 256 masks (including isolated artwork in the
+transport plate). Its pixel probe failed on the former capped arm artwork.
+No native game source bodies or original-art bindings change.

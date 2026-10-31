@@ -194,6 +194,9 @@ Roads are warm dirt tracks with winding arms; rails retain straight approaches,
 cool ballast, pale steel and transverse sleepers. Shared endpoints remain fixed
 for isolated, connected and junction sprites. Canonical network and coast PNGs
 and SVGs are rebuilt in place, rather than kept as alternate art packs.
+Native rail arms meet with flush center cuts instead of overlapping end caps.
+The proposed renderer draws all ballast, then sleepers, then steel; continuous
+through routes replace radial stubs at rail junctions.
 
 Coasts use broader coves/headlands, narrower variable shore bands and subdued
 broken surf. The compatibility coast bank also fixes the three-neighbor mask
@@ -220,9 +223,13 @@ node tools/atlas-review/windows.cjs
 node tools/atlas-review/saved-map.cjs
 node tools/atlas-review/verify.cjs
 node tools/atlas-review/verify-map-style.cjs
+node tools/atlas-review/verify-rail-joins.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
 [Map style metadata](map/readability.json) records the artwork conventions;
 [focused validation](review/map-readability-validation.json) checks road joins,
 shore continuity, ocean-resource centering and preserved unit/city frames.
+[Rail validation](review/rail-connectivity-validation.json) checks actual PNG
+steel continuity at native arm centers and proposed shared boundaries in both
+draw orders, plus every rail mask's endpoints.

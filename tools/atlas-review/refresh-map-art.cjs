@@ -48,7 +48,9 @@ async function main() {
         },
         rail : {
             color : 'cool dark ballast with light steel and transverse sleepers',
-            path : 'straight approaches; short junction bends'
+            path : 'straight approaches; continuous through routes with short junction bends',
+            nativeArms : 'flush center cuts; no false dead-end caps',
+            proposedPasses : [ 'bed', 'sleepers', 'metal' ]
         },
         resources : {frame : [ 512, 256 ], anchor : [ 256, 128 ], oceanFill : .72, landFill : .58},
         badges : {

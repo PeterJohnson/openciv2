@@ -116,7 +116,9 @@ async function buildBindings(traces) {
     for (const family of ['road', 'rail'])
         for (let i = 0; i < 9; i++) {
             const mask = i ? 1 << (i % 8) : 0; // Engine arm 1 is NE; authoring bit 0 is N.
-            const b = await sharp(Buffer.from(art.infrastructure(family, mask, roadTex))).png().toBuffer();
+            const b = await sharp(Buffer.from(art.infrastructure(family, mask, roadTex, 0, 'all', true)))
+                          .png()
+                          .toBuffer();
             await save(
                 `${family}/${i}`,
                 await sharp(b).extract({left : 32, top : 32, width : 512, height : 256}).png().toBuffer());

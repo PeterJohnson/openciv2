@@ -66,8 +66,11 @@ Build transport below tall sprites after all visible ground has been drawn.
 Separate ballast/roadbed, sleepers, rails and endpoint/junction decoration so a
 later tile's roadbed cannot cover another tile's rail. Use one junction when
 multiple arms meet. Keep road-to-rail transitions intentional. The prototype
-uses complete curves and padding; a production pass should additionally phase
-sleepers along shared edges and define explicit turnout/bridge artwork.
+uses complete curves and padding, draws all rail beds before sleepers and steel,
+and pairs junction arms into continuous through routes. Native directional PNGs
+use flush center cuts so opposing arms cannot cap one another. A production pass
+should additionally phase sleepers along shared edges and define explicit
+turnout/bridge artwork.
 
 Irrigation and farmland need the same ground plane and a reserved transport
 corridor. Mines should occupy a consistent side of the tile instead of hiding

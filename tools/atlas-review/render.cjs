@@ -269,7 +269,11 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
             await draw('improvement/farmland', t, tw * .88, tw * .44);
     }
     const roadTex = fs.readFileSync(path.join(pack, 'map/materials/road.png')).toString('base64');
-    for (const family of ['road', 'rail'])
+    // Paint every rail bed before any steel so neighboring tiles cannot erase
+    // each other's track at boundaries or geometric crossings.
+    for (const [family, layer] of [[ 'road', 'all' ], ...((logicalTw < 48) ? [ [ 'rail', 'all' ] ] : [
+                                       [ 'rail', 'bed' ], [ 'rail', 'sleepers' ], [ 'rail', 'metal' ]
+                                   ])])
         for (const t of visible) {
             const topo = topology(get, t, viewer);
             if (!topo[family + 'Present'])
@@ -289,10 +293,10 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
                 blit(dst, p, x - tw / 2, y - tw / 4);
             } else {
                 const variant = ((t.x * 13 + t.y * 7) >>> 0) % 4;
-                const p =
-                    await cached(`network:${family}:${mask}:${tw}:${variant}`,
-                                 () => raw(Buffer.from(art.infrastructure(family, mask, roadTex, variant)),
-                                           tw * 1.125, tw * .625));
+                const p = await cached(
+                    `network:${family}:${layer}:${mask}:${tw}:${variant}`,
+                    () => raw(Buffer.from(art.infrastructure(family, mask, roadTex, variant, layer)),
+                              tw * 1.125, tw * .625));
                 blit(dst, p, x - tw * .5625, y - tw * .3125);
             }
         }

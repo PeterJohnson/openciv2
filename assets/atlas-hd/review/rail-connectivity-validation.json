@@ -1,0 +1,6 @@
+{
+  "nativeStraightJoins": 8,
+  "pairedBoundaryCases": 64,
+  "continuousSteelSamples": 7184,
+  "maskEndpointCases": 1024
+}

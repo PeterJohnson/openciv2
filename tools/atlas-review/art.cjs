@@ -215,6 +215,31 @@ function curve(mask) {
                     }));
 }
 
+// Native directional slots are half-arms, not independent dead ends. Their
+// center cuts must meet without a cap or a backward spur hiding the other arm.
+function railCurve(mask, armOnly = false) {
+    const dirs = ends.map((_, i) => mask & (1 << i) ? i : -1).filter(i => i >= 0);
+    if (armOnly && dirs.length === 1)
+        return [ {
+            points : [ [ 0, 0 ], add(ends[dirs[0]], mul(norm(ends[dirs[0]]), 1)) ],
+            boundary : [ true, true ]
+        } ];
+    if (dirs.length < 3)
+        return curve(mask);
+    // Through routes keep both steel tracks continuous across the junction.
+    // Pair each arm with its most nearly opposite available approach; a branch
+    // joins that route with the same short bend used by two-arm tiles.
+    const pairs = new Set();
+    for (const a of dirs) {
+        const b = dirs.filter(b => b !== a).sort((b, c) => {
+            const distance = x => Math.min(Math.abs(a - x), 8 - Math.abs(a - x));
+            return distance(c) - distance(b) || b - c;
+        })[0];
+        pairs.add((1 << a) | (1 << b));
+    }
+    return [...pairs ].flatMap(pair => curve(pair));
+}
+
 // Every road arm shares its center and boundary tangents across all masks.
 // Reversing an arm gives the matching half of the neighboring tile's road.
 function roadCurve(mask, variant = 0) {
@@ -271,9 +296,9 @@ function offset(p, dist) {
     });
 }
 
-function infrastructure(family, mask, texture, variant = 0) {
+function infrastructure(family, mask, texture, variant = 0, layer = 'all', armOnly = false) {
     const
-        routes = family === 'road' ? roadCurve(mask, variant) : curve(mask),
+        routes = family === 'road' ? roadCurve(mask, variant) : railCurve(mask, armOnly),
         body = [],
         defs =
             `<pattern id="grain" width="128" height="128" patternUnits="userSpaceOnUse"><image width="128" height="128" href="data:image/png;base64,${
@@ -289,35 +314,38 @@ function infrastructure(family, mask, texture, variant = 0) {
                 width] of [[ family === 'road' ? '#6f5134' : '#303c3e', family === 'road' ? 25 : 32 ],
                            [ family === 'road' ? '#a98956' : '#657477', family === 'road' ? 21 : 26 ],
                            [ family === 'road' ? 'url(#grain)' : '#7b8583', family === 'road' ? 15 : 18 ]]) {
-        for (const r of routes)
-            body.push(stroke(pathData(r.points), color, width, 'butt'), cap(r, color, width));
+        if (layer === 'all' || layer === 'bed')
+            for (const r of routes)
+                body.push(stroke(pathData(r.points), color, width, 'butt'), cap(r, color, width));
     }
     if (family === 'rail') {
-        for (const r of routes) {
-            const total = length(r.points), start = r.junction ? 25 : 9, end = total - 9,
-                  count = Math.max(1, Math.round((end - start) / 16));
-            for (let i = 0; i <= count; i++) {
-                const {p, n} = at(r.points, start + (end - start) * i / count), normal = [ -n[1], n[0] ];
-                const a = add(p, mul(normal, -12)), b = add(p, mul(normal, 12));
-                body.push(
-                    stroke(pathData([ a, b ]), '#342d26', 5.5, 'butt'),
-                    stroke(pathData([ add(a, [ -.5, -.5 ]), add(b, [ -.5, -.5 ]) ]), '#a18c6d', 1.6, 'butt'));
+        if (layer === 'all' || layer === 'sleepers')
+            for (const r of routes) {
+                const total = length(r.points), start = r.junction ? 25 : 9, end = total - 9,
+                      count = Math.max(1, Math.round((end - start) / 16));
+                for (let i = 0; i <= count; i++) {
+                    const {p, n} = at(r.points, start + (end - start) * i / count), normal = [ -n[1], n[0] ];
+                    const a = add(p, mul(normal, -12)), b = add(p, mul(normal, 12));
+                    body.push(stroke(pathData([ a, b ]), '#342d26', 5.5, 'butt'),
+                              stroke(pathData([ add(a, [ -.5, -.5 ]), add(b, [ -.5, -.5 ]) ]), '#a18c6d', 1.6,
+                                     'butt'));
+                }
             }
-        }
-        for (const r of routes)
-            for (const side of [-1, 1]) {
-                const outline = offset(r.points, side * 6), p = outline.map(q => [...q]);
-                // Metal extends beyond ballast at shared boundaries so its antialiased
-                // end cannot reveal the later sprite's ballast over the earlier rail.
-                for (const end of [0, 1])
-                    if (r.boundary[end]) {
-                        const i = end ? p.length - 1 : 0, j = end ? i - 1 : 1,
-                              n = norm([ p[i][0] - p[j][0], p[i][1] - p[j][1] ]);
-                        p[i] = add(p[i], mul(n, 2));
-                    }
-                body.push(stroke(pathData(outline), '#3b4645', 4.5, 'butt'),
-                          stroke(pathData(p), '#d3dfd8', 2.8, 'butt'));
-            }
+        if (layer === 'all' || layer === 'metal')
+            for (const r of routes)
+                for (const side of [-1, 1]) {
+                    const outline = offset(r.points, side * 6), p = outline.map(q => [...q]);
+                    // Metal extends beyond ballast at shared boundaries so its antialiased
+                    // end cannot reveal the later sprite's ballast over the earlier rail.
+                    for (const end of [0, 1])
+                        if (r.boundary[end] && !(armOnly && end === 0)) {
+                            const i = end ? p.length - 1 : 0, j = end ? i - 1 : 1,
+                                  n = norm([ p[i][0] - p[j][0], p[i][1] - p[j][1] ]);
+                            p[i] = add(p[i], mul(n, 2));
+                        }
+                    body.push(stroke(pathData(outline), '#3b4645', 4.5, 'butt'),
+                              stroke(pathData(p), '#d3dfd8', 2.8, 'butt'));
+                }
     }
     // Padding retains width beyond diamond vertices; consumers must not diamond-clip overlays.
     return svg(576, 320, `<g transform="translate(288 160)">${body.join('')}</g>`, defs);
@@ -354,6 +382,7 @@ module.exports = {
     river,
     curve,
     roadCurve,
+    railCurve,
     shoreField,
     length,
     at,
