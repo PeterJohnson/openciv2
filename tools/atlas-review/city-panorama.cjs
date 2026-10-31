@@ -20,7 +20,7 @@ async function layout(trace, scene) {
         if (c.asset.startsWith('lot/'))
             continue;
         const [family, id, variant] = c.asset.split('/'), isHouse = family === 'house',
-                           artId =
+                           sizeId =
                                isHouse
                                    ? `city-details.industrial-${variant}`
                                    : C.entries
@@ -28,9 +28,10 @@ async function layout(trace, scene) {
                                                         (family === 'wonder' ? 'wonder' : 'improvement') &&
                                                     e.mapping.index === +id)
                                          ?.id;
-        if (!artId)
+        if (!sizeId)
             throw Error('Missing panorama artwork ' + c.asset);
-        const spec = isHouse ? meta.houses[id] : meta.buildings[artId], art = await artwork(artId);
+        const artId = c.asset === 'building/8' ? meta.gate.art : sizeId,
+              spec = isHouse ? meta.houses[id] : meta.buildings[sizeId], art = await artwork(artId);
         if (!spec)
             throw Error('Missing relative size for ' + artId);
         objects.push({
@@ -137,15 +138,23 @@ async function layout(trace, scene) {
     };
 }
 
+// Ports lie inside the gate towers so curtain walls overlap the stonework.
+// The sprite and wall paths share the same rounded frame and ground anchors.
+function gateAttachments(meta, site) {
+    const base = site.gate[1] * 960, depth = .76 + .24 * site.gate[1],
+          width = Math.round(meta.houseWidth * meta.buildings['buildings.city-walls'].width * depth),
+          height = Math.round(width * meta.gate.aspect), x = Math.round(site.gate[0] * 2560 - width / 2),
+          y = Math.round(base - height);
+    const point = p => [Math.round(x + p[0] * width), Math.round(y + p[1] * height)];
+    return {left : point(meta.gate.ports.left), right : point(meta.gate.ports.right)};
+}
+
 function wallSVG(siteName, part) {
     const meta = C.read(metadataFile), site = meta.sites[siteName], W = 2560, H = 960,
-          points = site.perimeter.map(([ x, y ]) => [x * W, y * H]),
-          gate = [ site.gate[0] * W, site.gate[1] * H ],
-          gap = meta.houseWidth * meta.buildings['buildings.city-walls'].width * .36;
-    const paths =
-        part === 'rear' ? [ [ points[0], points[1] ], [ points[1], points[2] ], [ points[2], points[3] ] ] : [
-            [ points[0], [ gate[0] - gap, gate[1] - 5 ] ], [ [ gate[0] + gap, gate[1] - 5 ], points[3] ]
-        ];
+          points = site.perimeter.map(([ x, y ]) => [x * W, y * H]), joins = gateAttachments(meta, site);
+    const paths = part === 'rear'
+                      ? [ [ points[0], points[1] ], [ points[1], points[2] ], [ points[2], points[3] ] ]
+                      : [ [ points[0], joins.left ], [ joins.right, points[3] ] ];
     const stone = C.fs.readFileSync(C.path.join(C.pack, 'map/materials/stone.png')).toString('base64'),
           body = [];
     for (const [a, b] of paths) {
@@ -251,5 +260,6 @@ module.exports = {
     layout,
     render,
     build,
-    wallSVG
+    wallSVG,
+    gateAttachments
 };

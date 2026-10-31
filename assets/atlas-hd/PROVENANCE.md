@@ -90,5 +90,11 @@ cohesion proposal, with the source unit/city frames preserved.
 
 City panorama curtain walls are authored SVG geometry from `city-panorama.cjs`,
 textured with the retained `map/materials/stone.png`. Their six PNG renders add no
-external imagery. The gate, buildings and wonders reuse the canonical painted
-sprites with explicit relative-size metadata.
+external imagery. Buildings and wonders reuse the canonical painted sprites
+with explicit relative-size metadata. The enhanced frontal gate at
+`city/panorama/gate.png` is a built-in image_gen edit of our existing painted gate,
+with our coastal proposal as orientation/style context. No original-game or
+Freeciv imagery was supplied. [The authoring record](authoring/city-gate.json)
+contains the complete prompt, input revision/hashes and unchanged generated
+output hash. Its alpha is preserved. The earlier angled gate remains the
+native/HD-only asset; the enhanced assembly uses explicit tower attachment points.

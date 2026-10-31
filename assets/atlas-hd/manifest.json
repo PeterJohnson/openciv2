@@ -52815,6 +52815,19 @@
       "sourceSha256": "43d69572af2315410b936f6d8a97c45ee16aa2920ba494a7a74dfa6418f0589a"
     },
     {
+      "id": "city-panorama.gate",
+      "file": "city/panorama/gate.png",
+      "width": 1716,
+      "height": 916,
+      "kind": "generated",
+      "category": "city / panorama",
+      "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
+      "source": {
+        "record": "authoring/city-gate.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
       "id": "city-panorama.wall-coastal-rear",
       "file": "city/panorama/walls/coastal-rear.png",
       "vector": "city/panorama/walls/coastal-rear.svg",
@@ -52837,8 +52850,8 @@
       "height": 960,
       "kind": "vector",
       "category": "city / panorama",
-      "sha256": "11cb612b5317f2c5385737d96ee99d74d1b326d0201f7391b566dd534b64f32a",
-      "sourceSha256": "dd31d0eb711a1bc12769765bca5c417d537559d262efdaa8885b86ec9b119030",
+      "sha256": "caf52d66bcb61c07a87e9252b5881b718a8441cc66944932466c2c1f3cb6ea0e",
+      "sourceSha256": "6bfdf657e75673833c94ec4d8e2060d5d3821e8af0d8df9e5f16180de1d7c400",
       "source": {
         "generator": "tools/atlas-review/city-panorama.cjs",
         "material": "map/materials/stone.png"
@@ -52867,8 +52880,8 @@
       "height": 960,
       "kind": "vector",
       "category": "city / panorama",
-      "sha256": "256f52911c4d620d88076590902f424a4bbb904fde438a74d1335c4985d0122f",
-      "sourceSha256": "95f4381fc7d5013bba2b0939cd5399e113d029d667f8e2787cc09f19e09cacd4",
+      "sha256": "abe1cd90de24baa6f2169e8501dcf642414df6c0118cc3a8bf7aab0838d38cb0",
+      "sourceSha256": "eaf72d00b6daeb04820c39bc5a40b8b0caed67fad8f07338a2efcf86e6c92a61",
       "source": {
         "generator": "tools/atlas-review/city-panorama.cjs",
         "material": "map/materials/stone.png"
@@ -52897,8 +52910,8 @@
       "height": 960,
       "kind": "vector",
       "category": "city / panorama",
-      "sha256": "cbc907cf19ce68743b374f995ee922fe9413a7c1d3d2b0132630551c93857cf3",
-      "sourceSha256": "df1f54f3aa6b9e951fed682aae7540e1a24d3a7c9b4c7f8ffe81ca7797a2760d",
+      "sha256": "1e8514132d8e9058f62f9623a7e72fa045b4506e281effc67e208feb1f5a698e",
+      "sourceSha256": "5d63ebd0fcfcf941c9092f2f3e717b0d02376c1a5ab4889f3a9a8755646e2bd9",
       "source": {
         "generator": "tools/atlas-review/city-panorama.cjs",
         "material": "map/materials/stone.png"

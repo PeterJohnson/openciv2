@@ -31,6 +31,33 @@ async function visibility(plan) {
     return results;
 }
 
+async function gateJoins(plan, meta) {
+    const gate = plan.objects.find(o => o.wall),
+          {data, info} = await C.sharp(C.path.join(C.pack, gate.file)).trim({threshold : 8}).png().toBuffer({
+              resolveWithObject : true
+          }),
+          sprite = await C.raw(data, gate.width, gate.height),
+          walls = await C.raw(Buffer.from(P.wallSVG(plan.site, 'front'))),
+          joins = P.gateAttachments(meta, meta.sites[plan.site]);
+    assert.equal(gate.artId, meta.gate.art, 'Enhanced gate artwork');
+    assert.equal(meta.gate.aspect, info.height / info.width, 'Port frame matches trimmed artwork');
+    assert.equal(joins.left[1], joins.right[1], 'Both towers meet the wall at equal ground height');
+    const alpha = (im, x, y) => im.data[(y * im.width + x) * 4 + 3] / 255;
+    let checkedPixels = 0;
+    for (const [side, [ x, y ]] of Object.entries(joins)) {
+        // The curtain end must sit inside opaque masonry, and its contact strip
+        // must remain continuous across the join rather than expose background.
+        assert(alpha(sprite, x - gate.x, y - 20 - gate.y) > .95, side + ' port inside tower');
+        for (let dy = -40; dy <= -12; dy++)
+            for (let dx = -8; dx <= 8; dx++) {
+                const a = alpha(sprite, x + dx - gate.x, y + dy - gate.y), b = alpha(walls, x + dx, y + dy);
+                assert(a + b * (1 - a) > .95, side + ' gate/wall contact must not have a gap');
+                checkedPixels++;
+            }
+    }
+    return {ports : joins, checkedPixels};
+}
+
 async function main() {
     const scenes = C.read(C.path.join(C.pack, 'review/scenes.json')).filter(s => s.mode === 'city'),
           meta = C.read(C.path.join(C.pack, 'city/panorama/layout.json')),
@@ -89,6 +116,7 @@ async function main() {
             scene : s.id,
             sourceSelectedObjects : plan.objects.length,
             relativeWidthRatios : ratios,
+            gateJoins : await gateJoins(plan, meta),
             minimumVisibleFraction : Math.min(...shown.map(o => o.visibleFraction)),
             nativeHashes,
             visibility : shown

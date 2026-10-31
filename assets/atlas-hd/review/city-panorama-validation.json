@@ -10,6 +10,19 @@
         "colosseum": 3.7333333333333334,
         "gate": 2.611111111111111
       },
+      "gateJoins": {
+        "ports": {
+          "left": [
+            1139,
+            879
+          ],
+          "right": [
+            1318,
+            879
+          ]
+        },
+        "checkedPixels": 986
+      },
       "minimumVisibleFraction": 0.9106466574038727,
       "nativeHashes": {
         "current": "0ca6a698bf20f7b5dbfb86b34333dba3095af605a68f27c0064eadbf6b596640",
@@ -29,7 +42,7 @@
         {
           "sourceIndex": 54,
           "asset": "building/34",
-          "visibleFraction": 0.9837604525450788
+          "visibleFraction": 0.9837699254454668
         },
         {
           "sourceIndex": 50,
@@ -47,9 +60,14 @@
           "visibleFraction": 1
         },
         {
+          "sourceIndex": 29,
+          "asset": "house/small/3",
+          "visibleFraction": 1
+        },
+        {
           "sourceIndex": 45,
           "asset": "house/large/3",
-          "visibleFraction": 0.9999483722269428
+          "visibleFraction": 1
         },
         {
           "sourceIndex": 38,
@@ -74,22 +92,17 @@
         {
           "sourceIndex": 49,
           "asset": "building/12",
-          "visibleFraction": 0.9999725089716637
+          "visibleFraction": 0.9975365092370441
         },
         {
           "sourceIndex": 21,
           "asset": "building/4",
-          "visibleFraction": 0.9938173453562399
+          "visibleFraction": 0.9999970497639018
         },
         {
           "sourceIndex": 24,
           "asset": "house/small/1",
           "visibleFraction": 0.9817800370524211
-        },
-        {
-          "sourceIndex": 29,
-          "asset": "house/small/3",
-          "visibleFraction": 0.9999999799893008
         },
         {
           "sourceIndex": 53,
@@ -119,7 +132,7 @@
         {
           "sourceIndex": 19,
           "asset": "house/small/0",
-          "visibleFraction": 0.9912473024706978
+          "visibleFraction": 1
         },
         {
           "sourceIndex": 6,
@@ -216,7 +229,20 @@
         "colosseum": 3.8181818181818183,
         "gate": 2.6704545454545454
       },
-      "minimumVisibleFraction": 0.906230913058591,
+      "gateJoins": {
+        "ports": {
+          "left": [
+            1242,
+            879
+          ],
+          "right": [
+            1421,
+            879
+          ]
+        },
+        "checkedPixels": 986
+      },
+      "minimumVisibleFraction": 0.9186453359980401,
       "nativeHashes": {
         "current": "670a2dd3fd9a8cf755fae952422e674344eef5f6d4e409242682c7f1809ba31c",
         "hd": "71bf596101d6307fcfebed278dd5089100252a0e6a5a0e0c3414cd39cc2ddac3"
@@ -235,22 +261,12 @@
         {
           "sourceIndex": 20,
           "asset": "house/small/3",
-          "visibleFraction": 0.906230913058591
+          "visibleFraction": 1
         },
         {
           "sourceIndex": 29,
           "asset": "house/small/0",
           "visibleFraction": 1
-        },
-        {
-          "sourceIndex": 23,
-          "asset": "house/small/1",
-          "visibleFraction": 1
-        },
-        {
-          "sourceIndex": 12,
-          "asset": "house/small/0",
-          "visibleFraction": 0.926872284880615
         },
         {
           "sourceIndex": 49,
@@ -260,6 +276,11 @@
         {
           "sourceIndex": 46,
           "asset": "house/large/3",
+          "visibleFraction": 1
+        },
+        {
+          "sourceIndex": 12,
+          "asset": "house/small/0",
           "visibleFraction": 1
         },
         {
@@ -283,14 +304,14 @@
           "visibleFraction": 0.9661497272491251
         },
         {
-          "sourceIndex": 13,
-          "asset": "house/small/2",
-          "visibleFraction": 0.953083355276469
-        },
-        {
           "sourceIndex": 41,
           "asset": "house/large/3",
-          "visibleFraction": 0.9101351464318136
+          "visibleFraction": 0.9999796285481538
+        },
+        {
+          "sourceIndex": 13,
+          "asset": "house/small/2",
+          "visibleFraction": 0.994889402156328
         },
         {
           "sourceIndex": 11,
@@ -300,12 +321,17 @@
         {
           "sourceIndex": 45,
           "asset": "wonder/0",
-          "visibleFraction": 0.978371964397107
+          "visibleFraction": 0.9958950665091457
         },
         {
           "sourceIndex": 8,
           "asset": "house/large/3",
           "visibleFraction": 0.9798866657870259
+        },
+        {
+          "sourceIndex": 23,
+          "asset": "house/small/1",
+          "visibleFraction": 0.9759393930243048
         },
         {
           "sourceIndex": 40,
@@ -315,12 +341,12 @@
         {
           "sourceIndex": 50,
           "asset": "building/20",
-          "visibleFraction": 0.9998677600167231
+          "visibleFraction": 0.9978410328276217
         },
         {
           "sourceIndex": 17,
           "asset": "building/4",
-          "visibleFraction": 0.9999993763740574
+          "visibleFraction": 0.9675589179450373
         },
         {
           "sourceIndex": 15,
@@ -402,6 +428,19 @@
         "colosseum": 3.7032967032967035,
         "gate": 2.5824175824175826
       },
+      "gateJoins": {
+        "ports": {
+          "left": [
+            1191,
+            879
+          ],
+          "right": [
+            1370,
+            879
+          ]
+        },
+        "checkedPixels": 986
+      },
       "minimumVisibleFraction": 0.962060126919523,
       "nativeHashes": {
         "current": "4273daddd44ca20a9b3f88a12bc1eaf790f93d96e700fa623f1be3f66aa82556",
@@ -446,7 +485,7 @@
         {
           "sourceIndex": 45,
           "asset": "wonder/10",
-          "visibleFraction": 0.9733045343709307
+          "visibleFraction": 0.9999900760876271
         },
         {
           "sourceIndex": 48,

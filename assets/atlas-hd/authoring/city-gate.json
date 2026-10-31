@@ -1,0 +1,29 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "Rotate the enhanced city gate to a nearly frontal facade so it joins the curtain walls coherently.",
+  "prompt": "Use case: precise-object-edit.\nAsset type: transparent painted sprite for a 2D Civilization-style city panorama.\nEdit target: the first image, our authored tan stone city gate. The second image is only context for the surrounding city-wall orientation and painted art style.\nChange the gate's viewpoint: rotate its facade to nearly straight-on, with almost zero horizontal yaw. Both cylindrical towers must have tops at the same screen height and feet on the same horizontal baseline. Keep a modest elevated camera view so a little of each tower top and parapet walkway remains visible; do not use the original strong diagonal/isometric yaw. The connecting facade and masonry courses should run horizontally across the image, to join the nearly horizontal curtain walls in the panorama.\nPreserve the gate's recognizable design, warm cream/tan sandstone blocks, two cylindrical crenellated towers, central arched iron-studded double wooden doors, two turquoise vertical banners and two small braziers, painterly lighting from upper left, crisp readable game-sprite silhouettes. Keep the architecture compact. Add only short masonry shoulders at the outer sides of the towers for joining low curtain walls, with matching left/right ground heights.\nOutput ONLY the isolated gate asset, centered with a small transparent margin and true alpha transparency. No city, no scene background, no floor tile, no labels, no text, no diagram, no mockup. Do not copy any other objects from the context image. Render at high resolution, with enough masonry detail for a 4K display, while retaining the painted strategy-game style.",
+  "inputs": [
+    {
+      "role": "edit target",
+      "file": "sprites/buildings/city-walls.png",
+      "revision": "e0b0e6f",
+      "sha256": "4f05959e69a2e08e68166609fe6a80b2f35fff44b03f0ba029efc67223821adb"
+    },
+    {
+      "role": "context and style reference",
+      "file": "review/images/city-coastal-proposed.png",
+      "revision": "e0b0e6f",
+      "sha256": "4f05ef0164ebd55d610a04899efccf20f9902181b6e19bc3283672d06f454a97"
+    }
+  ],
+  "originalGameInputs": false,
+  "freecivInputs": false,
+  "output": {
+    "file": "city/panorama/gate.png",
+    "width": 1716,
+    "height": 916,
+    "sha256": "cd1d97a13ba9a54eafa35dcbce5d58eacaf94a1980ff61d10ae3fc8be1f20e5e",
+    "transparentBackground": true,
+    "alphaPreserved": true
+  }
+}

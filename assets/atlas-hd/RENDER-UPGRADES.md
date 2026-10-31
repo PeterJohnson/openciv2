@@ -181,7 +181,10 @@ selection, assigns relative physical sizes from `city/panorama/layout.json`, and
 places larger landmarks before fitting smaller structures around their visible
 silhouettes. Drawing then sorts by ground-contact depth, independently of slot
 allocation. Rear and foreground curtain walls surround the settlement, with the
-gate in the foreground. The throne prototype assigns explicit back-to-front
+gate in the foreground. A near-frontal gate uses explicit attachment points
+inside its towers so both curtains join at the same ground height. Match these
+points to the trimmed sprite frame rather than leaving a fixed-width gap; keep
+the gate's facade aligned with the foreground walls. The throne prototype assigns explicit back-to-front
 layers and floor anchors to the same selected upgrade levels. Neither requires
 3D geometry.
 

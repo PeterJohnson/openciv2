@@ -353,11 +353,14 @@ placement around actual silhouettes rather than transparent rectangular corners.
 The native source uses slot-index draw order (`city.cpp:4647`). The proposal
 instead sorts normal objects by their ground-contact Y position, with source index
 as a stable tie-breaker after X. Rear curtain walls precede all objects; foreground
-curtains and the existing gate sprite draw last. One source city-walls improvement
-controls the complete assembly. Original/native/HD-only stages keep the original
+curtains and a nearly frontal painted gate draw last. Curtain endpoints use
+explicit attachment points inside the gate towers, at equal ground height in the
+same trimmed/rounded sprite frame. One source city-walls improvement controls
+the complete assembly. Original/native/HD-only stages keep the original
 slot and order contract; no game source changes are included.
 
 `verify-city-panorama.cjs` checks all size definitions, exact source selection,
 in-frame rectangles, painter order, substantial landmark/house ratios and actual
-remaining alpha-visible area after occlusion. It independently re-renders the six
+remaining alpha-visible area after occlusion. It checks opaque gate/wall contact
+strips on both towers in all three sites. It independently re-renders the six
 native/HD panoramas and compares their hashes with the retained images.
