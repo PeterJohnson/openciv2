@@ -1,0 +1,39 @@
+{
+  "version": 1,
+  "source": "tools/atlas-review/art.cjs; bindings.cjs; render.cjs",
+  "coast": {
+    "sampling": "smooth land weights; fixed world-space erosion at three scales",
+    "cornerIdentity": "pure land/water preserved",
+    "beach": "variable narrow sand/rock edge; broken subdued foam"
+  },
+  "road": {
+    "color": "warm ochre",
+    "path": "winding half-arms with fixed endpoints and tangents",
+    "isolation": "short rounded winding track"
+  },
+  "rail": {
+    "color": "cool dark ballast with light steel and transverse sleepers",
+    "path": "straight approaches; short junction bends"
+  },
+  "resources": {
+    "frame": [
+      512,
+      256
+    ],
+    "anchor": [
+      256,
+      128
+    ],
+    "oceanFill": 0.72,
+    "landFill": 0.58
+  },
+  "badges": {
+    "nativeFrame": [
+      12,
+      20
+    ],
+    "proposedScale": 1.35,
+    "stack": "native repeated shields; proposal adds separation and + marker",
+    "unitAndCityFrames": "unchanged"
+  }
+}

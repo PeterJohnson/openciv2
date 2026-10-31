@@ -64,6 +64,10 @@ function regionalWorld() {
     set(w, 32, 46, {f : 64});
     set(w, 48, 44, {f : 66});
     set(w, 40, 34, {r : 1});
+    // Readability examples: centered ocean resources and an actual linked unit stack.
+    set(w, 56, 40, {t : 10, r : 1});
+    set(w, 58, 44, {t : 10, r : 2});
+    w.records = [ 'UNIT 1 34 44 1 1 0 255 0 -1 -1 2 0', 'UNIT 2 34 44 1 1 0 255 0 -1 1 -1 0' ];
     // Independent coast stress region: bay, islet, channel and river mouth.
     for (let y = 70; y < 94; y++)
         for (let x = 30 + (y & 1); x < 58; x += 2) {
@@ -88,7 +92,9 @@ function serialize(w, camera) {
     return [
         [ w.width, w.height, zoom, ox, oy, cols, rows, viewer, grid ].join(' '),
         ...w.tiles.map(t => [t.x, t.y, t.t, t.f, t.k, t.v, t.r, t.h, t.c, t.u, t.s].join(' ')),
-        ...(w.records || []), ...(w.records ? w.tiles.map(t => `OWNER ${t.x} ${t.y} ${t.owner}`) : [])
+        ...(w.records || []),
+        ...(w.records ? w.tiles.filter(t => t.owner !== undefined).map(t => `OWNER ${t.x} ${t.y} ${t.owner}`)
+                      : [])
     ].join('\n') +
            '\n';
 }

@@ -25027,6 +25027,33 @@
     },
     {
       "asset": "shield",
+      "x": 554,
+      "y": 338,
+      "width": 6,
+      "height": 10,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 554,
+      "y": 338,
+      "width": 6,
+      "height": 10,
+      "color": 211,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 554,
+      "y": 338,
+      "width": 6,
+      "height": 10,
+      "color": 211,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
       "x": 553,
       "y": 339,
       "width": 6,

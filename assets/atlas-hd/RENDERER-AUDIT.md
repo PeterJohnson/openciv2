@@ -172,8 +172,9 @@ The gallery notes these limits so they cannot be mistaken for gameplay captures.
 For logical tile widths of 48 pixels and above, the proposal replays a separate
 native object trace from `draw_tile_city` and `draw_tile_units`. It uses the same
 64×48 logical unit/city frames, selected sprite IDs, zoom arithmetic, anchors,
-shields, health bars, flags and population labels as HD-only. It no longer fits
-units to half a tile or cities to 82% of a tile. Ground/network/feature passes
+flags and population labels as HD-only. Shields and health bars retain native
+state, with the proposal applying the separate badge sizing and layering policy
+documented below. Units and cities retain their full source image rectangles. Ground/network/feature passes
 still change; overview markers below 48 pixels remain an explicit LOD policy.
 The tactical 64-pixel and close/district 128-pixel scenes exercise this contract.
 Fresh Debug/Release object traces and matching visible sprite rectangles are
@@ -269,3 +270,33 @@ map/city/throne Debug/Release traces. Every image operation resolves to a local
 original binding and missing sprites fail the build. The original renderer
 path is checked by `original.cjs`; `verify.cjs` separately checks the replacement
 path and unchanged native source bodies.
+
+## Map readability adapter changes
+
+The source renderer bodies remain unchanged. Coast quarters still use the
+NE-first native neighbor masks. The authored bank distinguishes the outer
+cardinal bit from the two adjacent diagonal bits; a lone cardinal touch does
+not paint a disconnected land wedge inside ocean. Native dither slot 12 is an
+authored transparent blank, replacing the incorrect desert fallback. Slot 11
+uses dark fog colors. These choices affect art, not tile classification.
+
+Resource PNGs now use centered trim bounds in a 512x256 frame. Native review
+commands still consume 64x32 logical resource frames. The proposed pass uses
+the same complete frame at the projected tile center; it previously applied a
+second half-size fit and vertical offset. Ocean resources occupy up to 72% of
+frame height, land resources 58%, with transparent padding.
+
+The replacement palette adapter distinguishes primary/mid faction colors and
+health colors. Shield artwork contains both faction mask colors. Unit order
+text is centered at the native shield text anchor in the standalone backend;
+this corrects the prior left/top interpretation, including original-art replays.
+Fonts remain approximate. Native and HD-only use identical logical commands.
+`readableBadges` modifies only the proposal's badge group: 1.35x scale, separated
+rear plate, a plus sign for a source-indicated stack, and foreground placement.
+Unit/city selection, image frames and anchors are unchanged and checked directly.
+
+The synthetic district adds two ocean resources and explicit linked unit records.
+Its metadata supplies real `prev_in_stack`/`next_in_stack` values, allowing the
+unchanged source `gfx_draw_unit` stack branch to execute in all four stages.
+The imported 1788 save is unchanged. No new reconstruction/Ghidra facts or game
+source changes are claimed by this artwork work.

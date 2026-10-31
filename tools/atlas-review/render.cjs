@@ -1,12 +1,23 @@
 const C = require('./common.cjs');
 const {fs, path, pack, sharp, svg, art, raw, clear, blit, png, asset, fit} = C;
 const cache = new Map();
-const color = n => n === 10     ? '#101919'
-                   : n === 261  ? '#010506'
-                   : n === 262  ? '#010607'
-                   : n >= 200   ? '#d5b76b'
-                   : n === 0x7a ? '#75ab64'
-                                : '#d6c697';
+const faction = [ '#e6dfc3', '#d66b57', '#63b194', '#9e87ca', '#6e9ed0', '#d8bd60', '#dc994d', '#b7c7ce' ];
+const factionMid = [ '#898779', '#79372f', '#2d6b55', '#51426e', '#34587e', '#7c6b31', '#85532b', '#596f7c' ];
+const color = n => n === 261             ? '#010506'
+                   : n === 262           ? '#010607'
+                   : n >= 200 && n < 208 ? faction[n - 200]
+                   : n >= 210 && n < 218 ? factionMid[n - 210]
+                                         : ({
+                                               10 : '#101919',
+                                               15 : '#161e1c',
+                                               16 : '#202a27',
+                                               29 : '#fff5d8',
+                                               42 : '#74be55',
+                                               122 : '#d9bc48',
+                                               106 : '#d55745'
+                                           })[n] ||
+                                               '#d6c697';
+
 const hex = c => c.match(/[a-f\d]{2}/gi).map(x => parseInt(x, 16));
 
 async function cached(key, f) {
@@ -49,7 +60,12 @@ async function baseline(
         dst = await raw(path.join(pack, `backgrounds/city-${scene.site}-native.png`), W, H);
     if (!background && scene.mode === 'throne')
         dst = await raw(path.join(pack, 'backgrounds/palace-room-native.png'), W, H);
+    let unitBadge = false;
     for (const command of trace.commands) {
+        if (command.asset === 'shield')
+            unitBadge = true;
+        if (/^(unit|city)\//.test(command.asset))
+            unitBadge = false;
         const c = {
             ...command,
             x : command.x * density,
@@ -82,7 +98,7 @@ async function baseline(
                 await raw(Buffer.from(svg(w, h + 3,
                                           `<text x="0" y="${h * .83}" font-family="monospace" font-size="${
                                               h}" fill="${palette(c.color)}">${c.text}</text>`)));
-            blit(dst, p, c.x, c.y);
+            blit(dst, p, c.x - (unitBadge ? w / 2 : 0), c.y - (unitBadge ? h / 2 : 0));
             continue;
         }
         if (c.width <= 0 || c.height <= 0)
@@ -175,6 +191,54 @@ function groundPixel(get, wx, wy, lod = 64, rivers = null) {
     return art.surface(u, v, corners, 'sand', rivers?.get(cu + ',' + cv) || [], lod);
 }
 
+// Change only status graphics, never the unit/city sprite frame or selection.
+// A native stack emits four shields (back/shadow/front/shadow); a single emits two.
+function readableBadges(trace) {
+    const commands = [];
+    let pending = [];
+    for (const c of trace.commands) {
+        if (c.asset === 'shield' || pending.length) {
+            if (!c.asset.startsWith('unit/')) {
+                pending.push(c);
+                continue;
+            }
+            const shields = pending.filter(p => p.asset === 'shield'), front = shields.at(-1), scale = 1.35;
+            if (!front)
+                throw Error('Unit badge group without a shield');
+            const stacked = shields.length > 2, back = stacked ? shields[1] : null;
+            const rearEnd = stacked ? pending.indexOf(shields.at(-2)) : 0;
+            const badge = pending.map((p, i) => {
+                let x = front.x + (p.x - front.x) * scale;
+                // Widen the visible rear card beyond the native four-pixel offset.
+                if (back && i < rearEnd)
+                    x += (back.x - front.x) * .5;
+                return {
+                    ...p,
+                    x : Math.round(x),
+                    y : Math.round(front.y + (p.y - front.y) * scale),
+                    width : Math.round(p.width * scale),
+                    height : Math.round(p.height * scale)
+                };
+            });
+            commands.push(c, ...badge);
+            if (stacked)
+                commands.push({
+                    asset : 'text',
+                    x : Math.round(front.x + front.width * 1.60),
+                    y : Math.round(front.y + front.height * .25),
+                    width : 0,
+                    height : Math.max(9, Math.round(front.width * .60)),
+                    color : 29,
+                    text : '+'
+                });
+            pending = [];
+        } else
+            commands.push(c);
+    }
+    commands.push(...pending);
+    return {...trace, commands};
+}
+
 async function proposedMap(w, scene, trace, bindings, density = 2) {
     const {ox, oy, cols, rows, viewer = 1} = scene.camera, logicalTw = scene.tileWidth,
                                         tw = logicalTw * density, W = cols * tw, H = rows * tw / 4;
@@ -219,14 +283,16 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
                     `lodline:${family}:${mask}:${tw}`,
                     () => raw(Buffer.from(svg(64, 32,
                                               `<path d="${body}" fill="none" stroke="${
-                                                  family === 'rail' ? '#cad3b8' : '#b49b70'}" stroke-width="${
+                                                  family === 'rail' ? '#bdcbd0' : '#ad7745'}" stroke-width="${
                                                   64 / logicalTw * (family === 'rail' ? 1.4 : 1)}"/>`)),
                               tw, tw / 2));
                 blit(dst, p, x - tw / 2, y - tw / 4);
             } else {
-                const p = await cached(
-                    `network:${family}:${mask}:${tw}`,
-                    () => raw(Buffer.from(art.infrastructure(family, mask, roadTex)), tw * 1.125, tw * .625));
+                const variant = ((t.x * 13 + t.y * 7) >>> 0) % 4;
+                const p =
+                    await cached(`network:${family}:${mask}:${tw}:${variant}`,
+                                 () => raw(Buffer.from(art.infrastructure(family, mask, roadTex, variant)),
+                                           tw * 1.125, tw * .625));
                 blit(dst, p, x - tw * .5625, y - tw * .3125);
             }
         }
@@ -255,8 +321,10 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
                 await draw('resource/shield', t, tw, tw / 2);
             if (t.h)
                 await draw('improvement/village', t, tw * .50, tw * .30);
-            if (t.r)
-                await draw('resource/' + (terrain * 2 + t.r - 1), t, tw * .50, tw * .25, -tw * .10);
+            if (t.r) {
+                const p = await sprite('resource/' + (terrain * 2 + t.r - 1), tw, tw / 2, bindings);
+                blit(dst, p, x - tw / 2, y - tw / 4);
+            }
         }
         if (t.c >= 0 || t.u >= 0) {
             if (logicalTw < 48) {
@@ -269,7 +337,7 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
     }
     if (logicalTw >= 48) {
         const objects = C.engine('objects', path.join(pack, scene.fixture));
-        const layer = await baseline(objects, {mode : 'objects'}, bindings,
+        const layer = await baseline(readableBadges(objects), {mode : 'objects'}, bindings,
                                      {density, native : false, transparent : true});
         blit(dst, await raw(layer), 0, 0);
     }
@@ -345,5 +413,6 @@ module.exports = {
     topology,
     lookup,
     groundPixel,
-    riverSegments
+    riverSegments,
+    readableBadges
 };

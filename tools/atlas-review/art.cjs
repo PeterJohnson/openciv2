@@ -102,33 +102,56 @@ function distSegment(u, v, a, b) {
     return Math.hypot(u - a[0] - t * x, v - a[1] - t * y);
 }
 
+// Smooth world-space noise: fixed world coordinates, independent of camera and zoom.
+function noise(u, v) {
+    const x = Math.floor(u), y = Math.floor(v), a = smooth(0, 1, fract(u)), b = smooth(0, 1, fract(v));
+    return (1 - b) * ((1 - a) * hash(x, y) + a * hash(x + 1, y)) +
+           b * ((1 - a) * hash(x, y + 1) + a * hash(x + 1, y + 1));
+}
+
+function shoreField(u, v, corners) {
+    const a = smooth(0, 1, fract(u)), b = smooth(0, 1, fract(v));
+    let land = corners[0].land * (1 - a) * (1 - b) + corners[1].land * a * (1 - b) + corners[2].land * a * b +
+               corners[3].land * (1 - a) * b;
+    // Broad coves and headlands, then smaller erosion detail. Pure land/water
+    // samples stay fixed, retaining tile identity and narrow water passages.
+    const perturb = (noise(u * 1.43 + 17, v * 1.43 - 9) - .5) * .31 +
+                    (noise(u * 4.1 - 3, v * 4.1 + 23) - .5) * .12 + (noise(u * 11.7, v * 11.7) - .5) * .035;
+    return land + perturb * 4 * land * (1 - land);
+}
+
 function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256) {
     const fu = fract(u), fv = fract(v),
           weights = [ (1 - fu) * (1 - fv), fu * (1 - fv), fu * fv, (1 - fu) * fv ];
-    const pu = ((u % 2) + 2) % 2, pv = ((v % 2) + 2) % 2;
-    let a = 0, color = [ 0, 0, 0 ];
+    let a = shoreField(u, v, corners), color = [ 0, 0, 0 ], landWeight = 0;
+    // Inland color comes only from land corners: ocean must not tint the beach.
     for (let i = 0; i < 4; i++) {
-        a += corners[i].land * weights[i];
-        const c = tex(corners[i].material || 'grassland', u, v, lod);
+        if (!corners[i].land)
+            continue;
+        const c = tex(corners[i].material || 'grassland', u, v, lod), w = weights[i];
+        landWeight += w;
         for (let k = 0; k < 3; k++)
-            color[k] += c[k] * weights[i];
+            color[k] += c[k] * w;
     }
-    // World-coordinate perturbation remains identical on either side of a tile boundary.
-    a += Math.sin(pu * Math.PI * 10 + Math.sin(pv * Math.PI * 6)) *
-         Math.sin(pv * Math.PI * 12 + pu * Math.PI * 2) * .025 * 4 * a * (1 - a);
+    if (landWeight)
+        color = color.map(c => c / landWeight);
     for (const r of rivers)
         a = Math.min(a, smooth(r.width * .75, r.width * 1.7, distSegment(u, v, r.a, r.b)));
+    if (a <= 0)
+        return tex('ocean', u, v, lod).map(Math.round);
+    if (a >= 1)
+        return color.map(Math.round);
+    const geology = noise(u * 1.9 + 51, v * 1.9 - 18), detail = noise(u * 13.1, v * 13.1 + 6);
     let water = tex('ocean', u, v, lod);
-    water = mix(water, [ 65, 137, 139 ], smooth(.12, .49, a) * .64);
+    water = mix(water, [ 57, 114, 118 ], smooth(.29, .49, a) * .34);
     const beach = tex(shore === 'cliff' ? 'stone' : 'sand', u, v, lod);
-    const bank = shore === 'cliff' ? mix(beach, [ 75, 80, 70 ], (1 - smooth(.50, .66, a)) * .56) : beach;
-    const land = mix(bank, color, smooth(shore === 'cliff' ? .64 : .58, shore === 'cliff' ? .74 : .68, a));
-    let result = mix(water, land, smooth(.495, .515, a));
-    // A narrow broken surf ribbon replaces the old broad blue/green fade.
-    const foam = (1 - smooth(.004, .022, Math.abs(a - .487))) *
-                 (.43 + .3 * Math.sin(pu * Math.PI * 28 + pv * Math.PI * 16) ** 2);
-    if (a > 0 && a < 1)
-        result = mix(result, [ 219, 233, 210 ], foam);
+    const bank = mix(beach, shore === 'cliff' ? [ 67, 73, 64 ] : [ 114, 112, 75 ],
+                     shore === 'cliff' ? .35 : .15 + geology * .30);
+    const width = shore === 'cliff' ? .085 : .035 + .075 * geology;
+    const land = mix(bank, color, smooth(.515, .515 + width, a));
+    let result = mix(water, land, smooth(.493, .508, a));
+    const foam = (1 - smooth(.003, .016, Math.abs(a - .491))) * smooth(.35, .70, detail) * .42;
+    result = mix(result, [ 206, 221, 204 ], foam);
     return result.map(x => Math.max(0, Math.min(255, Math.round(x))));
 }
 
@@ -192,6 +215,32 @@ function curve(mask) {
                     }));
 }
 
+// Every road arm shares its center and boundary tangents across all masks.
+// Reversing an arm gives the matching half of the neighboring tile's road.
+function roadCurve(mask, variant = 0) {
+    const dirs = ends.map((_, i) => mask & (1 << i) ? i : -1).filter(i => i >= 0);
+    const arm = i => {
+        const end = ends[i], sign = i < 4 ? 1 : -1, canonical = ends[i % 4], n = norm(canonical),
+              normal = [ -n[1], n[0] ];
+        const amplitude = 18 + variant * 2;
+        return Array.from({length : 25}, (_, k) => {
+            const t = k / 24, bend = Math.sin(Math.PI * t) ** 2 *
+                                     (.8 + .2 * Math.cos(Math.PI * t + variant)) * amplitude * sign;
+            return add(mul(end, t), mul(normal, bend));
+        });
+    };
+    if (!dirs.length)
+        return [ {
+            points : Array.from({length : 17},
+                                (_, k) => {
+                                    const t = k / 16;
+                                    return [ -42 + 84 * t, -21 + 42 * t + Math.sin(t * Math.PI * 2) * 8 ];
+                                }),
+            boundary : [ false, false ]
+        } ];
+    return dirs.map(i => ({points : arm(i), boundary : [ false, true ], junction : dirs.length > 2}));
+}
+
 function pathData(p) {
     return p.map((q, i) => `${i ? 'L' : 'M'}${q[0].toFixed(3)} ${q[1].toFixed(3)}`).join('');
 }
@@ -222,9 +271,9 @@ function offset(p, dist) {
     });
 }
 
-function infrastructure(family, mask, texture) {
+function infrastructure(family, mask, texture, variant = 0) {
     const
-        routes = curve(mask),
+        routes = family === 'road' ? roadCurve(mask, variant) : curve(mask),
         body = [],
         defs =
             `<pattern id="grain" width="128" height="128" patternUnits="userSpaceOnUse"><image width="128" height="128" href="data:image/png;base64,${
@@ -236,8 +285,10 @@ function infrastructure(family, mask, texture) {
             .join('');
     // Only real dead ends have round caps. A round boundary cap would cover the
     // neighboring tile's rails with ballast when sprites are drawn in sequence.
-    for (const [color, width] of [[ family === 'road' ? '#766448' : '#575c50', family === 'road' ? 31 : 38 ],
-                                  [ 'url(#grain)', family === 'road' ? 25 : 33 ]]) {
+    for (const [color,
+                width] of [[ family === 'road' ? '#6f5134' : '#303c3e', family === 'road' ? 25 : 32 ],
+                           [ family === 'road' ? '#a98956' : '#657477', family === 'road' ? 21 : 26 ],
+                           [ family === 'road' ? 'url(#grain)' : '#7b8583', family === 'road' ? 15 : 18 ]]) {
         for (const r of routes)
             body.push(stroke(pathData(r.points), color, width, 'butt'), cap(r, color, width));
     }
@@ -249,8 +300,8 @@ function infrastructure(family, mask, texture) {
                 const {p, n} = at(r.points, start + (end - start) * i / count), normal = [ -n[1], n[0] ];
                 const a = add(p, mul(normal, -12)), b = add(p, mul(normal, 12));
                 body.push(
-                    stroke(pathData([ a, b ]), '#584c37', 4.5, 'butt'),
-                    stroke(pathData([ add(a, [ -.5, -.5 ]), add(b, [ -.5, -.5 ]) ]), '#b09a70', 1.4, 'butt'));
+                    stroke(pathData([ a, b ]), '#342d26', 5.5, 'butt'),
+                    stroke(pathData([ add(a, [ -.5, -.5 ]), add(b, [ -.5, -.5 ]) ]), '#a18c6d', 1.6, 'butt'));
             }
         }
         for (const r of routes)
@@ -265,7 +316,7 @@ function infrastructure(family, mask, texture) {
                         p[i] = add(p[i], mul(n, 2));
                     }
                 body.push(stroke(pathData(outline), '#3b4645', 4.5, 'butt'),
-                          stroke(pathData(p), '#b9c6b9', 2.2, 'butt'));
+                          stroke(pathData(p), '#d3dfd8', 2.8, 'butt'));
             }
     }
     // Padding retains width beyond diamond vertices; consumers must not diamond-clip overlays.
@@ -302,6 +353,8 @@ module.exports = {
     infrastructure,
     river,
     curve,
+    roadCurve,
+    shoreField,
     length,
     at,
     setVariations

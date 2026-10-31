@@ -137,7 +137,7 @@ Suggested starting thresholds in **logical tile width**, to tune with playtests:
 | Tile width | Representation |
 | --- | --- |
 | ≥ 128 logical px | Full terrain detail, readable individual sprites, field details, rail sleepers |
-| 48–127 px | Full native unit/city frames and badges; subdued terrain detail |
+| 48–127 px | Full native unit/city frames, enlarged status badges; subdued terrain detail |
 | 32–47 px | Sparse terrain features, simple transport lines, city and unit markers |
 | < 32 px | Quiet terrain colors, major routes, cities and grouped unit markers; selected objects remain explicit |
 
@@ -306,3 +306,39 @@ Measure decode time, peak memory, cached and uncached pan/zoom frame time, chang
 tile redraw cost and number of submitted sprites on a declared x86 target.
 `review/scenes.json` records offline CPU image-build times only. They include
 authoring work and are **not** engine FPS or evidence of GPU performance.
+
+## Map readability: artwork versus additional engine work
+
+The original-art comparison exposed improvements that do not need new game
+logic. The replacement native and HD-only stages now share winding ochre roads,
+straight cool-gray rails with distinct sleepers, centered resource frames,
+contrasting faction/health colors, a full shield silhouette and corrected coast
+mask/dither artwork. These are art/binding changes under the existing native
+sprite selection and logical dimensions. Shared network endpoints must remain
+identical for all connection masks; a changed junction must not move its arms.
+
+The cohesion stage separately demonstrates these scoped renderer changes:
+
+- Evaluate shoreline interpolation in world coordinates with smooth corner
+  weights and several erosion scales. Preserve pure land/water centers and
+  narrow passages. Vary the sand/rock band and break up surf instead of tracing
+  every coast with an equally bright ribbon. The primary bank includes phase
+  variants; world-space sampling prevents camera movement from changing them.
+- Use stable position-derived road bend variants, while retaining the same
+  connection endpoints and tangent directions. Rails keep straight approaches.
+  Keep road/rail colors distinct at regional LOD even when sleepers disappear.
+- Place resources by their tile-center anchor. Use one fit operation when
+  producing the asset, not another fit and offset during composition. Retain
+  recognizable fish/whale silhouettes at medium map zoom.
+- Separate unit status badges from the unit image. The proposal scales badges
+  to 135% of their native size, increases the visible rear-shield separation,
+  and adds a plus marker when the native trace identifies a stack. This means
+  multiple units, not an invented exact count. Draw badges above units; preserve
+  health/order semantics, source visibility and the existing unit/city frames.
+  Runtime integration must include the larger badge bounds in clipping and dirty
+  rectangles, plus focused checks for crowded cities and viewport edges.
+
+These are sprite and 2D composition changes. The review does not implement them
+in the game or claim a complete bridge/rail-turnout solution. The district's
+explicit two-unit stack and ocean resources complement the actual saved-game
+scenes. All four comparison stages use the same updated synthetic fixtures.

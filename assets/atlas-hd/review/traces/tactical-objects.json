@@ -277,6 +277,60 @@
     },
     {
       "asset": "shield",
+      "x": 213,
+      "y": 165,
+      "width": 12,
+      "height": 20,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 213,
+      "y": 165,
+      "width": 12,
+      "height": 20,
+      "color": 15,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 213,
+      "y": 165,
+      "width": 12,
+      "height": 20,
+      "color": 15,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
+      "x": 212,
+      "y": 164,
+      "width": 12,
+      "height": 20,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 212,
+      "y": 164,
+      "width": 12,
+      "height": 20,
+      "color": 211,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 212,
+      "y": 164,
+      "width": 12,
+      "height": 20,
+      "color": 211,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
       "x": 209,
       "y": 165,
       "width": 12,

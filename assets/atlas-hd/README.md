@@ -51,8 +51,8 @@ silently included in that claim.
 There are 22 scene comparisons: three real-save map views plus district, close and tactical map views, transport
 matrix, coast, terrain repetition, region, full world, three city panoramas, three
 throne stages, diplomacy, two spacecraft states and two city management windows.
-Detailed map views retain the native unit/city frame size, anchor and badges; only
-overview views substitute markers. The city management window is separate from
+Detailed map views retain the native unit/city frame size and anchor. The proposal
+enlarges status badges separately; only overview views substitute object markers. The city management window is separate from
 the panorama. See the [window audit](RENDERER-AUDIT.md#window-renderer-extension)
 for native bodies versus explicit panel and typography adapters.
 The close camera spans ten full tile widths by ten full tile heights (200 cells
@@ -186,3 +186,43 @@ ship crops and city sprites replace the new-art bindings. Font rasterization,
 city summary rows and static diplomacy text remain review adapters. Animated
 heralds, gameplay execution and full native window chrome are outside this
 comparison. See the [original replay audit](RENDERER-AUDIT.md#original-art-replay).
+
+## Map readability refinements
+
+The four-stage gallery now uses revised replacement coast and transport artwork.
+Roads are warm dirt tracks with winding arms; rails retain straight approaches,
+cool ballast, pale steel and transverse sleepers. Shared endpoints remain fixed
+for isolated, connected and junction sprites. Canonical network and coast PNGs
+and SVGs are rebuilt in place, rather than kept as alternate art packs.
+
+Coasts use broader coves/headlands, narrower variable shore bands and subdued
+broken surf. The compatibility coast bank also fixes the three-neighbor mask
+and the former desert-filled blank dither slot. Fish, whales and other resource
+sprites are trimmed and centered inside their logical tile frame; the proposal
+no longer fits them into a second, half-size frame.
+
+Faction shields have a larger filled silhouette within their existing native
+frame, contrasting rims and distinct primary/mid colors. Health and order marks
+are readable; stacked units keep the source's repeated-shield indicator. The
+cohesion stage additionally enlarges status badges by 35%, separates the rear
+shield, adds a plus marker for stacks, and draws those badges over the unit layer.
+The actual unit and city sprites keep the source-selected dimensions and anchors.
+The district fixture explicitly includes fish, whales and a linked two-unit stack;
+the three 1788 save scenes still use unmodified imported gameplay state.
+
+Rebuild the selected map library before the normal review build:
+
+```powershell
+node tools/atlas-review/refresh-map-art.cjs
+node tools/atlas-review/build-review.cjs
+node tools/atlas-review/build-support.cjs
+node tools/atlas-review/windows.cjs
+node tools/atlas-review/saved-map.cjs
+node tools/atlas-review/verify.cjs
+node tools/atlas-review/verify-map-style.cjs
+```
+
+Then rebuild the optional original comparisons and gallery as described above.
+[Map style metadata](map/readability.json) records the artwork conventions;
+[focused validation](review/map-readability-validation.json) checks road joins,
+shore continuity, ocean-resource centering and preserved unit/city frames.

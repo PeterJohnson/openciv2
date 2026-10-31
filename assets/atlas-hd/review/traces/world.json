@@ -31823,6 +31823,33 @@
     {
       "asset": "shield",
       "x": 277,
+      "y": 169,
+      "width": 3,
+      "height": 5,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 277,
+      "y": 169,
+      "width": 3,
+      "height": 5,
+      "color": 211,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 277,
+      "y": 169,
+      "width": 3,
+      "height": 5,
+      "color": 211,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
+      "x": 277,
       "y": 170,
       "width": 3,
       "height": 5,

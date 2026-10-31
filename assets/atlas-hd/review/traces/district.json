@@ -5001,6 +5001,15 @@
       "text": ""
     },
     {
+      "asset": "resource/20",
+      "x": 1856,
+      "y": 288,
+      "width": 128,
+      "height": 64,
+      "color": -1,
+      "text": ""
+    },
+    {
       "asset": "coast/0/0",
       "x": 2016,
       "y": 288,
@@ -6217,6 +6226,60 @@
     },
     {
       "asset": "shield",
+      "x": 553,
+      "y": 393,
+      "width": 24,
+      "height": 40,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 553,
+      "y": 393,
+      "width": 24,
+      "height": 40,
+      "color": 15,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 553,
+      "y": 393,
+      "width": 24,
+      "height": 40,
+      "color": 15,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
+      "x": 552,
+      "y": 392,
+      "width": 24,
+      "height": 40,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "replace",
+      "x": 552,
+      "y": 392,
+      "width": 24,
+      "height": 40,
+      "color": 211,
+      "text": "262"
+    },
+    {
+      "asset": "replace",
+      "x": 552,
+      "y": 392,
+      "width": 24,
+      "height": 40,
+      "color": 211,
+      "text": "261"
+    },
+    {
+      "asset": "shield",
       "x": 545,
       "y": 393,
       "width": 24,
@@ -6743,6 +6806,15 @@
       "y": 432,
       "width": 64,
       "height": 32,
+      "color": -1,
+      "text": ""
+    },
+    {
+      "asset": "resource/21",
+      "x": 1984,
+      "y": 416,
+      "width": 128,
+      "height": 64,
       "color": -1,
       "text": ""
     },

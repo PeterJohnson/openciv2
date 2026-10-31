@@ -24,6 +24,18 @@ async function bitmap(name, w, h, source, fill = .90) {
                path.relative(pack, source).replaceAll('\\', '/'));
 }
 
+async function centered(name, source, fill) {
+    const w = 512, h = 256;
+    const input = await sharp(source)
+                      .trim({threshold : 8})
+                      .resize(Math.round(w * fill), Math.round(h * fill), {fit : 'inside'})
+                      .png()
+                      .toBuffer();
+    const p = await raw(input), out = clear(w, h);
+    blit(out, p, Math.round((w - p.width) / 2), Math.round((h - p.height) / 2));
+    await save(name, await png(out), 64, 32, path.relative(pack, source).replaceAll('\\', '/'));
+}
+
 async function variationAssets() {
     const file = path.join(pack, 'authoring/masters/surface-variations.png');
     const meta = await sharp(file).metadata(), records = [];
@@ -62,7 +74,7 @@ async function buildBindings(traces) {
     for (let q = 0; q < 4; q++)
         for (let mask = 0; mask < 8; mask++) {
             const vals = [ 0, 0, 0, 0 ];
-            vals[q] = mask ? 1 : 0;
+            vals[q] = (mask & 2) && (mask & 5) ? 1 : 0;
             vals[(q + 1) % 4] = mask & 4 ? 1 : 0;
             vals[(q + 3) % 4] = mask & 1 ? 1 : 0;
             const im = clear(256, 128);
@@ -81,19 +93,23 @@ async function buildBindings(traces) {
     // Ordered stippling retains the legacy quadrant topology with newly authored alpha.
     for (let t = 0; t < 13; t++)
         for (let q = 0; q < 4; q++) {
-            const material = C.terrainNames[t] || 'desert';
+            const material = C.terrainNames[t] || 'grassland';
             const tile = await raw(path.join(pack, 'map/ground', material + '.png'), 512, 256);
             const im = clear(256, 128), x0 = q < 2 ? 256 : 0, y0 = ((q + 1) & 3) < 2 ? 0 : 128;
             for (let y = 0; y < 128; y++)
                 for (let x = 0; x < 256; x++) {
                     const si = ((y + y0) * 512 + x + x0) * 4, di = (y * 256 + x) * 4;
                     im.data.set(tile.data.subarray(si, si + 4), di);
+                    if (t === 11)
+                        im.data.set([ 12, 22, 23, im.data[di + 3] ], di);
                     const outward = Math.abs((x + x0 - 256) / 256) + Math.abs((y + y0 - 128) / 128);
                     const threshold =
                         [ 0, .5, .75, .25 ][(Math.floor(x / 8) & 1) + 2 * (Math.floor(y / 8) & 1)];
                     if (outward < .60 + threshold * .40)
                         im.data[di + 3] = 0;
                 }
+            if (t === 12)
+                im.data.fill(0); // Authored blank edge: no desert/grass wedge beside ocean.
             await save(`dither/${t}/${q}`, await png(im), 32, 16);
         }
     const roadTex = fs.readFileSync(path.join(pack, 'map/materials/road.png')).toString('base64');
@@ -161,9 +177,9 @@ async function buildBindings(traces) {
         // Source array is terrain*2+special-1; catalog slots are terrain+11*(special-1).
         const slot = Math.floor(n / 2) + 11 * (n % 2),
               e = entries.find(e => e.mapping?.terrainSpecialSlots?.includes(slot));
-        await bitmap('resource/' + n, 64, 32, path.join(pack, e.file), .55);
+        await centered('resource/' + n, path.join(pack, e.file), n >= 20 ? .72 : .58);
     }
-    await bitmap('resource/shield', 64, 32, asset('economy.production'), .45);
+    await centered('resource/shield', asset('economy.production'), .45);
     await save('fog/full',
                Buffer.from(svg(512, 256, '<path d="M256 0L512 128L256 256L0 128Z" fill="#0b1516"/>')));
     for (const name of ['grid', 'grid/radius'])
@@ -172,11 +188,12 @@ async function buildBindings(traces) {
             Buffer.from(svg(
                 512, 256,
                 '<path d="M256 0L512 128L256 256L0 128Z" fill="none" stroke="#47504a" stroke-width="2"/>')));
-    await save('shield',
-               Buffer.from(svg(
-                   96, 160,
-                   '<path d="M8 8H88V100L48 152L8 100Z" fill="#010506" stroke="#19221c" stroke-width="8"/>')),
-               12, 20);
+    await save(
+        'shield',
+        Buffer.from(svg(
+            96, 160,
+            '<path d="M4 4H92V106L48 156L4 106Z" fill="#010607" stroke="#17201d" stroke-width="8"/><path d="M12 8H28V105L48 140L20 119L12 109Z" fill="#010506"/><path d="M8 8V104L48 150L88 104V8" fill="none" stroke="#eadfc2" stroke-width="3"/>')),
+        12, 20);
     for (let i = 0; i < 8; i++)
         await save(
             'flag/' + i,

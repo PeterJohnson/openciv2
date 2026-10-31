@@ -76,3 +76,14 @@ code contain no original image bytes. A recipient supplies their own installatio
 to build the comparison. The local binding index records source SHA-256 hashes,
 resource IDs, crop rectangles and output hashes. These previews are trace
 replays with documented adapters, not original-game screen captures.
+
+## Map readability revision
+
+The revised coast and road/rail banks are generated from the existing authored
+material textures and procedural geometry in `tools/atlas-review/art.cjs`.
+The original-art previews were inspected for readability and composition; no
+original pixels, shapes or textures were traced, sampled or incorporated into
+the replacement library. Resource changes center the retained generated sprites.
+Faction shield geometry/colors are authored in the replacement binding/backend.
+The 35% badge enlargement and stack-marker layout belong only to the standalone
+cohesion proposal, with the source unit/city frames preserved.
