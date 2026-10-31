@@ -1,0 +1,84 @@
+{
+  "source": [
+    "src/auto/diplomacy.cpp:4778-4779,4981-5004",
+    "src/include/enums.h:93-116"
+  ],
+  "categorySource": "RULES.TXT @CIVILIZE numeric categories: Banking/Medicine/Navigation=1, Physics=3, Engineering/Electricity=4",
+  "categoryNames": [
+    "Military",
+    "Economic",
+    "Social",
+    "Academic",
+    "Applied"
+  ],
+  "categoryCropRows": [
+    32,
+    63,
+    94,
+    1,
+    125
+  ],
+  "eras": [
+    "ancient",
+    "medieval",
+    "industrial",
+    "modern"
+  ],
+  "advances": [
+    {
+      "id": 6,
+      "constant": "ADV_BANKING",
+      "name": "Banking",
+      "category": 1,
+      "depth": 1,
+      "file": "interface/economy/gold.png",
+      "symbol": "Antique gold coin"
+    },
+    {
+      "id": 25,
+      "constant": "ADV_ENGINEERING",
+      "name": "Engineering",
+      "category": 4,
+      "depth": 2,
+      "file": "sprites/advances/economy-industrial.png",
+      "symbol": "Steam governor"
+    },
+    {
+      "id": 50,
+      "constant": "ADV_MEDICINE",
+      "name": "Medicine",
+      "category": 1,
+      "depth": 3,
+      "file": "sprites/knowledge/medicine.png",
+      "symbol": "Apothecary mortar, herbs and bandage"
+    },
+    {
+      "id": 57,
+      "constant": "ADV_NAVIGATION",
+      "name": "Navigation",
+      "category": 1,
+      "depth": 4,
+      "file": "sprites/advances/science-medieval.png",
+      "symbol": "Brass astrolabe"
+    },
+    {
+      "id": 61,
+      "constant": "ADV_PHYSICS",
+      "name": "Physics",
+      "category": 3,
+      "depth": 5,
+      "file": "sprites/advances/science-modern.png",
+      "symbol": "Atom model"
+    },
+    {
+      "id": 23,
+      "constant": "ADV_ELECTRICITY",
+      "name": "Electricity",
+      "category": 4,
+      "depth": 6,
+      "file": "sprites/knowledge/electricity.png",
+      "symbol": "Copper induction coil and spark"
+    }
+  ],
+  "limits": "Six supplied advances with actual IDs/categories and fixture-only ranking depths. Original/native/HD use era/category icons; enhanced selects per-advance art. No game source change."
+}

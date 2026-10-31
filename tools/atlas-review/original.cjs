@@ -4,6 +4,7 @@ const C = require('./common.cjs');
 const R = require('./render.cjs');
 const W = require('./windows.cjs');
 const E = require('./economy.cjs');
+const Knowledge = require('./knowledge.cjs');
 const {spawnSync} = require('node:child_process');
 const local = 'review/original-local/';
 const rendered = 'review/original-scenes/';
@@ -89,20 +90,11 @@ async function windowScene(s) {
         return W.city(trace, s, false, 1, {painter : p, bindings});
     await p.image(file(s.mode === 'spaceship' ? 'ship-background' : 'background/' + s.id), 0, 0, 640, 480);
     if (s.mode === 'diplomacy') {
-        const names = {
-            12 : 'Banking',
-            13 : 'Engineering',
-            14 : 'Medicine',
-            15 : 'Navigation',
-            16 : 'Physics',
-            17 : 'Electricity'
-        };
         for (const [i, c] of trace.commands.entries()) {
             if (c.asset === 'resource')
                 await p.image(file(`window/${s.id}/${i}`), c.x, c.y, c.width, c.height);
             else if (c.asset === 'tech-label')
-                await p.text((names[+c.text] || `Advance ${c.text}`).slice(0, 8).toUpperCase(), c.x, c.y,
-                             c.width, 9);
+                await p.text(Knowledge.advance(+c.text).name.slice(0, 8).toUpperCase(), c.x, c.y, c.width, 9);
         }
         await p.text('ASTERIAN ENVOY', 184, 16, 272, 17, null, 'middle');
         await p.text('COMMUNISM', 184, 337, 272, 13, null, 'middle');

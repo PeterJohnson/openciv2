@@ -224,6 +224,12 @@ safe area and measured, wrapping labels. Keep the portrait's existing size; make
 the columns fit their data rather than distorting the leader. Separate the icon
 rectangle from the label rectangle and make the whole row the hit target.
 The proposed preview demonstrates the contrast panels and wider name area.
+Select enhanced knowledge artwork by stable advance ID: the fixture now shows
+a coin, governor, mortar, astrolabe, atom and electrical coil for its six advances.
+Retain the five native era/category icons as the baseline and as an explicit
+fallback for advances without individual art in a future integrated engine.
+Keep icon metadata independent of localized names and displayed row order;
+missing files must not silently substitute an unrelated exploration symbol.
 Future dialog choices should occupy a distinct measured text panel, preserve
 keyboard navigation and never overlap the portrait. No synthetic conversation
 choices are presented as a native diplomacy dialog in this review.

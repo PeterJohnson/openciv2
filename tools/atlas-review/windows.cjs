@@ -1,19 +1,12 @@
 const C = require('./common.cjs');
 const E = require('./economy.cjs');
 const Citizens = require('./citizens.cjs');
+const Knowledge = require('./knowledge.cjs');
 const {spawnSync} = require('node:child_process');
 const {fs, path, pack, sharp, svg, raw, clear, blit, png, fit} = C;
 const escape = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;').replaceAll('"', '&quot;');
 const governments =
     [ 'anarchy', 'despotism', 'monarchy', 'communism', 'fundamentalism', 'republic', 'democracy' ];
-const techNames = {
-    12 : 'Banking',
-    13 : 'Engineering',
-    14 : 'Medicine',
-    15 : 'Navigation',
-    16 : 'Physics',
-    17 : 'Electricity'
-};
 const buildingNames =
     [ 'Palace', 'Barracks', 'Granary', 'Temple', 'Marketplace', 'Library', 'Courthouse', 'City walls' ];
 const buildingFiles =
@@ -159,7 +152,7 @@ async function diplomacy(trace, proposed, density) {
     await p.text('KNOWLEDGE', 477, 108, 130, 12, '#f0dfb2', 'middle');
     for (const c of trace.commands) {
         if (c.asset === 'tech-label') {
-            const name = techNames[+c.text] || `Advance ${c.text}`;
+            const name = Knowledge.advance(+c.text).name;
             await p.text(proposed ? name : name.slice(0, 8).toUpperCase(), proposed ? 515 : c.x,
                          proposed ? c.y + 1 : c.y, proposed ? 92 : c.width, proposed ? 11 : 9);
         } else if (c.asset === 'resource') {
@@ -168,14 +161,9 @@ async function diplomacy(trace, proposed, density) {
                               c.y, c.width, c.height);
             } else if (c.resource === 215) {
                 const military = c.sy === 156;
-                const f = military ? 'sprites/units/riflemen.png' : 'sprites/advances/' + [
-                    'science', 'engineering', 'navigation', 'medicine', 'writing'
-                ][Math.floor((c.sy - 1) / 31)] + '.png';
-                // Category labels/art are supplied fixture bindings; no original MK.DLL pixels.
-                const file = fs.existsSync(path.join(pack, f))
-                                 ? f
-                                 : (military ? 'sprites/units/riflemen.png'
-                                             : 'sprites/diplomacy/exploration-industrial.png');
+                const file = military   ? 'sprites/units/riflemen.png'
+                             : proposed ? Knowledge.advance(+c.text).file
+                                        : Knowledge.categoryFile(c);
                 if (proposed)
                     await p.image(file, military ? c.x + 3 : 483, c.y, military ? 40 : 27, 27);
                 else
@@ -468,7 +456,7 @@ const sceneDefs = [
         id : 'diplomacy',
         mode : 'diplomacy',
         title : 'Diplomacy · leader portrait and intelligence columns',
-        fixtureText : '3 14 2 6\n'
+        fixtureText : '3 14 2 6\n' + Knowledge.fixtureText
     },
     {
         id : 'spacecraft-assembly',
@@ -514,6 +502,7 @@ async function buildWindows() {
     await windowAssets();
     await E.build();
     await Citizens.buildAssets();
+    Knowledge.build();
     C.json(path.join(pack, 'space-layout.json'), shipLayout());
     const scenes =
         C.read(path.join(pack, 'review/scenes.json')).filter(s => !sceneDefs.some(d => d.id === s.id));
@@ -552,6 +541,7 @@ async function buildWindows() {
     C.json(path.join(pack, 'review/window-draw-plans.json'), plans);
     C.json(path.join(pack, 'review/scenes.json'), scenes);
     await Citizens.review(module.exports);
+    await Knowledge.review(module.exports);
     fs.copyFileSync(path.join(C.root, 'build/atlas-review/generated/window-extraction.json'),
                     path.join(pack, 'review/window-extraction.json'));
 }

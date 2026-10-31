@@ -109,3 +109,12 @@ painted masters and extracted sprites. No new generated portraits are introduced
 The seven mood/profession cues are authored SVG geometry in `citizens.cjs`.
 Original citizen contact-sheet pixels appear only in ignored local review output;
 none are sampled into the replacement portraits or cue graphics.
+
+The Medicine and Electricity knowledge icons in `sprites/knowledge/` were
+generated with built-in image_gen using only `authoring/masters/advances-01.png`
+as an authored style reference. Generated pixels and alpha are retained unchanged.
+[The authoring record](authoring/knowledge.json) stores both prompts, the style
+reference hash and output hashes. Banking, Engineering, Navigation and Physics
+reuse existing replacement artwork. Numeric advance IDs/categories were read
+from this repository's enum and the local base rules; no original artwork was
+supplied to the generator or incorporated into the replacement icons.

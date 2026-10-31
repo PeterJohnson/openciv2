@@ -1,0 +1,26 @@
+{
+  "status": "pass",
+  "emptyAdvanceSets": 2,
+  "invalidFixturesRejected": 4,
+  "actualAdvanceIds": [
+    23,
+    61,
+    57,
+    50,
+    25,
+    6
+  ],
+  "sourceCategories": [
+    4,
+    3,
+    1,
+    1,
+    4,
+    1
+  ],
+  "eraCategoryBindings": 20,
+  "distinctEnhancedIcons": 6,
+  "stageBindings": 3,
+  "debugReleaseEqual": true,
+  "iconIdentity": "Resource draw commands retain their advance ID; association does not depend on label text or row position."
+}

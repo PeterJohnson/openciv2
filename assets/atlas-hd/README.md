@@ -18,11 +18,12 @@ The graphics branch contains no game source or loader changes.
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
 | Interface assets | 503 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
+| Painted knowledge additions | 2 | Medicine and Electricity; four other advance-specific icons reuse retained art |
 | Citizen mood/profession cues | 7 | Shape-distinct SVG/PNG badges for the enhanced city window |
 | City panorama wall assembly | 7 | Separate rear and foreground SVG/PNG curtain walls for the three city sites, plus a frontal painted gate |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,231 primary entries are indexed in [manifest.json](manifest.json).
+The 2,233 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -255,6 +256,29 @@ fixed curve endpoints, continuous water across adjoining masks in both draw
 orders, width variation and hidden-state isolation. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons.
+
+## Diplomacy knowledge icons
+
+The original renderer uses five era-specific categories (Military, Economic,
+Social, Academic and Applied), not a unique icon for every advance. Native and
+HD-only replacements retain that selection through existing category artwork;
+missing filenames no longer collapse every row to the same exploration icon.
+
+The enhanced preview uses six distinct, topic-matched icons: Banking (coin),
+Engineering (steam governor), Medicine (apothecary mortar), Navigation
+(astrolabe), Physics (atom model) and Electricity (induction coil). See the
+[icon comparison](review/knowledge-icons.png), [bindings](interface/knowledge/bindings.json)
+and [validation](review/knowledge-validation.json). The new Medicine/Electricity
+PNGs were generated with built-in image_gen; [prompts and provenance](authoring/knowledge.json)
+record our authored style reference. The other four reuse existing painted art.
+
+The diplomacy fixture now supplies actual advance IDs and base-game categories.
+Ranking depths remain illustrative input, not simulated research. Each category
+draw retains its advance ID so enhanced art does not depend on the label text
+or row order. The original-art replay was refreshed for the corrected metadata.
+`windows.cjs` rebuilds the replacement previews; `knowledge.cjs` checks six
+unique enhanced images, all 20 era/category bindings, empty/malformed fixture
+edges and Debug/Release agreement. Game source remains unchanged.
 
 ## Citizen eras, gender and readability
 

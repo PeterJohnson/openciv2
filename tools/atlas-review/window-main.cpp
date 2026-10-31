@@ -180,8 +180,11 @@ int civ_has_wonder(int, int) {
     return 0;
 }
 
+bool suppliedAdvances[100]{};
+int suppliedAdvanceCategories[100]{};
+
 int civ_has_advance(uint, int n) {
-    return n >= 10 && n < 18;
+    return n >= 0 && n < 100 && suppliedAdvances[n];
 }
 
 void advance_count_prereq_depth(int) {
@@ -214,7 +217,9 @@ struct DiploLeaderWindow {
     // Text shaping is a backend substitution; source chooses six advances and their row positions.
     void science_draw_tech(iptr advance, GameFont&, Sprite* categories, i8* ctx, int x, int y, RECT& r, int,
                            int*, i8*, CHAR*, CHAR*, CHAR*) {
-        categories[advance % 5].draw((iptr)ctx, (iptr)leader_surface, x, y);
+        categories[suppliedAdvanceCategories[advance]].draw((iptr)ctx, (iptr)leader_surface, x, y);
+        // Preserve identity for enhanced per-advance artwork, independent of row order.
+        commands.back().text = std::to_string(advance);
         emit("tech-label", r.left, r.top, r.right - r.left, r.bottom - r.top, std::to_string(advance));
     }
 };
@@ -598,8 +603,18 @@ int main(int argc, char** argv) {
                 civs[2].leader_portrait > 20 || v.style_era < 0 || v.style_era > 3 ||
                 game.power_rank[2] < 1 || game.power_rank[2] > 8)
                 throw std::runtime_error("Diplomacy fixture domain");
-            for (int i = 0; i < 100; i++)
-                map_views_block.tech_prereq_depth_cache[i] = i + 1;
+            int advanceCount = 0;
+            if (!(in >> advanceCount) || advanceCount < 0 || advanceCount > 100)
+                throw std::runtime_error("Diplomacy advance-count fixture domain");
+            for (int i = 0; i < advanceCount; i++) {
+                int id, category, depth;
+                if (!(in >> id >> category >> depth) || id < 0 || id >= 100 || category < 0 || category > 4 ||
+                    depth < 1 || suppliedAdvances[id])
+                    throw std::runtime_error("Diplomacy advance fixture domain");
+                suppliedAdvances[id] = true;
+                suppliedAdvanceCategories[id] = category;
+                map_views_block.tech_prereq_depth_cache[id] = depth;
+            }
             v.surface.target = 1;
             v.init_main_art();
             v.init_military();

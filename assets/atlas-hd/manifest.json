@@ -52760,6 +52760,36 @@
       }
     },
     {
+      "id": "knowledge.medicine",
+      "file": "sprites/knowledge/medicine.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7da718175122e7604d6721df7c64aa0d3ef11d30128b9d238f2492f8bc08ed3f",
+      "alphaPreserved": true,
+      "label": "Medicine",
+      "kind": "generated",
+      "category": "knowledge advances",
+      "source": {
+        "record": "authoring/knowledge.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
+      "id": "knowledge.electricity",
+      "file": "sprites/knowledge/electricity.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0781e9c4cf633c1e663f03dccb846c4f13dc8adf999dd9057dbe341c028a2ad6",
+      "alphaPreserved": true,
+      "label": "Electricity",
+      "kind": "generated",
+      "category": "knowledge advances",
+      "source": {
+        "record": "authoring/knowledge.json",
+        "tool": "built-in image_gen"
+      }
+    },
+    {
       "id": "windows.panel",
       "label": "panel",
       "description": "Authored 2D window composition component; proposed engine metadata",

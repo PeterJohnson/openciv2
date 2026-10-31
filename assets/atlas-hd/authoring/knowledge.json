@@ -1,0 +1,39 @@
+{
+  "tool": "built-in image_gen",
+  "mode": "generate with authored style reference",
+  "reference": {
+    "file": "authoring/masters/advances-01.png",
+    "role": "style reference only",
+    "sha256": "1597d718957b9c4a12db4a2bacece97c467ccb3f6501af9c3a8bdce66e10a679"
+  },
+  "originalGameInputs": false,
+  "freecivInputs": false,
+  "prompts": [
+    {
+      "key": "medicine",
+      "prompt": "Create ONE isolated transparent-background painted strategy-game technology icon. The supplied sheet is style reference ONLY: match its hand-painted brass, warm cream, copper and teal palette, soft directional lighting, crisp object silhouette, restrained historical material texture. Create a new composition, not a copy of any cell. Square image, centered object, modest transparent margin, true alpha, no frame, no text, no background. This must read clearly at 27x27 logical pixels as well as high resolution: bold simple silhouette, few parts, no tiny surrounding props. Subject: MEDICINE. A warm ivory ceramic apothecary mortar with a heavy pestle tilted across its rim, a small bunch of fresh medicinal green leaves emerging to one side and one neatly rolled cream linen bandage beside the bowl. The mortar/pestle must dominate; broad readable forms with tasteful teal band on the ceramic. No human figure. Only this one compact icon."
+    },
+    {
+      "key": "electricity",
+      "prompt": "Create ONE isolated transparent-background painted strategy-game technology icon. The supplied sheet is style reference ONLY: match its hand-painted brass, warm cream, copper and teal palette, soft directional lighting, crisp object silhouette, restrained historical material texture. Create a new composition, not a copy of any cell. Square image, centered object, modest transparent margin, true alpha, no frame, no text, no background. This must read clearly at 27x27 logical pixels as well as high resolution: bold simple silhouette, few parts, no tiny surrounding props. Subject: ELECTRICITY. A compact antique copper electrical induction coil on a small dark wooden base, a cream porcelain insulator and two brass terminals joined by one clearly visible bright pale-cyan lightning spark. Bold copper coil silhouette, simple dark-and-light contrast, minimal wires, no elaborate machine or room. No human figure. Only this one compact icon."
+    }
+  ],
+  "outputs": [
+    {
+      "id": "knowledge.medicine",
+      "file": "sprites/knowledge/medicine.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "7da718175122e7604d6721df7c64aa0d3ef11d30128b9d238f2492f8bc08ed3f",
+      "alphaPreserved": true
+    },
+    {
+      "id": "knowledge.electricity",
+      "file": "sprites/knowledge/electricity.png",
+      "width": 1254,
+      "height": 1254,
+      "sha256": "0781e9c4cf633c1e663f03dccb846c4f13dc8adf999dd9057dbe341c028a2ad6",
+      "alphaPreserved": true
+    }
+  ]
+}

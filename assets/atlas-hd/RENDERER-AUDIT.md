@@ -142,8 +142,28 @@ resource 215 with era columns at `era*109+1`, 108×30 rows spaced by 31 pixels,
 and a 225×275 portrait at `(208,57)`. Its technology column begins at `(485,130)`
 with a 58×20 text region at `(531,137)`. The source word-wrap helper reads prior
 buffer contents in one branch; this review explicitly substitutes deterministic
-fixture text instead of pretending to recover that state. The six advance IDs,
-depths and categories are fixture inputs, not reconstructed research progression.
+fixture text instead of pretending to recover that state. The six advance IDs
+now match `AdvanceId` in `src/include/enums.h`; categories use the inspected base
+`RULES.TXT` values. Ranking depths remain supplied fixture input, not reconstructed
+research progression. The former placeholder ID/name pairing and modulo-five
+category assignment have been removed from the standalone harness.
+
+The source `science_draw_tech` (`diplomacy.cpp:4778-4779`) selects
+`category_sprites[advances[advance].category]`. `init_science` loads the five rows
+from resource 215: categories 0/1/2/3/4 use sheet Y 32/63/94/1/125 and X
+`era*109+1`. Native and HD-only replacements map those crops to the retained
+military/economy/society/science/exploration artwork. There is no missing-file
+fallback that silently substitutes the same icon for all categories.
+
+The enhanced backend binds a distinct image to each of the six supplied advance
+IDs. The resource command carries that ID explicitly alongside the unchanged
+source rectangle, avoiding label-string or row-position inference. The supported
+fixture IDs are Banking 6, Electricity 23, Engineering 25, Medicine 50, Navigation
+57 and Physics 61. [Knowledge validation](review/knowledge-validation.json) checks
+the enum values, category rows, labels/icon identity, six distinct images, all
+20 category/era files, clear label bounds, empty/invalid fixture edges and D/R
+parity. Other advances still require explicit per-advance artwork metadata for
+the enhanced backend; native category coverage is independent of that extension.
 
 The spacecraft renderer is in **`src/game/bigframes.cpp`**, not the modal-loop
 file alone. Core rows 0–6 precede the selected structural frame from rows 7–30;

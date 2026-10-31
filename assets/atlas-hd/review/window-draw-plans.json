@@ -50,21 +50,21 @@
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/science-industrial.png",
       "x": 485,
       "y": 161,
       "width": 42,
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 192,
       "width": 42,
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 223,
       "width": 42,
@@ -78,7 +78,7 @@
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 285,
       "width": 42,
@@ -143,21 +143,21 @@
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/science-industrial.png",
       "x": 485,
       "y": 161,
       "width": 42,
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 192,
       "width": 42,
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 223,
       "width": 42,
@@ -171,7 +171,7 @@
       "height": 30
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 485,
       "y": 285,
       "width": 42,
@@ -243,42 +243,42 @@
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/knowledge/electricity.png",
       "x": 483,
       "y": 130,
       "width": 27,
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/science-modern.png",
       "x": 483,
       "y": 161,
       "width": 27,
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/science-medieval.png",
       "x": 483,
       "y": 192,
       "width": 27,
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/knowledge/medicine.png",
       "x": 483,
       "y": 223,
       "width": 27,
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "sprites/advances/economy-industrial.png",
       "x": 483,
       "y": 254,
       "width": 27,
       "height": 27
     },
     {
-      "file": "sprites/diplomacy/exploration-industrial.png",
+      "file": "interface/economy/gold.png",
       "x": 483,
       "y": 285,
       "width": 27,
