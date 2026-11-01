@@ -106,29 +106,37 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
                               smooth(clamp((.12 - second.base) / .01))
                         : 0;
     const ds = profiles.map(p => p.base + (p.detailed - p.base) * (1 - join)).sort((a, b) => a - b);
-    let distance = ds[0];
-    // Compact joins exclude distant centers unavailable in an adjacent coast quarter.
-    for (const d of ds.slice(1)) {
-        const h = Math.max(.14 - Math.abs(distance - d), 0) / .14;
-        // A neighboring cell/quarter cannot see centers beyond this compact
-        // support. Fade their contribution before they can alter a shared edge.
-        const support = smooth(clamp((.12 - d) / .06));
-        distance = Math.min(distance, d) - h * h * .14 * .25 * support;
-    }
-    // Round the deeper-water ends of coves with a submerged shelf. Keep the
-    // validated dry-land zero contour: widening the land union can pinch off
-    // tiny lake pockets or introduce detached pixels at extreme noise phases.
-    if (distance > 0) {
-        let rounded = ds[0];
-        for (const d of ds.slice(1)) {
-            const support = smooth(clamp((.12 - rounded) / .06)) * smooth(clamp((.12 - d) / .06));
-            const blend = .28 * support;
-            const h = blend ? Math.max(blend - Math.abs(rounded - d), 0) / blend : 0;
-            rounded = Math.min(rounded, d) - h * h * blend * .25;
+    // A compact power union rounds the actual land contour at inward joins.
+    // Each lobe fades to zero before an unavailable neighboring quarter can
+    // contribute. Unlike a distance-dependent blend radius, this aggregation
+    // is monotone in every input: added land cannot turn existing land into water.
+    // The exponent is above one for a continuous tangent at the support edge;
+    // its broad join gives single-cell lakes rounded rather than diamond tips.
+    const reach = .12, exponent = 1.25;
+    let influence = 0;
+    for (const d of ds)
+        influence += Math.max(0, reach - d) ** exponent;
+    let distance = influence ? reach - influence ** (1 / exponent) : ds[0];
+    // Two perpendicular land neighbors enclose an inward water corner. Bound
+    // that corner with an elliptical cove whose axes follow their existing
+    // shore crossings. Quarter-axis easing keeps both independent quarters on
+    // the same boundary; it does not require the opposite quarter's neighbors.
+    if (distance > -.055) {
+        const ox = Math.round(u), oy = Math.round(v), du = u - ox, dv = v - oy;
+        const sx = Math.sign(du), sy = Math.sign(dv);
+        const occupied = (x, y) => centers.some(c => c[0] === x && c[1] === y);
+        if (sx && sy && !occupied(ox, oy) && occupied(ox + sx, oy) && occupied(ox, oy + sy)) {
+            const a = 1 - radius(ox + sx * .19, oy, world, wrapWidth, pixels);
+            const b = 1 - radius(ox, oy + sy * .19, world, wrapWidth, pixels);
+            const weight = smooth(clamp(Math.min(Math.abs(du), Math.abs(dv)) / .06));
+            const cap = (1 - Math.hypot(du / a, dv / b)) * Math.min(a, b);
+            // A local smooth minimum preserves a continuous join to the
+            // eroded headlands. It only adds land around the water corner.
+            const blend = .02;
+            const h = Math.max(blend - Math.abs(distance - cap), 0) / blend;
+            const rounded = Math.min(distance, cap) - h * h * blend * .25;
+            distance += (rounded - distance) * weight;
         }
-        // Positive scaling preserves the land/water sign, with a smooth,
-        // broader depth gradient where two shelf lobes meet.
-        distance *= Math.exp(-Math.max(0, distance - rounded) / .045);
     }
     return clamp(.5 - distance / (distance < 0 ? .11 : .23));
 }

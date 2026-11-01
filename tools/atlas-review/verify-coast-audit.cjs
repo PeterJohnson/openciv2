@@ -139,7 +139,7 @@ async function main() {
     for (const match of html.matchAll(/<script>([\s\S]*?)<\/script>/g))
         new Function(match[1]);
     for (const file of ['coast-islands-lakes.png', 'coast-forest-mouths.png', 'coast-contours.png',
-                        'forest-borders.png'])
+                        'forest-borders.png', 'coast-corners.png'])
         assert(C.fs.existsSync(C.path.join(C.pack, 'review', file)));
     const results = {
         status : 'pass',

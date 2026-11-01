@@ -124,8 +124,49 @@ async function main() {
             }
         }
     }
+    // Measure the water outline, rather than only its beach or depth shading.
+    // Compare each radial extent to an ellipse fitted from the four axis
+    // intercepts. Natural asymmetric lakes are allowed; diamond corner bulges
+    // and vanishing water centers are not.
+    const roundness = [];
+    for (const test of [{name : 'native', origin : [ 0, 0 ], world : false},
+                        ...isolatedLakes.map(t => ({
+                                                 name : t.x + ',' + t.y,
+                                                 origin : [ (t.x + t.y) / 2, (t.y - t.x) / 2 ],
+                                                 world : true
+                                             }))]) {
+        const centers =
+            C.directions.map(([ x, y ]) => [(x + y) / 2 + test.origin[0], (y - x) / 2 + test.origin[1]]);
+        const radii = Array.from({length : 72}, (_, i) => {
+            const angle = i * Math.PI / 36;
+            let lo = 0, hi = .6;
+            for (let j = 0; j < 20; j++) {
+                const r = (lo + hi) / 2;
+                const field =
+                    S.field(test.origin[0] + Math.cos(angle) * r, test.origin[1] + Math.sin(angle) * r,
+                            centers, test.world, saved.width, 256);
+                if (field > .5)
+                    hi = r;
+                else
+                    lo = r;
+            }
+            return (lo + hi) / 2;
+        });
+        const bulge = Math.max(...radii.map((r, i) => {
+            const angle = i * Math.PI / 36;
+            const a = radii[Math.cos(angle) >= 0 ? 0 : 36];
+            const b = radii[Math.sin(angle) >= 0 ? 18 : 54];
+            return r * Math.hypot(Math.cos(angle) / a, Math.sin(angle) / b);
+        }));
+        const min = Math.min(...radii), max = Math.max(...radii);
+        assert(bulge < 1.2, 'Pointed lake corners: ' + test.name);
+        assert(min > .1, 'Rounded lake lost its water center: ' + test.name);
+        roundness.push(
+            {tile : test.name, minRadius : min, maxRadius : max, maxRadiusRelativeToAxisEllipse : bulge});
+    }
     C.json(C.path.join(C.pack, 'review/shore-relief-validation.json'), {
         status : 'pass',
+        lakeRoundness : roundness,
         nativeProfileRange : range,
         fractalDetailScales : detailScales,
         profileSamples : profile.length,

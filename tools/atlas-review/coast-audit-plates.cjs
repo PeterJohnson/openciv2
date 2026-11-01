@@ -32,6 +32,13 @@ async function build(report) {
     await contourDetails(report, stages);
     await contourDetails(report, stages,
                          [
+                             [ 'reading', 'Reading inlet / rounded ocean corners', 139, 77, 256 ],
+                             [ 'carlisle-lake', 'Single-cell lake south of Carlisle', 134, 84, 128 ],
+                             [ 'lakes', 'Joined lake / continuous water connection', 139, 53, 256 ]
+                         ],
+                         'coast-corners');
+    await contourDetails(report, stages,
+                         [
                              [ 'mouth', '64px tiles / connected river meanders', 139, 16, 128, 64 ],
                              [ 'mouth', '128px tiles / the same riverbanks', 139, 16, 256, 128 ],
                              [ 'mouth', '128px tiles / river mouth and coastal apron', 139, 13, 256, 128 ],

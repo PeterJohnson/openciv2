@@ -218,6 +218,18 @@
       "y": 76
     },
     {
+      "id": "reading",
+      "title": "Reading · rounded ocean inlet",
+      "x": 139,
+      "y": 77
+    },
+    {
+      "id": "carlisle-lake",
+      "title": "Carlisle · single-cell inland lake",
+      "x": 134,
+      "y": 84
+    },
+    {
       "id": "island",
       "title": "Small island · 1 land cell",
       "x": 44,
@@ -470,6 +482,114 @@
       "current": "review/coast-audit/newcastle-128-current.png",
       "hd": "review/coast-audit/newcastle-128-hd.png",
       "proposed": "review/coast-audit/newcastle-128-proposed.png"
+    },
+    {
+      "id": "reading-64",
+      "title": "Reading · rounded ocean inlet · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "center": [
+        139,
+        77
+      ],
+      "camera": {
+        "ox": 130,
+        "oy": 68,
+        "cols": 8,
+        "rows": 16,
+        "zoom": 0,
+        "viewer": -1
+      },
+      "fixture": "review/fixtures/coast-audit/reading-64.txt",
+      "commandCount": 1029,
+      "coastCommands": 236,
+      "traceSha256": "e560f9f9daadfc416781c59961dc8c7eae019bf4f79892b5dd68626c099dbc16",
+      "originalTraceSha256": "3760d18c6131174348961f7d7e01ede56f2cbe0c2e81b907823e5f8879696068",
+      "original": "review/original-scenes/coast-audit/reading-64.png",
+      "current": "review/coast-audit/reading-64-current.png",
+      "hd": "review/coast-audit/reading-64-hd.png",
+      "proposed": "review/coast-audit/reading-64-proposed.png"
+    },
+    {
+      "id": "reading-128",
+      "title": "Reading · rounded ocean inlet · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "center": [
+        139,
+        77
+      ],
+      "camera": {
+        "ox": 130,
+        "oy": 68,
+        "cols": 8,
+        "rows": 16,
+        "zoom": 8,
+        "viewer": -1
+      },
+      "fixture": "review/fixtures/coast-audit/reading-128.txt",
+      "commandCount": 1029,
+      "coastCommands": 236,
+      "traceSha256": "22f6f4c80029e6d590ac7e684a7590a56d873bcebe508f5de47a27f84b9a29f6",
+      "originalTraceSha256": "2eb71846399bbc0b245967e3d8467372fe7c65fb63467a8b591898d1498d5849",
+      "original": "review/original-scenes/coast-audit/reading-128.png",
+      "current": "review/coast-audit/reading-128-current.png",
+      "hd": "review/coast-audit/reading-128-hd.png",
+      "proposed": "review/coast-audit/reading-128-proposed.png"
+    },
+    {
+      "id": "carlisle-lake-64",
+      "title": "Carlisle · single-cell inland lake · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "center": [
+        134,
+        84
+      ],
+      "camera": {
+        "ox": 126,
+        "oy": 76,
+        "cols": 8,
+        "rows": 16,
+        "zoom": 0,
+        "viewer": -1
+      },
+      "fixture": "review/fixtures/coast-audit/carlisle-lake-64.txt",
+      "commandCount": 985,
+      "coastCommands": 252,
+      "traceSha256": "a29938b9c288b2140e425ee47ee7b985eb7d6b1d0fedb7a99d8446129ded0d7e",
+      "originalTraceSha256": "a558c569798ec8af459e04c857adb7e6708d37c75127756af0350dbf8daecb3c",
+      "original": "review/original-scenes/coast-audit/carlisle-lake-64.png",
+      "current": "review/coast-audit/carlisle-lake-64-current.png",
+      "hd": "review/coast-audit/carlisle-lake-64-hd.png",
+      "proposed": "review/coast-audit/carlisle-lake-64-proposed.png"
+    },
+    {
+      "id": "carlisle-lake-128",
+      "title": "Carlisle · single-cell inland lake · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "center": [
+        134,
+        84
+      ],
+      "camera": {
+        "ox": 126,
+        "oy": 76,
+        "cols": 8,
+        "rows": 16,
+        "zoom": 8,
+        "viewer": -1
+      },
+      "fixture": "review/fixtures/coast-audit/carlisle-lake-128.txt",
+      "commandCount": 985,
+      "coastCommands": 252,
+      "traceSha256": "0081d907449864792f0f1e39372eaf9cb12521f5935adcb1cb9893f2c1528ba7",
+      "originalTraceSha256": "381d03ba4a6b2c767f982f4a806eb6b1e48851d880d87188a39b40ced8539c59",
+      "original": "review/original-scenes/coast-audit/carlisle-lake-128.png",
+      "current": "review/coast-audit/carlisle-lake-128-current.png",
+      "hd": "review/coast-audit/carlisle-lake-128-hd.png",
+      "proposed": "review/coast-audit/carlisle-lake-128-proposed.png"
     },
     {
       "id": "island-64",

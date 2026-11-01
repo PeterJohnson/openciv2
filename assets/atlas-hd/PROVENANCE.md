@@ -219,8 +219,9 @@ review-only original-art allowance as the other comparison plates.
 
 The coast-quarter and canonical coast banks use authored sand, stone and ocean
 materials for the wider beach and shallow-water shelf. Cove rounding and shoal
-variation are procedural, shared with the separate enhanced preview. No original
-shoreline pixels or contours are used.
+variation are procedural, shared with the separate enhanced preview. Rounded
+water corners use local elliptical limits derived from authored shore crossings.
+No original shoreline pixels or contours are used.
 
 The four ocean-neighbor coastal feathers are procedurally authored by
 `tools/atlas-review/coastal-blends.cjs` from the existing replacement grass

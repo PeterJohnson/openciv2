@@ -482,10 +482,12 @@ The saved-map survey uses rounded distance lobes with broad irregular coves and
 headlands. Adding fine noise to rounded squares left the tile grid too visible;
 the underlying contour therefore changes as well. A minimum rounded radius
 protects occupied tile tips without reinstating square corners. Broader smooth
-inward joins soften enclosed lakes. Use a symmetric smoothing radius with
-compact support for shallow-water shelf depths, preserving the validated
-dry-land outline through a positive depth remapping. Keep water depth/color
-transitions wider on the seaward side,
+inward joins soften enclosed lakes. Round the actual water-corner contour,
+not only its depth shading: use a compact land union plus a local elliptical
+cove limit whose axes follow the two neighboring shore crossings. Ease its
+contribution to zero on shared quarter axes. This removes pointed inlets and
+diamond-shaped lakes without requiring neighbors unavailable to the native
+quarter renderer. Keep water depth/color transitions wider on the seaward side,
 with visible but uneven beach and shoal deposits. The native/HD quarter artwork
 already demonstrates this treatment without changing source draw rules.
 Keep vegetation and field footprints inside a

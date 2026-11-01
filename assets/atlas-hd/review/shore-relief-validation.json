@@ -1,5 +1,145 @@
 {
   "status": "pass",
+  "lakeRoundness": [
+    {
+      "tile": "native",
+      "minRadius": 0.20429334640502927,
+      "maxRadius": 0.24348535537719723,
+      "maxRadiusRelativeToAxisEllipse": 1.0798505667532163
+    },
+    {
+      "tile": "37,9",
+      "minRadius": 0.16167440414428708,
+      "maxRadius": 0.24446096420288083,
+      "maxRadiusRelativeToAxisEllipse": 1.0748111112397591
+    },
+    {
+      "tile": "141,17",
+      "minRadius": 0.11116361618041992,
+      "maxRadius": 0.15364522933959962,
+      "maxRadiusRelativeToAxisEllipse": 1.0278220983424657
+    },
+    {
+      "tile": "14,18",
+      "minRadius": 0.12125329971313475,
+      "maxRadius": 0.20653295516967773,
+      "maxRadiusRelativeToAxisEllipse": 1.0695212648979493
+    },
+    {
+      "tile": "71,23",
+      "minRadius": 0.12806825637817382,
+      "maxRadius": 0.24136648178100584,
+      "maxRadiusRelativeToAxisEllipse": 1.031005671371464
+    },
+    {
+      "tile": "36,24",
+      "minRadius": 0.20313119888305664,
+      "maxRadius": 0.2348771095275879,
+      "maxRadiusRelativeToAxisEllipse": 1.0529620799047936
+    },
+    {
+      "tile": "136,68",
+      "minRadius": 0.15442743301391598,
+      "maxRadius": 0.2423438072204589,
+      "maxRadiusRelativeToAxisEllipse": 1.1026906158134213
+    },
+    {
+      "tile": "88,74",
+      "minRadius": 0.11067838668823239,
+      "maxRadius": 0.17665643692016603,
+      "maxRadiusRelativeToAxisEllipse": 1.0602609981465498
+    },
+    {
+      "tile": "84,76",
+      "minRadius": 0.19764776229858394,
+      "maxRadius": 0.24010877609252923,
+      "maxRadiusRelativeToAxisEllipse": 1.0469638684781988
+    },
+    {
+      "tile": "90,78",
+      "minRadius": 0.1714602470397949,
+      "maxRadius": 0.22989492416381835,
+      "maxRadiusRelativeToAxisEllipse": 1.0880390192724099
+    },
+    {
+      "tile": "83,81",
+      "minRadius": 0.21916723251342768,
+      "maxRadius": 0.24309225082397456,
+      "maxRadiusRelativeToAxisEllipse": 1.0145386658760798
+    },
+    {
+      "tile": "36,84",
+      "minRadius": 0.10985212326049805,
+      "maxRadius": 0.1396056175231934,
+      "maxRadiusRelativeToAxisEllipse": 1.0574017168910497
+    },
+    {
+      "tile": "70,84",
+      "minRadius": 0.1723357200622559,
+      "maxRadius": 0.22055540084838865,
+      "maxRadiusRelativeToAxisEllipse": 1.1041707369767286
+    },
+    {
+      "tile": "134,84",
+      "minRadius": 0.2242993354797363,
+      "maxRadius": 0.2442870140075683,
+      "maxRadiusRelativeToAxisEllipse": 1.0307230341734217
+    },
+    {
+      "tile": "75,85",
+      "minRadius": 0.15565767288208004,
+      "maxRadius": 0.2416668891906738,
+      "maxRadiusRelativeToAxisEllipse": 1.0811788232535364
+    },
+    {
+      "tile": "83,85",
+      "minRadius": 0.115041446685791,
+      "maxRadius": 0.19448518753051758,
+      "maxRadiusRelativeToAxisEllipse": 1.0571946174657483
+    },
+    {
+      "tile": "72,86",
+      "minRadius": 0.15808610916137694,
+      "maxRadius": 0.24065122604370115,
+      "maxRadiusRelativeToAxisEllipse": 1.0495562297481242
+    },
+    {
+      "tile": "84,88",
+      "minRadius": 0.1117077827453613,
+      "maxRadius": 0.1526942253112793,
+      "maxRadiusRelativeToAxisEllipse": 1.1146200037172458
+    },
+    {
+      "tile": "128,88",
+      "minRadius": 0.2151309013366699,
+      "maxRadius": 0.2448506355285644,
+      "maxRadiusRelativeToAxisEllipse": 1.0586922013911326
+    },
+    {
+      "tile": "123,89",
+      "minRadius": 0.21044855117797856,
+      "maxRadius": 0.24368848800659176,
+      "maxRadiusRelativeToAxisEllipse": 1.0819773565617756
+    },
+    {
+      "tile": "121,91",
+      "minRadius": 0.12007226943969723,
+      "maxRadius": 0.23666181564331057,
+      "maxRadiusRelativeToAxisEllipse": 1.0631163343033696
+    },
+    {
+      "tile": "47,101",
+      "minRadius": 0.1286616325378418,
+      "maxRadius": 0.21921472549438475,
+      "maxRadiusRelativeToAxisEllipse": 1.060258316263961
+    },
+    {
+      "tile": "37,111",
+      "minRadius": 0.11739664077758788,
+      "maxRadius": 0.17786436080932616,
+      "maxRadiusRelativeToAxisEllipse": 1.0587382373677177
+    }
+  ],
   "nativeProfileRange": 0.11979020845093569,
   "fractalDetailScales": [
     {
