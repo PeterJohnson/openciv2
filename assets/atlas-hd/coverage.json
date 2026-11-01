@@ -3362,6 +3362,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-anarchy.png",
         "backgrounds/diplomacy-anarchy-native.png"
       ],
       "evidence": [
@@ -3384,6 +3385,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-despotism.png",
         "backgrounds/diplomacy-despotism-native.png"
       ],
       "evidence": [
@@ -3406,6 +3408,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-monarchy.png",
         "backgrounds/diplomacy-monarchy-native.png"
       ],
       "evidence": [
@@ -3428,6 +3431,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-communism.png",
         "backgrounds/diplomacy-communism-native.png"
       ],
       "evidence": [
@@ -3450,6 +3454,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-fundamentalism.png",
         "backgrounds/diplomacy-fundamentalism-native.png"
       ],
       "evidence": [
@@ -3472,6 +3477,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-republic.png",
         "backgrounds/diplomacy-republic-native.png"
       ],
       "evidence": [
@@ -3494,6 +3500,7 @@
       "role": "government audience room",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/diplomacy-democracy.png",
         "backgrounds/diplomacy-democracy-native.png"
       ],
       "evidence": [
@@ -7129,6 +7136,7 @@
       "role": "spaceship assembly background",
       "representation": "new artwork",
       "replacements": [
+        "interface/native-backgrounds/spacecraft.png",
         "backgrounds/space-yard-native.png"
       ],
       "evidence": [
@@ -10494,6 +10502,7 @@
       "source": "CITY.GIF",
       "role": "city management backdrop and economy controls",
       "replacements": [
+        "interface/native-backgrounds/city.png",
         "interface/panels/frame-normal.png",
         "interface/symbols/close.png",
         "interface/symbols/plus.png",

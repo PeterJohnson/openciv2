@@ -511,3 +511,45 @@ fixtures contain no fields and need no image refresh. Results and limits are in
 [field-validation.json](review/field-validation.json); unchanged source, city
 sprites, original scenes and fixture/trace files are recorded in
 [field-preservation.json](review/field-preservation.json).
+
+## Native window background plates
+
+The city loader (`city.cpp:11921–11948`) loads a 636×421 background and scales it
+as one sprite. `CityWindow::layout_rects` (`city.cpp:15133–15148`) supplies the
+panel rectangles. The foreground renderer assumes that static subdivisions are
+already in that background. The new city plate uses these rectangles and the
+source resource-bar spans to separate the citizen strip, map, food/trade/shield
+sections, stores, unit areas, improvement list and button area.
+
+Diplomacy loads government resource `200 + government` (`diplomacy.cpp:4629–4670`).
+Its military rows occupy `(45,130+31*i,108,30)` and knowledge rows occupy
+`(485,130+31*i,108,30)`; labels use the source 58×20 rectangle beginning near
+`(531,137)`. Seven government plates place quiet pale plaques behind those fixed
+rows and frame the unchanged `(208,57,225,275)` portrait. They retain category
+icons, repeated power emblems, truncation and era-specific text colors. There are
+no baked labels, invented regiment names or new interactive controls.
+
+The spacecraft plate quiets the source title, statistics and success-message
+areas. It does not change the split-crop ship assembly. Background art cannot
+resolve overlaps between foreground parts and text; those remain an independent
+layout concern. The city and diplomacy fixes do not require such a layout change.
+
+`native-backgrounds.cjs` builds nine new SVG/PNG plates from authored vector
+geometry and the retained Atlas paintings. SVGs retain the logical size and
+PNGs use 4× raster density. `native-windows.cjs` substitutes only the first
+full-window image in replacement/native and HD-only modes. Original mode retains
+its local bindings; enhanced windows retain the existing painted backgrounds
+and their own panel composition. No game source, source trace, palette mapping,
+text metric, icon, button or hit-test geometry changes.
+
+`refresh-native-backgrounds.cjs` refreshes the ten affected renders and their
+image draw plans. `verify-native-backgrounds.cjs` compares foreground-only PNG
+hashes and normalized draw plans against pre-change commit `2cd48fe`, covering
+both densities, both city populations, diplomacy and both spacecraft states.
+It also checks source panel bounds, nine opaque plates, absence of baked text,
+and background contrast beneath city labels and all three native diplomacy
+foreground colors across seven governments. See the
+[baseline](review/native-background-baseline.json),
+[validation](review/native-background-validation.json) and
+[preservation record](review/native-background-preservation.json).
+These are bounded artwork/source checks, not whole-frame live-game parity.

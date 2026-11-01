@@ -48,7 +48,7 @@
     },
     {
       "name": "Canonical asset paths, recorded hashes and master references",
-      "count": 2233,
+      "count": 2242,
       "status": "pass"
     },
     {
@@ -58,7 +58,7 @@
     },
     {
       "name": "Inventory replacement references",
-      "count": 5173,
+      "count": 5182,
       "status": "pass"
     },
     {

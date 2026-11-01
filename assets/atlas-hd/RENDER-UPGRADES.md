@@ -14,6 +14,16 @@ image resolution and a 2× display-density backing surface improve fine detail,
 but repeated ground, coast-quarter shapes and separately overlaid road arms
 remain visible. This is the correct baseline for judging later changes.
 
+Treat background layout as an asset contract at this stage. The original city
+and diplomacy backdrops contain functional subdivisions; replacing them with a
+generic illustration loses structure even when every foreground command is
+faithful. The native previews now include new background plates aligned to the
+source rectangles, without changing dynamic content or adding a layout engine.
+Use dark city surfaces behind the existing light labels and pale diplomacy
+plaques behind its existing dark text. The spacecraft background similarly
+quiets the title/statistics areas. [Inspect the plates](review/native-backgrounds.png).
+These improvements are present in both replacement-native and HD-only views.
+
 Add an RGBA image provider beneath `Sprite::draw` and the image-loading paths in
 `src/auto/graphics.cpp`. Give each sprite a native pixel rectangle, a logical
 frame, an explicit anchor, trim bounds, color-mask channels and its density.
@@ -231,8 +241,8 @@ higher density while keeping those logical rectangles. Replace palette entry
 copying with explicit color masks. Keep static portraits as the supported
 replacement-art path; an animated herald is a separate media decision.
 
-**Additional scope:** add contrast panels behind the two side columns, a portrait
-safe area and measured, wrapping labels. Keep the portrait's existing size; make
+**Additional scope:** build on the native background's fixed contrast plaques
+with measured, wrapping labels and data-dependent panel sizing. Keep the portrait's existing size; make
 the columns fit their data rather than distorting the leader. Separate the icon
 rectangle from the label rectangle and make the whole row the hit target.
 The proposed preview demonstrates the contrast panels and wider name area.
@@ -313,8 +323,8 @@ Draw those cues after the complete portrait row so overlap does not hide them.
 The [four-era comparison](review/citizens.html) shows the distinction at native
 size and enlarged, with original artwork available locally.
 
-**Additional scope:** keep the recognizable panel arrangement and citizen art,
-but give panels shared borders, consistent text contrast and measured labels.
+**Additional scope:** retain the recognizable panel arrangement, citizen art,
+and background-provided borders/contrast; add measured labels and responsive panels.
 Offer numerical food/shield meters with a visible granary threshold instead of
 hundreds of tiny overlapping icons. Preserve exact numbers and make the original
 icon display an optional presentation mode. The prototype shows these meters

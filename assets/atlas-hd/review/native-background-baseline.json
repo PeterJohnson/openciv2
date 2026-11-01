@@ -1,0 +1,46 @@
+{
+  "baselineCommit": "2cd48fe",
+  "method": "Render native/current and HD foreground onto transparent surfaces with only the first full-window background image suppressed. Include unchanged text, fills, buttons, sprites and their order.",
+  "records": {
+    "diplomacy-1": {
+      "foregroundSHA256": "f9e4fd6620b6d3f11be3f9b43baa23387cebd1e2190b41bbb6d18ec347676dc6",
+      "logicalDrawPlanSHA256": "af64f06f2ad2090638edb5a974a27dcabd13df81aa531ecbf5dd73dbbbd0cf0b"
+    },
+    "diplomacy-2": {
+      "foregroundSHA256": "07cc07324a9258e5ad50be2f429cfcd5df2154a68f1428ac56924234f5ce397e",
+      "logicalDrawPlanSHA256": "af64f06f2ad2090638edb5a974a27dcabd13df81aa531ecbf5dd73dbbbd0cf0b"
+    },
+    "spacecraft-assembly-1": {
+      "foregroundSHA256": "df6eb4065a48971175fff500cfc7c8bacfe6b0f4dac6247d990bec4a722ea827",
+      "logicalDrawPlanSHA256": "37b8fa6d8b0de89e1287af8ba3d034ee4dfe3ee2161181670f34c856cc9a5962"
+    },
+    "spacecraft-assembly-2": {
+      "foregroundSHA256": "5ed62ae96a69b0a40b26ca23cfb8a6ad7bd48bdcad52eff35354cb4456ce4ba2",
+      "logicalDrawPlanSHA256": "37b8fa6d8b0de89e1287af8ba3d034ee4dfe3ee2161181670f34c856cc9a5962"
+    },
+    "spacecraft-complete-1": {
+      "foregroundSHA256": "f6b0666d0e033c9a44b4137da7ae3c51bf2da75c43ddc8d38c7adc58c838ab15",
+      "logicalDrawPlanSHA256": "04e471b60a3935440a2f048b235ce0ee619c359a9fb8e66b5b82bab656e6b02a"
+    },
+    "spacecraft-complete-2": {
+      "foregroundSHA256": "84d65cacc301d4143514c3c7d5d7606edd65ebe7b99a213f6bb896a341bfa716",
+      "logicalDrawPlanSHA256": "04e471b60a3935440a2f048b235ce0ee619c359a9fb8e66b5b82bab656e6b02a"
+    },
+    "city-window-1": {
+      "foregroundSHA256": "daba4c52275a0c17af6a3e00d6a7459c1f6b751b295850499cd8367bea56f3f6",
+      "logicalDrawPlanSHA256": "7e05e47859d8d76f67edc912a9c322bfc4f0158a96cc740935cd4dcd8966fea7"
+    },
+    "city-window-2": {
+      "foregroundSHA256": "456e5bc7a09cc26ecb0001ff314ec10795a0d74dad11910b3fdc9307fde993cf",
+      "logicalDrawPlanSHA256": "7e05e47859d8d76f67edc912a9c322bfc4f0158a96cc740935cd4dcd8966fea7"
+    },
+    "city-window-crowded-1": {
+      "foregroundSHA256": "10dbb27d3f60f302f368afcb0fbfc249600b93387aa097f90f9f53432421fd42",
+      "logicalDrawPlanSHA256": "6cd16e31678feff30d5404172971e2bfd748ce70ec53620e99c44a378d5672f4"
+    },
+    "city-window-crowded-2": {
+      "foregroundSHA256": "645832a9169248e8e4c480beede76154f8be2de6b540286261850053a6269680",
+      "logicalDrawPlanSHA256": "6cd16e31678feff30d5404172971e2bfd748ce70ec53620e99c44a378d5672f4"
+    }
+  }
+}

@@ -141,3 +141,16 @@ Compatibility frames resize the selected new images without recoloring them.
 saved-map scenes. Its original-art column has the same restricted reference-only
 status as `review/original-scenes/`; this comparison is outside the replacement
 asset manifest and replacement-art license.
+
+## Native window background plates
+
+The nine assets in `interface/native-backgrounds/` are authored SVG geometry
+with 4× PNG exports, built by `native-backgrounds.cjs`. City panels are new vector
+fills, thin borders and subtle woven patterns positioned from the repository's
+source layout. Diplomacy and spacecraft plates embed the existing Atlas painted
+backgrounds unchanged, then add source-aligned functional surfaces. Input hashes,
+logical rectangles and source references are in `layout.json`. No original-game
+pixels, decorative patterns or font imagery were used in these plates, and no
+new image-generation request was needed. The original-art scene references were
+inspected for functional grouping only. Enhanced variants keep their existing
+paintings and foreground composition.

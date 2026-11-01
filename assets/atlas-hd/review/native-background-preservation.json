@@ -1,0 +1,17 @@
+{
+  "status": "pass",
+  "baselineCommit": "2cd48fe",
+  "method": "SHA-256 comparison against a pre-edit snapshot, after refreshing original scenes and both review galleries",
+  "unchangedFiles": 325,
+  "categories": {
+    "gameSource": 148,
+    "originalScenes": 26,
+    "enhancedScenes": 26,
+    "retainedPaintings": 44,
+    "fixtures": 38,
+    "traces": 43,
+    "other": 0
+  },
+  "changedFiles": [],
+  "limits": "Verifies preservation of the selected game sources, original/enhanced renders, retained paintings, fixtures and traces; does not claim full game runtime qualification."
+}

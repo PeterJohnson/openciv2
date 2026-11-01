@@ -28,6 +28,16 @@ records 30. `draw_resource_map` is compiled under the standalone-only symbol
 recorded source body is unchanged. Supplied state, bitmap replay and the
 documented presentation boundaries are not included in this count.
 
+## Native background structure
+
+The native/HD replacement windows now use source-aligned background plates.
+The city plate restores static panel divisions; diplomacy's seven government
+plates put light surfaces behind its fixed dark text and icon rows. Spacecraft
+gets quiet title/statistics/status backing. Only the background image binding
+changes. Original artwork and enhanced compositions remain separate.
+[Compare background plates](review/native-backgrounds.png) ·
+[Foreground equivalence and contrast checks](review/native-background-validation.json).
+
 ## Evidence and acceptance limits
 
 The comparison references `docs/screenshots/diplomacy.png`, `city.png`,

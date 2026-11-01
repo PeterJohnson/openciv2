@@ -2,10 +2,9 @@
 // Enhanced window compositions live separately in windows.cjs.
 const C = require('./common.cjs'), Font = require('./font.cjs'), E = require('./economy.cjs');
 const Typography = require('./typography.cjs');
+const Backgrounds = require('./native-backgrounds.cjs');
 const Citizens = require('./citizens.cjs'), Knowledge = require('./knowledge.cjs'),
       Military = require('./military.cjs');
-const governments =
-    [ 'anarchy', 'despotism', 'monarchy', 'communism', 'fundamentalism', 'republic', 'democracy' ];
 const units = [ 'riflemen', 'engineers', 'cavalry' ];
 const buildings =
     [ 'palace', 'barracks', 'granary', 'temple', 'marketplace', 'library', 'courthouse', 'city-walls' ];
@@ -118,7 +117,8 @@ async function icon(p, c, original) {
 }
 
 async function city(trace, scene, p, original, resourceMap) {
-    await p.image('backgrounds/parchment-native.png', 0, 0, 636, 421, {contain : false});
+    await p.image(original ? 'backgrounds/parchment-native.png' : Backgrounds.file('city-window'), 0, 0, 636,
+                  421, {contain : false});
     for (const c of trace.commands) {
         const {x, y, width : w, height : h} = c;
         if (c.asset === 'native-text')
@@ -190,7 +190,7 @@ async function city(trace, scene, p, original, resourceMap) {
 async function diplomacy(trace, p, original) {
     const bg = trace.commands.find(c => c.asset === 'background');
     await p.image(original ? original.bindings['background/diplomacy'].file
-                           : `backgrounds/diplomacy-${governments[bg.resource - 200]}-native.png`,
+                           : Backgrounds.file('diplomacy', bg.resource - 200),
                   0, 0, 640, 480, {contain : false});
     for (const [i, c] of trace.commands.entries()) {
         if (c.asset === 'native-text')
@@ -213,8 +213,8 @@ async function diplomacy(trace, p, original) {
 }
 
 async function ship(trace, scene, p, original) {
-    await p.image(original ? original.bindings['ship-background'].file : 'backgrounds/space-yard-native.png',
-                  0, 0, 640, 480, {contain : false});
+    await p.image(original ? original.bindings['ship-background'].file : Backgrounds.file('spaceship'), 0, 0,
+                  640, 480, {contain : false});
     // render_ship copies the assembled 457x304 DIB to (175,99).
     const opStart = p.ops.length;
     const target = C.clear(457 * p.d, 304 * p.d), save = p.dst;

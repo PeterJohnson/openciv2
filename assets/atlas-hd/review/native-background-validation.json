@@ -1,0 +1,93 @@
+{
+  "status": "pass",
+  "baselineCommit": "2cd48fe",
+  "identicalForegroundRenders": 10,
+  "assetChecks": [
+    {
+      "id": "city",
+      "width": 2544,
+      "height": 1684
+    },
+    {
+      "id": "diplomacy-anarchy",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-despotism",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-monarchy",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-communism",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-fundamentalism",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-republic",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "diplomacy-democracy",
+      "width": 2560,
+      "height": 1920
+    },
+    {
+      "id": "spacecraft",
+      "width": 2560,
+      "height": 1920
+    }
+  ],
+  "readability": [
+    {
+      "scene": "city-window",
+      "labels": 24,
+      "minimumBackgroundContrast": 4.46
+    },
+    {
+      "scene": "city-window-crowded",
+      "labels": 24,
+      "minimumBackgroundContrast": 4.46
+    },
+    {
+      "scene": "diplomacy-anarchy",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-despotism",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-monarchy",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-communism",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-fundamentalism",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-republic",
+      "minimumBackgroundContrast": 6.18
+    },
+    {
+      "scene": "diplomacy-democracy",
+      "minimumBackgroundContrast": 6.18
+    }
+  ],
+  "limits": "Background contrast sampled beneath fixed source text spans. These checks do not claim live-game parity, arbitrary localization fit, or removal of foreground-on-foreground overlaps."
+}

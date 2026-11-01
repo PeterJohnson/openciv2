@@ -1,7 +1,7 @@
 {
   "diplomacy-current": [
     {
-      "file": "backgrounds/diplomacy-communism-native.png",
+      "file": "interface/native-backgrounds/diplomacy-communism.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -94,7 +94,7 @@
   ],
   "diplomacy-hd": [
     {
-      "file": "backgrounds/diplomacy-communism-native.png",
+      "file": "interface/native-backgrounds/diplomacy-communism.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -266,7 +266,7 @@
   ],
   "spacecraft-assembly-current": [
     {
-      "file": "backgrounds/space-yard-native.png",
+      "file": "interface/native-backgrounds/spacecraft.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -555,7 +555,7 @@
   ],
   "spacecraft-assembly-hd": [
     {
-      "file": "backgrounds/space-yard-native.png",
+      "file": "interface/native-backgrounds/spacecraft.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -1049,7 +1049,7 @@
   ],
   "spacecraft-complete-current": [
     {
-      "file": "backgrounds/space-yard-native.png",
+      "file": "interface/native-backgrounds/spacecraft.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -1506,7 +1506,7 @@
   ],
   "spacecraft-complete-hd": [
     {
-      "file": "backgrounds/space-yard-native.png",
+      "file": "interface/native-backgrounds/spacecraft.png",
       "x": 0,
       "y": 0,
       "width": 640,
@@ -2168,7 +2168,7 @@
   ],
   "city-window-current": [
     {
-      "file": "backgrounds/parchment-native.png",
+      "file": "interface/native-backgrounds/city.png",
       "x": 0,
       "y": 0,
       "width": 636,
@@ -4641,7 +4641,7 @@
   ],
   "city-window-hd": [
     {
-      "file": "backgrounds/parchment-native.png",
+      "file": "interface/native-backgrounds/city.png",
       "x": 0,
       "y": 0,
       "width": 636,
@@ -7900,7 +7900,7 @@
   ],
   "city-window-crowded-current": [
     {
-      "file": "backgrounds/parchment-native.png",
+      "file": "interface/native-backgrounds/city.png",
       "x": 0,
       "y": 0,
       "width": 636,
@@ -12354,7 +12354,7 @@
   ],
   "city-window-crowded-hd": [
     {
-      "file": "backgrounds/parchment-native.png",
+      "file": "interface/native-backgrounds/city.png",
       "x": 0,
       "y": 0,
       "width": 636,

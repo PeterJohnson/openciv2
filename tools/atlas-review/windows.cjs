@@ -82,6 +82,7 @@ class Painter {
 }
 
 async function windowAssets() {
+    await require('./native-backgrounds.cjs').build();
     const items = {
         'panel' : [
             256, 128,

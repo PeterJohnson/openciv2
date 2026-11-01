@@ -26,9 +26,10 @@ The graphics branch contains no game source or loader changes.
 | Painted knowledge additions | 2 | Medicine and Electricity; four other advance-specific icons reuse retained art |
 | Citizen mood/profession cues | 7 | Shape-distinct SVG/PNG badges for the enhanced city window |
 | City panorama wall assembly | 7 | Separate rear and foreground SVG/PNG curtain walls for the three city sites, plus a frontal painted gate |
+| Native window backgrounds | 9 | Source-aligned city, seven government diplomacy and spacecraft SVG/PNG plates |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,233 primary entries are indexed in [manifest.json](manifest.json).
+The 2,242 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -71,6 +72,24 @@ the close map, coast, coastal city and complete throne room, at the three replac
 stages. Building the original comparisons adds four corresponding 4K exports.
 These exports preserve aspect ratio and can resample the native art; they do not
 claim additional native 4K detail.
+
+## Native window backgrounds
+
+Replacement-native and HD-only city/diplomacy/spacecraft windows now use
+backgrounds aligned to the existing source layout. City panels separate the
+citizen strip, resource map, economy bars, storage, production, units and lists.
+Diplomacy provides light plaques behind the unchanged dark technology text and
+six military/knowledge slots. Spacecraft statistics and titles have quiet dark
+backing. These are background substitutions, not additional layout upgrades.
+
+The [nine background plates](review/native-backgrounds.png) have editable SVG
+sources and 4× PNGs in [interface/native-backgrounds](interface/native-backgrounds/).
+[Layout metadata](interface/native-backgrounds/layout.json) records source
+rectangles and input hashes. The previous painted backgrounds remain inputs and
+support the enhanced compositions; they are not competing native skins.
+No source text, controls, icons, counts or foreground positions change.
+[Validation](review/native-background-validation.json) checks ten unchanged
+foreground renders, source panel bounds and native-text contrast.
 
 ## City economy and real-save maps
 
@@ -152,9 +171,13 @@ The window executable uses the same build configurations:
 ./build/atlas-review/Release/atlas-windows.exe city-window assets/atlas-hd/review/fixtures/city-window.txt
 ```
 
+For background-only updates, run `node tools/atlas-review/refresh-native-backgrounds.cjs`,
+then `verify-native-backgrounds.cjs`, `verify.cjs`, `build-gallery.cjs` and
+`fidelity.cjs`. This refreshes only the ten native/HD window images.
+
 Run `windows.cjs` after the other image builders: it adds the five window scenes
 to the existing scene index. It also refreshes seven editable SVG/PNG window
-components, `space-layout.json`, and the recorded artwork draw plans. No dated
+components, the nine native background plates, `space-layout.json`, and the recorded artwork draw plans. No dated
 or alternate asset-pack directories are created.
 
 See [renderer boundaries](RENDERER-AUDIT.md),

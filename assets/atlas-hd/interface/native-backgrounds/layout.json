@@ -1,0 +1,883 @@
+{
+  "schemaVersion": 1,
+  "renderDensity": 4,
+  "sourceReferences": [
+    "src/auto/city.cpp:11921-11948",
+    "src/auto/city.cpp:15133-15148",
+    "src/auto/diplomacy.cpp:4629-4740",
+    "src/auto/diplomacy.cpp:4905-5010",
+    "src/auto/spaceship.cpp:541-712"
+  ],
+  "policy": "New vector panel geometry and unchanged Atlas painted backgrounds. No original-game pixels or decorative patterns used. Foreground coordinates, text colors and source commands are unchanged. No baked text.",
+  "plates": [
+    {
+      "id": "city",
+      "file": "interface/native-backgrounds/city.png",
+      "vector": "interface/native-backgrounds/city.svg",
+      "logicalSize": [
+        636,
+        421
+      ],
+      "regions": [
+        {
+          "id": "citizens",
+          "x": 0,
+          "y": 0,
+          "width": 436,
+          "height": 61
+        },
+        {
+          "id": "resource-map",
+          "x": 0,
+          "y": 61,
+          "width": 436,
+          "height": 153
+        },
+        {
+          "id": "food",
+          "x": 436,
+          "y": 0,
+          "width": 200,
+          "height": 167
+        },
+        {
+          "id": "production",
+          "x": 436,
+          "y": 167,
+          "width": 200,
+          "height": 189
+        },
+        {
+          "id": "controls",
+          "x": 436,
+          "y": 356,
+          "width": 200,
+          "height": 65
+        },
+        {
+          "id": "supported-units",
+          "x": 0,
+          "y": 212,
+          "width": 192,
+          "height": 78
+        },
+        {
+          "id": "improvements",
+          "x": 0,
+          "y": 290,
+          "width": 192,
+          "height": 131
+        },
+        {
+          "id": "information",
+          "x": 192,
+          "y": 212,
+          "width": 244,
+          "height": 209
+        }
+      ],
+      "inputs": []
+    },
+    {
+      "id": "diplomacy-anarchy",
+      "file": "interface/native-backgrounds/diplomacy-anarchy.png",
+      "vector": "interface/native-backgrounds/diplomacy-anarchy.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-anarchy-native.png",
+          "sha256": "c30b5421cf5b3d13e5db0a2a60ea93df81c70bd1b37e95bcd9270d3d5b981f60"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-despotism",
+      "file": "interface/native-backgrounds/diplomacy-despotism.png",
+      "vector": "interface/native-backgrounds/diplomacy-despotism.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-despotism-native.png",
+          "sha256": "f6e062daab40cf0835a12e4b685115db4cbad6be4127573a34475c66d80f5d0e"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-monarchy",
+      "file": "interface/native-backgrounds/diplomacy-monarchy.png",
+      "vector": "interface/native-backgrounds/diplomacy-monarchy.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-monarchy-native.png",
+          "sha256": "c8584ff5abf2d6cbd56df191c9f49ea9bc193892d222fb9d63a4d2ea394442fa"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-communism",
+      "file": "interface/native-backgrounds/diplomacy-communism.png",
+      "vector": "interface/native-backgrounds/diplomacy-communism.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-communism-native.png",
+          "sha256": "ee8c3df1dd79c52f3fbd66b05b29e29b79ab5b80a68200dc9e6618c6d03d1ee9"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-fundamentalism",
+      "file": "interface/native-backgrounds/diplomacy-fundamentalism.png",
+      "vector": "interface/native-backgrounds/diplomacy-fundamentalism.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-fundamentalism-native.png",
+          "sha256": "3b800984f3b191e93f27214f8e24a0cdeb57bf161ee59107877ee2d6ccaf50be"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-republic",
+      "file": "interface/native-backgrounds/diplomacy-republic.png",
+      "vector": "interface/native-backgrounds/diplomacy-republic.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-republic-native.png",
+          "sha256": "3aeb3f5246546e5b8b456cf50c923d00014d161f83267875d1fc5863adf8259c"
+        }
+      ]
+    },
+    {
+      "id": "diplomacy-democracy",
+      "file": "interface/native-backgrounds/diplomacy-democracy.png",
+      "vector": "interface/native-backgrounds/diplomacy-democracy.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "leader",
+          "x": 208,
+          "y": 57,
+          "width": 225,
+          "height": 275
+        },
+        {
+          "id": "military-0",
+          "x": 45,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-1",
+          "x": 45,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-2",
+          "x": 45,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-3",
+          "x": 45,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-4",
+          "x": 45,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "military-5",
+          "x": 45,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-0",
+          "x": 485,
+          "y": 130,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-1",
+          "x": 485,
+          "y": 161,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-2",
+          "x": 485,
+          "y": 192,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-3",
+          "x": 485,
+          "y": 223,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-4",
+          "x": 485,
+          "y": 254,
+          "width": 108,
+          "height": 30
+        },
+        {
+          "id": "knowledge-5",
+          "x": 485,
+          "y": 285,
+          "width": 108,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/diplomacy-democracy-native.png",
+          "sha256": "3f28a14b6b01f6d8f54711ce5c2d7be9bf025a3e6ecccea0d8113a544163ce6f"
+        }
+      ]
+    },
+    {
+      "id": "spacecraft",
+      "file": "interface/native-backgrounds/spacecraft.png",
+      "vector": "interface/native-backgrounds/spacecraft.svg",
+      "logicalSize": [
+        640,
+        480
+      ],
+      "regions": [
+        {
+          "id": "title",
+          "x": 0,
+          "y": 0,
+          "width": 640,
+          "height": 40
+        },
+        {
+          "id": "statistics",
+          "x": 10,
+          "y": 32,
+          "width": 212,
+          "height": 229
+        },
+        {
+          "id": "ship-composite",
+          "x": 175,
+          "y": 99,
+          "width": 457,
+          "height": 304
+        },
+        {
+          "id": "success",
+          "x": 0,
+          "y": 449,
+          "width": 640,
+          "height": 30
+        }
+      ],
+      "inputs": [
+        {
+          "file": "backgrounds/space-yard-native.png",
+          "sha256": "ec66f67541d40eb31bf0f0a2bc09c84026970b73fd520eb43936bfe56a5cea8b"
+        }
+      ]
+    }
+  ]
+}

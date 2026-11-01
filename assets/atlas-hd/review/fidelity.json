@@ -235,7 +235,7 @@
       "file": "tools/atlas-review/native-windows.cjs",
       "line": 1,
       "fact": "Original/replacement windows share source content geometry but select bitmap/smooth fonts explicitly; enhanced remains separate.",
-      "sha256": "1095048912f7cad4bce46c8f003e53d19941dd7bcb514462a273484e63c9f6e2"
+      "sha256": "3da3d926ba3529e608211de8e2f03e6c5e877b5fb4bc182de38fb8d7199133b3"
     },
     {
       "file": "src/auto/city.cpp",
