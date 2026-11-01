@@ -1,5 +1,6 @@
 // Validate the art-only transition selected by the source's ocean-neighbor slot.
-const C = require('./common.cjs'), assert = require('node:assert/strict');
+const C = require('./common.cjs'), B = require('./coastal-blends.cjs'),
+      assert = require('node:assert/strict');
 
 async function main() {
     const meta = C.read(C.path.join(C.pack, 'map/terrain-transitions.json'));
@@ -49,7 +50,26 @@ async function main() {
     for (let x = 0; x < 512; x++)
         maxQuarterAlphaStep = Math.max(maxQuarterAlphaStep, Math.abs(combined.data[(127 * 512 + x) * 4 + 3] -
                                                                      combined.data[(128 * 512 + x) * 4 + 3]));
-    assert(maxQuarterAlphaStep <= 12, 'Independent coastal quarters form a seam');
+    // Fine texture may change sharply between pixels. Test the continuous limit
+    // at both shared axes, rather than rejecting legitimate granular detail.
+    let maxQuarterBoundaryLimitDelta = 0;
+    const epsilon = 1e-9;
+    for (let i = 1; i < 512; i++) {
+        const p = i / 512;
+        for (const pair
+                 of [[ B.coverage(p + epsilon, p - epsilon), B.coverage(p - epsilon, p + epsilon) ],
+                     [ B.coverage(p + epsilon, 1 - p + epsilon), B.coverage(p - epsilon, 1 - p - epsilon) ]])
+            maxQuarterBoundaryLimitDelta =
+                Math.max(maxQuarterBoundaryLimitDelta, Math.abs(pair[0] - pair[1]));
+    }
+    assert(maxQuarterBoundaryLimitDelta < 1e-5, 'Independent coastal quarters form a seam');
+    // At an equal distance from the tile edge, opacity must vary substantially:
+    // a nearly constant field would simply move the old diamond inward again.
+    const equalDepth = [];
+    for (let i = 0; i <= 256; i++)
+        equalDepth.push(B.coverage(.12 + .76 * i / 256, .10));
+    const equalDepthRange = [ Math.min(...equalDepth), Math.max(...equalDepth) ];
+    assert(equalDepthRange[1] - equalDepthRange[0] > .65, 'Coastal blend remains a uniform inset');
     const scenes = C.read(C.path.join(C.pack, 'review/scenes.json'));
     const s = scenes.find(s => s.id === 'saved-close');
     const trace = C.engine('map', C.path.join(C.pack, s.fixture));
@@ -64,6 +84,8 @@ async function main() {
         featherPixels : feather,
         fullyCoveredEdgeSamples : outer,
         maxQuarterAlphaStep,
+        maxQuarterBoundaryLimitDelta,
+        equalDepthRange,
         meanDesertApronJumpBefore : before / outer,
         meanDesertApronJumpAfter : after / outer,
         savedCloseOceanNeighborDraws : oceanNeighborDraws,

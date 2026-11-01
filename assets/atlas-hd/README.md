@@ -400,8 +400,11 @@ removes transparent seams without altering the original-art replay, foreground
 sprites, logical boxes or draw commands. River-mouth bank alpha fades seaward;
 the enhanced proposal also extends river sampling into the connected ocean tile.
 
-Ocean-neighbor edge slot 12 now carries a soft, irregular grass-textured feather
-that matches the existing coastal apron. This removes the sharp sandy diamond
+Ocean-neighbor edge slot 12 mixes sand and shore texture through graded patches
+and fine clustered flecks. Four scales of warped noise vary the coverage along
+each edge, avoiding a uniform inset band; the outer join and central cactus area
+remain protected. The deterministic pattern is baked into the existing PNGs,
+so it stays fixed when panning or zooming. This breaks up the sandy diamond
 on the desert cape beside Newcastle in saved-close-hd.png. The source already
 selects this slot only beside ocean; inland desert and the protected cactus core
 are unchanged. All coastal land types use the same apron, as required by the

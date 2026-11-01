@@ -2,11 +2,16 @@
   "status": "pass",
   "coastalQuarterSprites": 4,
   "protectedCorePixels": 20448,
-  "featherPixels": 34659,
+  "featherPixels": 37160,
   "fullyCoveredEdgeSamples": 4032,
-  "maxQuarterAlphaStep": 2,
+  "maxQuarterAlphaStep": 225,
+  "maxQuarterBoundaryLimitDelta": 0.0000020875748978910202,
+  "equalDepthRange": [
+    0.07088077724618648,
+    0.9508807772461865
+  ],
   "meanDesertApronJumpBefore": 100.72594246031746,
-  "meanDesertApronJumpAfter": 0.10160772642390238,
+  "meanDesertApronJumpAfter": 0,
   "savedCloseOceanNeighborDraws": 140,
   "limits": "RGBA artwork bounds, apron color coverage and source Debug/Release trace equality. Native ocean-neighbor selection is unchanged; inland tiles receive no coastal slot. No live-game integration claim."
 }

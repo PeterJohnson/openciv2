@@ -8,25 +8,25 @@
     {
       "quadrant": 0,
       "file": "compatibility/dither/12/0.png",
-      "sha256": "11bd3fe6e128dcbefbf88a982070ae53550b764dc001212c57ca31a166a04a0a"
+      "sha256": "9395a1ab32677fe5336f4e09fac9479b33b6bdbc4ad58f3da3db72b377f597b6"
     },
     {
       "quadrant": 1,
       "file": "compatibility/dither/12/1.png",
-      "sha256": "933bbc9683f565f4fa02ff05de984f19a1e95e1af7d0719c26ff29e2b2090f9e"
+      "sha256": "333d09d29e49b8697f28420b773c17b37bc0d199cb2ef493a28d9fe437544e03"
     },
     {
       "quadrant": 2,
       "file": "compatibility/dither/12/2.png",
-      "sha256": "847596d4868a1d5f6d5bb86be685f0a8782c3976eafd96efcdf2a6bf97787f67"
+      "sha256": "256218d73fc6ef02c92eca1421af9d87c22d61210cf75d2ece5da930b08d04fe"
     },
     {
       "quadrant": 3,
       "file": "compatibility/dither/12/3.png",
-      "sha256": "a7b0ab3e40adcddd7b02e50194f8f47f4226d6ed602664ad955188a021ab4b20"
+      "sha256": "b649379e90ac858a4331bee84dedb06e17ae0d0d8b725166c7aadd3fe76fde1a"
     }
   ],
-  "coastalNative": "Ocean-neighbor slot 12 softly joins the existing grassy shore apron; unchanged source selection, opaque ground and protected centers.",
+  "coastalNative": "Ocean-neighbor slot 12 joins the shared shore apron with graded multiscale patches and fine clustered flecks; unchanged source selection, opaque ground and protected centers.",
   "entries": [
     {
       "terrain": "desert",

@@ -110,7 +110,7 @@ async function build() {
         unchanged : 'Ground PNGs, coast geometry, foreground art, draw order and native zoom cutoffs.',
         coastal,
         coastalNative :
-            'Ocean-neighbor slot 12 softly joins the existing grassy shore apron; unchanged source selection, opaque ground and protected centers.',
+            'Ocean-neighbor slot 12 joins the shared shore apron with graded multiscale patches and fine clustered flecks; unchanged source selection, opaque ground and protected centers.',
         entries
     });
     console.log('Built 40 land-transition and 4 coastal-transition quarter PNGs');

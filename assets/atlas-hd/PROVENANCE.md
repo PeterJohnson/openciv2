@@ -219,4 +219,6 @@ review-only original-art allowance as the other comparison plates.
 
 The four ocean-neighbor coastal feathers are procedurally authored by
 `tools/atlas-review/coastal-blends.cjs` from the existing replacement grass
-material and periodic noise. No original sprite pixels are used.
+material, four scales of warped periodic noise and two finer clustered-noise
+fields. The pattern is deterministic and baked into the PNGs. No original
+sprite pixels are used.

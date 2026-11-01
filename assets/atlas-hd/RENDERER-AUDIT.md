@@ -381,7 +381,11 @@ not paint a disconnected land wedge inside ocean. Native dither slot 12 is an
 authored grass-textured coastal feather, replacing the former transparent slot.
 It shares the coast quarter texture phase and protects the central material and
 cacti. Its full boundary coverage removes the sandy diamond at Newcastle;
-adjoining coastal quarters meet without an artificial tip fade. Slot 11
+adjoining coastal quarters meet without an artificial tip fade. Graded patches
+and fine clustered flecks replace a nearly constant-width fade; four warped
+noise scales vary coverage along an equal-depth contour. Validation checks
+that this contour contains both exposed sand and grassy coverage, plus the
+continuous limits across the shared quarter axes. Slot 11
 uses dark fog colors. These choices affect art, not tile classification.
 
 Resource PNGs now use centered trim bounds in a 512x256 frame. Native review
