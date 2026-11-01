@@ -391,6 +391,17 @@ fades at concave joins to prevent isolated water specks. Forest and field tips
 remain on land. The enhanced sampler leaves the macro contour unchanged at
 32 projected pixels and below, fades detail in above that, and suppresses
 subpixel octaves. Native/HD use the filtered PNG bank.
+The shore now separates deep water, a wider green-blue shelf with submerged
+sand patches, and a visible pale sand/rock beach before the land texture.
+Only the seaward shading band expands; occupied land footprints stay protected.
+The submerged shelf uses a wider, symmetric smoothing radius whose support
+fades before unavailable neighbors can affect a quarter. This rounds the deep
+water at cove tips while preserving the validated dry-land outline and its
+small-scale detail. The native and HD
+stages bake this into the same 32 coast-quarter PNGs; the enhanced sampler
+uses the same art treatment in world coordinates. River interiors retain their
+existing colors, with the coastal treatment taking over at mouths.
+
 Native contour variation joins periodically across tiles. The enhanced proposal
 varies it over the world, with an exact repeat at the wrapped map boundary. The previous water overhang has been removed; all
 quarter pixels stay within their existing 32×16 logical diamonds. Quarter and

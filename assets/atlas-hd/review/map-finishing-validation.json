@@ -1,14 +1,36 @@
 {
   "status": "pass",
   "coastQuarters": 32,
+  "shoreBandMeanRGB": {
+    "deep": [
+      24.4375,
+      80.6875,
+      101
+    ],
+    "shallow": [
+      72.4375,
+      126.25,
+      121.6875
+    ],
+    "beach": [
+      181.25,
+      160,
+      114.0625
+    ],
+    "land": [
+      98.5,
+      104.25,
+      38.3125
+    ]
+  },
   "coastlineChecks": "coast-audit-validation.json",
   "newcastle": [
     {
       "stage": "current",
       "protectedTipRGB": [
-        222,
-        161,
-        86
+        112,
+        108,
+        39
       ],
       "inlandRGB": [
         207,
@@ -24,9 +46,9 @@
     {
       "stage": "hd",
       "protectedTipRGB": [
-        210,
-        150,
-        73
+        84,
+        87,
+        27
       ],
       "inlandRGB": [
         235,

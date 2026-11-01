@@ -68,11 +68,12 @@ async function main() {
             detail :
                 'added after macro shaping; bounded reflection retains relief; compact intersection taper protects water connectivity',
             contour :
-                'minimum rounded radius protects land corners; broader smooth inward joins soften lakes; radial relief retains connected land and ocean access',
+                'protected land corners and unchanged dry-land contour; compact symmetric shelf joins round deep-water cove tips without changing connectivity',
             detailFiltering :
                 'native PNG resampling; enhanced detail fades in above 32 projected pixels; a conservative per-octave cutoff accounts for isometric foreshortening',
             cornerIdentity : 'pure land/water preserved',
-            beach : 'patchy exposed sand/rock, broad shallows and intermittent subdued foam',
+            beach :
+                'visible sand/rock beach, wider green-blue seaward shelf, patchy submerged sand and subdued foam',
             nativeCorners :
                 'Smoothly protected forest/field footprint inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 softly blends land into the existing grassy apron'
         },

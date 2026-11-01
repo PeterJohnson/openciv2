@@ -217,6 +217,11 @@ forest bindings. The original conifer-slot observation changes no source logic.
 review/terrain-vegetation.png contains only composed scene crops under the same
 review-only original-art allowance as the other comparison plates.
 
+The coast-quarter and canonical coast banks use authored sand, stone and ocean
+materials for the wider beach and shallow-water shelf. Cove rounding and shoal
+variation are procedural, shared with the separate enhanced preview. No original
+shoreline pixels or contours are used.
+
 The four ocean-neighbor coastal feathers are procedurally authored by
 `tools/atlas-review/coastal-blends.cjs` from the existing replacement grass
 material, four scales of warped periodic noise and two finer clustered-noise

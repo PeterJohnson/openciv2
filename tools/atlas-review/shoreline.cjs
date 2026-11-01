@@ -115,7 +115,22 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
         const support = smooth(clamp((.12 - d) / .06));
         distance = Math.min(distance, d) - h * h * .14 * .25 * support;
     }
-    return clamp((.055 - distance) / .11);
+    // Round the deeper-water ends of coves with a submerged shelf. Keep the
+    // validated dry-land zero contour: widening the land union can pinch off
+    // tiny lake pockets or introduce detached pixels at extreme noise phases.
+    if (distance > 0) {
+        let rounded = ds[0];
+        for (const d of ds.slice(1)) {
+            const support = smooth(clamp((.12 - rounded) / .06)) * smooth(clamp((.12 - d) / .06));
+            const blend = .28 * support;
+            const h = blend ? Math.max(blend - Math.abs(rounded - d), 0) / blend : 0;
+            rounded = Math.min(rounded, d) - h * h * blend * .25;
+        }
+        // Positive scaling preserves the land/water sign, with a smooth,
+        // broader depth gradient where two shelf lobes meet.
+        distance *= Math.exp(-Math.max(0, distance - rounded) / .045);
+    }
+    return clamp(.5 - distance / (distance < 0 ? .11 : .23));
 }
 
 function corners(u, v, values, wrapWidth = 0, pixels = Infinity) {

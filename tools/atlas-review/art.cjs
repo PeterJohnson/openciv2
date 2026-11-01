@@ -178,14 +178,22 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options 
     const rocky = shore === 'cliff' ? 1 : smooth(.42, .72, geology);
     const sand = texture('sand', u, v, lod), stone = texture('stone', u, v, lod);
     let water = waterSample();
-    const shallows = smooth(.04, .44, a) * (1 - smooth(.48, .65, a));
-    water = mix(water, [ 65, 115, 113 ], shallows * (.24 + .36 * detail));
+    const sea = 1 - inlandRiver;
+    const shallows = smooth(.04 - .035 * sea, .44, a) * (1 - smooth(.48, .65, a));
+    const shelf = smooth(.005, .42, a) ** .55 * (1 - smooth(.48, .65, a));
+    water = mix(water, mix([ 65, 115, 113 ], [ 88, 145, 132 ], sea),
+                (shallows * (1 - sea) + shelf * sea) * (.24 + .36 * detail + .45 * sea));
+    // Uneven submerged sand pockets soften the deep-water/shore transition.
+    const shoals =
+        smooth(.10, .37, a) * (1 - smooth(.43, .62, a)) * smooth(.34, .76, detailNoise(7, 83.1, -23.7)) * sea;
+    water = mix(water, [ 128, 151, 123 ], shoals * .38);
     let bank = mix(mix(sand, [ 152, 133, 94 ], .28), mix(stone, [ 80, 91, 86 ], .25), rocky);
     bank = mix(bank, mix(color, [ 65, 86, 52 ], .3), inlandRiver * smooth(.28, .75, detail) * .80);
     const exposure = smooth(.24, .74, detailNoise(7, 19.4, -3.7));
-    bank = mix(color, bank, .22 + .78 * exposure);
-    const land = mix(bank, color, smooth(.40 + .10 * (1 - exposure), .68 + .12 * exposure, a));
-    let result = mix(water, land, smooth(.43, .58, a));
+    bank = mix(color, bank, .22 + .48 * sea + (.78 - .48 * sea) * exposure);
+    const land =
+        mix(bank, color, smooth(.40 + .10 * (1 - exposure) + .20 * sea, .68 + .12 * exposure + .13 * sea, a));
+    let result = mix(water, land, smooth(.43 - .04 * sea, .58 + .03 * sea, a));
     const foam =
         (1 - smooth(.025, .11, Math.abs(a - .47))) * smooth(.59, .80, detail) * .22 * (1 - inlandRiver);
     result = mix(result, [ 205, 218, 199 ], foam);

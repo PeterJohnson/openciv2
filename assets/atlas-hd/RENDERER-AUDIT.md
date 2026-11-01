@@ -337,8 +337,16 @@ available to each coast quarter. The 32×16 logical boxes and all source-selecte
 masks remain unchanged; the earlier water overhang is removed. Rounded distance
 lobes replace the rounded-square contour. Their minimum radius protects
 forest/field tips without adding a square envelope back into the contour;
-broader smooth inward joins soften enclosed lakes. Join contributions fade before
-distant centers unavailable to a neighboring cell or quarter can affect the edge.
+broader smooth inward joins soften enclosed lakes. The compact support now
+scales a symmetric 0.28-unit smoothing radius for submerged shelf lobes.
+A positive depth remapping applies its effect only on the water side, leaving
+the validated dry-land zero contour and fine-detail taper unchanged. This
+preserves lake and channel connectivity. Support reaches zero at distance 0.12,
+before unavailable neighbors can affect the quarter. The ordinary water-side
+shading band extends 0.115 tile units, with broader shallows at cove joins;
+the land-side band remains 0.055. A stronger depth gradient, patchy shoals and
+more visible sand/rock exposure separate ocean and land without changing tile
+classification, source commands or foreground placement.
 The retained macro contour is augmented by an independent six-octave fractional
 Brownian detail layer after its tanh shaping, so macro saturation does not
 flatten the fine contours. Periodic low-frequency domain warping breaks up

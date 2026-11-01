@@ -7,6 +7,22 @@ async function main() {
             const im = await C.raw(C.path.join(C.pack, `compatibility/coast/${q}/${mask}.png`));
             assert.deepEqual([ im.width, im.height ], [ 256, 128 ]);
         }
+    // Sample the authored sea-to-land ramp across varied texture phases. This
+    // guards against shallows/beaches becoming indistinguishable from deep water.
+    await C.art.loadMaterials(C.path.join(C.pack, 'map'));
+    const corners = Array.from({length : 4}, () => ({land : 1, material : 'grassland'}));
+    const shoreBands = {deep : [], shallow : [], beach : [], land : []};
+    for (let i = 0; i < 16; i++) {
+        const u = (i + .37) / 4, v = (i * 3 + .63) / 7;
+        for (const [name, field] of [[ 'deep', 0 ], [ 'shallow', .25 ], [ 'beach', .65 ], [ 'land', 1 ]])
+            shoreBands[name].push(C.art.surface(u, v, corners, 'sand', [], 128, {field, periodic : true}));
+    }
+    const shoreBandMeanRGB = Object.fromEntries(
+        Object.entries(shoreBands)
+            .map(([ name, values ]) => [name, [ 0, 1, 2 ].map(k => values.reduce((n, rgb) => n + rgb[k], 0) /
+                                                                   values.length)]));
+    assert(shoreBandMeanRGB.shallow[1] > shoreBandMeanRGB.deep[1] + 15, 'Shallow water is not visible');
+    assert(shoreBandMeanRGB.beach[0] > shoreBandMeanRGB.deep[0] + 35, 'Beach exposure is not visible');
     const samples = [];
     for (const [stage, d] of [[ 'current', 1 ], [ 'hd', 2 ]]) {
         const im = await C.raw(C.path.join(C.pack, `review/images/saved-close-${stage}.png`));
@@ -48,6 +64,7 @@ async function main() {
     C.json(C.path.join(C.pack, 'review/map-finishing-validation.json'), {
         status : 'pass',
         coastQuarters : 32,
+        shoreBandMeanRGB,
         coastlineChecks : "coast-audit-validation.json",
         newcastle : samples,
         terrainMarker : {

@@ -482,7 +482,13 @@ The saved-map survey uses rounded distance lobes with broad irregular coves and
 headlands. Adding fine noise to rounded squares left the tile grid too visible;
 the underlying contour therefore changes as well. A minimum rounded radius
 protects occupied tile tips without reinstating square corners. Broader smooth
-inward joins soften enclosed lakes. Keep vegetation and field footprints inside a
+inward joins soften enclosed lakes. Use a symmetric smoothing radius with
+compact support for shallow-water shelf depths, preserving the validated
+dry-land outline through a positive depth remapping. Keep water depth/color
+transitions wider on the seaward side,
+with visible but uneven beach and shoal deposits. The native/HD quarter artwork
+already demonstrates this treatment without changing source draw rules.
+Keep vegetation and field footprints inside a
 narrow land apron, join inward corners smoothly, preserve single-cell lakes and
 land centers, and sample
 river mouths through the coastal apron. Use the same shore field for terrain,
