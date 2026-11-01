@@ -504,14 +504,14 @@
     {
       "scene": "saved-close",
       "stage": "current",
-      "visibleFieldPixels": 482,
+      "visibleFieldPixels": 481,
       "fractionOfTile": 0.059
     },
     {
       "scene": "saved-close",
       "stage": "hd",
-      "visibleFieldPixels": 2091,
-      "fractionOfTile": 0.064
+      "visibleFieldPixels": 2065,
+      "fractionOfTile": 0.063
     },
     {
       "scene": "saved-close",
@@ -522,19 +522,19 @@
     {
       "scene": "saved-region",
       "stage": "current",
-      "visibleFieldPixels": 106,
-      "fractionOfTile": 0.052
+      "visibleFieldPixels": 104,
+      "fractionOfTile": 0.051
     },
     {
       "scene": "saved-region",
       "stage": "hd",
-      "visibleFieldPixels": 452,
-      "fractionOfTile": 0.055
+      "visibleFieldPixels": 442,
+      "fractionOfTile": 0.054
     },
     {
       "scene": "saved-region",
       "stage": "proposed",
-      "visibleFieldPixels": 363,
+      "visibleFieldPixels": 360,
       "fractionOfTile": 0.044
     }
   ],

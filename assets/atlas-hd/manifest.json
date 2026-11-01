@@ -28440,7 +28440,7 @@
       "file": "map/ground/forest.png",
       "width": 512,
       "height": 256,
-      "sha256": "7bd81f1d6d8827c7a9cbaea9e1856dc832172f63abaf420b5ca438e21248bd7b",
+      "sha256": "43310eba128cde5421ecb514434abd65f1167fbc5c28cb8f4f3589cffc7196cf",
       "anchor": [
         256,
         128
@@ -28452,13 +28452,14 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.forest",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Grass and undergrowth edge with mottled leaf litter concentrated beneath trees; opaque tile coverage retained."
     },
     {
       "file": "map/ground/forest-10.png",
       "width": 512,
       "height": 256,
-      "sha256": "4b718af20e32c64452717d581dc5f07c545d016c460beae1bb1672c2e793839e",
+      "sha256": "6440a31319eed974e5c99d175403c201aa4daab2fa0c1c538774989b2af2ee84",
       "anchor": [
         256,
         128
@@ -28470,13 +28471,14 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.forest-10",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Grass and undergrowth edge with mottled leaf litter concentrated beneath trees; opaque tile coverage retained."
     },
     {
       "file": "map/ground/forest-01.png",
       "width": 512,
       "height": 256,
-      "sha256": "83a407cca255ad1fcf352791f2cf6b051c6a48da4facbf37ace62d0f6c4f510b",
+      "sha256": "2aecd144979162869996414cba0dc0413ec7a5a937a8324c120e7f1e75aeecb7",
       "anchor": [
         256,
         128
@@ -28488,13 +28490,14 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.forest-01",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Grass and undergrowth edge with mottled leaf litter concentrated beneath trees; opaque tile coverage retained."
     },
     {
       "file": "map/ground/forest-11.png",
       "width": 512,
       "height": 256,
-      "sha256": "6a9dacb5bcadc28a779f875247fb580c532575be4c81e204ce87fc8edb5da4b5",
+      "sha256": "cd5d2ebca40e8526771007f00d7abdc6c15757ae4d9f5d17e96c978141c7bfbd",
       "anchor": [
         256,
         128
@@ -28506,7 +28509,8 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.forest-11",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Grass and undergrowth edge with mottled leaf litter concentrated beneath trees; opaque tile coverage retained."
     },
     {
       "file": "map/ground/hills.png",

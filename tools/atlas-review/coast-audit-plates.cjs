@@ -30,13 +30,23 @@ async function build(report) {
         C.write(C.path.join(C.pack, `review/coast-${board}.png`), await C.png(image));
     }
     await contourDetails(report, stages);
+    await contourDetails(report, stages,
+                         [
+                             [ 'islands', 'Forest edge meeting grassland and coast', 61, 99 ],
+                             [ 'forest', 'Woodland beside cultivated land', 16, 13 ],
+                             [ 'mouth', 'Wooded river mouth', 139, 13 ]
+                         ],
+                         'forest-borders');
 }
 
-async function contourDetails(report, stages) {
-    const rows = [
-        [ 'newcastle', 'Desert and cultivated coast', 129, 74 ], [ 'islands', 'Forested island', 61, 99 ],
-        [ 'mouth', 'River mouth', 139, 13 ]
-    ];
+async function contourDetails(report, stages,
+                              rows =
+                                  [
+                                      [ 'newcastle', 'Desert and cultivated coast', 129, 74 ],
+                                      [ 'islands', 'Forested island', 61, 99 ],
+                                      [ 'mouth', 'River mouth', 139, 13 ]
+                                  ],
+                              output = 'coast-contours') {
     const image = C.clear(2048, 960, [ 23, 35, 34, 255 ]);
     for (const [row, [ id, title, x, y ]] of rows.entries()) {
         const scene = report.scenes.find(s => s.id === id + '-128');
@@ -64,7 +74,7 @@ async function contourDetails(report, stages) {
             C.blit(image, await C.raw(png), col * 512, row * 320 + 64);
         }
     }
-    C.write(C.path.join(C.pack, 'review/coast-contours.png'), await C.png(image));
+    C.write(C.path.join(C.pack, 'review', output + '.png'), await C.png(image));
 }
 
 module.exports = {build};

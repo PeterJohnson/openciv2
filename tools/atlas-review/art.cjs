@@ -114,6 +114,16 @@ function periodicTex(name, u, v, lod) {
                mix(sample(name, x, y - 1, lod), sample(name, x - 1, y - 1, lod), a), b);
 }
 
+// Forest floor shares the surrounding grass palette. Leaf litter gathers beneath
+// the trees instead of forming a dark, opaque diamond around their silhouette.
+function woodlandFloor(u, v, lod = 256, {periodic = false, edge = null} = {}) {
+    const texture = periodic ? periodicTex : tex;
+    const flecks = noise(u * 9.3 + 17, v * 9.3 - 11);
+    const clearing = edge === null ? 1 : smooth(.025, .22, edge + (flecks - .5) * .055);
+    const litter = (.24 + .20 * flecks) * clearing;
+    return mix(texture('grassland', u, v, lod), texture('forest', u, v, lod), litter);
+}
+
 function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options = {}) {
     const texture = options.periodic ? periodicTex : tex;
     const fu = fract(u), fv = fract(v),
@@ -124,7 +134,9 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options 
     for (let i = 0; i < 4; i++) {
         if (!corners[i].land)
             continue;
-        const c = texture(corners[i].material || 'grassland', u, v, lod), w = weights[i];
+        const material = corners[i].material || 'grassland';
+        const c = material === 'forest' ? woodlandFloor(u, v, lod, options) : texture(material, u, v, lod),
+              w = weights[i];
         landWeight += w;
         for (let k = 0; k < 3; k++)
             color[k] += c[k] * w;
@@ -453,6 +465,7 @@ module.exports = {
     svg,
     stroke,
     loadMaterials,
+    woodlandFloor,
     ground,
     surface,
     infrastructure,

@@ -123,6 +123,13 @@ retains the native rule that carries neighboring fields beneath a city.
 The comparison contains only crops of the permitted composed original-art scene;
 its original-art column is excluded from the replacement pack's license.
 
+Forest ground blends grass and undergrowth around the unchanged tree clusters.
+Mottled leaf litter sits beneath the trees; the native tile perimeter retains
+opaque coverage and uses the grass palette to avoid dark diamond borders.
+The enhanced renderer blends the same materials through its existing world-space
+terrain pass. [Compare forest borders in all four stages](review/forest-borders.png).
+Tree sprites, terrain selection, neighbor dither selection and drawing order are unchanged.
+
 ## Rebuild
 
 The standalone renderer requires Windows, MSVC x86 C++ build tools, a Windows
@@ -155,6 +162,12 @@ them and their retained masters instead of making a new image-generation request
 After field-art edits, run `fields-review.cjs`, `verify-fields.cjs` and
 `build-gallery.cjs` in `tools/atlas-review/`. The field review refreshes the five
 affected maps and the Carlisle/Gloucester comparison without changing fixtures.
+
+After forest-floor edits, run `forest-floor.cjs`, `refresh-map-finishing.cjs`,
+`coast-audit.cjs --skip-original`, `fields-review.cjs --review-only` and
+`refresh-unit-banners.cjs --review-only`. Then run `verify.cjs`,
+`verify-map-style.cjs`, `verify-coast-audit.cjs` and `build-gallery.cjs`.
+The full review builder also regenerates the forest ground before its bindings.
 
 The native executable can also emit an individual command trace:
 

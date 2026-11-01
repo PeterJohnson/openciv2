@@ -138,7 +138,8 @@ async function main() {
     const html = C.fs.readFileSync(C.path.join(C.pack, 'review/coast-audit.html'), 'utf8');
     for (const match of html.matchAll(/<script>([\s\S]*?)<\/script>/g))
         new Function(match[1]);
-    for (const file of ['coast-islands-lakes.png', 'coast-forest-mouths.png'])
+    for (const file of ['coast-islands-lakes.png', 'coast-forest-mouths.png', 'coast-contours.png',
+                        'forest-borders.png'])
         assert(C.fs.existsSync(C.path.join(C.pack, 'review', file)));
     const results = {
         status : 'pass',

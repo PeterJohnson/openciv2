@@ -165,7 +165,14 @@ The full saved-world coastline survey reuses the existing authored terrain
 textures. `shoreline.cjs` and `map-finishing.cjs` author fuller rounded land
 footprints with layered authored value-noise contours, periodic native texture
 sampling and river-mouth alpha falloff;
-they do not trace original art. Existing forest and field images are unchanged.
+they do not trace original art. Existing painted tree and field sprites are unchanged.
 Only composed original-art scenes appear in `review/original-scenes/coast-audit/`,
 under the same review-only allowance as the other original mockups. These are
 not replacement sprites or runtime game screenshots.
+
+Forest-floor blending reuses the retained authored grassland and forest material
+textures. `forest-floor.cjs` generates the native opaque ground diamonds and
+four dither adapters; `art.cjs` uses the same grassy undergrowth and mottled leaf
+litter for enhanced terrain. No original pixels are used, and the painted tree
+sprites are unchanged. `review/forest-borders.png` contains only composed
+four-stage scene crops, under the existing original-art review allowance.

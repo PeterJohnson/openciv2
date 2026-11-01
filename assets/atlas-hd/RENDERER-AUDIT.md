@@ -589,3 +589,15 @@ foreground colors across seven governments. See the
 [validation](review/native-background-validation.json) and
 [preservation record](review/native-background-preservation.json).
 These are bounded artwork/source checks, not whole-frame live-game parity.
+
+### Forest ground edges
+
+The native forest-floor update changes the forest ground PNGs and derived
+`terrain/3` and `dither/3/*` bindings. The renderer still executes
+`MapView::draw_tile_land` in this checkout (`src/auto/mapview.cpp:1549`):
+base terrain, neighbor dither quarters, then the source-selected forest sprite.
+The new artwork keeps the full opaque land diamond, blends its perimeter into
+grass and reduces the contrast of leaf litter beneath the tree cluster.
+Native neighbor selection, dither alpha, zoom gates and sprite boxes are unchanged.
+The enhanced pass uses the mixed forest material within its existing continuous
+ground sampler. No game source or production drawing behavior is modified.
