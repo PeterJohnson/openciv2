@@ -1,0 +1,50 @@
+{
+  "status": "pass",
+  "coastQuarters": 32,
+  "quartersWithConnectedOverhang": 28,
+  "connectedWaterPixels": 171345,
+  "newcastle": [
+    {
+      "stage": "current",
+      "roundedTipRGB": [
+        19,
+        73,
+        92
+      ],
+      "inlandRGB": [
+        204,
+        151,
+        83
+      ]
+    },
+    {
+      "stage": "hd",
+      "roundedTipRGB": [
+        15,
+        69,
+        86
+      ],
+      "inlandRGB": [
+        233,
+        177,
+        97
+      ]
+    }
+  ],
+  "terrainMarker": {
+    "opaquePixels": 4751,
+    "bounds": [
+      222,
+      85,
+      69,
+      87
+    ],
+    "meanRGB": [
+      125,
+      128,
+      92
+    ],
+    "cityProductionSha256": "4bc5f4d7cb1347aca8a42f999f605e21cc7bf54a7fb4561d562ff2cfffdda260"
+  },
+  "limits": "Art topology and rendered native/HD Newcastle samples; source draw commands and logical boxes are unchanged. Existing engine checks cover source mask dispatch. Enhanced shoreline geometry remains its separate proposal."
+}

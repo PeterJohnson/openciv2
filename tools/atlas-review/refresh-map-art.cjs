@@ -49,7 +49,9 @@ async function main() {
         coast : {
             sampling : 'smooth land weights; fixed world-space erosion at three scales',
             cornerIdentity : 'pure land/water preserved',
-            beach : 'variable narrow sand/rock edge; broken subdued foam'
+            beach : 'variable narrow sand/rock edge; broken subdued foam',
+            nativeCorners :
+                'Mask-specific curved water overhang within unchanged quarter bounds; diamond interiors retained; dither 12 stays blank'
         },
         road : {
             color : 'warm ochre',
@@ -67,7 +69,17 @@ async function main() {
             banks : 'variable width, broken gravel and vegetation, textured green-blue water',
             proposed : 'world-space width variation and shoreline water blending'
         },
-        resources : {frame : [ 512, 256 ], anchor : [ 256, 128 ], oceanFill : .72, landFill : .58},
+        resources : {
+            frame : [ 512, 256 ],
+            anchor : [ 256, 128 ],
+            oceanFill : .72,
+            landFill : .58,
+            terrainProduction : {
+                file : 'map/markers/grassland-production.png',
+                fill : .34,
+                palette : 'muted olive/bronze; city production remains blue'
+            }
+        },
         badges : {
             nativeFrame : [ 12, 20 ],
             proposedScale : 1.35,

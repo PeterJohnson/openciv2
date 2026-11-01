@@ -393,7 +393,12 @@ logic. The replacement native and HD-only stages now share winding ochre roads,
 straight cool-gray rails with distinct sleepers, centered resource frames,
 contrasting faction/health colors, a full shield silhouette and corrected coast
 mask/dither artwork. These are art/binding changes under the existing native
-sprite selection and logical dimensions. Shared network endpoints must remain
+sprite selection and logical dimensions. Native coast-quarter alpha can extend
+into the unused corners of the existing sprite box to soften exposed land tips;
+use mask-specific coverage so small lakes and joins stay intact. Terrain yield
+markers should be smaller and lower contrast than unit tags; the map uses an
+olive/bronze production shield while city economy symbols remain blue.
+Shared network endpoints must remain
 identical for all connection masks; a changed junction must not move its arms.
 Banner faces stay flat, with darker rear shields identifying stacks. Use the
 source-supported per-unit shield anchors to clear the replacement silhouettes: the

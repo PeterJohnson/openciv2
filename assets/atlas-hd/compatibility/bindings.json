@@ -1994,7 +1994,7 @@
       "file": "compatibility/resource/shield.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "interface/economy/production.png"
+      "source": "map/markers/grassland-production.png"
     },
     "fog/full": {
       "file": "compatibility/fog/full.png",

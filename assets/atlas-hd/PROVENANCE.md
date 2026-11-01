@@ -86,6 +86,9 @@ original-game screen captures.
 
 The revised coast and road/rail banks are generated from the existing authored
 material textures and procedural geometry in `tools/atlas-review/art.cjs`.
+The coast corner extension is authored geometry in `map-finishing.cjs`, using
+the retained ocean texture. The muted map production symbol derives from the
+project's own authored production SVG, with a separate color palette and size.
 The original-art previews were inspected for readability and composition; no
 original pixels, shapes or textures were traced, sampled or incorporated into
 the replacement library. Resource changes center the retained generated sprites.

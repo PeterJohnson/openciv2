@@ -274,7 +274,8 @@ against those source formulas over all 9,000 cells in Debug and Release. The
 adapter supplies validated stack links, tile owners, civ advances, city
 improvements and unit stats; source selection chooses city size/style/walls,
 top unit, health and stack badges. Proposal ground lookups wrap horizontally. The grassland production overlay
-uses the same shield silhouette; detailed proposed maps retain those markers
+uses a smaller olive/bronze shield derived from the same silhouette, independently
+of the blue city economy symbol; detailed proposed maps retain those markers
 and source-selected huts.
 The coin is a raster-art replacement within the existing native 14-pixel boxes;
 HD-only changes image density, while tax and improvement-list semantics stay the same.
@@ -330,6 +331,22 @@ path is checked by `original.cjs`; `verify.cjs` separately checks the replacemen
 path and unchanged native source bodies.
 
 ## Map readability adapter changes
+
+`map-finishing.cjs` preserves the selected coast quarter's diamond interior and
+adds curved water coverage only in the previously transparent corners of the same
+32×16 logical box. The coverage decays inland and samples the ocean texture at
+unclamped coordinates, avoiding stretched edge texels. This rounds the exposed
+desert tip near Newcastle without a blanket water stamp on land. Dither slot 12
+stays transparent; source selection, draw order and zoom cutoffs do not change.
+The enhanced coast remains the existing world-space proposal.
+
+The terrain-only production marker has an approximately 11-pixel native visible
+height (previously 14), olive/bronze colors and a quieter outline. The native
+64×32 frame, centered anchor, resource presence and selection are unchanged.
+City stockpiles and worked-tile yield icons retain their blue production artwork.
+See [four-stage details](review/map-finishing.png) and
+[coverage/visibility checks](review/map-finishing-validation.json).
+
 
 The source renderer bodies remain unchanged. Coast quarters still use the
 NE-first native neighbor masks. The authored bank distinguishes the outer

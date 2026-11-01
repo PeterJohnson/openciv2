@@ -53133,6 +53133,19 @@
       "height": 1920,
       "sha256": "b20158fc4d95c1bbff91f3223be98e60d88e3ba4d39c3f1ed406469999b431e8",
       "sourceSha256": "66f5eb0b07fd91969298d0caf466503a5fda17e49489ebad09b197ba8c3cf4f3"
+    },
+    {
+      "id": "map.markers.grassland-production",
+      "label": "Grassland production marker",
+      "kind": "map",
+      "category": "map / markers",
+      "file": "map/markers/grassland-production.png",
+      "vector": "map/markers/grassland-production.svg",
+      "description": "Muted olive and bronze terrain shield; reduced on-map footprint. City economy symbols remain blue.",
+      "width": 256,
+      "height": 256,
+      "sha256": "8d218223ca8979646c489973f5667dc96526191c4660b5b7a0105763894959dc",
+      "sourceSha256": "ee4a627eaf40c039a98f129e9b170dea8c371fba8229bec9fec43e18707057bc"
     }
   ]
 }

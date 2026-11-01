@@ -1,5 +1,6 @@
 // PNG bindings for the extracted renderer. These are explicit review adapters, not runtime loaders.
 const C = require('./common.cjs');
+const Finishing = require('./map-finishing.cjs');
 const {fs, path, pack, art, sharp, svg, asset, entries, raw, clear, blit, png, fit} = C;
 const bank = new Map();
 const bindingIndex = {};
@@ -71,29 +72,14 @@ async function fieldBitmap(name) {
 }
 
 async function buildBindings(traces) {
+    await Finishing.buildMarker();
     await art.loadMaterials(path.join(pack, 'map'));
     for (let t = 0; t < 11; t++)
         await save(`terrain/${t}`,
                    fs.readFileSync(path.join(pack, 'map/ground', C.terrainNames[t] + '.png')));
     for (let q = 0; q < 4; q++)
-        for (let mask = 0; mask < 8; mask++) {
-            const vals = [ 0, 0, 0, 0 ];
-            vals[q] = (mask & 2) && (mask & 5) ? 1 : 0;
-            vals[(q + 1) % 4] = mask & 4 ? 1 : 0;
-            vals[(q + 3) % 4] = mask & 1 ? 1 : 0;
-            const im = clear(256, 128);
-            for (let y = 0; y < 128; y++)
-                for (let x = 0; x < 256; x++) {
-                    const u = (y + .5) / 128 + (x + .5 - 128) / 256,
-                          v = (y + .5) / 128 - (x + .5 - 128) / 256;
-                    if (u < 0 || u >= 1 || v < 0 || v >= 1)
-                        continue;
-                    const rgb = art.surface(u, v, vals.map(land => ({land, material : 'grassland'})), 'sand',
-                                            [], 128);
-                    im.data.set([...rgb, 255 ], (y * 256 + x) * 4);
-                }
-            await save(`coast/${q}/${mask}`, await png(im), 32, 16);
-        }
+        for (let mask = 0; mask < 8; mask++)
+            await save(`coast/${q}/${mask}`, await Finishing.coastQuarter(q, mask), 32, 16);
     // Ordered stippling retains the legacy quadrant topology with newly authored alpha.
     for (let t = 0; t < 13; t++)
         for (let q = 0; q < 4; q++) {
@@ -189,7 +175,7 @@ async function buildBindings(traces) {
               e = entries.find(e => e.mapping?.terrainSpecialSlots?.includes(slot));
         await centered('resource/' + n, path.join(pack, e.file), n >= 20 ? .72 : .58);
     }
-    await centered('resource/shield', asset('economy.production'), .45);
+    await centered('resource/shield', path.join(pack, Finishing.markerFile), .34);
     await save('fog/full',
                Buffer.from(svg(512, 256, '<path d="M256 0L512 128L256 256L0 128Z" fill="#0b1516"/>')));
     for (const name of ['grid', 'grid/radius'])

@@ -27,9 +27,10 @@ The graphics branch contains no game source or loader changes.
 | Citizen mood/profession cues | 7 | Shape-distinct SVG/PNG badges for the enhanced city window |
 | City panorama wall assembly | 7 | Separate rear and foreground SVG/PNG curtain walls for the three city sites, plus a frontal painted gate |
 | Native window backgrounds | 9 | Source-aligned city, seven government diplomacy and spacecraft SVG/PNG plates |
+| Terrain production marker | 1 | Muted olive/bronze shield for map terrain; city economy shields stay blue |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,242 primary entries are indexed in [manifest.json](manifest.json).
+The 2,243 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -301,6 +302,17 @@ node tools/atlas-review/verify-rivers.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
+Native coastal quarters now use the transparent corners of their existing
+32×16 boxes to round exposed neighboring land tips, including Newcastle's desert
+cape. Their diamond interiors and source mask selection are preserved; generic
+ocean dither remains blank. The terrain production marker has a smaller olive/
+bronze silhouette; the blue city economy icon remains unchanged.
+[Inspect the four-stage details](review/map-finishing.png) and
+[focused checks](review/map-finishing-validation.json). Rebuild with
+`node tools/atlas-review/map-finishing.cjs`, then `refresh-map-finishing.cjs` and
+`verify-map-finishing.cjs` in the same tools directory. Normal `buildBindings`
+also authors these replacements.
+
 [Map style metadata](map/readability.json) records the artwork conventions;
 [focused validation](review/map-readability-validation.json) checks road joins,
 shore continuity, ocean-resource centering and preserved unit/city frames.
