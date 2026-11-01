@@ -1,0 +1,11 @@
+{
+  "status": "pass",
+  "nativeProfileRange": 0.11509974484712293,
+  "profileSamples": 2056,
+  "nativeNeighborhoods": 256,
+  "classedPixels": 1048576,
+  "connectedWaterComponents": 256,
+  "landComponentsTouchingNeighbors": 400,
+  "worldWrapChecks": 256,
+  "limits": "Finite geometry and wrap checks; visual review determines the artistic result. Native topology, source zoom cutoffs and all foreground sprite footprints remain unchanged."
+}

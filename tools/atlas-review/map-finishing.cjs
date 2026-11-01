@@ -57,7 +57,7 @@ async function mouth(q, bytes) {
                   v = (y + .5 - 128) / 256 - (x + .5 - 256) / 512;
             const t = (u * end[0] + v * end[1]) / (end[0] ** 2 + end[1] ** 2);
             const i = (y * out.width + x) * 4 + 3;
-            out.data[i] = Math.round(out.data[i] * smooth(.28, .68, t));
+            out.data[i] = Math.round(out.data[i] * smooth(.15, .45, t));
         }
     return C.png(out);
 }

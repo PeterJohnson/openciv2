@@ -29,6 +29,42 @@ async function build(report) {
         }
         C.write(C.path.join(C.pack, `review/coast-${board}.png`), await C.png(image));
     }
+    await contourDetails(report, stages);
+}
+
+async function contourDetails(report, stages) {
+    const rows = [
+        [ 'newcastle', 'Desert and cultivated coast', 129, 74 ], [ 'islands', 'Forested island', 61, 99 ],
+        [ 'mouth', 'River mouth', 139, 13 ]
+    ];
+    const image = C.clear(2048, 960, [ 23, 35, 34, 255 ]);
+    for (const [row, [ id, title, x, y ]] of rows.entries()) {
+        const scene = report.scenes.find(s => s.id === id + '-128');
+        const left = Math.max(0, Math.min(scene.camera.cols * 128 - 512, (x - scene.camera.ox) * 64 - 256));
+        const top = Math.max(0, Math.min(scene.camera.rows * 32 - 256, (y - scene.camera.oy) * 32 - 128));
+        C.blit(image,
+               await C.raw(Buffer.from(
+                   C.svg(2048, 32,
+                         '<text x="12" y="23" fill="#e5d6b5" font-family="sans-serif" font-size="20">' +
+                             title + '</text>'))),
+               0, row * 320);
+        for (const [col, [ stage, label ]] of stages.entries()) {
+            C.blit(image,
+                   await C.raw(Buffer.from(
+                       C.svg(512, 32,
+                             '<text x="12" y="23" fill="#b7c6b5" font-family="sans-serif" font-size="18">' +
+                                 label + '</text>'))),
+                   col * 512, row * 320 + 32);
+            const d = [ 'hd', 'proposed' ].includes(stage) ? 2 : 1;
+            const png = await C.sharp(C.path.join(C.pack, scene[stage]))
+                            .extract({left : left * d, top : top * d, width : 512 * d, height : 256 * d})
+                            .resize(512, 256, {kernel : d === 1 ? 'nearest' : 'lanczos3'})
+                            .png()
+                            .toBuffer();
+            C.blit(image, await C.raw(png), col * 512, row * 320 + 64);
+        }
+    }
+    C.write(C.path.join(C.pack, 'review/coast-contours.png'), await C.png(image));
 }
 
 module.exports = {build};

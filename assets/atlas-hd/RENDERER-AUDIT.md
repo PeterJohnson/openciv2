@@ -334,13 +334,17 @@ path and unchanged native source bodies.
 
 `map-finishing.cjs` builds fuller land footprints from the exact three neighbors
 available to each coast quarter. The 32×16 logical boxes and all source-selected
-masks remain unchanged; the earlier water overhang is removed. Shared rounded
-tile geometry covers exposed forest/field tips and preserves water-cell centers.
+masks remain unchanged; the earlier water overhang is removed. Layered contour
+variation adds broad coves, secondary headlands and small eroded edges around
+the protected forest/field footprint. Native variation repeats at sprite seams;
+enhanced variation uses world coordinates and the map wrap period. Both retain
+water-cell centers and connected water through every coastal neighborhood.
 Quarter textures use a common periodic tile phase. `render.cjs` restores opaque
 pixel-center ground coverage after color resampling for generated terrain/coast
 bindings only; original art and foreground alpha are untouched. Generic ocean
 dither remains blank. Native mouth bindings retain their river-edge pixels and
-fade their banks seaward; enhanced river sampling includes adjoining ocean mouths.
+fade their banks seaward beyond the varied land apron; enhanced river sampling
+includes adjoining ocean mouths.
 The terrain production marker remains smaller and muted olive/bronze, with the
 city economy shield unchanged. See the [full-map survey](review/coast-audit.html)
 and [finite checks](review/coast-audit-validation.json).

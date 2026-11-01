@@ -47,9 +47,10 @@ async function main() {
     C.json(C.path.join(C.pack, 'manifest.json'), m);
     C.json(C.path.join(C.pack, 'map/readability.json'), {
         version : 1,
-        source : 'tools/atlas-review/art.cjs; bindings.cjs; render.cjs',
+        source : 'tools/atlas-review/art.cjs; shoreline.cjs; map-finishing.cjs; bindings.cjs; render.cjs',
         coast : {
-            sampling : 'full rounded tile footprints with continuous shallow erosion; shared shore geometry',
+            sampling :
+                'full land support with broad asymmetric coves, secondary headlands and small erosion detail',
             cornerIdentity : 'pure land/water preserved',
             beach : 'variable narrow sand/rock edge; broken subdued foam',
             nativeCorners :

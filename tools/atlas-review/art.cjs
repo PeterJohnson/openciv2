@@ -104,8 +104,8 @@ function noise(u, v) {
            b * ((1 - a) * hash(x, y + 1) + a * hash(x + 1, y + 1));
 }
 
-function shoreField(u, v, corners) {
-    return Shore.corners(u, v, corners);
+function shoreField(u, v, corners, wrapWidth = 0) {
+    return Shore.corners(u, v, corners, wrapWidth);
 }
 
 function periodicTex(name, u, v, lod) {
@@ -118,7 +118,8 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options 
     const texture = options.periodic ? periodicTex : tex;
     const fu = fract(u), fv = fract(v),
           weights = [ (1 - fu) * (1 - fv), fu * (1 - fv), fu * fv, (1 - fu) * fv ];
-    let a = options.field ?? shoreField(u, v, corners), color = [ 0, 0, 0 ], landWeight = 0;
+    let a = options.field ?? shoreField(u, v, corners, options.wrapWidth || 0), color = [ 0, 0, 0 ],
+        landWeight = 0;
     // Inland color comes only from land corners: ocean must not tint the beach.
     for (let i = 0; i < 4; i++) {
         if (!corners[i].land)

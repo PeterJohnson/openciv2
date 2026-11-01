@@ -222,7 +222,7 @@ function riverSegments(w, get) {
     return buckets;
 }
 
-function groundPixel(get, wx, wy, lod = 64, rivers = null) {
+function groundPixel(get, wx, wy, lod = 64, rivers = null, wrapWidth = 0) {
     const u = (wx + wy) / 2, v = (wy - wx) / 2, cu = Math.floor(u), cv = Math.floor(v);
     const nearest = get(Math.round(u) - Math.round(v), Math.round(u) + Math.round(v));
     if (!nearest || !nearest.v)
@@ -234,7 +234,7 @@ function groundPixel(get, wx, wy, lod = 64, rivers = null) {
         return {land : (t.t & 15) === 10 ? 0 : 1, material : C.terrainNames[t.t & 15]};
     });
     return art.surface(u, v, corners, 'sand', rivers?.get(Math.floor(u * 4) + ',' + Math.floor(v * 4)) || [],
-                       lod);
+                       lod, {wrapWidth});
 }
 
 // Change only status graphics, never the unit/city sprite frame or selection.
@@ -302,7 +302,11 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
     for (let y = 0; y < H; y++)
         for (let x = 0; x < W; x++)
             dst.data.set(
-                [...groundPixel(get, 2 * (x + .5) / tw + ox, 4 * (y + .5) / tw + oy, lod, rivers), 255 ],
+                [
+                    ...groundPixel(get, 2 * (x + .5) / tw + ox, 4 * (y + .5) / tw + oy, lod, rivers,
+                                   w.wrap ? w.width : 0),
+                    255
+                ],
                 (y * W + x) * 4);
     const visible = w.tiles
                         .filter(t => t.v && t.x >= ox - 2 && t.x < ox + cols * 2 + 2 && t.y >= oy - 2 &&

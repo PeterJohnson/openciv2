@@ -434,13 +434,16 @@ scenes. All four comparison stages use the same updated synthetic fixtures.
 
 ### Fuller shoreline footprints and ground coverage
 
-The saved-map survey favors a fuller rounded tile footprint over deep coastline
-cutbacks. Keep vegetation and field footprints inside a narrow land apron, join
+The saved-map survey favors a protected tile footprint with irregular coves
+and headlands over either deep cutbacks or uniformly rounded straight sides. Keep vegetation and field footprints inside a narrow land apron, join
 inward corners smoothly, preserve single-cell lakes and land centers, and sample
 river mouths through the coastal apron. Use the same shore field for terrain,
 ground-level overlays and zoom transitions; retain elevated sprite silhouettes.
 For native/HD compatibility, the replacement quarter art already carries the
-apron, while source draw commands and zoom cutoffs stay fixed. Ground sprite
+apron and three scales of periodic contour variation, while source draw commands
+and zoom cutoffs stay fixed. The enhanced proposal uses world coordinates for
+variation, with frequencies matched to the wrap period so the east/west edge
+stays continuous. Keep this field independent of camera position and zoom. Ground sprite
 coverage must partition the pixel lattice: do not independently antialias adjacent
 opaque ground masks and then alpha-over them, which leaves dark seams. Composite
 ground before final resampling or retain exact pixel-center coverage as the

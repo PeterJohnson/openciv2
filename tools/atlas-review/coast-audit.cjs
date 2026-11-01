@@ -117,9 +117,9 @@ function page(report) {
     const data = JSON.stringify(report).replace(/</g, '\\u003c');
     return `<!doctype html><html lang="en"><meta charset="utf-8"><title>Saved-world coastline review</title><style>
 body{margin:24px;background:#152322;color:#e5d6b5;font:16px system-ui}a{color:#bed3ba}h1{font-size:24px}select,button{font:inherit;padding:7px;background:#263b36;color:inherit;border:1px solid #6a7b69}label{margin-right:16px}#panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px}.view{overflow:auto;max-height:68vh;background:#0c1617}.view img{display:block;max-width:none}h2{font-size:18px}p{max-width:1100px;line-height:1.5}small{color:#a9b8af}</style>
-<h1>Saved-world coastlines · full map and close inspections</h1><p><a href="../index.html">Graphics review</a> · <a href="coast-audit-validation.json">Coverage and seam checks</a> · <a href="coast-islands-lakes.png">Island / lake contact sheet</a> · <a href="coast-forest-mouths.png">Forest / mouth contact sheet</a></p>
+<h1>Saved-world coastlines · full map and close inspections</h1><p><a href="../index.html">Graphics review</a> · <a href="coast-audit-validation.json">Coverage and seam checks</a> · <a href="shore-relief-validation.json">Contour connectivity and variation checks</a> · <a href="coast-contours.png">Shoreline close-ups</a> · <a href="coast-islands-lakes.png">Island / lake contact sheet</a> · <a href="coast-forest-mouths.png">Forest / mouth contact sheet</a></p>
 <p>All 9,000 saved cells are rendered at 16, 32, 48 and 64 logical pixels per tile. Selected islands, lakes, river mouths, forest/irrigation and the wrapped map edge also have 128px close views. Source camera, visibility and draw commands are shared by original, replacement native and HD only. The enhanced proposal remains separate.</p>
-<p>The fuller land apron protects forest and field footprints. Native coast quarters are deliberately disabled by the game at 16/32px; those two baseline zooms retain square terrain tiles. The enhanced view retains shore contours at every zoom. Original panels are composed mockups from local game art, not live screenshots.</p>
+<p>The varied shorelines add asymmetric coves, headlands and eroded edges around a protected land footprint. Native variation joins across tiles; enhanced variation joins across the wrapped world. Native coast quarters are deliberately disabled by the game at 16/32px; those two baseline zooms retain square terrain tiles. The enhanced view retains shore contours at every zoom. Original panels are composed mockups from local game art, not live screenshots.</p>
 <label>Area / game zoom <select id="scene"></select></label><label>Display <select id="scale"><option value="fit">Fit panels</option><option value="1">100% logical pixels</option><option value="2">200% logical pixels</option></select></label><p id="note"></p><div id="panels"></div>
 <script>const report=${data},stages=${
         JSON.stringify(stages)},sel=document.querySelector('#scene'),panels=document.querySelector('#panels');
@@ -127,7 +127,7 @@ for(const s of report.scenes)sel.add(new Option(s.title,s.id));
 function show(){const s=report.scenes.find(s=>s.id===sel.value),scale=document.querySelector('#scale').value;panels.innerHTML='';document.querySelector('#note').textContent='Camera '+s.camera.ox+', '+s.camera.oy+' · '+s.tileWidth+' logical pixels per tile'+(s.center?' · inspected location '+s.center.join(', '):' · complete world');
 for(const [stage,label]of stages){const section=document.createElement('section'),h=document.createElement('h2'),v=document.createElement('div'),im=new Image();h.textContent=label;v.className='view';im.src='../'+s[stage];im.alt=label+' '+s.title;im.style.width=scale==='fit'?'100%':s.camera.cols*s.tileWidth*Number(scale)+'px';v.append(im);section.append(h,v);panels.append(section)}
 let syncing=false;for(const v of document.querySelectorAll('.view'))v.onscroll=()=>{if(syncing)return;syncing=true;for(const other of document.querySelectorAll('.view'))if(other!==v){other.scrollLeft=v.scrollLeft;other.scrollTop=v.scrollTop;}requestAnimationFrame(()=>syncing=false);};}
-sel.value='world-64';sel.onchange=show;document.querySelector('#scale').onchange=show;show();</script></html>`;
+sel.value='newcastle-128';sel.onchange=show;document.querySelector('#scale').onchange=show;show();</script></html>`;
 }
 
 async function main() {
@@ -150,6 +150,11 @@ async function main() {
             const file = stage === 'original' ? `review/original-scenes/coast-audit/${s.id}.png`
                                               : `review/coast-audit/${s.id}-${stage}.png`;
             s[stage] = file;
+            if (process.argv.includes('--skip-original') && stage === 'original') {
+                if (!C.fs.existsSync(C.path.join(C.pack, file)))
+                    throw Error('Missing original comparison ' + s.id);
+                continue;
+            }
             if (process.argv.includes('--page-only') ||
                 (process.argv.includes('--replacement-only') && [ 'original', 'proposed' ].includes(stage)))
                 continue;

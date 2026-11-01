@@ -302,9 +302,11 @@ node tools/atlas-review/verify-rivers.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
-Native coastal quarters retain a fuller land apron around the native tile diamond,
-with gently rounded exposed tips and inward joins. Forest and field footprints
-remain inside that apron. The previous water overhang has been removed; all
+Native coastal quarters retain a full land footprint with asymmetric coves,
+headlands and smaller eroded edges. Three scales of authored contour variation
+break up the formerly straight sides; forest and field footprints remain on land.
+Native contour variation joins periodically across tiles. The enhanced proposal
+varies it over the world, with an exact repeat at the wrapped map boundary. The previous water overhang has been removed; all
 quarter pixels stay within their existing 32×16 logical diamonds. Quarter and
 open-ocean textures share one periodic tile phase, and the standalone replacement
 compositor preserves opaque pixel-center ground coverage after scaling. This
@@ -315,7 +317,8 @@ the enhanced proposal also extends river sampling into the connected ocean tile.
 The terrain production marker remains a smaller olive/bronze silhouette; the blue
 city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
 
-[Explore the full saved-world coast review](review/coast-audit.html): four
+[Compare shoreline close-ups](review/coast-contours.png), then
+[explore the full saved-world coast review](review/coast-audit.html): four
 comparison stages, all 9,000 cells at 16/32/48/64px game zoom, and eight selected
 island, lake, river-mouth, cultivated/forest and wrapped-edge areas at 64/128px.
 Use the display control and synchronized scrolling to inspect the larger maps.
@@ -328,9 +331,10 @@ These are offline review renders, not a game integration or frame-rate claim.
 
 Rebuild with `map-finishing.cjs`, `refresh-map-art.cjs --coasts-only`,
 `refresh-map-finishing.cjs`, `build-support.cjs`, `windows.cjs`, then
-`coast-audit.cjs` in `tools/atlas-review/`. Run `verify-coast-audit.cjs`,
+`coast-audit.cjs` in `tools/atlas-review/`. Use `--skip-original` on the survey
+when updating art with unchanged fixtures and existing original comparisons. Run `verify-coast-audit.cjs`,
 `verify-map-finishing.cjs`, `verify-map-style.cjs`, `verify-rivers.cjs`,
-`verify-fields.cjs` and `verify.cjs`. Finally refresh the detail sheets with
+`verify-fields.cjs`, `verify-shore-relief.cjs` and `verify.cjs`. Finally refresh the detail sheets with
 `fields-review.cjs --review-only`, `refresh-unit-banners.cjs --review-only`,
 `build-gallery.cjs` and `fidelity.cjs`. The full-world review writes only composed
 original scenes under `review/original-scenes/coast-audit/`; raw originals stay

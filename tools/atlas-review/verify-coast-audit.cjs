@@ -85,7 +85,7 @@ async function main() {
                     if (river.data[i + 3])
                         preserved++;
                 }
-                if (t <= .28) {
+                if (t <= .15) {
                     assert.equal(mouth.data[i + 3], 0);
                     if (river.data[i + 3])
                         removed++;
