@@ -469,8 +469,19 @@ land centers, and sample
 river mouths through the coastal apron. Use the same shore field for terrain,
 ground-level overlays and zoom transitions; retain elevated sprite silhouettes.
 For native/HD compatibility, the replacement quarter art already carries the
-protected footprint and six scales of periodic contour variation, while source
-draw commands and zoom cutoffs stay fixed. The enhanced proposal uses world coordinates for
+protected footprint and periodic contour variation, while source draw commands
+and zoom cutoffs stay fixed. Add close-up fractal detail after the macro contour
+shaping, rather than feeding every scale through the same saturating function.
+The prototype uses six domain-warped, decaying octaves and tapers fine relief at
+concave joins; it fades out completely at 32 projected pixels and below. Keep
+each octave tied to world position, and filter according to physical pixel size
+with room for isometric foreshortening. Preserve lake connectivity at actual
+world noise phases as well as generic atlas masks.
+[The zoom comparison](review/coast-fractal.png) distinguishes game zoom from
+mere enlargement of a retained image.
+Generate the fractal contours during asset authoring or ground-cache invalidation,
+then render ordinary sprites or cached chunks each frame. The offline pixel
+sampler demonstrates the artwork; it is not a production frame-time budget. The enhanced proposal uses world coordinates for
 variation, with frequencies matched to the wrap period so the east/west edge
 stays continuous. Keep the broad contour independent of camera position and
 fade only subpixel detail as projected scale falls. The prototype samples relief

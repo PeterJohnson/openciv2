@@ -25,7 +25,7 @@ const nativeFrequencies = [ 2, 3, 7, 17, 41, 97 ];
 const worldFrequencies = [ .73, 2.4, 6.1, 16.3, 40.7, 96.1 ];
 const amplitudes = [ .28, .15, .08, .04, .024, .014 ];
 
-function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
+function macroRadius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
     const worldNoise = (frequency, dx, dy) => {
         const period = wrapWidth ? Math.max(1, Math.round(wrapWidth / 2 * frequency)) : 0;
         const scale = period ? period / (wrapWidth / 2) : frequency;
@@ -45,23 +45,67 @@ function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
     return .815 + .06 * Math.tanh(relief / .055);
 }
 
+// An independent, domain-warped fractional Brownian detail layer. Applying it
+// after the macro tanh preserves small coves even on nearly saturated headlands.
+// Frequencies double and amplitudes decay, so notches contain smaller notches.
+const detailAmplitudes = [ .065, .039, .0234, .014, .006, .002 ];
+
+function detailRadius(u, v, base, world, wrapWidth, pixels) {
+    const visible = smooth(clamp((pixels - 32) / 64));
+    if (!visible)
+        return base;
+    const sample = (x, y, frequency, dx, dy) => {
+        const period = world ? (wrapWidth ? Math.max(1, Math.round(wrapWidth / 2 * frequency)) : 0)
+                             : Math.round(frequency);
+        const scale = world ? (period ? period / (wrapWidth / 2) : frequency) : period;
+        return noise(x * scale + dx, y * scale + dy, period);
+    };
+    // Low-frequency, periodic domain warping removes grid-aligned detail bands.
+    const warpU = .10 * (sample(u, v, world ? 3.7 : 4, 37.1, -81.6) - .5);
+    const warpV = .10 * (sample(u, v, world ? 3.7 : 4, -63.4, 21.7) - .5);
+    let detail = 0;
+    for (let i = 0; i < detailAmplitudes.length; i++) {
+        const frequency = (world ? 7.9 : 8) * 2 ** i;
+        // Allow for isometric foreshortening and the radial profile stretch.
+        const weight = smooth(clamp(pixels / (2 * frequency) - 1));
+        if (weight)
+            detail += detailAmplitudes[i] * weight *
+                      (sample(u + warpU, v + warpV, frequency, 31.7 + i * 13.2, -18.3 - i * 9.7) - .5);
+    }
+    // Reflect excess relief into the safe band rather than flattening it with
+    // a clamp. Fine contours remain attached to the protected land footprint.
+    const lower = .755, span = .12;
+    const t = ((base + detail * visible - lower) % (2 * span) + 2 * span) % (2 * span);
+    return lower + (t <= span ? t : 2 * span - t);
+}
+
+function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
+    return detailRadius(u, v, macroRadius(u, v, world, wrapWidth, pixels), world, wrapWidth, pixels);
+}
+
 function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
     if (!centers.length)
         return 0;
-    const ds = centers
-                   .map(([ x, y ]) => {
-                       const dx = u - x, dy = v - y, d = Math.hypot(dx, dy);
-                       if (!d)
-                           return -.81;
-                       // Sample relief around a fixed contour: each ray has one shore crossing,
-                       // so fine erosion cannot create stray islands or enclosed water specks.
-                       const scale = .81 / d;
-                       const irregular = radius(x + dx * scale, y + dy * scale, world, wrapWidth, pixels);
-                       // The minimum radius encloses every occupied tile corner with a
-                       // narrow apron; no square envelope is added back into the contour.
-                       return d - irregular;
-                   })
-                   .sort((a, b) => a - b);
+    const profiles =
+        centers
+            .map(([ x, y ]) => {
+                const dx = u - x, dy = v - y, d = Math.hypot(dx, dy);
+                if (!d)
+                    return {base : -.81, detailed : -.81};
+                // A fixed radial profile gives every land lobe one shore crossing.
+                const scale = .81 / d, a = x + dx * scale, b = y + dy * scale;
+                const base = macroRadius(a, b, world, wrapWidth, pixels);
+                return {base : d - base, detailed : d - detailRadius(a, b, base, world, wrapWidth, pixels)};
+            })
+            .sort((a, b) => a.base - b.base);
+    // Taper fine relief at concave lobe intersections, where two eroded rims
+    // could pinch off a subpixel water pocket. Distant, unavailable neighbors
+    // have zero influence, preserving the existing quarter/cell seam contract.
+    const second = profiles[1];
+    const join = second ? smooth(clamp((.14 - (second.base - profiles[0].base)) / .08)) *
+                              smooth(clamp((.12 - second.base) / .01))
+                        : 0;
+    const ds = profiles.map(p => p.base + (p.detailed - p.base) * (1 - join)).sort((a, b) => a - b);
     let distance = ds[0];
     // Compact joins exclude distant centers unavailable in an adjacent coast quarter.
     for (const d of ds.slice(1)) {
@@ -87,5 +131,6 @@ module.exports = {
     field,
     corners,
     radius,
+    macroRadius,
     noise
 };

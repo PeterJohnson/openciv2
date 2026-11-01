@@ -62,11 +62,14 @@ async function main() {
         version : 1,
         source : 'tools/atlas-review/art.cjs; shoreline.cjs; map-finishing.cjs; bindings.cjs; render.cjs',
         coast : {
-            sampling : 'rounded lobes with broad asymmetric coves, headlands and six scales of erosion',
+            sampling :
+                'retained rounded macro contours plus six independent octaves of domain-warped fractal erosion',
+            detail :
+                'added after macro shaping; bounded reflection retains relief; compact intersection taper protects water connectivity',
             contour :
                 'minimum rounded radius protects land corners; broader smooth inward joins soften lakes; radial relief retains connected land and ocean access',
             detailFiltering :
-                'native PNG resampling; enhanced subpixel octaves fade with projected tile width',
+                'native PNG resampling; enhanced detail fades in above 32 projected pixels; a conservative per-octave cutoff accounts for isometric foreshortening',
             cornerIdentity : 'pure land/water preserved',
             beach : 'patchy exposed sand/rock, broad shallows and intermittent subdued foam',
             nativeCorners :

@@ -32,6 +32,13 @@ async function build(report) {
     await contourDetails(report, stages);
     await contourDetails(report, stages,
                          [
+                             [ 'islands', '64px tiles / two-tile shoreline close-up', 61, 98, 128, 64 ],
+                             [ 'islands', '128px tiles / the same two-tile shoreline', 61, 98, 256, 128 ],
+                             [ 'islands', '128px tiles / magnified headland detail', 61, 98, 128, 128 ]
+                         ],
+                         'coast-fractal');
+    await contourDetails(report, stages,
+                         [
                              [ 'islands', 'Forest edge meeting grassland and coast', 61, 99 ],
                              [ 'forest', 'Woodland beside cultivated land', 16, 13 ],
                              [ 'mouth', 'Wooded river mouth', 139, 13 ]
@@ -50,12 +57,12 @@ async function contourDetails(
         ],
     output = 'coast-contours') {
     const image = C.clear(2048, rows.length * 320, [ 23, 35, 34, 255 ]);
-    for (const [row, [ id, title, x, y, cropWidth = 512 ]] of rows.entries()) {
-        const scene = report.scenes.find(s => s.id === id + '-128');
-        const left = Math.max(
-            0, Math.min(scene.camera.cols * 128 - cropWidth, (x - scene.camera.ox) * 64 - cropWidth / 2));
-        const top = Math.max(
-            0, Math.min(scene.camera.rows * 32 - cropWidth / 2, (y - scene.camera.oy) * 32 - cropWidth / 4));
+    for (const [row, [ id, title, x, y, cropWidth = 512, tileWidth = 128 ]] of rows.entries()) {
+        const scene = report.scenes.find(s => s.id === id + '-' + tileWidth);
+        const left = Math.max(0, Math.min(scene.camera.cols * tileWidth - cropWidth,
+                                          (x - scene.camera.ox) * tileWidth / 2 - cropWidth / 2));
+        const top = Math.max(0, Math.min(scene.camera.rows * tileWidth / 4 - cropWidth / 2,
+                                         (y - scene.camera.oy) * tileWidth / 4 - cropWidth / 4));
         C.blit(image,
                await C.raw(Buffer.from(
                    C.svg(2048, 32,

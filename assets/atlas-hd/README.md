@@ -368,10 +368,14 @@ Then rebuild the optional original comparisons and gallery as described above.
 Native coastal quarters use rounded distance lobes instead of rounded squares.
 The minimum radius protects the full forest/field footprint without adding a
 square envelope back into the contour; broader inward joins soften small lakes.
-Six scales of contour variation add
-small coves and rock notches inside the larger bays. Relief is sampled around each land footprint so fine detail cannot detach from its parent
-shore. Forest and field footprints remain on land. The enhanced sampler fades
-subpixel octaves at distant zooms; native/HD use the filtered PNG bank.
+The macro shape is retained, with an independent fractal detail layer added after
+its nonlinear shaping. Six domain-warped octaves halve in wavelength with
+progressively smaller displacements, adding coves, ledges and notches within
+larger coves. Bounded reflection avoids flattening the small contours; relief
+fades at concave joins to prevent isolated water specks. Forest and field tips
+remain on land. The enhanced sampler leaves the macro contour unchanged at
+32 projected pixels and below, fades detail in above that, and suppresses
+subpixel octaves. Native/HD use the filtered PNG bank.
 Native contour variation joins periodically across tiles. The enhanced proposal
 varies it over the world, with an exact repeat at the wrapped map boundary. The previous water overhang has been removed; all
 quarter pixels stay within their existing 32×16 logical diamonds. Quarter and
@@ -384,7 +388,8 @@ the enhanced proposal also extends river sampling into the connected ocean tile.
 The terrain production marker remains a smaller olive/bronze silhouette; the blue
 city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
 
-[Compare shorelines, headlands and magnified river banks](review/coast-contours.png), then
+[Inspect fractal detail at two zooms](review/coast-fractal.png),
+[compare shorelines and river banks](review/coast-contours.png), then
 [explore the full saved-world coast review](review/coast-audit.html): four
 comparison stages, all 9,000 cells at 16/32/48/64px game zoom, and eight selected
 island, lake, river-mouth, cultivated/forest and wrapped-edge areas at 64/128px.

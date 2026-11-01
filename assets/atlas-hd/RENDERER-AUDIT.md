@@ -339,8 +339,17 @@ lobes replace the rounded-square contour. Their minimum radius protects
 forest/field tips without adding a square envelope back into the contour;
 broader smooth inward joins soften enclosed lakes. Join contributions fade before
 distant centers unavailable to a neighboring cell or quarter can affect the edge.
-Broad asymmetric relief and five finer scales shape coves, headlands, notches
-and erosion. Patchy deposits and shallows replace the continuous shoreline rim.
+The retained macro contour is augmented by an independent six-octave fractional
+Brownian detail layer after its tanh shaping, so macro saturation does not
+flatten the fine contours. Periodic low-frequency domain warping breaks up
+axis-aligned noise. Detail amplitudes decay with doubled frequency; bounded
+reflection keeps the authored land/water radius limits without clipping flat
+segments. Compact tapering at concave lobe intersections prevents small isolated
+water pockets. At 32 projected pixels and below the added layer is exactly zero;
+the validation report records displacement and additional detail at higher scales.
+Fine octaves use a conservative projected-pixel cutoff for isometric
+foreshortening. Connectivity checks also cover all 22 isolated saved-world lakes
+at 256 physical pixels per tile, using their actual world noise phases. Patchy deposits and shallows replace the continuous shoreline rim.
 Relief is sampled along a fixed contour around each land center, retaining one crossing along each radial line.
 Native variation repeats at sprite seams; enhanced variation uses world
 coordinates and the map wrap period. The enhanced sampler fades octaves below

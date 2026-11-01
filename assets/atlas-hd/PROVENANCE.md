@@ -163,7 +163,9 @@ paintings and foreground composition.
 
 The full saved-world coastline survey reuses the existing authored terrain
 textures. `shoreline.cjs` and `map-finishing.cjs` author rounded distance lobes,
-a protected rounded tile footprint and six scales of value-noise contour relief.
+a protected rounded tile footprint and multiscale value-noise contour relief.
+A separate six-octave, domain-warped fractal layer adds close-up edge detail after
+macro shaping. All noise and relief are procedural and deterministic.
 Patchy sand/rock/shallows, asymmetric river banks, periodic native texture
 sampling and river-mouth alpha falloff reuse those authored materials;
 they do not trace original art. Existing painted tree and field sprites are unchanged.

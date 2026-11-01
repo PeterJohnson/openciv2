@@ -1,9 +1,55 @@
 {
   "status": "pass",
-  "nativeProfileRange": 0.10939662296772878,
+  "nativeProfileRange": 0.11979020845093569,
+  "fractalDetailScales": [
+    {
+      "projectedTilePixels": 16,
+      "meanDisplacement": 0,
+      "maxDisplacement": 0,
+      "rmsVs128": 0.015915765270579287
+    },
+    {
+      "projectedTilePixels": 32,
+      "meanDisplacement": 0,
+      "maxDisplacement": 0,
+      "rmsVs128": 0.015915765270579287
+    },
+    {
+      "projectedTilePixels": 48,
+      "meanDisplacement": 0.0018508395618527219,
+      "maxDisplacement": 0.005881392214786563,
+      "rmsVs128": 0.0142830910445007
+    },
+    {
+      "projectedTilePixels": 64,
+      "meanDisplacement": 0.006356738455181343,
+      "maxDisplacement": 0.02253336967799824,
+      "rmsVs128": 0.009363177451267872
+    },
+    {
+      "projectedTilePixels": 128,
+      "meanDisplacement": 0.012692457482345796,
+      "maxDisplacement": 0.05048329548587205,
+      "rmsVs128": 0
+    },
+    {
+      "projectedTilePixels": 256,
+      "meanDisplacement": 0.012839608057638001,
+      "maxDisplacement": 0.054302093917605654,
+      "rmsVs128": 0.002979783303848051
+    },
+    {
+      "projectedTilePixels": 512,
+      "meanDisplacement": 0.012902903653463926,
+      "maxDisplacement": 0.053641216622402066,
+      "rmsVs128": 0.0032483927771344997
+    }
+  ],
   "profileSamples": 2056,
   "nativeNeighborhoods": 256,
   "highDetailMasks": 23,
+  "savedSingleTileLakes": 22,
+  "savedLakeTileWidth": 256,
   "highDetailTileWidth": 512,
   "filteredPixelWidths": [
     32,
@@ -11,9 +57,9 @@
     128,
     256
   ],
-  "classedPixels": 2555904,
-  "waterComponentsWithOceanAccess": 279,
-  "landComponentsTouchingNeighbors": 428,
+  "classedPixels": 2916352,
+  "waterComponentsWithOceanAccess": 304,
+  "landComponentsTouchingNeighbors": 484,
   "worldWrapChecks": 1280,
   "limits": "Water components reach the tile center or an adjacent ocean tile. Finite geometry and wrap checks; visual review determines the artistic result. Native topology, source zoom cutoffs and all foreground sprite footprints remain unchanged."
 }
