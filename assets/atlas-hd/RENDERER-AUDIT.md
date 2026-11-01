@@ -335,10 +335,14 @@ path and unchanged native source bodies.
 `map-finishing.cjs` builds fuller land footprints from the exact three neighbors
 available to each coast quarter. The 32×16 logical boxes and all source-selected
 masks remain unchanged; the earlier water overhang is removed. Layered contour
-variation adds broad coves, secondary headlands and small eroded edges around
-the protected forest/field footprint. Native variation repeats at sprite seams;
-enhanced variation uses world coordinates and the map wrap period. Both retain
-water-cell centers and connected water through every coastal neighborhood.
+variation adds six nested scales of coves, headlands, rock notches and erosion
+around the protected forest/field footprint. Relief is sampled along a fixed
+contour around each land center, retaining one crossing along each radial line.
+Native variation repeats at sprite seams; enhanced variation uses world
+coordinates and the map wrap period. The enhanced sampler fades octaves below
+two projected pixels while native/HD filter the retained PNGs on resize.
+The finite checks retain water-cell centers and require each water component
+to reach its center or an adjacent ocean tile, including coves crossing a seam.
 Quarter textures use a common periodic tile phase. `render.cjs` restores opaque
 pixel-center ground coverage after color resampling for generated terrain/coast
 bindings only; original art and foreground alpha are untouched. Generic ocean

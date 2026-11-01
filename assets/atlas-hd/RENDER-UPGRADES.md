@@ -440,10 +440,13 @@ inward corners smoothly, preserve single-cell lakes and land centers, and sample
 river mouths through the coastal apron. Use the same shore field for terrain,
 ground-level overlays and zoom transitions; retain elevated sprite silhouettes.
 For native/HD compatibility, the replacement quarter art already carries the
-apron and three scales of periodic contour variation, while source draw commands
+apron and six nested scales of periodic contour variation, while source draw commands
 and zoom cutoffs stay fixed. The enhanced proposal uses world coordinates for
 variation, with frequencies matched to the wrap period so the east/west edge
-stays continuous. Keep this field independent of camera position and zoom. Ground sprite
+stays continuous. Keep the broad contour independent of camera position and
+fade only subpixel detail as projected scale falls. The prototype samples relief
+around each land footprint rather than displacing every ground pixel independently,
+which keeps the fine notches attached to the parent coastline. Ground sprite
 coverage must partition the pixel lattice: do not independently antialias adjacent
 opaque ground masks and then alpha-over them, which leaves dark seams. Composite
 ground before final resampling or retain exact pixel-center coverage as the

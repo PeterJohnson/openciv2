@@ -1,11 +1,19 @@
 {
   "status": "pass",
-  "nativeProfileRange": 0.11509974484712293,
+  "nativeProfileRange": 0.1032435418812323,
   "profileSamples": 2056,
   "nativeNeighborhoods": 256,
-  "classedPixels": 1048576,
-  "connectedWaterComponents": 256,
-  "landComponentsTouchingNeighbors": 400,
-  "worldWrapChecks": 256,
-  "limits": "Finite geometry and wrap checks; visual review determines the artistic result. Native topology, source zoom cutoffs and all foreground sprite footprints remain unchanged."
+  "highDetailMasks": 23,
+  "highDetailTileWidth": 512,
+  "filteredPixelWidths": [
+    32,
+    64,
+    128,
+    256
+  ],
+  "classedPixels": 2555904,
+  "waterComponentsWithOceanAccess": 283,
+  "landComponentsTouchingNeighbors": 428,
+  "worldWrapChecks": 1280,
+  "limits": "Water components reach the tile center or an adjacent ocean tile. Finite geometry and wrap checks; visual review determines the artistic result. Native topology, source zoom cutoffs and all foreground sprite footprints remain unchanged."
 }

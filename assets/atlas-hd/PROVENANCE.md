@@ -163,7 +163,7 @@ paintings and foreground composition.
 
 The full saved-world coastline survey reuses the existing authored terrain
 textures. `shoreline.cjs` and `map-finishing.cjs` author fuller rounded land
-footprints with layered authored value-noise contours, periodic native texture
+footprints with six nested scales of authored value-noise contour relief, periodic native texture
 sampling and river-mouth alpha falloff;
 they do not trace original art. Existing painted tree and field sprites are unchanged.
 Only composed original-art scenes appear in `review/original-scenes/coast-audit/`,

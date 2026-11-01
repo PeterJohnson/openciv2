@@ -49,8 +49,10 @@ async function main() {
         version : 1,
         source : 'tools/atlas-review/art.cjs; shoreline.cjs; map-finishing.cjs; bindings.cjs; render.cjs',
         coast : {
-            sampling :
-                'full land support with broad asymmetric coves, secondary headlands and small erosion detail',
+            sampling : 'full land support with six nested scales of coves, rock notches and fine erosion',
+            contour : 'ray-based relief retains connected land and neighboring ocean access',
+            detailFiltering :
+                'native PNG resampling; enhanced subpixel octaves fade with projected tile width',
             cornerIdentity : 'pure land/water preserved',
             beach : 'variable narrow sand/rock edge; broken subdued foam',
             nativeCorners :

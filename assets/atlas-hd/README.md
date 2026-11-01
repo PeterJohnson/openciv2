@@ -316,8 +316,11 @@ node tools/atlas-review/verify-rivers.cjs
 
 Then rebuild the optional original comparisons and gallery as described above.
 Native coastal quarters retain a full land footprint with asymmetric coves,
-headlands and smaller eroded edges. Three scales of authored contour variation
-break up the formerly straight sides; forest and field footprints remain on land.
+headlands and smaller eroded edges. Six nested scales of authored contour
+variation put small coves and rock notches inside the larger bays. Relief is
+sampled around each land footprint so fine detail cannot detach from its parent
+shore. Forest and field footprints remain on land. The enhanced sampler fades
+subpixel octaves at distant zooms; native/HD use the filtered PNG bank.
 Native contour variation joins periodically across tiles. The enhanced proposal
 varies it over the world, with an exact repeat at the wrapped map boundary. The previous water overhang has been removed; all
 quarter pixels stay within their existing 32×16 logical diamonds. Quarter and
@@ -330,7 +333,7 @@ the enhanced proposal also extends river sampling into the connected ocean tile.
 The terrain production marker remains a smaller olive/bronze silhouette; the blue
 city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
 
-[Compare shoreline close-ups](review/coast-contours.png), then
+[Compare shoreline close-ups and the magnified headland detail](review/coast-contours.png), then
 [explore the full saved-world coast review](review/coast-audit.html): four
 comparison stages, all 9,000 cells at 16/32/48/64px game zoom, and eight selected
 island, lake, river-mouth, cultivated/forest and wrapped-edge areas at 64/128px.
