@@ -216,3 +216,7 @@ sand material, composes cacti inside the protected core, and updates the native
 forest bindings. The original conifer-slot observation changes no source logic.
 review/terrain-vegetation.png contains only composed scene crops under the same
 review-only original-art allowance as the other comparison plates.
+
+The four ocean-neighbor coastal feathers are procedurally authored by
+`tools/atlas-review/coastal-blends.cjs` from the existing replacement grass
+material and periodic noise. No original sprite pixels are used.

@@ -52,6 +52,8 @@ function weights(u, v) {
 }
 
 async function dither(terrain, q, bytes) {
+    if (terrain === 12)
+        return require('./coastal-blends.cjs').quarter(q);
     const C = require('./common.cjs'), tile = await C.raw(bytes), out = C.clear(256, 128);
     const x0 = q < 2 ? 256 : 0, y0 = ((q + 1) & 3) < 2 ? 0 : 128;
     for (let y = 0; y < 128; y++)
@@ -62,7 +64,7 @@ async function dither(terrain, q, bytes) {
                 const u = (Y + .5) / 256 + (X + .5 - 256) / 512, v = (Y + .5) / 256 - (X + .5 - 256) / 512;
                 out.data[di + 3] = Math.round(out.data[di + 3] * alpha(u, v, q));
             } else {
-                // Preserve the existing ocean/unknown/fog slots, including blank coastal dither 12.
+                // Preserve the existing ocean and fog artwork; coastal slot 12 is authored separately.
                 if (terrain === 11)
                     out.data.set([ 12, 22, 23, out.data[di + 3] ], di);
                 const outward = Math.abs((X - 256) / 256) + Math.abs((Y - 128) / 128);
@@ -71,8 +73,6 @@ async function dither(terrain, q, bytes) {
                     out.data[di + 3] = 0;
             }
         }
-    if (terrain === 12)
-        out.data.fill(0);
     return C.png(out);
 }
 
@@ -90,19 +90,30 @@ async function build() {
             entries.push({terrain : C.terrainNames[t], quadrant : q, file, source, sha256 : C.sha(bytes)});
         }
     }
+    const coastal = [];
+    for (let q = 0; q < 4; q++) {
+        const key = 'dither/12/' + q, file = index.bindings[key].file;
+        const bytes = await require('./coastal-blends.cjs').quarter(q);
+        C.write(C.path.join(C.pack, file), bytes);
+        index.bindings[key].source = 'map/materials/grassland.png';
+        coastal.push({quadrant : q, file, sha256 : C.sha(bytes)});
+    }
     index.terrainTransitions = 'map/terrain-transitions.json';
     C.json(C.path.join(C.pack, 'compatibility/bindings.json'), index);
     C.json(C.path.join(C.pack, 'map/terrain-transitions.json'), {
-        version : 2,
+        version : 3,
         authoring : 'tools/atlas-review/terrain-blends.cjs',
         native :
             'Source neighbor selection and quarter boxes; complementary multiscale edge patches, feathered quarter sides and untouched material cores.',
         enhanced :
             'Narrow world-space transitions with periodic organic variation and distinct material cores.',
         unchanged : 'Ground PNGs, coast geometry, foreground art, draw order and native zoom cutoffs.',
+        coastal,
+        coastalNative :
+            'Ocean-neighbor slot 12 softly joins the existing grassy shore apron; unchanged source selection, opaque ground and protected centers.',
         entries
     });
-    console.log('Built 40 land-transition quarter PNGs');
+    console.log('Built 40 land-transition and 4 coastal-transition quarter PNGs');
 }
 
 if (require.main === module)

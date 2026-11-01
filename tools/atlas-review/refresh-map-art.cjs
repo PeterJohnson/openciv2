@@ -74,7 +74,7 @@ async function main() {
             cornerIdentity : 'pure land/water preserved',
             beach : 'patchy exposed sand/rock, broad shallows and intermittent subdued foam',
             nativeCorners :
-                'Smoothly protected forest/field footprint inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 stays blank'
+                'Smoothly protected forest/field footprint inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 softly blends land into the existing grassy apron'
         },
         road : {
             color : 'warm ochre',

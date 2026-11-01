@@ -566,25 +566,25 @@
       "file": "compatibility/dither/12/0.png",
       "nativeWidth": 32,
       "nativeHeight": 16,
-      "source": null
+      "source": "map/materials/grassland.png"
     },
     "dither/12/1": {
       "file": "compatibility/dither/12/1.png",
       "nativeWidth": 32,
       "nativeHeight": 16,
-      "source": null
+      "source": "map/materials/grassland.png"
     },
     "dither/12/2": {
       "file": "compatibility/dither/12/2.png",
       "nativeWidth": 32,
       "nativeHeight": 16,
-      "source": null
+      "source": "map/materials/grassland.png"
     },
     "dither/12/3": {
       "file": "compatibility/dither/12/3.png",
       "nativeWidth": 32,
       "nativeHeight": 16,
-      "source": null
+      "source": "map/materials/grassland.png"
     },
     "road/0": {
       "file": "compatibility/road/0.png",

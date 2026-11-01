@@ -1,9 +1,32 @@
 {
-  "version": 2,
+  "version": 3,
   "authoring": "tools/atlas-review/terrain-blends.cjs",
   "native": "Source neighbor selection and quarter boxes; complementary multiscale edge patches, feathered quarter sides and untouched material cores.",
   "enhanced": "Narrow world-space transitions with periodic organic variation and distinct material cores.",
   "unchanged": "Ground PNGs, coast geometry, foreground art, draw order and native zoom cutoffs.",
+  "coastal": [
+    {
+      "quadrant": 0,
+      "file": "compatibility/dither/12/0.png",
+      "sha256": "11bd3fe6e128dcbefbf88a982070ae53550b764dc001212c57ca31a166a04a0a"
+    },
+    {
+      "quadrant": 1,
+      "file": "compatibility/dither/12/1.png",
+      "sha256": "933bbc9683f565f4fa02ff05de984f19a1e95e1af7d0719c26ff29e2b2090f9e"
+    },
+    {
+      "quadrant": 2,
+      "file": "compatibility/dither/12/2.png",
+      "sha256": "847596d4868a1d5f6d5bb86be685f0a8782c3976eafd96efcdf2a6bf97787f67"
+    },
+    {
+      "quadrant": 3,
+      "file": "compatibility/dither/12/3.png",
+      "sha256": "a7b0ab3e40adcddd7b02e50194f8f47f4226d6ed602664ad955188a021ab4b20"
+    }
+  ],
+  "coastalNative": "Ocean-neighbor slot 12 softly joins the existing grassy shore apron; unchanged source selection, opaque ground and protected centers.",
   "entries": [
     {
       "terrain": "desert",

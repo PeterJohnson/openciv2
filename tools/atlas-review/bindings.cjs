@@ -88,7 +88,10 @@ async function buildBindings(traces) {
         for (let q = 0; q < 4; q++) {
             const source = 'map/ground/' + (C.terrainNames[t] || 'grassland') + '.png';
             const bytes = await Land.dither(t, q, fs.readFileSync(path.join(pack, source)));
-            await save('dither/' + t + '/' + q, bytes, 32, 16, t < 10 ? source : null);
+            await save('dither/' + t + '/' + q, bytes, 32, 16,
+                       t < 10     ? source
+                       : t === 12 ? 'map/materials/grassland.png'
+                                  : null);
         }
     const roadTex = fs.readFileSync(path.join(pack, 'map/materials/road.png')).toString('base64');
     for (const family of ['road', 'rail'])

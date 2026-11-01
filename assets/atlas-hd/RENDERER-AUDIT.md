@@ -358,8 +358,8 @@ The finite checks retain water-cell centers and require each water component
 to reach its center or an adjacent ocean tile, including coves crossing a seam.
 Quarter textures use a common periodic tile phase. `render.cjs` restores opaque
 pixel-center ground coverage after color resampling for generated terrain/coast
-bindings only; original art and foreground alpha are untouched. Generic ocean
-dither remains blank. Native mouth bindings retain their river-edge pixels and
+bindings only; original art and foreground alpha are untouched. Ocean-neighbor
+dither slot 12 now feathers the land into the existing grassy apron. Native mouth bindings retain their river-edge pixels and
 fade their banks seaward beyond the varied land apron; enhanced river sampling
 includes adjoining ocean mouths.
 The terrain production marker remains smaller and muted olive/bronze, with the
@@ -378,7 +378,10 @@ The source renderer bodies remain unchanged. Coast quarters still use the
 NE-first native neighbor masks. The authored bank distinguishes the outer
 cardinal bit from the two adjacent diagonal bits; a lone cardinal touch does
 not paint a disconnected land wedge inside ocean. Native dither slot 12 is an
-authored transparent blank, replacing the incorrect desert fallback. Slot 11
+authored grass-textured coastal feather, replacing the former transparent slot.
+It shares the coast quarter texture phase and protects the central material and
+cacti. Its full boundary coverage removes the sandy diamond at Newcastle;
+adjoining coastal quarters meet without an artificial tip fade. Slot 11
 uses dark fog colors. These choices affect art, not tile classification.
 
 Resource PNGs now use centered trim bounds in a 512x256 frame. Native review
@@ -661,7 +664,9 @@ zero neighbor coverage, preserving terrain identity and baked desert vegetation.
 No source commands, terrain/feature slots, base PNGs or draw ordering change.
 The existing standalone baseline compositor is also unchanged.
 The native mask test checks 1,026 complementary edge samples, 204,480 protected
-core pixels, quarter-side fade and all twelve unchanged ocean/fog/blank slots.
+core pixels, quarter-side fade and all eight unchanged ocean/fog slots. The four coastal slots are checked
+separately for protected cores, quarter joins and apron color continuity in
+[coastal feather validation](review/coastal-blend-validation.json).
 The [four terrain pairs](review/native-land-edges.png) execute unchanged source
 traces in Debug and Release. They are supplied rendering fixtures, not gameplay.
 The enhanced pass uses the mixed forest material within its existing continuous

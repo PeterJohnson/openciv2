@@ -34,7 +34,7 @@ async function main() {
     }
     assert(featherPixels > 10000 && protectedCorePixels > 10000);
     // These slots are outside the land transition change and must remain pixel-identical.
-    for (let t = 10; t < 13; t++)
+    for (let t = 10; t < 12; t++)
         for (let q = 0; q < 4; q++) {
             const source = C.path.join(C.pack, 'map/ground/' + (C.terrainNames[t] || 'grassland') + '.png');
             const generated = await C.raw(await L.dither(t, q, C.fs.readFileSync(source)));
@@ -138,7 +138,7 @@ async function main() {
         nativeQuarterOverlays : 40,
         featherPixels,
         protectedCorePixels,
-        unchangedSentinelSlots : 12,
+        unchangedSentinelSlots : 8,
         complementaryEdgeSamples,
         edgeCoverageRange : [ minEdge, maxEdge ],
         weightSamples,

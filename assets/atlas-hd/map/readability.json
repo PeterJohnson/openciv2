@@ -8,7 +8,7 @@
     "detailFiltering": "native PNG resampling; enhanced detail fades in above 32 projected pixels; a conservative per-octave cutoff accounts for isometric foreshortening",
     "cornerIdentity": "pure land/water preserved",
     "beach": "patchy exposed sand/rock, broad shallows and intermittent subdued foam",
-    "nativeCorners": "Smoothly protected forest/field footprint inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 stays blank"
+    "nativeCorners": "Smoothly protected forest/field footprint inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 softly blends land into the existing grassy apron"
   },
   "road": {
     "color": "warm ochre",

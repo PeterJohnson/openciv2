@@ -330,7 +330,7 @@ through routes replace radial stubs at rail junctions.
 Coasts use rounded lobes and broad asymmetric coves/headlands, with patchy
 beaches, rocky banks, shallows and subdued broken surf. The compatibility coast
 bank also fixes the three-neighbor mask
-and the former desert-filled blank dither slot. Fish, whales and other resource
+and the former desert-filled coastal dither slot. Fish, whales and other resource
 sprites are trimmed and centered inside their logical tile frame; the proposal
 no longer fits them into a second, half-size frame.
 
@@ -399,6 +399,16 @@ compositor preserves opaque pixel-center ground coverage after scaling. This
 removes transparent seams without altering the original-art replay, foreground
 sprites, logical boxes or draw commands. River-mouth bank alpha fades seaward;
 the enhanced proposal also extends river sampling into the connected ocean tile.
+
+Ocean-neighbor edge slot 12 now carries a soft, irregular grass-textured feather
+that matches the existing coastal apron. This removes the sharp sandy diamond
+on the desert cape beside Newcastle in saved-close-hd.png. The source already
+selects this slot only beside ocean; inland desert and the protected cactus core
+are unchanged. All coastal land types use the same apron, as required by the
+existing sprite bank. No renderer or coast-geometry changes are involved.
+[Inspect the four-stage close-up](review/map-finishing.png) and
+[coastal feather checks](review/coastal-blend-validation.json). Rebuild the four
+slots with terrain-blends.cjs, then refresh the native/HD review scenes.
 
 The terrain production marker remains a smaller olive/bronze silhouette; the blue
 city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
