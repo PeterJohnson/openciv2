@@ -68,7 +68,7 @@ async function main() {
             detail :
                 'added after macro shaping; bounded reflection retains relief; compact intersection taper protects water connectivity',
             contour :
-                'protected land corners; compact power union and quarter-local elliptical water corners round actual inlets and single-cell lakes while preserving connectivity',
+                'protected land corners; compact power union and quarter-local cove contours with five scales of radial bank relief soften inlet corners and create uneven single-cell lakes while preserving connectivity',
             detailFiltering :
                 'native PNG resampling; enhanced detail fades in above 32 projected pixels; a conservative per-octave cutoff accounts for isometric foreshortening',
             cornerIdentity : 'pure land/water preserved',

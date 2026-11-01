@@ -340,7 +340,13 @@ forest/field tips without adding a square envelope back into the contour;
 broader smooth inward joins soften enclosed lakes. A compact power union
 (0.12 support, exponent 1.25) replaces the previous water-only depth remapping.
 Two perpendicular land neighbors bound the inward water corner with an ellipse
-whose axes follow their existing shore crossings. A 0.06-unit easing band at
+whose axes follow their existing shore crossings. The ellipse is perturbed by
+five scales of bounded angular relief (frequencies 2, 4, 8, 16 and 32), sampled on
+a fixed contour ring so each ray retains one bank crossing. Broader asymmetry
+contains smaller bank notches; projected-pixel filtering suppresses fine scales
+at distant zooms. Native sampling repeats exactly, while enhanced phases vary
+over the wrapped world. Final lake-outline checks reject both pointed corners
+and uniformly elliptical ponds. A 0.06-unit easing band at
 quarter axes makes the added contour contribution vanish at shared boundaries;
 a local 0.02 smooth minimum joins it to the eroded land lobes. This changes the
 actual dry-land boundary around inlets and single-cell lakes. The native bank

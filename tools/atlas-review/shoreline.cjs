@@ -83,6 +83,27 @@ function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
     return detailRadius(u, v, macroRadius(u, v, world, wrapWidth, pixels), world, wrapWidth, pixels);
 }
 
+// Irregular cove banks retain one crossing along each ray. Sampling a fixed
+// ring makes the relief angular, rather than changing with distance from shore.
+// Broad uneven banks contain progressively smaller inlets; zoom filters the
+// fine scales before they become isolated pixels.
+function coveRelief(ox, oy, nx, ny, world, wrapWidth, pixels) {
+    const frequencies = [ 2, 4, 8, 16, 32 ], amplitudes = [ .50, .25, .12, .06, .026 ];
+    const u = ox + nx * .5, v = oy + ny * .5;
+    let relief = 0;
+    for (let i = 0; i < frequencies.length; i++) {
+        const f = frequencies[i];
+        const weight = smooth(clamp(pixels / (4 * f) - 1));
+        if (!weight)
+            continue;
+        const period = world ? (wrapWidth ? Math.max(1, Math.round(wrapWidth / 2 * f)) : 0) : f;
+        const scale = world && period ? period / (wrapWidth / 2) : f;
+        relief += amplitudes[i] * weight *
+                  (noise(u * scale + 8.71 + i * 12.31, v * scale - 15.37 + i * 9.17, period) - .5);
+    }
+    return .14 * Math.tanh(relief / .14);
+}
+
 function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
     if (!centers.length)
         return 0;
@@ -118,9 +139,9 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
         influence += Math.max(0, reach - d) ** exponent;
     let distance = influence ? reach - influence ** (1 / exponent) : ds[0];
     // Two perpendicular land neighbors enclose an inward water corner. Bound
-    // that corner with an elliptical cove whose axes follow their existing
-    // shore crossings. Quarter-axis easing keeps both independent quarters on
-    // the same boundary; it does not require the opposite quarter's neighbors.
+    // that corner with an irregular cove based on their existing shore crossings.
+    // Nested radial relief breaks up the ellipse. Easing at the quarter axes
+    // keeps both quarters on the same boundary, without opposite neighbors.
     if (distance > -.055) {
         const ox = Math.round(u), oy = Math.round(v), du = u - ox, dv = v - oy;
         const sx = Math.sign(du), sy = Math.sign(dv);
@@ -129,7 +150,9 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
             const a = 1 - radius(ox + sx * .19, oy, world, wrapWidth, pixels);
             const b = 1 - radius(ox, oy + sy * .19, world, wrapWidth, pixels);
             const weight = smooth(clamp(Math.min(Math.abs(du), Math.abs(dv)) / .06));
-            const cap = (1 - Math.hypot(du / a, dv / b)) * Math.min(a, b);
+            const length = Math.hypot(du / a, dv / b);
+            const relief = coveRelief(ox, oy, du / a / length, dv / b / length, world, wrapWidth, pixels);
+            const cap = (1 + relief - length) * Math.min(a, b);
             // A local smooth minimum preserves a continuous join to the
             // eroded headlands. It only adds land around the water corner.
             const blend = .02;

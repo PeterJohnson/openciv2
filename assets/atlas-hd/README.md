@@ -396,8 +396,11 @@ sand patches, and a visible pale sand/rock beach before the land texture.
 Occupied land footprints stay protected. Inward water corners now change at
 the actual land boundary, using a compact power union and elliptical cove limits
 derived from the two adjoining shore crossings. Axis easing preserves independent
-quarter boundaries; single-cell lakes become rounded instead of diamond-shaped.
-The coastline retains its varied headlands and fine relief. See the
+quarter boundaries; single-cell lakes avoid diamond-shaped tips. Five nested
+scales of radial bank relief break up the underlying oval with uneven shoulders,
+shallow bays and smaller notches. The outline remains connected along each ray;
+fine scales fade out with zoom. Native art repeats seamlessly, while enhanced
+lakes vary by world location. The coastline retains its varied headlands. See the
 [Reading inlet and lake comparison](review/coast-corners.png). The native and HD
 stages bake this into the same 32 coast-quarter PNGs; the enhanced sampler
 uses the same art treatment in world coordinates. River interiors retain their

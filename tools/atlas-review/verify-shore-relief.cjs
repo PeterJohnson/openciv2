@@ -41,6 +41,14 @@ async function main() {
                 assert(Math.abs(S.radius(u, v, true, width, detail) -
                                 S.radius(u + width / 2, v - width / 2, true, width, detail)) < 1e-10,
                        'World-wrap relief seam');
+                const ox = Math.round(u), oy = Math.round(v), angle = i * .17;
+                const r = .12 + i / 128 * .19;
+                const x = ox + Math.cos(angle) * r, y = oy + Math.sin(angle) * r;
+                const centers = C.directions.map(([ dx, dy ]) => [ox + (dx + dy) / 2, oy + (dy - dx) / 2]);
+                const shifted = centers.map(([ cx, cy ]) => [cx + width / 2, cy - width / 2]);
+                assert(Math.abs(S.field(x, y, centers, true, width, detail) -
+                                S.field(x + width / 2, y - width / 2, shifted, true, width, detail)) < 1e-9,
+                       'Irregular cove field jumps at world wrap');
                 wrapChecks++;
             }
     const a = S.radius(7.37, 9.41, true, 150), b = S.radius(8.37, 9.41, true, 150);
@@ -152,21 +160,35 @@ async function main() {
             }
             return (lo + hi) / 2;
         });
-        const bulge = Math.max(...radii.map((r, i) => {
+        const relativeRadii = radii.map((r, i) => {
             const angle = i * Math.PI / 36;
             const a = radii[Math.cos(angle) >= 0 ? 0 : 36];
             const b = radii[Math.sin(angle) >= 0 ? 18 : 54];
             return r * Math.hypot(Math.cos(angle) / a, Math.sin(angle) / b);
-        }));
+        });
+        const bulge = Math.max(...relativeRadii);
+        const rmsEllipseDeparture =
+            Math.sqrt(relativeRadii.reduce((n, r) => n + (r - 1) ** 2, 0) / relativeRadii.length);
         const min = Math.min(...radii), max = Math.max(...radii);
         assert(bulge < 1.2, 'Pointed lake corners: ' + test.name);
         assert(min > .1, 'Rounded lake lost its water center: ' + test.name);
-        roundness.push(
-            {tile : test.name, minRadius : min, maxRadius : max, maxRadiusRelativeToAxisEllipse : bulge});
+        roundness.push({
+            tile : test.name,
+            minRadius : min,
+            maxRadius : max,
+            maxRadiusRelativeToAxisEllipse : bulge,
+            rmsEllipseDeparture
+        });
     }
+    // Avoid replacing the square-corner problem with uniformly elliptical ponds.
+    // These bounds measure the final outline, independently of its shading.
+    const meanEllipseDeparture = roundness.reduce((n, r) => n + r.rmsEllipseDeparture, 0) / roundness.length;
+    assert(roundness[0].rmsEllipseDeparture > .05, 'Native lake is too uniformly elliptical');
+    assert(meanEllipseDeparture > .06, 'Saved lakes lack uneven banks');
     C.json(C.path.join(C.pack, 'review/shore-relief-validation.json'), {
         status : 'pass',
         lakeRoundness : roundness,
+        meanLakeEllipseDeparture : meanEllipseDeparture,
         nativeProfileRange : range,
         fractalDetailScales : detailScales,
         profileSamples : profile.length,
@@ -180,6 +202,7 @@ async function main() {
         waterComponentsWithOceanAccess : waterComponents,
         landComponentsTouchingNeighbors : landComponents,
         worldWrapChecks : wrapChecks,
+        worldWrapCoveFieldChecks : wrapChecks,
         limits :
             'Water components reach the tile center or an adjacent ocean tile. Finite geometry and wrap checks; visual review determines the artistic result. Native topology, source zoom cutoffs and all foreground sprite footprints remain unchanged.'
     });
