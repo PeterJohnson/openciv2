@@ -1,0 +1,361 @@
+{
+  "saveSha256": "effeae67b00b7e17d184c87c4134d659933f8943ea55d4372b932d2d7135b84a",
+  "regions": [
+    {
+      "id": "dry",
+      "title": "Dry country",
+      "types": [
+        0,
+        1,
+        2
+      ],
+      "score": 670,
+      "counts": [
+        8,
+        25,
+        21,
+        7,
+        3,
+        0,
+        0,
+        0,
+        0,
+        0,
+        8
+      ],
+      "camera": {
+        "ox": 126,
+        "oy": 60,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1
+      }
+    },
+    {
+      "id": "uplands",
+      "title": "Uplands",
+      "types": [
+        2,
+        3,
+        4,
+        5
+      ],
+      "score": 899.5,
+      "counts": [
+        0,
+        17,
+        16,
+        14,
+        4,
+        2,
+        4,
+        0,
+        0,
+        0,
+        15
+      ],
+      "camera": {
+        "ox": 134,
+        "oy": 12,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1
+      }
+    },
+    {
+      "id": "cold",
+      "title": "Cold country",
+      "types": [
+        6,
+        7
+      ],
+      "score": 430.5,
+      "counts": [
+        0,
+        6,
+        0,
+        17,
+        2,
+        1,
+        8,
+        3,
+        0,
+        0,
+        35
+      ],
+      "camera": {
+        "ox": 80,
+        "oy": 0,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1
+      }
+    },
+    {
+      "id": "wetlands",
+      "title": "Wetlands",
+      "types": [
+        2,
+        8,
+        9
+      ],
+      "score": 650,
+      "counts": [
+        0,
+        0,
+        14,
+        3,
+        0,
+        0,
+        0,
+        0,
+        10,
+        1,
+        44
+      ],
+      "camera": {
+        "ox": 66,
+        "oy": 24,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1
+      }
+    }
+  ],
+  "scenes": [
+    {
+      "id": "dry-64",
+      "title": "Dry country · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "camera": {
+        "ox": 126,
+        "oy": 60,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 0
+      },
+      "terrain": [
+        "desert",
+        "plains",
+        "grassland",
+        "forest",
+        "hills",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/dry-64.txt",
+      "traceSha256": "6a8aa3a327267beb8c92ac6342c36eed86401c4d37f62b48ae79c69c8fb04236",
+      "originalTraceSha256": "f344a53efe9ec34da1c5971987880c824a486d67d1ca3a4167e8c3bd18187dbb",
+      "original": "review/original-scenes/land-borders/dry-64.png",
+      "current": "review/land-borders/dry-64-current.png",
+      "hd": "review/land-borders/dry-64-hd.png",
+      "proposed": "review/land-borders/dry-64-proposed.png"
+    },
+    {
+      "id": "dry-128",
+      "title": "Dry country · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "camera": {
+        "ox": 126,
+        "oy": 60,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 8
+      },
+      "terrain": [
+        "desert",
+        "plains",
+        "grassland",
+        "forest",
+        "hills",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/dry-128.txt",
+      "traceSha256": "997ffd01ce9dff55766ee9376a4fcf6d6b791caa96103fccd1e8cfc7937f2785",
+      "originalTraceSha256": "7daeb9fedbc48ce0c0ccd12ebf36116ac01d84bdbbbc8d645466a013101eedc1",
+      "original": "review/original-scenes/land-borders/dry-128.png",
+      "current": "review/land-borders/dry-128-current.png",
+      "hd": "review/land-borders/dry-128-hd.png",
+      "proposed": "review/land-borders/dry-128-proposed.png"
+    },
+    {
+      "id": "uplands-64",
+      "title": "Uplands · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "camera": {
+        "ox": 134,
+        "oy": 12,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 0
+      },
+      "terrain": [
+        "plains",
+        "grassland",
+        "forest",
+        "hills",
+        "mountains",
+        "tundra",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/uplands-64.txt",
+      "traceSha256": "740e5ea78f95ea6b2c3ce7b1d679b2ae8628d0c4742a84c687cd3eec35f2ee96",
+      "originalTraceSha256": "5de2805377b0407ee3601b1f4f12235aa26b7e0274519799a9ef95f90d59ec5e",
+      "original": "review/original-scenes/land-borders/uplands-64.png",
+      "current": "review/land-borders/uplands-64-current.png",
+      "hd": "review/land-borders/uplands-64-hd.png",
+      "proposed": "review/land-borders/uplands-64-proposed.png"
+    },
+    {
+      "id": "uplands-128",
+      "title": "Uplands · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "camera": {
+        "ox": 134,
+        "oy": 12,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 8
+      },
+      "terrain": [
+        "plains",
+        "grassland",
+        "forest",
+        "hills",
+        "mountains",
+        "tundra",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/uplands-128.txt",
+      "traceSha256": "9fba861b74c9354cab8a4fe33c478e3c8e2eeedbad0343f07b97201b31f8f359",
+      "originalTraceSha256": "d8962d3ccc1f9e7db4fa34dabb730cfe1051bcb031531a7558de81ee4c610177",
+      "original": "review/original-scenes/land-borders/uplands-128.png",
+      "current": "review/land-borders/uplands-128-current.png",
+      "hd": "review/land-borders/uplands-128-hd.png",
+      "proposed": "review/land-borders/uplands-128-proposed.png"
+    },
+    {
+      "id": "cold-64",
+      "title": "Cold country · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "camera": {
+        "ox": 80,
+        "oy": 0,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 0
+      },
+      "terrain": [
+        "plains",
+        "forest",
+        "hills",
+        "mountains",
+        "tundra",
+        "glacier",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/cold-64.txt",
+      "traceSha256": "33971e425d4129fe5e64dea2e8a00c1b9955120ba0fcd006f01cc7f9a06833a6",
+      "originalTraceSha256": "40e904dfbb1e511e50a7630e39494f3d514e52b08d7b6e5ff5e3b2bf2b3d6976",
+      "original": "review/original-scenes/land-borders/cold-64.png",
+      "current": "review/land-borders/cold-64-current.png",
+      "hd": "review/land-borders/cold-64-hd.png",
+      "proposed": "review/land-borders/cold-64-proposed.png"
+    },
+    {
+      "id": "cold-128",
+      "title": "Cold country · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "camera": {
+        "ox": 80,
+        "oy": 0,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 8
+      },
+      "terrain": [
+        "plains",
+        "forest",
+        "hills",
+        "mountains",
+        "tundra",
+        "glacier",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/cold-128.txt",
+      "traceSha256": "aefa0f514200402581fb88fdb44919dcc0473125d9331dc8cc636ff9167dd1cf",
+      "originalTraceSha256": "3474837e636b08966b900c270c2376a4096bea31b40302fdc1ec8f517f5aa26c",
+      "original": "review/original-scenes/land-borders/cold-128.png",
+      "current": "review/land-borders/cold-128-current.png",
+      "hd": "review/land-borders/cold-128-hd.png",
+      "proposed": "review/land-borders/cold-128-proposed.png"
+    },
+    {
+      "id": "wetlands-64",
+      "title": "Wetlands · 64px tiles",
+      "mode": "map",
+      "tileWidth": 64,
+      "camera": {
+        "ox": 66,
+        "oy": 24,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 0
+      },
+      "terrain": [
+        "grassland",
+        "forest",
+        "swamp",
+        "jungle",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/wetlands-64.txt",
+      "traceSha256": "7d8ae947523a2e9bf0f921c08f53be202999dc1b5fc38cbc0bed650b9366d623",
+      "originalTraceSha256": "a78dac13ba64efb77ef2a6691aa76fe329f484746b1cc732ac20000b4cbba3c0",
+      "original": "review/original-scenes/land-borders/wetlands-64.png",
+      "current": "review/land-borders/wetlands-64-current.png",
+      "hd": "review/land-borders/wetlands-64-hd.png",
+      "proposed": "review/land-borders/wetlands-64-proposed.png"
+    },
+    {
+      "id": "wetlands-128",
+      "title": "Wetlands · 128px tiles",
+      "mode": "map",
+      "tileWidth": 128,
+      "camera": {
+        "ox": 66,
+        "oy": 24,
+        "cols": 6,
+        "rows": 12,
+        "viewer": -1,
+        "zoom": 8
+      },
+      "terrain": [
+        "grassland",
+        "forest",
+        "swamp",
+        "jungle",
+        "ocean"
+      ],
+      "fixture": "review/fixtures/land-borders/wetlands-128.txt",
+      "traceSha256": "e79ab817beb6ab2bde3a9a6a9a864f37ee9412270d0486f13a39d7de05b13ce7",
+      "originalTraceSha256": "610cc8fcb0cc159c055c46a77e8172fbb56ff30efc0e6030bac57178e7a1d29d",
+      "original": "review/original-scenes/land-borders/wetlands-128.png",
+      "current": "review/land-borders/wetlands-128-current.png",
+      "hd": "review/land-borders/wetlands-128-hd.png",
+      "proposed": "review/land-borders/wetlands-128-proposed.png"
+    }
+  ]
+}

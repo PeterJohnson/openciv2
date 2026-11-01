@@ -234,7 +234,7 @@ function groundPixel(get, wx, wy, lod = 64, rivers = null, wrapWidth = 0, shoreP
         return {land : (t.t & 15) === 10 ? 0 : 1, material : C.terrainNames[t.t & 15]};
     });
     return art.surface(u, v, corners, 'sand', rivers?.get(Math.floor(u * 4) + ',' + Math.floor(v * 4)) || [],
-                       lod, {wrapWidth, shorePixels});
+                       lod, {wrapWidth, shorePixels, landBlend : true});
 }
 
 // Change only status graphics, never the unit/city sprite frame or selection.

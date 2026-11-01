@@ -141,6 +141,22 @@ by a bounded atlas implementation; their phase is world-derived, never chosen
 independently for each visible tile. Shared samples remove seams more reliably
 than trying to disguise gaps with more painted detail.
 
+For land-to-land edges, the first step is artwork: the existing native neighbor
+quarter slots can carry a soft, irregular alpha ramp up to half opacity at the
+shared edge, fading to zero toward the tile center. The native/HD replacement
+bank now does this for every land material. Keep the center colors and feature
+silhouettes distinct; avoid a universal grass fringe that changes desert, snow
+or wetland identity. The native source still suppresses these overlays below
+32 logical pixels per tile.
+
+The separate enhanced prototype narrows material blending to an organic band
+around each boundary, with pure material cores. World-periodic weights and
+shared samples avoid rectangular rims. Preserve a continuous land-color fallback
+under full coastal footprints; a compact material blend must not leave dark
+strips at the shore. [Real-save comparisons](review/land-borders.html) and
+[checks](review/terrain-blend-validation.json) cover dry, rocky, cold and wet
+regions, all ten terrain types, and both 64/128px tile sizes.
+
 **Acceptance:** identical edge samples across independently rendered chunks,
 no alpha cracks at fractional scale, stable texture choices during pan/zoom,
 coast saddle and wrap cases, connected estuaries, no hidden terrain influencing

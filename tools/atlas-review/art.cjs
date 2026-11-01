@@ -2,6 +2,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const Shore = require('./shoreline.cjs');
+const Land = require('./terrain-blends.cjs');
 let sharp;
 try {
     sharp = require('sharp');
@@ -127,7 +128,16 @@ function woodlandFloor(u, v, lod = 256, {periodic = false, edge = null} = {}) {
 function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options = {}) {
     const texture = options.periodic ? periodicTex : tex;
     const fu = fract(u), fv = fract(v),
-          weights = [ (1 - fu) * (1 - fv), fu * (1 - fv), fu * fv, (1 - fu) * fv ];
+          linearWeights = [ (1 - fu) * (1 - fv), fu * (1 - fv), fu * fv, (1 - fu) * fv ];
+    let weights = options.landBlend ? Land.weights(u, v) : linearWeights;
+    if (options.landBlend) {
+        // Full shore footprints can extend beyond the organic material weights.
+        // Keep a continuous land-color fallback there, without changing shore geometry.
+        const support = weights.reduce((sum, w, i) => sum + (corners[i].land ? w : 0), 0);
+        const fallback = Math.max(0, .025 - support);
+        if (fallback)
+            weights = weights.map((w, i) => w + fallback * linearWeights[i]);
+    }
     let a = options.field ??
             shoreField(u, v, corners, options.wrapWidth || 0, options.shorePixels || Infinity),
         color = [ 0, 0, 0 ], landWeight = 0;

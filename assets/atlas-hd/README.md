@@ -130,6 +130,16 @@ The enhanced renderer blends the same materials through its existing world-space
 terrain pass. [Compare forest borders in all four stages](review/forest-borders.png).
 Tree sprites, terrain selection, neighbor dither selection and drawing order are unchanged.
 
+All ten land styles use soft, irregular neighbor overlays instead of coarse
+checker rims. Each edge blends toward the actual neighboring terrain; the
+centers retain their original material, and terrain feature sprites stay intact.
+Native and HD-only views use the same source-selected quarter slots. The enhanced
+pass uses separate world-space transition weights with pure material cores and
+continuous coastal color support. [Inspect the four-stage land comparisons](review/land-borders.html)
+from four regions of the real save at 64/128px tiles, covering all ten land types.
+[Transition checks](review/terrain-blend-validation.json) cover material-core
+preservation, shared edges, world wrapping and coastal color support.
+
 ## Rebuild
 
 The standalone renderer requires Windows, MSVC x86 C++ build tools, a Windows
@@ -154,7 +164,8 @@ node tools/atlas-review/build-gallery.cjs
 ```
 
 `build-review.cjs --reuse-bindings` reuses the derived PNG bank when only the
-renderer or fixtures change. Full builds recreate it. Build products and
+renderer or fixtures change; forest ground and land-transition overlays are
+still regenerated. Full builds recreate the bank. Build products and
 extracted source bodies remain in ignored `build/atlas-review/`. Review images,
 fixtures, hashes and traces are deliberately versioned. The primary retained
 sprite files are retained native crops or full generated images; the rebuild reuses
@@ -163,11 +174,31 @@ After field-art edits, run `fields-review.cjs`, `verify-fields.cjs` and
 `build-gallery.cjs` in `tools/atlas-review/`. The field review refreshes the five
 affected maps and the Carlisle/Gloucester comparison without changing fixtures.
 
-After forest-floor edits, run `forest-floor.cjs`, `refresh-map-finishing.cjs`,
-`coast-audit.cjs --skip-original`, `fields-review.cjs --review-only` and
-`refresh-unit-banners.cjs --review-only`. Then run `verify.cjs`,
-`verify-map-style.cjs`, `verify-coast-audit.cjs` and `build-gallery.cjs`.
-The full review builder also regenerates the forest ground before its bindings.
+The full review builder also regenerates the forest ground and land-transition overlays.
+After forest-floor edits, first run `forest-floor.cjs`. For either forest or
+general land-transition edits, run these tools from the repository root:
+
+```powershell
+node tools/atlas-review/terrain-blends.cjs
+node tools/atlas-review/refresh-map-finishing.cjs
+node tools/atlas-review/coast-audit.cjs --skip-original
+node tools/atlas-review/refresh-native-backgrounds.cjs --render-only
+node tools/atlas-review/land-borders.cjs
+node tools/atlas-review/fields-review.cjs --review-only
+node tools/atlas-review/refresh-unit-banners.cjs --review-only
+node tools/atlas-review/verify-terrain-blends.cjs
+node tools/atlas-review/verify-coast-audit.cjs
+node tools/atlas-review/verify.cjs
+node tools/atlas-review/verify-fields.cjs
+node tools/atlas-review/verify-map-style.cjs
+node tools/atlas-review/verify-map-finishing.cjs
+node tools/atlas-review/build-gallery.cjs
+node tools/atlas-review/fidelity.cjs
+```
+
+The window refresh updates the native/HD city resource maps as well as the main
+map scenes. The supplemental original-art comparisons require the local original
+bindings described below; only their composed scenes are versioned.
 
 The native executable can also emit an individual command trace:
 

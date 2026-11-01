@@ -1,0 +1,219 @@
+{
+  "status": "pass",
+  "nativeQuarterOverlays": 40,
+  "featherPixels": 307050,
+  "protectedCorePixels": 204480,
+  "unchangedSentinelSlots": 12,
+  "weightSamples": 1681,
+  "independentCellBoundarySamples": 3968,
+  "maxJoinDelta": 0,
+  "coastalMaterialSamples": 17424,
+  "landTypesCovered": 10,
+  "logicalTileWidths": [
+    64,
+    128
+  ],
+  "scenes": [
+    {
+      "id": "dry-64",
+      "images": {
+        "original": {
+          "width": 384,
+          "height": 192,
+          "sha256": "8cbe3e2ab77728fb334dded7b668b3f3ccb06b7d92bb005fc68c7629b06d3bf3"
+        },
+        "current": {
+          "width": 384,
+          "height": 192,
+          "sha256": "4d6af9cebb21f5ae0ecda326014075584191834436a8207ff28d5d4c848ab98a"
+        },
+        "hd": {
+          "width": 768,
+          "height": 384,
+          "sha256": "e3c1f8ca65e30263d82748488b2cc409ab73c56514280f83941b30e3d25f1007"
+        },
+        "proposed": {
+          "width": 768,
+          "height": 384,
+          "sha256": "84ef2e17cb299826fd91f0725b54461bf25df80e261e3ff8deac18c53f680508"
+        }
+      }
+    },
+    {
+      "id": "dry-128",
+      "images": {
+        "original": {
+          "width": 768,
+          "height": 384,
+          "sha256": "d2a4a67470b3805fc4d35fec55c08c66e64ab5f70152edbb3ca0fa2066905677"
+        },
+        "current": {
+          "width": 768,
+          "height": 384,
+          "sha256": "208e97b0a43d7a4dc51e68d55e7cdb6dae5d419671a1ea8df5de76c701378a16"
+        },
+        "hd": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "ce4dfd89d0d924743b9f0049b3c431bd2effc96f186d4d6fecb6d9123ebc1d12"
+        },
+        "proposed": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "7db269c516037cd27bf157b2688bdca55edfd428fe0687848287fcda10e091d1"
+        }
+      }
+    },
+    {
+      "id": "uplands-64",
+      "images": {
+        "original": {
+          "width": 384,
+          "height": 192,
+          "sha256": "0423324518264824786f5e5a23e88887cc48c5f616684b410b1633b5cbabf721"
+        },
+        "current": {
+          "width": 384,
+          "height": 192,
+          "sha256": "76510e39fe6edc57791a7712f703b6d9dd4f7d7e0c703f585c81be22f95bf7b1"
+        },
+        "hd": {
+          "width": 768,
+          "height": 384,
+          "sha256": "94cf2865abb3b46a5430776413fd055e05d25f6b30c18255b6a13bbd5903d123"
+        },
+        "proposed": {
+          "width": 768,
+          "height": 384,
+          "sha256": "b64c36bbbf4afa07312546564e12e486e019440ebb090b6e0ffefab136f66b53"
+        }
+      }
+    },
+    {
+      "id": "uplands-128",
+      "images": {
+        "original": {
+          "width": 768,
+          "height": 384,
+          "sha256": "3f088a57c1afb3155f7f6b5c18d3b2848892261944cd2e90cbc95c7db870ef43"
+        },
+        "current": {
+          "width": 768,
+          "height": 384,
+          "sha256": "07445c32b9c9fe6951e6de0335cf360b8ec30a9933eb14d141bdb73452181340"
+        },
+        "hd": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "ad69e9b49539f811be6d2d25268d5e85045f5204d05f863076629033b4205362"
+        },
+        "proposed": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "10db8ed4dbae90067c4b9ed4ea757cc352acac2b074898f3fa33e66b42342e0d"
+        }
+      }
+    },
+    {
+      "id": "cold-64",
+      "images": {
+        "original": {
+          "width": 384,
+          "height": 192,
+          "sha256": "189f272a13d86d452bd652bfff268a162045cbe20c150cb1ebba5234be795ac4"
+        },
+        "current": {
+          "width": 384,
+          "height": 192,
+          "sha256": "4691e9e8cf03f57afa04d76b39a1fae330057cb5bfe582f9bb090755b20806b8"
+        },
+        "hd": {
+          "width": 768,
+          "height": 384,
+          "sha256": "341c67b6d985767d9f0ca93390c37dd47a973f9a7f78e74b213298f4198c0044"
+        },
+        "proposed": {
+          "width": 768,
+          "height": 384,
+          "sha256": "9376648f09a1b4ac8ecaaa6b583af8f17ae8e15c5a5c96771c293a8fc6de32f1"
+        }
+      }
+    },
+    {
+      "id": "cold-128",
+      "images": {
+        "original": {
+          "width": 768,
+          "height": 384,
+          "sha256": "5bf2284162e9500e0b60fb4951f345b8328867e58df9f0c36a25a6306223117d"
+        },
+        "current": {
+          "width": 768,
+          "height": 384,
+          "sha256": "c1ca23a3bb5f065cc9ba8af2a98c43a595c3d6c6465a3ed17f59207f673f1e50"
+        },
+        "hd": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "b292dd07ba0f0bc16ec6cc96139e3b06087a535ec9889a3c598ca1798c945c06"
+        },
+        "proposed": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "57d6a62b297a27c7b5b0645b1a195b6a0d0defc3a67485e362a609ff93c93f17"
+        }
+      }
+    },
+    {
+      "id": "wetlands-64",
+      "images": {
+        "original": {
+          "width": 384,
+          "height": 192,
+          "sha256": "83a2f4de962aaf68a5786e373d8e19351e77b5daab4b945a118edde5e71aac56"
+        },
+        "current": {
+          "width": 384,
+          "height": 192,
+          "sha256": "f0c592f28bee236960755e599e193e5b2ddc170055d2bbc8a3eb83dfd752bab8"
+        },
+        "hd": {
+          "width": 768,
+          "height": 384,
+          "sha256": "c40c1506001ff4ca39955ed39f609c7db254957b94274b1184d551b6df0363ed"
+        },
+        "proposed": {
+          "width": 768,
+          "height": 384,
+          "sha256": "01b62a7ad543d6b6aa096bdcc5e9cff2c135e9f4df6e9d98bc5acff8c9f67406"
+        }
+      }
+    },
+    {
+      "id": "wetlands-128",
+      "images": {
+        "original": {
+          "width": 768,
+          "height": 384,
+          "sha256": "ac5b3e9407aa41690b3abebbe783f4e35fd5e30257626f2c35725d3a13855446"
+        },
+        "current": {
+          "width": 768,
+          "height": 384,
+          "sha256": "8e8a3d7a420afaa34a491c7e9c1ac4e2fdc516491c450e0e768da7b1858f5d34"
+        },
+        "hd": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "16a295c4723a633b960e93db2039a4964a4b75fb0bb332a4bf8e649b45eb5ea5"
+        },
+        "proposed": {
+          "width": 1536,
+          "height": 768,
+          "sha256": "fd25ca53f7ccdf81bb920771a9e19a457511b2aa06dfacf8bc9ed05bea9d69e0"
+        }
+      }
+    }
+  ],
+  "limits": "Asset and standalone-render checks, including source Debug/Release traces; native detail cutoffs remain unchanged. No whole-frame live-game or integrated-HD-engine claim."
+}

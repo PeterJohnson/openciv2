@@ -1,0 +1,289 @@
+{
+  "version": 1,
+  "authoring": "tools/atlas-review/terrain-blends.cjs",
+  "native": "Source neighbor selection and quarter boxes; irregular feather to a half blend at the shared edge; untouched material cores.",
+  "enhanced": "Narrow world-space transitions with periodic organic variation and distinct material cores.",
+  "unchanged": "Ground PNGs, coast geometry, foreground art, draw order and native zoom cutoffs.",
+  "entries": [
+    {
+      "terrain": "desert",
+      "quadrant": 0,
+      "file": "compatibility/dither/0/0.png",
+      "source": "map/ground/desert.png",
+      "sha256": "c7d2104cc0f9d74db0ba8e19aaf8f458d9f05a0a3be643f807d4ff0f9294e916"
+    },
+    {
+      "terrain": "desert",
+      "quadrant": 1,
+      "file": "compatibility/dither/0/1.png",
+      "source": "map/ground/desert.png",
+      "sha256": "1d130ad44c463aa5ff22994af6a3ba9a70cd6b33d841e867f17309c467f79fd7"
+    },
+    {
+      "terrain": "desert",
+      "quadrant": 2,
+      "file": "compatibility/dither/0/2.png",
+      "source": "map/ground/desert.png",
+      "sha256": "ce988eeb2b5aa2b75c85c16c8f33b48a217926979d5aee59701ec01998961596"
+    },
+    {
+      "terrain": "desert",
+      "quadrant": 3,
+      "file": "compatibility/dither/0/3.png",
+      "source": "map/ground/desert.png",
+      "sha256": "492df197299ab1e8639d9a0e64ee19a7b5c4aea0f2b8cf365643cb02d82186d4"
+    },
+    {
+      "terrain": "plains",
+      "quadrant": 0,
+      "file": "compatibility/dither/1/0.png",
+      "source": "map/ground/plains.png",
+      "sha256": "0f4a08ed5f929a6201870b1a8eb4326cfe910fdd3b945ae15cfde2f6d29551a8"
+    },
+    {
+      "terrain": "plains",
+      "quadrant": 1,
+      "file": "compatibility/dither/1/1.png",
+      "source": "map/ground/plains.png",
+      "sha256": "47490ac4b1d36a3b08c6e54ee87617961d875c82acbc141c06717a0804004112"
+    },
+    {
+      "terrain": "plains",
+      "quadrant": 2,
+      "file": "compatibility/dither/1/2.png",
+      "source": "map/ground/plains.png",
+      "sha256": "4322f4d8d4a4e561a1ee250d96f79b5fbd60e9d44349f7b290edf608bbc42b6b"
+    },
+    {
+      "terrain": "plains",
+      "quadrant": 3,
+      "file": "compatibility/dither/1/3.png",
+      "source": "map/ground/plains.png",
+      "sha256": "7cae1b7f676bffa10c917733f718200a62d867cc68c39ef299924e32b2282283"
+    },
+    {
+      "terrain": "grassland",
+      "quadrant": 0,
+      "file": "compatibility/dither/2/0.png",
+      "source": "map/ground/grassland.png",
+      "sha256": "f4dcf7d0ea22b19f023db1b00e96f45fb9b0257c48be20acf7c27fa2d62eb2ba"
+    },
+    {
+      "terrain": "grassland",
+      "quadrant": 1,
+      "file": "compatibility/dither/2/1.png",
+      "source": "map/ground/grassland.png",
+      "sha256": "11e3a0b4a86c0c00406e1d4b047f0610b77526a2bf56b0eb5ff189e0e27b961e"
+    },
+    {
+      "terrain": "grassland",
+      "quadrant": 2,
+      "file": "compatibility/dither/2/2.png",
+      "source": "map/ground/grassland.png",
+      "sha256": "51daec7907b8064dbaad3cf0e8dc7d23906cebd1bbe5e7b9b022a67306b62d06"
+    },
+    {
+      "terrain": "grassland",
+      "quadrant": 3,
+      "file": "compatibility/dither/2/3.png",
+      "source": "map/ground/grassland.png",
+      "sha256": "ff4205c19445b7acf92216cb9bb939fdbff91fecc1493c39c89f91408d8c8255"
+    },
+    {
+      "terrain": "forest",
+      "quadrant": 0,
+      "file": "compatibility/dither/3/0.png",
+      "source": "map/ground/forest.png",
+      "sha256": "571f30e2477d8fb70a9df6ba4deaa5bcb22cf12d0df6884aa1d6ada47384461e"
+    },
+    {
+      "terrain": "forest",
+      "quadrant": 1,
+      "file": "compatibility/dither/3/1.png",
+      "source": "map/ground/forest.png",
+      "sha256": "eff539bd6311b1baf77a3e2691620f2f6e4398d70c4ac79764362e4542db5b0a"
+    },
+    {
+      "terrain": "forest",
+      "quadrant": 2,
+      "file": "compatibility/dither/3/2.png",
+      "source": "map/ground/forest.png",
+      "sha256": "764f221cf4c6b824ce814dea2385e43fb1a87711e2096977048e2c3666c285c4"
+    },
+    {
+      "terrain": "forest",
+      "quadrant": 3,
+      "file": "compatibility/dither/3/3.png",
+      "source": "map/ground/forest.png",
+      "sha256": "6434ad2a2a2e98bebf2c3e0b6a5ffd9d5d7fdcb0470ef88b4f60f2d9a3fd9cc7"
+    },
+    {
+      "terrain": "hills",
+      "quadrant": 0,
+      "file": "compatibility/dither/4/0.png",
+      "source": "map/ground/hills.png",
+      "sha256": "d9143f69ef3d37e34aea8b31ffedb8ea3c172da336a7d0bb13e5b61fbc3dfe50"
+    },
+    {
+      "terrain": "hills",
+      "quadrant": 1,
+      "file": "compatibility/dither/4/1.png",
+      "source": "map/ground/hills.png",
+      "sha256": "dc0a0fa9af4ec122757686384170c40049346702b249a4be75143276dc2ead6a"
+    },
+    {
+      "terrain": "hills",
+      "quadrant": 2,
+      "file": "compatibility/dither/4/2.png",
+      "source": "map/ground/hills.png",
+      "sha256": "ed3d2d0fa1b82eae87f93b992b4ca6c2d1c3ce1ce8328d6d4f0759c40b1eb93f"
+    },
+    {
+      "terrain": "hills",
+      "quadrant": 3,
+      "file": "compatibility/dither/4/3.png",
+      "source": "map/ground/hills.png",
+      "sha256": "e4d626483a8d009fed60962385f1dae54f1fc8ec85eb16185e7a70c47380b3c8"
+    },
+    {
+      "terrain": "mountains",
+      "quadrant": 0,
+      "file": "compatibility/dither/5/0.png",
+      "source": "map/ground/mountains.png",
+      "sha256": "5334a4c68db5b30564ac8def714cc986f7217151514a6896bc3a5ec9cfc6b83d"
+    },
+    {
+      "terrain": "mountains",
+      "quadrant": 1,
+      "file": "compatibility/dither/5/1.png",
+      "source": "map/ground/mountains.png",
+      "sha256": "283ee3c89ff2d1318ad890e28c33f31d81fe2d26787610ae35cb01a7b7fe86ef"
+    },
+    {
+      "terrain": "mountains",
+      "quadrant": 2,
+      "file": "compatibility/dither/5/2.png",
+      "source": "map/ground/mountains.png",
+      "sha256": "275a6f2f6a6fe0e09ee7257d169f2db2bd97fa1d2682a7cbdbb371d0780230e1"
+    },
+    {
+      "terrain": "mountains",
+      "quadrant": 3,
+      "file": "compatibility/dither/5/3.png",
+      "source": "map/ground/mountains.png",
+      "sha256": "22b23c5b807c66ed59609cf343dcc1855f13dafad702562c760a244f1de9ce6b"
+    },
+    {
+      "terrain": "tundra",
+      "quadrant": 0,
+      "file": "compatibility/dither/6/0.png",
+      "source": "map/ground/tundra.png",
+      "sha256": "fa7997532f70f266aff2c755465ba462947525f0222490d9f5c26f2cc92fcaf5"
+    },
+    {
+      "terrain": "tundra",
+      "quadrant": 1,
+      "file": "compatibility/dither/6/1.png",
+      "source": "map/ground/tundra.png",
+      "sha256": "c1c34d54b1cbc0647b5a84a89905262824b90205f83b304b01bc6001fc8d9694"
+    },
+    {
+      "terrain": "tundra",
+      "quadrant": 2,
+      "file": "compatibility/dither/6/2.png",
+      "source": "map/ground/tundra.png",
+      "sha256": "b42575e1c18001e43a81e8dc5d0bbb8aa23c20e86ccdb59adc283966b905605f"
+    },
+    {
+      "terrain": "tundra",
+      "quadrant": 3,
+      "file": "compatibility/dither/6/3.png",
+      "source": "map/ground/tundra.png",
+      "sha256": "4f3220b2b83a4d389f87f65eb499555550d17bd7e6c1c49992d3caea4f42cb83"
+    },
+    {
+      "terrain": "glacier",
+      "quadrant": 0,
+      "file": "compatibility/dither/7/0.png",
+      "source": "map/ground/glacier.png",
+      "sha256": "422d8ac5f40395fe3878dcaf1dcc3190b00039e33819708d9edb558d98c8277c"
+    },
+    {
+      "terrain": "glacier",
+      "quadrant": 1,
+      "file": "compatibility/dither/7/1.png",
+      "source": "map/ground/glacier.png",
+      "sha256": "764e8e2363f1241fa40fb29b9e5e3df785b90d37bb31c3e38e1709c45bfff66b"
+    },
+    {
+      "terrain": "glacier",
+      "quadrant": 2,
+      "file": "compatibility/dither/7/2.png",
+      "source": "map/ground/glacier.png",
+      "sha256": "d1d1baef00ef869a7b19fdee76c3da287f50b1e7883ccf1c3e7f638b2203985e"
+    },
+    {
+      "terrain": "glacier",
+      "quadrant": 3,
+      "file": "compatibility/dither/7/3.png",
+      "source": "map/ground/glacier.png",
+      "sha256": "af6c914fbb09eed8ab914a8510b14f8cae65340fedb4c008fd10399fe1faa84b"
+    },
+    {
+      "terrain": "swamp",
+      "quadrant": 0,
+      "file": "compatibility/dither/8/0.png",
+      "source": "map/ground/swamp.png",
+      "sha256": "65ebdcef1901bcb43998355d6884b54dab564f8b63c5775f80daac2abd6a5bd8"
+    },
+    {
+      "terrain": "swamp",
+      "quadrant": 1,
+      "file": "compatibility/dither/8/1.png",
+      "source": "map/ground/swamp.png",
+      "sha256": "e428c0a0e60bdc357480453607675045ac0e5080874607b91c6e7a48d6b3f04c"
+    },
+    {
+      "terrain": "swamp",
+      "quadrant": 2,
+      "file": "compatibility/dither/8/2.png",
+      "source": "map/ground/swamp.png",
+      "sha256": "d1c014b65d6f24ed71a67b0c843366b89fce09018e58cda8ce5cca79ffd99a94"
+    },
+    {
+      "terrain": "swamp",
+      "quadrant": 3,
+      "file": "compatibility/dither/8/3.png",
+      "source": "map/ground/swamp.png",
+      "sha256": "66547949cb54aa3819a4e2089dc11a28422ffdfc4a1dab44ba0901e850acbb3d"
+    },
+    {
+      "terrain": "jungle",
+      "quadrant": 0,
+      "file": "compatibility/dither/9/0.png",
+      "source": "map/ground/jungle.png",
+      "sha256": "5afc7e480faf14ebf5f7918fa7f134f00b2b62f4ca79d2d11f125d28e0b256af"
+    },
+    {
+      "terrain": "jungle",
+      "quadrant": 1,
+      "file": "compatibility/dither/9/1.png",
+      "source": "map/ground/jungle.png",
+      "sha256": "d2c0db160d880d0cb52112d9a1745ee25250aad1ce1b2923d2ad68077fea6333"
+    },
+    {
+      "terrain": "jungle",
+      "quadrant": 2,
+      "file": "compatibility/dither/9/2.png",
+      "source": "map/ground/jungle.png",
+      "sha256": "126e9fe0fdd181c41e08a6db62e88660e8e68b4099b6d7e13dc79595f0c2c4f5"
+    },
+    {
+      "terrain": "jungle",
+      "quadrant": 3,
+      "file": "compatibility/dither/9/3.png",
+      "source": "map/ground/jungle.png",
+      "sha256": "7f99e56bbde1561950fc4c1971c8ca1a0359e6007930f609b1fa09368e52c0ad"
+    }
+  ]
+}

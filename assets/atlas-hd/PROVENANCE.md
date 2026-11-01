@@ -176,3 +176,13 @@ four dither adapters; `art.cjs` uses the same grassy undergrowth and mottled lea
 litter for enhanced terrain. No original pixels are used, and the painted tree
 sprites are unchanged. `review/forest-borders.png` contains only composed
 four-stage scene crops, under the existing original-art review allowance.
+
+General land-border blending reuses the ten retained ground PNGs without
+changing their RGB or terrain feature sprites. terrain-blends.cjs authors
+feathered alpha for the 40 native neighbor-quarter adapters, and supplies the
+organic material weights used only by the enhanced sampler. There are no new
+third-party image inputs. map/terrain-transitions.json records each adapter's
+source and output hash. The new land-border comparisons use the real saved map;
+original artwork appears only in composed scenes under
+review/original-scenes/land-borders/ and the four-stage land-borders.png sheet,
+with the same review-only allowance and license exclusions as the other scenes.

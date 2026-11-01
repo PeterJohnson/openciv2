@@ -17,18 +17,7 @@ async function ground(phase = [ 0, 0 ]) {
 }
 
 async function dither(q, bytes) {
-    const tile = await C.raw(bytes), out = C.clear(256, 128);
-    const x0 = q < 2 ? 256 : 0, y0 = ((q + 1) & 3) < 2 ? 0 : 128;
-    for (let y = 0; y < 128; y++)
-        for (let x = 0; x < 256; x++) {
-            const si = ((y + y0) * 512 + x + x0) * 4, di = (y * 256 + x) * 4;
-            out.data.set(tile.data.subarray(si, si + 4), di);
-            const outward = Math.abs((x + x0 - 256) / 256) + Math.abs((y + y0 - 128) / 128);
-            const threshold = [ 0, .5, .75, .25 ][(Math.floor(x / 8) & 1) + 2 * (Math.floor(y / 8) & 1)];
-            if (outward < .60 + threshold * .40)
-                out.data[di + 3] = 0;
-        }
-    return C.png(out);
+    return require('./terrain-blends.cjs').dither(3, q, bytes);
 }
 
 async function build() {

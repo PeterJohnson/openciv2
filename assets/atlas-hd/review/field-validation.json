@@ -504,37 +504,37 @@
     {
       "scene": "saved-close",
       "stage": "current",
-      "visibleFieldPixels": 481,
-      "fractionOfTile": 0.059
+      "visibleFieldPixels": 503,
+      "fractionOfTile": 0.061
     },
     {
       "scene": "saved-close",
       "stage": "hd",
-      "visibleFieldPixels": 2065,
-      "fractionOfTile": 0.063
+      "visibleFieldPixels": 2113,
+      "fractionOfTile": 0.064
     },
     {
       "scene": "saved-close",
       "stage": "proposed",
-      "visibleFieldPixels": 2066,
+      "visibleFieldPixels": 2062,
       "fractionOfTile": 0.063
     },
     {
       "scene": "saved-region",
       "stage": "current",
-      "visibleFieldPixels": 104,
-      "fractionOfTile": 0.051
+      "visibleFieldPixels": 109,
+      "fractionOfTile": 0.053
     },
     {
       "scene": "saved-region",
       "stage": "hd",
-      "visibleFieldPixels": 442,
-      "fractionOfTile": 0.054
+      "visibleFieldPixels": 455,
+      "fractionOfTile": 0.056
     },
     {
       "scene": "saved-region",
       "stage": "proposed",
-      "visibleFieldPixels": 360,
+      "visibleFieldPixels": 357,
       "fractionOfTile": 0.044
     }
   ],

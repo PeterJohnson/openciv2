@@ -13,6 +13,7 @@ async function main() {
         bindings = C.read(C.path.join(C.pack, 'compatibility/bindings.json')).bindings;
     else
         bindings = await buildBindings(traces);
+    await require('./terrain-blends.cjs').build();
     await R.supportingArt();
     await C.art.loadMaterials(C.path.join(C.pack, 'map'));
     const records = [];

@@ -602,6 +602,15 @@ The native forest-floor update changes the forest ground PNGs and derived
 base terrain, neighbor dither quarters, then the source-selected forest sprite.
 The new artwork keeps the full opaque land diamond, blends its perimeter into
 grass and reduces the contrast of leaf litter beneath the tree cluster.
-Native neighbor selection, dither alpha, zoom gates and sprite boxes are unchanged.
+Native neighbor selection, zoom gates and sprite boxes are unchanged. The shared
+land-transition authoring step now feathers all ten land materials, including
+forest: each neighbor quarter approaches half opacity at the outer edge and
+fades to zero before the material core. This replaces the coarse checker mask
+without changing source commands or ground/foreground sprite footprints.
 The enhanced pass uses the mixed forest material within its existing continuous
-ground sampler. No game source or production drawing behavior is modified.
+ground sampler. Its terrain weights now concentrate blending around irregular
+boundaries and preserve material cores. A continuous bilinear fallback supplies
+land color wherever the fuller coast extends beyond those weights; coast geometry
+is unchanged. The [land review](review/land-borders.html) covers all ten land
+types in the real save, at two zoom levels and all four stages. No game source
+or production drawing behavior is modified.

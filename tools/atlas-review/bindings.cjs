@@ -1,6 +1,7 @@
 // PNG bindings for the extracted renderer. These are explicit review adapters, not runtime loaders.
 const C = require('./common.cjs');
 const Finishing = require('./map-finishing.cjs');
+const Land = require('./terrain-blends.cjs');
 const {fs, path, pack, art, sharp, svg, asset, entries, raw, clear, blit, png, fit} = C;
 const bank = new Map();
 const bindingIndex = {};
@@ -81,27 +82,12 @@ async function buildBindings(traces) {
     for (let q = 0; q < 4; q++)
         for (let mask = 0; mask < 8; mask++)
             await save(`coast/${q}/${mask}`, await Finishing.coastQuarter(q, mask), 32, 16);
-    // Ordered stippling retains the legacy quadrant topology with newly authored alpha.
+    // The source selects neighboring terrain and quadrants; artwork supplies the feathering.
     for (let t = 0; t < 13; t++)
         for (let q = 0; q < 4; q++) {
-            const material = C.terrainNames[t] || 'grassland';
-            const tile = await raw(path.join(pack, 'map/ground', material + '.png'), 512, 256);
-            const im = clear(256, 128), x0 = q < 2 ? 256 : 0, y0 = ((q + 1) & 3) < 2 ? 0 : 128;
-            for (let y = 0; y < 128; y++)
-                for (let x = 0; x < 256; x++) {
-                    const si = ((y + y0) * 512 + x + x0) * 4, di = (y * 256 + x) * 4;
-                    im.data.set(tile.data.subarray(si, si + 4), di);
-                    if (t === 11)
-                        im.data.set([ 12, 22, 23, im.data[di + 3] ], di);
-                    const outward = Math.abs((x + x0 - 256) / 256) + Math.abs((y + y0 - 128) / 128);
-                    const threshold =
-                        [ 0, .5, .75, .25 ][(Math.floor(x / 8) & 1) + 2 * (Math.floor(y / 8) & 1)];
-                    if (outward < .60 + threshold * .40)
-                        im.data[di + 3] = 0;
-                }
-            if (t === 12)
-                im.data.fill(0); // Authored blank edge: no desert/grass wedge beside ocean.
-            await save(`dither/${t}/${q}`, await png(im), 32, 16);
+            const source = 'map/ground/' + (C.terrainNames[t] || 'grassland') + '.png';
+            const bytes = await Land.dither(t, q, fs.readFileSync(path.join(pack, source)));
+            await save('dither/' + t + '/' + q, bytes, 32, 16, t < 10 ? source : null);
         }
     const roadTex = fs.readFileSync(path.join(pack, 'map/materials/road.png')).toString('base64');
     for (const family of ['road', 'rail'])
@@ -272,6 +258,7 @@ async function buildBindings(traces) {
     C.json(path.join(pack, 'compatibility/bindings.json'), {
         schemaVersion : 1,
         description : 'Review PNG adapter. Native boxes, new alpha pixels; not a production loader.',
+        terrainTransitions : 'map/terrain-transitions.json',
         directionOrder : [ 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N' ],
         unitShieldAnchors : 'map/unit-anchors.json',
         cityFlagAnchor : [ 48, 4 ],
