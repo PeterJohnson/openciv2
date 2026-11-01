@@ -333,6 +333,14 @@ adjacent icon and numeric-label boxes within each stockpile panel. Keep them cle
 of the production heading/artwork, meter and button panel; do not position them
 using coordinates from the old icon-grid layout.
 
+Preserve every existing city action when simplifying the dashboard. The enhanced
+mockups retain Buy/Change beside production; Info, Map, Rename, Happy, View and
+Exit in the bottom panel; previous/next-city arrows; and the improvements
+scrollbar. Their bounds follow `create_controls`, `create_change_button` and
+`create_exit_button` (`src/auto/city.cpp:16712–17046`), with the enhanced button
+styling. These static previews show the controls, not interactive callbacks or
+alternate notice/autobuild states.
+
 For a later independently scoped layout pass, replace the three hard size jumps
 with logical minimum sizes, allow the improvements list to gain rows on taller
 windows, and page or wrap crowded citizens with an explicit total. Do not shrink

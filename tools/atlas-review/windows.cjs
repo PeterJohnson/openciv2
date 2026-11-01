@@ -426,12 +426,30 @@ async function city(trace, scene, proposed, density, original = null) {
                 await p.text('Select a unit for orders', 204, 386, 222, 10, '#b3c7b7', 'middle');
         } else if (c.asset === 'adapter-buttons') {
             await p.box(x, y, w, h, '#20362dcc', '#6b816b');
-            await p.button('Buy', x + 8, y + 8, 80, 22);
-            await p.button('Change', x + 98, y + 8, 94, 22);
-            await p.button('Exit city', x + 8, y + 36, 184, 22);
         }
     }
     if (proposed) {
+        // Preserve the full control set from CityWindow::create_controls,
+        // create_change_button and create_exit_button (city.cpp:16712-17046).
+        // Production actions flank its artwork; navigation stays in the bottom panel.
+        await p.button('Buy', 442, 181, 68, 24);
+        await p.button('Change', 557, 181, 68, 24);
+        for (const [label, x, y] of [[ 'Info', 459, 364 ], [ 'Map', 517, 364 ], [ 'Rename', 575, 364 ],
+                                     [ 'Happy', 459, 389 ], [ 'View', 517, 389 ], [ 'Exit', 575, 389 ]])
+            await p.button(label, x, y, 57, 24);
+        const arrow = async (x, y, w, h, up) => {
+            await p.button('', x, y, w, h);
+            const cx = w / 2, cy = h / 2, direction = up ? -1 : 1;
+            await p.vector(`<path d="M${cx} ${cy + direction * 3}L${cx - 4} ${cy - direction * 3}H${
+                               cx + 4}Z" fill="#f0e2b8"/>`,
+                           x, y, w, h);
+        };
+        await arrow(437, 364, 21, 24, true);
+        await arrow(437, 389, 21, 24, false);
+        // Source-sized 17px improvement scrollbar; this eight-row fixture fits without scrolling.
+        await p.box(174, 291, 17, 129, '#162c26', '#6b816b');
+        await arrow(174, 291, 17, 17, true);
+        await arrow(174, 403, 17, 17, false);
         const food = scene.food, capacity = (scene.population + 1) * 10, shields = scene.shields;
         // Reserve adjacent icon/text boxes on the same stockpile summary row.
         // These rows stay inside food (y=0..167) and production (y=167..356),
