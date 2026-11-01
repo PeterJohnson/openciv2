@@ -327,11 +327,16 @@ no longer fits them into a second, half-size frame.
 
 Rivers use irregular meanders, a wider range of channel widths, textured water
 and asymmetric gravel/vegetation banks. A faint sediment wash replaces the
-continuous pale outline. The 16 native river sprites keep their four connection
-ports;
-the proposed ground pass adds stable world-space variation and blends river
-water into the coastline. Native/HD river bindings now use the canonical bank
-directly, including its bank textures.
+continuous pale outline. Six octaves of domain-warped fractal detail now add
+smaller notches within the broad meanders. Each native bank is sampled at 257
+points; detail eases to zero with zero slope at the fixed-width connection ports.
+The 16 native river sprites keep the same logical frames and mouth aliases.
+The proposed ground pass samples banks in world coordinates, filters subpixel
+octaves, and fades the added detail out at 32 physical pixels per tile or less.
+The shared river/coast water field and wrapped boundary neighborhoods retain
+continuous mouths and map-edge crossings. A fixed radial bank profile prevents
+fine relief from creating detached water pockets. Native/HD bindings use the canonical
+bank artwork directly. [Compare riverbank detail and mouths](review/river-fractal.png).
 
 Faction shields have a larger filled silhouette within their existing native
 frame, one flat faction-color face and a dark outline. The inset stripe/bevel is
@@ -362,6 +367,7 @@ node tools/atlas-review/verify.cjs
 node tools/atlas-review/verify-map-style.cjs
 node tools/atlas-review/verify-rail-joins.cjs
 node tools/atlas-review/verify-rivers.cjs
+node tools/atlas-review/verify-riverbanks.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
@@ -426,6 +432,12 @@ overlap by 1.5 canonical pixels at each port to close antialiased butt seams;
 logical endpoints and their tangents remain fixed. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons. This also refreshes the 16 native crops and four mouth bindings.
+[Fractal bank validation](review/riverbank-validation.json) adds detail-scale and
+wrap checks, all 16 enhanced connection masks at 256px and 512px, the saved map's 82 directed river
+ports and 11 mouth ports, and a synthetic wrapped river. It checks connected
+water, bank continuity across independently sampled boundaries and positive
+channel widths. The review includes native, HD-only and enhanced close-ups at
+64/128 logical pixels per tile plus magnified bank and mouth details.
 
 ## Diplomacy power indicator
 

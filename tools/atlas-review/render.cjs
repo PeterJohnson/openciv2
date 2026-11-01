@@ -197,8 +197,11 @@ function riverSegments(w, get) {
             for (const r of art.riverCurve(riverMask, [ U, V ])) {
                 const points = r.points.map(p => art.riverUV(p).map((v, i) => v + (i ? V : U)));
                 for (let i = 1; i < points.length; i++) {
-                    const a = points[i - 1], b = points[i], width = art.riverWidth(...a),
-                          endWidth = art.riverWidth(...b), padding = Math.max(width, endWidth) * 2.4;
+                    const a = points[i - 1], b = points[i],
+                          width = art.riverWidth(...a, w.wrap ? w.width : 0),
+                          endWidth = art.riverWidth(...b, w.wrap ? w.width : 0),
+                          // Includes the bounded fractal relief and full bank blend envelope.
+                        padding = Math.max(width, endWidth) * 4;
                     const segment = {
                         a,
                         b,
@@ -209,14 +212,33 @@ function riverSegments(w, get) {
                         top : Math.min(a[1], b[1]) - padding,
                         bottom : Math.max(a[1], b[1]) + padding
                     };
-                    // Fine buckets bound the per-pixel work for densely sampled curves.
-                    for (let y = Math.floor(segment.top * 4); y <= Math.floor(segment.bottom * 4); y++)
-                        for (let x = Math.floor(segment.left * 4); x <= Math.floor(segment.right * 4); x++) {
-                            const key = x + ',' + y;
-                            if (!buckets.has(key))
-                                buckets.set(key, []);
-                            buckets.get(key).push(segment);
+                    // Copy the boundary neighborhood across the cylindrical world.
+                    // Both banks then see both connected curves, not a clipped half at the seam.
+                    const shifts = [ 0 ];
+                    if (w.wrap && segment.left - segment.bottom < 2)
+                        shifts.push(w.width / 2);
+                    if (w.wrap && segment.right - segment.top > w.width - 2)
+                        shifts.push(-w.width / 2);
+                    for (const shift of shifts) {
+                        const s = shift ? {
+                            ...segment,
+                            a : [ a[0] + shift, a[1] - shift ],
+                            b : [ b[0] + shift, b[1] - shift ],
+                            left : segment.left + shift,
+                            right : segment.right + shift,
+                            top : segment.top - shift,
+                            bottom : segment.bottom - shift
                         }
+                                        : segment;
+                        // Fine buckets bound the per-pixel work for densely sampled curves.
+                        for (let y = Math.floor(s.top * 4); y <= Math.floor(s.bottom * 4); y++)
+                            for (let x = Math.floor(s.left * 4); x <= Math.floor(s.right * 4); x++) {
+                                const key = x + ',' + y;
+                                if (!buckets.has(key))
+                                    buckets.set(key, []);
+                                buckets.get(key).push(s);
+                            }
+                    }
                 }
             }
         }

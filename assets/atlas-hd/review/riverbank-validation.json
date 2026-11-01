@@ -1,0 +1,55 @@
+{
+  "status": "pass",
+  "detailScales": [
+    {
+      "pixels": 16,
+      "mean": 0,
+      "max": 0,
+      "rmsVs128": 0.1486460790250188
+    },
+    {
+      "pixels": 32,
+      "mean": 0,
+      "max": 0,
+      "rmsVs128": 0.1486460790250188
+    },
+    {
+      "pixels": 64,
+      "mean": 0.05769474923661855,
+      "max": 0.17292984657793645,
+      "rmsVs128": 0.08135586018400387
+    },
+    {
+      "pixels": 128,
+      "mean": 0.12329053751326435,
+      "max": 0.38179865330161455,
+      "rmsVs128": 0
+    },
+    {
+      "pixels": 256,
+      "mean": 0.12578578668014187,
+      "max": 0.4061418006411289,
+      "rmsVs128": 0.019136185212807806
+    },
+    {
+      "pixels": 512,
+      "mean": 0.1270938160195282,
+      "max": 0.4081826764801565,
+      "rmsVs128": 0.024760032505680696
+    }
+  ],
+  "wrapChecks": 12288,
+  "enhancedConnectionMasksWithConnectedWater": 16,
+  "connectivityTileWidths": [
+    256,
+    512
+  ],
+  "classedPixels": 1310720,
+  "connectedWaterComponents": 32,
+  "savedRiverPorts": 82,
+  "savedMouthPorts": 11,
+  "centerSamples": 465,
+  "bucketBoundarySamples": 18600,
+  "wrappedRiverSamples": 6510,
+  "limits": "Finite river geometry, actual saved-map connections and native sprite checks. Visual detail is reviewed in river-fractal.png; no game renderer changes."
+}

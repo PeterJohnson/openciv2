@@ -25,17 +25,17 @@
         "current": {
           "width": 384,
           "height": 192,
-          "sha256": "5481a9b23cdc97148dd0990ba17466daeda616652545951f1d0306ef3bdc2a75"
+          "sha256": "1136074614fa0204a40bee61aeb927f655108951ea7dc7d045acdf1a4e6f5169"
         },
         "hd": {
           "width": 768,
           "height": 384,
-          "sha256": "0796d67d6524f039e72529c995f75a759ca8cacf086e875c17daf63ff4671ce4"
+          "sha256": "f2b17418ab329ad0515e73644414a6839c834601712b06c7b6750d2190f72e7b"
         },
         "proposed": {
           "width": 768,
           "height": 384,
-          "sha256": "9ea30959990e2ce9413d3983f2c3c8a64e57abe15b03ef9f1857d4135d997062"
+          "sha256": "98b16cbba21aab28c0f5ce7ba1425d14ea6ee7336e039f5d25a677d062bb4f43"
         }
       }
     },
@@ -50,17 +50,17 @@
         "current": {
           "width": 768,
           "height": 384,
-          "sha256": "aca436c55ac43bebad5f1ff0d2e34bf611cba575c71a8c9b95b7e92b050d7d14"
+          "sha256": "785bcbcdde34707c3b6e4c44e39a7888330867e1b4b9644a675a318e14c2c127"
         },
         "hd": {
           "width": 1536,
           "height": 768,
-          "sha256": "d2e675731807e3b7c203359dbc4562b2a1e062b2a1e4a6108ecc8d28faa2b670"
+          "sha256": "ef9ab17a02a91fd1c97287aed2fcdbbfaf19030a3e6036b2b2918abc51fec452"
         },
         "proposed": {
           "width": 1536,
           "height": 768,
-          "sha256": "ce8f3471c0fbd186c906f41d18cd6e331bfc0ce098dccc0597885b88160cbbf3"
+          "sha256": "01b207c9b14754c3bea5bf90aba7cdf11d0421ec29d1a26d784a4335133f7331"
         }
       }
     },
@@ -75,17 +75,17 @@
         "current": {
           "width": 384,
           "height": 192,
-          "sha256": "6c2f2d7d943aa4a053f1d2370586347c80d3d50159bade837e3256117f58cc9f"
+          "sha256": "cddf13ba91d46b58882231f1dd7721f025b6fc6db4dad988b649dcfea35e5434"
         },
         "hd": {
           "width": 768,
           "height": 384,
-          "sha256": "d6e33695dea5361e20c7a946345ab25f6cd16ab064eb9dbc0ff41a5977cf1bd8"
+          "sha256": "84ece0431381212bc03da4d69915cc41e891263596cc47c179e1a538a9802d9f"
         },
         "proposed": {
           "width": 768,
           "height": 384,
-          "sha256": "38de6ee23bea6c848f43f393394d6f3a5a55e28973978498d21909ad863c5f80"
+          "sha256": "6d77604ef35d830848b78f83ae7be9e0298d52c2898f8403c4dc47ef923cdce8"
         }
       }
     },
@@ -100,17 +100,17 @@
         "current": {
           "width": 768,
           "height": 384,
-          "sha256": "23cb5d8002d532796da724a034a9af69ce14806963a5036051ad3c0c1bcce423"
+          "sha256": "206c148ef4f77636987c72abeac18caaa9ae5b1e5fdaf816ff6c41c2e5555047"
         },
         "hd": {
           "width": 1536,
           "height": 768,
-          "sha256": "0ec034e60572a594784429981d03e4dc93a7daf517616acd746a209aefbdd3af"
+          "sha256": "e68ba6ad2529bd46359a16d26ef84e942b04312f6aac83b9c8a9afa52a1d550a"
         },
         "proposed": {
           "width": 1536,
           "height": 768,
-          "sha256": "fca17cfc85079ad43f6286e2fbfd7dca187d905779f465bbbf19b16d98b0267a"
+          "sha256": "0aacee82d1a0bc44145d6532f2803b0e330b84c6d809f48cee7b23b1ab8294a4"
         }
       }
     },

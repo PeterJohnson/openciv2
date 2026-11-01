@@ -32,6 +32,14 @@ async function build(report) {
     await contourDetails(report, stages);
     await contourDetails(report, stages,
                          [
+                             [ 'mouth', '64px tiles / connected river meanders', 139, 16, 128, 64 ],
+                             [ 'mouth', '128px tiles / the same riverbanks', 139, 16, 256, 128 ],
+                             [ 'mouth', '128px tiles / river mouth and coastal apron', 139, 13, 256, 128 ],
+                             [ 'mouth', '128px tiles / magnified bank detail', 139, 16, 128, 128 ]
+                         ],
+                         'river-fractal');
+    await contourDetails(report, stages,
+                         [
                              [ 'islands', '64px tiles / two-tile shoreline close-up', 61, 98, 128, 64 ],
                              [ 'islands', '128px tiles / the same two-tile shoreline', 61, 98, 256, 128 ],
                              [ 'islands', '128px tiles / magnified headland detail', 61, 98, 128, 128 ]

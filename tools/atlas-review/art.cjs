@@ -2,6 +2,7 @@
 const fs = require('node:fs/promises');
 const path = require('node:path');
 const Shore = require('./shoreline.cjs');
+const RiverBanks = require('./riverbanks.cjs');
 const Land = require('./terrain-blends.cjs');
 let sharp;
 try {
@@ -155,18 +156,7 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options 
     if (landWeight)
         color = color.map(c => c / landWeight);
     const coast = a;
-    let riverField = 1;
-    for (const r of rivers) {
-        if (u < r.left || u > r.right || v < r.top || v > r.bottom)
-            continue;
-        const dx = r.b[0] - r.a[0], dy = r.b[1] - r.a[1],
-              t = clamp(((u - r.a[0]) * dx + (v - r.a[1]) * dy) / (dx * dx + dy * dy || 1)),
-              width = (r.width + (r.endWidth - r.width) * t) *
-                      (1 + .48 * (noise(u * 13.7 + 4, v * 13.7 - 8) - .5) +
-                       .22 * (noise(u * 31.1 - 7, v * 31.1 + 2) - .5)),
-              distance = Math.hypot(u - r.a[0] - t * dx, v - r.a[1] - t * dy);
-        riverField = Math.min(riverField, smooth(width * .55, width * 1.65, distance));
-    }
+    const riverField = RiverBanks.field(u, v, rivers, options.shorePixels || lod * 2, options.wrapWidth || 0);
     const inlandRiver = riverField < coast ? smooth(.53, .96, coast) : 0;
     a = Math.min(a, riverField);
     const waterSample = () =>
@@ -400,16 +390,16 @@ function infrastructure(family, mask, texture, variant = 0, layer = 'all', armOn
 
 // Four river edges are NE, SE, SW, NW. Broad cubic bends replace the
 // transport compositor's short elbows; endpoint positions and tangents stay fixed.
-function riverCurve(mask, origin = null) {
+function riverCurve(mask, origin = null, steps = 32) {
     const dirs = [ 1, 3, 5, 7 ].filter((_, i) => mask & (1 << i));
     const phase = origin ? noise(origin[0] * .37 + 8, origin[1] * .37 - 11) : .72;
     const make = (a, b, boundary, controls) => {
         const normal = norm([ a[1] - b[1], b[0] - a[0] ]), bend = (phase - .5) * 110;
         return {
             boundary,
-            points : Array.from({length : 33},
+            points : Array.from({length : steps + 1},
                                 (_, i) => {
-                                    const t = i / 32, q = 1 - t;
+                                    const t = i / steps, q = 1 - t;
                                     return add(add(add(mul(a, q ** 3), mul(controls[0], 3 * q * q * t)),
                                                    add(mul(controls[1], 3 * q * t * t), mul(b, t ** 3))),
                                                mul(normal, Math.sin(Math.PI * t) ** 2 *
@@ -430,12 +420,15 @@ function riverCurve(mask, origin = null) {
 const riverUV = p => [p[0] / 512 + p[1] / 256, p[1] / 256 - p[0] / 512];
 const riverXY = p => [(p[0] - p[1]) * 256, (p[0] + p[1]) * 128];
 
-function riverWidth(u, v) {
-    return .028 + .072 * noise(u * 2.1 + 29, v * 2.1 - 7) + .018 * (noise(u * 9.1 - 3, v * 9.1 + 9) - .5);
+function riverWidth(u, v, wrapWidth = 0) {
+    if (!wrapWidth)
+        return .028 + .072 * noise(u * 2.1 + 29, v * 2.1 - 7) + .018 * (noise(u * 9.1 - 3, v * 9.1 + 9) - .5);
+    return .028 + .072 * RiverBanks.sample(u, v, 2.1, 29, -7, wrapWidth) +
+           .018 * (RiverBanks.sample(u, v, 9.1, -3, 9, wrapWidth) - .5);
 }
 
 function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
-    const routes = riverCurve(mask), body = [];
+    const routes = riverCurve(mask, null, 256), body = [];
     const defs =
         [ [ 'water', waterTexture ], [ 'bank', sandTexture ], [ 'grass', grassTexture ] ]
             .map(
@@ -464,9 +457,11 @@ function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
                           : i === uv.length - 1 && r.boundary[1] ? norm([ -p[1], p[0] ])
                                                                  : norm([ a[1] - b[1], b[0] - a[0] ]);
                 const t = i / (uv.length - 1),
-                      rough = ((noise(p[0] * 9 + side * 9, p[1] * 9 + 4) - .5) * .028 +
-                               (noise(p[0] * 27 - side * 7, p[1] * 27 + 11) - .5) * .012) *
-                              (scale > 1 ? 1.3 : 1) * Math.sin(Math.PI * t) ** 2;
+                      // Sample the two banks independently, with the same displacement
+                    // in every bed layer. Zero value/slope at ports protects all joins.
+                    bank = add(p, mul(n, side * widths[i])),
+                      rough = widths[i] * 1.15 * RiverBanks.relief(bank[0] + 5, bank[1] + 7, 512) *
+                              smooth(0, .16, t) * smooth(0, .16, 1 - t);
                 let edge = riverXY(add(p, mul(n, side * (widths[i] * scale + rough))));
                 // Slight water/bed overlap fills antialiased butt seams without moving
                 // the logical connection ports or changing their tangents.

@@ -166,6 +166,10 @@ textures. `shoreline.cjs` and `map-finishing.cjs` author rounded distance lobes,
 a protected rounded tile footprint and multiscale value-noise contour relief.
 A separate six-octave, domain-warped fractal layer adds close-up edge detail after
 macro shaping. All noise and relief are procedural and deterministic.
+The river update uses the same procedural approach in riverbanks.cjs: six
+domain-warped noise octaves, densely sampled bank outlines, deterministic world
+sampling and fixed native connection ports. Existing water, sediment and grass
+materials supply the color; no new source images or traced river contours are used.
 Patchy sand/rock/shallows, asymmetric river banks, periodic native texture
 sampling and river-mouth alpha falloff reuse those authored materials;
 they do not trace original art. Existing painted tree and field sprites are unchanged.

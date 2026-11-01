@@ -435,7 +435,13 @@ No native game source bodies or original-art bindings change.
 ## River artwork and sampler
 
 `riverCurve` supplies irregular cubic meanders for the four NE/SE/SW/NW river ports.
-Channel widths vary more strongly; each bank has its own small erosion offsets.
+Channel widths vary more strongly; each bank has independent erosion offsets.
+`riverbanks.cjs` supplies six domain-warped fractional Brownian noise octaves
+after the macro curve is formed. Native SVG outlines use 257 samples per route
+and smooth relief falloff confined to the end 16% of the path. Bank displacement
+and its derivative vanish at the fixed-width ports; every bed layer shares the
+same displacement so its outline cannot cross the water outline. Finite summed
+amplitudes keep the channel open without flattening fine detail with a clamp.
 The thin pale rim is replaced by a subdued sediment/vegetation wash. Painted
 water and bed extend 1.5 canonical pixels past the fixed ports to close
 antialiased butt seams; curve endpoints and tangents remain unchanged.
@@ -447,12 +453,23 @@ unchanged; the new textures are used by native and HD-only review stages.
 
 The proposed sampler uses the same connection masks and curve family with bend
 phase and channel width sampled in fixed world coordinates. Position-dependent
-width modulation makes the banks asymmetric. Fine spatial buckets cover the
+width modulation makes the banks asymmetric. Relief is sampled on a fixed radial
+bank profile so each cross-section has one water-to-land crossing; this prevents
+detached high-zoom water pockets. The added fractal layer follows
+physical display resolution, suppresses subpixel octaves, and vanishes at 32px
+and below. Width/noise periods match the world wrap, and boundary segment copies
+provide both connected curves across the cylindrical seam. Fine spatial buckets cover the
 maximum wider bank envelope and bound the cost of the denser curve segments. River banks suppress ocean foam
 inland and blend back to coastal water at mouths. This is visual geometry and
 material variation, not a simulation of flow direction, catchments or erosion.
 `verify-rivers.cjs` records native crop equality, edge continuity in both draw
 orders, width variation and hidden-state isolation in `review/river-validation.json`.
+The riverbank verifier adds six detail scales, 12,288 periodic checks, 16
+enhanced connection masks at both 256px and 512px (1,310,720 classified pixels),
+82 directed saved river ports, 11 saved mouth ports,
+18,600 boundary samples and 6,510 wrapped-river samples. Results are in
+[riverbank-validation.json](review/riverbank-validation.json); the four-stage visual review is
+[river-fractal.png](review/river-fractal.png).
 The native source renderer and original-art replay remain unchanged.
 
 ## Citizen sprite selection

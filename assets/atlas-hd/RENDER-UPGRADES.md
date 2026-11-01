@@ -130,6 +130,16 @@ Inland water has finer texture and a subdued
 green tint, fading into the existing coastal water near a mouth. The native/HD
 16-mask bank uses the same curve family with edge widths pinned for compatibility.
 The proposal varies width and bend phase in world coordinates, never camera space.
+Add fractal bank relief after this broad shape, with six decreasing, domain-warped
+octaves. The prototype uses dense native bank outlines with smooth falloff only
+near connection ports, and continuous bank sampling in the enhanced view.
+Preserve a positive minimum channel width; expand cached segment bounds for the
+full displaced bank envelope. Copy connected segment neighborhoods across world
+wrapping, with periodic widths and relief, and union the river water field with
+the coastal field so mouth banks end in water. Filter subpixel frequencies by
+physical resolution. Bake native art and cache enhanced ground chunks; the
+offline pixel sampler is not a per-frame performance recommendation.
+[Compare all four river variants and two zooms](review/river-fractal.png).
 
 Coasts and rivers should share water color, shallow-water range, shore width and
 mouth opening. Do not use an opaque diamond cutout as a tall terrain feature.

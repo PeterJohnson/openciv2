@@ -60,7 +60,8 @@ async function main() {
     C.json(C.path.join(C.pack, 'manifest.json'), m);
     C.json(C.path.join(C.pack, 'map/readability.json'), {
         version : 1,
-        source : 'tools/atlas-review/art.cjs; shoreline.cjs; map-finishing.cjs; bindings.cjs; render.cjs',
+        source :
+            'tools/atlas-review/art.cjs; shoreline.cjs; riverbanks.cjs; map-finishing.cjs; bindings.cjs; render.cjs',
         coast : {
             sampling :
                 'retained rounded macro contours plus six independent octaves of domain-warped fractal erosion',
@@ -89,9 +90,9 @@ async function main() {
         river : {
             path : 'irregular cubic meanders, fixed connected endpoints and tangents',
             banks :
-                'asymmetric eroded edges, wider width range, subdued gravel and vegetation; 1.5px authored port overlap',
+                'six-octave domain-warped bank relief, 257-point native outlines, subdued gravel and vegetation; fixed-width ports with 1.5px overlap',
             proposed :
-                'world-space width and bank variation, extended sampling bounds, shoreline water blending'
+                'periodic world-space width and fractal bank variation; filtered fine detail; wrapped segment neighborhoods; shared coastal-water blending'
         },
         resources : {
             frame : [ 512, 256 ],
