@@ -1,4 +1,4 @@
-// Protected tile footprints with six nested scales of continuous shoreline relief.
+// Rounded headlands and coves, with protected tile footprints and nested erosion.
 const clamp = x => Math.max(0, Math.min(1, x));
 const smooth = x => x * x * (3 - 2 * x);
 const fract = x => x - Math.floor(x);
@@ -19,11 +19,11 @@ function noise(x, y, period = 0) {
 
 // Bays contain coves, rock notches and finer erosion. Native frequencies
 // repeat exactly at tile boundaries; enhanced coordinates vary across the world.
-// The lower bound retains the whole land tile. The upper bound leaves water
-// centers open, even with eight surrounding land neighbors.
-const nativeFrequencies = [ 2, 5, 11, 23, 47, 97 ];
-const worldFrequencies = [ 1.37, 4.7, 10.9, 23.3, 47.9, 97.1 ];
-const amplitudes = [ .11, .075, .05, .032, .021, .014 ];
+// The minimum radius encloses the occupied land diamond without reintroducing
+// a square envelope. The upper bound keeps even surrounded water centers open.
+const nativeFrequencies = [ 2, 3, 7, 17, 41, 97 ];
+const worldFrequencies = [ .73, 2.4, 6.1, 16.3, 40.7, 96.1 ];
+const amplitudes = [ .28, .15, .08, .04, .024, .014 ];
 
 function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
     const worldNoise = (frequency, dx, dy) => {
@@ -42,7 +42,7 @@ function radius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
         const n = world ? worldNoise(f, dx, dy) : noise(u * f + dx, v * f + dy, f);
         relief += amplitudes[i] * (n - .5) * weight;
     }
-    return .7025 + .0775 * Math.tanh(relief / .0775);
+    return .815 + .06 * Math.tanh(relief / .055);
 }
 
 function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
@@ -50,22 +50,28 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
         return 0;
     const ds = centers
                    .map(([ x, y ]) => {
-                       const dx = u - x, dy = v - y, d = (Math.abs(dx) ** 4 + Math.abs(dy) ** 4) ** .25;
+                       const dx = u - x, dy = v - y, d = Math.hypot(dx, dy);
                        if (!d)
-                           return -.7025;
+                           return -.81;
                        // Sample relief around a fixed contour: each ray has one shore crossing,
                        // so fine erosion cannot create stray islands or enclosed water specks.
-                       const scale = .7 / d;
-                       return d - radius(x + dx * scale, y + dy * scale, world, wrapWidth, pixels);
+                       const scale = .81 / d;
+                       const irregular = radius(x + dx * scale, y + dy * scale, world, wrapWidth, pixels);
+                       // The minimum radius encloses every occupied tile corner with a
+                       // narrow apron; no square envelope is added back into the contour.
+                       return d - irregular;
                    })
                    .sort((a, b) => a - b);
     let distance = ds[0];
     // Compact joins exclude distant centers unavailable in an adjacent coast quarter.
     for (const d of ds.slice(1)) {
-        const h = Math.max(.12 - Math.abs(distance - d), 0) / .12;
-        distance = Math.min(distance, d) - h * h * .12 * .25;
+        const h = Math.max(.14 - Math.abs(distance - d), 0) / .14;
+        // A neighboring cell/quarter cannot see centers beyond this compact
+        // support. Fade their contribution before they can alter a shared edge.
+        const support = smooth(clamp((.12 - d) / .06));
+        distance = Math.min(distance, d) - h * h * .14 * .25 * support;
     }
-    return clamp((.08 - distance) / .16);
+    return clamp((.055 - distance) / .11);
 }
 
 function corners(u, v, values, wrapWidth = 0, pixels = Infinity) {
@@ -80,5 +86,6 @@ function corners(u, v, values, wrapWidth = 0, pixels = Infinity) {
 module.exports = {
     field,
     corners,
-    radius
+    radius,
+    noise
 };

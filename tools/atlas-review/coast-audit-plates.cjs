@@ -39,15 +39,16 @@ async function build(report) {
                          'forest-borders');
 }
 
-async function contourDetails(report, stages,
-                              rows =
-                                  [
-                                      [ 'newcastle', 'Desert and cultivated coast', 129, 74 ],
-                                      [ 'islands', 'Forested island', 61, 99 ],
-                                      [ 'mouth', 'River mouth', 139, 13 ],
-                                      [ 'islands', 'Headland detail / 2x logical magnification', 61, 98, 256 ]
-                                  ],
-                              output = 'coast-contours') {
+async function contourDetails(
+    report, stages,
+    rows =
+        [
+            [ 'newcastle', 'Desert and cultivated coast', 129, 74 ], [ 'islands', 'Forested island', 61, 99 ],
+            [ 'mouth', 'River mouth', 139, 13 ],
+            [ 'islands', 'Headland detail / 2x logical magnification', 61, 98, 256 ],
+            [ 'mouth', 'River meanders and eroded banks / 2x logical magnification', 139, 16, 256 ]
+        ],
+    output = 'coast-contours') {
     const image = C.clear(2048, rows.length * 320, [ 23, 35, 34, 255 ]);
     for (const [row, [ id, title, x, y, cropWidth = 512 ]] of rows.entries()) {
         const scene = report.scenes.find(s => s.id === id + '-128');

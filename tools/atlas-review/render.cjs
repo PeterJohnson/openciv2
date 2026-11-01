@@ -198,7 +198,7 @@ function riverSegments(w, get) {
                 const points = r.points.map(p => art.riverUV(p).map((v, i) => v + (i ? V : U)));
                 for (let i = 1; i < points.length; i++) {
                     const a = points[i - 1], b = points[i], width = art.riverWidth(...a),
-                          endWidth = art.riverWidth(...b), padding = Math.max(width, endWidth) * 1.7;
+                          endWidth = art.riverWidth(...b), padding = Math.max(width, endWidth) * 2.4;
                     const segment = {
                         a,
                         b,

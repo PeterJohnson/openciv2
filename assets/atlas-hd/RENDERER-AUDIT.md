@@ -334,10 +334,14 @@ path and unchanged native source bodies.
 
 `map-finishing.cjs` builds fuller land footprints from the exact three neighbors
 available to each coast quarter. The 32×16 logical boxes and all source-selected
-masks remain unchanged; the earlier water overhang is removed. Layered contour
-variation adds six nested scales of coves, headlands, rock notches and erosion
-around the protected forest/field footprint. Relief is sampled along a fixed
-contour around each land center, retaining one crossing along each radial line.
+masks remain unchanged; the earlier water overhang is removed. Rounded distance
+lobes replace the rounded-square contour. Their minimum radius protects
+forest/field tips without adding a square envelope back into the contour;
+broader smooth inward joins soften enclosed lakes. Join contributions fade before
+distant centers unavailable to a neighboring cell or quarter can affect the edge.
+Broad asymmetric relief and five finer scales shape coves, headlands, notches
+and erosion. Patchy deposits and shallows replace the continuous shoreline rim.
+Relief is sampled along a fixed contour around each land center, retaining one crossing along each radial line.
 Native variation repeats at sprite seams; enhanced variation uses world
 coordinates and the map wrap period. The enhanced sampler fades octaves below
 two projected pixels while native/HD filter the retained PNGs on resize.
@@ -421,7 +425,11 @@ No native game source bodies or original-art bindings change.
 
 ## River artwork and sampler
 
-`riverCurve` supplies broad cubic bends for the four NE/SE/SW/NW river ports.
+`riverCurve` supplies irregular cubic meanders for the four NE/SE/SW/NW river ports.
+Channel widths vary more strongly; each bank has its own small erosion offsets.
+The thin pale rim is replaced by a subdued sediment/vegetation wash. Painted
+water and bed extend 1.5 canonical pixels past the fixed ports to close
+antialiased butt seams; curve endpoints and tangents remain unchanged.
 Every native mask retains its logical 64x32 sprite frame and uses the matching
 crop of the canonical 576x320 padded SVG/PNG. Family/mask lookup replaces a stale
 directory-name match that had selected the generator fallback instead of that
@@ -429,8 +437,9 @@ canonical artwork. Source sprite selection and river-mouth slot aliases remain
 unchanged; the new textures are used by native and HD-only review stages.
 
 The proposed sampler uses the same connection masks and curve family with bend
-phase and channel width sampled in fixed world coordinates. Fine spatial buckets
-bound the cost of the denser curve segments. River banks suppress ocean foam
+phase and channel width sampled in fixed world coordinates. Position-dependent
+width modulation makes the banks asymmetric. Fine spatial buckets cover the
+maximum wider bank envelope and bound the cost of the denser curve segments. River banks suppress ocean foam
 inland and blend back to coastal water at mouths. This is visual geometry and
 material variation, not a simulation of flow direction, catchments or erosion.
 `verify-rivers.cjs` records native crop equality, edge continuity in both draw

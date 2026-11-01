@@ -122,10 +122,11 @@ Prefer a deterministic edge/vertex representation for production: adjacent
 chunks share the same coast crossing and tangent. Resolve diagonal saddle cases
 consistently, and provide tests for one-tile islands, bays, narrow channels,
 concave corners and map wrapping. Keep narrow channels readable at overview LOD.
-The river prototype uses broad cubic bends with fixed connection endpoints and
-tangents, replacing the transport paths' tight elbows. A world-space width field
-widens and narrows channels continuously; bank textures mix gravel and vegetation
-instead of uniform pale borders. Inland water has finer texture and a subdued
+The river prototype uses irregular cubic meanders with fixed connection endpoints
+and tangents. A world-space width field widens and narrows channels; smaller
+position-dependent modulation makes the two banks asymmetric. Bank textures mix
+subdued gravel and vegetation instead of outlining every bend in pale sand.
+Inland water has finer texture and a subdued
 green tint, fading into the existing coastal water near a mouth. The native/HD
 16-mask bank uses the same curve family with edge widths pinned for compatibility.
 The proposal varies width and bend phase in world coordinates, never camera space.
@@ -433,8 +434,8 @@ fix, separate from the enhanced foreground-badge pass below.
 The cohesion stage separately demonstrates these scoped renderer changes:
 
 - Evaluate shoreline footprints in world coordinates with smooth inward joins
-  and restrained erosion. Preserve pure land/water centers and
-  narrow passages. Vary the sand/rock band and break up surf instead of tracing
+  and broad asymmetric relief plus finer erosion. Preserve pure land/water
+  centers and narrow passages. Vary the sand/rock band and break up surf instead of tracing
   every coast with an equally bright ribbon. The primary bank includes phase
   variants; world-space sampling prevents camera movement from changing them.
 - Use stable position-derived road bend variants, while retaining the same
@@ -458,14 +459,18 @@ scenes. All four comparison stages use the same updated synthetic fixtures.
 
 ### Fuller shoreline footprints and ground coverage
 
-The saved-map survey favors a protected tile footprint with irregular coves
-and headlands over either deep cutbacks or uniformly rounded straight sides. Keep vegetation and field footprints inside a narrow land apron, join
-inward corners smoothly, preserve single-cell lakes and land centers, and sample
+The saved-map survey uses rounded distance lobes with broad irregular coves and
+headlands. Adding fine noise to rounded squares left the tile grid too visible;
+the underlying contour therefore changes as well. A minimum rounded radius
+protects occupied tile tips without reinstating square corners. Broader smooth
+inward joins soften enclosed lakes. Keep vegetation and field footprints inside a
+narrow land apron, join inward corners smoothly, preserve single-cell lakes and
+land centers, and sample
 river mouths through the coastal apron. Use the same shore field for terrain,
 ground-level overlays and zoom transitions; retain elevated sprite silhouettes.
 For native/HD compatibility, the replacement quarter art already carries the
-apron and six nested scales of periodic contour variation, while source draw commands
-and zoom cutoffs stay fixed. The enhanced proposal uses world coordinates for
+protected footprint and six scales of periodic contour variation, while source
+draw commands and zoom cutoffs stay fixed. The enhanced proposal uses world coordinates for
 variation, with frequencies matched to the wrap period so the east/west edge
 stays continuous. Keep the broad contour independent of camera position and
 fade only subpixel detail as projected scale falls. The prototype samples relief

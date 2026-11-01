@@ -318,14 +318,17 @@ Native rail arms meet with flush center cuts instead of overlapping end caps.
 The proposed renderer draws all ballast, then sleepers, then steel; continuous
 through routes replace radial stubs at rail junctions.
 
-Coasts use broader coves/headlands, narrower variable shore bands and subdued
-broken surf. The compatibility coast bank also fixes the three-neighbor mask
+Coasts use rounded lobes and broad asymmetric coves/headlands, with patchy
+beaches, rocky banks, shallows and subdued broken surf. The compatibility coast
+bank also fixes the three-neighbor mask
 and the former desert-filled blank dither slot. Fish, whales and other resource
 sprites are trimmed and centered inside their logical tile frame; the proposal
 no longer fits them into a second, half-size frame.
 
-Rivers use broad bends, variable widths, textured water and irregular gravel and
-vegetated banks. The 16 native river sprites keep their four connection ports;
+Rivers use irregular meanders, a wider range of channel widths, textured water
+and asymmetric gravel/vegetation banks. A faint sediment wash replaces the
+continuous pale outline. The 16 native river sprites keep their four connection
+ports;
 the proposed ground pass adds stable world-space variation and blends river
 water into the coastline. Native/HD river bindings now use the canonical bank
 directly, including its bank textures.
@@ -362,10 +365,11 @@ node tools/atlas-review/verify-rivers.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
-Native coastal quarters retain a full land footprint with asymmetric coves,
-headlands and smaller eroded edges. Six nested scales of authored contour
-variation put small coves and rock notches inside the larger bays. Relief is
-sampled around each land footprint so fine detail cannot detach from its parent
+Native coastal quarters use rounded distance lobes instead of rounded squares.
+The minimum radius protects the full forest/field footprint without adding a
+square envelope back into the contour; broader inward joins soften small lakes.
+Six scales of contour variation add
+small coves and rock notches inside the larger bays. Relief is sampled around each land footprint so fine detail cannot detach from its parent
 shore. Forest and field footprints remain on land. The enhanced sampler fades
 subpixel octaves at distant zooms; native/HD use the filtered PNG bank.
 Native contour variation joins periodically across tiles. The enhanced proposal
@@ -380,7 +384,7 @@ the enhanced proposal also extends river sampling into the connected ocean tile.
 The terrain production marker remains a smaller olive/bronze silhouette; the blue
 city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
 
-[Compare shoreline close-ups and the magnified headland detail](review/coast-contours.png), then
+[Compare shorelines, headlands and magnified river banks](review/coast-contours.png), then
 [explore the full saved-world coast review](review/coast-audit.html): four
 comparison stages, all 9,000 cells at 16/32/48/64px game zoom, and eight selected
 island, lake, river-mouth, cultivated/forest and wrapped-edge areas at 64/128px.
@@ -412,9 +416,11 @@ draw orders, plus every rail mask's endpoints.
 
 [River validation](review/river-validation.json) checks all 16 native bindings,
 fixed curve endpoints, continuous water across adjoining masks in both draw
-orders, width variation and hidden-state isolation. To rebuild only river art,
+orders, width variation and hidden-state isolation. The painted bed and water
+overlap by 1.5 canonical pixels at each port to close antialiased butt seams;
+logical endpoints and their tangents remain fixed. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
-the comparisons.
+the comparisons. This also refreshes the 16 native crops and four mouth bindings.
 
 ## Diplomacy power indicator
 

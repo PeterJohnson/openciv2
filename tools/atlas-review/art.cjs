@@ -161,32 +161,44 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options 
             continue;
         const dx = r.b[0] - r.a[0], dy = r.b[1] - r.a[1],
               t = clamp(((u - r.a[0]) * dx + (v - r.a[1]) * dy) / (dx * dx + dy * dy || 1)),
-              width = r.width + (r.endWidth - r.width) * t,
+              width = (r.width + (r.endWidth - r.width) * t) *
+                      (1 + .48 * (noise(u * 13.7 + 4, v * 13.7 - 8) - .5) +
+                       .22 * (noise(u * 31.1 - 7, v * 31.1 + 2) - .5)),
               distance = Math.hypot(u - r.a[0] - t * dx, v - r.a[1] - t * dy);
-        riverField = Math.min(riverField, smooth(width * .75, width * 1.7, distance));
+        riverField = Math.min(riverField, smooth(width * .55, width * 1.65, distance));
     }
     const inlandRiver = riverField < coast ? smooth(.53, .96, coast) : 0;
     a = Math.min(a, riverField);
     const waterSample = () =>
         mix(texture('ocean', u, v, lod), mix(texture('ocean', u * 3.7, v * 3.7, lod), [ 48, 83, 72 ], .18),
-            inlandRiver);
+            inlandRiver * .7);
     if (a <= 0)
         return waterSample().map(Math.round);
     if (a >= 1)
         return color.map(Math.round);
-    const geology = noise(u * 1.9 + 51, v * 1.9 - 18), detail = noise(u * 13.1, v * 13.1 + 6);
+    // Broad, broken shallows and deposits replace a continuous narrow outline.
+    const detailNoise = (frequency, dx, dy) => {
+        const period = options.periodic    ? Math.round(frequency)
+                       : options.wrapWidth ? Math.max(1, Math.round(options.wrapWidth / 2 * frequency))
+                                           : 0;
+        const scale = options.periodic ? period : period ? period / (options.wrapWidth / 2) : frequency;
+        return Shore.noise(u * scale + dx, v * scale + dy, period);
+    };
+    const geology = detailNoise(3, 51.2, -18.7), detail = detailNoise(19, 4.3, 6.1);
+    const rocky = shore === 'cliff' ? 1 : smooth(.42, .72, geology);
+    const sand = texture('sand', u, v, lod), stone = texture('stone', u, v, lod);
     let water = waterSample();
-    water = mix(water, [ 57, 114, 118 ], smooth(.29, .49, a) * .34);
-    const beach = texture(shore === 'cliff' ? 'stone' : 'sand', u, v, lod);
-    let bank = mix(beach, shore === 'cliff' ? [ 67, 73, 64 ] : [ 114, 112, 75 ],
-                   shore === 'cliff' ? .35 : .15 + geology * .30);
-    const width = shore === 'cliff' ? .085 : .035 + .075 * geology;
-    bank = mix(bank, mix(color, [ 70, 91, 51 ], .35), inlandRiver * smooth(.25, .8, detail) * .72);
-    const land = mix(bank, color, smooth(.515, .515 + width + inlandRiver * .28, a));
-    let result = mix(water, land, smooth(.493 - inlandRiver * .035, .508 + inlandRiver * .04, a));
+    const shallows = smooth(.04, .44, a) * (1 - smooth(.48, .65, a));
+    water = mix(water, [ 65, 115, 113 ], shallows * (.24 + .36 * detail));
+    let bank = mix(mix(sand, [ 152, 133, 94 ], .28), mix(stone, [ 80, 91, 86 ], .25), rocky);
+    bank = mix(bank, mix(color, [ 65, 86, 52 ], .3), inlandRiver * smooth(.28, .75, detail) * .80);
+    const exposure = smooth(.24, .74, detailNoise(7, 19.4, -3.7));
+    bank = mix(color, bank, .22 + .78 * exposure);
+    const land = mix(bank, color, smooth(.40 + .10 * (1 - exposure), .68 + .12 * exposure, a));
+    let result = mix(water, land, smooth(.43, .58, a));
     const foam =
-        (1 - smooth(.003, .016, Math.abs(a - .491))) * smooth(.35, .70, detail) * .42 * (1 - inlandRiver);
-    result = mix(result, [ 206, 221, 204 ], foam);
+        (1 - smooth(.025, .11, Math.abs(a - .47))) * smooth(.59, .80, detail) * .22 * (1 - inlandRiver);
+    result = mix(result, [ 205, 218, 199 ], foam);
     return result.map(x => Math.max(0, Math.min(255, Math.round(x))));
 }
 
@@ -392,7 +404,7 @@ function riverCurve(mask, origin = null) {
     const dirs = [ 1, 3, 5, 7 ].filter((_, i) => mask & (1 << i));
     const phase = origin ? noise(origin[0] * .37 + 8, origin[1] * .37 - 11) : .72;
     const make = (a, b, boundary, controls) => {
-        const normal = norm([ a[1] - b[1], b[0] - a[0] ]), bend = (phase - .5) * 65;
+        const normal = norm([ a[1] - b[1], b[0] - a[0] ]), bend = (phase - .5) * 110;
         return {
             boundary,
             points : Array.from({length : 33},
@@ -400,7 +412,9 @@ function riverCurve(mask, origin = null) {
                                     const t = i / 32, q = 1 - t;
                                     return add(add(add(mul(a, q ** 3), mul(controls[0], 3 * q * q * t)),
                                                    add(mul(controls[1], 3 * q * t * t), mul(b, t ** 3))),
-                                               mul(normal, Math.sin(Math.PI * t) ** 2 * bend));
+                                               mul(normal, Math.sin(Math.PI * t) ** 2 *
+                                                               (bend + 22 * Math.sin(2 * Math.PI * t +
+                                                                                     phase * 6.283185307))));
                                 })
         };
     };
@@ -417,7 +431,7 @@ const riverUV = p => [p[0] / 512 + p[1] / 256, p[1] / 256 - p[0] / 512];
 const riverXY = p => [(p[0] - p[1]) * 256, (p[0] + p[1]) * 128];
 
 function riverWidth(u, v) {
-    return .038 + .035 * noise(u * 1.3 + 29, v * 1.3 - 7) + .012 * noise(u * 7.1 - 3, v * 7.1 + 9);
+    return .028 + .072 * noise(u * 2.1 + 29, v * 2.1 - 7) + .018 * (noise(u * 9.1 - 3, v * 9.1 + 9) - .5);
 }
 
 function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
@@ -439,9 +453,9 @@ function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
         });
         return {r, uv, widths};
     });
-    for (const [scale, fill, opacity] of [[ 1.65, 'url(#grass)', .85 ], [ 1.24, 'url(#bank)', .65 ],
-                                          [ 1, 'url(#water)', 1 ], [ 1, '#416e65', .30 ],
-                                          [ .62, '#214e52', .18 ]]) {
+    for (const [scale, fill, opacity] of [[ 2, 'url(#grass)', .25 ], [ 1.6, 'url(#grass)', .38 ],
+                                          [ 1.35, 'url(#bank)', .28 ], [ 1, 'url(#water)', 1 ],
+                                          [ 1, '#39655e', .12 ]]) {
         const polygons = [];
         for (const {r, uv, widths} of paths) {
             const sides = [ -1, 1 ].map(side => uv.map((p, i) => {
@@ -450,10 +464,15 @@ function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
                           : i === uv.length - 1 && r.boundary[1] ? norm([ -p[1], p[0] ])
                                                                  : norm([ a[1] - b[1], b[0] - a[0] ]);
                 const t = i / (uv.length - 1),
-                      rough = scale > 1 ? (noise(p[0] * 15 + side * 9, p[1] * 15 + 4) - .5) * .035 *
-                                              Math.sin(Math.PI * t) ** 2
-                                        : 0;
-                return riverXY(add(p, mul(n, side * (widths[i] * scale + rough))));
+                      rough = ((noise(p[0] * 9 + side * 9, p[1] * 9 + 4) - .5) * .028 +
+                               (noise(p[0] * 27 - side * 7, p[1] * 27 + 11) - .5) * .012) *
+                              (scale > 1 ? 1.3 : 1) * Math.sin(Math.PI * t) ** 2;
+                let edge = riverXY(add(p, mul(n, side * (widths[i] * scale + rough))));
+                // Slight water/bed overlap fills antialiased butt seams without moving
+                // the logical connection ports or changing their tangents.
+                if ((i === 0 && r.boundary[0]) || (i === uv.length - 1 && r.boundary[1]))
+                    edge = add(edge, mul(norm(r.points[i]), 1.5));
+                return edge;
             }));
             polygons.push(`<path d="${pathData([...sides[0], ...sides[1].reverse() ])}Z"/>`);
             for (const end of [0, 1])

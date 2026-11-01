@@ -6,7 +6,7 @@ async function main() {
         for (let i = 0; i <= 256; i++) {
             const u = i / 256, r = S.radius(u, v);
             profile.push(r);
-            assert(r >= .625 && r <= .78, 'Shore relief lost its protected land/water bounds');
+            assert(r >= .755 && r <= .875, 'Contour relief exceeded its authored bounds');
             assert(Math.abs(r - S.radius(u + 1, v - 1)) < 1e-10, 'Native relief jumps at tile repeat');
         }
     const range = Math.max(...profile) - Math.min(...profile);
