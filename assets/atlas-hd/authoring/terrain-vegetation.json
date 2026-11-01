@@ -1,0 +1,25 @@
+{
+  "tool": "built-in image_gen",
+  "entries": [
+    {
+      "id": "features.desert-cacti",
+      "prompt": "Use case: stylized-concept. Asset type: transparent terrain-detail sprite for a painted isometric civilization strategy game. Create ONE compact, sparse desert vegetation cluster: one clearly recognizable tall branching saguaro cactus, a shorter slender cactus, a small rounded barrel cactus and two tiny dry tufts. This is ordinary desert vegetation, not a resource icon or a building. Dusty sage/olive green ribbed cactus bodies, muted warm gold light from upper left, brown-green shadows, restrained fine painted detail, strong readable silhouettes at 10–16 game pixels. Elevated isometric camera compatible with a 2:1 ground plane. All plants upright and based on a small irregular shared footprint, not lined up. Include only faint localized contact shadows immediately beneath the stems, no ground slab, no sand tile, no circular badge, no outline frame. Single isolated cluster centered with 10% transparent margins, no cropping. Painterly naturalistic game illustration, not flat vector, not 3D plastic, not photoreal. Actual transparent background. No labels, text, grids, watermarks, or original-game references. High resolution 1024 square PNG.",
+      "file": "sprites/features/desert-cacti.png",
+      "master": "authoring/masters/desert-cacti.png"
+    },
+    {
+      "id": "features.forest-2",
+      "prompt": "Use case: stylized-concept. Asset type: replacement forest feature sprite for an isometric civilization strategy game. Reference image is ONLY our existing replacement art's painting style, elevated camera, leaf detail, muted colors and lighting. Create a NEW compact grove of 5 mature EVERGREEN CONIFERS, with unmistakable pointed pine/spruce crowns, layered descending boughs, visible brown trunks and irregular heights. Tallest tree slightly left of center, two shorter trees in front and two staggered behind. Broad compact grove silhouette, roughly as wide as tall. Match the reference's naturalistic painterly game illustration, restrained detail, upper-left warm light and muted olive/forest-green palette; greens slightly cooler/darker than the reference's deciduous foliage, but no blue tint. Clear triangular crowns readable when reduced to a game tile. Elevated isometric camera over a 2:1 ground plane. Sparse low moss/needle tufts immediately at trunk bases, with soft irregular transparent fringes. No solid ground patch, tile diamond, broad cast-shadow slab, outline, frame, flowers or snow. Actual transparent background. The entire grove fits within 10% transparent margins, no cropping. One sprite only, no labels or text. High resolution 1024 square PNG. Do not reproduce any original commercial game artwork.",
+      "reference": "sprites/features/forest-0.png",
+      "file": "sprites/features/forest-2.png",
+      "master": "authoring/masters/forest-conifers-dense.png"
+    },
+    {
+      "id": "features.forest-3",
+      "prompt": "Use case: stylized-concept. Asset type: alternate transparent forest grove sprite for an isometric civilization strategy game. Reference is ONLY our replacement painting style, elevated camera and muted palette. Create ONE compact grove of FOUR recognizable evergreen pine trees with pointed crowns and irregular, more open layered branches. A medium-height spreading pine on the left, a tall slim pine on the right, and two small saplings staggered in front; visible warm brown trunks and small glimpses through the branches. This silhouette should be more open and asymmetric than a dense spruce grove. Roughly as wide as tall. Naturalistic painterly game illustration matching the reference; olive/dark forest green foliage, slightly cooler than its deciduous foliage, warm upper-left light, no blue tint. Strong readable triangular/tree shapes at small game scale. Elevated isometric camera compatible with 2:1 ground plane. A little needle litter and low scrub immediately around trunks only, soft irregular transparent fringes; no solid ground slab, no tile diamond, broad shadow, frame, snow, flowers or broadleaf trees. Actual transparent background. Whole grove centered with at least 10% transparent margins, no clipped branches. One sprite only; no text or labels. High resolution 1024 square PNG. New composition, not derived from commercial-game art.",
+      "reference": "sprites/features/forest-1.png",
+      "file": "sprites/features/forest-3.png",
+      "master": "authoring/masters/forest-conifers-open.png"
+    }
+  ]
+}

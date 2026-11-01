@@ -594,12 +594,25 @@ foreground colors across seven governments. See the
 [preservation record](review/native-background-preservation.json).
 These are bounded artwork/source checks, not whole-frame live-game parity.
 
-### Forest ground edges
+### Forest ground edges and terrain vegetation
 
 The native forest-floor update changes the forest ground PNGs and derived
 `terrain/3` and `dither/3/*` bindings. The renderer still executes
 `MapView::draw_tile_land` in this checkout (`src/auto/mapview.cpp:1549`):
 base terrain, neighbor dither quarters, then the source-selected forest sprite.
+Desert cacti are baked into the base sprite, as in the original art; the native
+command trace gains no extra draw calls. All changed cactus pixels remain inside
+the zero-dither material core. The sixteen forest commands retain their original
+mask indices and boxes. Replacement slots 3/8/10 use the pointed evergreen style
+observed in those original-art slots; other masks use broadleaf trees. Source
+selection is unchanged (graphics.cpp loads sixteen shapes, not a random species).
+
+The enhanced forest selector converts staggered x/y to tile-lattice coordinates
+before choosing one of four images. The previous odd-coefficient x/y sum modulo
+four reached only variants 0 and 2. Its cacti are a separate low-detail overlay
+at logical widths of at least 48px, omitted on cultivated or river desert and
+drawn below fields/networks. These additions are confined to standalone artwork
+and proposal rendering. See [vegetation checks](review/vegetation-validation.json).
 The new artwork keeps the full opaque land diamond, blends its perimeter into
 grass and reduces the contrast of leaf litter beneath the tree cluster.
 Native neighbor selection, zoom gates and sprite boxes are unchanged. The shared

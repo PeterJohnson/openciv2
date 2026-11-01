@@ -19,7 +19,7 @@ The graphics branch contains no game source or loader changes.
 
 | Collection | Selected assets | Purpose |
 | --- | ---: | --- |
-| Painted sprites | 575 | Units, cities, buildings, wonders, resources, citizens, advisors, leaders, diplomacy, palace, effects, spaceship and setup art |
+| Painted sprites | 576 | Units, cities, buildings, wonders, resources, citizens, advisors, leaders, diplomacy, palace, effects, spaceship and setup art |
 | Backgrounds | 22 | City sites, throne room, council, diplomacy, space, events and interface scenes |
 | Interface assets | 503 | Authored SVGs and PNGs: controls, cursors, badges, masks, symbols and palette-dependent variations |
 | Map assets | 1,117 | Ground, coast states, road/rail/river masks, shadows, materials and 16 new texture variations |
@@ -30,7 +30,7 @@ The graphics branch contains no game source or loader changes.
 | Terrain production marker | 1 | Muted olive/bronze shield for map terrain; city economy shields stay blue |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,243 primary entries are indexed in [manifest.json](manifest.json).
+The 2,244 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -123,12 +123,25 @@ retains the native rule that carries neighboring fields beneath a city.
 The comparison contains only crops of the permitted composed original-art scene;
 its original-art column is excluded from the replacement pack's license.
 
-Forest ground blends grass and undergrowth around the unchanged tree clusters.
+Forest ground blends grass and undergrowth around the tree clusters.
 Mottled leaf litter sits beneath the trees; the native tile perimeter retains
 opaque coverage and uses the grass palette to avoid dark diamond borders.
 The enhanced renderer blends the same materials through its existing world-space
 terrain pass. [Compare forest borders in all four stages](review/forest-borders.png).
-Tree sprites, terrain selection, neighbor dither selection and drawing order are unchanged.
+Terrain selection, neighbor dither selection and native drawing order are unchanged.
+The forest bank now pairs round broadleaf canopies with two newly painted
+pointed evergreen groves. Native mask slots 3, 8 and 10 use conifers, following
+the silhouettes observed in the original bank; the other slots use broadleaf
+woods. The enhanced pass selects all four variants from actual tile-lattice
+coordinates, avoiding the two-variant collapse caused by staggered x/y parity.
+
+Desert ground includes a small cactus cluster inside its protected material core.
+It remains ordinary terrain detail, below the native river, fields and roads.
+Enhanced cacti appear at 48px tiles and above, below fields and networks, and are
+omitted on cultivated or river desert. [Compare desert and forest details](review/terrain-vegetation.png).
+[Artwork checks](review/vegetation-validation.json) cover unchanged perimeter
+pixels, small-scale contrast and variant coverage. Generated masters and the
+[built-in image-generation prompts](authoring/terrain-vegetation.json) are retained.
 
 All ten land styles use soft, irregular neighbor overlays instead of coarse
 checker rims. Each edge blends toward the actual neighboring terrain; the
@@ -174,16 +187,19 @@ After field-art edits, run `fields-review.cjs`, `verify-fields.cjs` and
 `build-gallery.cjs` in `tools/atlas-review/`. The field review refreshes the five
 affected maps and the Carlisle/Gloucester comparison without changing fixtures.
 
-The full review builder also regenerates the forest ground and land-transition overlays.
+The full review builder also regenerates forest ground, vegetation and land-transition overlays.
 After forest-floor edits, first run `forest-floor.cjs`. For either forest or
 general land-transition edits, run these tools from the repository root:
 
 ```powershell
+node tools/atlas-review/terrain-vegetation.cjs
 node tools/atlas-review/terrain-blends.cjs
 node tools/atlas-review/refresh-map-finishing.cjs
 node tools/atlas-review/coast-audit.cjs --skip-original
 node tools/atlas-review/refresh-native-backgrounds.cjs --render-only
 node tools/atlas-review/land-borders.cjs
+node tools/atlas-review/vegetation-review.cjs
+node tools/atlas-review/verify-terrain-vegetation.cjs
 node tools/atlas-review/fields-review.cjs --review-only
 node tools/atlas-review/refresh-unit-banners.cjs --review-only
 node tools/atlas-review/verify-terrain-blends.cjs

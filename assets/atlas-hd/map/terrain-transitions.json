@@ -10,28 +10,28 @@
       "quadrant": 0,
       "file": "compatibility/dither/0/0.png",
       "source": "map/ground/desert.png",
-      "sha256": "c7d2104cc0f9d74db0ba8e19aaf8f458d9f05a0a3be643f807d4ff0f9294e916"
+      "sha256": "a39887dac0c8c3ddc3279186ef1215042ece30d30e2c7fb67faad53f57ec9c5a"
     },
     {
       "terrain": "desert",
       "quadrant": 1,
       "file": "compatibility/dither/0/1.png",
       "source": "map/ground/desert.png",
-      "sha256": "1d130ad44c463aa5ff22994af6a3ba9a70cd6b33d841e867f17309c467f79fd7"
+      "sha256": "a0621c988e0400d39dbdf08c1ee3f09761003a4de643088c821382c79b8056e5"
     },
     {
       "terrain": "desert",
       "quadrant": 2,
       "file": "compatibility/dither/0/2.png",
       "source": "map/ground/desert.png",
-      "sha256": "ce988eeb2b5aa2b75c85c16c8f33b48a217926979d5aee59701ec01998961596"
+      "sha256": "5d117b9b142a149fd3b559bd22c423f38bf8e12edb71baa65bd7c3600c007e09"
     },
     {
       "terrain": "desert",
       "quadrant": 3,
       "file": "compatibility/dither/0/3.png",
       "source": "map/ground/desert.png",
-      "sha256": "492df197299ab1e8639d9a0e64ee19a7b5c4aea0f2b8cf365643cb02d82186d4"
+      "sha256": "59c1b49bf080b479f631c1dcb0455e498afbde8e91f79f213462c85b63ff410c"
     },
     {
       "terrain": "plains",

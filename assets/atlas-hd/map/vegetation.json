@@ -1,0 +1,130 @@
+{
+  "version": 1,
+  "authoring": "tools/atlas-review/terrain-vegetation.cjs",
+  "source": "src/auto/mapview.cpp:1549 draw_tile_land; src/auto/graphics.cpp:601 gfx_load_terrain_sprites",
+  "native": "Desert cacti are part of the base sprite. Source still selects the sixteen forest masks; replacement conifers occupy slots 3, 8 and 10, matching the original bank silhouettes.",
+  "enhanced": "Four stable lattice-selected forest variants. Separate cacti at 48px and above, below fields/roads and omitted on cultivated or river desert.",
+  "cactus": {
+    "file": "sprites/features/desert-cacti.png",
+    "nativeBox": {
+      "left": 218,
+      "top": 76,
+      "width": 76,
+      "height": 104
+    }
+  },
+  "forestSlots": [
+    {
+      "mask": 0,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/0.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    },
+    {
+      "mask": 1,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/1.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 2,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/2.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 3,
+      "variant": 2,
+      "style": "evergreen",
+      "file": "compatibility/feature/forest/3.png",
+      "sha256": "cfba436d05d21e41edaf7e385d10bef7a17a7c4bedf69576c8cd8a74f8e26516"
+    },
+    {
+      "mask": 4,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/4.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    },
+    {
+      "mask": 5,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/5.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 6,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/6.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 7,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/7.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    },
+    {
+      "mask": 8,
+      "variant": 3,
+      "style": "evergreen",
+      "file": "compatibility/feature/forest/8.png",
+      "sha256": "f7b97b5d3e3354d05885e604428ffea089184982611c81d129c4dfa767a7b863"
+    },
+    {
+      "mask": 9,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/9.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 10,
+      "variant": 2,
+      "style": "evergreen",
+      "file": "compatibility/feature/forest/10.png",
+      "sha256": "cfba436d05d21e41edaf7e385d10bef7a17a7c4bedf69576c8cd8a74f8e26516"
+    },
+    {
+      "mask": 11,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/11.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    },
+    {
+      "mask": 12,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/12.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    },
+    {
+      "mask": 13,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/13.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 14,
+      "variant": 1,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/14.png",
+      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0"
+    },
+    {
+      "mask": 15,
+      "variant": 0,
+      "style": "broadleaf",
+      "file": "compatibility/feature/forest/15.png",
+      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94"
+    }
+  ]
+}

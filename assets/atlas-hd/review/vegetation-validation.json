@@ -1,0 +1,112 @@
+{
+  "status": "pass",
+  "grounds": [
+    {
+      "file": "map/ground/desert.png",
+      "changedCorePixels": 3922,
+      "readable": [
+        {
+          "tileWidth": 32,
+          "contrastingPixels": 18
+        },
+        {
+          "tileWidth": 64,
+          "contrastingPixels": 60
+        },
+        {
+          "tileWidth": 128,
+          "contrastingPixels": 209
+        }
+      ]
+    },
+    {
+      "file": "map/ground/desert-10.png",
+      "changedCorePixels": 3916,
+      "readable": [
+        {
+          "tileWidth": 32,
+          "contrastingPixels": 17
+        },
+        {
+          "tileWidth": 64,
+          "contrastingPixels": 57
+        },
+        {
+          "tileWidth": 128,
+          "contrastingPixels": 212
+        }
+      ]
+    },
+    {
+      "file": "map/ground/desert-01.png",
+      "changedCorePixels": 3920,
+      "readable": [
+        {
+          "tileWidth": 32,
+          "contrastingPixels": 18
+        },
+        {
+          "tileWidth": 64,
+          "contrastingPixels": 59
+        },
+        {
+          "tileWidth": 128,
+          "contrastingPixels": 208
+        }
+      ]
+    },
+    {
+      "file": "map/ground/desert-11.png",
+      "changedCorePixels": 3926,
+      "readable": [
+        {
+          "tileWidth": 32,
+          "contrastingPixels": 18
+        },
+        {
+          "tileWidth": 64,
+          "contrastingPixels": 60
+        },
+        {
+          "tileWidth": 128,
+          "contrastingPixels": 208
+        }
+      ]
+    }
+  ],
+  "nativeForestStyles": {
+    "broadleaf": [
+      0,
+      1,
+      2,
+      4,
+      5,
+      6,
+      7,
+      9,
+      11,
+      12,
+      13,
+      14,
+      15
+    ],
+    "evergreen": [
+      3,
+      8,
+      10
+    ]
+  },
+  "staggeredLatticeVariantCounts": [
+    32,
+    32,
+    32,
+    32
+  ],
+  "savedForestVariantCounts": [
+    84,
+    77,
+    76,
+    70
+  ],
+  "limits": "Artwork bounds, native sprite bindings, downscaled contrast and deterministic selection checks. Recognition is also visually reviewed; no integrated game-rendering claim."
+}

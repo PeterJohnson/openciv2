@@ -149,6 +149,14 @@ silhouettes distinct; avoid a universal grass fringe that changes desert, snow
 or wetland identity. The native source still suppresses these overlays below
 32 logical pixels per tile.
 
+Use sparse, recognizable terrain details inside that protected core: the
+replacement desert now includes cacti, while forests mix round broadleaf crowns
+and pointed conifers within the existing native mask bank. For additional
+variation, hash tile-lattice coordinates rather than raw staggered x/y: odd
+coefficients modulo four otherwise select only two variants. The enhanced
+prototype now uses all four forest images and omits cactus details below 48px
+logical tile width, leaving sand color to identify the overview terrain.
+
 The separate enhanced prototype narrows material blending to an organic band
 around each boundary, with pure material cores. World-periodic weights and
 shared samples avoid rectangular rims. Preserve a continuous land-color fallback

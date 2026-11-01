@@ -5,6 +5,7 @@ const R = require('./render.cjs');
 
 async function main() {
     await require('./forest-floor.cjs').build();
+    await require('./terrain-vegetation.cjs').build();
     const {w, scenes} = buildFixtures();
     const variation = await variationAssets();
     const traces = scenes.map(s => C.engine(s.mode, C.path.join(C.pack, s.fixture)));

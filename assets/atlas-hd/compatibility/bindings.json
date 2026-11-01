@@ -20,7 +20,7 @@
       "file": "compatibility/terrain/0.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": null
+      "source": "map/ground/desert.png"
     },
     "terrain/1": {
       "file": "compatibility/terrain/1.png",
@@ -854,13 +854,13 @@
       "file": "compatibility/feature/forest/2.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-2.png"
+      "source": "sprites/features/forest-1.png"
     },
     "feature/forest/3": {
       "file": "compatibility/feature/forest/3.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-3.png"
+      "source": "sprites/features/forest-2.png"
     },
     "feature/forest/4": {
       "file": "compatibility/feature/forest/4.png",
@@ -878,19 +878,19 @@
       "file": "compatibility/feature/forest/6.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-2.png"
+      "source": "sprites/features/forest-1.png"
     },
     "feature/forest/7": {
       "file": "compatibility/feature/forest/7.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-3.png"
+      "source": "sprites/features/forest-0.png"
     },
     "feature/forest/8": {
       "file": "compatibility/feature/forest/8.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-0.png"
+      "source": "sprites/features/forest-3.png"
     },
     "feature/forest/9": {
       "file": "compatibility/feature/forest/9.png",
@@ -908,7 +908,7 @@
       "file": "compatibility/feature/forest/11.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-3.png"
+      "source": "sprites/features/forest-0.png"
     },
     "feature/forest/12": {
       "file": "compatibility/feature/forest/12.png",
@@ -926,13 +926,13 @@
       "file": "compatibility/feature/forest/14.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-2.png"
+      "source": "sprites/features/forest-1.png"
     },
     "feature/forest/15": {
       "file": "compatibility/feature/forest/15.png",
       "nativeWidth": 64,
       "nativeHeight": 32,
-      "source": "sprites/features/forest-3.png"
+      "source": "sprites/features/forest-0.png"
     },
     "feature/hills/0": {
       "file": "compatibility/feature/hills/0.png",
@@ -2443,5 +2443,6 @@
   },
   "citySizeBoxAnchors": "map/city-anchors.json",
   "unitShieldAnchors": "map/unit-anchors.json",
-  "terrainTransitions": "map/terrain-transitions.json"
+  "terrainTransitions": "map/terrain-transitions.json",
+  "vegetation": "map/vegetation.json"
 }

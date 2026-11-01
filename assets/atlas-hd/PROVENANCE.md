@@ -173,12 +173,12 @@ not replacement sprites or runtime game screenshots.
 Forest-floor blending reuses the retained authored grassland and forest material
 textures. `forest-floor.cjs` generates the native opaque ground diamonds and
 four dither adapters; `art.cjs` uses the same grassy undergrowth and mottled leaf
-litter for enhanced terrain. No original pixels are used, and the painted tree
-sprites are unchanged. `review/forest-borders.png` contains only composed
+litter for enhanced terrain. No original pixels are used; the tree silhouettes are supplied by the selected
+feature bank. `review/forest-borders.png` contains only composed
 four-stage scene crops, under the existing original-art review allowance.
 
 General land-border blending reuses the ten retained ground PNGs without
-changing their RGB or terrain feature sprites. terrain-blends.cjs authors
+changing their RGB within that transition step. terrain-blends.cjs authors
 feathered alpha for the 40 native neighbor-quarter adapters, and supplies the
 organic material weights used only by the enhanced sampler. There are no new
 third-party image inputs. map/terrain-transitions.json records each adapter's
@@ -186,3 +186,18 @@ source and output hash. The new land-border comparisons use the real saved map;
 original artwork appears only in composed scenes under
 review/original-scenes/land-borders/ and the four-stage land-borders.png sheet,
 with the same review-only allowance and license exclusions as the other scenes.
+
+
+Desert cacti and two evergreen groves were created with the built-in image_gen
+tool. The evergreen prompts use only our retained replacement broadleaf art as
+style references; no original-game artwork was passed to image generation.
+The full prompts, retained masters and selected sprite paths are recorded in
+[terrain vegetation authoring](authoring/terrain-vegetation.json). Transparent
+alpha is retained; outer framing ignores alpha values of 8 or less when finding
+the crop bounds. No color remapping or opaque ground plate is added.
+
+terrain-vegetation.cjs rebuilds the four desert ground phases from the existing
+sand material, composes cacti inside the protected core, and updates the native
+forest bindings. The original conifer-slot observation changes no source logic.
+review/terrain-vegetation.png contains only composed scene crops under the same
+review-only original-art allowance as the other comparison plates.

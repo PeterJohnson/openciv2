@@ -1,6 +1,7 @@
 const C = require('./common.cjs');
 const Typography = require('./typography.cjs');
 const CityLabels = require('./city-labels.cjs');
+const Vegetation = require('./terrain-vegetation.cjs');
 const {fs, path, pack, sharp, svg, art, raw, clear, blit, png, asset, fit} = C;
 const cache = new Map();
 const faction = [ '#e6dfc3', '#d66b57', '#63b194', '#9e87ca', '#6e9ed0', '#d8bd60', '#dc994d', '#b7c7ce' ];
@@ -318,6 +319,21 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
         const im = await sprite(name, Math.round(width), Math.round(height), bindings);
         blit(dst, im, x - width / 2, y - height + tw * .18 + dy);
     };
+    // Desert vegetation is ordinary ground detail; networks and fields stay above it.
+    if (logicalTw >= 48) {
+        const box = Vegetation.cactusBox;
+        const cactus = await cached('desert-cacti:' + tw,
+                                    async () => raw(await fit(path.join(pack, Vegetation.cactusFile),
+                                                              Math.round(tw * box.width / 512),
+                                                              Math.round(tw * box.height / 512), 1)));
+        for (const t of visible) {
+            const f = viewer < 1 ? t.f : t.k;
+            if ((t.t & 15) !== 0 || (t.t & 128) || (f & 12))
+                continue;
+            const [x, y] = pos(t);
+            blit(dst, cactus, x + tw * (box.left / 512 - .5), y + tw * (box.top / 512 - .25));
+        }
+    }
     // Rivers, fields and corridor underlays precede tall objects. Ground is already complete.
     const fields = fieldCommands(trace, logicalTw);
     if (fields.length) {
@@ -361,7 +377,8 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
         const [x, y] = pos(t), f = viewer < 1 ? t.f : t.k, terrain = t.t & 15;
         if (logicalTw >= 48 && [ 3, 4, 5, 9 ].includes(terrain)) {
             const family = {3 : 'forest', 4 : 'hills', 5 : 'mountains', 9 : 'jungle'}[terrain],
-                  variant = ((t.x * 17 + t.y * 31) >>> 0) % 4;
+                  variant = family === 'forest' ? Vegetation.worldVariant(t.x, t.y)
+                                                : ((t.x * 17 + t.y * 31) >>> 0) % 4;
             const size = tw * (terrain === 5 ? .72 : .58), h = size * .72;
             const p = await cached(`feature:${family}:${variant}:${tw}`,
                                    async () => raw(await fit(asset(`features.${family}-${variant}`),

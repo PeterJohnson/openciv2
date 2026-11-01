@@ -2,6 +2,7 @@
 const C = require('./common.cjs');
 const Finishing = require('./map-finishing.cjs');
 const Land = require('./terrain-blends.cjs');
+const Vegetation = require('./terrain-vegetation.cjs');
 const {fs, path, pack, art, sharp, svg, asset, entries, raw, clear, blit, png, fit} = C;
 const bank = new Map();
 const bindingIndex = {};
@@ -127,7 +128,9 @@ async function buildBindings(traces) {
     }
     for (const family of ['forest', 'hills', 'mountains'])
         for (let i = 0; i < 16; i++)
-            await bitmap(`feature/${family}/${i}`, 64, 32, asset(`features.${family}-${i % 4}`));
+            await bitmap(
+                `feature/${family}/${i}`, 64, 32,
+                asset(`features.${family}-${family === 'forest' ? Vegetation.forestVariant(i) : i % 4}`));
     // Flat field overlays occupy the full terrain frame; tall-object fitting hides them beneath cities.
     for (const name of ['irrigation', 'farmland'])
         await save(`improvement/${name}`, await fieldBitmap(name), 64, 32,
@@ -259,6 +262,7 @@ async function buildBindings(traces) {
         schemaVersion : 1,
         description : 'Review PNG adapter. Native boxes, new alpha pixels; not a production loader.',
         terrainTransitions : 'map/terrain-transitions.json',
+        vegetation : 'map/vegetation.json',
         directionOrder : [ 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N' ],
         unitShieldAnchors : 'map/unit-anchors.json',
         cityFlagAnchor : [ 48, 4 ],

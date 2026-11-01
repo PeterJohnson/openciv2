@@ -19612,83 +19612,55 @@
     },
     {
       "id": "features.forest-2",
-      "label": "forest 2",
-      "description": "forest variation 2",
+      "label": "Forest · dense evergreens",
+      "description": "Pointed spruce canopy, layered branches and mottled needle litter.",
+      "kind": "sprite",
       "category": "features",
       "file": "sprites/features/forest-2.png",
-      "width": 282,
-      "height": 251,
-      "sha256": "d8a2d570b7dd98c06c9b71a743f460496f4a3336f64dea72a1fd92cc84d3ac35",
+      "width": 1107,
+      "height": 1102,
+      "sha256": "c4ec8d32f2b76d3eba4cb2548d4aa472377dac8e929593b576f2bce3bdc4e1b2",
       "source": {
-        "sheet": "features",
-        "slot": 2,
+        "master": "authoring/masters/forest-conifers-dense.png",
         "rect": {
-          "left": 642,
-          "top": 53,
-          "width": 282,
-          "height": 251
+          "left": 82,
+          "top": 45,
+          "width": 1107,
+          "height": 1102
         },
-        "cell": {
-          "left": 627,
-          "right": 940,
-          "top": 0,
-          "bottom": 313
-        },
-        "master": "authoring/masters/features.png"
+        "prompts": "authoring/terrain-vegetation.json"
       },
+      "suggestedAnchor": "bottom-center",
       "anchorPixels": [
-        142,
-        104
-      ],
-      "mapping": null,
-      "suggestedAnchor": "center",
-      "alpha": {
-        "transparent": 17417,
-        "opaque": 10,
-        "nearOpaque": 32091,
-        "translucent": 53355
-      },
-      "kind": "sprite"
+        553,
+        1101
+      ]
     },
     {
       "id": "features.forest-3",
-      "label": "forest 3",
-      "description": "forest variation 3",
+      "label": "Forest · open pines",
+      "description": "Asymmetric pine grove with visible trunks and open foliage.",
+      "kind": "sprite",
       "category": "features",
       "file": "sprites/features/forest-3.png",
-      "width": 278,
-      "height": 264,
-      "sha256": "fd668e90c7d06a302a963ae105a9712df17538781b49b92d4f69c05252d409be",
+      "width": 1060,
+      "height": 1193,
+      "sha256": "f42bb5ae20e1d3dc81db36445d8d109cd9699045bbc5320e9b386b99c770ee8d",
       "source": {
-        "sheet": "features",
-        "slot": 3,
+        "master": "authoring/masters/forest-conifers-open.png",
         "rect": {
-          "left": 951,
-          "top": 46,
-          "width": 278,
-          "height": 264
+          "left": 98,
+          "top": 30,
+          "width": 1060,
+          "height": 1193
         },
-        "cell": {
-          "left": 940,
-          "right": 1254,
-          "top": 0,
-          "bottom": 313
-        },
-        "master": "authoring/masters/features.png"
+        "prompts": "authoring/terrain-vegetation.json"
       },
+      "suggestedAnchor": "bottom-center",
       "anchorPixels": [
-        146,
-        111
-      ],
-      "mapping": null,
-      "suggestedAnchor": "center",
-      "alpha": {
-        "transparent": 19271,
-        "opaque": 9,
-        "nearOpaque": 30591,
-        "translucent": 54112
-      },
-      "kind": "sprite"
+        530,
+        1192
+      ]
     },
     {
       "id": "features.hills-0",
@@ -28368,7 +28340,7 @@
       "file": "map/ground/desert.png",
       "width": 512,
       "height": 256,
-      "sha256": "151daecbac0e321b2f5959f9beba2c3593b05ed3ca625068e03a40b20b5d87f2",
+      "sha256": "c59be116c7956324f02cd6526f8941953daab7b2fa496465a8341669a80347f1",
       "anchor": [
         256,
         128
@@ -28380,13 +28352,15 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.desert",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Warm sandy ground with a small cactus cluster inside the protected material core; blended perimeter unchanged.",
+      "vegetation": "map/vegetation.json"
     },
     {
       "file": "map/ground/desert-10.png",
       "width": 512,
       "height": 256,
-      "sha256": "47ba64d49f232bf7293d60182ebef609dc60e421b62b3a0d7a1d455a92d53230",
+      "sha256": "faa8b3e53d463d30c2b29cf33676a487fbe9246d4b2b05de5e14964e362cfc6d",
       "anchor": [
         256,
         128
@@ -28398,13 +28372,15 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.desert-10",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Warm sandy ground with a small cactus cluster inside the protected material core; blended perimeter unchanged.",
+      "vegetation": "map/vegetation.json"
     },
     {
       "file": "map/ground/desert-01.png",
       "width": 512,
       "height": 256,
-      "sha256": "2ed44398ccefd102c8595329781ccb7dd28e1cb52cde2f78aeb6c37fe0d7d98e",
+      "sha256": "4e84be3900cb6ed01b18d14425160e79d08861c91eabd9e24b9662db9c5e7ab3",
       "anchor": [
         256,
         128
@@ -28416,13 +28392,15 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.desert-01",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Warm sandy ground with a small cactus cluster inside the protected material core; blended perimeter unchanged.",
+      "vegetation": "map/vegetation.json"
     },
     {
       "file": "map/ground/desert-11.png",
       "width": 512,
       "height": 256,
-      "sha256": "f7202a338788d1a10f33052684f50e7e8821636d28f0f14072aaf6c5257807d5",
+      "sha256": "593a15341f5e8fdc5aa714800e51b5ddba0af5fab2df5605dc9b5f8249653f45",
       "anchor": [
         256,
         128
@@ -28434,7 +28412,9 @@
       "coverage": "binary pixel-center diamond; composite at native lattice before resampling",
       "id": "map.ground.desert-11",
       "kind": "map",
-      "category": "map / ground"
+      "category": "map / ground",
+      "description": "Warm sandy ground with a small cactus cluster inside the protected material core; blended perimeter unchanged.",
+      "vegetation": "map/vegetation.json"
     },
     {
       "file": "map/ground/forest.png",
@@ -53150,6 +53130,32 @@
       "height": 256,
       "sha256": "8d218223ca8979646c489973f5667dc96526191c4660b5b7a0105763894959dc",
       "sourceSha256": "ee4a627eaf40c039a98f129e9b170dea8c371fba8229bec9fec43e18707057bc"
+    },
+    {
+      "id": "features.desert-cacti",
+      "label": "Desert cacti",
+      "description": "Sparse saguaro, column and barrel cacti with dry scrub; ordinary desert terrain detail.",
+      "kind": "sprite",
+      "category": "features",
+      "file": "sprites/features/desert-cacti.png",
+      "width": 653,
+      "height": 1002,
+      "sha256": "d7400494e31b9a3506aaa47b948c7c645b277a7ef08ce061506518d89afdd9b4",
+      "source": {
+        "master": "authoring/masters/desert-cacti.png",
+        "rect": {
+          "left": 308,
+          "top": 104,
+          "width": 653,
+          "height": 1002
+        },
+        "prompts": "authoring/terrain-vegetation.json"
+      },
+      "suggestedAnchor": "bottom-center",
+      "anchorPixels": [
+        326,
+        1001
+      ]
     }
   ]
 }

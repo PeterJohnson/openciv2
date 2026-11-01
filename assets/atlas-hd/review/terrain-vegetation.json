@@ -1,0 +1,40 @@
+{
+  "rows": [
+    {
+      "family": "desert",
+      "score": 3,
+      "scene": "dry-128",
+      "left": 192,
+      "top": 32,
+      "width": 384,
+      "height": 192,
+      "evergreen": 0,
+      "broadleaf": 3,
+      "images": {
+        "original": "review/original-scenes/land-borders/dry-128.png",
+        "current": "review/land-borders/dry-128-current.png",
+        "hd": "review/land-borders/dry-128-hd.png",
+        "proposed": "review/land-borders/dry-128-proposed.png"
+      }
+    },
+    {
+      "family": "forest",
+      "score": 167,
+      "scene": "cold-128",
+      "left": 128,
+      "top": 192,
+      "width": 384,
+      "height": 192,
+      "evergreen": 2,
+      "broadleaf": 5,
+      "images": {
+        "original": "review/original-scenes/land-borders/cold-128.png",
+        "current": "review/land-borders/cold-128-current.png",
+        "hd": "review/land-borders/cold-128-hd.png",
+        "proposed": "review/land-borders/cold-128-proposed.png"
+      }
+    }
+  ],
+  "sha256": "0ce7d4dd645ec9f88d0b0c8f6dca43d23735a8d05d6a072afa2d9df3c73dc531",
+  "scope": "Crops of four-stage composed real-save scenes, including review-only original artwork."
+}
