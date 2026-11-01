@@ -198,12 +198,7 @@ async function buildBindings(traces) {
             Buffer.from(svg(
                 512, 256,
                 '<path d="M256 0L512 128L256 256L0 128Z" fill="none" stroke="#47504a" stroke-width="2"/>')));
-    await save(
-        'shield',
-        Buffer.from(svg(
-            96, 160,
-            '<path d="M4 4H92V106L48 156L4 106Z" fill="#010607" stroke="#17201d" stroke-width="8"/><path d="M12 8H28V105L48 140L20 119L12 109Z" fill="#010506"/><path d="M8 8V104L48 150L88 104V8" fill="none" stroke="#eadfc2" stroke-width="3"/>')),
-        12, 20);
+    await save('shield', Buffer.from(require('./unit-banners.cjs').source()), 12, 20);
     for (let i = 0; i < 8; i++)
         await save(
             'flag/' + i,
@@ -291,7 +286,7 @@ async function buildBindings(traces) {
         schemaVersion : 1,
         description : 'Review PNG adapter. Native boxes, new alpha pixels; not a production loader.',
         directionOrder : [ 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW', 'N' ],
-        unitShieldAnchor : [ 48, 4 ],
+        unitShieldAnchors : 'map/unit-anchors.json',
         cityFlagAnchor : [ 48, 4 ],
         citySizeBoxAnchors : 'map/city-anchors.json',
         bindings : bindingIndex

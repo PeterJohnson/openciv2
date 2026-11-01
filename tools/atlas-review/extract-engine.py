@@ -67,3 +67,13 @@ assert [v['index'] for v in anchors]==list(range(48))
 assert all(0<=v['sizeBox'][0]<=41 and 0<=v['sizeBox'][1]<=32 for v in anchors)
 (OUT/'city-anchors.inc').write_text('static constexpr int replacementCityAnchors[48][2] = {\n'+',\n'.join('{'+','.join(map(str,v['sizeBox']))+'}' for v in anchors)+'\n};\n',newline='\n')
 print(f'Extracted {len(functions)} unchanged function bodies and {len(tables)} table initializers')
+
+# Registration belongs to replacement art; load_original still overrides it.
+unit_meta=json.loads((ROOT/'assets/atlas-hd/map/unit-anchors.json').read_text())
+unit_anchors=[unit_meta['defaultAnchor'][:] for _ in range(64)]
+assert len({v['index'] for v in unit_meta['overrides']})==len(unit_meta['overrides'])
+for entry in unit_meta['overrides']:
+    assert 0<=entry['index']<64
+    unit_anchors[entry['index']]=entry['anchor']
+assert all(0<=x<=52 and 0<=y<=28 for x,y in unit_anchors)
+(OUT/'unit-anchors.inc').write_text('static constexpr int replacementUnitAnchors[64][2] = {\n'+',\n'.join('{'+','.join(map(str,a))+'}' for a in unit_anchors)+'\n};\n',newline='\n')

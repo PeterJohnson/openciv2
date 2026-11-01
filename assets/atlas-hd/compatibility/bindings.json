@@ -11,10 +11,6 @@
     "NW",
     "N"
   ],
-  "unitShieldAnchor": [
-    48,
-    4
-  ],
   "cityFlagAnchor": [
     48,
     4
@@ -2445,5 +2441,6 @@
       "source": "sprites/palace/bonus-6.png"
     }
   },
-  "citySizeBoxAnchors": "map/city-anchors.json"
+  "citySizeBoxAnchors": "map/city-anchors.json",
+  "unitShieldAnchors": "map/unit-anchors.json"
 }

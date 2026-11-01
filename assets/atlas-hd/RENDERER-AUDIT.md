@@ -345,14 +345,24 @@ second half-size fit and vertical offset. Ocean resources occupy up to 72% of
 frame height, land resources 58%, with transparent padding.
 
 The replacement palette adapter distinguishes primary/mid faction colors and
-health colors. Shield artwork contains both faction mask colors. Unit order
+health colors. Shield artwork uses one flat faction-color face and a dark outline,
+without the former inset strip or bevel. Unit order
 text is centered at the native shield text anchor in the standalone backend;
 this corrects the prior left/top interpretation, including original-art replays.
 Original-art fonts use the reference bank; native and HD-only use identical logical
 commands. Enhanced text remains on its independent presentation path.
 `readableBadges` modifies only the proposal's badge group: 1.35x scale, separated
 rear plate, a plus sign for a source-indicated stack, and foreground placement.
-Unit/city selection, image frames and anchors are unchanged and checked directly.
+Unit/city selection and image frames are unchanged and checked directly.
+Replacement banner registration is recorded in [unit-anchors.json](map/unit-anchors.json).
+The twelve naval types use `(2,0)` in the transparent upper-left of their 64×48
+frame; other units retain `(48,4)`. This clears the larger replacement ships
+while preserving the source's shield-before-unit order in native and HD-only
+views. `extract-engine.py` supplies this metadata to the standalone adapter;
+original-art mode still loads original-sheet anchors. Enhanced badges retain
+their separate enlargement, stack separation and foreground pass.
+See [unit banner checks](review/unit-banner-validation.json) and the
+[updated map crops](review/unit-banners.png).
 
 The synthetic district adds two ocean resources and explicit linked unit records.
 Its metadata supplies real `prev_in_stack`/`next_in_stack` values, allowing the

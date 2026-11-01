@@ -1,6 +1,7 @@
 #include "engine-shim.h"
 #include "engine-tables.inc"
 #include "city-anchors.inc"
+#include "unit-anchors.inc"
 #include "engine-bodies.inc"
 
 namespace save_native {
@@ -64,8 +65,8 @@ void initialize() {
     named(unit_shield_sprite, "shield", 12, 20);
     for (int i = 0; i < 64; i++) {
         named(pollution_sprite_block.unit_sprites[i], "unit/" + std::to_string(i), 64, 48);
-        road_sprites_block.unit_shield_x_offsets[i] = 48;
-        road_sprites_block.unit_shield_y_offsets[i] = 4;
+        road_sprites_block.unit_shield_x_offsets[i] = replacementUnitAnchors[i][0];
+        road_sprites_block.unit_shield_y_offsets[i] = replacementUnitAnchors[i][1];
     }
     for (int i = 0; i < 48; i++) {
         named(gfx_sheet_surface_block.city_sprites[i], "city/" + std::to_string(i), 64, 48);

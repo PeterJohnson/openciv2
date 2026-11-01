@@ -1,0 +1,295 @@
+{
+  "status": "pass",
+  "navalSprites": 12,
+  "cases": [
+    {
+      "unit": 32,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 32,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 32,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 32,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 33,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 33,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 33,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 33,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 34,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 34,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 34,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 34,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 35,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 35,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 35,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 35,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 36,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 36,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 36,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 36,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 37,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 37,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 37,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 37,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 38,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 38,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 38,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 38,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 39,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 39,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 39,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 39,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 40,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 40,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 40,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 40,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 41,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 41,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 41,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 41,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 42,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 42,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 42,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 42,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    },
+    {
+      "unit": 43,
+      "zoom": 0,
+      "density": 1,
+      "verifiedBannerPixels": 213
+    },
+    {
+      "unit": 43,
+      "zoom": 0,
+      "density": 2,
+      "verifiedBannerPixels": 878
+    },
+    {
+      "unit": 43,
+      "zoom": 8,
+      "density": 1,
+      "verifiedBannerPixels": 824
+    },
+    {
+      "unit": 43,
+      "zoom": 8,
+      "density": 2,
+      "verifiedBannerPixels": 3391
+    }
+  ],
+  "limits": "Checks replacement naval anchor clearance and native shield-before-unit composition at two map zooms and both preview densities. Enhanced stacks and city-label avoidance are covered by the existing map-style and city-label checks. Static fixture validation, not interactive gameplay qualification."
+}

@@ -90,6 +90,9 @@ The original-art previews were inspected for readability and composition; no
 original pixels, shapes or textures were traced, sampled or incorporated into
 the replacement library. Resource changes center the retained generated sprites.
 Faction shield geometry/colors are authored in the replacement binding/backend.
+The flat banner face is authored in `unit-banners.cjs`; naval anchor metadata is
+measured against the replacement alpha silhouettes. No ship artwork is repainted,
+resized or derived from original pixels for this change.
 The 35% badge enlargement and stack-marker layout belong only to the standalone
 cohesion proposal, with the source unit/city frames preserved.
 

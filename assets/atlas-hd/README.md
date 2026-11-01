@@ -270,11 +270,19 @@ water into the coastline. Native/HD river bindings now use the canonical bank
 directly, including its bank textures.
 
 Faction shields have a larger filled silhouette within their existing native
-frame, contrasting rims and distinct primary/mid colors. Health and order marks
+frame, one flat faction-color face and a dark outline. The inset stripe/bevel is
+removed; rear stack shields retain the darker faction color. Health and order marks
 are readable; stacked units keep the source's repeated-shield indicator. The
 cohesion stage additionally enlarges status badges by 35%, separates the rear
 shield, adds a plus marker for stacks, and draws those badges over the unit layer.
 The actual unit and city sprites keep the source-selected dimensions and anchors.
+[Naval banner anchors](map/unit-anchors.json) move the shields into transparent
+upper-left space so the native ship draw cannot cover them. Original-art anchors
+remain separate. [Inspect ship and stack crops](review/unit-banners.png);
+[48 visibility cases](review/unit-banner-validation.json) cover all twelve naval
+types at native/HD density and two zoom levels. To rebuild just these changes, run
+`unit-banners.cjs`, rebuild the standalone engine in both configurations, then run
+`refresh-unit-banners.cjs` and `verify-unit-banners.cjs` under `tools/atlas-review/`.
 The district fixture explicitly includes fish, whales and a linked two-unit stack;
 the three 1788 save scenes still use unmodified imported gameplay state.
 

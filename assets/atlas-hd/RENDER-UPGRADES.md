@@ -395,6 +395,11 @@ contrasting faction/health colors, a full shield silhouette and corrected coast
 mask/dither artwork. These are art/binding changes under the existing native
 sprite selection and logical dimensions. Shared network endpoints must remain
 identical for all connection masks; a changed junction must not move its arms.
+Banner faces stay flat, with darker rear shields identifying stacks. Use the
+source-supported per-unit shield anchors to clear the replacement silhouettes: the
+naval sprites use upper-left registration in every replacement stage, without
+changing source draw order or shrinking the ship. This is an asset-registration
+fix, separate from the enhanced foreground-badge pass below.
 
 The cohesion stage separately demonstrates these scoped renderer changes:
 

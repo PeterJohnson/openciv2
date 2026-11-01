@@ -71,7 +71,7 @@ async function main() {
         badges : {
             nativeFrame : [ 12, 20 ],
             proposedScale : 1.35,
-            stack : 'native repeated shields; proposal adds separation and + marker',
+            stack : 'flat faction face; native repeated shields; proposal adds separation and + marker',
             unitAndCityFrames : 'unchanged'
         }
     });
