@@ -122,6 +122,15 @@ Prefer a deterministic edge/vertex representation for production: adjacent
 chunks share the same coast crossing and tangent. Resolve diagonal saddle cases
 consistently, and provide tests for one-tile islands, bays, narrow channels,
 concave corners and map wrapping. Keep narrow channels readable at overview LOD.
+Before adding renderer behavior, improve the native neighbor-quarter artwork.
+The current art-only pass uses interlocking terrain coverage instead of a fixed
+half-opacity diamond: coarse patches break the straight contour and smaller
+patches soften their fringes. Complementary opposite masks meet across the edge,
+and the original tile cores and foreground sprites remain intact. This is already
+visible in [the native/HD terrain comparison](review/native-land-edges.png).
+The four-quarter format still repeats a fixed edge pattern; pair-specific
+transitions and world-position variation belong to the later renderer upgrade.
+
 The river prototype uses irregular cubic meanders with fixed connection endpoints
 and tangents. A world-space width field widens and narrows channels; smaller
 position-dependent modulation makes the two banks asymmetric. Bank textures mix

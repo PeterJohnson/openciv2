@@ -52,8 +52,8 @@ function selectRegions(world) {
 function page(report) {
     return `<!doctype html><html lang="en"><meta charset="utf-8"><title>Land terrain transitions</title><style>
 body{margin:24px;background:#152322;color:#e5d6b5;font:16px system-ui}a{color:#bed3ba}h1{font-size:26px}p{max-width:1100px;line-height:1.5}select{font:inherit;padding:7px;background:#263b36;color:inherit;border:1px solid #6a7b69}label{margin-right:20px}.panels{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}.view{overflow:auto;max-height:65vh;background:#0c1617}.view img{display:block;max-width:none}h2{font-size:18px}</style>
-<h1>Land borders · softer edges, distinct terrain</h1><p><a href="../index.html">Graphics review</a> · <a href="land-borders.png">Four-region comparison sheet</a> · <a href="terrain-blend-validation.json">Transition checks</a> · <a href="coast-audit.html">Complete saved world</a></p>
-<p>All scenes use the real 1788 save. Replacement native and HD only retain the game's terrain selection, quarter overlays, feature slots and draw order. Their new neighbor overlays fade irregularly from a shared half blend at the edge to untouched tile centers. The enhanced variant uses a separate world-space blend with organic transitions and distinct material cores. Coast shapes are unchanged. Cacti now identify desert, and the forest bank includes both broadleaf and evergreen silhouettes. <a href="terrain-vegetation.png">Inspect vegetation close-ups</a> · <a href="vegetation-validation.json">Vegetation checks</a>.</p>
+<h1>Land borders · softer edges, distinct terrain</h1><p><a href="../index.html">Graphics review</a> · <a href="land-borders.png">Four-region comparison sheet</a> · <a href="native-land-edges.png">Uncluttered terrain-edge comparisons</a> · <a href="terrain-blend-validation.json">Transition checks</a> · <a href="coast-audit.html">Complete saved world</a></p>
+<p>All scenes use the real 1788 save. Replacement native and HD only retain the game's terrain selection, quarter overlays, feature slots and draw order. Their neighbor overlays use interlocking terrain patches with soft edges, replacing the uniform half-opacity diamond. Opposite quarter masks have complementary coverage along the shared edge; narrow quarter tips fade out and tile centers remain untouched. The enhanced variant uses a separate world-space blend with organic transitions and distinct material cores. Coast shapes are unchanged. Cacti now identify desert, and the forest bank includes both broadleaf and evergreen silhouettes. <a href="terrain-vegetation.png">Inspect vegetation close-ups</a> · <a href="vegetation-validation.json">Vegetation checks</a>.</p>
 <p>Compare the sandy, grassy, rocky, snowy and wet ground; terrain features still identify hills, mountains, forests and jungle. Original panels are composed standalone mockups using original artwork, not live screenshots. Source terrain overlays are disabled below 32 logical pixels per tile; the full-world review retains that native limitation.</p>
 <label>Area / game zoom <select id="scene"></select></label><label>Display <select id="scale"><option value="fit">Fit panels</option><option value="1">100% logical pixels</option><option value="2">200% logical pixels</option></select></label><p id="note"></p><div class="panels" id="panels"></div>
 <script>const report=${JSON.stringify(report).replace(/</g, '\\u003c')},stages=${
@@ -125,6 +125,12 @@ async function main() {
             for (const [stage] of stages) {
                 s[stage] = stage === 'original' ? 'review/original-scenes/land-borders/' + s.id + '.png'
                                                 : 'review/land-borders/' + s.id + '-' + stage + '.png';
+                if (process.argv.includes('--replacement-only') &&
+                    [ 'original', 'proposed' ].includes(stage)) {
+                    if (!C.fs.existsSync(C.path.join(C.pack, s[stage])))
+                        throw Error('Missing retained comparison: ' + s[stage]);
+                    continue;
+                }
                 const bytes =
                     stage === 'original'
                         ? await R.baseline(

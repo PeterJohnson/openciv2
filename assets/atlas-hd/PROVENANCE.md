@@ -177,6 +177,14 @@ Only composed original-art scenes appear in `review/original-scenes/coast-audit/
 under the same review-only allowance as the other original mockups. These are
 not replacement sprites or runtime game screenshots.
 
+Native land-transition coverage is authored in terrain-blends.cjs using four
+scales of periodic, warped procedural noise. Only the alpha coverage of the forty
+existing land-neighbor quarter PNGs changes; their material RGB comes from the
+retained ground art. Tile centers, cacti, base materials and foreground sprites
+are unchanged. The new native-land-edges.png sheet uses composed original-art
+references only in its labeled original column, under the existing review-only
+allowance; it contributes no pixels to replacement assets.
+
 Forest-floor blending reuses the retained authored grassland and forest material
 textures. `forest-floor.cjs` generates the native opaque ground diamonds and
 four dither adapters; `art.cjs` uses the same grassy undergrowth and mottled leaf

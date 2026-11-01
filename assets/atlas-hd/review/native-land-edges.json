@@ -1,0 +1,55 @@
+{
+  "status": "pass",
+  "cases": [
+    {
+      "title": "grassland / desert",
+      "fixture": "review/fixtures/terrain-edge-pairs/2-0.txt",
+      "traceSha256": "aac5be7392adb44e8cddabb0253d3be9f6321314a1cc3174a03f3b81d655d37c",
+      "originalTraceSha256": "8da9d99febf33c982d58a14de24e1046f6608acca04bda23c61b1dfcfdc90636",
+      "images": {
+        "original": "940c066bcf2c8b29259a9ee0cf44ad2cab8834594a239988dab76fef0f9cbf01",
+        "current": "b3237649e3cc801acf3de8c8b4be458dae9832106041195762852e84f2ef953a",
+        "hd": "3e34a8579d0f887375247cc3d0cadc6bb5466a868024ae3474a6af8bb81dc672",
+        "proposed": "5c0328589cc29e4745298f262c1b6321fa717ee77b10f85ab7c226ec0ef43375"
+      }
+    },
+    {
+      "title": "grassland / swamp",
+      "fixture": "review/fixtures/terrain-edge-pairs/2-8.txt",
+      "traceSha256": "08d1e901466a13c3118e90066149e1c654f54ffd180d5fcfb8dd2cbc3904b5d1",
+      "originalTraceSha256": "15182ed38de54d09ad7aabef6ea990202af74656ce933834d340680dc2b2ae8a",
+      "images": {
+        "original": "5bd767e531662bd17a9cac26d73ae4829871571f0a5c343b0ed988c458697d58",
+        "current": "2f93c51e779387fa787fed0a7345690e580ad389fa5acc350192479d2051e225",
+        "hd": "0af14d9833b93cbc1c210a127be0eeed72758ead279cfa34852f8b5a4bdd9e00",
+        "proposed": "d1c3aab90754127d65a4a20ef38abb25beeaab620b005706d1466408145888f8"
+      }
+    },
+    {
+      "title": "tundra / glacier",
+      "fixture": "review/fixtures/terrain-edge-pairs/6-7.txt",
+      "traceSha256": "7a6a912366276ea8ffb0889f0eb92940a6b7b64b9288426f5a7b4e57655c401f",
+      "originalTraceSha256": "5bae994d16fb5ecf1317022e69f073638567e305a39d8cef603e7a71fe456018",
+      "images": {
+        "original": "baade77c7ce7b8086bbbd229387def676735821590787af7cd92038b61be2992",
+        "current": "758d018f4a59ecc6702c8495f1fe5b08ee0234a583f6f67f8f12b999bee619a1",
+        "hd": "56a0af74247cb7d3f06d3cbea66c488cafbad06fe3dd6e1e2373e7a861ec2baa",
+        "proposed": "472f963f9ba0b5c23385637b106b329e45290f0917cf79908b4d09674814b00f"
+      }
+    },
+    {
+      "title": "plains / hills",
+      "fixture": "review/fixtures/terrain-edge-pairs/1-4.txt",
+      "traceSha256": "9864d713ddc4a0e0564693f35e2d885f57049ef20993322f29af5b382195c56b",
+      "originalTraceSha256": "656edd189316aa962881cfce7c5eb0546de1754f92bfcdbcc6e830d070298593",
+      "images": {
+        "original": "f7d4d461ebcbd8b380a573818883b33e894696c54f9db4de8b2c171972f0eca7",
+        "current": "0aebafa32cc692dc822fa1761e47422f405f64bf17b27ebc8e0a9cb263cd6351",
+        "hd": "273aeca57520661fb4df8b4b5db4c841ffbd6119b51a66de88005e3a56010cf5",
+        "proposed": "6cd0ecb407c7a834865a0709028db218495767dccffc08ec0e3dde960884b678"
+      }
+    }
+  ],
+  "sha256": "37ece16f3c3ebd5ae7c72e3e0b9ec8d2872228abd135644138c74bc709341b7d",
+  "scope": "Four supplied-state terrain pairs rendered from unchanged Debug/Release source traces. Original artwork appears only in this composed review sheet; native and HD use existing quarter slots. Enhanced rendering remains separate."
+}

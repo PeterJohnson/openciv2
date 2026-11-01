@@ -19,13 +19,29 @@ function variation(u, v) {
     return (noise(u + .13, v + .29, 3) - .5) * .11 + (noise(u + .41, v - .17, 9) - .5) * .045;
 }
 
-function alpha(u, v) {
+function alpha(u, v, q = null) {
     const inward = 1 - 2 * Math.max(Math.abs(u - .5), Math.abs(v - .5));
-    if (inward < 0)
+    if (inward < 0 || inward >= .44)
         return 0;
-    const t = clamp(inward / .44);
-    // Zero perturbation at the shared edge keeps the blend symmetric at one half.
-    return .5 * (1 - smooth(clamp(t + variation(u, v) * Math.sin(Math.PI * t))));
+    if (q === null)
+        q = u >= v ? (u + v < 1 ? 0 : 1) : (u + v >= 1 ? 2 : 3);
+    // Opposite ports carry complementary opacity. Terrain patches can cross
+    // the logical edge instead of meeting at a constant half-opacity diamond.
+    const wu = u + .065 * (noise(u + .31, v - .12, 4) - .5);
+    const wv = v + .065 * (noise(u - .27, v + .63, 4) - .5);
+    const relief = (noise(wu + .13, wv + .29, 5) - .5) * 1.15 + (noise(wu + .41, wv - .17, 13) - .5) * .55 +
+                   (noise(wu - .23, wv + .53, 37) - .5) * .25 + (noise(wu + .19, wv + .11, 97) - .5) * .10;
+    const sign = q < 2 ? 1 : -1;
+    const depth = clamp(inward / .44);
+    const patches = smooth(clamp(.5 + (sign * relief - .68 * depth) / .32));
+    const feather = 1 - smooth(clamp((depth - .55) / .45));
+    // Ease only the narrow ends of independent quarter slots. The remaining
+    // edge uses complementary opacity, preserving a continuous pairwise blend.
+    const quarter = Math.min(Math.abs(u - v), Math.abs(u + v - 1));
+    const sideFade = smooth(clamp(quarter / .025));
+    // A light continuous wash softens the patch silhouettes without restoring
+    // a straight dominant contour.
+    return (.76 * patches + .24 * .5 * (1 - smooth(depth))) * feather * sideFade;
 }
 
 function weights(u, v) {
@@ -44,7 +60,7 @@ async function dither(terrain, q, bytes) {
             out.data.set(tile.data.subarray(si, si + 4), di);
             if (terrain < 10) {
                 const u = (Y + .5) / 256 + (X + .5 - 256) / 512, v = (Y + .5) / 256 - (X + .5 - 256) / 512;
-                out.data[di + 3] = Math.round(out.data[di + 3] * alpha(u, v));
+                out.data[di + 3] = Math.round(out.data[di + 3] * alpha(u, v, q));
             } else {
                 // Preserve the existing ocean/unknown/fog slots, including blank coastal dither 12.
                 if (terrain === 11)
@@ -77,10 +93,10 @@ async function build() {
     index.terrainTransitions = 'map/terrain-transitions.json';
     C.json(C.path.join(C.pack, 'compatibility/bindings.json'), index);
     C.json(C.path.join(C.pack, 'map/terrain-transitions.json'), {
-        version : 1,
+        version : 2,
         authoring : 'tools/atlas-review/terrain-blends.cjs',
         native :
-            'Source neighbor selection and quarter boxes; irregular feather to a half blend at the shared edge; untouched material cores.',
+            'Source neighbor selection and quarter boxes; complementary multiscale edge patches, feathered quarter sides and untouched material cores.',
         enhanced :
             'Narrow world-space transitions with periodic organic variation and distinct material cores.',
         unchanged : 'Ground PNGs, coast geometry, foreground art, draw order and native zoom cutoffs.',

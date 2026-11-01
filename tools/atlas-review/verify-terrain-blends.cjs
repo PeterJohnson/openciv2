@@ -17,7 +17,7 @@ async function main() {
                 const X = x + x0, Y = y + y0, si = (Y * 512 + X) * 4, di = (y * 256 + x) * 4,
                       a = im.data[di + 3];
                 const inward = 1 - Math.abs((X + .5 - 256) / 256) - Math.abs((Y + .5 - 128) / 128);
-                assert(a <= 128, 'Overlay must not replace the neighboring material at the edge');
+                assert(a >= 0 && a <= 255, 'Invalid edge coverage');
                 if (inward >= .44) {
                     assert.equal(a, 0, 'Material core obscured');
                     protectedCorePixels++;
@@ -41,6 +41,25 @@ async function main() {
             const retained = await C.raw(C.path.join(C.pack, `compatibility/dither/${t}/${q}.png`));
             assert.deepEqual(generated.data, retained.data, 'Sentinel dither changed');
         }
+    // Opposing quarter masks join the same terrain patches across the logical
+    // edge. The tiny corner fade is intentional where independent slots meet.
+    let complementaryEdgeSamples = 0, minEdge = 1, maxEdge = 0;
+    for (let i = 0; i <= 512; i++) {
+        const p = .03 + .94 * i / 512;
+        for (const [a, b] of [[ L.alpha(p, 0, 0), L.alpha(p, 1, 2) ],
+                              [ L.alpha(1, p, 1), L.alpha(0, p, 3) ]]) {
+            assert(Math.abs(a + b - 1) < 1e-10, 'Opposite terrain patches do not meet');
+            minEdge = Math.min(minEdge, a, b);
+            maxEdge = Math.max(maxEdge, a, b);
+            complementaryEdgeSamples++;
+        }
+    }
+    assert(minEdge < .15 && maxEdge > .85, 'Edge is still a uniform translucent diamond');
+    for (let i = 0; i <= 512; i++) {
+        const p = i / 512;
+        assert.equal(L.alpha(p, p), 0, 'Quarter-side cut must fade out');
+        assert.equal(L.alpha(p, 1 - p), 0, 'Quarter-side cut must fade out');
+    }
     let weightSamples = 0;
     for (let y = -20; y <= 20; y++)
         for (let x = -20; x <= 20; x++) {
@@ -120,6 +139,8 @@ async function main() {
         featherPixels,
         protectedCorePixels,
         unchangedSentinelSlots : 12,
+        complementaryEdgeSamples,
+        edgeCoverageRange : [ minEdge, maxEdge ],
         weightSamples,
         independentCellBoundarySamples : joins,
         maxJoinDelta,

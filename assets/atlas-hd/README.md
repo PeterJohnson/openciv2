@@ -143,15 +143,23 @@ omitted on cultivated or river desert. [Compare desert and forest details](revie
 pixels, small-scale contrast and variant coverage. Generated masters and the
 [built-in image-generation prompts](authoring/terrain-vegetation.json) are retained.
 
-All ten land styles use soft, irregular neighbor overlays instead of coarse
-checker rims. Each edge blends toward the actual neighboring terrain; the
-centers retain their original material, and terrain feature sprites stay intact.
-Native and HD-only views use the same source-selected quarter slots. The enhanced
-pass uses separate world-space transition weights with pure material cores and
-continuous coastal color support. [Inspect the four-stage land comparisons](review/land-borders.html)
+All ten land styles use interlocking patches of the actual neighboring terrain.
+The forty native edge PNGs now carry four scales of warped coverage, including
+dense tufts and tongues with a light color wash beneath their softer fringes. They replace the former
+uniform half-opacity line along the tile diamond. Opposite quarters have
+complementary edge coverage; narrow quarter tips fade to avoid rectangular cuts.
+The existing protected core remains untouched, including the desert cacti.
+Base terrain PNGs, foreground sprites, source-selected quarter slots, draw order
+and zoom gates are unchanged. This artwork update benefits replacement-native
+and HD-only rendering without adding renderer rules. The enhanced pass retains
+its separate world-space transition weights and coastal color support. [Inspect the four-stage land comparisons](review/land-borders.html)
 from four regions of the real save at 64/128px tiles, covering all ten land types.
 [Transition checks](review/terrain-blend-validation.json) cover material-core
-preservation, shared edges, world wrapping and coastal color support.
+preservation, complementary native edges, world wrapping and coastal color support.
+[Uncluttered four-stage comparisons](review/native-land-edges.png) show grass/desert,
+grass/swamp, tundra/glacier and plains/hills through the same extracted renderer.
+These four small fixtures keep units and infrastructure out of the comparison;
+the saved-map review retains the complete game scene.
 
 ## Rebuild
 
@@ -194,6 +202,7 @@ general land-transition edits, run these tools from the repository root:
 ```powershell
 node tools/atlas-review/terrain-vegetation.cjs
 node tools/atlas-review/terrain-blends.cjs
+node tools/atlas-review/terrain-edge-pairs.cjs
 node tools/atlas-review/refresh-map-finishing.cjs
 node tools/atlas-review/coast-audit.cjs --skip-original
 node tools/atlas-review/refresh-native-backgrounds.cjs --render-only

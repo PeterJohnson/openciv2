@@ -651,10 +651,19 @@ and proposal rendering. See [vegetation checks](review/vegetation-validation.jso
 The new artwork keeps the full opaque land diamond, blends its perimeter into
 grass and reduces the contrast of leaf litter beneath the tree cluster.
 Native neighbor selection, zoom gates and sprite boxes are unchanged. The shared
-land-transition authoring step now feathers all ten land materials, including
-forest: each neighbor quarter approaches half opacity at the outer edge and
-fades to zero before the material core. This replaces the coarse checker mask
-without changing source commands or ground/foreground sprite footprints.
+land-transition authoring step uses four scales of periodic, domain-warped
+coverage in all forty land-neighbor PNGs. Coverage ranges from light to nearly
+opaque with a light continuous wash, allowing patches to cross the old half-opacity
+line. Opposite quarter masks are complementary at the common edge outside a
+narrow tip fade; the source's separate quarter rectangles therefore retain
+compatible coverage. The unchanged inner 56% of the tile's diamond radius has
+zero neighbor coverage, preserving terrain identity and baked desert vegetation.
+No source commands, terrain/feature slots, base PNGs or draw ordering change.
+The existing standalone baseline compositor is also unchanged.
+The native mask test checks 1,026 complementary edge samples, 204,480 protected
+core pixels, quarter-side fade and all twelve unchanged ocean/fog/blank slots.
+The [four terrain pairs](review/native-land-edges.png) execute unchanged source
+traces in Debug and Release. They are supplied rendering fixtures, not gameplay.
 The enhanced pass uses the mixed forest material within its existing continuous
 ground sampler. Its terrain weights now concentrate blending around irregular
 boundaries and preserve material cores. A continuous bilinear fallback supplies
