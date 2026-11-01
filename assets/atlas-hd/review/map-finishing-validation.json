@@ -1,33 +1,42 @@
 {
   "status": "pass",
   "coastQuarters": 32,
-  "quartersWithConnectedOverhang": 28,
-  "connectedWaterPixels": 171345,
+  "coastlineChecks": "coast-audit-validation.json",
   "newcastle": [
     {
       "stage": "current",
-      "roundedTipRGB": [
-        19,
-        73,
-        92
+      "protectedTipRGB": [
+        222,
+        161,
+        86
       ],
       "inlandRGB": [
         204,
         151,
         83
+      ],
+      "waterRGB": [
+        18,
+        74,
+        93
       ]
     },
     {
       "stage": "hd",
-      "roundedTipRGB": [
-        15,
-        69,
-        86
+      "protectedTipRGB": [
+        210,
+        150,
+        73
       ],
       "inlandRGB": [
         233,
         177,
         97
+      ],
+      "waterRGB": [
+        13,
+        72,
+        90
       ]
     }
   ],
@@ -46,5 +55,5 @@
     ],
     "cityProductionSha256": "4bc5f4d7cb1347aca8a42f999f605e21cc7bf54a7fb4561d562ff2cfffdda260"
   },
-  "limits": "Art topology and rendered native/HD Newcastle samples; source draw commands and logical boxes are unchanged. Existing engine checks cover source mask dispatch. Enhanced shoreline geometry remains its separate proposal."
+  "limits": "Rendered native/HD Newcastle land apron and terrain-marker checks. Full saved-map coverage, topology, zoom and mouth checks are in coast-audit-validation.json. Source draw commands and logical boxes are unchanged."
 }

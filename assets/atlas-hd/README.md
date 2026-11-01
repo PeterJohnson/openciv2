@@ -302,16 +302,39 @@ node tools/atlas-review/verify-rivers.cjs
 ```
 
 Then rebuild the optional original comparisons and gallery as described above.
-Native coastal quarters now use the transparent corners of their existing
-32×16 boxes to round exposed neighboring land tips, including Newcastle's desert
-cape. Their diamond interiors and source mask selection are preserved; generic
-ocean dither remains blank. The terrain production marker has a smaller olive/
-bronze silhouette; the blue city economy icon remains unchanged.
-[Inspect the four-stage details](review/map-finishing.png) and
-[focused checks](review/map-finishing-validation.json). Rebuild with
-`node tools/atlas-review/map-finishing.cjs`, then `refresh-map-finishing.cjs` and
-`verify-map-finishing.cjs` in the same tools directory. Normal `buildBindings`
-also authors these replacements.
+Native coastal quarters retain a fuller land apron around the native tile diamond,
+with gently rounded exposed tips and inward joins. Forest and field footprints
+remain inside that apron. The previous water overhang has been removed; all
+quarter pixels stay within their existing 32×16 logical diamonds. Quarter and
+open-ocean textures share one periodic tile phase, and the standalone replacement
+compositor preserves opaque pixel-center ground coverage after scaling. This
+removes transparent seams without altering the original-art replay, foreground
+sprites, logical boxes or draw commands. River-mouth bank alpha fades seaward;
+the enhanced proposal also extends river sampling into the connected ocean tile.
+
+The terrain production marker remains a smaller olive/bronze silhouette; the blue
+city economy icon is unchanged. [Inspect Newcastle and the terrain markers](review/map-finishing.png).
+
+[Explore the full saved-world coast review](review/coast-audit.html): four
+comparison stages, all 9,000 cells at 16/32/48/64px game zoom, and eight selected
+island, lake, river-mouth, cultivated/forest and wrapped-edge areas at 64/128px.
+Use the display control and synchronized scrolling to inspect the larger maps.
+The native engine omits coast quarters below 48px: native and HD-only 16/32px
+panels deliberately retain that square-tile cutoff; enhanced keeps shore detail.
+[Coverage and seam checks](review/coast-audit-validation.json) include all 256
+native neighbor patterns, saved-map topology, Debug/Release trace parity, opaque
+ground joins at ten scales, and unchanged river joins with fading mouth banks.
+These are offline review renders, not a game integration or frame-rate claim.
+
+Rebuild with `map-finishing.cjs`, `refresh-map-art.cjs --coasts-only`,
+`refresh-map-finishing.cjs`, `build-support.cjs`, `windows.cjs`, then
+`coast-audit.cjs` in `tools/atlas-review/`. Run `verify-coast-audit.cjs`,
+`verify-map-finishing.cjs`, `verify-map-style.cjs`, `verify-rivers.cjs`,
+`verify-fields.cjs` and `verify.cjs`. Finally refresh the detail sheets with
+`fields-review.cjs --review-only`, `refresh-unit-banners.cjs --review-only`,
+`build-gallery.cjs` and `fidelity.cjs`. The full-world review writes only composed
+original scenes under `review/original-scenes/coast-audit/`; raw originals stay
+local and are excluded from replacement assets.
 
 [Map style metadata](map/readability.json) records the artwork conventions;
 [focused validation](review/map-readability-validation.json) checks road joins,

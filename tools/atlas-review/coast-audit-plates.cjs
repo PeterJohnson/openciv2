@@ -1,0 +1,34 @@
+const C = require('./common.cjs');
+
+async function build(report) {
+    const stages = [
+        [ 'original', 'Original' ], [ 'current', 'Replacement native' ], [ 'hd', 'HD only' ],
+        [ 'proposed', 'HD + cohesion' ]
+    ];
+    for (const [board, ids] of [[ 'islands-lakes', [ 'island', 'islands', 'lake', 'lakes' ] ],
+                                [ 'forest-mouths', [ 'newcastle', 'forest', 'mouth', 'wrap' ] ]]) {
+        const image = C.clear(1536, 1024, [ 23, 35, 34, 255 ]);
+        for (let row = 0; row < 4; row++) {
+            const s = report.scenes.find(s => s.id === ids[row] + '-128');
+            C.blit(image,
+                   await C.raw(Buffer.from(
+                       C.svg(1536, 32,
+                             `<text x="12" y="23" fill="#e5d6b5" font-family="sans-serif" font-size="18">${
+                                 s.title}</text>`))),
+                   0, row * 256);
+            for (const [col, [ stage, label ]] of stages.entries()) {
+                C.blit(image,
+                       await C.raw(Buffer.from(C.svg(
+                           384, 30,
+                           `<text x="12" y="21" fill="#b7c6b5" font-family="sans-serif" font-size="16">${
+                               label}</text>`))),
+                       col * 384, row * 256 + 32);
+                C.blit(image, await C.raw(C.path.join(C.pack, s[stage]), 384, 192), col * 384,
+                       row * 256 + 64);
+            }
+        }
+        C.write(C.path.join(C.pack, `review/coast-${board}.png`), await C.png(image));
+    }
+}
+
+module.exports = {build};

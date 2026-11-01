@@ -1,0 +1,855 @@
+{
+  "status": "pass",
+  "save": {
+    "tiles": 9000,
+    "landComponents": [
+      843,
+      255,
+      95,
+      92,
+      90,
+      77,
+      64,
+      52,
+      50,
+      27,
+      19,
+      18,
+      17,
+      17,
+      16,
+      16,
+      15,
+      15,
+      14,
+      14,
+      12,
+      12,
+      12,
+      12,
+      11,
+      11,
+      10,
+      9,
+      9,
+      8,
+      8,
+      8,
+      8,
+      8,
+      7,
+      7,
+      7,
+      7,
+      6,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      5,
+      4,
+      4,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "waterComponents": [
+      6728,
+      44,
+      8,
+      3,
+      2,
+      2,
+      2,
+      2,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1,
+      1
+    ],
+    "coastalLand": 1789,
+    "coastalForest": 270,
+    "coastalFields": 404,
+    "riverMouthTiles": 11
+  },
+  "fullWorldZooms": [
+    16,
+    32,
+    48,
+    64
+  ],
+  "closeZooms": [
+    64,
+    128
+  ],
+  "nativeCoastNeighborhoods": 256,
+  "quarterFieldSamples": 147456,
+  "protectedBoundaryPoints": 1024,
+  "savedOceanCoastTiles": 2202,
+  "opaqueGroundCoverage": [
+    {
+      "physicalTileWidth": 16,
+      "opaquePixels": 64
+    },
+    {
+      "physicalTileWidth": 24,
+      "opaquePixels": 144
+    },
+    {
+      "physicalTileWidth": 32,
+      "opaquePixels": 256
+    },
+    {
+      "physicalTileWidth": 40,
+      "opaquePixels": 400
+    },
+    {
+      "physicalTileWidth": 48,
+      "opaquePixels": 576
+    },
+    {
+      "physicalTileWidth": 56,
+      "opaquePixels": 784
+    },
+    {
+      "physicalTileWidth": 64,
+      "opaquePixels": 1024
+    },
+    {
+      "physicalTileWidth": 96,
+      "opaquePixels": 2304
+    },
+    {
+      "physicalTileWidth": 128,
+      "opaquePixels": 4096
+    },
+    {
+      "physicalTileWidth": 256,
+      "opaquePixels": 16384
+    }
+  ],
+  "mouths": [
+    {
+      "direction": 0,
+      "unchangedJoinPixels": 2130,
+      "fadedSeawardPixels": 2936
+    },
+    {
+      "direction": 1,
+      "unchangedJoinPixels": 2209,
+      "fadedSeawardPixels": 2884
+    },
+    {
+      "direction": 2,
+      "unchangedJoinPixels": 2112,
+      "fadedSeawardPixels": 2974
+    },
+    {
+      "direction": 3,
+      "unchangedJoinPixels": 2247,
+      "fadedSeawardPixels": 2869
+    }
+  ],
+  "scenes": [
+    {
+      "id": "world-16",
+      "fullWorld": true,
+      "savedTilesRendered": 9000,
+      "coastCommands": 0,
+      "images": {
+        "original": {
+          "width": 1200,
+          "height": 480,
+          "sha256": "07da78fdffdfd243db0ea64a61a260b5a388357dc61737edf3d2abf3ba2a2423"
+        },
+        "current": {
+          "width": 1200,
+          "height": 480,
+          "sha256": "ccbefb50d7d49e641522d9e021284d1ce6ee7fa64857db5bb50e600baa080d92"
+        },
+        "hd": {
+          "width": 2400,
+          "height": 960,
+          "sha256": "5b65dd614f7e4a9d400a4aa1a6261eea03e43c8fe16f976f3566906658f2d7d9"
+        },
+        "proposed": {
+          "width": 2400,
+          "height": 960,
+          "sha256": "8b8988719c74e87ac72cac92bdebf0bf80b3e8683f984209b06d7f0f35c3cd5b"
+        }
+      }
+    },
+    {
+      "id": "world-32",
+      "fullWorld": true,
+      "savedTilesRendered": 9000,
+      "coastCommands": 0,
+      "images": {
+        "original": {
+          "width": 2400,
+          "height": 960,
+          "sha256": "46cd56f58a78461ea24129174866e8d2d2b6f030981f723eefce8cea5c880d0f"
+        },
+        "current": {
+          "width": 2400,
+          "height": 960,
+          "sha256": "b3a0fba9f0574365534715cfedab1cb10a4a2b528db908ba05598d167e7dba50"
+        },
+        "hd": {
+          "width": 4800,
+          "height": 1920,
+          "sha256": "bc45ebfec0fd4ede7d3db5a2dc931753af882195d6d2b7c1db162fc1004b59ee"
+        },
+        "proposed": {
+          "width": 4800,
+          "height": 1920,
+          "sha256": "697c27b48963d405716d391acd1d9c463d6c577b73dc4d17093556ab91404494"
+        }
+      }
+    },
+    {
+      "id": "world-48",
+      "fullWorld": true,
+      "savedTilesRendered": 9000,
+      "coastCommands": 27472,
+      "images": {
+        "original": {
+          "width": 3600,
+          "height": 1440,
+          "sha256": "e8acc5dbbf2586ce532b338442292389c2410503d94c3b8e2aa76f0c8846fe9c"
+        },
+        "current": {
+          "width": 3600,
+          "height": 1440,
+          "sha256": "ab7996442c8768bbe79df3cc1bc2b825ee1b47ff7cd05811d555b900865ddf92"
+        },
+        "hd": {
+          "width": 7200,
+          "height": 2880,
+          "sha256": "62c07fe5186f2a3a394f391bad413dd1882029956a9b83012e5317aeb2697a1d"
+        },
+        "proposed": {
+          "width": 7200,
+          "height": 2880,
+          "sha256": "e6a8463c577a4ec577fd6e26c558fa553b93deba37f3e5c3906cd8c06b774293"
+        }
+      }
+    },
+    {
+      "id": "world-64",
+      "fullWorld": true,
+      "savedTilesRendered": 9000,
+      "coastCommands": 27472,
+      "images": {
+        "original": {
+          "width": 4800,
+          "height": 1920,
+          "sha256": "f7fd83371b5bd59d0e700c6edd1deac18d7c12cfae4534c62175098105be2afd"
+        },
+        "current": {
+          "width": 4800,
+          "height": 1920,
+          "sha256": "8f16d259f105c2d71f832ebd51610ff6d4d91f972628ae0227cfab3270775d17"
+        },
+        "hd": {
+          "width": 9600,
+          "height": 3840,
+          "sha256": "1a70872f6d795f87265bbec0175fb63e0550dea20310c009dbcfc90ed37915e9"
+        },
+        "proposed": {
+          "width": 9600,
+          "height": 3840,
+          "sha256": "f8c674998b2cb795cfd74ecf792377cb211aadcda1aa4e7dc07b8deb6f484f38"
+        }
+      }
+    },
+    {
+      "id": "newcastle-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 216,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "5371e48edd8abd2fc54b06da8634702f21a28b60897103d9cfc296a176550a89"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "e0356ba601dea6e6439b4eff95c287aebf726401ca07aad18adee01cd42a3b7e"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "e8089db9cd10789092f9d49e879937ca863af2a2f5c7e9b5f20dea72a1a4307a"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "ab1e75639883b5c75f1d03669a63b28aefcd40cff068f02878f2ec74e54cb164"
+        }
+      }
+    },
+    {
+      "id": "newcastle-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 216,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "5dc3660006d26be5d6459c8b13d4b82b497cbfd53226a6a95179d2dd31fa3f7d"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "7f0e0d754d4c459ada679c6f15bc47a18321a15c04c6479f309f7426d7db1b67"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "f5686c237b478db609a7b3d11da58977768f1c8666d051b3e36e6cf2f6658bdc"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "e4924db6afe663e9d68e399db54ab431e1d96d9ece9207a5cb344b66978f40e9"
+        }
+      }
+    },
+    {
+      "id": "island-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 372,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "bbe21d39ef5f1acae36451521ec9efdbec523b5a54504197f2c70fdedff113e6"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "976fb196aacfca2bc9258a4139f317e6aa4a780c569e8d4b9844bf1b551e2262"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "170b626b9b6e046329d816d2084911f54c0ba0de4dc2288ae10b32a89a5ffe97"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "84c480ccc0faf5d170548d0dbee21831bd6683f2d37efb343441ddd5ae2d187b"
+        }
+      }
+    },
+    {
+      "id": "island-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 372,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "624abb72ec4e3e311fad213a6d5af9eab1917aa4629e2d7b393630e0e3b037e7"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "2db04f84c1282edd09d85a02d16ebaff6ee6a0297d080e88d2f462b8962417d7"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "5ea95d089466c683f8889a867b740d261a3c5d7f87db51c0ded4e06e7f3bcab0"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "aae183ca5e1a1af4aa257a9a5776c68e28a55bae8e6785f93f0a266ee1ac933b"
+        }
+      }
+    },
+    {
+      "id": "islands-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 480,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "e14e97c0dcb67adcdc29025c50f63b7c127eda77bf47289d0f7b439b275a61de"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "dbf4baa83b169e10df596c5ea14410f04bd344ee291a1b171454fdb156c7d739"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "8a84068647e53bf1a9716e4afb9d7b2f9b1838518f4e0826093e9b18373b8714"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "4f2ad11a5f0cf6c365c442be96495c04a85a02bd69a653b071712f73e77ec59d"
+        }
+      }
+    },
+    {
+      "id": "islands-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 480,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "cc2951be2c1beb5a29bdf54de4c805229eaa18a374fbe6f17b364ebeeac488a9"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "6cd58b51755befe08edff7984ba0d447f4ee812a10def257805960c2425559de"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "241c46b32b5337db310d281b148d65ac8774bc4fb5dcbcaaff8ed3d7435fb6d9"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "8efafdfe3b4b66564cb87930350f05723f9852c874b99c843cb5cab994e06dbb"
+        }
+      }
+    },
+    {
+      "id": "lake-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 300,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "8108ddcfb288cd10852bb997b6678e69c6d17902c5f5bda69a579069956bddaa"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "e641fda1247baf164e48675a57b26ed66ee3dd5d754fe54c6536545c398bbc03"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "f6829675ed1d0b8b8a0d6f66aeb5f25425fa36d604e0f4c88f8c29cfd6fb105e"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "cd20ac83d9ddee152a59f6a1e6bced6fdd690222a861cd5aff0e241f88d9f44d"
+        }
+      }
+    },
+    {
+      "id": "lake-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 300,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "749817ba9dac9d7a7789ed6ff193594f5c26b33ac0ae599e126495b0cca2a2e7"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "dc12bd5c2cbe5f8643d3e77fc0c5434d40dc9ab50642d7a41cdbf81cde3f4fe5"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "e8de79e3142562c643805e60698b3711b5ad8eb43d0ca56a398753920ba291d4"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "ce20c4dc64b1ebea5630be0560f3021eb0503fe9eb259a0a64c7d48d51340145"
+        }
+      }
+    },
+    {
+      "id": "lakes-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 332,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "4c28222f41c218b18ac961cf4a2ce729abe6fb2c6b4a145720b4935eb9b7bfbb"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "70fe08cfbaa27fde608f0418c71b48bcfb89e597e5fc071928c043307afbe37a"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "a5a526be3ad9ad8f8c93fae64e50e7bd68e196609056d8aea7cc0e12e640d7c6"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "a8f6bfb6131dcf44a6c2203f75f360cac394661a3c026456b90a706c4d613af0"
+        }
+      }
+    },
+    {
+      "id": "lakes-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 332,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "c56dded32d4910dbdd62e844d1418b2fad1ece7e060076207f97e784bb63bdec"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "b2792252df8a5cb206e81f279f20c3170be3f3b00c024009042732583cce6f60"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "1404f44f39c8b83b3967a8985f6ad4b1e0ab854b21f94b42c29ed6627e8396c8"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "74fd8bc071e3ff273b11f03659960da6b9a46b3ddf789b5dd1b4f24b4fdde232"
+        }
+      }
+    },
+    {
+      "id": "mouth-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 320,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "86ac4a53c8955a3edc542549ec5f7f1141e17d8d440bdb75d9b2fc6e275e3bb5"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "8ae4b2113e89db7623b17968477fcbc14f73b3818a44fbc9209f7ba1899fc182"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "e6c94ec66035e958ec9f73d895d000d3f87f6db05d695fbb913cb9b379f45a71"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "1e2a880e2f42fcac1a805398b5affd8092962e5ccf92fb3cad33fcb97e1320dc"
+        }
+      }
+    },
+    {
+      "id": "mouth-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 320,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "0a3bd08758872455a91d0014446f377953654d6f1506499e6282eaa59ae82042"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "a2e15f94cbc7c8b713a451145b6847a3e8ab19b3a02df7b41c3eb1b8d4b88f43"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "d41477700853ccc3883a9039ab56f0476fd05abe75fab89044bf2140d66d793e"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "2a32b20f6e7fbf6a2f7484752e730c4d6852d1287f9f9b5c2be5077143b273e8"
+        }
+      }
+    },
+    {
+      "id": "forest-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 384,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "ee4b670017df7d555e220660fb7f564c45f4514bc08fb60c01233dcd5546b9f6"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "05f56e9c1426cb72c956688f51c9c170d38b6f1fff56bc01b84ee6d07f84b829"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "55fa4c70705edccc8e3ab193829d16f082f4dcfd4f2c31068eb7d881d2731be3"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "f4f5aa88e9b87fc2dfa68630ca2ce18ce93b993aa0f64d0807b8337efaa540d6"
+        }
+      }
+    },
+    {
+      "id": "forest-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 384,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "af2e8465ac69acb741440934936daeec226e18dd0bfb6cf46aba02af3f32383f"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "d3ad53a10625be0006567d3877943baa3f0018c2aa2a6ac2ef984c3355391584"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "57d3c5620c6b4da187309996e0207e6698965e39e83e3efe55ca2bc71e459f51"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "36483d5d56fcecda2f365443ba2a668d824eea60c1d97d7f3d2f80bbcddfb425"
+        }
+      }
+    },
+    {
+      "id": "wrap-64",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 296,
+      "images": {
+        "original": {
+          "width": 512,
+          "height": 256,
+          "sha256": "bd16f4d681cd8773c2ae9caa3a86cb740c0864e4a54d30e8046f6c23a228aa21"
+        },
+        "current": {
+          "width": 512,
+          "height": 256,
+          "sha256": "4355c6884970afe7d1eeabd7f3bb3a273410f127dc718ee3f4086790fc52de01"
+        },
+        "hd": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "7983583e886ef1acf45fe619befaefb9bf6dba168511e383687f1c446b7e082d"
+        },
+        "proposed": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "852671bfe5dfd20ded4ed5fe7bd52776747237eae272921736cfdbbc18c3ce84"
+        }
+      }
+    },
+    {
+      "id": "wrap-128",
+      "fullWorld": false,
+      "savedTilesRendered": null,
+      "coastCommands": 296,
+      "images": {
+        "original": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "9edf0209fd6b6094ca327a69f366a515da681d5a8d481e341a06aebce64e1db6"
+        },
+        "current": {
+          "width": 1024,
+          "height": 512,
+          "sha256": "15898e0440120bc256ecf99e2cd17e2eddcacd38cfb7eab6db77d3b38e6a747c"
+        },
+        "hd": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "1a4a5a7e42163acef84d570525abfbe6701f0f45562c508a5349542c11c734e7"
+        },
+        "proposed": {
+          "width": 2048,
+          "height": 1024,
+          "sha256": "c3535794dacaff70f063f933aef8dc58125bb7c877a927a1e99a042c1707ba96"
+        }
+      }
+    }
+  ],
+  "limits": "Finite saved-map and exhaustive native 8-neighbor topology checks; visual inspection of the full-world overviews and named close scenes. Native 16/32px zooms intentionally retain source square tiles. No game source modified."
+}

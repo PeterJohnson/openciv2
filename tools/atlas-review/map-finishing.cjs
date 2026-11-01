@@ -7,40 +7,57 @@ const smooth = (a, b, n) => {
     return t * t * (3 - 2 * t);
 };
 
+const Shore = require('./shoreline.cjs');
+
+function coastCenters(q, mask) {
+    return [ (q * 2 + 6) % 8, (q * 2 + 7) % 8, q * 2 ].flatMap((d, i) => {
+        if (!(mask & (1 << i)))
+            return [];
+        const [x, y] = C.directions[d];
+        return [ [ (x + y) / 2, (y - x) / 2 ] ];
+    });
+}
+
 async function coastQuarter(q, mask) {
-    // Keep the source quarter/mask selection and all pixels inside its diamond.
-    // Only the previously blank corners gain a curved, feathered water overhang.
-    // This reaches the exposed tip of a neighboring land tile without a generic
-    // dither-12 water stamp, which would cut holes beside enclosed lakes.
-    const vals = [ 0, 0, 0, 0 ];
-    vals[q] = (mask & 2) && (mask & 5) ? 1 : 0;
-    vals[(q + 1) % 4] = mask & 4 ? 1 : 0;
-    vals[(q + 3) % 4] = mask & 1 ? 1 : 0;
-    const corners = vals.map(land => ({land, material : 'grassland'})), out = C.clear(256, 128);
+    const out = C.clear(256, 128), offset = [ [ 128, 0 ], [ 256, 64 ], [ 128, 128 ], [ 0, 64 ] ][q];
+    const centers = coastCenters(q, mask),
+          land = Array.from({length : 4}, () => ({land : 1, material : 'grassland'}));
     for (let y = 0; y < 128; y++)
         for (let x = 0; x < 256; x++) {
-            const u = (y + .5) / 128 + (x + .5 - 128) / 256;
-            const v = (y + .5) / 128 - (x + .5 - 128) / 256;
-            const outside = Math.max(-u, -v, u - 1, v - 1, 0);
-            let alpha = 255, cu = u, cv = v, field = 0;
-            if (outside > 0) {
-                if (!mask)
-                    continue;
-                cu = Math.max(.000001, Math.min(.999999, u));
-                cv = Math.max(.000001, Math.min(.999999, v));
-                const a = C.art.shoreField(cu, cv, corners);
-                field = a + (1 - a) * smooth(0, .42, outside);
-                alpha = Math.round(255 * (1 - smooth(.46, .54, field)));
-            }
-            if (alpha) {
-                let rgb = C.art.surface(u, v, outside ? corners.map(c => ({...c, land : 0})) : corners,
-                                        'sand', [], 128);
-                if (outside) {
-                    const shallow = .34 * smooth(.29, .49, field);
-                    rgb = rgb.map((c, k) => Math.round(c * (1 - shallow) + [ 57, 114, 118 ][k] * shallow));
-                }
-                out.data.set([...rgb, alpha ], (y * 256 + x) * 4);
-            }
+            const a = (y + .5) / 128 + (x + .5 - 128) / 256, b = (y + .5) / 128 - (x + .5 - 128) / 256;
+            if (a < 0 || a >= 1 || b < 0 || b >= 1)
+                continue;
+            const u = (y + .5 + offset[1] - 128) / 256 + (x + .5 + offset[0] - 256) / 512;
+            const v = (y + .5 + offset[1] - 128) / 256 - (x + .5 + offset[0] - 256) / 512;
+            const rgb = C.art.surface(u + .5, v + .5, land, 'sand', [], 128,
+                                      {field : Shore.field(u, v, centers), periodic : true});
+            out.data.set([...rgb, 255 ], (y * 256 + x) * 4);
+        }
+    return C.png(out);
+}
+
+async function oceanTile() {
+    const out = C.clear(512, 256), water = Array.from({length : 4}, () => ({land : 0}));
+    for (let y = 0; y < 256; y++)
+        for (let x = 0; x < 512; x++) {
+            const u = (y + .5) / 256 + (x + .5 - 256) / 512, v = (y + .5) / 256 - (x + .5 - 256) / 512;
+            if (u < 0 || u >= 1 || v < 0 || v >= 1)
+                continue;
+            out.data.set([...C.art.surface(u, v, water, 'sand', [], 128, {periodic : true}), 255 ],
+                         (y * 512 + x) * 4);
+        }
+    return C.png(out);
+}
+
+async function mouth(q, bytes) {
+    const out = await C.raw(bytes), end = C.art.riverUV(C.art.ends[1 + q * 2]);
+    for (let y = 0; y < out.height; y++)
+        for (let x = 0; x < out.width; x++) {
+            const u = (y + .5 - 128) / 256 + (x + .5 - 256) / 512,
+                  v = (y + .5 - 128) / 256 - (x + .5 - 256) / 512;
+            const t = (u * end[0] + v * end[1]) / (end[0] ** 2 + end[1] ** 2);
+            const i = (y * out.width + x) * 4 + 3;
+            out.data[i] = Math.round(out.data[i] * smooth(.28, .68, t));
         }
     return C.png(out);
 }
@@ -84,6 +101,10 @@ async function build() {
     for (let q = 0; q < 4; q++)
         for (let mask = 0; mask < 8; mask++)
             C.write(C.path.join(C.pack, `compatibility/coast/${q}/${mask}.png`), await coastQuarter(q, mask));
+    C.write(C.path.join(C.pack, 'compatibility/terrain/10.png'), await oceanTile());
+    for (let q = 0; q < 4; q++)
+        C.write(C.path.join(C.pack, `compatibility/mouth/${q}.png`),
+                await mouth(q, C.fs.readFileSync(C.path.join(C.pack, `compatibility/river/${1 << q}.png`))));
     const input = await C.sharp(C.path.join(C.pack, markerFile))
                       .trim({threshold : 8})
                       .resize(Math.round(512 * .34), Math.round(256 * .34), {fit : 'inside'})
@@ -105,6 +126,9 @@ if (require.main === module)
     });
 module.exports = {
     coastQuarter,
+    coastCenters,
+    oceanTile,
+    mouth,
     markerFile,
     buildMarker,
     build

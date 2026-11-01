@@ -1,6 +1,7 @@
 /** Art-side terrain and infrastructure compositor. No game/runtime dependencies. */
 const fs = require('node:fs/promises');
 const path = require('node:path');
+const Shore = require('./shoreline.cjs');
 let sharp;
 try {
     sharp = require('sharp');
@@ -104,25 +105,25 @@ function noise(u, v) {
 }
 
 function shoreField(u, v, corners) {
-    const a = smooth(0, 1, fract(u)), b = smooth(0, 1, fract(v));
-    let land = corners[0].land * (1 - a) * (1 - b) + corners[1].land * a * (1 - b) + corners[2].land * a * b +
-               corners[3].land * (1 - a) * b;
-    // Broad coves and headlands, then smaller erosion detail. Pure land/water
-    // samples stay fixed, retaining tile identity and narrow water passages.
-    const perturb = (noise(u * 1.43 + 17, v * 1.43 - 9) - .5) * .31 +
-                    (noise(u * 4.1 - 3, v * 4.1 + 23) - .5) * .12 + (noise(u * 11.7, v * 11.7) - .5) * .035;
-    return land + perturb * 4 * land * (1 - land);
+    return Shore.corners(u, v, corners);
 }
 
-function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256) {
+function periodicTex(name, u, v, lod) {
+    const x = fract(u), y = fract(v), a = smooth(0, 1, x), b = smooth(0, 1, y);
+    return mix(mix(sample(name, x, y, lod), sample(name, x - 1, y, lod), a),
+               mix(sample(name, x, y - 1, lod), sample(name, x - 1, y - 1, lod), a), b);
+}
+
+function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256, options = {}) {
+    const texture = options.periodic ? periodicTex : tex;
     const fu = fract(u), fv = fract(v),
           weights = [ (1 - fu) * (1 - fv), fu * (1 - fv), fu * fv, (1 - fu) * fv ];
-    let a = shoreField(u, v, corners), color = [ 0, 0, 0 ], landWeight = 0;
+    let a = options.field ?? shoreField(u, v, corners), color = [ 0, 0, 0 ], landWeight = 0;
     // Inland color comes only from land corners: ocean must not tint the beach.
     for (let i = 0; i < 4; i++) {
         if (!corners[i].land)
             continue;
-        const c = tex(corners[i].material || 'grassland', u, v, lod), w = weights[i];
+        const c = texture(corners[i].material || 'grassland', u, v, lod), w = weights[i];
         landWeight += w;
         for (let k = 0; k < 3; k++)
             color[k] += c[k] * w;
@@ -142,8 +143,9 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256) {
     }
     const inlandRiver = riverField < coast ? smooth(.53, .96, coast) : 0;
     a = Math.min(a, riverField);
-    const waterSample = () => mix(tex('ocean', u, v, lod),
-                                  mix(tex('ocean', u * 3.7, v * 3.7, lod), [ 48, 83, 72 ], .18), inlandRiver);
+    const waterSample = () =>
+        mix(texture('ocean', u, v, lod), mix(texture('ocean', u * 3.7, v * 3.7, lod), [ 48, 83, 72 ], .18),
+            inlandRiver);
     if (a <= 0)
         return waterSample().map(Math.round);
     if (a >= 1)
@@ -151,7 +153,7 @@ function surface(u, v, corners, shore = 'sand', rivers = [], lod = 256) {
     const geology = noise(u * 1.9 + 51, v * 1.9 - 18), detail = noise(u * 13.1, v * 13.1 + 6);
     let water = waterSample();
     water = mix(water, [ 57, 114, 118 ], smooth(.29, .49, a) * .34);
-    const beach = tex(shore === 'cliff' ? 'stone' : 'sand', u, v, lod);
+    const beach = texture(shore === 'cliff' ? 'stone' : 'sand', u, v, lod);
     let bank = mix(beach, shore === 'cliff' ? [ 67, 73, 64 ] : [ 114, 112, 75 ],
                    shore === 'cliff' ? .35 : .15 + geology * .30);
     const width = shore === 'cliff' ? .085 : .035 + .075 * geology;

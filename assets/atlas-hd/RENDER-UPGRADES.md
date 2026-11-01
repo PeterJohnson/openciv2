@@ -393,9 +393,9 @@ logic. The replacement native and HD-only stages now share winding ochre roads,
 straight cool-gray rails with distinct sleepers, centered resource frames,
 contrasting faction/health colors, a full shield silhouette and corrected coast
 mask/dither artwork. These are art/binding changes under the existing native
-sprite selection and logical dimensions. Native coast-quarter alpha can extend
-into the unused corners of the existing sprite box to soften exposed land tips;
-use mask-specific coverage so small lakes and joins stay intact. Terrain yield
+sprite selection and logical dimensions. Native coast quarters retain a fuller
+rounded land apron inside their diamond footprints. Keep forest and field tips
+on land; preserve lake centers and use shared texture phase at joins. Terrain yield
 markers should be smaller and lower contrast than unit tags; the map uses an
 olive/bronze production shield while city economy symbols remain blue.
 Shared network endpoints must remain
@@ -408,8 +408,8 @@ fix, separate from the enhanced foreground-badge pass below.
 
 The cohesion stage separately demonstrates these scoped renderer changes:
 
-- Evaluate shoreline interpolation in world coordinates with smooth corner
-  weights and several erosion scales. Preserve pure land/water centers and
+- Evaluate shoreline footprints in world coordinates with smooth inward joins
+  and restrained erosion. Preserve pure land/water centers and
   narrow passages. Vary the sand/rock band and break up surf instead of tracing
   every coast with an equally bright ribbon. The primary bank includes phase
   variants; world-space sampling prevents camera movement from changing them.
@@ -431,3 +431,22 @@ These are sprite and 2D composition changes. The review does not implement them
 in the game or claim a complete bridge/rail-turnout solution. The district's
 explicit two-unit stack and ocean resources complement the actual saved-game
 scenes. All four comparison stages use the same updated synthetic fixtures.
+
+### Fuller shoreline footprints and ground coverage
+
+The saved-map survey favors a fuller rounded tile footprint over deep coastline
+cutbacks. Keep vegetation and field footprints inside a narrow land apron, join
+inward corners smoothly, preserve single-cell lakes and land centers, and sample
+river mouths through the coastal apron. Use the same shore field for terrain,
+ground-level overlays and zoom transitions; retain elevated sprite silhouettes.
+For native/HD compatibility, the replacement quarter art already carries the
+apron, while source draw commands and zoom cutoffs stay fixed. Ground sprite
+coverage must partition the pixel lattice: do not independently antialias adjacent
+opaque ground masks and then alpha-over them, which leaves dark seams. Composite
+ground before final resampling or retain exact pixel-center coverage as the
+standalone review does. Continue ordinary alpha blending for foreground sprites.
+
+[The saved-world survey](review/coast-audit.html) separates native 16/32px square
+tiles from the proposed continuous coasts, and includes 48/64px whole-world maps
+plus 64/128px island, lake, forest/field, river-mouth and wrapped-edge inspections.
+These renderer upgrades remain recommendations; game source is unchanged.

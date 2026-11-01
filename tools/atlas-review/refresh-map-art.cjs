@@ -9,6 +9,8 @@ async function main() {
     let count = 0;
     for (const e of m.entries) {
         let bytes;
+        if (process.argv.includes('--coasts-only') && !e.id.startsWith('map.coast.'))
+            continue;
         if (process.argv.includes('--rivers-only') && !e.id.startsWith('map.networks.river-'))
             continue;
         if (e.id.startsWith('map.networks.river-')) {
@@ -47,11 +49,11 @@ async function main() {
         version : 1,
         source : 'tools/atlas-review/art.cjs; bindings.cjs; render.cjs',
         coast : {
-            sampling : 'smooth land weights; fixed world-space erosion at three scales',
+            sampling : 'full rounded tile footprints with continuous shallow erosion; shared shore geometry',
             cornerIdentity : 'pure land/water preserved',
             beach : 'variable narrow sand/rock edge; broken subdued foam',
             nativeCorners :
-                'Mask-specific curved water overhang within unchanged quarter bounds; diamond interiors retained; dither 12 stays blank'
+                'Full land apron inside unchanged quarter diamonds; shared tile texture phase; no water overhang; dither 12 stays blank'
         },
         road : {
             color : 'warm ochre',

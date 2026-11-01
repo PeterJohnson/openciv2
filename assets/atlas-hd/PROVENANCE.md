@@ -86,8 +86,8 @@ original-game screen captures.
 
 The revised coast and road/rail banks are generated from the existing authored
 material textures and procedural geometry in `tools/atlas-review/art.cjs`.
-The coast corner extension is authored geometry in `map-finishing.cjs`, using
-the retained ocean texture. The muted map production symbol derives from the
+The fuller coast footprint is authored geometry in `shoreline.cjs` and
+`map-finishing.cjs`, using the retained ocean texture. The muted map production symbol derives from the
 project's own authored production SVG, with a separate color palette and size.
 The original-art previews were inspected for readability and composition; no
 original pixels, shapes or textures were traced, sampled or incorporated into
@@ -160,3 +160,11 @@ pixels, decorative patterns or font imagery were used in these plates, and no
 new image-generation request was needed. The original-art scene references were
 inspected for functional grouping only. Enhanced variants keep their existing
 paintings and foreground composition.
+
+The full saved-world coastline survey reuses the existing authored terrain
+textures. `shoreline.cjs` and `map-finishing.cjs` author fuller rounded land
+footprints, periodic native texture sampling and river-mouth alpha falloff;
+they do not trace original art. Existing forest and field images are unchanged.
+Only composed original-art scenes appear in `review/original-scenes/coast-audit/`,
+under the same review-only allowance as the other original mockups. These are
+not replacement sprites or runtime game screenshots.

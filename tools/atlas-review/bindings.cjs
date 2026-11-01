@@ -76,7 +76,8 @@ async function buildBindings(traces) {
     await art.loadMaterials(path.join(pack, 'map'));
     for (let t = 0; t < 11; t++)
         await save(`terrain/${t}`,
-                   fs.readFileSync(path.join(pack, 'map/ground', C.terrainNames[t] + '.png')));
+                   t === 10 ? await Finishing.oceanTile()
+                            : fs.readFileSync(path.join(pack, 'map/ground', C.terrainNames[t] + '.png')));
     for (let q = 0; q < 4; q++)
         for (let mask = 0; mask < 8; mask++)
             await save(`coast/${q}/${mask}`, await Finishing.coastQuarter(q, mask), 32, 16);
@@ -133,7 +134,7 @@ async function buildBindings(traces) {
         }
     }
     for (let q = 0; q < 4; q++) {
-        await save(`mouth/${q}`, bank.get(`river/${1 << q}`));
+        await save(`mouth/${q}`, await Finishing.mouth(q, bank.get(`river/${1 << q}`)));
         await save(`fog/${q}`,
                    Buffer.from(svg(256, 128, '<path d="M128 0L256 64L128 128L0 64Z" fill="#0b1516"/>')), 32,
                    16);

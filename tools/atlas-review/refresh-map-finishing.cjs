@@ -55,15 +55,12 @@ async function main() {
         await C.art.loadMaterials(C.path.join(C.pack, 'map'));
         const scenes = C.read(C.path.join(C.pack, 'review/scenes.json'));
         const bindings = C.read(C.path.join(C.pack, 'compatibility/bindings.json')).bindings;
-        for (const scene of scenes.filter(s => s.mode === 'map')) {
+        for (const scene of scenes.filter(s => s.mode === 'map' && s.id !== 'repetition')) {
             const trace = C.engine('map', C.path.join(C.pack, scene.fixture));
-            const marker = trace.commands.some(c => c.asset === 'resource/shield');
-            if (!marker && !trace.commands.some(c => c.asset.startsWith('coast/')))
-                continue;
+
             const world = C.read(
                 C.path.join(C.pack, `review/fixtures/${scene.saveBased ? 'saved-world' : 'world'}.json`));
-            for (const stage
-                     of ['current', 'hd', ...(marker && scene.tileWidth >= 64 ? [ 'proposed' ] : [])]) {
+            for (const stage of ['current', 'hd', 'proposed']) {
                 const buffer =
                     stage === 'proposed'
                         ? await R.proposedMap(world, scene, trace, bindings)

@@ -36,8 +36,25 @@ async function sprite(name, w, h, bindings, native = false) {
         let input = path.join(pack, b.file);
         if (native)
             input = await sharp(input).resize(b.nativeWidth, b.nativeHeight, {fit : 'fill'}).png().toBuffer();
-        return raw(input, w, h, native ? 'nearest' : 'lanczos3');
+        const image = await raw(input, w, h, native ? 'nearest' : 'lanczos3');
+        // These generated ground sprites partition an opaque integer lattice.
+        // Filtering their alpha independently leaves dark quarter/tile seams.
+        // Restore pixel-center coverage after filtering color, as for source
+        // color-key masks. Original-art bindings and foreground RGBA stay intact.
+        if (/^(terrain|coast)\//.test(name) && b.file.startsWith('compatibility/'))
+            groundCoverage(image);
+        return image;
     });
+}
+
+function groundCoverage(image) {
+    for (let y = 0; y < image.height; y++)
+        for (let x = 0; x < image.width; x++) {
+            const inside =
+                Math.abs((x + .5) * 2 / image.width - 1) + Math.abs((y + .5) * 2 / image.height - 1) < 1;
+            image.data[(y * image.width + x) * 4 + 3] = inside ? 255 : 0;
+        }
+    return image;
 }
 
 function rect(dst, c, palette = color) {
@@ -162,15 +179,18 @@ function topology(get, t, viewer = 1) {
 function riverSegments(w, get) {
     const buckets = new Map();
     for (const t of w.tiles)
-        if (t.v && (t.t & 128)) {
+        if (t.v && ((t.t & 128) || (t.t & 15) === 10)) {
+            const ocean = (t.t & 15) === 10;
             let mask = 0;
             C.directions.forEach(([ dx, dy ], i) => {
                 if (i % 2)
                     return;
                 const n = get(t.x + dx, t.y + dy);
-                if (n?.v && ((n.t & 128) || (n.t & 15) === 10))
+                if (n?.v && ((n.t & 128) || (!ocean && (n.t & 15) === 10)))
                     mask |= 1 << i;
             });
+            if (ocean && !mask)
+                continue;
             const U = (t.x + t.y) / 2, V = (t.y - t.x) / 2;
             const riverMask = [ 0, 2, 4, 6 ].reduce((m, bit, i) => m | ((mask >> bit & 1) << i), 0);
             for (const r of art.riverCurve(riverMask, [ U, V ])) {
@@ -446,6 +466,7 @@ async function supportingArt() {
 
 module.exports = {
     baseline,
+    groundCoverage,
     fieldCommands,
     proposedMap,
     mapLabels,

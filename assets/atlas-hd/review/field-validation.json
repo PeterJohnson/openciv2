@@ -504,14 +504,14 @@
     {
       "scene": "saved-close",
       "stage": "current",
-      "visibleFieldPixels": 476,
-      "fractionOfTile": 0.058
+      "visibleFieldPixels": 482,
+      "fractionOfTile": 0.059
     },
     {
       "scene": "saved-close",
       "stage": "hd",
-      "visibleFieldPixels": 2077,
-      "fractionOfTile": 0.063
+      "visibleFieldPixels": 2091,
+      "fractionOfTile": 0.064
     },
     {
       "scene": "saved-close",
@@ -522,14 +522,14 @@
     {
       "scene": "saved-region",
       "stage": "current",
-      "visibleFieldPixels": 102,
-      "fractionOfTile": 0.05
+      "visibleFieldPixels": 106,
+      "fractionOfTile": 0.052
     },
     {
       "scene": "saved-region",
       "stage": "hd",
-      "visibleFieldPixels": 443,
-      "fractionOfTile": 0.054
+      "visibleFieldPixels": 452,
+      "fractionOfTile": 0.055
     },
     {
       "scene": "saved-region",

@@ -332,13 +332,18 @@ path and unchanged native source bodies.
 
 ## Map readability adapter changes
 
-`map-finishing.cjs` preserves the selected coast quarter's diamond interior and
-adds curved water coverage only in the previously transparent corners of the same
-32×16 logical box. The coverage decays inland and samples the ocean texture at
-unclamped coordinates, avoiding stretched edge texels. This rounds the exposed
-desert tip near Newcastle without a blanket water stamp on land. Dither slot 12
-stays transparent; source selection, draw order and zoom cutoffs do not change.
-The enhanced coast remains the existing world-space proposal.
+`map-finishing.cjs` builds fuller land footprints from the exact three neighbors
+available to each coast quarter. The 32×16 logical boxes and all source-selected
+masks remain unchanged; the earlier water overhang is removed. Shared rounded
+tile geometry covers exposed forest/field tips and preserves water-cell centers.
+Quarter textures use a common periodic tile phase. `render.cjs` restores opaque
+pixel-center ground coverage after color resampling for generated terrain/coast
+bindings only; original art and foreground alpha are untouched. Generic ocean
+dither remains blank. Native mouth bindings retain their river-edge pixels and
+fade their banks seaward; enhanced river sampling includes adjoining ocean mouths.
+The terrain production marker remains smaller and muted olive/bronze, with the
+city economy shield unchanged. See the [full-map survey](review/coast-audit.html)
+and [finite checks](review/coast-audit-validation.json).
 
 The terrain-only production marker has an approximately 11-pixel native visible
 height (previously 14), olive/bronze colors and a quieter outline. The native
