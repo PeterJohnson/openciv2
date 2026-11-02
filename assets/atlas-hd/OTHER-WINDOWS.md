@@ -1,138 +1,152 @@
 # Additional game windows
 
-Open the [four-way window review](review/other-windows/index.html), or select any
-of its scenes in the [main gallery](index.html). This adds **35 scenes and 140
-renders** to the existing set. Each has original artwork, replacement artwork at
-native resolution, HD only, and an enhanced version. No game source, asset
-loader or executable is changed.
+The [four-way review](review/other-windows/index.html) contains **35 scenes / 140 renders**.
+All original-art, replacement-native and HD-only scenes now execute extracted
+game rendering code from `C:/Projects/richardpenman-civ2`. The enhanced proposals
+remain separate and their PNGs are unchanged. No game source or loader is modified.
 
-## Coverage and evidence
+The [execution comparison](review/other-windows/runtime-audit.html) compares twelve
+scenes with actual OpenCiv2 execution using the same original artwork and 1788 save.
+Its [manifest](review/other-windows/runtime-audit.json) retains build/executable/save
+hashes, source identity, unmodified captures, crop coordinates and limitations.
+This is **OpenCiv2 execution, not the legacy 1999 executable**. Capture scaling,
+focus/cursor state, panel dimensions and runtime extras prevent a pixel-identity claim.
 
-All code references below refer to `C:\Projects\richardpenman-civ2`. The sibling
-checkout supplies only local installed artwork and the retained saved game.
+## Extracted rendering coverage
 
-| Family | Scenes | Rendering evidence |
+`atlas-reports.exe` compiles 32 unchanged report bodies. `atlas-other.exe` compiles
+258 further unchanged bodies, preserving original class/global layouts and source
+line mappings under MSVC x86. The existing `atlas-engine.exe` supplies extracted
+city/unit drawing, including a saved-unit mode that preserves owner, damage,
+orders and stack state. These counts are separate extraction sets, not a claim
+of 290 unique functions across binaries.
+
+| Family | Scenes | Executed source |
 | --- | --- | --- |
-| Advisors and reports | City Status, Attitude, Trade, Science, Defense statistics, military losses, Intelligence, Wonders, Top Five Cities, Demographics, Score, Hall of Fame | 32 unchanged function bodies compiled into `atlas-reports.exe`; `src/auto/reports.cpp`, `city.cpp`, `civ.cpp`, `graphics.cpp`, `window.cpp` |
-| Civilopedia | Advance index, Railroad page, advance tree, Riflemen, Library, Pyramids, Forest | Static adapters informed by `PediaWindow::create`, `draw_frame`, `draw_item_list`, `draw_advance_page`, `draw_advance_tree`, `draw_unit_page`, `draw_improvement_page`, `draw_terrain_page` in `src/auto/pedia.cpp` |
-| Further reports | Powergraph, Foreign Minister, historian ranking, casualty timeline | Static adapters informed by `powergraph_show`, `foreign_minister_show`, `historian_report_show`, `casualty_timeline_draw` in `src/auto/reports.cpp` |
-| Council and endgame | High Council, Destroyed Civilizations, Credits | Static adapters informed by the `CouncilWindow` drawing methods, `DestroyedCivsWindow::create/draw_entry/draw_portrait`, and `credits_draw_scroll` in `src/auto/reports.cpp` |
-| Auxiliary panels | Status, World Map | `status_draw_info/status_draw_unit_panel/status_redraw` in `src/auto/game.cpp`; `minimap_calc_layout/minimap_tile_to_screen/minimap_tile_color/minimap_redraw` in `src/auto/mapview.cpp` |
-| Representative dialogs | Tax Rates, research choice, production choice, Game Options, main menu, quit confirmation, improvement-completed message | `TaxRateDialog` in `src/auto/city.cpp`; `civ_choose_research_dialog` in `src/auto/civ.cpp`; `menu_game_options` and shared dialog drawing in `src/auto/window.cpp`; `game_main_menu_loop` in `src/auto/game.cpp` |
+| Reports | City Status, Attitude, Trade, Science, Defense, military losses, Intelligence, Wonders, Top Five Cities, Demographics, Score, Hall of Fame | Report selection/layout in `src/auto/reports.cpp`; city, civilization and glyph helpers |
+| Civilopedia | Advance index, Railroad page/tree, Riflemen, Library, Pyramids, Forest | `PediaWindow::create`, index loading/sorting, control updates, detail pages, links and connectors in `src/auto/pedia.cpp` |
+| Further reports | Powergraph, Foreign Minister, historian, casualty timeline | `powergraph_show`, `foreign_minister_show`, `historian_report_show`, `casualty_timeline_show/draw` in `src/auto/reports.cpp` |
+| Council/endgame | High Council, Destroyed Civilizations, Credits | Council background/buttons; destroyed entry/portrait; `credits_draw_scroll` |
+| Auxiliary panels | Status, World Map | `status_redraw` and status helpers in `src/auto/game.cpp`; minimap layout/projection/color/redraw in `src/auto/mapview.cpp` |
+| Dialogs | Tax Rates, research, production, Game Options, main menu, quit confirmation, improvement-completed message | `TaxRateDialog::run/paint/calc_totals`, research/production option selection, shared `Dialog` text parsing, autosizing, columns, list/options, sprites and buttons |
 
-These cover the remaining main window families and representative controls.
-Every event message, scenario editor, multiplayer lobby, operating-system file
-picker and animation frame is not a separate scene. Existing city, diplomacy,
-spaceship, throne and map comparisons remain in the main gallery.
+Frames use extracted `FrameWindow::create/layout/draw_frame_borders/draw_caption`
+and `PictureWindow::open`. Original and HD-only geometry is no longer a hand-built
+static layout. The HD replay uses the same logical commands at twice the physical
+resolution, authored replacement art and smooth replacement fonts. Original-art
+replay retains the reference bitmap fonts. Native replacements also keep the
+replacement font backend.
 
-## Fidelity boundaries
+## Execution comparison and corrections
 
-The twelve report scenes execute extracted C++ drawing bodies. Their loops,
-column positions, text spans, icon selection and ordering are unchanged. Their
-city/unit glyphs are replayed through the existing extracted `gfx_draw_city` and
-`gfx_draw_unit`, with original or replacement anchors as appropriate. The
-standalone adapter supplies surfaces, labels, fonts, scrollbars and buttons;
-it does not run the window message loop. Close, Casualties/Statistics,
-Supply/Demand, Goal and Cities buttons use the corresponding source control
-rectangles. Native reference font glyphs are used only for the original-art
-variant. The replacements retain the smooth replacement font backend.
+The running build is `bd89036fc339f0c44f7788b17f9765c377cc8a55`.
+All recorded rendering-source and font inputs are compared with that revision;
+line endings are normalized for source, while font bytes are compared directly.
+The executable was run from an isolated local copy with the original installation
+and `he_a1788.sav`. No changes were made to that save or the game source.
 
-The other 23 scenes are **source-guided static layout adapters**, not extracted
-full window implementations or pixel-equivalent runtime screenshots. They
-preserve the principal source dimensions and visual conventions: the 640 × 400
-Civilopedia, its two-column nine-row index and enlarged detail sprites; the
-five 90 × 122 council media slots; native tax sliders and locks; the source
-powergraph axes and sampling cadence; and the staggered minimap projection.
-Native window borders, generic dialog autosizing, animation, input/focus states,
-complete Civilopedia link layout and runtime reflow remain adapter boundaries.
-The first three variants share one layout specification. The enhanced variant
-changes presentation separately; it makes no claim about the current engine.
+The comparison covers four Civilopedia pages, tax rates, Foreign Minister,
+casualty timeline, options, quit confirmation, main menu, world map and status.
+It corrected double-scaled Civilopedia sprite dimensions, the quit icon,
+scrollbar theme/geometry, background texture phase, blank lines in the label
+table and the active unit's saved-state forwarding. Tax income **215**, upkeep
+**238** and research **7 turns** now come from extracted calculation routines and
+agree with execution. Existing source label overlaps and long-heading clipping
+are retained in baseline previews.
 
-The local installation lacks the council AVI files. Its original-art council
-comparison therefore shows the source frame with empty black media slots and
-fixture speech. It is explicitly incomplete as an original media comparison.
-Replacement versions use independently created still advisor portraits.
-Arrival/wonder movie playback is outside this static set; no unrelated original
-art is substituted for missing video. Destroyed Civilizations uses the local
-original `mk.dll` background and portrait in the original-art comparison.
+Source/integration verification covers all 35 scenes. Runtime evidence covers
+the twelve listed above, with per-scene differences in the comparison. The other
+23 scenes are explicitly uncaptured, not implicitly runtime-qualified.
 
-The report fixtures load the retained 1788 save's packed game, civilization,
-city, unit, map-header and tile records. Save and section hashes are checked at
-preparation time. Economic caches are supplied at the city recalculation
-boundary. Research cost, the score summary, diplomatic attitude, and Hall of
-Fame rows are declared display fixtures; this is not gameplay simulation or
-verification of those calculations. Intelligence targets the surviving Sioux,
-rather than an eliminated civilization with no capital. The world-map panel
-uses the same 9,000 saved tiles and 69 cities with fog disabled for review.
+## Standalone boundaries and supplied state
 
-The static report histories, status values, foreign relations, credits and
-dialog contents are illustrative display fixtures. They are not presented as
-historical events from the save. Civilopedia stats and icon categories come
-from the supplied rules, with short authored explanatory text. Source hashes,
-fixture layouts and calculation boundaries are recorded in the files linked
-below. Report pages that naturally scroll show the initial page.
+The harness runs drawing to a completed initial frame, not an interactive message
+loop or complete game simulation. Its device boundary records surfaces, sprites,
+text and controls. Original scrollbar pixels are read from the game's
+`src/platform/scroll_theme.h`; the geometry follows `controls.c`. Reference
+bitmap metrics drive layout. Replacement font rasterization deliberately differs.
+Native focus outlines, hover/pressed state and cursor effects are outside this
+initial-paint boundary. Wrapped endgame text uses a finite word-wrap adapter.
 
-## Additional presentation proposals
+`Dialog::create_controls` is a finite driver of the extracted radio/checkbox,
+scrollbar and button creation methods. Radio-item painting and platform control
+creation are device adapters; edit fields and multiple sprite controls stop
+explicitly. Unknown scenes and unbound operations fail instead of inventing output.
 
-HD only keeps every logical rectangle, sprite size and native layout rule. It
-loads the retained higher-resolution replacement art and renders smooth fonts
-at two physical pixels per logical pixel. It does not change zoom, list capacity
-or information density.
+The fixture loads packed game, civilizations, cities, units, map header and tiles
+from the retained save. It also loads the actual 1,200-byte power history and
+9,000-byte English visibility plane. Local rules and original text files supply
+labels/dialog sections; physical blank lines in LABELS.TXT are preserved.
+Complete original text/media inputs stay ignored. Their hashes are retained.
 
-The enhanced windows demonstrate quieter panel fills, reduced text shadow,
-clearer selected rows, separated tree links, more legible dense military counts,
-slider fill and an active-council cue. These changes are confined to the review
-renderer. A scoped engine upgrade could implement them with:
+- The minimap uses saved visibility and center `(13,105)`, with a declared review
+  panel of 256 × 168 and viewport bounds. Status uses a 256 × 900 panel and the
+  saved active Knights. Runtime panels differ slightly in size. Runtime extras
+  show Turn 370; baseline extras are disabled.
+- The twelve older reports retain documented city economic caches, score,
+  research-cost and Hall of Fame fixtures. Tax Rates now executes its calculation
+  plus `city_split_trade` and `civ_research_cost`. Production uses London, source
+  availability selection, saved shield total, ten shield rows and a declared
+  zero support cache; it does not run full city recalculation.
+- Foreign Minister supplies the saved attitude at the AI evaluation boundary.
+  Historian randomness is deterministic (Herodotus/wealth); ranking is source
+  code. The casualty log is empty, as in the execution capture.
+- The scenario directory has no DESCRIBE.TXT. Civilopedia uses source detail
+  behavior and rules without inventing a descriptive paragraph.
+- Council AVIs are unavailable locally. Its original source frame has empty
+  black media slots; replacement art uses independent still portraits. No
+  fabricated council speech or substitute original video is presented.
+- Destroyed Civilizations uses a declared Romans entry at turn 320 and the
+  source year table, entry/portrait drawing and frame coordinates. It does not
+  run the endgame movie lifecycle. Credits shows the first scroll frame of the
+  local CREDITS.TXT with its leading blank lines, not a fabricated credit list.
 
-1. One density-aware drawing surface and common button/scrollbar styles.
-2. Measured column widths, wrapping and per-cell clipping for long localized
-   labels and three-digit unit counts. Preserve the data selection loops.
-3. Semantic panel backgrounds and selection states, with the existing sprites
-   and reference logical coordinates retained as defaults.
-4. A shared world-map projection with explicit visibility input and a separate
-   selection outline. Do not use the full detailed tile renderer for this panel.
-5. Still portrait support for the council, plus optional sprite/video animation
-   inside its existing slots. Media availability should be independent of layout.
+## Enhanced proposals
 
-These extend the [scoped renderer recommendations](RENDER-UPGRADES.md). None
-requires a 3D renderer or changes the map simulation.
+`other-windows.cjs` is retained solely for the independent enhanced proposals;
+it cannot write original/native/HD outputs. Its illustrative layouts and values
+are recorded as enhanced metadata. The ordinary baseline refresh preserves
+enhanced PNGs byte-for-byte. The proposals still demonstrate measured columns,
+quieter fills, clearer selection, sprite-based controls and still council
+portraits. See [scoped engine recommendations](RENDER-UPGRADES.md). They make
+no claim about current-engine execution and are not included in runtime parity.
 
-## Build and validation
+## Build and verify
 
-Viewing the checked-in PNGs requires no original game installation. Rebuilding
-the original-art comparisons does. From the target repository, using the same
-Python/Pillow, Node/Sharp and MSVC x86 environment as the existing review tools:
+Viewing checked-in renders/captures needs no original installation. Rebuilding
+original comparisons requires the local inputs and existing original bindings
+described in [README](README.md#original-game-art-comparison), MSVC x86,
+Python/Pillow and Node/Sharp. From this repository:
 
 ```powershell
+python tools/atlas-review/prepare-report-inputs.py --game C:/Projects/civ2/Civ2 --save C:/Projects/civ2/Civ2/midgame1/he_a1788.sav
+python tools/atlas-review/prepare-other-inputs.py --game C:/Projects/civ2/Civ2
+python tools/atlas-review/prepare-native-other.py --game C:/Projects/civ2/Civ2 --save C:/Projects/civ2/Civ2/midgame1/he_a1788.sav
 & tools/atlas-review/build-engine.ps1 -Configuration Release
 & tools/atlas-review/build-engine.ps1 -Configuration Debug
 & tools/atlas-review/build-reports.ps1 -Configuration Release
 & tools/atlas-review/build-reports.ps1 -Configuration Debug
-python tools/atlas-review/prepare-report-inputs.py --game C:/Projects/civ2/Civ2 --save C:/Projects/civ2/Civ2/midgame1/he_a1788.sav
-python tools/atlas-review/prepare-other-inputs.py --game C:/Projects/civ2/Civ2
+& tools/atlas-review/build-other.ps1 -Configuration Release
+& tools/atlas-review/build-other.ps1 -Configuration Debug
 node tools/atlas-review/build-other-windows.cjs
+node tools/atlas-review/build-other-runtime-audit.cjs
 node tools/atlas-review/verify-other-windows.cjs
 node tools/atlas-review/verify.cjs
 ```
 
-The existing original-art bindings must also have been prepared as described in
-[README](README.md#original-game-art-comparison). Run the two input preparation
-commands in the listed order. `build-other-windows.cjs --gallery-only` refreshes
-the indexes from retained renders without rerendering them.
+`build-other-windows.cjs --gallery-only` refreshes indexes without rerendering.
+`node tools/atlas-review/other-windows.cjs` explicitly rebuilds enhanced proposals.
+Execution captures are retained evidence, not generated screenshots; the runtime
+audit builder crops them without retouching and rebuilds their comparison page.
 
-- [Report extraction and source hashes](review/report-extraction.json)
-- [Static adapter sources and limits](review/other-windows/source-adapters.json)
-- [Saved-state provenance and supplied values](review/fixtures/other-windows/inputs.json)
-- [Static layout fixtures](review/fixtures/other-windows/static-layouts.json)
-- [Dimensions, artifact hashes and Debug/Release checks](review/other-windows/validation.json)
+- [Report extraction](review/report-extraction.json)
+- [Further-window extraction and per-body hashes](review/other-window-extraction.json)
+- [Saved-state/report fixture provenance](review/fixtures/other-windows/inputs.json)
+- [Additional local-input hashes and save sections](review/fixtures/other-windows/native-inputs.json)
+- [Enhanced layout fixtures](review/fixtures/other-windows/enhanced-layouts.json)
+- [Artifact hashes, D/R checks and isolation](review/other-windows/validation.json)
 
-Validation covers report and city/unit glyph trace equality in Debug/Release,
-all 140 image dimensions, shared native/HD layouts, required buttons, source
-hashes, adapter asset resolution and game-source isolation. Visual inspection
-checks the rendered pages. This is source/integration validation; it does not
-claim runtime screenshot parity or interactive behavior qualification.
-
-Only composed original-art scenes are retained in `review/original-scenes`.
-Extracted sheets, backgrounds and icons remain ignored under
-`review/original-local`. They are excluded from the replacement asset manifest
-and license, consistent with the user's scene-only distribution allowance.
+Only composed original-art scenes and actual execution captures are retained
+under `review/original-scenes`, as authorized for review. Original sheets, crops,
+full text files and extracted icons remain ignored under `review/original-local`
+or `build`. They are excluded from the replacement asset manifest/license.

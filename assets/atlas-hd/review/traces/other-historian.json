@@ -1,0 +1,23 @@
+{"width":740,"height":224,
+"commands":[
+{"op":"bevel","text":"18","x":0,"y":0,"width":740,"height":224,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,740,224]},
+{"op":"bevel","text":"18","x":1,"y":1,"width":738,"height":222,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,740,224]},
+{"op":"tile","text":"window-border","x":2,"y":2,"width":736,"height":220,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,740,224]},
+{"op":"bevel","text":"37","x":6,"y":34,"width":728,"height":148,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,740,224]},
+{"op":"bevel","text":"37","x":7,"y":35,"width":726,"height":146,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,740,224]},
+{"op":"tile","text":"panel-texture","x":8,"y":36,"width":724,"height":144,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":181,"y":5,"width":0,"height":0,"color":10,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":180,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":179,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"Herodotus completes his epic history:","x":142,"y":39,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"Herodotus completes his epic history:","x":141,"y":38,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"'The WEALTHIEST Civilizations in the World'","x":93,"y":67,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"'The WEALTHIEST Civilizations in the World'","x":92,"y":66,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"","x":11,"y":95,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"","x":10,"y":94,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"1.  The Glorious Civilization of the English","x":11,"y":123,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"1.  The Glorious Civilization of the English","x":10,"y":122,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"2.  The Great Civilization of the Sioux","x":11,"y":151,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"text","text":"2.  The Great Civilization of the Sioux","x":10,"y":150,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,740,224]},
+{"op":"button","text":"OK","x":6,"y":184,"width":728,"height":36,"color":10,"face":0,"fontHeight":16,"style":0,"clip":[0,0,740,224]}
+]}

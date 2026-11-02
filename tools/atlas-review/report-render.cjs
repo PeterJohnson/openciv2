@@ -188,7 +188,7 @@ async function render(trace, mode, id, groups) {
     return p.finish();
 }
 
-async function build() {
+async function build(nativeOnly = false) {
     const scenes = [];
     for (let i = 0; i < modes.length; i++) {
         const mode = modes[i], id = 'report-' + mode;
@@ -206,7 +206,7 @@ async function build() {
         for (const variant of ['original', 'current', 'hd', 'proposed']) {
             const file = variant === 'original' ? `review/original-scenes/images/${id}.png`
                                                 : `review/other-windows/images/${id}-${variant}.png`;
-            C.write(C.path.join(C.pack, file),
+            if (!(nativeOnly && variant === 'proposed')) C.write(C.path.join(C.pack, file),
                     await render(trace, variant, id, variant === 'original' ? originalGlyphs : newGlyphs));
             s[variant] = file;
             s[variant + 'Size'] = [

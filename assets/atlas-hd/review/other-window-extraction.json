@@ -1,0 +1,1577 @@
+{
+  "repository": "richardpenman-civ2",
+  "functions": [
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::create",
+      "line": 1792,
+      "sha256": "5220eaa07ed4d018a6e658dc28448fd6f2e561f8a2b4dd8194f9e5ac11f62e59"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::create_list_buttons",
+      "line": 1586,
+      "sha256": "e105023611a301ef698b9e8fbbfade1818fe156151a3dadcc96f6596cdcb0e5d"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::create_advance_buttons",
+      "line": 1633,
+      "sha256": "cd3008cb637afc5b6d1f96f4d04df996e56b1c4a3527a3641bcffc90f5840c46"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::create_detail_buttons",
+      "line": 1726,
+      "sha256": "1a396a91fc35c55bbfad840d23f87d6fbc6dac684bf83c2fff5826a6a5a85d25"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_frame",
+      "line": 2111,
+      "sha256": "4c5a791bec4b663e6c0165748964783e25e2d25579cf3ebf3a6a59c9abfc3fc6"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::fill_background",
+      "line": 2168,
+      "sha256": "b1824788ee800c5762bf3d1b4eaeb4d9327a6d050a84213970d3700318c3b379"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::update_controls",
+      "line": 33,
+      "sha256": "68c63c34a0e3d9e64790af75c436452dedbac825d949392f51b5320197148052"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_item_list",
+      "line": 2451,
+      "sha256": "36003b8acdbd6fc289759ff230505630977765c5b3698f2161a01f460fb215c3"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_list_icon",
+      "line": 2308,
+      "sha256": "526512c94c69a0b28cf9e50159e3871ce6081927b17a0ea612235c4ed0b8dfc1"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_list_terrain_icon",
+      "line": 2221,
+      "sha256": "9e7ddeaa3b6d4f4257453a3d0e205873a0a84f80103a763d7e23758bd0fe626a"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::copy_list_item_name",
+      "line": 2412,
+      "sha256": "6aa24d55429af73b9acceb10f8fd3816e99d3b50abe86148bf4bc8ab684932c7"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_page",
+      "line": 4157,
+      "sha256": "edbbd7fb6b75a9c2ff5fa6683b748f0f4b5d2a5f62a24c5a311f21f7da01f5c8"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_requires",
+      "line": 3777,
+      "sha256": "e61dafe55437bbd5f93a5abd7b76747bf21205326163501a26ead754bd5938a1"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_children",
+      "line": 3829,
+      "sha256": "9efdac2c25bf183cbe67d6f1e08ecdd5f74d80dbccb2a1ed1175b36cf86ca863"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_improvements",
+      "line": 3892,
+      "sha256": "1021a54580d27657ddfa464589b30936766b67d71d000c09e1b0dbdf4bddebcb"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_units",
+      "line": 3953,
+      "sha256": "564523cdbab68b1c748516fd5d32abba7e24d384f44b3dbcd35c34353529d465"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_civ_facts",
+      "line": 4037,
+      "sha256": "5aca46e826a9aed99a43dbf1069538de46c49753786ada6e4a3622b82386e3c0"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_advance_tree",
+      "line": 4292,
+      "sha256": "4ab3ffca22cf96159bef92cad4e0d464b6d84783d7204f51513fb6b66931d831"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_tree_stub",
+      "line": 4542,
+      "sha256": "0cbacb69357b1216743173e2aeda6312f40740cfc2f9b1a1cd96ead42f469dd7"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_unit_page",
+      "line": 4881,
+      "sha256": "16952cb6143279825f70102aff008dcfce9b7b562384f0d273326f46b34e1167"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::append_unit_fact",
+      "line": 4863,
+      "sha256": "daf10ce2bc63a29b106fd7cf2298771550b02b1a505fbaec61447e83acbe09fe"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_improvement_page",
+      "line": 4630,
+      "sha256": "1a6dae91eb63751f5444f37519d3147c8a2ee688e7ff6f9ef818bb1458c925bd"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_improvement",
+      "line": 3586,
+      "sha256": "b92ce1a5fb167d193e6a5c152ae743b6528ea037204fc21758fb76c94f15f8f4"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_terrain_page",
+      "line": 987,
+      "sha256": "6f60c599e91a487d488b6348268bf534df422f729bfc6651ff155dc9369bbf65"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_terrain_special_bonus",
+      "line": 705,
+      "sha256": "1115e5b4ff7432c9f6dd4fca0fc873f85ddf7f160a0ea28d10e48d1c5d216bdd"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_terrain_improve_rows",
+      "line": 799,
+      "sha256": "3619c6e7c5abfa5c9a450342ba896235feccbe44ee2437fbb83eaadddd89cc07"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::draw_terrain_transform_column",
+      "line": 887,
+      "sha256": "6a5f745254c64eec74b8b8ccaf63690efc495b5fd2aab660a93d7d349cf14e0d"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_improvement_text",
+      "line": 4745,
+      "sha256": "b935516bf9e0982399fefc339f44c88bc0da84bd6b4928f7c02ac9d98f1a2428"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::add_link",
+      "line": 385,
+      "sha256": "4717e31442b85b54093b78852b18682a8b3286e1c967db124431d0f1f58dab24"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::update_describe_button",
+      "line": 235,
+      "sha256": "e4047521ecd7b2f3eeef2b48fa4d2124811e74bfe40b4002c6a32c56314f0ae6"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::clear_index_keys",
+      "line": 2881,
+      "sha256": "c62f2c88d6dbe8515fd33a7cc74d7de32cb75573a828078ef0019214061ca740"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_indexes",
+      "line": 3320,
+      "sha256": "387538dfe013117ff81a0f80b3c3013943bf36a9683cbc4b0b4ef205d5c1dd90"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_advance_index",
+      "line": 2940,
+      "sha256": "4bb96c3bd43c9fcb3f22c3bdb6fcb201b71c5f7c52361abf863bed7c6e698d76"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_improvement_index",
+      "line": 2994,
+      "sha256": "04a609759537200963cd973f419d881ec5c0b6385071decd07dc1b75eba6a814"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_wonder_index",
+      "line": 3049,
+      "sha256": "69e53e5c937759b640d3cb216c86002d42eb1a9fe09ef6f7aac75c0966dd13b8"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_unit_index",
+      "line": 3103,
+      "sha256": "26b459ff3c1735a10a3f17d06fc283d39fabdcf0d079c569af5ef96905839139"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_government_index",
+      "line": 3156,
+      "sha256": "e7b86e8a38ae2bb8764c202f77e6c13ce2610ca2ed73035cf1e2a83f3659eef5"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_terrain_index",
+      "line": 3208,
+      "sha256": "50256ad15c7df13b78749c76be33c1a9fa51fd0750b34e0a98cf6cff96f6a091"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::load_concept_index",
+      "line": 3268,
+      "sha256": "26caa7e95f50acbdfda12a13129ae49831f8461c02e998efae972b21e9bcbf30"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "PediaWindow::sort_list",
+      "line": 3338,
+      "sha256": "e613bae656b029ca2d87b622cb3dd96bf3eefdcfbc12c8d64a96c91d16c65b46"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "pedia_find_terrain_index",
+      "line": 1256,
+      "sha256": "8e8df2c0c4dd776e34f8763c21b85d23f87fd397efa92f40b7f73b02abe8ef3d"
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "name": "DibSurface::pedia_draw_tree_connector",
+      "line": 4517,
+      "sha256": "ad13d33ffd9ee615f3f74dc74b4d158032c4a37c7f45fb8f1275914df74cf927"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::init_defaults",
+      "line": 5951,
+      "sha256": "9006bdac1e8617be402017581ddbd8b738be652a63dbc2ffc120440d307688ca"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::construct",
+      "line": 6070,
+      "sha256": "1f7844d85a14690a725da76b9a1f625d7e172747adaea5d92baa8ca9c3e5340b"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::init",
+      "line": 6192,
+      "sha256": "f1ceff0b6cbb96819ef29b9d9514db81e9f9df4e8d2ddebfcef33098e9aa0810"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_font",
+      "line": 6361,
+      "sha256": "619ab763d26beea08316ef3f9e11671aa359bc5c2c2fc17826850fc8e492b7f8"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_title_font",
+      "line": 6378,
+      "sha256": "6373bac94079a288f8a8fbf9157cb5a4b24efea4ee586d66cbf0b413b35a5e60"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_list_font",
+      "line": 6386,
+      "sha256": "26875330be0a3fce043fb16c11f9e5e0d50f9d60b7aa4bbe1036bd5c37822236"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_columns",
+      "line": 6394,
+      "sha256": "4558e9dccaad15695caf7d711b125a90b0ea24f37ed4d43b0a07dd0d5ec77477"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_list_rows",
+      "line": 6402,
+      "sha256": "452ac50e948343350cbe29a86f2c6bd22067068852d48c1a8821096cf085712d"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_current_pane",
+      "line": 6421,
+      "sha256": "3c657cef043e2a3a333b90d38da9490b3bc8e48a107267bacc85a2e814e7290b"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_listbox",
+      "line": 6434,
+      "sha256": "1f4a66a62278179bf013a7112b199dfb756fe55efbecff5ce089ab289689dda3"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::line_height",
+      "line": 6447,
+      "sha256": "2378b5a285bdd90335f136e9dccd3bdaa65fc298bd5f86c1200fa7e6e62c9a5a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::button_width_for",
+      "line": 6457,
+      "sha256": "e304f478733d8a550526e2cae84d62a744976fd4927281386ce6bcdd1a3c86fc"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_title",
+      "line": 6469,
+      "sha256": "5cef15a5c3a732b587ea4c38642479fea79e93bf19dc148d43c801bf1af47e11"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_width",
+      "line": 6483,
+      "sha256": "727490d50a1eaa1024e9306778a518cb12e2796e308148ec2911c8f4bd756303"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_height",
+      "line": 6499,
+      "sha256": "d8591b387925002d4aadd67fc4969f5c8b2771b120934a7858ad9ee9e6b1f5d8"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_position",
+      "line": 6507,
+      "sha256": "79c3a8f2d4c5cc195289c2f9012ed2f8c7cd57985185fa60811d1c270cd46292"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_line",
+      "line": 6248,
+      "sha256": "109bd42a64b1cee800da6a4aa81d0e9da5327a8ed82c4cd2b687634702ad2b5a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_option",
+      "line": 6759,
+      "sha256": "176782306689721abd054605253c2fabed3700e976048606e9351f2781ad0a58"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_checkbox_option",
+      "line": 6835,
+      "sha256": "7ac49df22bfa24a0a9681846c717ad347bc286b6ecb04a4a7df9b314305c451d"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_button",
+      "line": 6916,
+      "sha256": "257054bd470826e6de779c7a4cfc77a0af28fa5656178d320f7ee97bbaa87764"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_default_choice",
+      "line": 6608,
+      "sha256": "a0853ade18efde165e98f9b3f104e9eee9eb092d69d6d0b5e2f73949961069a6"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::find_option",
+      "line": 6516,
+      "sha256": "0bebe690b4b32239c5c11d1a4b25b10560add520fc30a2625151b919bde451df"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_text_color",
+      "line": 6933,
+      "sha256": "4ece9abbaea90a18aa6133e04200ead99e2f8599301e96fc1fa0b6ad6b919136"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_text_shadowed",
+      "line": 6973,
+      "sha256": "56cdf43977163d1ea75d8ba6f4aea90b743b9816fa8e34d4a32a3b4b00b09d3d"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_text_line",
+      "line": 6999,
+      "sha256": "db6a0a8465d8200f6296c4494cd8b30deb41ec647d0eb5d4aac0ccb4a9439717"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::has_text_lines",
+      "line": 7007,
+      "sha256": "4dbe4855d9e8238667f9a890cac92ad8e207f6cb76ca515a76fa76bb397485ed"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_wrapped_text",
+      "line": 7024,
+      "sha256": "cf9c6dda64e4650df0c45de44e5f510cb7e40127399780c6a7f9234cc2f9d24f"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::option_group_index",
+      "line": 7159,
+      "sha256": "d5a5d6810c2834c2626bc8398c1e7f0e81d545954e08e1f5021612b81f575e2f"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::option_at",
+      "line": 7180,
+      "sha256": "e774d181871deca2560ab2cecf7a3968d4186d59140d3d2c7abe7341089e8e34"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::column_of_option",
+      "line": 7201,
+      "sha256": "56534782991ccef180873f1a7cf13ef7f58d7f7c70743ec1b54c739f859c4493"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::layout_sprites",
+      "line": 7213,
+      "sha256": "44ac4e415d4e8e2a1653feabdf9a508fab3c46aca35717d836eb48e765034bc3"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::layout_list_pane",
+      "line": 7256,
+      "sha256": "4a6fc791234d8530f1c2c745de06480f75c85b7d8c2b86324c9c6c015b315354"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::layout_buttons",
+      "line": 7323,
+      "sha256": "53614b07dc9bd396ccf40258074eb7dd55354a440710ea6bf3ce6cded91b402b"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::layout_place_window",
+      "line": 7414,
+      "sha256": "5703afa9f5a9baaca9df633427fd8f55d2569533dc0bc15e20b31a6ba4330ce3"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::compute_layout",
+      "line": 7461,
+      "sha256": "c4d4580186617119644cb7204b1c44e949f7bf9a1dbae8a69bdc701d24f11b08"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_option_cell",
+      "line": 7649,
+      "sha256": "e3c028892d05359bb380e00957817e103c5645747b9e136b3fb08c6103a16aea"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_option_text",
+      "line": 7717,
+      "sha256": "394a66f68489d2e1387857e00297a1f966bcc147ff82477dd81c8670f566b084"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_option",
+      "line": 7746,
+      "sha256": "ffe9c09d2b5c04b717584e9e88023f6531ea25410505546ad5b3ade6c640c53a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_option_list",
+      "line": 7821,
+      "sha256": "f46358d98779479c2b762335bb85b097284b29286be8bcd7b509c041b0f96b9c"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::create_radio_group",
+      "line": 8179,
+      "sha256": "c681cba40932a6a13fc4e453fd080d9f8fe241128d7d4bb53b01806e136c74a8"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::create_checkboxes",
+      "line": 8228,
+      "sha256": "9afd15a8d1638f6eb8f7e09fbeedab46ae8e7612bc56abc835f3aee82df9b811"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::create_buttons",
+      "line": 8503,
+      "sha256": "7edb8660884f49601484a5f79852985828a0563270e39b6303eef8882781545a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::fill_rect_bg",
+      "line": 9362,
+      "sha256": "b643bb5ef519fc8c06a83b93c03bc145ac0f07cc5edd83aa8e8b40ad3d22122f"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::render",
+      "line": 9403,
+      "sha256": "8eac22878ad187251a731d3dd60dc8eee1d364517c0720bd4b0029dc42e2f402"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::draw_text_default_font",
+      "line": 10021,
+      "sha256": "3642163d09786b67c30d69bdfe03974e3e9d1b4d75ba655ee947514be00f26b1"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::option_icon_width",
+      "line": 6303,
+      "sha256": "e7bf12eb91e01a49fe8aebda39cbb77640f202c3477c8ce29a141ce8ac32510f"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::edit_row_height",
+      "line": 6351,
+      "sha256": "15bcea10f1dbce8a88797a2d57467926adba105ccede5d4e9759f7af7472af1f"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::dialog_option_row_height",
+      "line": 6310,
+      "sha256": "c6b32eba2fb68f746ecae2c7fd3af67be5d9c43133610bc1ed4a09b87affbf0d"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::dialog_list_row_height",
+      "line": 6334,
+      "sha256": "f91d9ad34052b037b8a80364f0ea31915a0f005f7e682b90a91931ea95bb16d7"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::find_sprite",
+      "line": 6534,
+      "sha256": "ac396cf4e9f3ab74cb255ebc2e29906cdbd5bf32c89188f17471044fcdce3fd7"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::uses_alt_text_color",
+      "line": 10014,
+      "sha256": "b0a9accd4ebfc86ac2de19f8ef53556c0079ab742b4bafe4b476755a30b7b8da"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_text",
+      "line": 662,
+      "sha256": "fc8850446b92a6bac6ea86716e625c708502b23d13eeab04425808ddf303b219"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_text_ex",
+      "line": 446,
+      "sha256": "36f45e53cd38d26b37d4c549dcafd9097836b5711591dab51aa97403f58569c2"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_text_section",
+      "line": 9861,
+      "sha256": "2753aed61624021363e8933f810a25c269c9c23ab7f6272858f47cd95ce94901"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_section_keyword",
+      "line": 9688,
+      "sha256": "2421f70d7c5e1ffd7bd9d2bdfc824f083c39d47ed8f8b2c7ea5f852f19d05663"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_game_section",
+      "line": 436,
+      "sha256": "0975310ffb90091d41d45afd5ae11de4519c50408da5bd824ee7cc11785b8c8a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_edit_field",
+      "line": 6849,
+      "sha256": "780e29405be236256af60362ed3877cde4c5f613828f8ccf4f8da438335a3138"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_list_indent",
+      "line": 920,
+      "sha256": "3afcb77cb314740dba288a2eebb811186eca093e5a8519bc349f7fff53491869"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::set_option_draw_fn",
+      "line": 6673,
+      "sha256": "51cda56f77c6f59612d6428836175e45f5169048de03afd2d6d8f78d52f172e1"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::create",
+      "line": 4696,
+      "sha256": "7b4f8ba8fa5a19edc4845400cdf6516e27f008c61ba6ff41f08496ebf35a6d28"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::layout",
+      "line": 4530,
+      "sha256": "a31679c1b89958b50a2d0f784a39c861617ab9f2b353148f3e9090df679db2dd"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::draw_caption",
+      "line": 4447,
+      "sha256": "9d67fd2b0d4e5cd4aa04d8dd30508f09971b5c48f187307ba87a104befb446a1"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::draw_frame_borders",
+      "line": 4258,
+      "sha256": "a792a23ec0aa63e002e3ccec478052216c2c42d84f4073dc9d4aabd63b63d468"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::update_timer_text",
+      "line": 4328,
+      "sha256": "4df4515885503d7aad297e8195391e9fd52624bdab2f9215c05a6b70acd327e2"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "FrameWindow::append_turn_status",
+      "line": 4378,
+      "sha256": "4b08ecd0c7c48b2e0c849bceaa618029bc9872bd1ab082da8556d2d6642948f8"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "PictureWindow::open",
+      "line": 753,
+      "sha256": "07023334bb9f8767c6e2e11380c5517109d744d571dd60cb5791afe4fcd1c6a3"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::create_list_scrollbar",
+      "line": 8281,
+      "sha256": "283211bf2aef020a7041df76920d6c5c62d4ec323c144ff973bbd2e194f6d29e"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::count_group_options",
+      "line": 8018,
+      "sha256": "83a3b79c62518930d3c493a39b4429af8aaf857fd2b923c4e1ec537ed5415067"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_game_text",
+      "line": 928,
+      "sha256": "87b09b8dc4bfd1868ee0e2182e4a83ba1dac4ca968ec12826e9473a2adc721f8"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::add_sprite",
+      "line": 6707,
+      "sha256": "e2ccbd77c479b1193ad98206ef16aefa8e2c56c5f230fd866f0d13df2ea6b95a"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dialog_set_colors",
+      "line": 5899,
+      "sha256": "34becd8ec1c57ce7d3430248fff2d378173be44c41c0ca04c2fb70238b100515"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dialog_set_list_colors",
+      "line": 5918,
+      "sha256": "649035d91d824267397c421f0bb8661ee1cfd930a51d1c8c07491477f5aa8290"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "PictureWindow::blit",
+      "line": 839,
+      "sha256": "e90110fe0b483da3c15ba24a4c1c7057d13f49c2eb3309165160ed7cbca8019e"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "PictureWindow::blit_at",
+      "line": 830,
+      "sha256": "5afc05b8ffbcf8d4d8850ce31283846845b9dc4bf263a8b19875f15098f6de63"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::load_text_noflags",
+      "line": 936,
+      "sha256": "2bb112b86cadc4c5b918953ecdcc48e571c92ff8762761f47cb571ef564b7302"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "Dialog::column_of_index",
+      "line": 7893,
+      "sha256": "7b6c9faa2e5895cb19d44c00651e23bf910b604c3f38d3f098b240e8ad5c2e13"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dlg_checks_clear",
+      "line": 3982,
+      "sha256": "5697bf1fa57058be7d68471507887458f69daf4c114d18ae4b992b21fe0d4a98"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dlg_check_set",
+      "line": 3990,
+      "sha256": "ebf60d2d5e1e279b1e22ddbd15f400853afadd63e70b342f13d8d771f6b602eb"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dlg_check_get",
+      "line": 4003,
+      "sha256": "78c2a57d66f8a68ee7bf8d9138c32986384ad06167b0862919f5ae9ec0f70060"
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "name": "dlg_check_set_bool",
+      "line": 2304,
+      "sha256": "20a172b8e888e0f29d65283148e615487ac1845ba9486dcf3fa06c189b46049c"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "PictureWindow::advisor_add_close_button",
+      "line": 323,
+      "sha256": "cb81f8d86c86958c06b657b5ac1df8cc85f70754ff490740d4f479bf133f14f2"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "casualty_timeline_show",
+      "line": 3790,
+      "sha256": "33e3d1f4e4d73ac3f698abe35f7132ad3183c78ba9e36bd45a456fc936de1693"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "powergraph_show",
+      "line": 1849,
+      "sha256": "f92eb601cf68948729c3a00b3a868b380c4b24b3de2496476a5f1b8f610344d1"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "historian_report_show",
+      "line": 2064,
+      "sha256": "a39d8572e741f68e9fcda8ee6f58c1d5e1ffe4f887e69adef62380de8034133e"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "casualty_timeline_draw",
+      "line": 3613,
+      "sha256": "de60d8c89ad259eb6aba21fe47f93ac605c1cd5d1252dc8315794bc702d47f61"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "credits_draw_scroll",
+      "line": 3324,
+      "sha256": "3b0f95446c214f8761cc0e053c7dc703407b50b180a7af21d5dc39e180a978dd"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "DestroyedCivsWindow::draw_entry",
+      "line": 6116,
+      "sha256": "a5af0858781a580492f852518fb4f7175e8a4539229f93bd1eb76e7d1f5f0f98"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "DestroyedCivsWindow::draw_portrait",
+      "line": 6167,
+      "sha256": "5b18b157b6172c09937ed6b19b4d4cb0fe1b2777ea50a1ca91c41d30bc4bdea4"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "CouncilWindow::draw_background",
+      "line": 6530,
+      "sha256": "659414cd424cd8e035d57748505078271b76b32977d4752e51413df0397d9845"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "CouncilWindow::create_buttons",
+      "line": 6626,
+      "sha256": "073ff69d24533ba84401c2d33e139312e9cc147889d0b8bbd8151ab95cc7627c"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "CouncilWindow::draw_speech",
+      "line": 6829,
+      "sha256": "053179ba12ce6ae50ac5f4a9a111b530dc717b2cba7fcca01448c1e89f69abaf"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "foreign_minister_show",
+      "line": 1552,
+      "sha256": "6f6b175051a8c9b80423bae68adaa2b4b67b7cc766f106f765756b16b91bfb8f"
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "name": "foreign_minister_draw_civ_city",
+      "line": 5828,
+      "sha256": "bb4f48aef9bde29972f0652a3950181996474eae0276940f034866497d95fa3c"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "TaxRateDialog::paint",
+      "line": 247,
+      "sha256": "dc2b83bc6045476348d35b3c75d90a28eb787e0e4df07df98cbc7a9730024e3f"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "TaxRateDialog::calc_totals",
+      "line": 199,
+      "sha256": "99fb18bc3ea372d192ad8a57c861fc191324042b0c2705d5275065a9d6bc24e3"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_button_change_add_options",
+      "line": 15797,
+      "sha256": "a112fcc619792b81537058419f547efd6e9b80d3560de2da4f9d60243d70ef4a"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_text_append_build_turns",
+      "line": 15516,
+      "sha256": "2d22d022031fa9e9483231e43ee37b6beb53421d9b85da212fff23ef2e26876d"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "TaxRateDialog::run",
+      "line": 349,
+      "sha256": "656eb76a82b9972511afbb5f64ca5c2786d5892a64eb6dca13eba26aba0b882f"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "taxrate_balance",
+      "line": 6,
+      "sha256": "36d99799a065b7ab516e21639c5f0279bfdf713d55a40b67935f88ba6bd5c0b8"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_change_draw_option_icon",
+      "line": 15680,
+      "sha256": "95b8793906a84f3410c5e60e1afd444ffca0f63fa1c762cf2ed50a2060af3f39"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_shields_after_change",
+      "line": 8529,
+      "sha256": "0cfe577e2216a2098e2936a1bea15b4eea364cd723fe18f827dabe09b7423c97"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_production_category",
+      "line": 8500,
+      "sha256": "5309a5ed5c274de4192e58d50da91813721d84de52468410af7fe845e3321595"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_split_trade",
+      "line": 9660,
+      "sha256": "2158d6f8ae88dab80f7af8d8a0fb130656b5bc5cede2132b415fa55a0074e765"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_count_specialists",
+      "line": 8573,
+      "sha256": "30508cb5a0b79723f2732f70f5d1e0732cc839e44bb7af987589aed58af817f6"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_specialist_type",
+      "line": 8558,
+      "sha256": "aaf229b6c18db573dbabafe0abc83fd31de03be0ffdb06b44bf710cbbef35692"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_population_units",
+      "line": 2124,
+      "sha256": "106d5560af5a9ba95bbd7058b479f64ef296f60c3a0dc8c32b22fc192e83de52"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "wonder_get_city",
+      "line": 4084,
+      "sha256": "6ba5548b4fe1d21a82ab62246b7210fb7e0530076f4b5b9fc5e3eb42b6212cc9"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_at",
+      "line": 2159,
+      "sha256": "4790eadf886d33c2814eb32ad69247efd9727367801cb56e0edfc87940b6f4db"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_has_improvement",
+      "line": 2212,
+      "sha256": "e608e866dae228e81293c128117dae21a45d81be5d9424ea4709be16e4c304e3"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "wonder_is_expired",
+      "line": 4059,
+      "sha256": "f10fcffab519becbe2baa6219c4afbe6221d2d61b3150a4f424a9aa7dcbc094e"
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "name": "city_can_build_improvement",
+      "line": 7542,
+      "sha256": "ee8131a8cb5416bf003808ac42c62c996fc846ef48d9d3ea2aac8df81c506a04"
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "name": "minimap_calc_layout",
+      "line": 76,
+      "sha256": "fec0d1d86cbb819528d9624fa6f5f4d7391f0e2f0f1531e1917dbd734154eed9"
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "name": "minimap_tile_to_screen",
+      "line": 141,
+      "sha256": "19a4364a70cbadf0f83c8fe223500c4da8cc6a36f6701a413ab16209d7675e06"
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "name": "minimap_tile_color",
+      "line": 161,
+      "sha256": "09d0c67951e5f02b6ab9591adf18dce9dd08b4102b5c4918a6ef0b3b23fe26a8"
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "name": "minimap_draw_view_rect",
+      "line": 207,
+      "sha256": "ba9d2850f136690f579a740bd2a029168456ad05e755e9a234b8fe7b700cb0cf"
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "name": "minimap_redraw",
+      "line": 234,
+      "sha256": "363a9f45aea93b8de25a23364d76ca01cd21f3ef2482f73e951a865456cc22d1"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_info",
+      "line": 17972,
+      "sha256": "1772ecb3c0e50c3284fa3ec1f26b2c68647a475d6ad74a3f7f0d4f7ec3154fdd"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_civ_color",
+      "line": 17835,
+      "sha256": "70737f797a51f26df8a20771cd294255fc665bf079a712fbde98b7f35a7ade05"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_end_of_turn",
+      "line": 17858,
+      "sha256": "f370dcd9e9914b34141259388f4a5972bb1d999eed0cfe75d2ce6764bb4de35e"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_cursor_loc",
+      "line": 17904,
+      "sha256": "a5b09b6398acc93032e5fe5f1a251cb0b3f073a8ecd0e1962a41616eb7dded14"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_append_unit_orders",
+      "line": 17926,
+      "sha256": "41016a64b0166f4f5a7e8e537f1e3b08898f297048bdb59cd1cec3527d4b06f6"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_active_unit",
+      "line": 18276,
+      "sha256": "9fc874f0f5ef9c98fe00e30fd3f69e6e3caed5274d7e0d986e8028eff5bcd514"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_tile_info",
+      "line": 18180,
+      "sha256": "45efcf19d6610d12929547e9b8b35f6f323f5235b73828978bf49c28382622bf"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_stack_unit",
+      "line": 18102,
+      "sha256": "49819fab7e3aa3d90f9c2c8a5d3ac89a0c1967089e2fdff55e247009461f8e41"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_draw_unit_panel",
+      "line": 18353,
+      "sha256": "e00353561e2986af8bfa6e5b241e0db70a626ff8cd7372bf1d4d5933983dea16"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_redraw",
+      "line": 18487,
+      "sha256": "674cb2a6c8268da468c3541fb0faae2e0a813344a5ea90d567d6ea9f7d253b5e"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_calc_font_sizes",
+      "line": 17781,
+      "sha256": "bd8eeb66bbfc188df9e18fe11a9cd0a683d6eba01c0786835c2db6002602ee71"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "status_wnd_repaint",
+      "line": 18530,
+      "sha256": "b97cbe8c90e81caa9e605c83ee8e76d7b66e75f008bd3968aa1cea81568efaed"
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "name": "game_turn_to_year",
+      "line": 3905,
+      "sha256": "cff4d20432881530296e56a5dbbf6a260c9c96148900281ef267af3b4898172b"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_choose_research_dialog",
+      "line": 5993,
+      "sha256": "d66d7085795ce063c74ac1c7d13c537b417305789fce224fadf40d15ff8522f8"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "research_option_draw_advance",
+      "line": 5651,
+      "sha256": "72a5fd2d60897beb4a8f4853817328b134614bc98532cdee5b526f8835747ab9"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_research_cost",
+      "line": 6255,
+      "sha256": "188f1440d0fbea245e5f0f6b2e8c2e9ef2a730d0b780c4fc1de80416fa55b529"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_improvement_upkeep",
+      "line": 6784,
+      "sha256": "c6268a23d851b4d445e11818ebb858ecc752775115d4256eaf395a3c8f014d98"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_total_population",
+      "line": 2660,
+      "sha256": "7df923bfe7fa4f508d85ca718c0cec7be6e2edfd6e993141d67fee0507a5dcc4"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_spaceship_launched",
+      "line": 4234,
+      "sha256": "c09700505af61f6010966c83c30bae31676a9d93d96d69773bc30687d5ce11dc"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_has_wonder",
+      "line": 2932,
+      "sha256": "52adfff32d447d16167fb0e6d241963806c729d630c1d911a2c70ea9525670e1"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_max_tax_rate",
+      "line": 8,
+      "sha256": "a1ebb20cd51a73cde94be74541dd34348d566dbed9e4c7939f4c3f862457f10d"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_can_build_unit",
+      "line": 5532,
+      "sha256": "3ecbc60624bb0e0bc5f55d5a35e2af9fd61b1342c64148deda80b18ae72f4773"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_can_build_wonder",
+      "line": 5587,
+      "sha256": "9086eb4716fc7fa0e5d735ceb593361e33b4c62e9a5f468dc7c9240ce59ac282"
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "name": "civ_has_advance",
+      "line": 4987,
+      "sha256": "2fc97f0562ce33ee333c8cd8740e7be82325f6d1028dcba86b7744f5eabc56f8"
+    },
+    {
+      "file": "src/auto/controls.cpp",
+      "name": "Button::create_with_callback",
+      "line": 749,
+      "sha256": "8478d22dc46223d9b6e1a901e125a32103b5acaff0c4a8d30834f555d14ae989"
+    },
+    {
+      "file": "src/auto/diplomacy.cpp",
+      "name": "diplo_attitude_level",
+      "line": 4174,
+      "sha256": "2a61b552948718fc106e1ddb1ffb04c7d9d256a9352483bd8402dad7be963aae"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_set",
+      "line": 28,
+      "sha256": "547ae437c5d3ea4a3e44e11e611d9dc940e9550a1d5c9bba69ec62465fcb4fed"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_set_xywh",
+      "line": 36,
+      "sha256": "9bc65c21f6921f2e218876a8e37a4e5e79292d6bd4a5ffe231ba73f4a5808e39"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "gfx_zoom_scale",
+      "line": 1938,
+      "sha256": "770b20d2c3403435c47988a8b79fc92c9717ab9df1d64c102d28b4dbc85d1dbc"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_inflate",
+      "line": 2657,
+      "sha256": "e93e2ab81b0324868b1650c4fefe8907f044b7d8c676e7507a7bcbbb5f1f8b36"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_width",
+      "line": 6,
+      "sha256": "512c993f035fda1ae862467c30b2c07dfcb046387f91d9799bce48afdda42fdc"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_height",
+      "line": 13,
+      "sha256": "97aa095db6d6da198beac924ed89f597624549217a0a8ff5029a342ccedb475a"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_deflate",
+      "line": 2649,
+      "sha256": "0c565b972fc33bb6eaf4cfbad8000cb37e882a5be325eedbca4787500433aa9f"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "bit_index_split",
+      "line": 6454,
+      "sha256": "3ae0765f5eb81320e361ee742db02ddee7210ec9f4f78a3a83984ddc750f8e5d"
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "name": "rect_offset",
+      "line": 256,
+      "sha256": "4adda80e35163c2e9ba0d494b05c0b9d8678f0568f6eb380dcf38de5b58b2485"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_owner",
+      "line": 6947,
+      "sha256": "9c547afd5cbf989332b36b4d4a9326d487039078bd1c33b544315d672a6c9377"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_city_owner",
+      "line": 7063,
+      "sha256": "2f8eb68a70afa73d4af8ba9ee311780dc0ef0992f734e85c6a7b2feeca2f2ec7"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_unit_owner",
+      "line": 7102,
+      "sha256": "094c7f5d2e985b8fcdc95f1c7f2b73aab153a069cdb73abd0afb1a813895556d"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "map_in_bounds",
+      "line": 6,
+      "sha256": "fdecdeedeb35a39c1b4c1c4ac13e2d5047b0ff79563661cffebfbf6764b69683"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "map_wrap_x",
+      "line": 6445,
+      "sha256": "0b453f6a64318c4bf97b2a7cbf9005d1adb6f829685d19572154ff395fc6e070"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_visible_to",
+      "line": 7022,
+      "sha256": "326d0f8468506ce99dc992009a3b25c0cb1ce09585ac57423ccb717a2dc8e72a"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_is_ocean",
+      "line": 6937,
+      "sha256": "de09d58c4183fec93c3c9a90f5f809a6cd5f27301a167dae9b052f88ecafb6f3"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_landmass",
+      "line": 6969,
+      "sha256": "dc907427f12837c6d48a7e2efa03d72da7e31907bd720d38ef19305880285bbd"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_improvements",
+      "line": 7281,
+      "sha256": "fcd48a3f793354f69585b1bb2c60cd44ca13ac410daf07fa43fbf8fd1fa6e428"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_terrain",
+      "line": 6927,
+      "sha256": "db221426082938ef55fcab8d692924d608e59e92848159c578133997427dab0f"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_resource",
+      "line": 7151,
+      "sha256": "a9a9bfca666c3afdfee53cd5090f33f2e434fcbc89aa4e2cdee6fd6cd0b71f08"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_has_hut",
+      "line": 7195,
+      "sha256": "68a8b804fc59938775e445d6f3485798d8ad5156a8f2f2ef7e77199a9b42783c"
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "name": "tile_first_unit",
+      "line": 6521,
+      "sha256": "faf851fda19dc31db5d9b4fab4012b52b9455bd97ba42ab7f63306a0144a2405"
+    },
+    {
+      "file": "src/auto/support.cpp",
+      "name": "int_clamp_c",
+      "line": 276,
+      "sha256": "5d30b99bbf9cbb0ce5f9f42776864c8aee28f960af4edd348e2741476c1bd464"
+    },
+    {
+      "file": "src/auto/support.cpp",
+      "name": "int_clamp",
+      "line": 535,
+      "sha256": "9908b12b0791d83f63c17842c2fb95407297cc04614f19509e490ab50b3129c3"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_trim",
+      "line": 1345,
+      "sha256": "3875866be18f009760f23a95b64be17bdbd4203cae7a3f866584d5ef3c5c1adc"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_comma",
+      "line": 1127,
+      "sha256": "9b0ef23327f6bb1de8e8c197cb2099f8f0514c1317b656deb22d31aa3919a04c"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_colon",
+      "line": 1135,
+      "sha256": "d5c84abc65ccb23b978ca1432be6b66206928ce57efca0e5ea51bafaf797cf2c"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_period",
+      "line": 1143,
+      "sha256": "84205c020d3f7761b0f2262b87c4970f9d7473cb2da66cba3170969b5d0aad91"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_lparen",
+      "line": 1159,
+      "sha256": "4d69ecd5f4fde8c943bf3f5c68034a850df78ebddb0eefd9c351e4813640ae15"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_rparen",
+      "line": 1167,
+      "sha256": "e4480c80a09b90a898edb87597a177e02c876b8feb1dde45b3bd23c916dc5b7f"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_clear",
+      "line": 7,
+      "sha256": "efd43c05862ee47790798d9c9407956a4c248eaef64ef0632bfb83bc5b694fc9"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append",
+      "line": 15,
+      "sha256": "9d4808c126e83c9ca95c53c995fe7abd1a3cc3bd49a57d9b8d3452db3092427b"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_label",
+      "line": 23,
+      "sha256": "6337da365a5c8d54668d21849da742246e140296086735c3a5622b030e9e9c88"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_space",
+      "line": 31,
+      "sha256": "876beaa5fb39c83b6b1ff66ea61956c24c3d6b0d8807d1b082db68b9bb35f4c7"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_colon",
+      "line": 39,
+      "sha256": "0c2b1d4311f4067fcffd9588b14e122dc91b06452c616bb643c55d6584644db9"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_lparen",
+      "line": 55,
+      "sha256": "a525b60648378bf6190ec9b1f532482e5f9d2bd9293e6607b000caa3c8526e22"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_rparen",
+      "line": 63,
+      "sha256": "75f12b6fab856d0d5b7f764b38b64368f1e71199e1a1923a67d4b9312e19732e"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_string_id",
+      "line": 71,
+      "sha256": "b7680c98d24e48b8bcb18c225de06f41c688776f97f4a98812cc8d12440dc2c1"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_int",
+      "line": 79,
+      "sha256": "7f23527cde5d6f5bc35014c7331d796c313cb9d380e7a999ddc8d2bcf637bff7"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_comma",
+      "line": 212,
+      "sha256": "8fce8a0e3284c77096a990ca8878e68f9c41f607f407cf70947d74fec49c94d2"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_period",
+      "line": 447,
+      "sha256": "ad228215a02d890c7f058e06ac0a1f3e6d52c576d1f5f5b5d28c86384b23c4a8"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_clear",
+      "line": 1099,
+      "sha256": "5ae9024c46dcbe7c18b7aa81eb42ee4d5e98ff3e7837469ee3d20d2bebfdae93"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_space",
+      "line": 1107,
+      "sha256": "d24fcd21c78abdeb3aa4be45b0507c3a6c16c4737c7cbb026e15db69f64c87c2"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "label_string",
+      "line": 385,
+      "sha256": "b747e7a3db4f3f8242962c2096eebf8098b5d71f67e09f52815639eb01106f05"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_population",
+      "line": 479,
+      "sha256": "030f537238de354fe50ea41a59472a79f4d0dd86a2b038d459b2d5dcace44155"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_population",
+      "line": 495,
+      "sha256": "a6b8ce16f60b43f2d75271398ee4b8832c82efd2b1ebf7c39c70c168a51f5895"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_long",
+      "line": 1222,
+      "sha256": "fbf9b26c15ef888c3e65dda43ff4ba3aec186627cf8adcbcd1f3d5f6a942c388"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_year",
+      "line": 725,
+      "sha256": "b460a0e46be4ba56def91fff1c436e387e3de9970745981fa05179138c242409"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_percent",
+      "line": 1151,
+      "sha256": "c1204285d582bc1ff291b23210b2253df6cd8bfe02ad6f3ed8fd57dfab047e36"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_concat",
+      "line": 1202,
+      "sha256": "27175c3ac17dd878a98dfab2ba1648cb5fdf1dfec9495bb1fd903995d8344abc"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_append_gold",
+      "line": 1233,
+      "sha256": "e30cc54f1510604e6a2830491f1db4173d35fcebf132d3131f5abe601e085ff3"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_year",
+      "line": 238,
+      "sha256": "5ea88ba9e9d6996ad2b84546cd93d62cdef3a9875a90a546a69b75ac5f123aec"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_percent",
+      "line": 47,
+      "sha256": "097a49d1ce5b8821148447059e21da8e028ef8e6863aa824494a5c706cc93958"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_gold",
+      "line": 471,
+      "sha256": "e15e76b439b5009333d317380eeb9ad8e030d15212cd42d8d02c9c22d92245c9"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_append_str",
+      "line": 97,
+      "sha256": "e95e0adbb46b514cdbbfeef1bf310e6ee2bb8c48ef6930f2ca9764ff8955b4cd"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_read_section_line",
+      "line": 1068,
+      "sha256": "54cb4699f7921d8c261c5bca460711c2b57f4f888157348b345c981687cf5af1"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_next_token",
+      "line": 997,
+      "sha256": "1b8fae899ee9b4700bcb1ee86a41c0885493529ec253b9fdd11789c4d9a1d2c1"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_next_int",
+      "line": 1016,
+      "sha256": "4a88bc20a14c33f3cbf138ac12a30baf96ad081716b9e0de40435639eff4078e"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_parse_int_prefixed",
+      "line": 1733,
+      "sha256": "51ff6991958f8ff9990f00e9992b78318d15b41a8aa92b7f06d00255dac89cf0"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_parse_hex",
+      "line": 694,
+      "sha256": "dc98fcc65660deae18f2f96447794777e9cc66957825c1770e313bcf21195b47"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "str_parse_binary",
+      "line": 1838,
+      "sha256": "c285ff6125e24742925851dfa137d8fc8adf2e2b15694b3276760d717ca7077c"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_expand_vars",
+      "line": 246,
+      "sha256": "ba21eb51627a27e828827c15fca12955294702c11cbe6766274f41aa245f2c5f"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_set_string_arg",
+      "line": 87,
+      "sha256": "4b1cfc5e1f1808a9cba14d02f45722bf17d92e4473a4feb5646972c1d4a9e493"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_set_string_arg_b",
+      "line": 220,
+      "sha256": "952fafe1aa36ce276cce6b3931b9aff734715851355d0b75d3f1f8dd2cdee283"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_set_number_arg",
+      "line": 230,
+      "sha256": "c71f2083c594f6f7bf39beab3a0cc706774e106ac3d06311784974228b62310c"
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "name": "text_set_label_arg",
+      "line": 312,
+      "sha256": "f8652fe440c781cbbac9308bc34d943a576d520eb80a7777a50a6a1bba8a02f0"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_stack_first",
+      "line": 9397,
+      "sha256": "9e97d8b8a67fa75acb0440c57c3e0a18f4a37f193678c5f7b4e648068881dfd6"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_stack_validate",
+      "line": 9178,
+      "sha256": "9224d30f6e87db56ae9c22bea7e6aaf0959df5767076bebc22178ad0e2eb8bbf"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_max_hp",
+      "line": 9277,
+      "sha256": "18e45862a969ea9cdb551a22061a29f7649e72dac0aacd493b3ddb01f15166e0"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_hp_remaining",
+      "line": 9284,
+      "sha256": "cbe88d8ef42986f3dcad7e03200c43b415d931d4245f726c5f6fa6f78237825f"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_next_in_stack",
+      "line": 9373,
+      "sha256": "c6293a88d5fe2d2cb7c14211b776479b4baed6a8ada665645fb89df6f363d305"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_home_city_name",
+      "line": 10624,
+      "sha256": "d8c72f975969feb57c3a70d12a39e9a591f75230bb4cb6ef96c5f310e64ef349"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_stack_sum",
+      "line": 10038,
+      "sha256": "f4bd9e25a326718a46d1cbbfbb66f1f8c4cd7f26dca45e2eba3c5d3c66d7a31c"
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "name": "unit_max_moves",
+      "line": 9301,
+      "sha256": "cda34399534c32ef5a4dda328590ba52171ce1b4f3dc39d3a1e79870d6ceacf9"
+    }
+  ],
+  "sourceHashes": {
+    "data/native/fonts.bin": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb",
+    "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+    "src/auto/civ.cpp": "cb8a2d599e80b1854196e17982d5a76b43ff0ecdd9a18bc5634f0faf2c8363fb",
+    "src/auto/controls.cpp": "1d48e0cf673029c665487b7f7181f58d5329bf532c7f372a5aa5a30d95856ab2",
+    "src/auto/diplomacy.cpp": "63b7df3dcdaccd7f72e01d6525d4bc23e2292b516c2fa22c41ecffa0bb3ac1af",
+    "src/auto/game.cpp": "520653472c2478806bb0e2ee28502eae2e410ac3bc2e6eeb3829036d0120aef7",
+    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
+    "src/auto/map.cpp": "132d846fd28bfdc8e45c4dec654665bfd47daec7d1050ccfec8c533feba12756",
+    "src/auto/mapview.cpp": "0b65340871630a2c9ebbf6f07c8668383e7ef25b555373244e7cc6ea97168b67",
+    "src/auto/pedia.cpp": "c15dd6915075b7943c17b5fdf0c384dae2936d05bb1dd05ee662d63a87986c7d",
+    "src/auto/reports.cpp": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
+    "src/auto/support.cpp": "84c9680d9df3983beaa1daacadf6595e93c5a3fe6b31af1d836f08ba423118a9",
+    "src/auto/text.cpp": "e24fdb3cd8f7301527f9da5a2bf411cd80f714bcc175e9d16ce820bc6813bef7",
+    "src/auto/unit.cpp": "c3a4804c895662a5a61cc5b9319a74295cbdf74ca0462d042755865d69cf3790",
+    "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e",
+    "src/game/fixups.cpp": "95bf0a016aa6263397b694485216ec14e512875a693d23e6bc4f117a8e77ca29",
+    "src/include/civ2classes.h": "8b0f0959ec6e32c52c337ed659ce0692fab47edd14fba15976b9ada706f7e47e",
+    "src/include/civ2types.h": "19f30204d36ef9715a060015885fcc50fa53ec7272312cd83dd885e307f5a5c8",
+    "src/platform/controls.c": "72464a5eac161611db816820846b9f77081c701bd60456ac061a18e32d458adb",
+    "src/platform/scroll_theme.h": "db828ce347132818bea44d6efbb708c4bd136deee1622f97b408a7301a1f5776"
+  },
+  "bodyPolicy": "Unchanged LF-normalized C++ bodies with source #line mappings; original class layouts, MSVC x86."
+}

@@ -1,0 +1,347 @@
+[
+  {
+    "id": "pedia-advances",
+    "title": "Civilopedia: Advance Index",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-advances-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-advance",
+    "title": "Civilopedia: Railroad",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-advance-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-tree",
+    "title": "Civilopedia: Advance Tree",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-tree-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-unit",
+    "title": "Civilopedia: Riflemen",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-unit-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-improvement",
+    "title": "Civilopedia: Library",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-improvement-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-wonder",
+    "title": "Civilopedia: Pyramids",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-wonder-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-terrain",
+    "title": "Civilopedia: Forest",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/pedia-terrain-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "powergraph",
+    "title": "Powergraph",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "powergraph_show"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/powergraph-proposed.png",
+    "proposedSize": [
+      1200,
+      850
+    ]
+  },
+  {
+    "id": "high-council",
+    "title": "English High Council",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "CouncilWindow::init; draw_background; create_buttons; draw_advisor_frames; draw_speech"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/high-council-proposed.png",
+    "proposedSize": [
+      948,
+      604
+    ]
+  },
+  {
+    "id": "foreign-minister",
+    "title": "Foreign Minister",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "foreign_minister_show; historian_report_show"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/foreign-minister-proposed.png",
+    "proposedSize": [
+      960,
+      640
+    ]
+  },
+  {
+    "id": "historian",
+    "title": "The Historian Reports",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "foreign_minister_show; historian_report_show"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/historian-proposed.png",
+    "proposedSize": [
+      960,
+      640
+    ]
+  },
+  {
+    "id": "casualty-timeline",
+    "title": "Defense Minister: Casualty Timeline",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "casualty_timeline_draw"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/casualty-timeline-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "destroyed-civilizations",
+    "title": "Destroyed Civilizations",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/destroyed-civilizations-proposed.png",
+    "proposedSize": [
+      1280,
+      960
+    ]
+  },
+  {
+    "id": "credits",
+    "title": "Credits",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/reports.cpp",
+      "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/credits-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "status-panel",
+    "title": "Status",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/game.cpp",
+      "status_draw_info; status_draw_unit_panel; status_redraw"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/status-panel-proposed.png",
+    "proposedSize": [
+      640,
+      880
+    ]
+  },
+  {
+    "id": "world-map",
+    "title": "World Map",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/mapview.cpp",
+      "minimap_calc_layout; minimap_tile_to_screen; minimap_tile_color; minimap_draw_view_rect; minimap_redraw"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/world-map-proposed.png",
+    "proposedSize": [
+      608,
+      528
+    ]
+  },
+  {
+    "id": "tax-rates",
+    "title": "Tax Rates",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/city.cpp",
+      "TaxRateDialog::run; redraw"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/tax-rates-proposed.png",
+    "proposedSize": [
+      800,
+      512
+    ]
+  },
+  {
+    "id": "dialog-research",
+    "title": "What shall we research?",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/civ.cpp",
+      "civ_choose_research_dialog; research_option_draw_advance"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-research-proposed.png",
+    "proposedSize": [
+      860,
+      720
+    ]
+  },
+  {
+    "id": "dialog-production",
+    "title": "London: Change Production",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-production-proposed.png",
+    "proposedSize": [
+      860,
+      680
+    ]
+  },
+  {
+    "id": "dialog-options",
+    "title": "Game Options",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/window.cpp",
+      "menu_game_options; Dialog layout and drawing helpers"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-options-proposed.png",
+    "proposedSize": [
+      960,
+      820
+    ]
+  },
+  {
+    "id": "dialog-setup",
+    "title": "Civilization II",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/game.cpp",
+      "game_main_menu_loop; SetupPicWindow"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-setup-proposed.png",
+    "proposedSize": [
+      720,
+      720
+    ]
+  },
+  {
+    "id": "dialog-confirmation",
+    "title": "Quit Civilization II?",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-confirmation-proposed.png",
+    "proposedSize": [
+      800,
+      440
+    ]
+  },
+  {
+    "id": "dialog-information",
+    "title": "City Improvement Complete",
+    "mode": "enhanced-proposal",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "proposed": "review/other-windows/images/dialog-information-proposed.png",
+    "proposedSize": [
+      800,
+      440
+    ]
+  }
+]

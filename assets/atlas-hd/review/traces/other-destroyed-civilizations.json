@@ -1,0 +1,17 @@
+{"width":640,"height":480,
+"commands":[
+{"op":"image","text":"10000,0,0","x":0,"y":0,"width":640,"height":480,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,640,480]},
+{"op":"image","text":"10000,193,371","x":193,"y":371,"width":255,"height":90,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,640,480]},
+{"op":"image","text":"10000,193,371","x":193,"y":371,"width":255,"height":90,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[193,371,448,461]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":194,"y":372,"width":255,"height":90,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[193,371,448,461]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":193,"y":371,"width":255,"height":90,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[193,371,448,461]},
+{"op":"image","text":"10000,193,371","x":193,"y":371,"width":255,"height":90,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,640,480]},
+{"op":"image","text":"10000,193,371","x":193,"y":371,"width":255,"height":90,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[193,371,448,461]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":194,"y":372,"width":255,"height":90,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[193,371,448,461]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":193,"y":371,"width":255,"height":90,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[193,371,448,461]},
+{"op":"image","text":"10000,208,57","x":208,"y":57,"width":225,"height":275,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,640,480]},
+{"op":"image","text":"10000,193,371","x":193,"y":371,"width":255,"height":90,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[208,57,433,332]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":194,"y":372,"width":255,"height":90,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[208,57,433,332]},
+{"op":"wrapped","text":"The Romans:  Conquered in A.D. 1595","x":193,"y":371,"width":255,"height":90,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[208,57,433,332]},
+{"op":"sprite","text":"crop/220,1,1,225,275","x":208,"y":57,"width":225,"height":275,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,640,480]}
+]}

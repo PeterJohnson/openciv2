@@ -306,7 +306,7 @@ int main(int argc, char** argv) {
                     if (tag == "GLYPH") {
                         Glyph g;
                         in >> g.kind >> g.id >> g.flags >> g.x >> g.y >> g.zoom;
-                        if (g.kind < 0 || g.kind > 1 || g.id < 0 || g.id >= (g.kind ? 64 : 256) ||
+                        if (g.kind < 0 || g.kind > 2 || g.id < 0 || g.id >= (g.kind == 2 ? 2048 : g.kind ? 64 : 256) ||
                             g.zoom < -7 || g.zoom > 8)
                             throw std::runtime_error("Report glyph domain");
                         reportGlyphs.push_back(g);
@@ -412,7 +412,10 @@ int main(int argc, char** argv) {
             if (mode == "report-glyphs") {
                 for (const auto& g : reportGlyphs) {
                     record("glyph-start", g.x, g.y, 0, 0);
-                    if (g.kind) {
+                    if (g.kind == 2) {
+                        // Saved-unit glyph: retain owner, damage, orders and stack state.
+                        gfx_draw_unit(0, g.id, g.flags, g.x, g.y, g.zoom, 0);
+                    } else if (g.kind) {
                         auto& u = units[2047];
                         u = {};
                         u.type = g.id;

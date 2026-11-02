@@ -1,0 +1,22 @@
+{
+  "saveSha256": "97c30a657f2caa25c7f7f8b4b4081034fb721f3643ddcea7737782db97ecd62b",
+  "localInputHashes": {
+    "LABELS.TXT": "b614ab5e34853a10a0d05f1d0b4a1a722936c9b3cd8e1bc75452858fa5fb1fdd",
+    "GAME.TXT": "431132fc67b9f7b917bba0dc6f1f36c546cb55b88d43854bc4e11fc3b74c0ced",
+    "PEDIA.TXT": "01ea9f900a2847cbc350600d59159b420bdc16eb3a3bde006b2ddec788a5fe77",
+    "DESCRIBE.TXT": "421cda9df5c930a6071293f75ba3c7bfbb0b0fb591efb63e0501cc31f56eb5c2",
+    "CREDITS.TXT": "73a723ebf06e8cd95e0fce6a9ffb1ac6bb5798cf78abcde82e6f9a373d0ba45f",
+    "RULES.TXT": "8a6f98b8260405091cd41d574c30bb05aa805c99a1f4357c49a73cf382fc2c03",
+    "ICONS.GIF": "9e5f3f3a98b4702214d4fcbeacc5c2309f32a13de8a8ae626ef7e920713bdb29",
+    "tiles.dll": "4d76c5abe1d2a3bce9b0c31538fb144caf383605cf9612f8882469b1615c5862",
+    "civ2.exe": "edd3cead9eb76eeb49cb29a23029e7717807b626a1c88addf4c3432a21120c5c"
+  },
+  "labels": 888,
+  "powerHistoryOffset": 149487,
+  "powerHistoryLength": 1200,
+  "known6": {
+    "offset": 58716,
+    "length": 9000,
+    "sha256": "02effa4e6a1a07ca3a9961dc9414a12b7bdef7f63949b6b41d778dbd631f6c12"
+  }
+}

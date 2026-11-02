@@ -1,5 +1,4 @@
-// Static review adapters for the remaining window families. See OTHER-WINDOWS.md:
-// these preserve documented source geometry but do not execute the UI event loop.
+// Enhanced proposals only. Current-engine variants execute native-other.cjs.
 const C = require('./common.cjs'), F = require('./font.cjs'), T = require('./typography.cjs');
 const {Painter} = require('./windows.cjs'), Reports = require('./report-render.cjs');
 const E = require('./economy.cjs'), Native = require('./native-windows.cjs');
@@ -239,7 +238,7 @@ function council() {
     s.text('Consider increasing the science allocation.', 12, 216, 16, 450);
     s.button('Close', 4, 274, 466, 24);
     s.note =
-        'Five 90 × 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue.';
+        'Five 90 Ã— 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue.';
     return s;
 }
 
@@ -621,13 +620,13 @@ async function build() {
         const row = {
             id : s.id,
             title : s.title,
-            mode : 'other-window',
+            mode : 'enhanced-proposal',
             source : sources[s.family],
             note :
                 s.note ||
-                    'Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.'
+                    'Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.'
         };
-        for (const variant of ['original', 'current', 'hd', 'proposed']) {
+        for (const variant of ['proposed']) {
             const file = variant === 'original' ? `review/original-scenes/images/${s.id}.png`
                                                 : `review/other-windows/images/${s.id}-${variant}.png`;
             C.write(C.path.join(C.pack, file), await render(s, variant));
@@ -640,13 +639,13 @@ async function build() {
         catalog.push(row);
         console.log('Rendered ' + s.id);
     }
-    C.json(C.path.join(C.pack, 'review/other-windows/static-scenes.json'), catalog);
-    C.json(C.path.join(C.pack, 'review/fixtures/other-windows/static-layouts.json'), specs);
+    C.json(C.path.join(C.pack, 'review/other-windows/enhanced-scenes.json'), catalog);
+    C.json(C.path.join(C.pack, 'review/fixtures/other-windows/enhanced-layouts.json'), specs);
     const sourceHashes = Object.fromEntries([...new Set(Object.values(sources).map(v => v[0])) ].map(
         f => [f, C.sha(C.fs.readFileSync(C.path.join(C.root, f)))]));
-    C.json(C.path.join(C.pack, 'review/other-windows/source-adapters.json'), {
+    C.json(C.path.join(C.pack, 'review/other-windows/enhanced-sources.json'), {
         policy :
-            'Source-guided static adapters; not compiled original function bodies or verified runtime screenshots.',
+            'Independent enhanced presentation proposals only; current-engine baselines use other-window-extraction.json.',
         sources,
         sourceHashes,
         fixtures :

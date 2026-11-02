@@ -102,3 +102,14 @@ The latest population-badge check also records source/original-scene preservatio
 [city-label-preservation.json](review/city-label-preservation.json). Enhanced
 city-size boxes now draw in a protected final pass alongside placed city names;
 the panorama/title correction remains unchanged.
+
+## Additional-window extraction and execution comparison
+
+The remaining 23 window baselines now use 258 extracted C++ bodies rather than
+static layout adapters. Original, replacement-native and HD share the commands;
+enhanced proposals remain isolated. The [runtime audit](review/other-windows/runtime-audit.html)
+compares twelve scenes with actual OpenCiv2 execution using original art and the
+same 1788 save. Its source/font inputs match the recorded capture build. This
+qualifies the listed visual comparisons, not legacy-executable pixel parity;
+capture scaling, control focus, auxiliary panel size and extras remain explicit.
+See [coverage, corrections and finite boundaries](OTHER-WINDOWS.md).

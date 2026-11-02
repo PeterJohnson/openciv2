@@ -1,0 +1,18 @@
+{"width":564,"height":180,
+"commands":[
+{"op":"bevel","text":"18","x":0,"y":0,"width":564,"height":180,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,564,180]},
+{"op":"bevel","text":"18","x":1,"y":1,"width":562,"height":178,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,564,180]},
+{"op":"tile","text":"window-border","x":2,"y":2,"width":560,"height":176,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,564,180]},
+{"op":"bevel","text":"37","x":6,"y":34,"width":552,"height":104,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,564,180]},
+{"op":"bevel","text":"37","x":7,"y":35,"width":550,"height":102,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,564,180]},
+{"op":"tile","text":"panel-texture","x":8,"y":36,"width":548,"height":100,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,564,180]},
+{"op":"text","text":"Confirmation","x":203,"y":5,"width":0,"height":0,"color":10,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"text","text":"Confirmation","x":202,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"text","text":"Confirmation","x":201,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"text","text":"Do you really want to quit?","x":79,"y":39,"width":0,"height":0,"color":33,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"text","text":"Do you really want to quit?","x":78,"y":38,"width":0,"height":0,"color":16,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"sprite","text":"popup-info","x":10,"y":38,"width":64,"height":64,"color":0,"face":0,"fontHeight":18,"style":0,"clip":[0,0,564,180]},
+{"op":"button","text":"OK","x":6,"y":140,"width":552,"height":36,"color":10,"face":0,"fontHeight":16,"style":0,"clip":[0,0,564,180]},
+{"op":"radio","text":"No","x":78,"y":70,"width":480,"height":32,"color":1,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]},
+{"op":"radio","text":"Yes","x":78,"y":102,"width":480,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,564,180]}
+]}

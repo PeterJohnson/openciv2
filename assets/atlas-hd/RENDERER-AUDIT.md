@@ -723,7 +723,13 @@ The [additional-window audit](OTHER-WINDOWS.md) documents 35 four-way scenes.
 `tools/atlas-review/extract-reports.py` extracts 32 unchanged report/selection
 bodies into a separate MSVC x86 binary, with source hashes and Debug/Release
 trace checks. `atlas-engine report-glyphs` reuses the existing native city/unit
-drawing bodies for report sprites. `other-windows.cjs` supplies source-guided
-static adapters for 23 further scenes; those are not claimed as extracted
-full-window execution or runtime screenshot matches. The existing 80-body
+drawing bodies for report sprites. `extract-other.py` compiles another 258 unchanged bodies for the remaining
+23 baseline scenes into `atlas-other.exe`, preserving original layouts. Its
+device/control and saved-state boundaries are documented in OTHER-WINDOWS.md.
+`other-windows.cjs` now writes only the separate enhanced proposals. The
+[execution comparison](review/other-windows/runtime-audit.html) checks twelve
+scenes against an actual OpenCiv2 build with original artwork and the same save;
+it records source identity and capture scaling/focus/extras differences. This
+does not claim legacy-executable parity or runtime qualification of every scene.
+The existing 80-body
 map/window extraction and its regression checks retain their separate scope.

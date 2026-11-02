@@ -1,0 +1,483 @@
+{
+  "captureProduct": "OpenCiv2 Windows build with local original game artwork; not the legacy 1999 executable",
+  "captureBuild": "bd89036fc339f0c44f7788b17f9765c377cc8a55",
+  "executableSha256": "bc989f72cf659f5cec77e2743199e37e388c4d6e4806d5a0b412eafa3a8e2940",
+  "saveSha256": "97c30a657f2caa25c7f7f8b4b4081034fb721f3643ddcea7737782db97ecd62b",
+  "captureMethod": "Actual UI execution: load he_a1788.sav, open the listed dialogs, capture the game window. Raw 1920 × 1080 capture files are retained byte-for-byte. Crops are lossless; browser comparison stretches them to the standalone logical dimensions to account for capture scaling.",
+  "runtimeExtras": "Enabled in execution build; disabled in standalone baseline. Status Turn 370 is consequently absent from the baseline.",
+  "qualification": "Visual comparison of 12 scenes, not pixel identity or qualification of every window. Capture scaling, pointer/focus state and panel size prevent a whole-frame pixel-equivalence claim.",
+  "sourceIdentity": [
+    {
+      "file": "data/native/fonts.bin",
+      "runtimeSha256": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb",
+      "reviewSha256": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/city.cpp",
+      "runtimeSha256": "cf92c19e6cffa32b90c1bc210130e9e5fd2cd689d14d9afc5867a212c41cf433",
+      "reviewSha256": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/civ.cpp",
+      "runtimeSha256": "4257194b817326326267ffa1ff3162d37f14c6539e4eaa355c401145704c043c",
+      "reviewSha256": "cb8a2d599e80b1854196e17982d5a76b43ff0ecdd9a18bc5634f0faf2c8363fb",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/controls.cpp",
+      "runtimeSha256": "ecd7f2df7239453980230c05b9eb72f8c499f143ff86e0ef0222f4c37528200b",
+      "reviewSha256": "1d48e0cf673029c665487b7f7181f58d5329bf532c7f372a5aa5a30d95856ab2",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/diplomacy.cpp",
+      "runtimeSha256": "3c5c983502c24a8f8aef89a3b01643bf8d15a046f99e2076224c1ddb2a39bc78",
+      "reviewSha256": "63b7df3dcdaccd7f72e01d6525d4bc23e2292b516c2fa22c41ecffa0bb3ac1af",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/game.cpp",
+      "runtimeSha256": "dbe0872b8e5b316fa8482afcb7d9e9a2a1bea95ff24b86a2926a8bebe8905977",
+      "reviewSha256": "520653472c2478806bb0e2ee28502eae2e410ac3bc2e6eeb3829036d0120aef7",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/graphics.cpp",
+      "runtimeSha256": "35e321b63cc3e4036defbb22e2b21baf16cb4582454450e34c6a21dedcc5f3b2",
+      "reviewSha256": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/map.cpp",
+      "runtimeSha256": "91992082c655e2db7474fdbeac3399afbdda02955693b2c4166283c22b2959b8",
+      "reviewSha256": "132d846fd28bfdc8e45c4dec654665bfd47daec7d1050ccfec8c533feba12756",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/mapview.cpp",
+      "runtimeSha256": "dfd40187c3a35f431b6e6287205d0e562afca0ecd0d8d03f14ccbda3403f4c9e",
+      "reviewSha256": "0b65340871630a2c9ebbf6f07c8668383e7ef25b555373244e7cc6ea97168b67",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/pedia.cpp",
+      "runtimeSha256": "20cb48e0ca6a2c79d0bf6abba1f3da4f6d1c7191e406fb1a763d8390a9609deb",
+      "reviewSha256": "c15dd6915075b7943c17b5fdf0c384dae2936d05bb1dd05ee662d63a87986c7d",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/reports.cpp",
+      "runtimeSha256": "5a2417beca8e493cba4e9e22e61a2ab921b6b72959c6ea1e8fec84169e000ad3",
+      "reviewSha256": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/support.cpp",
+      "runtimeSha256": "7cb8aca378d6b5d2cf912073822ee322c69ff8f183edcd3c1f833022651ebf6b",
+      "reviewSha256": "84c9680d9df3983beaa1daacadf6595e93c5a3fe6b31af1d836f08ba423118a9",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/text.cpp",
+      "runtimeSha256": "3fdafa986589e579a043982657520ac6824a011cb56912972be6b5f64d9cc84d",
+      "reviewSha256": "e24fdb3cd8f7301527f9da5a2bf411cd80f714bcc175e9d16ce820bc6813bef7",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/unit.cpp",
+      "runtimeSha256": "a09a7ab98f870cf71eda0fa91050475c8a16e2aab0bbf6f66bb8b6f5fa7b47d9",
+      "reviewSha256": "c3a4804c895662a5a61cc5b9319a74295cbdf74ca0462d042755865d69cf3790",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/auto/window.cpp",
+      "runtimeSha256": "93f40631d70c7030540dec8d0610e282b11157d00c4de8e76bada9994296911a",
+      "reviewSha256": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/data/gamedata.cpp",
+      "runtimeSha256": "a0479ebf3ed0a3f984595a2f3f8ff87a3dfddbfcd030d59daf0ea2ea3493b3ac",
+      "reviewSha256": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/game/fixups.cpp",
+      "runtimeSha256": "074379258c21f8100255b4b548f27e57ba27f9003a87c31c744317450ff4511b",
+      "reviewSha256": "95bf0a016aa6263397b694485216ec14e512875a693d23e6bc4f117a8e77ca29",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/include/civ2classes.h",
+      "runtimeSha256": "dfb1fdf03d4ebad73c817cf4244df23c3b5c2b2ff4c1bd2aeaabc29e2ddf7074",
+      "reviewSha256": "8b0f0959ec6e32c52c337ed659ce0692fab47edd14fba15976b9ada706f7e47e",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/include/civ2types.h",
+      "runtimeSha256": "fb6384836e5e657eeffb17035ff6e616e9c674eb22489aacb2cffa9d9ec94c5d",
+      "reviewSha256": "19f30204d36ef9715a060015885fcc50fa53ec7272312cd83dd885e307f5a5c8",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/platform/controls.c",
+      "runtimeSha256": "6995a16c7088427977c576734436fc3a61440bd2b89f144ddd10db6cec3e29bc",
+      "reviewSha256": "72464a5eac161611db816820846b9f77081c701bd60456ac061a18e32d458adb",
+      "equalAfterLfNormalization": true
+    },
+    {
+      "file": "src/platform/scroll_theme.h",
+      "runtimeSha256": "a6a7f1df40dc794a11f0472bece330c5e011ea0428d4c564e85be35bee1111b0",
+      "reviewSha256": "db828ce347132818bea44d6efbb708c4bd136deee1622f97b408a7301a1f5776",
+      "equalAfterLfNormalization": true
+    }
+  ],
+  "captures": [
+    {
+      "name": "pedia-advances",
+      "file": "review/original-scenes/runtime-other/pedia-advances.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "e49aebeea8a1eb1a540481564055a5034cdd018f0ed96f513140457e09a66ab9"
+    },
+    {
+      "name": "pedia-advance",
+      "file": "review/original-scenes/runtime-other/pedia-advance.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "29cb6c04f0a783fde5cd71515a23ad389a119e0a980df205d9eaf3f90f2b41ca"
+    },
+    {
+      "name": "pedia-tree",
+      "file": "review/original-scenes/runtime-other/pedia-tree.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "1febe7dc9a143b3fd059bc5b5ca90c18e44f1259efe5b565197ecd860708e921"
+    },
+    {
+      "name": "pedia-terrain",
+      "file": "review/original-scenes/runtime-other/pedia-terrain.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "4e556182aa20089ea36a05de53910dc79bc084266db6cb14db774d11e5fc7f07"
+    },
+    {
+      "name": "tax-rates",
+      "file": "review/original-scenes/runtime-other/tax-rates.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "39c802486435722a8ecee1acbfde899d34ac11688d9e0a231fe65f204c8151df"
+    },
+    {
+      "name": "foreign-minister",
+      "file": "review/original-scenes/runtime-other/foreign-minister.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "11c06a782511e9942fe3967f8b1951959557987d486de87611948012ff941d76"
+    },
+    {
+      "name": "casualty-timeline",
+      "file": "review/original-scenes/runtime-other/casualty-timeline.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "5ae2d1fd89bde7c98d816d99f6e1cd2985af49fa996a07dc2874bc762d0f8ac2"
+    },
+    {
+      "name": "dialog-options",
+      "file": "review/original-scenes/runtime-other/dialog-options.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "ee50fa6f75d57462480f8b57e9e165fbf0365896e663d191160a507fbe422054"
+    },
+    {
+      "name": "dialog-confirmation",
+      "file": "review/original-scenes/runtime-other/dialog-confirmation.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "8d3199c402e2a911f5591879824dcb210472c11f2ee5e4d6c5de8dd6c33d1d42"
+    },
+    {
+      "name": "main-menu",
+      "file": "review/original-scenes/runtime-other/main-menu.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "b1920378133362f2e32c996383d136e3129fef3f974dff14e118da9d2e3c2432"
+    },
+    {
+      "name": "saved-map",
+      "file": "review/original-scenes/runtime-other/saved-map.png",
+      "width": 1920,
+      "height": 1080,
+      "sha256": "490a14105466afa670f30b4efcefd90d852c30f669a3a28642d40b11153e749d"
+    }
+  ],
+  "comparisons": [
+    {
+      "id": "pedia-advances",
+      "title": "Civilopedia: Advance Index",
+      "capture": "review/original-scenes/runtime-other/pedia-advances.png",
+      "crop": [
+        647,
+        354,
+        1279,
+        750
+      ],
+      "cropFile": "review/original-scenes/runtime-other/pedia-advances-crop.png",
+      "cropSha256": "bee49411d4835054e16bd5935cfb1ce12e23bb33943b05c35120aee51a1a5214",
+      "original": "review/original-scenes/images/pedia-advances.png",
+      "hd": "review/other-windows/images/pedia-advances-hd.png",
+      "logicalSize": [
+        640,
+        400
+      ],
+      "assessment": "Index sorting, two-column list, icons and controls follow the source. Runtime focus/cursor states are not reproduced."
+    },
+    {
+      "id": "pedia-advance",
+      "title": "Civilopedia: Railroad",
+      "capture": "review/original-scenes/runtime-other/pedia-advance.png",
+      "crop": [
+        647,
+        354,
+        1279,
+        750
+      ],
+      "cropFile": "review/original-scenes/runtime-other/pedia-advance-crop.png",
+      "cropSha256": "a6e5c6489d3c0806801b32cc7db75c6ff90ca1a632687076093c88790796d2f5",
+      "original": "review/original-scenes/images/pedia-advance.png",
+      "hd": "review/other-windows/images/pedia-advance-hd.png",
+      "logicalSize": [
+        640,
+        400
+      ],
+      "assessment": "Railroad prerequisites, unlocked units, links and title agree. The save scenario has no DESCRIBE.TXT, so its Description control is inactive."
+    },
+    {
+      "id": "pedia-tree",
+      "title": "Civilopedia: Advance Tree",
+      "capture": "review/original-scenes/runtime-other/pedia-tree.png",
+      "crop": [
+        647,
+        354,
+        1279,
+        750
+      ],
+      "cropFile": "review/original-scenes/runtime-other/pedia-tree-crop.png",
+      "cropSha256": "4d1eb3acf74402e5396e4c29563d2b879b5b99bcf5d3f1b8b7d30a6df972ff56",
+      "original": "review/original-scenes/images/pedia-tree.png",
+      "hd": "review/other-windows/images/pedia-tree-hd.png",
+      "logicalSize": [
+        640,
+        400
+      ],
+      "assessment": "Railroad dependency nodes and connector routing agree. Links now come from the extracted tree routines."
+    },
+    {
+      "id": "pedia-terrain",
+      "title": "Civilopedia: Forest",
+      "capture": "review/original-scenes/runtime-other/pedia-terrain.png",
+      "crop": [
+        647,
+        354,
+        1279,
+        750
+      ],
+      "cropFile": "review/original-scenes/runtime-other/pedia-terrain-crop.png",
+      "cropSha256": "73d1729f64f77d9d58ba888557aa038c0bd4a7fbf497dd3979c619206c8bb8b9",
+      "original": "review/original-scenes/images/pedia-terrain.png",
+      "hd": "review/other-windows/images/pedia-terrain-hd.png",
+      "logicalSize": [
+        640,
+        400
+      ],
+      "assessment": "Forest art scale, stat rows and resource links agree after correcting the device adapter’s sprite-size query. Source label/value overlaps and clipped long headings are intentionally retained."
+    },
+    {
+      "id": "tax-rates",
+      "title": "Tax Rates",
+      "capture": "review/original-scenes/runtime-other/tax-rates.png",
+      "crop": [
+        658,
+        341,
+        1267,
+        764
+      ],
+      "cropFile": "review/original-scenes/runtime-other/tax-rates-crop.png",
+      "cropSha256": "99a6355c14b7bed602c249b2a4f93d243a89324d6ab769fb0f689404212e4356",
+      "original": "review/original-scenes/images/tax-rates.png",
+      "hd": "review/other-windows/images/tax-rates-hd.png",
+      "logicalSize": [
+        616,
+        428
+      ],
+      "assessment": "Source totals agree: income 215, upkeep 238, discoveries every 7 turns. Sliders, percentages, locks and headings use the game layout."
+    },
+    {
+      "id": "foreign-minister",
+      "title": "Foreign Minister",
+      "capture": "review/original-scenes/runtime-other/foreign-minister.png",
+      "crop": [
+        524,
+        408,
+        1402,
+        698
+      ],
+      "cropFile": "review/original-scenes/runtime-other/foreign-minister-crop.png",
+      "cropSha256": "081b3296e6d56fcfbe2d02b52cd1769b54cbf65a82caeecd47f088c1b68c36bc",
+      "original": "review/original-scenes/images/foreign-minister.png",
+      "hd": "review/other-windows/images/foreign-minister-hd.png",
+      "logicalSize": [
+        890,
+        293
+      ],
+      "assessment": "Sioux relationship text, capital glyph and report controls agree. The saved attitude is supplied at the AI-evaluation boundary."
+    },
+    {
+      "id": "casualty-timeline",
+      "title": "Defense Minister: Casualty Timeline",
+      "capture": "review/original-scenes/runtime-other/casualty-timeline.png",
+      "crop": [
+        658,
+        347,
+        1267,
+        758
+      ],
+      "cropFile": "review/original-scenes/runtime-other/casualty-timeline-crop.png",
+      "cropSha256": "4770133cb444357628c6d8a22b6eec3f833785a64e612b0b1e45bc5fea5a06c9",
+      "original": "review/original-scenes/images/casualty-timeline.png",
+      "hd": "review/other-windows/images/casualty-timeline-hd.png",
+      "logicalSize": [
+        616,
+        416
+      ],
+      "assessment": "Both show the empty casualty log for this single-player save. The source PictureWindow frame has no caption strip."
+    },
+    {
+      "id": "dialog-options",
+      "title": "Game Options",
+      "capture": "review/original-scenes/runtime-other/dialog-options.png",
+      "crop": [
+        524,
+        336,
+        1402,
+        768
+      ],
+      "cropFile": "review/original-scenes/runtime-other/dialog-options-crop.png",
+      "cropSha256": "9a0ed94bd57ba88364bb5cc624d6c45dc623d461d4222dd661931d1f38b8c84e",
+      "original": "review/original-scenes/images/dialog-options.png",
+      "hd": "review/other-windows/images/dialog-options-hd.png",
+      "logicalSize": [
+        889,
+        436
+      ],
+      "assessment": "Checkbox rows, labels, saved option states and autosized frame agree. Focus rectangles are outside the captured initial-paint boundary."
+    },
+    {
+      "id": "dialog-confirmation",
+      "title": "Quit Civilization II?",
+      "capture": "review/original-scenes/runtime-other/dialog-confirmation.png",
+      "crop": [
+        683,
+        462,
+        1242,
+        642
+      ],
+      "cropFile": "review/original-scenes/runtime-other/dialog-confirmation-crop.png",
+      "cropSha256": "03961b22aa5b64312c14254e010a9565b4e3e844098fd5bd0b2d5838f275481b",
+      "original": "review/original-scenes/images/dialog-confirmation.png",
+      "hd": "review/other-windows/images/dialog-confirmation-hd.png",
+      "logicalSize": [
+        564,
+        180
+      ],
+      "assessment": "Quit prompt, information icon, choices and button placement follow the original dialog parser/layout. Runtime has a focused choice; standalone captures the initial paint."
+    },
+    {
+      "id": "dialog-setup",
+      "title": "Civilization II",
+      "capture": "review/original-scenes/runtime-other/main-menu.png",
+      "crop": [
+        1349,
+        671,
+        1748,
+        1008
+      ],
+      "cropFile": "review/original-scenes/runtime-other/dialog-setup-crop.png",
+      "cropSha256": "1f77550a870f6ff8ecb166626c3572797b6f2c6a08bee88c14c41b661787d4b1",
+      "original": "review/original-scenes/images/dialog-setup.png",
+      "hd": "review/other-windows/images/dialog-setup-hd.png",
+      "logicalSize": [
+        402,
+        340
+      ],
+      "assessment": "Main-menu dialog only. Runtime has Load a Game selected; standalone shows the default first choice. Startup logo, map preview and desktop placement are outside this dialog scene."
+    },
+    {
+      "id": "world-map",
+      "title": "World Map",
+      "capture": "review/original-scenes/runtime-other/saved-map.png",
+      "crop": [
+        1644,
+        20,
+        1902,
+        185
+      ],
+      "cropFile": "review/original-scenes/runtime-other/world-map-crop.png",
+      "cropSha256": "e22bd31344f3984877bab23f3e0b6d6da31f3700bc42b37a382fc7b4c4f82588",
+      "original": "review/original-scenes/images/world-map.png",
+      "hd": "review/other-windows/images/world-map-hd.png",
+      "logicalSize": [
+        256,
+        168
+      ],
+      "assessment": "Saved visibility, land/city colors, wrapped projection and viewport outline are rendered by minimap_redraw. The fixture declares a 256 × 168 panel; the execution capture’s panel is slightly different in size."
+    },
+    {
+      "id": "status-panel",
+      "title": "Status",
+      "capture": "review/original-scenes/runtime-other/saved-map.png",
+      "crop": [
+        1644,
+        186,
+        1902,
+        1080
+      ],
+      "cropFile": "review/original-scenes/runtime-other/status-panel-crop.png",
+      "cropSha256": "b0083bb9632efc10fbf1db2e59f2f309b6e67a9953efc3b97dd6c34c6b849a55",
+      "original": "review/original-scenes/images/status-panel.png",
+      "hd": "review/other-windows/images/status-panel-hd.png",
+      "logicalSize": [
+        256,
+        900
+      ],
+      "assessment": "Population, gold, rates, active Knights, home city and terrain agree. Actual saved unit state is passed to gfx_draw_unit. The execution build has extras enabled and displays Turn 370; this baseline disables extras. Panel width affects the dynamic source font sizes."
+    }
+  ],
+  "uncaptured": [
+    "report-city-status",
+    "report-attitude",
+    "report-trade",
+    "report-science",
+    "report-defense",
+    "report-losses",
+    "report-intelligence",
+    "report-wonders",
+    "report-top-cities",
+    "report-demographics",
+    "report-score",
+    "report-hall-of-fame",
+    "pedia-unit",
+    "pedia-improvement",
+    "pedia-wonder",
+    "powergraph",
+    "high-council",
+    "historian",
+    "destroyed-civilizations",
+    "credits",
+    "dialog-research",
+    "dialog-production",
+    "dialog-information"
+  ]
+}

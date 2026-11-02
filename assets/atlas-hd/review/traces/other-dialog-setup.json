@@ -1,0 +1,22 @@
+{"width":402,"height":340,
+"commands":[
+{"op":"bevel","text":"18","x":0,"y":0,"width":402,"height":340,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,402,340]},
+{"op":"bevel","text":"18","x":1,"y":1,"width":400,"height":338,"color":37,"face":0,"fontHeight":18,"style":0,"clip":[0,0,402,340]},
+{"op":"tile","text":"window-border","x":2,"y":2,"width":398,"height":336,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,402,340]},
+{"op":"bevel","text":"37","x":6,"y":34,"width":390,"height":264,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,402,340]},
+{"op":"bevel","text":"37","x":7,"y":35,"width":388,"height":262,"color":18,"face":0,"fontHeight":18,"style":0,"clip":[0,0,402,340]},
+{"op":"tile","text":"panel-texture","x":8,"y":36,"width":386,"height":260,"color":0,"face":0,"fontHeight":0,"style":0,"clip":[0,0,402,340]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":12,"y":5,"width":0,"height":0,"color":10,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":11,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"text","text":"Civilization II Multiplayer Gold","x":10,"y":4,"width":0,"height":0,"color":26,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"button","text":"OK","x":6,"y":300,"width":194,"height":36,"color":10,"face":0,"fontHeight":16,"style":0,"clip":[0,0,402,340]},
+{"op":"button","text":"Cancel","x":202,"y":300,"width":194,"height":36,"color":10,"face":0,"fontHeight":16,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Start a New Game","x":10,"y":38,"width":382,"height":32,"color":1,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Start on Premade World","x":10,"y":70,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Customize World","x":10,"y":102,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Begin Scenario","x":10,"y":134,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Load a Game","x":10,"y":166,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"Multiplayer Game","x":10,"y":198,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"View Hall of Fame","x":10,"y":230,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]},
+{"op":"radio","text":"View Credits","x":10,"y":262,"width":382,"height":32,"color":0,"face":0,"fontHeight":24,"style":0,"clip":[0,0,402,340]}
+]}

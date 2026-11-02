@@ -18,7 +18,8 @@ def main():
     world=json.loads((PACK/'review/fixtures/saved-world.json').read_text())
     data=args.save.read_bytes()
     assert sha(data)==world['provenance']['saveSha256'],'Use the retained 1788 comparison save'
-    labels=section((args.game/'Labels.txt').read_text(encoding='cp1252'),'LABELS')[1:]
+    label_lines=(args.game/'Labels.txt').read_text(encoding='cp1252').split('@LABELS\n',1)[1].splitlines()
+    labels=[line.strip() for line in label_lines[1:1+int(label_lines[0])]]
     rules=(args.game/'Rules.txt').read_text(encoding='cp1252')
     q=lambda s:json.dumps(s,ensure_ascii=True)
     lines=[f'label {i} {q(s)}' for i,s in enumerate(labels)]
