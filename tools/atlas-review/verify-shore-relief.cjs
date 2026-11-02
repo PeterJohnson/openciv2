@@ -1,12 +1,42 @@
 const C = require('./common.cjs'), S = require('./shoreline.cjs'), assert = require('node:assert/strict');
 
 async function main() {
+    // Check the actual visible sprite fringes, not just idealized tile corners.
+    // A lone land neighbor is conservative: additional lobes only add land.
+    const footprintChecks = [], seen = new Set();
+    const names = [
+        'improvement/irrigation', 'improvement/farmland',
+        ...Array.from({length : 16}, (_, i) => 'feature/forest/' + i)
+    ];
+    for (const name of names) {
+        const file = C.path.join(C.pack, 'compatibility/' + name + '.png');
+        const hash = C.sha(C.fs.readFileSync(file));
+        if (seen.has(hash))
+            continue;
+        seen.add(hash);
+        const im = await C.raw(file);
+        let fringePixels = 0, minimumLandField = 1;
+        for (let y = 0; y < im.height; y++)
+            for (let x = 0; x < im.width; x++) {
+                if (im.data[(y * im.width + x) * 4 + 3] < 8)
+                    continue;
+                const u = (y + .5 - im.height / 2) / im.height + (x + .5 - im.width / 2) / im.width;
+                const v = (y + .5 - im.height / 2) / im.height - (x + .5 - im.width / 2) / im.width;
+                if (Math.max(Math.abs(u), Math.abs(v)) <= .5)
+                    continue;
+                const value = S.field(u, v, [ [ 0, 0 ] ]);
+                assert(value > .5, 'Visible sprite fringe over water: ' + name + ' at ' + x + ',' + y);
+                fringePixels++;
+                minimumLandField = Math.min(minimumLandField, value);
+            }
+        footprintChecks.push({asset : name, sha256 : hash, fringePixels, minimumLandField});
+    }
     const profile = [];
     for (const v of [0, .125, .25, .375, .5, .625, .75, .875])
         for (let i = 0; i <= 256; i++) {
             const u = i / 256, r = S.radius(u, v);
             profile.push(r);
-            assert(r >= .755 && r <= .875, 'Contour relief exceeded its authored bounds');
+            assert(r >= .635 && r <= .765, 'Contour relief exceeded its authored bounds');
             assert(Math.abs(r - S.radius(u + 1, v - 1)) < 1e-10, 'Native relief jumps at tile repeat');
         }
     const range = Math.max(...profile) - Math.min(...profile);
@@ -189,6 +219,7 @@ async function main() {
     assert(meanEllipseDeparture > .06, 'Saved lakes lack uneven banks');
     C.json(C.path.join(C.pack, 'review/shore-relief-validation.json'), {
         status : 'pass',
+        nativeSpriteFootprints : footprintChecks,
         lakeRoundness : roundness,
         meanLakeEllipseDeparture : meanEllipseDeparture,
         nativeProfileRange : range,

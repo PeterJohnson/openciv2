@@ -332,20 +332,23 @@ path and unchanged native source bodies.
 
 ## Map readability adapter changes
 
-`map-finishing.cjs` builds fuller land footprints from the exact three neighbors
-available to each coast quarter. The 32×16 logical boxes and all source-selected
-masks remain unchanged; the earlier water overhang is removed. Rounded distance
-lobes replace the rounded-square contour. Their minimum radius protects
-forest/field tips without adding a square envelope back into the contour;
-broader smooth inward joins soften enclosed lakes. A compact power union
-(0.12 support, exponent 1.25) replaces the previous water-only depth remapping.
-A local coordinate remapping enlarges water cores by 15% before contour sampling.
-The scale is constant through 0.32 tile units from the water center (measured by
-the largest coordinate offset), then smoothly returns to identity at the
-0.5-unit tile boundary. Land-centered samples are unchanged. This preserves the
-irregular lake outline while increasing its water area by about 32%; the same
-native quarter artwork also widens shared inlet banks. Existing tile tips and
-ports remain fixed. The outline report records water area as well as shape.
+`map-finishing.cjs` builds coast quarters from exactly three available
+neighbors. The 32×16 logical boxes and source-selected masks remain unchanged;
+there is no water overhang. The radial land profile now spans 0.635–0.765 tile
+units, rather than reserving 0.755–0.875 in every direction. A separate smooth
+eight-power footprint, radius `0.57 / (|nx|^8 + |ny|^8)^(1/8)`, protects the
+occupied tile and its diagonal tips. A 0.025 smooth maximum joins that footprint
+to the fractal headlands. This removes excess land along tile sides without
+reintroducing sharp rectangular shorelines. Direct alpha checks cover all 4,519
+visible fringe pixels (alpha ≥ 8) outside the tile diamond in the six unique
+native irrigation/farmland/forest sprites, using a lone land tile as the
+conservative neighbor case. This is native artwork coverage, not a claim that
+every enhanced tree canopy has land beneath its projected silhouette.
+
+The previous 15% water-coordinate expansion is removed. Lake size follows the
+reduced land allocation itself. A compact power union (0.12 support, exponent
+1.25) rounds lobe intersections. The outline report records water area as well
+as shape. Independent quarter checks and protected tile tips still pass.
 Two perpendicular land neighbors bound the inward water corner with an ellipse
 whose axes follow their existing shore crossings. The ellipse is perturbed by
 five scales of bounded angular relief (frequencies 2, 4, 8, 16 and 32), sampled on

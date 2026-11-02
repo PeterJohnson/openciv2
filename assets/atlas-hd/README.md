@@ -381,8 +381,8 @@ node tools/atlas-review/verify-riverbanks.cjs
 
 Then rebuild the optional original comparisons and gallery as described above.
 Native coastal quarters use rounded distance lobes instead of rounded squares.
-The minimum radius protects the full forest/field footprint without adding a
-square envelope back into the contour; broader inward joins soften small lakes.
+A smooth directional footprint protects forest/field tips with a narrow margin
+along tile sides; broader inward joins soften small lakes.
 The macro shape is retained, with an independent fractal detail layer added after
 its nonlinear shaping. Six domain-warped octaves halve in wavelength with
 progressively smaller displacements, adding coves, ledges and notches within
@@ -400,11 +400,13 @@ quarter boundaries; single-cell lakes avoid diamond-shaped tips. Five nested
 scales of radial bank relief break up the underlying oval with uneven shoulders,
 shallow bays and smaller notches. The outline remains connected along each ray;
 fine scales fade out with zoom. Native art repeats seamlessly, while enhanced
-lakes vary by world location. Water cores are enlarged by 15% in width (about
-32% more isolated-lake water area), preserving those irregular bank profiles.
-The shared quarter artwork also widens inlet banks slightly. The coordinate
-expansion fades from a 0.32-tile core to zero at the 0.5-tile boundary, preserving
-land tips and water connections. The coastline retains its varied headlands. See the
+lakes vary by world location. Lakes gain water area by reducing excess land
+around them, rather than by
+magnifying a small central pool. A smooth directional footprint follows the tile
+diamond and retains its tips; rounded headlands extend beyond it where needed.
+The six unique native field/forest sprites have 4,519 visible fringe pixels
+outside that diamond, all still over dry shore. The old 15% coordinate expansion
+is removed. Irregular cove banks, beaches and shallow-water shelves remain. See the
 [Reading inlet and lake comparison](review/coast-corners.png). The native and HD
 stages bake this into the same 32 coast-quarter PNGs; the enhanced sampler
 uses the same art treatment in world coordinates. River interiors retain their

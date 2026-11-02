@@ -437,9 +437,10 @@ logic. The replacement native and HD-only stages now share winding ochre roads,
 straight cool-gray rails with distinct sleepers, centered resource frames,
 contrasting faction/health colors, a full shield silhouette and corrected coast
 mask/dither artwork. These are art/binding changes under the existing native
-sprite selection and logical dimensions. Native coast quarters retain a fuller
-rounded land apron inside their diamond footprints. Keep forest and field tips
-on land; preserve lake centers and use shared texture phase at joins. Terrain yield
+sprite selection and logical dimensions. Native coast quarters keep a narrow
+land margin shaped to the tile and actual sprite fringes. Protect forest and
+field tips without reserving a broad circular margin that shrinks lakes.
+Preserve lake centers and use shared texture phase at joins. Terrain yield
 markers should be smaller and lower contrast than unit tags; the map uses an
 olive/bronze production shield while city economy symbols remain blue.
 Shared network endpoints must remain

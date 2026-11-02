@@ -221,9 +221,10 @@ The coast-quarter and canonical coast banks use authored sand, stone and ocean
 materials for the wider beach and shallow-water shelf. Cove rounding and shoal
 variation are procedural, shared with the separate enhanced preview. Rounded
 water corners use local limits derived from authored shore crossings, with five
-procedural scales of radial bank relief for uneven lake and inlet outlines. A
-local coordinate remapping enlarges the water core without tracing or scaling
-any original artwork.
+procedural scales of radial bank relief for uneven lake and inlet outlines. The
+land profile uses a narrower directional footprint, checked against the alpha
+edges of the authored forest and agricultural sprites. This allocates more of
+each ocean tile to water without tracing or scaling any original artwork.
 No original shoreline pixels or contours are used.
 
 The four ocean-neighbor coastal feathers are procedurally authored by

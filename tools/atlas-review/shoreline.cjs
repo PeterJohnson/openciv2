@@ -19,8 +19,8 @@ function noise(x, y, period = 0) {
 
 // Bays contain coves, rock notches and finer erosion. Native frequencies
 // repeat exactly at tile boundaries; enhanced coordinates vary across the world.
-// The minimum radius encloses the occupied land diamond without reintroducing
-// a square envelope. The upper bound keeps even surrounded water centers open.
+// The radial profile supplies headlands; a separate directional footprint protects
+// the occupied tile without reserving its circumcircle in every direction.
 const nativeFrequencies = [ 2, 3, 7, 17, 41, 97 ];
 const worldFrequencies = [ .73, 2.4, 6.1, 16.3, 40.7, 96.1 ];
 const amplitudes = [ .28, .15, .08, .04, .024, .014 ];
@@ -42,7 +42,7 @@ function macroRadius(u, v, world = false, wrapWidth = 0, pixels = Infinity) {
         const n = world ? worldNoise(f, dx, dy) : noise(u * f + dx, v * f + dy, f);
         relief += amplitudes[i] * (n - .5) * weight;
     }
-    return .815 + .06 * Math.tanh(relief / .055);
+    return .70 + .065 * Math.tanh(relief / .055);
 }
 
 // An independent, domain-warped fractional Brownian detail layer. Applying it
@@ -74,7 +74,7 @@ function detailRadius(u, v, base, world, wrapWidth, pixels) {
     }
     // Reflect excess relief into the safe band rather than flattening it with
     // a clamp. Fine contours remain attached to the protected land footprint.
-    const lower = .755, span = .12;
+    const lower = .635, span = .13;
     const t = ((base + detail * visible - lower) % (2 * span) + 2 * span) % (2 * span);
     return lower + (t <= span ? t : 2 * span - t);
 }
@@ -107,31 +107,29 @@ function coveRelief(ox, oy, nx, ny, world, wrapWidth, pixels) {
 function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
     if (!centers.length)
         return 0;
-    // Enlarge the authored water core without changing its irregular outline.
-    // Native quarters share lake and inlet banks, so both use this local warp.
-    // It is identical on shared axes and vanishes at the tile boundary, where
-    // land tips, field/forest footprints and existing water ports are protected.
-    const waterX = Math.round(u), waterY = Math.round(v);
-    if (!centers.some(([ x, y ]) => x === waterX && y === waterY)) {
-        const du = u - waterX, dv = v - waterY;
-        const edge = Math.max(Math.abs(du), Math.abs(dv));
-        const weight = 1 - smooth(clamp((edge - .32) / .18));
-        const scale = 1 + .15 * weight;
-        u = waterX + du / scale;
-        v = waterY + dv / scale;
-    }
-    const profiles =
-        centers
-            .map(([ x, y ]) => {
-                const dx = u - x, dy = v - y, d = Math.hypot(dx, dy);
-                if (!d)
-                    return {base : -.81, detailed : -.81};
-                // A fixed radial profile gives every land lobe one shore crossing.
-                const scale = .81 / d, a = x + dx * scale, b = y + dy * scale;
-                const base = macroRadius(a, b, world, wrapWidth, pixels);
-                return {base : d - base, detailed : d - detailRadius(a, b, base, world, wrapWidth, pixels)};
-            })
-            .sort((a, b) => a.base - b.base);
+    const profiles = centers
+                         .map(([ x, y ]) => {
+                             const dx = u - x, dy = v - y, d = Math.hypot(dx, dy);
+                             if (!d)
+                                 return {base : -.70, detailed : -.70};
+                             // A fixed radial profile gives every land lobe one shore crossing.
+                             const scale = .70 / d, a = x + dx * scale, b = y + dy * scale;
+                             const base = macroRadius(a, b, world, wrapWidth, pixels);
+                             // A smooth eight-power footprint encloses the actual tile square
+                             // in lattice coordinates. Unlike a circumcircle it reserves only
+                             // a narrow margin along sides, while keeping diagonal tips dry.
+                             const footprint =
+                                 .57 / ((Math.abs(dx / d) ** 8 + Math.abs(dy / d) ** 8) ** .125);
+                             const protect = r => {
+                                 const h = Math.max(.025 - Math.abs(r - footprint), 0) / .025;
+                                 return Math.max(r, footprint) + h * h * .025 * .25;
+                             };
+                             return {
+                                 base : d - protect(base),
+                                 detailed : d - protect(detailRadius(a, b, base, world, wrapWidth, pixels))
+                             };
+                         })
+                         .sort((a, b) => a.base - b.base);
     // Taper fine relief at concave lobe intersections, where two eroded rims
     // could pinch off a subpixel water pocket. Distant, unavailable neighbors
     // have zero influence, preserving the existing quarter/cell seam contract.
@@ -160,8 +158,8 @@ function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
         const sx = Math.sign(du), sy = Math.sign(dv);
         const occupied = (x, y) => centers.some(c => c[0] === x && c[1] === y);
         if (sx && sy && !occupied(ox, oy) && occupied(ox + sx, oy) && occupied(ox, oy + sy)) {
-            const a = 1 - radius(ox + sx * .19, oy, world, wrapWidth, pixels);
-            const b = 1 - radius(ox, oy + sy * .19, world, wrapWidth, pixels);
+            const a = 1 - radius(ox + sx * .30, oy, world, wrapWidth, pixels);
+            const b = 1 - radius(ox, oy + sy * .30, world, wrapWidth, pixels);
             const weight = smooth(clamp(Math.min(Math.abs(du), Math.abs(dv)) / .06));
             const length = Math.hypot(du / a, dv / b);
             const relief = coveRelief(ox, oy, du / a / length, dv / b / length, world, wrapWidth, pixels);

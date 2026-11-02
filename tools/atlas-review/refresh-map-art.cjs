@@ -68,7 +68,7 @@ async function main() {
             detail :
                 'added after macro shaping; bounded reflection retains relief; compact intersection taper protects water connectivity',
             contour :
-                'protected land corners; water cores enlarged 15% with a taper to fixed tile boundaries; compact power union and five scales of radial bank relief preserve uneven lakes and softened inlet corners',
+                'narrow directional land footprint protects actual forest/field fringes and tile tips; no water-core magnification; compact power union and five scales of radial bank relief preserve larger uneven lakes and softened inlet corners',
             detailFiltering :
                 'native PNG resampling; enhanced detail fades in above 32 projected pixels; a conservative per-octave cutoff accounts for isometric foreshortening',
             cornerIdentity : 'pure land/water preserved',
