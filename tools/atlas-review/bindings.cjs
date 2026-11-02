@@ -130,10 +130,15 @@ async function buildBindings(traces) {
                    16);
     }
     for (const family of ['forest', 'hills', 'mountains'])
-        for (let i = 0; i < 16; i++)
-            await bitmap(
-                `feature/${family}/${i}`, 64, 32,
-                asset(`features.${family}-${family === 'forest' ? Vegetation.forestVariant(i) : i % 4}`));
+        for (let i = 0; i < 16; i++) {
+            const variant = family === 'forest' ? Vegetation.forestVariant(i) : i % 4;
+            const source = asset(`features.${family}-${variant}`);
+            if (family === 'forest')
+                await save(`feature/${family}/${i}`, await Vegetation.forestBitmap(source, variant), 64, 32,
+                           path.relative(pack, source).replaceAll('\\', '/'));
+            else
+                await bitmap(`feature/${family}/${i}`, 64, 32, source);
+        }
     // Flat field overlays occupy the full terrain frame; tall-object fitting hides them beneath cities.
     for (const name of ['irrigation', 'farmland'])
         await save(`improvement/${name}`, await fieldBitmap(name), 64, 32,

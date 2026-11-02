@@ -66,7 +66,8 @@ async function main() {
         if ((t.t & 15) === 3)
             savedCounts[V.worldVariant(t.x, t.y)]++;
     assert(savedCounts.every(n => n > 0));
-    for (const id of ['features.desert-cacti', 'features.forest-2', 'features.forest-3']) {
+    for (const id of ['features.desert-cacti', 'features.forest-0', 'features.forest-1', 'features.forest-2',
+                      'features.forest-3']) {
         const e = C.find(id), a = await C.raw(C.path.join(C.pack, e.file));
         assert(a.width > 512 && a.height > 512, 'Retain high-resolution source detail');
         assert(a.data.some((n, i) => i % 4 === 3 && n === 0), 'Transparent cutout required');

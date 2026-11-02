@@ -203,13 +203,18 @@ review/original-scenes/land-borders/ and the four-stage land-borders.png sheet,
 with the same review-only allowance and license exclusions as the other scenes.
 
 
-Desert cacti and two evergreen groves were created with the built-in image_gen
-tool. The evergreen prompts use only our retained replacement broadleaf art as
-style references; no original-game artwork was passed to image generation.
-The full prompts, retained masters and selected sprite paths are recorded in
+Desert cacti and four forest groves were created with the built-in image_gen
+tool. The denser, deeper-green forest edits use only our own replacement sprites
+at commit 7967bdeb as references; no original-game artwork was passed to image
+generation. Broadleaf and birch groves now also have separate high-resolution
+masters. The full prompts, retained masters and selected sprite paths are
+recorded in
 [terrain vegetation authoring](authoring/terrain-vegetation.json). Transparent
 alpha is retained; outer framing ignores alpha values of 8 or less when finding
-the crop bounds. No color remapping or opaque ground plate is added.
+the crop bounds. No color remapping or opaque ground plate is added. The pine
+native adapter
+shifts the fitted sprite upward by eight asset pixels (one native logical pixel)
+inside its unchanged frame; generated pixels and transparency are retained.
 
 terrain-vegetation.cjs rebuilds the four desert ground phases from the existing
 sand material, composes cacti inside the protected core, and updates the native

@@ -19532,134 +19532,108 @@
     },
     {
       "id": "features.forest-0",
-      "label": "forest 0",
-      "description": "forest variation 0",
+      "label": "Forest · dense broadleaf",
+      "description": "Overlapping rounded crowns, deeper green canopy shadows and softly irregular undergrowth.",
       "category": "features",
       "file": "sprites/features/forest-0.png",
-      "width": 284,
-      "height": 262,
-      "sha256": "6bc7e9fdeb21bd62dde24bd58bb90a03040757e4a792cfa40a085abc9541f3d8",
+      "width": 1236,
+      "height": 1191,
+      "sha256": "b152fd4c17903c4038a5993a6ab556a63cb9171670c9155256b6d07d8227ec5b",
       "source": {
-        "sheet": "features",
-        "slot": 0,
+        "master": "authoring/masters/forest-broadleaf-dense.png",
         "rect": {
-          "left": 26,
-          "top": 43,
-          "width": 284,
-          "height": 262
+          "left": 10,
+          "top": 31,
+          "width": 1236,
+          "height": 1191
         },
-        "cell": {
-          "left": 0,
-          "right": 313,
-          "top": 0,
-          "bottom": 313
-        },
-        "master": "authoring/masters/features.png"
+        "prompts": "authoring/terrain-vegetation.json"
       },
       "anchorPixels": [
-        131,
-        114
+        618,
+        1190
       ],
       "mapping": null,
-      "suggestedAnchor": "center",
-      "alpha": {
-        "transparent": 17396,
-        "opaque": 8,
-        "nearOpaque": 36789,
-        "translucent": 57004
-      },
+      "suggestedAnchor": "bottom-center",
       "kind": "sprite"
     },
     {
       "id": "features.forest-1",
-      "label": "forest 1",
-      "description": "forest variation 1",
+      "label": "Forest · leafy birch grove",
+      "description": "Fuller green foliage with pale birch trunks and staggered rounded crowns.",
       "category": "features",
       "file": "sprites/features/forest-1.png",
-      "width": 258,
-      "height": 263,
-      "sha256": "a0fbf65c4d33c8920a44af03bd72454774e8fea9bb752e9efb3a4aff91a02fa8",
+      "width": 1188,
+      "height": 1182,
+      "sha256": "3aa25d2c48747c08b7ba82a1ff5c4bd8ab6f58bfa66981daca59af53b42970a9",
       "source": {
-        "sheet": "features",
-        "slot": 1,
+        "master": "authoring/masters/forest-birch-dense.png",
         "rect": {
-          "left": 347,
-          "top": 41,
-          "width": 258,
-          "height": 263
+          "left": 38,
+          "top": 34,
+          "width": 1188,
+          "height": 1182
         },
-        "cell": {
-          "left": 313,
-          "right": 627,
-          "top": 0,
-          "bottom": 313
-        },
-        "master": "authoring/masters/features.png"
+        "prompts": "authoring/terrain-vegetation.json"
       },
       "anchorPixels": [
-        123,
-        116
+        594,
+        1181
       ],
       "mapping": null,
-      "suggestedAnchor": "center",
-      "alpha": {
-        "transparent": 15271,
-        "opaque": 11,
-        "nearOpaque": 27082,
-        "translucent": 52572
-      },
+      "suggestedAnchor": "bottom-center",
       "kind": "sprite"
     },
     {
       "id": "features.forest-2",
       "label": "Forest · dense evergreens",
-      "description": "Pointed spruce canopy, layered branches and mottled needle litter.",
+      "description": "Dense overlapping spruce crowns, deep green shadows and mottled needle litter.",
       "kind": "sprite",
       "category": "features",
       "file": "sprites/features/forest-2.png",
-      "width": 1107,
-      "height": 1102,
-      "sha256": "c4ec8d32f2b76d3eba4cb2548d4aa472377dac8e929593b576f2bce3bdc4e1b2",
+      "width": 1244,
+      "height": 1244,
+      "sha256": "3c7a1dffa243ed03e044d87a8c2436fe1dd42de99e26abf86b94f8941f7b1ef5",
       "source": {
         "master": "authoring/masters/forest-conifers-dense.png",
         "rect": {
-          "left": 82,
-          "top": 45,
-          "width": 1107,
-          "height": 1102
+          "left": 6,
+          "top": 0,
+          "width": 1244,
+          "height": 1244
         },
         "prompts": "authoring/terrain-vegetation.json"
       },
       "suggestedAnchor": "bottom-center",
       "anchorPixels": [
-        553,
-        1101
+        622,
+        1243
       ]
     },
     {
       "id": "features.forest-3",
       "label": "Forest · open pines",
-      "description": "Asymmetric pine grove with visible trunks and open foliage.",
+      "description": "Asymmetric green pine grove with layered saplings, visible trunks and an open upper silhouette.",
       "kind": "sprite",
       "category": "features",
       "file": "sprites/features/forest-3.png",
-      "width": 1060,
-      "height": 1193,
-      "sha256": "f42bb5ae20e1d3dc81db36445d8d109cd9699045bbc5320e9b386b99c770ee8d",
+      "width": 1199,
+      "height": 1209,
+      "sha256": "91869ca0e605eac9f62fa8f28ff55fbc11072ac8e5f9b166527694072ec6e63e",
       "source": {
         "master": "authoring/masters/forest-conifers-open.png",
         "rect": {
-          "left": 98,
-          "top": 30,
-          "width": 1060,
-          "height": 1193
+          "left": 33,
+          "top": 24,
+          "width": 1199,
+          "height": 1209
         },
         "prompts": "authoring/terrain-vegetation.json"
       },
       "suggestedAnchor": "bottom-center",
       "anchorPixels": [
-        530,
-        1192
+        599,
+        1208
       ]
     },
     {

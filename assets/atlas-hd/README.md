@@ -129,8 +129,13 @@ opaque coverage and uses the grass palette to avoid dark diamond borders.
 The enhanced renderer blends the same materials through its existing world-space
 terrain pass. [Compare forest borders in all four stages](review/forest-borders.png).
 Terrain selection, neighbor dither selection and native drawing order are unchanged.
-The forest bank now pairs round broadleaf canopies with two newly painted
-pointed evergreen groves. Native mask slots 3, 8 and 10 use conifers, following
+The forest bank pairs round broadleaf canopies with pointed evergreen groves.
+All four now have fuller overlapping crowns and deeper green canopy shadows;
+the pale birch trunks and distinct pine/spruce silhouettes remain readable.
+The grassy tile perimeter and mottled forest-floor blend are unchanged.
+The fuller pine variant is packed one native pixel higher inside its existing
+frame so the low foliage fringe remains on coastal land. Native mask slots 3, 8
+and 10 use conifers, following
 the silhouettes observed in the original bank; the other slots use broadleaf
 woods. The enhanced pass selects all four variants from actual tile-lattice
 coordinates, avoiding the two-variant collapse caused by staggered x/y parity.
@@ -404,8 +409,9 @@ lakes vary by world location. Lakes gain water area by reducing excess land
 around them, rather than by
 magnifying a small central pool. A smooth directional footprint follows the tile
 diamond and retains its tips; rounded headlands extend beyond it where needed.
-The six unique native field/forest sprites have 4,519 visible fringe pixels
-outside that diamond, all still over dry shore. The old 15% coordinate expansion
+The six unique native field/forest sprites are checked for visible fringe
+pixels outside that diamond; all tested fringes remain over dry shore. The old
+15% coordinate expansion
 is removed. Irregular cove banks, beaches and shallow-water shelves remain. See the
 [Reading inlet and lake comparison](review/coast-corners.png). The native and HD
 stages bake this into the same 32 coast-quarter PNGs; the enhanced sampler

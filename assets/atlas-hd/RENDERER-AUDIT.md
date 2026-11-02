@@ -339,11 +339,14 @@ units, rather than reserving 0.755–0.875 in every direction. A separate smooth
 eight-power footprint, radius `0.57 / (|nx|^8 + |ny|^8)^(1/8)`, protects the
 occupied tile and its diagonal tips. A 0.025 smooth maximum joins that footprint
 to the fractal headlands. This removes excess land along tile sides without
-reintroducing sharp rectangular shorelines. Direct alpha checks cover all 4,519
-visible fringe pixels (alpha ≥ 8) outside the tile diamond in the six unique
+reintroducing sharp rectangular shorelines. Direct alpha checks cover the visible
+fringe pixels (alpha ≥ 8) outside the tile diamond in the six unique
 native irrigation/farmland/forest sprites, using a lone land tile as the
-conservative neighbor case. This is native artwork coverage, not a claim that
-every enhanced tree canopy has land beneath its projected silhouette.
+conservative neighbor case. The four denser forest masters keep the same
+source-selected frames. Pine
+variant 3 is packed one logical pixel higher within its 64×32 frame to retain
+coastal clearance; no source draw offset changes. This is native artwork
+coverage, not a claim that every enhanced tree canopy has land beneath its projected silhouette.
 
 The previous 15% water-coordinate expansion is removed. Lake size follows the
 reduced land allocation itself. A compact power union (0.12 support, exponent

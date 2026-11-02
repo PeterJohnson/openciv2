@@ -55,8 +55,9 @@ async function build() {
     }
     const out = C.clear(2048, 688, [ 23, 35, 34, 255 ]);
     for (const [r, row] of rows.entries()) {
-        const title = row.family === 'desert' ? 'Desert · cactus silhouettes on sandy ground'
-                                              : 'Forest · round broadleaf crowns and pointed evergreens';
+        const title = row.family === 'desert'
+                          ? 'Desert · cactus silhouettes on sandy ground'
+                          : 'Forest · denser green broadleaf crowns and pointed evergreens';
         C.blit(out,
                await C.raw(Buffer.from(
                    C.svg(2048, 40,

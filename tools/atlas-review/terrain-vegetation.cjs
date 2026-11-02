@@ -1,4 +1,4 @@
-// Authored vegetation: native desert decoration and two distinct forest silhouettes.
+// Authored desert vegetation and four distinct forest groves.
 const C = require('./common.cjs');
 const cactusFile = 'sprites/features/desert-cacti.png';
 const cactusBox = {
@@ -11,6 +11,19 @@ const cactusBox = {
 const forestVariant = mask => ({3 : 2, 8 : 3, 10 : 2})[mask] ?? ((mask ^ (mask >> 1)) & 1);
 // x/y have matching parity. Convert to tile-lattice coordinates before selecting four variants.
 const worldVariant = (x, y) => ((((x + y) / 2) * 17 + ((y - x) / 2) * 31) >>> 0) % 4;
+
+// The fuller pine fringe needs one native pixel of ground clearance.
+// This is packing within the existing 64x32 frame, not a source draw offset.
+const forestInset = variant => variant === 3 ? 8 : 0;
+
+async function forestBitmap(source, variant) {
+    const fitted = await C.fit(source, 512, 256, .90);
+    if (!forestInset(variant))
+        return fitted;
+    const out = C.clear(512, 256);
+    C.blit(out, await C.raw(fitted), 0, -forestInset(variant));
+    return C.png(out);
+}
 
 async function cropMaster(master) {
     const image = await C.raw(C.path.join(C.pack, master));
@@ -53,24 +66,41 @@ async function build() {
                 'Sparse saguaro, column and barrel cacti with dry scrub; ordinary desert terrain detail.'
         },
         {
+            id : 'features.forest-0',
+            file : 'sprites/features/forest-0.png',
+            master : 'authoring/masters/forest-broadleaf-dense.png',
+            label : 'Forest · dense broadleaf',
+            description :
+                'Overlapping rounded crowns, deeper green canopy shadows and softly irregular undergrowth.'
+        },
+        {
+            id : 'features.forest-1',
+            file : 'sprites/features/forest-1.png',
+            master : 'authoring/masters/forest-birch-dense.png',
+            label : 'Forest · leafy birch grove',
+            description : 'Fuller green foliage with pale birch trunks and staggered rounded crowns.'
+        },
+        {
             id : 'features.forest-2',
             file : 'sprites/features/forest-2.png',
             master : 'authoring/masters/forest-conifers-dense.png',
             label : 'Forest · dense evergreens',
-            description : 'Pointed spruce canopy, layered branches and mottled needle litter.'
+            description : 'Dense overlapping spruce crowns, deep green shadows and mottled needle litter.'
         },
         {
             id : 'features.forest-3',
             file : 'sprites/features/forest-3.png',
             master : 'authoring/masters/forest-conifers-open.png',
             label : 'Forest · open pines',
-            description : 'Asymmetric pine grove with visible trunks and open foliage.'
+            description :
+                'Asymmetric green pine grove with layered saplings, visible trunks and an open upper silhouette.'
         }
     ];
     for (const s of sources) {
         const {bytes, rect} = await cropMaster(s.master), raw = await C.raw(bytes);
         C.write(C.path.join(C.pack, s.file), bytes);
         const entry = {
+            ...manifest.entries.find(e => e.id === s.id),
             id : s.id,
             label : s.label,
             description : s.description,
@@ -84,6 +114,8 @@ async function build() {
             suggestedAnchor : 'bottom-center',
             anchorPixels : [ Math.floor(raw.width / 2), raw.height - 1 ]
         };
+        // Legacy atlas-crop alpha counts do not describe the regenerated master.
+        delete entry.alpha;
         const index = manifest.entries.findIndex(e => e.id === s.id);
         if (index < 0)
             manifest.entries.push(entry);
@@ -108,12 +140,13 @@ async function build() {
     for (let mask = 0; mask < 16; mask++) {
         const variant = forestVariant(mask), source = 'sprites/features/forest-' + variant + '.png',
               entry = index.bindings['feature/forest/' + mask];
-        const bytes = await C.fit(C.path.join(C.pack, source), 512, 256, .90);
+        const bytes = await forestBitmap(C.path.join(C.pack, source), variant);
         C.write(C.path.join(C.pack, entry.file), bytes);
         entry.source = source;
         slots.push({
             mask,
             variant,
+            packedOffset : [ 0, -forestInset(variant) / 8 ],
             style : variant < 2 ? 'broadleaf' : 'evergreen',
             file : entry.file,
             sha256 : C.sha(bytes)
@@ -131,11 +164,13 @@ async function build() {
             'Desert cacti are part of the base sprite. Source still selects the sixteen forest masks; replacement conifers occupy slots 3, 8 and 10, matching the original bank silhouettes.',
         enhanced :
             'Four stable lattice-selected forest variants. Separate cacti at 48px and above, below fields/roads and omitted on cultivated or river desert.',
+        forestArtwork :
+            'Four high-resolution groves with denser overlapping crowns and deeper green canopy shadows; source-selected sprite boxes and grassy edge blending remain unchanged; pine variant 3 is packed one logical pixel higher to protect the coastal fringe.',
         cactus : {file : cactusFile, nativeBox : cactusBox},
         forestSlots : slots
     });
     console.log(
-        'Built desert cacti, two evergreen variants, four desert grounds and sixteen native forest bindings');
+        'Built desert cacti, four dense forest variants, four desert grounds and sixteen native forest bindings');
 }
 
 if (require.main === module)
@@ -147,6 +182,8 @@ module.exports = {
     cactusFile,
     cactusBox,
     forestVariant,
+    forestInset,
+    forestBitmap,
     worldVariant,
     desertGround,
     build

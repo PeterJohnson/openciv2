@@ -15,27 +15,27 @@
     },
     {
       "asset": "feature/forest/0",
-      "sha256": "5c1f1fdbb5c0fff7f5c296b29c45422684cdfba4f250cdb216e08ea81757ed94",
-      "fringePixels": 806,
-      "minimumLandField": 0.9102551188751822
+      "sha256": "866bfa8d15134bd3fc61ff06775ae108d720c02ae446a553fe7309bafc94c08a",
+      "fringePixels": 1167,
+      "minimumLandField": 0.7271865290601757
     },
     {
       "asset": "feature/forest/1",
-      "sha256": "b15e53699d7ee019e841826feab915cf7fc71ede8da3217109c18f80cdd784f0",
-      "fringePixels": 719,
-      "minimumLandField": 0.9856108139170183
+      "sha256": "253b33f0b41ace5ea19038d1a8e5296be97a08a4e47dc4ddbbf575c9158a22c9",
+      "fringePixels": 1218,
+      "minimumLandField": 0.7594484812784217
     },
     {
       "asset": "feature/forest/3",
-      "sha256": "cfba436d05d21e41edaf7e385d10bef7a17a7c4bedf69576c8cd8a74f8e26516",
-      "fringePixels": 995,
-      "minimumLandField": 0.7381486325263713
+      "sha256": "38a16ce106486c5d348fdd68986ca71dc9e1788ced5f652b5096a6c03289a6f8",
+      "fringePixels": 785,
+      "minimumLandField": 0.784607013957622
     },
     {
       "asset": "feature/forest/8",
-      "sha256": "f7b97b5d3e3354d05885e604428ffea089184982611c81d129c4dfa767a7b863",
-      "fringePixels": 504,
-      "minimumLandField": 0.6359709744132818
+      "sha256": "cfe04d64730aab1206a1c075d4679eba2a933523a2944d0095f2cfefb85c8ace",
+      "fringePixels": 679,
+      "minimumLandField": 0.5860949857091364
     }
   ],
   "lakeRoundness": [
