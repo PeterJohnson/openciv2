@@ -3,167 +3,190 @@
   "lakeRoundness": [
     {
       "tile": "native",
-      "minRadius": 0.18291578292846677,
-      "maxRadius": 0.24348535537719723,
-      "maxRadiusRelativeToAxisEllipse": 1.0485604622343063,
-      "rmsEllipseDeparture": 0.09056107821553068
+      "minRadius": 0.2103529930114746,
+      "maxRadius": 0.28000802993774415,
+      "waterAreaInTileUnits": 0.1826368861652531,
+      "maxRadiusRelativeToAxisEllipse": 1.0485626507629198,
+      "rmsEllipseDeparture": 0.090560995712424
     },
     {
       "tile": "37,9",
-      "minRadius": 0.1620434761047363,
-      "maxRadius": 0.24446096420288083,
-      "maxRadiusRelativeToAxisEllipse": 1.1212332952762136,
-      "rmsEllipseDeparture": 0.06183433161370748
+      "minRadius": 0.18635015487670897,
+      "maxRadius": 0.2811301231384278,
+      "waterAreaInTileUnits": 0.1775402657330405,
+      "maxRadiusRelativeToAxisEllipse": 1.1212345937754276,
+      "rmsEllipseDeparture": 0.061834253048690765
     },
     {
       "tile": "141,17",
-      "minRadius": 0.11116361618041992,
-      "maxRadius": 0.15416593551635743,
-      "maxRadiusRelativeToAxisEllipse": 1.032587142338367,
-      "rmsEllipseDeparture": 0.13659130236833888
+      "minRadius": 0.12783765792846674,
+      "maxRadius": 0.1772910118103027,
+      "waterAreaInTileUnits": 0.06478593217066239,
+      "maxRadiusRelativeToAxisEllipse": 1.0325874963195891,
+      "rmsEllipseDeparture": 0.13659097487611524
     },
     {
       "tile": "14,18",
-      "minRadius": 0.12326288223266597,
-      "maxRadius": 0.20618162155151365,
-      "maxRadiusRelativeToAxisEllipse": 1.125126725770801,
-      "rmsEllipseDeparture": 0.06409824068626585
+      "minRadius": 0.1417525291442871,
+      "maxRadius": 0.23710870742797852,
+      "waterAreaInTileUnits": 0.10016381066684808,
+      "maxRadiusRelativeToAxisEllipse": 1.125128159013709,
+      "rmsEllipseDeparture": 0.06409825217106159
     },
     {
       "tile": "71,23",
-      "minRadius": 0.12585725784301754,
-      "maxRadius": 0.25623807907104484,
-      "maxRadiusRelativeToAxisEllipse": 1.1204313263646215,
-      "rmsEllipseDeparture": 0.06234317765498531
+      "minRadius": 0.1447354316711426,
+      "maxRadius": 0.29467363357543946,
+      "waterAreaInTileUnits": 0.17737941393900336,
+      "maxRadiusRelativeToAxisEllipse": 1.1204282457102186,
+      "rmsEllipseDeparture": 0.061939990317015595
     },
     {
       "tile": "36,24",
-      "minRadius": 0.19159841537475586,
-      "maxRadius": 0.2509028434753417,
-      "maxRadiusRelativeToAxisEllipse": 1.1312720516308021,
-      "rmsEllipseDeparture": 0.07208117368578193
+      "minRadius": 0.22033796310424802,
+      "maxRadius": 0.288537883758545,
+      "waterAreaInTileUnits": 0.20026907214385883,
+      "maxRadiusRelativeToAxisEllipse": 1.131271169390856,
+      "rmsEllipseDeparture": 0.07208131239947886
     },
     {
       "tile": "136,68",
-      "minRadius": 0.1427487373352051,
-      "maxRadius": 0.24319238662719722,
-      "maxRadiusRelativeToAxisEllipse": 1.1097473209696345,
-      "rmsEllipseDeparture": 0.061623431516267216
+      "minRadius": 0.16416120529174805,
+      "maxRadius": 0.2796715736389161,
+      "waterAreaInTileUnits": 0.15914023998374066,
+      "maxRadiusRelativeToAxisEllipse": 1.1097481166918164,
+      "rmsEllipseDeparture": 0.061623206028636406
     },
     {
       "tile": "88,74",
-      "minRadius": 0.11067838668823239,
-      "maxRadius": 0.17267618179321292,
-      "maxRadiusRelativeToAxisEllipse": 1.049280665272324,
-      "rmsEllipseDeparture": 0.11002413242141255
+      "minRadius": 0.1272803306579589,
+      "maxRadius": 0.1985775947570801,
+      "waterAreaInTileUnits": 0.07199600334863893,
+      "maxRadiusRelativeToAxisEllipse": 1.0492799101073902,
+      "rmsEllipseDeparture": 0.11002394486707896
     },
     {
       "tile": "84,76",
-      "minRadius": 0.19435529708862304,
-      "maxRadius": 0.255904483795166,
-      "maxRadiusRelativeToAxisEllipse": 1.1266085409835072,
-      "rmsEllipseDeparture": 0.08351289225177597
+      "minRadius": 0.2235091209411621,
+      "maxRadius": 0.29428968429565433,
+      "waterAreaInTileUnits": 0.20805249996981257,
+      "maxRadiusRelativeToAxisEllipse": 1.1266069069222637,
+      "rmsEllipseDeparture": 0.08351244980923019
     },
     {
       "tile": "90,78",
-      "minRadius": 0.15510721206665035,
-      "maxRadius": 0.2453204154968261,
-      "maxRadiusRelativeToAxisEllipse": 1.1173055122313413,
-      "rmsEllipseDeparture": 0.08303650792700468
+      "minRadius": 0.1783736228942871,
+      "maxRadius": 0.2821183204650879,
+      "waterAreaInTileUnits": 0.18378671294355367,
+      "maxRadiusRelativeToAxisEllipse": 1.1173071120438416,
+      "rmsEllipseDeparture": 0.08303753526958524
     },
     {
       "tile": "83,81",
-      "minRadius": 0.19737882614135743,
-      "maxRadius": 0.2678160667419433,
-      "maxRadiusRelativeToAxisEllipse": 1.1074268194473438,
-      "rmsEllipseDeparture": 0.06985170827272572
+      "minRadius": 0.22698526382446294,
+      "maxRadius": 0.30798883438110347,
+      "waterAreaInTileUnits": 0.22527903299154436,
+      "maxRadiusRelativeToAxisEllipse": 1.1074280413524775,
+      "rmsEllipseDeparture": 0.06985122430247175
     },
     {
       "tile": "36,84",
-      "minRadius": 0.10985212326049805,
-      "maxRadius": 0.14405164718627933,
-      "maxRadiusRelativeToAxisEllipse": 1.0647992612616002,
-      "rmsEllipseDeparture": 0.08951035083911098
+      "minRadius": 0.12633047103881828,
+      "maxRadius": 0.16565923690795897,
+      "waterAreaInTileUnits": 0.06660579756284646,
+      "maxRadiusRelativeToAxisEllipse": 1.0647964079755534,
+      "rmsEllipseDeparture": 0.08951040573588925
     },
     {
       "tile": "70,84",
-      "minRadius": 0.15549058914184566,
-      "maxRadius": 0.23662691116333007,
-      "maxRadiusRelativeToAxisEllipse": 1.1226603483476667,
-      "rmsEllipseDeparture": 0.08897212264157386
+      "minRadius": 0.17881422042846679,
+      "maxRadius": 0.27212133407592776,
+      "waterAreaInTileUnits": 0.1561197655541425,
+      "maxRadiusRelativeToAxisEllipse": 1.122661652090569,
+      "rmsEllipseDeparture": 0.0889725711205657
     },
     {
       "tile": "134,84",
-      "minRadius": 0.21479272842407227,
-      "maxRadius": 0.26152811050415037,
-      "maxRadiusRelativeToAxisEllipse": 1.0931352388138555,
-      "rmsEllipseDeparture": 0.036484875398692586
+      "minRadius": 0.24701128005981438,
+      "maxRadius": 0.30075731277465817,
+      "waterAreaInTileUnits": 0.24066659137502938,
+      "maxRadiusRelativeToAxisEllipse": 1.093136143108633,
+      "rmsEllipseDeparture": 0.03648510696667664
     },
     {
       "tile": "75,85",
-      "minRadius": 0.15565767288208004,
-      "maxRadius": 0.253776454925537,
-      "maxRadiusRelativeToAxisEllipse": 1.1271048124437208,
-      "rmsEllipseDeparture": 0.06942396820172575
+      "minRadius": 0.17900590896606444,
+      "maxRadius": 0.29184293746948237,
+      "waterAreaInTileUnits": 0.18688756864686895,
+      "maxRadiusRelativeToAxisEllipse": 1.1271050758572596,
+      "rmsEllipseDeparture": 0.06942426733078631
     },
     {
       "tile": "83,85",
-      "minRadius": 0.115041446685791,
-      "maxRadius": 0.18892621994018555,
-      "maxRadiusRelativeToAxisEllipse": 1.0522608083970053,
-      "rmsEllipseDeparture": 0.13053425024152365
+      "minRadius": 0.1322974205017089,
+      "maxRadius": 0.21726465225219727,
+      "waterAreaInTileUnits": 0.087967048338569,
+      "maxRadiusRelativeToAxisEllipse": 1.0522581413592151,
+      "rmsEllipseDeparture": 0.1305339428388308
     },
     {
       "tile": "72,86",
-      "minRadius": 0.15430440902709958,
-      "maxRadius": 0.24906263351440422,
-      "maxRadiusRelativeToAxisEllipse": 1.1136839890882246,
-      "rmsEllipseDeparture": 0.08055641613159424
+      "minRadius": 0.17745008468627932,
+      "maxRadius": 0.2864218711853027,
+      "waterAreaInTileUnits": 0.16171848010507622,
+      "maxRadiusRelativeToAxisEllipse": 1.1136835345862868,
+      "rmsEllipseDeparture": 0.08055696440990831
     },
     {
       "tile": "84,88",
-      "minRadius": 0.11171007156372069,
-      "maxRadius": 0.15051641464233395,
-      "maxRadiusRelativeToAxisEllipse": 1.0999244255685243,
-      "rmsEllipseDeparture": 0.09184795885379907
+      "minRadius": 0.12846651077270504,
+      "maxRadius": 0.17309389114379886,
+      "waterAreaInTileUnits": 0.0696699644571826,
+      "maxRadiusRelativeToAxisEllipse": 1.0999245403448996,
+      "rmsEllipseDeparture": 0.09184809128682056
     },
     {
       "tile": "128,88",
-      "minRadius": 0.1939530372619629,
-      "maxRadius": 0.2680169105529785,
-      "maxRadiusRelativeToAxisEllipse": 1.1206485513737818,
-      "rmsEllipseDeparture": 0.07491390042345485
+      "minRadius": 0.22304620742797848,
+      "maxRadius": 0.3082194328308105,
+      "waterAreaInTileUnits": 0.2236526968536019,
+      "maxRadiusRelativeToAxisEllipse": 1.1206480935347372,
+      "rmsEllipseDeparture": 0.07491328478990088
     },
     {
       "tile": "123,89",
-      "minRadius": 0.19841566085815432,
-      "maxRadius": 0.2436650276184082,
-      "maxRadiusRelativeToAxisEllipse": 1.0936890532761252,
-      "rmsEllipseDeparture": 0.06058768019164305
+      "minRadius": 0.2281783103942871,
+      "maxRadius": 0.2802145957946778,
+      "waterAreaInTileUnits": 0.196720755156785,
+      "maxRadiusRelativeToAxisEllipse": 1.0936886691636514,
+      "rmsEllipseDeparture": 0.06058744953366016
     },
     {
       "tile": "121,91",
-      "minRadius": 0.12022619247436522,
-      "maxRadius": 0.24628114700317377,
-      "maxRadiusRelativeToAxisEllipse": 1.1311571812622783,
-      "rmsEllipseDeparture": 0.07323639154695033
+      "minRadius": 0.13825979232788088,
+      "maxRadius": 0.28322324752807615,
+      "waterAreaInTileUnits": 0.15472952654925046,
+      "maxRadiusRelativeToAxisEllipse": 1.1311557350546244,
+      "rmsEllipseDeparture": 0.07323663349706332
     },
     {
       "tile": "47,101",
-      "minRadius": 0.12889509201049804,
-      "maxRadius": 0.21921472549438475,
-      "maxRadiusRelativeToAxisEllipse": 1.0922704302021928,
-      "rmsEllipseDeparture": 0.07086277570171597
+      "minRadius": 0.14822931289672853,
+      "maxRadius": 0.25209703445434567,
+      "waterAreaInTileUnits": 0.10651158534865722,
+      "maxRadiusRelativeToAxisEllipse": 1.092272583135435,
+      "rmsEllipseDeparture": 0.07086243911785735
     },
     {
       "tile": "37,111",
-      "minRadius": 0.11739664077758788,
-      "maxRadius": 0.1837117195129394,
-      "maxRadiusRelativeToAxisEllipse": 1.1208175901103208,
-      "rmsEllipseDeparture": 0.09124874486235379
+      "minRadius": 0.13500623703002934,
+      "maxRadius": 0.2112685203552246,
+      "waterAreaInTileUnits": 0.09180963873948302,
+      "maxRadiusRelativeToAxisEllipse": 1.1208182565874,
+      "rmsEllipseDeparture": 0.09124823613083391
     }
   ],
-  "meanLakeEllipseDeparture": 0.08059727876730148,
+  "meanLakeEllipseDeparture": 0.08057971876350356,
   "nativeProfileRange": 0.11979020845093569,
   "fractalDetailScales": [
     {

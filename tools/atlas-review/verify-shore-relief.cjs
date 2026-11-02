@@ -170,12 +170,14 @@ async function main() {
         const rmsEllipseDeparture =
             Math.sqrt(relativeRadii.reduce((n, r) => n + (r - 1) ** 2, 0) / relativeRadii.length);
         const min = Math.min(...radii), max = Math.max(...radii);
+        const waterArea = Math.PI * radii.reduce((n, r) => n + r * r, 0) / radii.length;
         assert(bulge < 1.2, 'Pointed lake corners: ' + test.name);
         assert(min > .1, 'Rounded lake lost its water center: ' + test.name);
         roundness.push({
             tile : test.name,
             minRadius : min,
             maxRadius : max,
+            waterAreaInTileUnits : waterArea,
             maxRadiusRelativeToAxisEllipse : bulge,
             rmsEllipseDeparture
         });

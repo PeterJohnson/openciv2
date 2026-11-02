@@ -107,6 +107,19 @@ function coveRelief(ox, oy, nx, ny, world, wrapWidth, pixels) {
 function field(u, v, centers, world = false, wrapWidth = 0, pixels = Infinity) {
     if (!centers.length)
         return 0;
+    // Enlarge the authored water core without changing its irregular outline.
+    // Native quarters share lake and inlet banks, so both use this local warp.
+    // It is identical on shared axes and vanishes at the tile boundary, where
+    // land tips, field/forest footprints and existing water ports are protected.
+    const waterX = Math.round(u), waterY = Math.round(v);
+    if (!centers.some(([ x, y ]) => x === waterX && y === waterY)) {
+        const du = u - waterX, dv = v - waterY;
+        const edge = Math.max(Math.abs(du), Math.abs(dv));
+        const weight = 1 - smooth(clamp((edge - .32) / .18));
+        const scale = 1 + .15 * weight;
+        u = waterX + du / scale;
+        v = waterY + dv / scale;
+    }
     const profiles =
         centers
             .map(([ x, y ]) => {

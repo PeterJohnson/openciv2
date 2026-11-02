@@ -488,7 +488,10 @@ cove limit whose axes follow the two neighboring shore crossings. Break up that
 ellipse with bounded radial relief at several scales, adding asymmetric banks
 and small inlets while retaining one shoreline crossing per ray. Filter the
 finer scales at distant zooms. Ease the contribution to zero on shared quarter
-axes. This removes pointed inlets and
+axes. For larger water bodies within the same tile, remap the local water-center
+coordinates before sampling the contour. The art uses a 1.15 scale inside the
+core, fading to identity at the outer tile boundary, so existing land footprints
+and water ports remain protected. This removes pointed inlets and
 diamond-shaped lakes without requiring neighbors unavailable to the native
 quarter renderer. Keep water depth/color transitions wider on the seaward side,
 with visible but uneven beach and shoal deposits. The native/HD quarter artwork

@@ -339,6 +339,13 @@ lobes replace the rounded-square contour. Their minimum radius protects
 forest/field tips without adding a square envelope back into the contour;
 broader smooth inward joins soften enclosed lakes. A compact power union
 (0.12 support, exponent 1.25) replaces the previous water-only depth remapping.
+A local coordinate remapping enlarges water cores by 15% before contour sampling.
+The scale is constant through 0.32 tile units from the water center (measured by
+the largest coordinate offset), then smoothly returns to identity at the
+0.5-unit tile boundary. Land-centered samples are unchanged. This preserves the
+irregular lake outline while increasing its water area by about 32%; the same
+native quarter artwork also widens shared inlet banks. Existing tile tips and
+ports remain fixed. The outline report records water area as well as shape.
 Two perpendicular land neighbors bound the inward water corner with an ellipse
 whose axes follow their existing shore crossings. The ellipse is perturbed by
 five scales of bounded angular relief (frequencies 2, 4, 8, 16 and 32), sampled on
