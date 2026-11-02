@@ -239,3 +239,16 @@ The four ocean-neighbor coastal feathers are procedurally authored by
 material, four scales of warped periodic noise and two finer clustered-noise
 fields. The pattern is deterministic and baked into the PNGs. No original
 sprite pixels are used.
+
+## Additional window comparisons
+
+The 35 additional windows reuse the selected replacement sprites, fonts and
+backgrounds. Panel geometry, tree links, selection cues, charts and controls are
+authored in the standalone review tools. Report/rules text and saved-state fields
+are declared review inputs, separate from the replacement image library.
+Original backgrounds, icons and portraits are read only from the local game
+installation, retained under ignored `review/original-local/other-windows`, and
+used only in composed `review/original-scenes/images` comparisons. No extracted
+original asset is added to the replacement manifest. Original council AVI
+portraits are absent; their comparison shows empty media slots. See
+[OTHER-WINDOWS](OTHER-WINDOWS.md) for precise scope and source hashes.

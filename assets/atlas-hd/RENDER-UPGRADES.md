@@ -534,3 +534,15 @@ standalone review does. Continue ordinary alpha blending for foreground sprites.
 tiles from the proposed continuous coasts, and includes 48/64px whole-world maps
 plus 64/128px island, lake, forest/field, river-mouth and wrapped-edge inspections.
 These renderer upgrades remain recommendations; game source is unchanged.
+
+## Advisors, encyclopedia and auxiliary windows
+
+The [35 additional comparisons](review/other-windows/index.html) separate
+resolution from further presentation changes. HD keeps the same logical
+rectangles and sprite scale. The enhanced previews propose consistent panels,
+selection cues, readable dense military counts, tax-slider fill and an active
+council portrait. Implement measured columns and clipping in shared UI helpers
+before altering report data loops. Preserve the minimap's small, visibility-aware
+projection; support independent still/video media inside council slots.
+[Source coverage and limits](OTHER-WINDOWS.md) distinguish compiled report
+rendering from static layout adapters and missing original council media.

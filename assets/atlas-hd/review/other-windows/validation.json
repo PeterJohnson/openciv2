@@ -1,0 +1,1235 @@
+{
+  "scenes": 35,
+  "images": 140,
+  "reportBodies": 32,
+  "sourceUnchanged": true,
+  "debugRelease": [
+    {
+      "mode": "city-status",
+      "commands": 201,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "attitude",
+      "commands": 128,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "trade",
+      "commands": 164,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Supply and Demand",
+        "Close"
+      ]
+    },
+    {
+      "mode": "science",
+      "commands": 507,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Goal",
+        "Close"
+      ]
+    },
+    {
+      "mode": "defense",
+      "commands": 103,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Casualties",
+        "Close"
+      ]
+    },
+    {
+      "mode": "losses",
+      "commands": 73,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Statistics",
+        "Close"
+      ]
+    },
+    {
+      "mode": "intelligence",
+      "commands": 113,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Cities",
+        "Close"
+      ]
+    },
+    {
+      "mode": "wonders",
+      "commands": 35,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "top-cities",
+      "commands": 93,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "demographics",
+      "commands": 98,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "score",
+      "commands": 250,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    },
+    {
+      "mode": "hall-of-fame",
+      "commands": 34,
+      "debugReleaseEqual": true,
+      "buttons": [
+        "Close"
+      ]
+    }
+  ],
+  "sourceHashesMatch": true,
+  "nativeHdSharedLayout": true,
+  "nativeButtonsUseWholePixelsAndGrayscaleText": true,
+  "originalMediaBoundary": "Council AVI portraits absent; explicitly empty original slots. Static adapters have not been qualified against runtime captures.",
+  "outputs": [
+    {
+      "scene": "report-city-status",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-city-status.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "7861a73f87ea90efbc7e9b667f94d2000aa0860ff627b3d22774500d48f17696"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "current",
+      "file": "review/other-windows/images/report-city-status-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "262b50deadc9bfa7d358f662ee0fbc90e09ab3553961b18ead2671f9621148a8"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-city-status-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "459b66c59e973a20d3ecde91c49de213a21d0542581bf0df0261c6c5c39daaa7"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-city-status-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "57740b9e4255c89114be4d8a0a76259a3b13d99c0d2bdd7e0370eec51881d597"
+    },
+    {
+      "scene": "report-attitude",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-attitude.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "09cdb30b5ffec20f56f97aa373260d9a32ea0f3c1e62d0630908c0cf73253bb5"
+    },
+    {
+      "scene": "report-attitude",
+      "variant": "current",
+      "file": "review/other-windows/images/report-attitude-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "a638afc04751e7091f0f927818ae411eb702702e4633acb0c3c541621bb66fc3"
+    },
+    {
+      "scene": "report-attitude",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-attitude-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "ef231c54be9fa19822660bcac2c9c3b04208b751ea1b395b3f2d3753a598b306"
+    },
+    {
+      "scene": "report-attitude",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-attitude-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "51c0b7ef30eef7be3f638eaf3f5a62076dc2bd668b10e04a6302fbb23dc7f253"
+    },
+    {
+      "scene": "report-trade",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-trade.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "97fdf427b10ee4afc84266d87103dad8e990fc169a363525fdd18c7f54d663af"
+    },
+    {
+      "scene": "report-trade",
+      "variant": "current",
+      "file": "review/other-windows/images/report-trade-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "7e5e330314578b325b32538a4228ac35fcf7c2d6690bb6fd4e15b2ade7138a24"
+    },
+    {
+      "scene": "report-trade",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-trade-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "b15ad73500dc8adf17a08c2bebac3af412ca754fde9d2205e0b500ce3c0b6934"
+    },
+    {
+      "scene": "report-trade",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-trade-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "d1039251a70e3fac7e9bab7383cc0a74e511981ad01f11b148ab608fbe1ad45c"
+    },
+    {
+      "scene": "report-science",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-science.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "697f1c5c8167212610e748873a27c347782bf6d61bc07766cdcd1f11117cd6f8"
+    },
+    {
+      "scene": "report-science",
+      "variant": "current",
+      "file": "review/other-windows/images/report-science-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "f59046c2b5639f8af75043ce463b8d063f76a1e8f99ef1851a4f1e83b641d0e1"
+    },
+    {
+      "scene": "report-science",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-science-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "d8bf7c3cc5636f3f7389d2d87be51210df37d306d822d6493b0c0b3d9287637e"
+    },
+    {
+      "scene": "report-science",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-science-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "f9167fc3498d44610857aed47828295efff24a14c1ee973ff51d488bc849a4eb"
+    },
+    {
+      "scene": "report-defense",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-defense.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "df526a16d90b2af03dd86d26a2ab9d87bbc6fb5ef002d5b36b3d02131e810bab"
+    },
+    {
+      "scene": "report-defense",
+      "variant": "current",
+      "file": "review/other-windows/images/report-defense-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "3b11bf1f88d3a8afbff69aa4323727209baf72b4a9251c86ec5ded7ade12509e"
+    },
+    {
+      "scene": "report-defense",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-defense-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "454468600d5c8d5c3e55bdefb0f0943a19cd63ae44c324d65827ad2fdba0f5e8"
+    },
+    {
+      "scene": "report-defense",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-defense-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "55bc6566db3307bf9baec1d19331e04ed9a142552b015b95d97e3b97dea8c97e"
+    },
+    {
+      "scene": "report-losses",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-losses.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "05fce68a2f4854a1f46587b0ae0dff588c33fe09a6e68bf727f96d043d7f809f"
+    },
+    {
+      "scene": "report-losses",
+      "variant": "current",
+      "file": "review/other-windows/images/report-losses-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "c1e96907a5c8403d3d01455f9a0e15fffad37d899daa05c34089012efa543e3e"
+    },
+    {
+      "scene": "report-losses",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-losses-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "5a1045b4c035add2fbcaabf20205e7734ab3b7b840f5ed2bcf34bdef112dc6d9"
+    },
+    {
+      "scene": "report-losses",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-losses-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "0ce60194d0fcbdc5354ae330265d7b05064e7dfcc6bafe738227f650f14385f8"
+    },
+    {
+      "scene": "report-intelligence",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-intelligence.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "7600a289840fde2890b2d5f538f9e78c282fc506edb6735e6313af1fda68adde"
+    },
+    {
+      "scene": "report-intelligence",
+      "variant": "current",
+      "file": "review/other-windows/images/report-intelligence-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "782bc1adb7c34b1892663e3fed9135da4e1be4363195bb1d1811ed7a63d2b564"
+    },
+    {
+      "scene": "report-intelligence",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-intelligence-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "45bba4e9d2648adebb6abfd5717244eb4b5c189eb38f052685573cfbba634d39"
+    },
+    {
+      "scene": "report-intelligence",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-intelligence-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "e03287f6611367b8e1cbd7d1d1a2e818b45e47dc72e7497ffb479b1340ab8c97"
+    },
+    {
+      "scene": "report-wonders",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-wonders.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "74199c3803e34f2e3c9672b018790c77d546e900f36e326ae4d858502c44ba2a"
+    },
+    {
+      "scene": "report-wonders",
+      "variant": "current",
+      "file": "review/other-windows/images/report-wonders-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "7af7440394a8b01736626fa37583e9c557dfd44e64fc5cc7f0a9431727e8bb03"
+    },
+    {
+      "scene": "report-wonders",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-wonders-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "1f7789dc55d1bac7e004c29573462cbf61ea11ff0e92b967a14fb38f15fbeac0"
+    },
+    {
+      "scene": "report-wonders",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-wonders-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "35e8503031d60c8cd25e5d56710bfa20427aec3c238fdebbe3c2acc7ab53107b"
+    },
+    {
+      "scene": "report-top-cities",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-top-cities.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "09f5d6c2817a6e5165b7e4a845b4be93002e43d2495d7f1675c7416765a44852"
+    },
+    {
+      "scene": "report-top-cities",
+      "variant": "current",
+      "file": "review/other-windows/images/report-top-cities-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "d5f9a0eebd4e021f19df58025bc7a887bcf3a46acfc4547e709b4d297ccd6457"
+    },
+    {
+      "scene": "report-top-cities",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-top-cities-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "4d154ae89f2aeab0f97fdbf97211b99439333324b82fe834f636a618441a9e3c"
+    },
+    {
+      "scene": "report-top-cities",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-top-cities-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "c7dcf9b10af145ebf3b75deaf0238dbdb5284180f3935678910e2afb3861e06d"
+    },
+    {
+      "scene": "report-demographics",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-demographics.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "47c40b9ba37070cc66c576e455130cf42057c2f2b7aad78dd58f4bd312e40c5c"
+    },
+    {
+      "scene": "report-demographics",
+      "variant": "current",
+      "file": "review/other-windows/images/report-demographics-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "f175946fa471ae79586ae0bc8908b8b593ddb76f0a01388e2f8ab772f89eac86"
+    },
+    {
+      "scene": "report-demographics",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-demographics-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "9016a97c06a7de5a50869936ff0ce02fc86793342ed60da18b2253a4c2dd70d4"
+    },
+    {
+      "scene": "report-demographics",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-demographics-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "d907664dd4a02ecec7bbb5484c4e6cb2c1856145fed771fbf09a99023406b34a"
+    },
+    {
+      "scene": "report-score",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-score.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "6a7d10fc1905bf045793ac37ed7fc3c4ef82ef2a7e1cfeeebc0d2e0e031ee645"
+    },
+    {
+      "scene": "report-score",
+      "variant": "current",
+      "file": "review/other-windows/images/report-score-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "84b5c7d7b405d14b13a31b25ba05dfa54b50a758b172ad35453086c982ec16ad"
+    },
+    {
+      "scene": "report-score",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-score-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "fd1859152de90bf7fb398b8a097fd5475e76a3c9d74ba1956bab00b9f8b52852"
+    },
+    {
+      "scene": "report-score",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-score-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "b5dfa78944f3dd5129ad492ab41a857e4a609863f873b641865d8ff96c346cb7"
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "variant": "original",
+      "file": "review/original-scenes/images/report-hall-of-fame.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "c54dd097e2f2cce6202686e22f23033cf616afdda27b0ff64e5cab5634ddc7d4"
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "variant": "current",
+      "file": "review/other-windows/images/report-hall-of-fame-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "8d3ce97b277d54231230b9028891caea771e8fae0e5c2e1a3fecde660b800d27"
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-hall-of-fame-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "9d350129df81ccfcd3ea3679c7e602757564b0962a8b3a98532727ddb3f3a02d"
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-hall-of-fame-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "52888ec298ff1563ad461b2e1d310cd45c36413bac2a005c93ec9eb08f692bb2"
+    },
+    {
+      "scene": "pedia-advances",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-advances.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "fe623387e65e751a006e68d2a297e6c648ed0c0df983df171848d68135ca42ff"
+    },
+    {
+      "scene": "pedia-advances",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-advances-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "e3fff9aaa39d3b8bb826d8dbea5863a2fc425468dfaa212c96300f9d933fcf5c"
+    },
+    {
+      "scene": "pedia-advances",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-advances-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "043a5018b8d0ee9ab8617c71ec25d81f79c72ac51614de5ff0c55451db993b73"
+    },
+    {
+      "scene": "pedia-advances",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-advances-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "73bfb86d6586166f3710d8df246f4d738329aede3f7af35ecf9b929aa5fca509"
+    },
+    {
+      "scene": "pedia-advance",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-advance.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "2b139c5a8f0c56daff6486260c43315bdc01247608c38594acc5c53f113759e1"
+    },
+    {
+      "scene": "pedia-advance",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-advance-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "7b0a5680a18cd464df3d55f60b8d664d53c7d7ebefdfb75f929210a2e755b49b"
+    },
+    {
+      "scene": "pedia-advance",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-advance-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "b1f9dbbe994d23ae096e927ad94abbfe9adde044939cfac80be2984af2837fc3"
+    },
+    {
+      "scene": "pedia-advance",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-advance-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "460f3eed371accc70920431c73d381fd0f745690531ef5eee57ac75daf164ae8"
+    },
+    {
+      "scene": "pedia-tree",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-tree.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "f8293bd58c077a929d0043e10212a6513a24ea0a77f6e275bfbef988cd8f7d0c"
+    },
+    {
+      "scene": "pedia-tree",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-tree-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "afd43ad2fc1561a314bfb7da166ae0da72de47a1d6ab111e2321681b3b654407"
+    },
+    {
+      "scene": "pedia-tree",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-tree-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "6d1538e0768b37e228c755c74be81a9c8b2338b8c62122d3f6bbf62c4f1dd440"
+    },
+    {
+      "scene": "pedia-tree",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-tree-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "67015c26ed47b08f5733a8a7775cd71802603907e9f3dd47461e0ba4f21b217e"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-unit.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "e13d98d5d65c232200f9e6004b0e8c5d1c374fa859d7282bedac555d1945256e"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-unit-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "45a6519a01bd9c6d33754d4addd47f044c6b6b721551114845344d524a9687da"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-unit-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "c8bd79288a54308b21c3356fc9d78a4b38b89585f2dc1e43ef21a24761e9651d"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-unit-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "c617aa749d052abb6e5a3603babcd622f9353b4cb202482fca055ddd5bb673b4"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-improvement.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "bed72d7eb99fdabdf058bbf51bcdcd8ac13011b9e529a3a332c5f5d65513be19"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-improvement-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "0fad2691a041b9b2afaabf2c59551b0466e6a17775e301aa28ad0546122d08e2"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-improvement-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "1d67a1c587c60fdf986cbb8d0b43f9b804e75b97f151d724c59a2b784c75d017"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-improvement-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "69d0bf0cb00f3f26984969e0991b9c91624718630d83a130f159aa85fd09b4b1"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-wonder.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "839edcd2822ee3b88fc2a62e0bed98591da7cb351918a66074566db0c864e18d"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-wonder-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "f52a3b57b833b71289df540be07987f21bd8c5ec16896778eee979d5d12e668b"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-wonder-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "fea0d58893384aa33ab22717d27b128bd8cceb9367b43dc06ddceb91d8fe9a24"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-wonder-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "e6e157a3d489f4be87b7ab1841357bb7d670d883c56f7f42af66f61f73eeae13"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "original",
+      "file": "review/original-scenes/images/pedia-terrain.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "fa820bb35a9333fedb88eca56f4e74a289f6bb66158f36c1dc5a3dd925fd0384"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-terrain-current.png",
+      "width": 640,
+      "height": 400,
+      "sha256": "59c1f642d3e36fd087fe245432dc5e1d6d317d10086da3a7471e55228a50d150"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-terrain-hd.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "20ed70b8fea0adfd3f3bad883f05cbc9b5ea30d5b80845ac88c393648b4baf2c"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-terrain-proposed.png",
+      "width": 1280,
+      "height": 800,
+      "sha256": "ffd2028a250365853ce9e8546bcef610db706e3c71af374664988bbe534deb5d"
+    },
+    {
+      "scene": "powergraph",
+      "variant": "original",
+      "file": "review/original-scenes/images/powergraph.png",
+      "width": 600,
+      "height": 425,
+      "sha256": "fa39aaf325cca84333cc5ab7e5640c24926343b12541ffcb425d2200773991ed"
+    },
+    {
+      "scene": "powergraph",
+      "variant": "current",
+      "file": "review/other-windows/images/powergraph-current.png",
+      "width": 600,
+      "height": 425,
+      "sha256": "4ee6846f4ecfa15a8a284a63f8f57761864ebe4ef3fb0dd838577498f9fcb7d0"
+    },
+    {
+      "scene": "powergraph",
+      "variant": "hd",
+      "file": "review/other-windows/images/powergraph-hd.png",
+      "width": 1200,
+      "height": 850,
+      "sha256": "85f29ba77539b9449eafda0239af252312bd281464b31f9be5b19d5f2ff61892"
+    },
+    {
+      "scene": "powergraph",
+      "variant": "proposed",
+      "file": "review/other-windows/images/powergraph-proposed.png",
+      "width": 1200,
+      "height": 850,
+      "sha256": "7519f77549f1f01c47fa27d518f68ab1e63d57829951c77e7e09476584c3d004"
+    },
+    {
+      "scene": "high-council",
+      "variant": "original",
+      "file": "review/original-scenes/images/high-council.png",
+      "width": 474,
+      "height": 302,
+      "sha256": "8aaf18cce795ed227964ae39f92c4c4e2f10c22fdc84ddf147a12c893217bcda"
+    },
+    {
+      "scene": "high-council",
+      "variant": "current",
+      "file": "review/other-windows/images/high-council-current.png",
+      "width": 474,
+      "height": 302,
+      "sha256": "f6fcb1f6cc3fad6a788cbfd83be40d1114ec54b18e1e159991ac8e3f403db4e4"
+    },
+    {
+      "scene": "high-council",
+      "variant": "hd",
+      "file": "review/other-windows/images/high-council-hd.png",
+      "width": 948,
+      "height": 604,
+      "sha256": "d10096ad55565551baa42f51ffbb5f4143e824a6994422222026b854dc5afbcb"
+    },
+    {
+      "scene": "high-council",
+      "variant": "proposed",
+      "file": "review/other-windows/images/high-council-proposed.png",
+      "width": 948,
+      "height": 604,
+      "sha256": "2638d630837a6e5dfaa42ce5593b69ae1c2e7a5ff223da0ab9fa5c0e8f4806ed"
+    },
+    {
+      "scene": "foreign-minister",
+      "variant": "original",
+      "file": "review/original-scenes/images/foreign-minister.png",
+      "width": 480,
+      "height": 320,
+      "sha256": "b8c39dae147d736f5c51f6a2ed5c6cc7843db9e7f371fab0ab0ee785cbda47e1"
+    },
+    {
+      "scene": "foreign-minister",
+      "variant": "current",
+      "file": "review/other-windows/images/foreign-minister-current.png",
+      "width": 480,
+      "height": 320,
+      "sha256": "5e4fa3459196c454d0e0ec6318a7b9b32fc075213c3aa0a49627385a5c9a324a"
+    },
+    {
+      "scene": "foreign-minister",
+      "variant": "hd",
+      "file": "review/other-windows/images/foreign-minister-hd.png",
+      "width": 960,
+      "height": 640,
+      "sha256": "7ce2648ed8a995a5737e3e00761f27e9299f9bda7b94131078494d953f05a883"
+    },
+    {
+      "scene": "foreign-minister",
+      "variant": "proposed",
+      "file": "review/other-windows/images/foreign-minister-proposed.png",
+      "width": 960,
+      "height": 640,
+      "sha256": "5b65b3620433da5baa1d5f530f7f9209bf7644f6ebe4a2511fd8b1b0c0efd32c"
+    },
+    {
+      "scene": "historian",
+      "variant": "original",
+      "file": "review/original-scenes/images/historian.png",
+      "width": 480,
+      "height": 320,
+      "sha256": "13471913820955aed0c63b98f1f15b5315bd33ef5e0b8de98a4006680fa1ae61"
+    },
+    {
+      "scene": "historian",
+      "variant": "current",
+      "file": "review/other-windows/images/historian-current.png",
+      "width": 480,
+      "height": 320,
+      "sha256": "9563bfe329ef401b24b9b93c4c00a5d0add2979193eaa0e841491b656b220929"
+    },
+    {
+      "scene": "historian",
+      "variant": "hd",
+      "file": "review/other-windows/images/historian-hd.png",
+      "width": 960,
+      "height": 640,
+      "sha256": "66df7928ceaee770fbe4150ec16eb7ba372279a87c88b36652f403538d89dcaf"
+    },
+    {
+      "scene": "historian",
+      "variant": "proposed",
+      "file": "review/other-windows/images/historian-proposed.png",
+      "width": 960,
+      "height": 640,
+      "sha256": "ea78055a0a60832d03f3c951187abe6f339d4079f0611162b5be1ad07a8b6189"
+    },
+    {
+      "scene": "casualty-timeline",
+      "variant": "original",
+      "file": "review/original-scenes/images/casualty-timeline.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "5b080c81d318ef0cb5135e116fdf374af7fb7aedd9ba4e843826b0007a73373e"
+    },
+    {
+      "scene": "casualty-timeline",
+      "variant": "current",
+      "file": "review/other-windows/images/casualty-timeline-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "eed45444fce85d10741108aff1b8dcf6dbe2baa7d3bf149f0652eb4c147d7400"
+    },
+    {
+      "scene": "casualty-timeline",
+      "variant": "hd",
+      "file": "review/other-windows/images/casualty-timeline-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "d0271800d4674a4dad852a5c83095a5b690d32af3b3795f8d9323b4e2e3247c3"
+    },
+    {
+      "scene": "casualty-timeline",
+      "variant": "proposed",
+      "file": "review/other-windows/images/casualty-timeline-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "7474cfbc13db50eff901c1fcc75ef31fbd9cbf5134548cbff62af21c9a2c51f1"
+    },
+    {
+      "scene": "destroyed-civilizations",
+      "variant": "original",
+      "file": "review/original-scenes/images/destroyed-civilizations.png",
+      "width": 640,
+      "height": 480,
+      "sha256": "7d2b570bb80f3f10adbbfb64bc732ed2b57ad70097436667c3446be6d072ba4f"
+    },
+    {
+      "scene": "destroyed-civilizations",
+      "variant": "current",
+      "file": "review/other-windows/images/destroyed-civilizations-current.png",
+      "width": 640,
+      "height": 480,
+      "sha256": "807679e4ca5b673815fbd4bcc5f52d8581e1665ddbe9942e91375eeeb70e9864"
+    },
+    {
+      "scene": "destroyed-civilizations",
+      "variant": "hd",
+      "file": "review/other-windows/images/destroyed-civilizations-hd.png",
+      "width": 1280,
+      "height": 960,
+      "sha256": "da60204c168b65191eab8bd7ff3b1d3d6ed81f99c6917973e3265ef8323eb919"
+    },
+    {
+      "scene": "destroyed-civilizations",
+      "variant": "proposed",
+      "file": "review/other-windows/images/destroyed-civilizations-proposed.png",
+      "width": 1280,
+      "height": 960,
+      "sha256": "da60204c168b65191eab8bd7ff3b1d3d6ed81f99c6917973e3265ef8323eb919"
+    },
+    {
+      "scene": "credits",
+      "variant": "original",
+      "file": "review/original-scenes/images/credits.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "01f131266f8609e7507aea24b110f4bb48a326f45ebedd89d5c53e84a2d25199"
+    },
+    {
+      "scene": "credits",
+      "variant": "current",
+      "file": "review/other-windows/images/credits-current.png",
+      "width": 600,
+      "height": 400,
+      "sha256": "a66498611001049728c17f7f86ab60ff221a06d5c52d1fae472353d79a692d9e"
+    },
+    {
+      "scene": "credits",
+      "variant": "hd",
+      "file": "review/other-windows/images/credits-hd.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "7d40328dd8a70e8152d70eea660b1d4564c01b343c85e59a166d953a26fa4bf4"
+    },
+    {
+      "scene": "credits",
+      "variant": "proposed",
+      "file": "review/other-windows/images/credits-proposed.png",
+      "width": 1200,
+      "height": 800,
+      "sha256": "5b5805781fd8e4c40a89e4cd61c840a2ecb6e03dfcbc386c6b95f5c107df2d58"
+    },
+    {
+      "scene": "status-panel",
+      "variant": "original",
+      "file": "review/original-scenes/images/status-panel.png",
+      "width": 320,
+      "height": 440,
+      "sha256": "bc80fbec2db0255aa6d1dfb27051a02b29e7440eba73a84eb96c388bd35021ba"
+    },
+    {
+      "scene": "status-panel",
+      "variant": "current",
+      "file": "review/other-windows/images/status-panel-current.png",
+      "width": 320,
+      "height": 440,
+      "sha256": "54a931bf05ef0f1cac65091c99f2fca115c0a26eed4158e7787f946274c078b0"
+    },
+    {
+      "scene": "status-panel",
+      "variant": "hd",
+      "file": "review/other-windows/images/status-panel-hd.png",
+      "width": 640,
+      "height": 880,
+      "sha256": "1eca0c26495e79d25ecab7c51faf6c65dc0ff1d4ef2286b0782d505953b443b6"
+    },
+    {
+      "scene": "status-panel",
+      "variant": "proposed",
+      "file": "review/other-windows/images/status-panel-proposed.png",
+      "width": 640,
+      "height": 880,
+      "sha256": "cedb78ac738a7fa0cdd7b2972f7ce7bd094353af7a2e1adfe194876fb395e79a"
+    },
+    {
+      "scene": "world-map",
+      "variant": "original",
+      "file": "review/original-scenes/images/world-map.png",
+      "width": 304,
+      "height": 264,
+      "sha256": "4fa323b5c218d1fd8450c8cf0cb6e79a1abe2f50bf61eec326d85f7cfa8e4cf1"
+    },
+    {
+      "scene": "world-map",
+      "variant": "current",
+      "file": "review/other-windows/images/world-map-current.png",
+      "width": 304,
+      "height": 264,
+      "sha256": "8673e543b8232849a437201f5e2589560cb5e09fc572a25dece0c4760a145893"
+    },
+    {
+      "scene": "world-map",
+      "variant": "hd",
+      "file": "review/other-windows/images/world-map-hd.png",
+      "width": 608,
+      "height": 528,
+      "sha256": "274cc977ce2b29475d2e63a878f9b912b8356bb239d9fba7032a86987edf5dab"
+    },
+    {
+      "scene": "world-map",
+      "variant": "proposed",
+      "file": "review/other-windows/images/world-map-proposed.png",
+      "width": 608,
+      "height": 528,
+      "sha256": "d97898ddb9b20aa7cb9b8eae1d9146f24e5c40cf2970260846a96646c2a6a876"
+    },
+    {
+      "scene": "tax-rates",
+      "variant": "original",
+      "file": "review/original-scenes/images/tax-rates.png",
+      "width": 400,
+      "height": 256,
+      "sha256": "c483806605e2fda805f4366bf2e56f53c43986d3c7f908aedc538147ca06b6e7"
+    },
+    {
+      "scene": "tax-rates",
+      "variant": "current",
+      "file": "review/other-windows/images/tax-rates-current.png",
+      "width": 400,
+      "height": 256,
+      "sha256": "85243366f2cbf46ddf00e6bed78a83aff44f44e5dba84d83ce0894e06c82714a"
+    },
+    {
+      "scene": "tax-rates",
+      "variant": "hd",
+      "file": "review/other-windows/images/tax-rates-hd.png",
+      "width": 800,
+      "height": 512,
+      "sha256": "964cc812e3840731a98ae2e0b1d3b74c02257600f612061737c77a6c6f173610"
+    },
+    {
+      "scene": "tax-rates",
+      "variant": "proposed",
+      "file": "review/other-windows/images/tax-rates-proposed.png",
+      "width": 800,
+      "height": 512,
+      "sha256": "8b06b2e3a2e2bff83023ea2c0b8a8f42f81478be85fdbb6f0cccd7ed8638b1ec"
+    },
+    {
+      "scene": "dialog-research",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-research.png",
+      "width": 430,
+      "height": 360,
+      "sha256": "269aca9eb4285050870d2461098df96580521d0c231d319ec5b90a9530eeef1d"
+    },
+    {
+      "scene": "dialog-research",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-research-current.png",
+      "width": 430,
+      "height": 360,
+      "sha256": "a7c75d61103ee5ee9383e28d0945ee1fe7bcbd535117a6e316b870f876888774"
+    },
+    {
+      "scene": "dialog-research",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-research-hd.png",
+      "width": 860,
+      "height": 720,
+      "sha256": "8da8a5841d228ed9b82d15cf267e44cf06cfe682d45d743f56157f28c93e15c2"
+    },
+    {
+      "scene": "dialog-research",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-research-proposed.png",
+      "width": 860,
+      "height": 720,
+      "sha256": "a185bcc725cfabf4557af67f227c8039cc69a721b68de86ef3b51ec5297e87b8"
+    },
+    {
+      "scene": "dialog-production",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-production.png",
+      "width": 430,
+      "height": 340,
+      "sha256": "7e29d469ad17cf966643b26ab10a63ae0e21f853df6fb216ec93ccfdcb011c29"
+    },
+    {
+      "scene": "dialog-production",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-production-current.png",
+      "width": 430,
+      "height": 340,
+      "sha256": "88a56e3a8b72c861770479b857ae677b0b8ebc3cdccbce7b01d07b55799b12fd"
+    },
+    {
+      "scene": "dialog-production",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-production-hd.png",
+      "width": 860,
+      "height": 680,
+      "sha256": "c3f1d176213c2ec90ce9134e797a3c8a8954f3a43c3680c6442c80822489c7bc"
+    },
+    {
+      "scene": "dialog-production",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-production-proposed.png",
+      "width": 860,
+      "height": 680,
+      "sha256": "cff0e4a2982b0a8c8b76d95ca9d9f2315023c80b7783c2c9f59a2dcb33851c9f"
+    },
+    {
+      "scene": "dialog-options",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-options.png",
+      "width": 480,
+      "height": 410,
+      "sha256": "4eb755152a63d8491c5c42121e73fe4124e0f5eb65e20d75e06d4c2fe11b0f93"
+    },
+    {
+      "scene": "dialog-options",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-options-current.png",
+      "width": 480,
+      "height": 410,
+      "sha256": "2cf790b078a03dc4d6b45fc646c035b14ea9843922ed36b68a22fb142d61d8cb"
+    },
+    {
+      "scene": "dialog-options",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-options-hd.png",
+      "width": 960,
+      "height": 820,
+      "sha256": "c91725d1eea7142626929604bb6de0ffe826194b2bb722393a7ebf9571567c0b"
+    },
+    {
+      "scene": "dialog-options",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-options-proposed.png",
+      "width": 960,
+      "height": 820,
+      "sha256": "56051db3f323b76877cdf91954a95e3e748d7c84e9ef6b41a0fb3ba2ad41699a"
+    },
+    {
+      "scene": "dialog-setup",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-setup.png",
+      "width": 360,
+      "height": 360,
+      "sha256": "c54b1a1fc2de23ec1acf4027f8dbca06bfe84a67bcc8861fd2198cd3bf5049cb"
+    },
+    {
+      "scene": "dialog-setup",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-setup-current.png",
+      "width": 360,
+      "height": 360,
+      "sha256": "b1c7690205605a15f6fe5dd9800712937f9603752bf96cb2d8e8248e3a02c54f"
+    },
+    {
+      "scene": "dialog-setup",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-setup-hd.png",
+      "width": 720,
+      "height": 720,
+      "sha256": "b1c964eb839319e37633d3513f4cf498836244e2cf06758a32988d322e1254a6"
+    },
+    {
+      "scene": "dialog-setup",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-setup-proposed.png",
+      "width": 720,
+      "height": 720,
+      "sha256": "a5a30f33a31ad329dbbdd83f40e718e1dc5284b0bf9639d0487d081c5938af89"
+    },
+    {
+      "scene": "dialog-confirmation",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-confirmation.png",
+      "width": 400,
+      "height": 220,
+      "sha256": "924c0b4c5778f96d402d28ed6a578ae1858a5263c727c67398aaaa81f6b523c9"
+    },
+    {
+      "scene": "dialog-confirmation",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-confirmation-current.png",
+      "width": 400,
+      "height": 220,
+      "sha256": "036a0739a205a8d75e813708ebc2e6c340c6154dad1641aeba9fc7fd7ddb2c20"
+    },
+    {
+      "scene": "dialog-confirmation",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-confirmation-hd.png",
+      "width": 800,
+      "height": 440,
+      "sha256": "b1477917ecaa8c0560ad2544603f03b8a77b3ece40dd116ee26a7c234c200be6"
+    },
+    {
+      "scene": "dialog-confirmation",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-confirmation-proposed.png",
+      "width": 800,
+      "height": 440,
+      "sha256": "ff0b052a571a1ca45550c53517cded207b5b7fb10e5c4909ce3da9a2f139bb1d"
+    },
+    {
+      "scene": "dialog-information",
+      "variant": "original",
+      "file": "review/original-scenes/images/dialog-information.png",
+      "width": 400,
+      "height": 220,
+      "sha256": "840b41d446e17f0c4d8bf9b49e8f06220e8f99ecce0f10f76632c3e55436c2b3"
+    },
+    {
+      "scene": "dialog-information",
+      "variant": "current",
+      "file": "review/other-windows/images/dialog-information-current.png",
+      "width": 400,
+      "height": 220,
+      "sha256": "3df6d6bf31aa0e2a07dbb6a42c0435cc7ee2cd2064194a04042267e0e989a614"
+    },
+    {
+      "scene": "dialog-information",
+      "variant": "hd",
+      "file": "review/other-windows/images/dialog-information-hd.png",
+      "width": 800,
+      "height": 440,
+      "sha256": "25184fd70c7d422bc445e7c15a55579cc993e08ebe260daba5493f3c01f0c9e4"
+    },
+    {
+      "scene": "dialog-information",
+      "variant": "proposed",
+      "file": "review/other-windows/images/dialog-information-proposed.png",
+      "width": 800,
+      "height": 440,
+      "sha256": "ba7c4527861cf71b9055597cf921efc447775a9591c4757676faded22fe9f195"
+    }
+  ]
+}

@@ -1,0 +1,73 @@
+{
+  "policy": "Source-guided static adapters; not compiled original function bodies or verified runtime screenshots.",
+  "sources": {
+    "pedia": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "council": [
+      "src/auto/reports.cpp",
+      "CouncilWindow::init; draw_background; create_buttons; draw_advisor_frames; draw_speech"
+    ],
+    "power": [
+      "src/auto/reports.cpp",
+      "powergraph_show"
+    ],
+    "foreign": [
+      "src/auto/reports.cpp",
+      "foreign_minister_show; historian_report_show"
+    ],
+    "casualties": [
+      "src/auto/reports.cpp",
+      "casualty_timeline_draw"
+    ],
+    "endgame": [
+      "src/auto/reports.cpp",
+      "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
+    ],
+    "status": [
+      "src/auto/game.cpp",
+      "status_draw_info; status_draw_unit_panel; status_redraw"
+    ],
+    "world": [
+      "src/auto/mapview.cpp",
+      "minimap_calc_layout; minimap_tile_to_screen; minimap_tile_color; minimap_draw_view_rect; minimap_redraw"
+    ],
+    "tax": [
+      "src/auto/city.cpp",
+      "TaxRateDialog::run; redraw"
+    ],
+    "research": [
+      "src/auto/civ.cpp",
+      "civ_choose_research_dialog; research_option_draw_advance"
+    ],
+    "options": [
+      "src/auto/window.cpp",
+      "menu_game_options; Dialog layout and drawing helpers"
+    ],
+    "setup": [
+      "src/auto/game.cpp",
+      "game_main_menu_loop; SetupPicWindow"
+    ],
+    "choice": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ]
+  },
+  "sourceHashes": {
+    "src/auto/pedia.cpp": "c15dd6915075b7943c17b5fdf0c384dae2936d05bb1dd05ee662d63a87986c7d",
+    "src/auto/reports.cpp": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
+    "src/auto/game.cpp": "520653472c2478806bb0e2ee28502eae2e410ac3bc2e6eeb3829036d0120aef7",
+    "src/auto/mapview.cpp": "0b65340871630a2c9ebbf6f07c8668383e7ef25b555373244e7cc6ea97168b67",
+    "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+    "src/auto/civ.cpp": "cb8a2d599e80b1854196e17982d5a76b43ff0ecdd9a18bc5634f0faf2c8363fb",
+    "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42"
+  },
+  "fixtures": "Declared report/civilopedia/dialog values; powergraph and casualty history are illustrative, not recovered from the save.",
+  "missingOriginalMedia": [
+    "council0.avi",
+    "council1.avi",
+    "council2.avi",
+    "winwin.avi"
+  ]
+}

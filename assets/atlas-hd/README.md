@@ -599,3 +599,13 @@ build to refresh reusable wall layers, manifest hashes and saved layout plans.
 [Layout plans](review/city-panorama-plans.json) and
 [validation](review/city-panorama-validation.json) record selection, relative
 widths, visible sprite fractions, depth order, opaque gate/wall joins and unchanged native/HD render hashes.
+
+## Additional windows
+
+The [additional-window review](review/other-windows/index.html) adds 35 scenes
+with all four variants: advisors/reports, seven Civilopedia views, council and
+endgame, status/world-map panels, and representative dialogs. They are also
+available in the main scene selector. See [coverage and rebuild instructions](OTHER-WINDOWS.md).
+Twelve report scenes execute 32 extracted C++ bodies; the remaining scenes use
+documented static adapters. Original council video portraits are unavailable
+locally, so that comparison explicitly leaves its media slots empty.

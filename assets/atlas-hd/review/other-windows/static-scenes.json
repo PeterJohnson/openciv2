@@ -1,0 +1,692 @@
+[
+  {
+    "id": "pedia-advances",
+    "title": "Civilopedia: Advance Index",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-advances.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-advances-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-advances-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-advances-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-advance",
+    "title": "Civilopedia: Railroad",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-advance.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-advance-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-advance-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-advance-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-tree",
+    "title": "Civilopedia: Advance Tree",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-tree.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-tree-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-tree-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-tree-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-unit",
+    "title": "Civilopedia: Riflemen",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-unit.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-unit-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-unit-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-unit-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-improvement",
+    "title": "Civilopedia: Library",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-improvement.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-improvement-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-improvement-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-improvement-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-wonder",
+    "title": "Civilopedia: Pyramids",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-wonder.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-wonder-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-wonder-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-wonder-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "pedia-terrain",
+    "title": "Civilopedia: Forest",
+    "mode": "other-window",
+    "source": [
+      "src/auto/pedia.cpp",
+      "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/pedia-terrain.png",
+    "originalSize": [
+      640,
+      400
+    ],
+    "current": "review/other-windows/images/pedia-terrain-current.png",
+    "currentSize": [
+      640,
+      400
+    ],
+    "hd": "review/other-windows/images/pedia-terrain-hd.png",
+    "hdSize": [
+      1280,
+      800
+    ],
+    "proposed": "review/other-windows/images/pedia-terrain-proposed.png",
+    "proposedSize": [
+      1280,
+      800
+    ]
+  },
+  {
+    "id": "powergraph",
+    "title": "Powergraph",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "powergraph_show"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/powergraph.png",
+    "originalSize": [
+      600,
+      425
+    ],
+    "current": "review/other-windows/images/powergraph-current.png",
+    "currentSize": [
+      600,
+      425
+    ],
+    "hd": "review/other-windows/images/powergraph-hd.png",
+    "hdSize": [
+      1200,
+      850
+    ],
+    "proposed": "review/other-windows/images/powergraph-proposed.png",
+    "proposedSize": [
+      1200,
+      850
+    ]
+  },
+  {
+    "id": "high-council",
+    "title": "English High Council",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "CouncilWindow::init; draw_background; create_buttons; draw_advisor_frames; draw_speech"
+    ],
+    "note": "Five 90 × 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue.",
+    "original": "review/original-scenes/images/high-council.png",
+    "originalSize": [
+      474,
+      302
+    ],
+    "current": "review/other-windows/images/high-council-current.png",
+    "currentSize": [
+      474,
+      302
+    ],
+    "hd": "review/other-windows/images/high-council-hd.png",
+    "hdSize": [
+      948,
+      604
+    ],
+    "proposed": "review/other-windows/images/high-council-proposed.png",
+    "proposedSize": [
+      948,
+      604
+    ]
+  },
+  {
+    "id": "foreign-minister",
+    "title": "Foreign Minister",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "foreign_minister_show; historian_report_show"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/foreign-minister.png",
+    "originalSize": [
+      480,
+      320
+    ],
+    "current": "review/other-windows/images/foreign-minister-current.png",
+    "currentSize": [
+      480,
+      320
+    ],
+    "hd": "review/other-windows/images/foreign-minister-hd.png",
+    "hdSize": [
+      960,
+      640
+    ],
+    "proposed": "review/other-windows/images/foreign-minister-proposed.png",
+    "proposedSize": [
+      960,
+      640
+    ]
+  },
+  {
+    "id": "historian",
+    "title": "The Historian Reports",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "foreign_minister_show; historian_report_show"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/historian.png",
+    "originalSize": [
+      480,
+      320
+    ],
+    "current": "review/other-windows/images/historian-current.png",
+    "currentSize": [
+      480,
+      320
+    ],
+    "hd": "review/other-windows/images/historian-hd.png",
+    "hdSize": [
+      960,
+      640
+    ],
+    "proposed": "review/other-windows/images/historian-proposed.png",
+    "proposedSize": [
+      960,
+      640
+    ]
+  },
+  {
+    "id": "casualty-timeline",
+    "title": "Defense Minister: Casualty Timeline",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "casualty_timeline_draw"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/casualty-timeline.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/casualty-timeline-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/casualty-timeline-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/casualty-timeline-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "destroyed-civilizations",
+    "title": "Destroyed Civilizations",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/destroyed-civilizations.png",
+    "originalSize": [
+      640,
+      480
+    ],
+    "current": "review/other-windows/images/destroyed-civilizations-current.png",
+    "currentSize": [
+      640,
+      480
+    ],
+    "hd": "review/other-windows/images/destroyed-civilizations-hd.png",
+    "hdSize": [
+      1280,
+      960
+    ],
+    "proposed": "review/other-windows/images/destroyed-civilizations-proposed.png",
+    "proposedSize": [
+      1280,
+      960
+    ]
+  },
+  {
+    "id": "credits",
+    "title": "Credits",
+    "mode": "other-window",
+    "source": [
+      "src/auto/reports.cpp",
+      "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/credits.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/credits-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/credits-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/credits-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "status-panel",
+    "title": "Status",
+    "mode": "other-window",
+    "source": [
+      "src/auto/game.cpp",
+      "status_draw_info; status_draw_unit_panel; status_redraw"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/status-panel.png",
+    "originalSize": [
+      320,
+      440
+    ],
+    "current": "review/other-windows/images/status-panel-current.png",
+    "currentSize": [
+      320,
+      440
+    ],
+    "hd": "review/other-windows/images/status-panel-hd.png",
+    "hdSize": [
+      640,
+      880
+    ],
+    "proposed": "review/other-windows/images/status-panel-proposed.png",
+    "proposedSize": [
+      640,
+      880
+    ]
+  },
+  {
+    "id": "world-map",
+    "title": "World Map",
+    "mode": "other-window",
+    "source": [
+      "src/auto/mapview.cpp",
+      "minimap_calc_layout; minimap_tile_to_screen; minimap_tile_color; minimap_draw_view_rect; minimap_redraw"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/world-map.png",
+    "originalSize": [
+      304,
+      264
+    ],
+    "current": "review/other-windows/images/world-map-current.png",
+    "currentSize": [
+      304,
+      264
+    ],
+    "hd": "review/other-windows/images/world-map-hd.png",
+    "hdSize": [
+      608,
+      528
+    ],
+    "proposed": "review/other-windows/images/world-map-proposed.png",
+    "proposedSize": [
+      608,
+      528
+    ]
+  },
+  {
+    "id": "tax-rates",
+    "title": "Tax Rates",
+    "mode": "other-window",
+    "source": [
+      "src/auto/city.cpp",
+      "TaxRateDialog::run; redraw"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/tax-rates.png",
+    "originalSize": [
+      400,
+      256
+    ],
+    "current": "review/other-windows/images/tax-rates-current.png",
+    "currentSize": [
+      400,
+      256
+    ],
+    "hd": "review/other-windows/images/tax-rates-hd.png",
+    "hdSize": [
+      800,
+      512
+    ],
+    "proposed": "review/other-windows/images/tax-rates-proposed.png",
+    "proposedSize": [
+      800,
+      512
+    ]
+  },
+  {
+    "id": "dialog-research",
+    "title": "What shall we research?",
+    "mode": "other-window",
+    "source": [
+      "src/auto/civ.cpp",
+      "civ_choose_research_dialog; research_option_draw_advance"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-research.png",
+    "originalSize": [
+      430,
+      360
+    ],
+    "current": "review/other-windows/images/dialog-research-current.png",
+    "currentSize": [
+      430,
+      360
+    ],
+    "hd": "review/other-windows/images/dialog-research-hd.png",
+    "hdSize": [
+      860,
+      720
+    ],
+    "proposed": "review/other-windows/images/dialog-research-proposed.png",
+    "proposedSize": [
+      860,
+      720
+    ]
+  },
+  {
+    "id": "dialog-production",
+    "title": "London: Change Production",
+    "mode": "other-window",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-production.png",
+    "originalSize": [
+      430,
+      340
+    ],
+    "current": "review/other-windows/images/dialog-production-current.png",
+    "currentSize": [
+      430,
+      340
+    ],
+    "hd": "review/other-windows/images/dialog-production-hd.png",
+    "hdSize": [
+      860,
+      680
+    ],
+    "proposed": "review/other-windows/images/dialog-production-proposed.png",
+    "proposedSize": [
+      860,
+      680
+    ]
+  },
+  {
+    "id": "dialog-options",
+    "title": "Game Options",
+    "mode": "other-window",
+    "source": [
+      "src/auto/window.cpp",
+      "menu_game_options; Dialog layout and drawing helpers"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-options.png",
+    "originalSize": [
+      480,
+      410
+    ],
+    "current": "review/other-windows/images/dialog-options-current.png",
+    "currentSize": [
+      480,
+      410
+    ],
+    "hd": "review/other-windows/images/dialog-options-hd.png",
+    "hdSize": [
+      960,
+      820
+    ],
+    "proposed": "review/other-windows/images/dialog-options-proposed.png",
+    "proposedSize": [
+      960,
+      820
+    ]
+  },
+  {
+    "id": "dialog-setup",
+    "title": "Civilization II",
+    "mode": "other-window",
+    "source": [
+      "src/auto/game.cpp",
+      "game_main_menu_loop; SetupPicWindow"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-setup.png",
+    "originalSize": [
+      360,
+      360
+    ],
+    "current": "review/other-windows/images/dialog-setup-current.png",
+    "currentSize": [
+      360,
+      360
+    ],
+    "hd": "review/other-windows/images/dialog-setup-hd.png",
+    "hdSize": [
+      720,
+      720
+    ],
+    "proposed": "review/other-windows/images/dialog-setup-proposed.png",
+    "proposedSize": [
+      720,
+      720
+    ]
+  },
+  {
+    "id": "dialog-confirmation",
+    "title": "Quit Civilization II?",
+    "mode": "other-window",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-confirmation.png",
+    "originalSize": [
+      400,
+      220
+    ],
+    "current": "review/other-windows/images/dialog-confirmation-current.png",
+    "currentSize": [
+      400,
+      220
+    ],
+    "hd": "review/other-windows/images/dialog-confirmation-hd.png",
+    "hdSize": [
+      800,
+      440
+    ],
+    "proposed": "review/other-windows/images/dialog-confirmation-proposed.png",
+    "proposedSize": [
+      800,
+      440
+    ]
+  },
+  {
+    "id": "dialog-information",
+    "title": "City Improvement Complete",
+    "mode": "other-window",
+    "source": [
+      "src/auto/window.cpp",
+      "Dialog option, checkbox, button and text drawing helpers"
+    ],
+    "note": "Static source-guided review adapter: native geometry and declared display fixture; shared placement for original, native replacement and HD. Enhanced uses independent contrast, hierarchy and control cues. See OTHER-WINDOWS.md for fidelity boundaries.",
+    "original": "review/original-scenes/images/dialog-information.png",
+    "originalSize": [
+      400,
+      220
+    ],
+    "current": "review/other-windows/images/dialog-information-current.png",
+    "currentSize": [
+      400,
+      220
+    ],
+    "hd": "review/other-windows/images/dialog-information-hd.png",
+    "hdSize": [
+      800,
+      440
+    ],
+    "proposed": "review/other-windows/images/dialog-information-proposed.png",
+    "proposedSize": [
+      800,
+      440
+    ]
+  }
+]

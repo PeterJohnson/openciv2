@@ -243,8 +243,15 @@ int main(int argc, char** argv) {
             fixture_tile(9, 7).known = 18;
             v.draw_tile_roads(0, 0, 0, 8, 8, 1, 18);
             output(0, 0, "audit");
-        } else if ((mode == "map" || mode == "objects" || mode == "city-labels" || mode == "city-sizes")) {
+        } else if ((mode == "map" || mode == "objects" || mode == "city-labels" || mode == "city-sizes" ||
+                    mode == "report-glyphs")) {
             MapView v;
+
+            struct Glyph {
+                int kind, id, flags, x, y, zoom;
+            };
+
+            std::vector<Glyph> reportGlyphs;
             int cols, rows, viewer, grid;
             in >> map.width >> map.height >> v.zoom_u >> v.origin_x_uptr >> v.origin_y_uptr >> cols >> rows >>
                 viewer >> grid;
@@ -296,7 +303,14 @@ int main(int argc, char** argv) {
                 std::string tag;
                 while (in >> tag) {
                     int n, a;
-                    if (tag == "STATE") {
+                    if (tag == "GLYPH") {
+                        Glyph g;
+                        in >> g.kind >> g.id >> g.flags >> g.x >> g.y >> g.zoom;
+                        if (g.kind < 0 || g.kind > 1 || g.id < 0 || g.id >= (g.kind ? 64 : 256) ||
+                            g.zoom < -7 || g.zoom > 8)
+                            throw std::runtime_error("Report glyph domain");
+                        reportGlyphs.push_back(g);
+                    } else if (tag == "STATE") {
                         savedGame = true;
                         in >> map.seed >> game.rules >> game.difficulty >> game.human_players >>
                             human_civ[0] >> game.active_unit;
@@ -395,7 +409,25 @@ int main(int argc, char** argv) {
             v.cached_zoom = v.zoom_u;
             v.update_layout();
             commands.clear();
-            if (mode == "city-labels") {
+            if (mode == "report-glyphs") {
+                for (const auto& g : reportGlyphs) {
+                    record("glyph-start", g.x, g.y, 0, 0);
+                    if (g.kind) {
+                        auto& u = units[2047];
+                        u = {};
+                        u.type = g.id;
+                        u.owner = viewer;
+                        u.x = -50;
+                        u.y = -50;
+                        u.orders = 255;
+                        u.prev_in_stack = -1;
+                        u.next_in_stack = -1;
+                        gfx_draw_unit(0, 2047, g.flags, g.x, g.y, g.zoom, 0);
+                    } else {
+                        gfx_draw_city(0, g.id, g.flags, g.x, g.y, g.zoom);
+                    }
+                }
+            } else if (mode == "city-labels") {
                 v.draw_city_names(0, 0, -1);
             } else if (mode == "objects" || mode == "city-sizes") {
                 for (int ty = 0; ty < map.height; ty++) {

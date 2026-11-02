@@ -1,0 +1,81 @@
+{
+  "saveSha256": "97c30a657f2caa25c7f7f8b4b4081034fb721f3643ddcea7737782db97ecd62b",
+  "saveBasename": "he_a1788.sav",
+  "source": "Retained 1788 save records; city economic caches are supplied to the drawing boundary. Research cost, score summary and hall-of-fame entries are explicit review fixtures, not a gameplay simulation.",
+  "supplied": {
+    "researchCost": 420,
+    "score": {
+      "citizens": 142,
+      "wonders": 100,
+      "peace": 30,
+      "barbarianBonus": 25,
+      "total": 297
+    },
+    "hallOfFame": "Five declared comparison entries"
+  },
+  "civilizations": [
+    {
+      "id": 1,
+      "name": "Celts",
+      "adjective": "Celtic",
+      "leader": "Cunobelin",
+      "title": "Emperor",
+      "era": 2,
+      "populationUnits": 0
+    },
+    {
+      "id": 2,
+      "name": "Babylonians",
+      "adjective": "Babylonian",
+      "leader": "Hammurabi",
+      "title": "Emperor",
+      "era": 2,
+      "populationUnits": 0
+    },
+    {
+      "id": 3,
+      "name": "French",
+      "adjective": "French",
+      "leader": "Louis XIV",
+      "title": "Emperor",
+      "era": 2,
+      "populationUnits": 0
+    },
+    {
+      "id": 4,
+      "name": "Egyptians",
+      "adjective": "Egyptian",
+      "leader": "Ramesses",
+      "title": "Emperor",
+      "era": 2,
+      "populationUnits": 0
+    },
+    {
+      "id": 5,
+      "name": "Americans",
+      "adjective": "American",
+      "leader": "Abe Lincoln",
+      "title": "Emperor",
+      "era": 2,
+      "populationUnits": 0
+    },
+    {
+      "id": 6,
+      "name": "English",
+      "adjective": "English",
+      "leader": "Henry VIII",
+      "title": "King",
+      "era": 2,
+      "populationUnits": 3287
+    },
+    {
+      "id": 7,
+      "name": "Sioux",
+      "adjective": "Sioux",
+      "leader": "Sitting Bull",
+      "title": "Consul",
+      "era": 2,
+      "populationUnits": 28
+    }
+  ]
+}

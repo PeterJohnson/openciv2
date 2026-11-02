@@ -1,0 +1,208 @@
+{
+  "repository": "richardpenman-civ2",
+  "functions": [
+    {
+      "name": "ui_calc_item_spacing",
+      "file": "src/auto/window.cpp",
+      "line": 4031,
+      "sha256": "f351018bd8e21e144dc5d36ee9d0d8bb3ab272f9326f13908eebf9c7d8c40baf"
+    },
+    {
+      "name": "sprite_draw_spaced_row",
+      "file": "src/auto/graphics.cpp",
+      "line": 2710,
+      "sha256": "1fddb3ddc1a11af20ec1b9c86fbe8dc9e5d0b24dc6b8c11da061de7fdf1dabb3"
+    },
+    {
+      "name": "advisor_draw_city_citizens",
+      "file": "src/auto/reports.cpp",
+      "line": 351,
+      "sha256": "1f5cb1f015f351d25770a9a75c8a44f141ed7ab1d91831caff05afe0c743fe47"
+    },
+    {
+      "name": "attitude_advisor_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 432,
+      "sha256": "7da1ea12bd1d8b13d5089c308295737ef42c9d7e26345b72aeba24e41482e2b9"
+    },
+    {
+      "name": "defense_append_ability_label",
+      "file": "src/auto/reports.cpp",
+      "line": 606,
+      "sha256": "6e17653e12f6815316716b82299bc915941fe69caf228c8dad6083e7efb72ac5"
+    },
+    {
+      "name": "defense_draw_unit_stats",
+      "file": "src/auto/reports.cpp",
+      "line": 620,
+      "sha256": "54087671f4c6ad85045b9f6fd6c85b638a75a194aa1f49cc54daf06570f8b289"
+    },
+    {
+      "name": "defense_draw_unit_losses",
+      "file": "src/auto/reports.cpp",
+      "line": 725,
+      "sha256": "d4247ca0ffc717a4b71393adfaa998a09823cb6c6ce74003e540d72dd489217d"
+    },
+    {
+      "name": "defense_minister_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 774,
+      "sha256": "8e494196706c71ff5d62133593661d7b904cd628d3ad3d5f677f53a5bd285a51"
+    },
+    {
+      "name": "intel_draw_civ_heading",
+      "file": "src/auto/reports.cpp",
+      "line": 1014,
+      "sha256": "efc1562a030acb9be9577089ad2885ad741c1de553e207394206b000803f3ab9"
+    },
+    {
+      "name": "intel_draw_civ_facts",
+      "file": "src/auto/reports.cpp",
+      "line": 1101,
+      "sha256": "6db81d864529bd41d6f6c1e7567b94dc6a5b78072f9fd9761da6a58e732ab6bd"
+    },
+    {
+      "name": "intel_draw_contacts",
+      "file": "src/auto/reports.cpp",
+      "line": 1191,
+      "sha256": "34ba245f8845dd00a471cc1875b2fdacc9b78534a8096fffc8ac7e9359ba2756"
+    },
+    {
+      "name": "intel_draw_advances",
+      "file": "src/auto/reports.cpp",
+      "line": 1259,
+      "sha256": "657c6876f60ca2a2f5e6eeac8332972c476aa66f9c309231d45d4c2f86e348e8"
+    },
+    {
+      "name": "intel_report_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 1353,
+      "sha256": "0d019eb28b6077b5d07320571c97d27e3d53e6964665cf4284e7743b25efd9af"
+    },
+    {
+      "name": "top_cities_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 2183,
+      "sha256": "4714e8b86ccf115a46c259ada4a1baa5a05c4ef884ec60fe92e17289e08d2749"
+    },
+    {
+      "name": "demographics_draw_rank",
+      "file": "src/auto/reports.cpp",
+      "line": 2331,
+      "sha256": "dc3492b1f93b914407f79e0165ad564b4d1bc6a24dd215290a5edc0d4c64af73"
+    },
+    {
+      "name": "demographics_gather",
+      "file": "src/auto/reports.cpp",
+      "line": 2401,
+      "sha256": "55de75529728a00c6f14b022d9dbd7bdb9d5ed6886c88b15e015d512b01e6442"
+    },
+    {
+      "name": "demographics_row_label",
+      "file": "src/auto/reports.cpp",
+      "line": 2477,
+      "sha256": "0b50e81ffc64bc84e36721462a67bc88f8dbaaf0ee5982d1e44e433e52961430"
+    },
+    {
+      "name": "demographics_next_row",
+      "file": "src/auto/reports.cpp",
+      "line": 2492,
+      "sha256": "15e0ccffed9362728083ed239e846c7569a80919ee381b5c4c30fbd56a9d7b37"
+    },
+    {
+      "name": "demographics_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 2501,
+      "sha256": "c76612b90c8bceba7cf17c1a5c81a23076130219c0604f887fac34f914be04d0"
+    },
+    {
+      "name": "hall_of_fame_draw",
+      "file": "src/auto/reports.cpp",
+      "line": 2833,
+      "sha256": "3df1d85589fe5454afc811f5781cbc67381b116c0cd77ac7adfc51953a2a62a9"
+    },
+    {
+      "name": "civ_city_style_era",
+      "file": "src/auto/civ.cpp",
+      "line": 2907,
+      "sha256": "b7ab85983324d4c3eaa83c1bdc81126fa0b0a23c38adc4e743f52518f01e1664"
+    },
+    {
+      "name": "science_advisor_draw",
+      "file": "src/auto/civ.cpp",
+      "line": 1737,
+      "sha256": "e589ab2c0ca47fc365a136486e1b5869a2263ed850bebb95070beab16c4f3128"
+    },
+    {
+      "name": "civ_score_draw_citizens",
+      "file": "src/auto/civ.cpp",
+      "line": 2021,
+      "sha256": "3a687f99733e7b39073e58d96d5f9b38949f70efec5bc2ca0e961db8dc41b497"
+    },
+    {
+      "name": "civ_score_draw_wonders",
+      "file": "src/auto/civ.cpp",
+      "line": 2107,
+      "sha256": "1b3ce9f56bdb847efa09c74d6998c2a66ebb24198979ae0ea9387c367d0a45f6"
+    },
+    {
+      "name": "civ_score_draw_objectives",
+      "file": "src/auto/civ.cpp",
+      "line": 2159,
+      "sha256": "11e5a93ccc1c98a4b10bbc76848859451cb2343537cf1fd2d929fd72a3ed2304"
+    },
+    {
+      "name": "civ_score_draw_total",
+      "file": "src/auto/civ.cpp",
+      "line": 2244,
+      "sha256": "8c8600d7239712f9318b5b7efcab0842a227942410b2c56087f7bd45fe0fc791"
+    },
+    {
+      "name": "civ_score_window_draw",
+      "file": "src/auto/civ.cpp",
+      "line": 2313,
+      "sha256": "6e3f52058c4361a9bbe1e727a4a1e0546cbe929ff75073bb28b71de6b300712b"
+    },
+    {
+      "name": "trade_advisor_draw_left_cell",
+      "file": "src/auto/city.cpp",
+      "line": 1287,
+      "sha256": "9e5e03a03d1dbbfdc04b12fcee6e0fa5a1e56237123e846884508139ba56e246"
+    },
+    {
+      "name": "trade_advisor_draw_right_cell",
+      "file": "src/auto/city.cpp",
+      "line": 1398,
+      "sha256": "9f40e900730823f1b11df4f29e3a42e76a8aeab6932d8ab8a5e56b7b14c76e55"
+    },
+    {
+      "name": "trade_advisor_draw",
+      "file": "src/auto/city.cpp",
+      "line": 1459,
+      "sha256": "547c51ec53d572f452968d120c6dd890b4ec06cd839b20b47a413c8476996450"
+    },
+    {
+      "name": "city_status_draw",
+      "file": "src/auto/city.cpp",
+      "line": 1679,
+      "sha256": "68294e64e7ca6d061d71636bf8ee190cad31cd6fe09351324408e215a254a6f3"
+    },
+    {
+      "name": "wonders_report_draw",
+      "file": "src/auto/city.cpp",
+      "line": 1902,
+      "sha256": "fdb75965220ae4ee1978f379d06338a89af51e34e53c31b73d5b3a2432793aa3"
+    }
+  ],
+  "sourceHashes": {
+    "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42",
+    "src/auto/graphics.cpp": "3b020e0dc704e9ee268c785900e672d71d8413c16b638879fd42b32e02f6eb69",
+    "src/auto/reports.cpp": "8ab192500e944b6b02498d78b1071df2e27da2379b782e14727c2a96b0e727fc",
+    "src/auto/civ.cpp": "cb8a2d599e80b1854196e17982d5a76b43ff0ecdd9a18bc5634f0faf2c8363fb",
+    "src/auto/city.cpp": "e1adb6e7c64c976dd609b4e876763ddbc678cbde83473f39bf7628b47c1b99cc",
+    "src/include/civ2types.h": "19f30204d36ef9715a060015885fcc50fa53ec7272312cd83dd885e307f5a5c8",
+    "src/data/gamedata.cpp": "d737b44c3c4ce997a1c3b4761ed1af1305782edd5787f76d519916da81c77d5e",
+    "data/native/fonts.bin": "6c36598b273b937eb53db224a9cfab82381bb46d43c72140682cff8abcb4bfeb"
+  },
+  "bodyPolicy": "Unchanged C++ bodies, LF normalized, source-mapped with #line"
+}

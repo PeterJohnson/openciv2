@@ -1,0 +1,314 @@
+[
+  {
+    "id": "report-city-status",
+    "title": "City Status",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-city-status.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-city-status-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-city-status-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-city-status-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-attitude",
+    "title": "Attitude Advisor",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-attitude.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-attitude-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-attitude-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-attitude-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-trade",
+    "title": "Trade Advisor",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-trade.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-trade-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-trade-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-trade-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-science",
+    "title": "Science Advisor",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-science.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-science-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-science-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-science-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-defense",
+    "title": "Defense Minister",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-defense.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-defense-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-defense-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-defense-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-losses",
+    "title": "Military Casualties",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-losses.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-losses-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-losses-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-losses-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-intelligence",
+    "title": "Intelligence Report",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-intelligence.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-intelligence-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-intelligence-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-intelligence-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-wonders",
+    "title": "Wonders of the World",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-wonders.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-wonders-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-wonders-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-wonders-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-top-cities",
+    "title": "Top Five Cities",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-top-cities.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-top-cities-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-top-cities-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-top-cities-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-demographics",
+    "title": "Demographics",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-demographics.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-demographics-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-demographics-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-demographics-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-score",
+    "title": "Civilization Score",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-score.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-score-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-score-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-score-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  },
+  {
+    "id": "report-hall-of-fame",
+    "title": "Hall of Fame",
+    "mode": "report",
+    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "original": "review/original-scenes/images/report-hall-of-fame.png",
+    "originalSize": [
+      600,
+      400
+    ],
+    "current": "review/other-windows/images/report-hall-of-fame-current.png",
+    "currentSize": [
+      600,
+      400
+    ],
+    "hd": "review/other-windows/images/report-hall-of-fame-hd.png",
+    "hdSize": [
+      1200,
+      800
+    ],
+    "proposed": "review/other-windows/images/report-hall-of-fame-proposed.png",
+    "proposedSize": [
+      1200,
+      800
+    ]
+  }
+]

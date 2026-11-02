@@ -716,3 +716,14 @@ land color wherever the fuller coast extends beyond those weights; coast geometr
 is unchanged. The [land review](review/land-borders.html) covers all ten land
 types in the real save, at two zoom levels and all four stages. No game source
 or production drawing behavior is modified.
+
+## Additional-window review boundary
+
+The [additional-window audit](OTHER-WINDOWS.md) documents 35 four-way scenes.
+`tools/atlas-review/extract-reports.py` extracts 32 unchanged report/selection
+bodies into a separate MSVC x86 binary, with source hashes and Debug/Release
+trace checks. `atlas-engine report-glyphs` reuses the existing native city/unit
+drawing bodies for report sprites. `other-windows.cjs` supplies source-guided
+static adapters for 23 further scenes; those are not claimed as extracted
+full-window execution or runtime screenshot matches. The existing 80-body
+map/window extraction and its regression checks retain their separate scope.
