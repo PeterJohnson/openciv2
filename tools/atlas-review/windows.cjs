@@ -283,8 +283,16 @@ async function ship(trace, scene, proposed, density) {
                      11);
         await p.text('Mass: 19,600 t · Fuel: 100% · Flight: 15.0 years', 12, 433, 470, 10);
     }
-    await p.text(scene.ready ? 'Launch success: 100%' : 'Review fixture · incomplete spacecraft', 3, 454, 634,
-                 14, '#dce2ba', 'middle');
+    if (proposed) {
+        await p.box(0, 454, 640, 26, '#162d2bf2', '#718775');
+        const label = scene.ready ? 'Prob. of Success: 100%' : 'Review fixture · incomplete spacecraft';
+        await p.vector(`<text x="320" y="21" font-family="Noto Sans,DejaVu Sans,sans-serif" font-size="${
+                           scene.ready ? 20 : 14}" font-weight="700" text-anchor="middle" fill="#f1dfb4">${
+                           escape(label)}</text>`,
+                       0, 454, 640, 26);
+    } else
+        await p.text(scene.ready ? 'Launch success: 100%' : 'Review fixture · incomplete spacecraft', 3, 454,
+                     634, 14, '#dce2ba', 'middle');
     return {buffer : await p.finish(), ops : p.ops};
 }
 
@@ -592,5 +600,6 @@ module.exports = {
     sceneDefs,
     Painter,
     resourceMap,
-    city
+    city,
+    ship
 };
