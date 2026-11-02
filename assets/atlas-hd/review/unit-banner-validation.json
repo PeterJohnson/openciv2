@@ -1,295 +1,301 @@
 {
   "status": "pass",
   "navalSprites": 12,
+  "filteredEdges": {
+    "cases": 48,
+    "edgePixels": 8832,
+    "originalScene": "district",
+    "originalReplayUnchanged": true
+  },
   "cases": [
     {
       "unit": 32,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 32,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 32,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 32,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 33,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 33,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 33,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 33,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 34,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 34,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 34,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 34,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 35,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 35,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 35,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 35,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 36,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 36,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 36,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 36,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 37,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 37,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 37,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 37,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 38,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 38,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 38,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 38,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 39,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 39,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 39,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 39,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 40,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 40,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 40,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 40,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 41,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 41,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 41,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 41,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 42,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 42,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 42,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 42,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     },
     {
       "unit": 43,
       "zoom": 0,
       "density": 1,
-      "verifiedBannerPixels": 213
+      "verifiedBannerPixels": 227
     },
     {
       "unit": 43,
       "zoom": 0,
       "density": 2,
-      "verifiedBannerPixels": 878
+      "verifiedBannerPixels": 932
     },
     {
       "unit": 43,
       "zoom": 8,
       "density": 1,
-      "verifiedBannerPixels": 824
+      "verifiedBannerPixels": 872
     },
     {
       "unit": 43,
       "zoom": 8,
       "density": 2,
-      "verifiedBannerPixels": 3391
+      "verifiedBannerPixels": 3591
     }
   ],
-  "limits": "Checks replacement naval anchor clearance and native shield-before-unit composition at two map zooms and both preview densities. Enhanced stacks and city-label avoidance are covered by the existing map-style and city-label checks. Static fixture validation, not interactive gameplay qualification."
+  "limits": "Checks replacement naval anchor clearance and native shield-before-unit composition at two map zooms and both preview densities. Checks faction tint at all partially transparent edges for eight owners and three badge sizes, and replays the original district byte-for-byte. Enhanced stacks and city-label avoidance are covered by the existing map-style and city-label checks. Static fixture validation, not interactive gameplay qualification."
 }

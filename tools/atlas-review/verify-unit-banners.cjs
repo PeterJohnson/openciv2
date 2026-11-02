@@ -1,6 +1,60 @@
 const C = require('./common.cjs'), R = require('./render.cjs'), F = require('./fixtures.cjs');
 const assert = require('node:assert/strict');
 
+async function filteredEdges(bindings) {
+    const scene = C.read(C.path.join(C.pack, 'review/scenes.json')).find(s => s.id === 'district');
+    const source = C.engine('objects', C.path.join(C.pack, scene.fixture));
+    const unit = source.commands.findIndex(c => c.asset === 'unit/1');
+    let front = unit - 1;
+    while (source.commands[front].asset !== 'shield')
+        front--;
+    const commands = source.commands.slice(front, front + 3);
+    const colors = [ 'e6dfc3', 'd66b57', '63b194', '9e87ca', '6e9ed0', 'd8bd60', 'dc994d', 'b7c7ce' ];
+    let cases = 0, edgePixels = 0;
+    for (const [owner, color] of colors.entries())
+        for (const scale of [.5, 1, 1.35])
+            for (const density of [1, 2]) {
+                const trace = {
+                    width : 64,
+                    height : 80,
+                    commands : commands.map(
+                        c => ({
+                            ...c,
+                            x : 8,
+                            y : 8,
+                            width : Math.round(c.width * scale),
+                            height : Math.round(c.height * scale),
+                            color : c.asset === 'replace' ? (+c.text === 262 ? 200 : 210) + owner : c.color
+                        }))
+                };
+                const image =
+                    await C.raw(await R.baseline(trace, {mode : 'objects'}, bindings,
+                                                 {density, native : density === 1, transparent : true}));
+                const expected = color.match(/../g).map(v => parseInt(v, 16));
+                let edge = 0;
+                for (let i = 0; i < image.data.length; i += 4)
+                    if (image.data[i + 3]) {
+                        assert.deepEqual(
+                            [...image.data.subarray(i, i + 3) ], expected,
+                            'Filtered banner must retain its faction color, including partial-alpha edges');
+                        if (image.data[i + 3] < 255)
+                            edge++;
+                    }
+                assert(edge > 0, 'Exercise antialiased coverage rather than only opaque pixels');
+                edgePixels += edge;
+                cases++;
+            }
+    const originals = C.read(C.path.join(C.pack, 'review/original-local/bindings.json'));
+    const originalTrace = require('./coast-audit.cjs').nativeTrace(C.path.join(C.pack, scene.fixture));
+    const original =
+        await R.baseline(originalTrace, scene, originals.bindings,
+                         {originalText : true, palette : n => originals.palette[String(n & 255)]});
+    const recorded = C.read(C.path.join(C.pack, 'review/original-scenes/renders.json'));
+    assert.equal(C.sha(original), recorded[scene.id].sha256,
+                 'Original-art replay must remain byte-identical');
+    return {cases, edgePixels, originalScene : scene.id, originalReplayUnchanged : true};
+}
+
 async function main() {
     const meta = C.read(C.path.join(C.pack, 'map/unit-anchors.json'));
     const bindings = C.read(C.path.join(C.pack, 'compatibility/bindings.json')).bindings;
@@ -57,11 +111,13 @@ async function main() {
     C.json(C.path.join(C.pack, 'review/unit-banner-validation.json'), {
         status : 'pass',
         navalSprites : meta.overrides.length,
+        filteredEdges : await filteredEdges(bindings),
         cases : results,
         limits :
-            'Checks replacement naval anchor clearance and native shield-before-unit composition at two map zooms and both preview densities. Enhanced stacks and city-label avoidance are covered by the existing map-style and city-label checks. Static fixture validation, not interactive gameplay qualification.'
+            'Checks replacement naval anchor clearance and native shield-before-unit composition at two map zooms and both preview densities. Checks faction tint at all partially transparent edges for eight owners and three badge sizes, and replays the original district byte-for-byte. Enhanced stacks and city-label avoidance are covered by the existing map-style and city-label checks. Static fixture validation, not interactive gameplay qualification.'
     });
-    console.log('PASS flat banner face and', results.length, 'naval banner visibility cases');
+    console.log('PASS flat banner face, faction-mask edges, unchanged original replay and', results.length,
+                'naval banner visibility cases');
 }
 
 main().catch(e => {

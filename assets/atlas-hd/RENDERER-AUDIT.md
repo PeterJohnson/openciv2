@@ -425,12 +425,18 @@ second half-size fit and vertical offset. Ocean resources occupy up to 72% of
 frame height, land resources 58%, with transparent padding.
 
 The replacement palette adapter distinguishes primary/mid faction colors and
-health colors. Shield artwork uses one flat faction-color face and a dark outline,
-without the former inset strip or bevel. Unit order
+health colors. Shield artwork uses one flat faction-color face with a softly tapered
+lower rim and no painted outline; the source's offset shadow provides a thin edge.
+For this replacement-only alpha mask, the PNG backend consumes the source's immediate
+shield recolor commands before compositing, applying the selected faction or shadow
+color to filtered coverage. Exact RGB replacement after compositing left dark,
+unmatched antialiased pixels. Original indexed artwork retains the existing replay
+path; the district original render is checked byte-for-byte. Unit order
 text is centered at the native shield text anchor in the standalone backend;
 this corrects the prior left/top interpretation, including original-art replays.
 Original-art fonts use the reference bank; native and HD-only use identical logical
-commands. Enhanced text remains on its independent presentation path.
+commands. Enhanced text remains on its independent presentation path; its unit-order glyphs
+use a centered text anchor rather than centering an estimated-width canvas.
 `readableBadges` modifies only the proposal's badge group: 1.35x scale, separated
 rear plate, a plus sign for a source-indicated stack, and foreground placement.
 Unit/city selection and image frames are unchanged and checked directly.

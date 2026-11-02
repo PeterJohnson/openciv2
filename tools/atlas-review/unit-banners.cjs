@@ -2,8 +2,11 @@
 const C = require('./common.cjs');
 
 function source() {
-    return C.svg(96, 160,
-                 '<path d="M4 4H92V108L48 156L4 108Z" fill="#010607" stroke="#17201d" stroke-width="8"/>');
+    // The source draws its own one-pixel offset shadow; a painted outline
+    // doubles that edge. Keep a full-width face and a softly tapered lower rim.
+    return C.svg(
+        96, 160,
+        '<path d="M0 0H96V104C96 130 75 151 51 158Q48 159 45 158C21 151 0 130 0 104Z" fill="#010607"/>');
 }
 
 async function build() {

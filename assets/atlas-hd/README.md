@@ -352,18 +352,21 @@ continuous mouths and map-edge crossings. A fixed radial bank profile prevents
 fine relief from creating detached water pockets. Native/HD bindings use the canonical
 bank artwork directly. [Compare riverbank detail and mouths](review/river-fractal.png).
 
-Faction shields have a larger filled silhouette within their existing native
-frame, one flat faction-color face and a dark outline. The inset stripe/bevel is
-removed; rear stack shields retain the darker faction color. Health and order marks
+Faction shields fill their existing native frame with a flat faction-color face
+and a softly tapered lower rim. The painted outline is removed; the source's
+one-pixel offset shadow supplies the edge, and rear stack shields retain the darker
+faction color. The standalone PNG adapter colors the alpha mask before compositing,
+avoiding dark fragments from filtered palette keys. Health and order marks
 are readable; stacked units keep the source's repeated-shield indicator. The
 cohesion stage additionally enlarges status badges by 35%, separates the rear
 shield, adds a plus marker for stacks, and draws those badges over the unit layer.
 The actual unit and city sprites keep the source-selected dimensions and anchors.
 [Naval banner anchors](map/unit-anchors.json) move the shields into transparent
 upper-left space so the native ship draw cannot cover them. Original-art anchors
-remain separate. [Inspect ship and stack crops](review/unit-banners.png);
-[48 visibility cases](review/unit-banner-validation.json) cover all twelve naval
-types at native/HD density and two zoom levels. To rebuild just these changes, run
+remain separate. [Compare original, replacement native, HD-only and enhanced ship
+and stack crops](review/unit-banners.png). [Banner checks](review/unit-banner-validation.json)
+cover 48 naval visibility cases, 48 faction-mask/size cases, and a byte-identical
+original-art replay. To rebuild banner art or registration, run
 `unit-banners.cjs`, rebuild the standalone engine in both configurations, then run
 `refresh-unit-banners.cjs` and `verify-unit-banners.cjs` under `tools/atlas-review/`.
 The district fixture explicitly includes fish, whales and a linked two-unit stack;

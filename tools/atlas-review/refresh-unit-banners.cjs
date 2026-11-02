@@ -2,7 +2,8 @@ const C = require('./common.cjs'), R = require('./render.cjs');
 
 async function review() {
     const scenes = C.read(C.path.join(C.pack, 'review/scenes.json'));
-    const sheet = C.clear(1536, 1152, [ 23, 35, 34, 255 ]);
+    const originals = C.read(C.path.join(C.pack, 'review/original-scenes/renders.json'));
+    const sheet = C.clear(2048, 1152, [ 23, 35, 34, 255 ]);
     const examples = [
         [ 'saved-region', 'unit/37', 'Saved-game destroyer' ], [ 'district', 'unit/35', 'Frigate' ],
         [ 'district', 'unit/1', 'Engineers · linked stack' ]
@@ -13,27 +14,31 @@ async function review() {
         const left = Math.max(0, c.x - c.width / 4), top = Math.max(0, c.y - c.width / 8);
         const width = Math.min(c.width * 1.5, trace.width - left),
               height = Math.min(c.height * 1.4, trace.height - top);
-        for (const [col, stage] of ['current', 'hd', 'proposed'].entries()) {
-            const d = stage === 'current' ? 1 : 2;
-            const crop = await C.sharp(C.path.join(C.pack, s[stage]))
-                             .extract({
-                                 left : Math.round(left * d),
-                                 top : Math.round(top * d),
-                                 width : Math.round(width * d),
-                                 height : Math.round(height * d)
-                             })
-                             .resize(496, 332, {
-                                 fit : 'contain',
-                                 background : '#172322',
-                                 kernel : stage === 'current' ? 'nearest' : 'lanczos3'
-                             })
-                             .png()
-                             .toBuffer();
+        for (const [col, [ stage, label ]] of [[ 'original', 'Original game art' ],
+                                               [ 'current', 'Replacement native' ], [ 'hd', 'HD only' ],
+                                               [ 'proposed', 'Enhanced' ]]
+                 .entries()) {
+            const d = [ 'original', 'current' ].includes(stage) ? 1 : 2;
+            const file = stage === 'original' ? originals[id].original : s[stage];
+            const crop =
+                await C.sharp(C.path.join(C.pack, file))
+                    .extract({
+                        left : Math.round(left * d),
+                        top : Math.round(top * d),
+                        width : Math.round(width * d),
+                        height : Math.round(height * d)
+                    })
+                    .resize(
+                        496, 332,
+                        {fit : 'contain', background : '#172322', kernel : d === 1 ? 'nearest' : 'lanczos3'})
+                    .png()
+                    .toBuffer();
             C.blit(sheet, await C.raw(crop), col * 512 + 8, row * 384 + 44);
-            const label = C.svg(512, 40,
-                                `<text x="12" y="26" fill="#e5d6b5" font-family="sans-serif" font-size="18">${
-                                    title} · ${stage}</text>`);
-            C.blit(sheet, await C.raw(Buffer.from(label)), col * 512, row * 384);
+            const heading =
+                C.svg(512, 40,
+                      `<text x="12" y="26" fill="#e5d6b5" font-family="sans-serif" font-size="18">${
+                          title} · ${label}</text>`);
+            C.blit(sheet, await C.raw(Buffer.from(heading)), col * 512, row * 384);
         }
     }
     C.write(C.path.join(C.pack, 'review/unit-banners.png'), await C.png(sheet));

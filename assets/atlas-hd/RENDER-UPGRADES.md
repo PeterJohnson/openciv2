@@ -30,7 +30,10 @@ frame, an explicit anchor, trim bounds, color-mask channels and its density.
 Keep map coordinates, native logical boxes, resource IDs and saved-game formats
 unchanged. Retain new alpha; do not quantize it into the old palette or infer
 transparent pixels from a background color. Replace palette recoloring of flags
-and shields with a dedicated faction mask. Crop and anchor metadata must be
+and shields with a dedicated faction mask. The standalone banner preview uses
+filtered alpha coverage with a flat faction tint, preserving the source's shadow,
+health-bar and stack commands. Recoloring RGB keys after filtering/compositing
+causes dark fringes; resolve color separately from coverage. Crop and anchor metadata must be
 selected deliberately; fitting every image to an arbitrary old rectangle is not
 an integration policy.
 
@@ -445,7 +448,8 @@ markers should be smaller and lower contrast than unit tags; the map uses an
 olive/bronze production shield while city economy symbols remain blue.
 Shared network endpoints must remain
 identical for all connection masks; a changed junction must not move its arms.
-Banner faces stay flat, with darker rear shields identifying stacks. Use the
+Banner faces stay flat with a gently tapered rim and no painted border; retain the
+source's small offset shadow and darker rear shields identifying stacks. Use the
 source-supported per-unit shield anchors to clear the replacement silhouettes: the
 naval sprites use upper-left registration in every replacement stage, without
 changing source draw order or shrinking the ship. This is an asset-registration

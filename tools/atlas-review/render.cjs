@@ -29,15 +29,22 @@ async function cached(key, f) {
     return cache.get(key);
 }
 
-async function sprite(name, w, h, bindings, native = false) {
+async function sprite(name, w, h, bindings, native = false, tint = null) {
     const b = bindings[name];
     if (!b)
         throw Error('Unbound renderer sprite ' + name);
-    return cached(`${b.file}:${name}:${w}:${h}:${native}`, async () => {
+    return cached(JSON.stringify([ b.file, name, w, h, native, tint ]), async () => {
         let input = path.join(pack, b.file);
         if (native)
             input = await sharp(input).resize(b.nativeWidth, b.nativeHeight, {fit : 'fill'}).png().toBuffer();
         const image = await raw(input, w, h, native ? 'nearest' : 'lanczos3');
+        // Flat replacement banners use their alpha as a faction mask. Resolve
+        // color independently of filtered coverage; low-valued RGB keys lose
+        // their identity even while rasterizing an antialiased SVG edge.
+        if (tint)
+            for (let i = 0; i < image.data.length; i += 4)
+                for (let k = 0; k < 3; k++)
+                    image.data[i + k] = tint[k];
         // These generated ground sprites partition an opaque integer lattice.
         // Filtering their alpha independently leaves dark quarter/tile seams.
         // Restore pixel-center coverage after filtering color, as for source
@@ -87,7 +94,8 @@ async function baseline(trace, scene, bindings, {
     if (!background && scene.mode === 'throne')
         dst = await raw(path.join(pack, 'backgrounds/palace-room-native.png'), W, H);
     let unitBadge = false;
-    for (const command of trace.commands) {
+    for (let commandIndex = 0; commandIndex < trace.commands.length; commandIndex++) {
+        const command = trace.commands[commandIndex];
         if (command.asset === 'shield')
             unitBadge = true;
         if (/^(unit|city)\//.test(command.asset))
@@ -124,16 +132,36 @@ async function baseline(trace, scene, bindings, {
         }
         if (c.asset === 'text') {
             const h = Math.max(5, c.height), w = Math.max(8, Math.ceil(h * c.text.length));
-            const p =
-                await raw(Buffer.from(svg(w, h + 3,
-                                          `<text x="0" y="${h * .83}" font-family="monospace" font-size="${
-                                              h}" fill="${palette(c.color)}">${c.text}</text>`)));
+            const p = await raw(Buffer.from(
+                svg(w, h + 3,
+                    `<text x="${unitBadge ? w / 2 : 0}" text-anchor="${unitBadge ? 'middle' : 'start'}" y="${
+                        h * .83}" font-family="monospace" font-size="${h}" fill="${palette(c.color)}">${
+                        c.text}</text>`)));
             blit(dst, p, c.x - (unitBadge ? w / 2 : 0), c.y - (unitBadge ? h / 2 : 0));
             continue;
         }
         if (c.width <= 0 || c.height <= 0)
             continue;
-        let p = await sprite(c.asset, c.width, c.height, bindings, native);
+        // The indexed source recolors each shield immediately after drawing it.
+        // For the flat replacement face, separate the faction tint from its
+        // alpha mask before compositing; exact destination RGB replacement
+        // leaves dark fringes around antialiased pixels.
+        // Original indexed-art replay and all other replacement commands retain
+        // their existing destination-palette semantics.
+        const recolors = [];
+        if (c.asset === 'shield' && bindings.shield.file === 'compatibility/shield.png') {
+            for (let i = commandIndex + 1; i < trace.commands.length; i++) {
+                const next = trace.commands[i];
+                if (next.asset !== 'replace' || ![261, 262].includes(+next.text) ||
+                    !['x', 'y', 'width', 'height'].every(k => next[k] === command[k]))
+                    break;
+                recolors.push({key : +next.text, to : hex(palette(next.color))});
+            }
+            if (recolors.some(r => r.key === 262))
+                commandIndex += recolors.length;
+        }
+        const tint = recolors.find(r => r.key === 262)?.to || null;
+        let p = await sprite(c.asset, c.width, c.height, bindings, native, tint);
         if (c.color >= 0) {
             p = {...p, data : Buffer.from(p.data)};
             const rgb = hex(palette(c.color));
