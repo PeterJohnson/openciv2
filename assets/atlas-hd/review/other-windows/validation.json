@@ -343,7 +343,7 @@
       "file": "review/other-windows/images/report-city-status-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "0aeadd068b8d2b52f23635a50b675bc4a98694f12314ae3da8933d19df1933c1"
+      "sha256": "01dc64065f370d2a2adaf78b6a8a49d2bc38ecdd3cffecee8577364675ce3d24"
     },
     {
       "scene": "report-city-status",
@@ -351,7 +351,7 @@
       "file": "review/other-windows/images/report-city-status-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "e541e633d59805558839638432cdebf7cc3c2536ebc9649f0ebf0b946e538200"
+      "sha256": "ca21136c18ebd8620ebb3d0b77ec9461926bfa14697e7203a5231ff1cea9c41f"
     },
     {
       "scene": "report-city-status",
@@ -359,7 +359,7 @@
       "file": "review/other-windows/images/report-city-status-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "0412a4ce432f61ef5404efa62ac778944b9d7afed8de644b400c0e24eb6379e5"
+      "sha256": "f20a66fa2e9029a63df04c3b9d726e34f06528d657bfd289e83b0eef8de08292"
     },
     {
       "scene": "report-attitude",
@@ -823,7 +823,7 @@
       "file": "review/other-windows/images/pedia-unit-current.png",
       "width": 640,
       "height": 400,
-      "sha256": "81ed10dcb6ae8c5d29ace576a70c54eeefcbee7f383decfd4d615aba13dfac13"
+      "sha256": "6264ab8f091db703cee34e23de7ac969f71d022c40b3c02d8bea20a134d40df1"
     },
     {
       "scene": "pedia-unit",
@@ -831,7 +831,7 @@
       "file": "review/other-windows/images/pedia-unit-hd.png",
       "width": 1280,
       "height": 800,
-      "sha256": "1e498960e9f36c11cf52f71f60db68a63204fee02ed46e909d64309427a47d0e"
+      "sha256": "fcc5be4ece1b62d8149e5305e165286aabf2c8ca86722d2bfda8bdc518e8a472"
     },
     {
       "scene": "pedia-unit",
@@ -839,7 +839,7 @@
       "file": "review/other-windows/images/pedia-unit-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "0aa65f66faa00e0cd9e49163aae7bbd85f239c70590a4c7ecc0c74e7b1e490de"
+      "sha256": "353cd7bb3c9d2d2793cc26a075ad13c948a385ba838a87c7e2f6d33aa75a3053"
     },
     {
       "scene": "pedia-improvement",
@@ -855,7 +855,7 @@
       "file": "review/other-windows/images/pedia-improvement-current.png",
       "width": 640,
       "height": 400,
-      "sha256": "09ba219da025700838d74de5dde2b47382ee3a09a5f677730f9a6e43cfee0b03"
+      "sha256": "40df4d8c9aecfd0a760f646df4514256ef68510c1da21a94f26ad5b1dcc2b3b2"
     },
     {
       "scene": "pedia-improvement",
@@ -863,7 +863,7 @@
       "file": "review/other-windows/images/pedia-improvement-hd.png",
       "width": 1280,
       "height": 800,
-      "sha256": "9deae25ea685d0f5ef58a27ffef72a3956d59158a400077bde8048001e73906a"
+      "sha256": "8c583030932b2aef610ded778528d6213cbd24288e69437db054b51b281253eb"
     },
     {
       "scene": "pedia-improvement",
@@ -871,7 +871,7 @@
       "file": "review/other-windows/images/pedia-improvement-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "d82a86b4fcb6079c0920f95fce10750167df1d60e6e773a77457fbe62852e0f4"
+      "sha256": "7419866fcba26849e173bfe79b5996218b4ce750acfa74b3af7f0a3cc09a8ced"
     },
     {
       "scene": "pedia-wonder",
@@ -887,7 +887,7 @@
       "file": "review/other-windows/images/pedia-wonder-current.png",
       "width": 640,
       "height": 400,
-      "sha256": "79b47ce09b2101fadd967e9e2ea3bdabab153ae731f918e83a44ed3bbbad8163"
+      "sha256": "d5853abc69c391ed4738a22142cf34818ba759642b897c92bb8099b397f7a99b"
     },
     {
       "scene": "pedia-wonder",
@@ -895,7 +895,7 @@
       "file": "review/other-windows/images/pedia-wonder-hd.png",
       "width": 1280,
       "height": 800,
-      "sha256": "4213779ea410e472ed65b88167503da0de7a522e9d4110f9601cb000a06d9427"
+      "sha256": "db65d7401d87ebd6ba3e303a77b95c1a7e9bdcba3278b5db965a3aff3a83875e"
     },
     {
       "scene": "pedia-wonder",
@@ -903,7 +903,7 @@
       "file": "review/other-windows/images/pedia-wonder-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "3a54d0040c73740cd393a256e75214fdba191b6a8a1f90b3ea6217ebed321e0d"
+      "sha256": "99120173c9db23f7077e6ea51fbb43defcf8ccc8ba3ad9d401ec742d456d4e00"
     },
     {
       "scene": "pedia-terrain",
@@ -919,7 +919,7 @@
       "file": "review/other-windows/images/pedia-terrain-current.png",
       "width": 640,
       "height": 400,
-      "sha256": "cb69200f69d3464d2d2b4890e46167daca6d6b6b1bd67c55b81cf0551c2b9a64"
+      "sha256": "ecc59746e1d8442a749da207d74523a01c3d0ddcbf9382ce69b0a21224353093"
     },
     {
       "scene": "pedia-terrain",
@@ -927,7 +927,7 @@
       "file": "review/other-windows/images/pedia-terrain-hd.png",
       "width": 1280,
       "height": 800,
-      "sha256": "cb4f40b4effab3087f30357982e557f4548e0209e54bcf7edec3e99fe1655da8"
+      "sha256": "49ef03a180a5eafc8b89498ae32ccc4c42379caea9af9e1c46264bada207bad2"
     },
     {
       "scene": "pedia-terrain",
@@ -935,7 +935,7 @@
       "file": "review/other-windows/images/pedia-terrain-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "34903195190366280326ed6afc64eadb2d889059d3743718007da3b8da9e6536"
+      "sha256": "b78a6515c65ad812de25191e6e6bae16cea8738fcfeebcacdc6cba9a838d41e8"
     },
     {
       "scene": "powergraph",

@@ -35,7 +35,7 @@ async function build() {
         production : {
             label : 'Painted production shield',
             description :
-                'Blue heater shield with a raised steel rim and modeled painted face; retains the distinct production silhouette',
+                'Blue heater shield with a calm continuous blue-steel bevel and modeled painted face; clean rim highlights at small icon sizes',
             source : {
                 method : 'built-in image_gen',
                 record : 'authoring/economy-painted.json',

@@ -39,11 +39,11 @@
     },
     {
       "file": "interface/economy/production.png",
-      "method": "built-in image_gen style edit; generated pixels and alpha retained",
+      "method": "built-in image_gen rim-lighting edit; generated pixels and alpha retained",
       "transparentBackground": true,
       "width": 1254,
       "height": 1254,
-      "sha256": "70c5df26a4d021b64c812097fc240c1466067c7e6541481ec20d1aaab67151c0"
+      "sha256": "c8910d9fe173e488311bb0d804580dba01edbb88368584b8484076b96941cdff"
     },
     {
       "file": "interface/economy/trade.png",
@@ -60,40 +60,24 @@
     {
       "role": "production",
       "tool": "built-in image_gen",
-      "prompt": "Use case: style-transfer.\nAsset type: high-resolution transparent PNG production shield for a historical sprite-based strategy game's economy UI.\nInput 1 is the edit target: the existing flat blue production shield. Inputs 2 and 3 are STYLE REFERENCES ONLY: the selected painted antique coin and glass science flask.\nPrimary request: repaint the shield in the same dimensional, hand-painted game illustration style as the references, while preserving the target's broad, upright heater-shield silhouette, blue color identity, small central peak at its top, curved sides and pointed bottom.\nOne centered, nearly front-facing shield. Broad blue painted metal face, a restrained raised blue-steel rim, subtle convex shading and lightly worn brush-painted texture. Light from upper left, soft dark-blue edge definition, readable light blue central face. Keep the design simple enough for 10px worked-tile and 14px economy-row icons: broad tones and a recognizable shield outline, not tiny ornamental detail.\nNo emblem, lettering, stars, grain, crossed weapons, handles, coin motif, gems or extra objects. No perspective tilt, bulky thick black outline, platform, external cast shadow or background. Do not change it into a coat-of-arms badge.\nSquare canvas, shield occupying about 90% of the canvas height and 80% of its width, balanced transparent margins, entire shape visible. Real transparent alpha background. Rich painted highlights and material shading, not a flat vector or a photographic object. Use only the provided replacement artwork as references.",
+      "prompt": "Use case: precise-object-edit.\nAsset type: transparent high-resolution production shield icon for the Atlas HD historical strategy game.\nInput image: the current painted blue shield, EDIT TARGET. Make a restrained cleanup of its border highlights for readability at 10, 14 and 28 pixels.\nChange only the rim lighting and its immediate transition into the blue face. Replace the broken white/gold glints, scratch-like streaks and bright corner spots around the perimeter with a clean, continuous, understated blue-steel bevel. Use broad, low-contrast shading: a single soft muted blue-gray highlight along the upper-left portion, smoothly fading around the sides, and a steady slightly darker blue outer edge. The rim must never sparkle, look chipped, alternate between bright and dark fragments, or form a bright white ring. No gold tint, hot white reflections, narrow specular streaks or distressed edge texture.\nPreserve the existing centered upright heater-shield silhouette, small top peak, curved sides, pointed bottom, exact proportions and framing. Preserve the blue color identity, softly modeled convex face and hand-painted material style. Keep the face's broad light/dark masses and subtle brushed texture, without making it flat vector art. Do not add emblems, rivets, ornaments, text, objects, or perspective.\nKeep the whole shield visible on the same square transparent canvas with the same margins. Actual transparent alpha background, no external glow or drop shadow. Priority: a stable clean blue silhouette and calm continuous edge at tiny icon sizes, still a painted shield when enlarged.",
       "inputs": [
         {
-          "role": "edit target",
+          "role": "painted shield edit target",
           "file": "interface/economy/production.png",
-          "revision": "f3cab580",
-          "width": 256,
-          "height": 256,
-          "sha256": "4bc5f4d7cb1347aca8a42f999f605e21cc7bf54a7fb4561d562ff2cfffdda260"
-        },
-        {
-          "role": "style reference only",
-          "file": "interface/economy/gold.png",
-          "revision": "f3cab580",
+          "revision": "896f2e18",
           "width": 1254,
           "height": 1254,
-          "sha256": "e92ba5f976a69c450ab88042ed697af93e9cbf51cdab64db14f072f35956c812"
-        },
-        {
-          "role": "style reference only",
-          "file": "interface/economy/science.png",
-          "revision": "f3cab580",
-          "width": 1254,
-          "height": 1254,
-          "sha256": "40247441975f4e2579a13fa8f7966697c101586ee5689c3322f80c72f633f11d"
+          "sha256": "70c5df26a4d021b64c812097fc240c1466067c7e6541481ec20d1aaab67151c0"
         }
       ],
       "output": {
         "file": "interface/economy/production.png",
-        "method": "built-in image_gen style edit; generated pixels and alpha retained",
+        "method": "built-in image_gen rim-lighting edit; generated pixels and alpha retained",
         "transparentBackground": true,
         "width": 1254,
         "height": 1254,
-        "sha256": "70c5df26a4d021b64c812097fc240c1466067c7e6541481ec20d1aaab67151c0"
+        "sha256": "c8910d9fe173e488311bb0d804580dba01edbb88368584b8484076b96941cdff"
       }
     },
     {

@@ -52959,7 +52959,7 @@
     {
       "id": "economy.production",
       "label": "Painted production shield",
-      "description": "Blue heater shield with a raised steel rim and modeled painted face; retains the distinct production silhouette",
+      "description": "Blue heater shield with a calm continuous blue-steel bevel and modeled painted face; clean rim highlights at small icon sizes",
       "source": {
         "method": "built-in image_gen",
         "record": "authoring/economy-painted.json",
@@ -52970,7 +52970,7 @@
       "file": "interface/economy/production.png",
       "width": 1254,
       "height": 1254,
-      "sha256": "70c5df26a4d021b64c812097fc240c1466067c7e6541481ec20d1aaab67151c0"
+      "sha256": "c8910d9fe173e488311bb0d804580dba01edbb88368584b8484076b96941cdff"
     },
     {
       "id": "economy.trade",

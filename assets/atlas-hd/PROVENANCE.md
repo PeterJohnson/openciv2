@@ -27,6 +27,8 @@ in `interface/economy/` were edited with built-in `image_gen` from our previous
 flat icons at `f3cab580`, using the painted coin and science flask as style
 references. The blue pointed shield and opposed gold/green arrows retain their
 distinct silhouettes, with modeled highlights and painted material texture.
+The production shield was subsequently edited to replace broken perimeter glints
+with a soft, continuous blue-steel bevel for clarity at small icon sizes.
 Food retains the existing painted `sprites/resources/wheat.png`.
 Luxury reuses the exact painted `sprites/ui/luxury.png` catalog gem. Science is
 a transparent painted flask edited with built-in `image_gen` from the catalog
