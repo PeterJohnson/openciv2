@@ -1,4 +1,4 @@
-// Semantic city economy sprites. Retain painted wheat and antique gold; author distinct symbols for other roles.
+// Semantic city economy sprites. Painted food, gold, science and luxury share the catalog style.
 const C = require('./common.cjs');
 const roles = [ 'food', 'production', 'trade', 'gold', 'luxury', 'science' ];
 const nativeRoles = {
@@ -27,35 +27,55 @@ const shapes = {
     production :
         '<path d="M10 8L32 4L54 8V31Q52 48 32 60Q12 48 10 31Z" fill="#699dbb" stroke="#192f43" stroke-width="5"/><path d="M17 14L32 11L47 14V30Q45 42 32 51Q19 42 17 30Z" fill="#88bed7"/><path d="M32 12V51Q45 42 47 30V14Z" fill="#527f9e"/>',
     trade :
-        '<path d="M5 14H40V5L59 23L40 40V31H5Z" fill="#e5be64" stroke="#473a27" stroke-width="3"/><path d="M59 50H24V59L5 41L24 24V33H59Z" fill="#98c3b6" stroke="#253e39" stroke-width="3"/>',
-    luxury :
-        '<path d="M6 23L19 8H45L58 23L32 57Z" fill="#bb8da7" stroke="#422e43" stroke-width="4"/><path d="M6 23H58M19 8L23 23L32 57L41 23L45 8M23 23L32 8L41 23" fill="none" stroke="#f0d8e8" stroke-width="3"/>',
-    science :
-        '<path d="M21 5H43V11H39V28L56 50Q59 59 48 59H16Q5 59 8 50L25 28V11H21Z" fill="#d7e6d9" stroke="#263b40" stroke-width="4"/><path d="M22 37H42L52 51Q55 55 48 55H16Q10 55 13 51Z" fill="#6eb6bd"/><path d="M29 14V29L17 47" fill="none" stroke="#fff3ce" stroke-width="3"/>'
+        '<path d="M5 14H40V5L59 23L40 40V31H5Z" fill="#e5be64" stroke="#473a27" stroke-width="3"/><path d="M59 50H24V59L5 41L24 24V33H59Z" fill="#98c3b6" stroke="#253e39" stroke-width="3"/>'
 };
 
 async function build() {
     const entries = [];
     shapes.food = '<image width="64" height="64" href="data:image/png;base64,' +
                   C.fs.readFileSync(C.path.join(C.pack, file('food'))).toString('base64') + '"/>';
-    const gold = C.fs.readFileSync(C.path.join(C.pack, file('gold')));
-    const goldMeta = await C.sharp(gold).metadata();
-    shapes.gold =
-        '<image width="64" height="64" href="data:image/png;base64,' + gold.toString('base64') + '"/>';
-    entries.push({
-        id : 'economy.gold',
-        label : 'Antique gold coin',
-        description :
-            'Painted hand-struck gold coin with an invented laurel-crowned profile and beaded rim; tax and improvement sale/upkeep symbol',
-        category : 'economy symbols',
-        kind : 'interface',
-        file : file('gold'),
-        width : goldMeta.width,
-        height : goldMeta.height,
-        sha256 : C.sha(gold),
-        source : {method : 'built-in image_gen', record : 'authoring/economy-gold.json'}
-    });
-    for (const role of roles.filter(role => !['food', 'gold'].includes(role))) {
+    // Reuse the exact catalog gem; the science master is a painted star-free edit.
+    C.fs.copyFileSync(C.path.join(C.pack, 'sprites/ui/luxury.png'), C.path.join(C.pack, file('luxury')));
+    const painted = {
+        gold : {
+            label : 'Antique gold coin',
+            description :
+                'Painted hand-struck gold coin with an invented laurel-crowned profile and beaded rim; tax and improvement sale/upkeep symbol',
+            source : {method : 'built-in image_gen', record : 'authoring/economy-gold.json'}
+        },
+        luxury : {
+            label : 'Painted luxury gemstone',
+            description : 'Faceted blue gemstone reused from the selected luxury UI catalog artwork',
+            source : {
+                method : 'catalog artwork reuse',
+                file : 'sprites/ui/luxury.png',
+                record : 'authoring/economy-painted.json'
+            }
+        },
+        science : {
+            label : 'Painted science flask',
+            description :
+                'Open glass laboratory flask with teal liquid, painted to match the science UI catalog artwork; no star or stopper',
+            source : {method : 'built-in image_gen', record : 'authoring/economy-painted.json'}
+        }
+    };
+    for (const [role, metadata] of Object.entries(painted)) {
+        const bytes = C.fs.readFileSync(C.path.join(C.pack, file(role)));
+        const info = await C.sharp(bytes).metadata();
+        shapes[role] =
+            '<image width="64" height="64" href="data:image/png;base64,' + bytes.toString('base64') + '"/>';
+        entries.push({
+            id : `economy.${role}`,
+            ...metadata,
+            category : 'economy symbols',
+            kind : 'interface',
+            file : file(role),
+            width : info.width,
+            height : info.height,
+            sha256 : C.sha(bytes)
+        });
+    }
+    for (const role of ['production', 'trade']) {
         const source = C.svg(64, 64, shapes[role]);
         const vector = `interface/economy/${role}.svg`,
               b = await C.sharp(Buffer.from(source)).resize(256, 256).png().toBuffer();
@@ -76,7 +96,11 @@ async function build() {
         });
     }
     const m = C.read(C.path.join(C.pack, 'manifest.json'));
-    m.entries = m.entries.filter(e => !e.id.startsWith('economy.')).concat(entries);
+    const replacements = new Map(entries.map(e => [e.id, e]));
+    m.entries = m.entries.map(e => replacements.get(e.id) || e);
+    for (const e of entries)
+        if (!m.entries.some(existing => existing.id === e.id))
+            m.entries.push(e);
     C.json(C.path.join(C.pack, 'manifest.json'), m);
     C.json(C.path.join(C.pack, 'interface/economy/bindings.json'), {
         roles,

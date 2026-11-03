@@ -1,8 +1,9 @@
 {
   "status": "pass",
   "beforeCommit": "16f21181",
-  "preservedBaselines": 105,
-  "preservedEnhanced": 25,
+  "preservedBaselines": 99,
+  "preservedEnhanced": 23,
+  "refreshedEconomyImages": 8,
   "researchChoices": 7,
   "productionChoices": 16,
   "sourceTextAndControlChecks": [

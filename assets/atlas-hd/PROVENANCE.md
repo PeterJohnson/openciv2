@@ -22,8 +22,14 @@ compatibility frames and mockups resize and composite those crops deliberately.
 Functional graphics are authored SVG geometry with corresponding PNG renders.
 The seven components in `interface/windows/` are authored in `windows.cjs`;
 window composites reuse retained portraits, backgrounds, units and module art.
-Four `interface/economy/` symbols are original SVG geometry from
+Production and trade in `interface/economy/` are original SVG geometry from
 `economy.cjs`; food retains the existing painted `sprites/resources/wheat.png`.
+Luxury reuses the exact painted `sprites/ui/luxury.png` catalog gem. Science is
+a transparent painted flask edited with built-in `image_gen` from the catalog
+`sprites/ui/science.png`, removing the star and stopper. The full prompt,
+reference roles and output hashes are in the
+[painted economy record](authoring/economy-painted.json). Rebuilds retain the
+generated flask pixels and copy the catalog gem; obsolete flat SVGs are removed.
 The antique `interface/economy/gold.png` is a retained transparent image generated
 with built-in `image_gen`, referencing only the prior authored coin and the
 painted wheat for style. Its profile and ornament are invented. The

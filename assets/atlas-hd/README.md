@@ -97,10 +97,19 @@ foreground renders, source panel bounds and native-text contrast.
 
 The city window uses six distinct [economy symbols](review/economy-symbols.png):
 the retained full wheat sheaf, blue production shield, opposed trade arrows, painted antique gold coin, luxury gem
-and science beaker. Coins also identify the improvement-list sale/upkeep action.
+and painted science flask. The luxury gem is the exact UI catalog artwork;
+the science flask matches that catalog's modeled glass style without the star
+or stopper. [Generation and reuse record](authoring/economy-painted.json).
+Coins also identify the improvement-list sale/upkeep action.
 The old mixed grain/shield terrain special and gold ore no longer serve as city
 economy icons. Native 14-pixel rows and 10-pixel worked-tile icons share these
 silhouettes. See [semantic bindings](interface/economy/bindings.json).
+After economy-art changes, rebuild with `economy.cjs`'s exported `build()`,
+`node tools/atlas-review/refresh-economy.cjs`, then `review-report-design.cjs`,
+`review-window-content.cjs`, `verify-other-windows.cjs`, `verify.cjs` and
+`build-other-windows.cjs --gallery-only`. The refresh selects only consumers of
+the science/luxury files, preserves city draw rectangles and checks all 57
+original-art scene images against the pre-edit revision.
 
 The first three map scenes use `he_a1788.sav`: a 150×120 staggered world with
 9,000 tiles, all 11 terrain kinds, 69 cities, 223 live units (290 allocated unit

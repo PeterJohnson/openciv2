@@ -1,0 +1,43 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "Match the science and luxury economy symbols to the painted UI catalog artwork.",
+  "prompt": "Use case: precise-object-edit.\nAsset type: high-resolution transparent PNG science symbol for the Atlas HD historical strategy game's economy UI.\nInput image: edit target and style reference — our own painted catalog science icon.\nPrimary request: simplify this into one science flask without the separate gold star. Preserve the richly painted glass, dimensional highlights, dark edge definition, blue-green liquid, and historical hand-painted game-art style.\nSubject: one centered clear glass laboratory flask with a broad rounded body, a short narrow OPEN neck and a clearly visible thick glass lip. Remove the star and cork; no detached objects, sparkles or badges. Retain the rich cyan/teal liquid and warm reflected highlights from the reference. Reduce tiny bubbles and busy reflections so the silhouette, glass rim and liquid level remain legible at 14 and 28 pixels.\nComposition: square canvas, entire flask visible, centered, about 90% of canvas height, balanced small transparent margins. Strong broad light/dark masses, dimensional painted shading rather than flat vector outlines.\nConstraints: real transparent alpha background, no ground plane, no external cast shadow, no text, no watermark. Use only the supplied replacement artwork as reference; no original-game art.",
+  "inputs": [
+    {
+      "role": "science edit target and style reference",
+      "file": "sprites/ui/science.png",
+      "revision": "8fd6e21d",
+      "width": 240,
+      "height": 272,
+      "sha256": "6a8bd166df51e215181643291514f2212bb76f3d827ed47dde73df451e2573f3"
+    },
+    {
+      "role": "luxury reused without editing",
+      "file": "sprites/ui/luxury.png",
+      "revision": "8fd6e21d",
+      "width": 226,
+      "height": 227,
+      "sha256": "e7d992f4c5fee0a05947194b158f53112b1bba41bca6ad6a61975e4cc4260d5e"
+    }
+  ],
+  "outputs": [
+    {
+      "file": "interface/economy/science.png",
+      "method": "built-in image_gen; star and stopper removed",
+      "transparentBackground": true,
+      "width": 1254,
+      "height": 1254,
+      "sha256": "40247441975f4e2579a13fa8f7966697c101586ee5689c3322f80c72f633f11d"
+    },
+    {
+      "file": "interface/economy/luxury.png",
+      "method": "byte-for-byte reuse of sprites/ui/luxury.png",
+      "transparentBackground": true,
+      "width": 226,
+      "height": 227,
+      "sha256": "e7d992f4c5fee0a05947194b158f53112b1bba41bca6ad6a61975e4cc4260d5e"
+    }
+  ],
+  "originalGameInputs": false,
+  "freecivInputs": false
+}

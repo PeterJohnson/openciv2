@@ -6,7 +6,8 @@ async function main() {
     assert.equal(scenes.length, 35);
     assert.equal(new Set(scenes.map(s => s.id)).size, 35);
     const fixture = C.path.join(C.pack, 'review/fixtures/other-windows/reports.txt');
-    const checks = [], images = [], preservedEnhanced = [];
+    const checks = [], images = [], preservedEnhanced = [], refreshedEnhancedArt = [];
+    const economy = C.read(C.path.join(C.pack, 'review/painted-economy-validation.json'));
     const git = args => {
         const r = spawnSync('git', args, {cwd : C.root, maxBuffer : 32 * 1024 * 1024});
         assert.equal(r.status, 0, r.stderr?.toString());
@@ -23,8 +24,16 @@ async function main() {
             if (variant === 'proposed' &&
                 !require('./enhanced-details.cjs').changedScenes.includes(s.id)) {
                 const before = git([ 'show', '16f21181:assets/atlas-hd/' + s[variant] ]);
-                assert.equal(C.sha(bytes), C.sha(before), s.id + ' enhanced preservation');
-                preservedEnhanced.push({scene : s.id, sha256 : C.sha(bytes)});
+                const art = economy.changedImages.find(a => a.file === s[variant]);
+                if (['report-trade', 'report-science'].includes(s.id)) {
+                    assert(art, s.id + ' recorded economy substitution');
+                    assert.equal(art.beforeSha256, C.sha(before), s.id + ' pre-edit image');
+                    assert.equal(C.sha(bytes), art.sha256, s.id + ' painted economy image');
+                    refreshedEnhancedArt.push(s.id);
+                } else {
+                    assert.equal(C.sha(bytes), C.sha(before), s.id + ' enhanced preservation');
+                    preservedEnhanced.push({scene : s.id, sha256 : C.sha(bytes)});
+                }
             }
             images.push({
                 scene : s.id,
@@ -175,6 +184,7 @@ async function main() {
         enhancedPreservedFrom : '16f21181',
         enhancedIntentionallyUpdated : require('./enhanced-details.cjs').changedScenes,
         preservedEnhanced,
+        refreshedEnhancedArt,
         sourceUnchanged : true,
         debugRelease : checks,
         sourceHashesMatch : true,

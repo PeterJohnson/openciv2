@@ -239,6 +239,7 @@ async function build(nativeOnly = false) {
 }
 
 module.exports = {
+    glyphs,
     build,
     render,
     run,

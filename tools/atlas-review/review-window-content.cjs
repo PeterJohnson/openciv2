@@ -14,17 +14,28 @@ async function build() {
     const layouts =
         C.read(C.path.join(C.pack, 'review/fixtures/other-windows/enhanced-layouts.json'));
     const scenes = C.read(C.path.join(C.pack, 'review/other-windows/scenes.json'));
-    let preservedBaselines = 0, preservedEnhanced = 0;
+    const economy = C.read(C.path.join(C.pack, 'review/painted-economy-validation.json'));
+    let preservedBaselines = 0, preservedEnhanced = 0, refreshedArt = 0;
+    const preserved = (scene, mode) => {
+        const file = scene[mode], art = economy.changedImages.find(a => a.file === file);
+        const bytes = C.sha(C.fs.readFileSync(C.path.join(C.pack, file)));
+        if (art) {
+            assert.equal(art.beforeSha256, C.sha(prior(file)), scene.id + ' pre-edit artwork');
+            assert.equal(bytes, art.sha256, scene.id + ' recorded economy artwork');
+            refreshedArt++;
+            return false;
+        }
+        assert.equal(bytes, C.sha(prior(file)), scene.id + ' ' + mode);
+        return true;
+    };
     for (const scene of scenes) {
         for (const mode of ['original', 'current', 'hd']) {
-            assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.pack, scene[mode]))),
-                         C.sha(prior(scene[mode])), scene.id + ' ' + mode);
-            preservedBaselines++;
+            if (preserved(scene, mode))
+                preservedBaselines++;
         }
         if (!D.changedScenes.includes(scene.id)) {
-            assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.pack, scene.proposed))),
-                         C.sha(prior(scene.proposed)), scene.id + ' unchanged enhanced');
-            preservedEnhanced++;
+            if (preserved(scene, 'proposed'))
+                preservedEnhanced++;
         }
     }
     const results = [];
@@ -120,6 +131,7 @@ async function build() {
         beforeCommit : before,
         preservedBaselines,
         preservedEnhanced,
+        refreshedEconomyImages : refreshedArt,
         researchChoices : 7,
         productionChoices : 16,
         sourceTextAndControlChecks : results,
@@ -142,7 +154,7 @@ async function build() {
             .join('\n');
     C.write(
         C.path.join(C.pack, 'review/other-windows/content-refinements.html'),
-        `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enhanced window content</title><style>body{background:#162e28;color:#ede3c8;font:16px/1.6 system-ui;margin:0}main{max-width:1700px;margin:auto;padding:28px}a{color:#dfc489}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{width:100%;height:auto}section{padding:22px 0;border-top:1px solid #566f5a}p{max-width:1100px}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style><main><h1>Enhanced window content</h1><p><a href="index.html">All four variants</a> Â· <a href="content-validation.json">Content and preservation checks</a> Â· <a href="../../OTHER-WINDOWS.md">Source boundaries and rebuild</a></p><p>Shared advance illustrations now appear in Civilopedia and research selection. Forest restores transformation, resources and worker turns. Foreign Minister restores our power/reputation and the source actions. Status uses the saved active unit and all its source information. Tax labels and icons align, with actual 40/60/0 allocations and calculated totals. Production includes all sixteen source choices, build times, unit statistics and Auto / Help / OK. The destruction screen has dark portrait and text panels, with the source date.</p><p>All 105 original/native/HD baseline images and 25 unrelated enhanced images are byte-for-byte unchanged. Enhanced layouts remain standalone proposals, not integrated game windows. The Civilopedia tree remains a focused immediate-prerequisite/successor diagram.</p>${
+        `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Enhanced window content</title><style>body{background:#162e28;color:#ede3c8;font:16px/1.6 system-ui;margin:0}main{max-width:1700px;margin:auto;padding:28px}a{color:#dfc489}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{width:100%;height:auto}section{padding:22px 0;border-top:1px solid #566f5a}p{max-width:1100px}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style><main><h1>Enhanced window content</h1><p><a href="index.html">All four variants</a> Â· <a href="content-validation.json">Content and preservation checks</a> Â· <a href="../../OTHER-WINDOWS.md">Source boundaries and rebuild</a></p><p>Shared advance illustrations now appear in Civilopedia and research selection. Forest restores transformation, resources and worker turns. Foreign Minister restores our power/reputation and the source actions. Status uses the saved active unit and all its source information. Tax labels and icons align, with actual 40/60/0 allocations and calculated totals. Production includes all sixteen source choices, build times, unit statistics and Auto / Help / OK. The destruction screen has dark portrait and text panels, with the source date.</p><p>${preservedBaselines} original/native/HD images and ${preservedEnhanced} unrelated enhanced images remain byte-for-byte unchanged from the content-layout revision. ${refreshedArt} additional images have the documented science/luxury artwork substitution; their layouts and all original-art images are preserved. <a href="../painted-economy-validation.json">Economy artwork checks</a>. Enhanced layouts remain standalone proposals, not integrated game windows. The Civilopedia tree remains a focused immediate-prerequisite/successor diagram.</p>${
             blocks}</main></html>`);
     console.log(`Enhanced content: ${results.length} scenes; ${preservedBaselines} baseline and ${
         preservedEnhanced} unrelated enhanced images preserved.`);
