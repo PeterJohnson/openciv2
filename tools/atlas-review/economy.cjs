@@ -1,4 +1,4 @@
-// Semantic city economy sprites. Painted food, gold, science and luxury share the catalog style.
+// Semantic city economy sprites. All six roles share the painted catalog style.
 const C = require('./common.cjs');
 const roles = [ 'food', 'production', 'trade', 'gold', 'luxury', 'science' ];
 const nativeRoles = {
@@ -23,12 +23,7 @@ const yieldFixture =
               })
         .join('\n') +
     '\n';
-const shapes = {
-    production :
-        '<path d="M10 8L32 4L54 8V31Q52 48 32 60Q12 48 10 31Z" fill="#699dbb" stroke="#192f43" stroke-width="5"/><path d="M17 14L32 11L47 14V30Q45 42 32 51Q19 42 17 30Z" fill="#88bed7"/><path d="M32 12V51Q45 42 47 30V14Z" fill="#527f9e"/>',
-    trade :
-        '<path d="M5 14H40V5L59 23L40 40V31H5Z" fill="#e5be64" stroke="#473a27" stroke-width="3"/><path d="M59 50H24V59L5 41L24 24V33H59Z" fill="#98c3b6" stroke="#253e39" stroke-width="3"/>'
-};
+const shapes = {};
 
 async function build() {
     const entries = [];
@@ -37,6 +32,23 @@ async function build() {
     // Reuse the exact catalog gem; the science master is a painted star-free edit.
     C.fs.copyFileSync(C.path.join(C.pack, 'sprites/ui/luxury.png'), C.path.join(C.pack, file('luxury')));
     const painted = {
+        production : {
+            label : 'Painted production shield',
+            description :
+                'Blue heater shield with a raised steel rim and modeled painted face; retains the distinct production silhouette',
+            source : {
+                method : 'built-in image_gen',
+                record : 'authoring/economy-painted.json',
+                role : 'production'
+            }
+        },
+        trade : {
+            label : 'Painted trade arrows',
+            description :
+                'Opposed gold and pale green exchange arrows with painted bevels; broad shafts and arrowheads remain readable at small sizes',
+            source :
+                {method : 'built-in image_gen', record : 'authoring/economy-painted.json', role : 'trade'}
+        },
         gold : {
             label : 'Antique gold coin',
             description :
@@ -73,26 +85,6 @@ async function build() {
             width : info.width,
             height : info.height,
             sha256 : C.sha(bytes)
-        });
-    }
-    for (const role of ['production', 'trade']) {
-        const source = C.svg(64, 64, shapes[role]);
-        const vector = `interface/economy/${role}.svg`,
-              b = await C.sharp(Buffer.from(source)).resize(256, 256).png().toBuffer();
-        C.write(C.path.join(C.pack, vector), source);
-        C.write(C.path.join(C.pack, file(role)), b);
-        entries.push({
-            id : `economy.${role}`,
-            label : role,
-            description : `City economy ${role} symbol; also used at native 10/14 logical pixels`,
-            category : 'economy symbols',
-            kind : 'interface',
-            file : file(role),
-            vector,
-            width : 256,
-            height : 256,
-            sha256 : C.sha(b),
-            sourceSha256 : C.sha(Buffer.from(source))
         });
     }
     const m = C.read(C.path.join(C.pack, 'manifest.json'));

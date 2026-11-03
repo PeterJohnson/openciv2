@@ -52958,29 +52958,35 @@
     },
     {
       "id": "economy.production",
-      "label": "production",
-      "description": "City economy production symbol; also used at native 10/14 logical pixels",
+      "label": "Painted production shield",
+      "description": "Blue heater shield with a raised steel rim and modeled painted face; retains the distinct production silhouette",
+      "source": {
+        "method": "built-in image_gen",
+        "record": "authoring/economy-painted.json",
+        "role": "production"
+      },
       "category": "economy symbols",
       "kind": "interface",
       "file": "interface/economy/production.png",
-      "vector": "interface/economy/production.svg",
-      "width": 256,
-      "height": 256,
-      "sha256": "4bc5f4d7cb1347aca8a42f999f605e21cc7bf54a7fb4561d562ff2cfffdda260",
-      "sourceSha256": "84ea5eec4901295693a7995619c4097bf1ce733b81ee97a5a750964a2856eb08"
+      "width": 1254,
+      "height": 1254,
+      "sha256": "70c5df26a4d021b64c812097fc240c1466067c7e6541481ec20d1aaab67151c0"
     },
     {
       "id": "economy.trade",
-      "label": "trade",
-      "description": "City economy trade symbol; also used at native 10/14 logical pixels",
+      "label": "Painted trade arrows",
+      "description": "Opposed gold and pale green exchange arrows with painted bevels; broad shafts and arrowheads remain readable at small sizes",
+      "source": {
+        "method": "built-in image_gen",
+        "record": "authoring/economy-painted.json",
+        "role": "trade"
+      },
       "category": "economy symbols",
       "kind": "interface",
       "file": "interface/economy/trade.png",
-      "vector": "interface/economy/trade.svg",
-      "width": 256,
-      "height": 256,
-      "sha256": "7408f9c2cdd75538837b000984859effb9fae1f2d29fa3ba0763b96edf96e699",
-      "sourceSha256": "ecc6ffdc9d0347a05de7459ea0cd4438b6eebf496027b3b1027e99aec7932f3e"
+      "width": 1254,
+      "height": 1254,
+      "sha256": "978992e015d716b1673665b4ae6d96064ca4bc64da314ac92700129c02e0b9e2"
     },
     {
       "id": "economy.luxury",

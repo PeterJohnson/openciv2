@@ -22,14 +22,20 @@ compatibility frames and mockups resize and composite those crops deliberately.
 Functional graphics are authored SVG geometry with corresponding PNG renders.
 The seven components in `interface/windows/` are authored in `windows.cjs`;
 window composites reuse retained portraits, backgrounds, units and module art.
-Production and trade in `interface/economy/` are original SVG geometry from
-`economy.cjs`; food retains the existing painted `sprites/resources/wheat.png`.
+All six economy roles use retained painted PNG artwork. Production and trade
+in `interface/economy/` were edited with built-in `image_gen` from our previous
+flat icons at `f3cab580`, using the painted coin and science flask as style
+references. The blue pointed shield and opposed gold/green arrows retain their
+distinct silhouettes, with modeled highlights and painted material texture.
+Food retains the existing painted `sprites/resources/wheat.png`.
 Luxury reuses the exact painted `sprites/ui/luxury.png` catalog gem. Science is
 a transparent painted flask edited with built-in `image_gen` from the catalog
 `sprites/ui/science.png`, removing the star and stopper. The full prompt,
 reference roles and output hashes are in the
 [painted economy record](authoring/economy-painted.json). Rebuilds retain the
-generated flask pixels and copy the catalog gem; obsolete flat SVGs are removed.
+generated shield, arrows and flask pixels and copy the catalog gem; obsolete
+flat economy SVGs are removed. The independent muted map-terrain shield stays
+unchanged, including its softer palette and existing footprint.
 The antique `interface/economy/gold.png` is a retained transparent image generated
 with built-in `image_gen`, referencing only the prior authored coin and the
 painted wheat for style. Its profile and ornament are invented. The

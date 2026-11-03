@@ -96,8 +96,11 @@ foreground renders, source panel bounds and native-text contrast.
 ## City economy and real-save maps
 
 The city window uses six distinct [economy symbols](review/economy-symbols.png):
-the retained full wheat sheaf, blue production shield, opposed trade arrows, painted antique gold coin, luxury gem
-and painted science flask. The luxury gem is the exact UI catalog artwork;
+the retained full wheat sheaf, painted blue production shield, opposed gold/green
+trade arrows, antique gold coin, luxury gem and science flask. All six now share
+a painted style. Production retains its pointed shield silhouette; trade retains
+two broad opposed arrows, with highlights and texture that also read at small sizes.
+The luxury gem is the exact UI catalog artwork;
 the science flask matches that catalog's modeled glass style without the star
 or stopper. [Generation and reuse record](authoring/economy-painted.json).
 Coins also identify the improvement-list sale/upkeep action.
@@ -108,7 +111,7 @@ After economy-art changes, rebuild with `economy.cjs`'s exported `build()`,
 `node tools/atlas-review/refresh-economy.cjs`, then `review-report-design.cjs`,
 `review-window-content.cjs`, `verify-other-windows.cjs`, `verify.cjs` and
 `build-other-windows.cjs --gallery-only`. The refresh selects only consumers of
-the science/luxury files, preserves city draw rectangles and checks all 57
+the production/trade/science/luxury files, preserves city draw rectangles and checks all 57
 original-art scene images against the pre-edit revision.
 
 The first three map scenes use `he_a1788.sav`: a 150×120 staggered world with

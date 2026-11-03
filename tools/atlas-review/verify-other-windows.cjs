@@ -25,7 +25,8 @@ async function main() {
                 !require('./enhanced-details.cjs').changedScenes.includes(s.id)) {
                 const before = git([ 'show', '16f21181:assets/atlas-hd/' + s[variant] ]);
                 const art = economy.changedImages.find(a => a.file === s[variant]);
-                if (['report-trade', 'report-science'].includes(s.id)) {
+                if (['report-city-status', 'report-trade', 'report-science', 'pedia-unit',
+                     'pedia-improvement', 'pedia-wonder'].includes(s.id)) {
                     assert(art, s.id + ' recorded economy substitution');
                     assert.equal(art.beforeSha256, C.sha(before), s.id + ' pre-edit image');
                     assert.equal(C.sha(bytes), art.sha256, s.id + ' painted economy image');

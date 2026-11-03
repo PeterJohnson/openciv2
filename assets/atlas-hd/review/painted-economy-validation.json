@@ -10,42 +10,63 @@
       "variant": "current",
       "file": "review/images/city-window-current.png",
       "beforeSha256": "a051e8d7955a4721320efd16875c9712514e9185cc32a65b3e7b05095f5131c0",
-      "sha256": "3cbad8f0273de74a4e92d22a2ec56890cbcd416eacf4bda9ab192aa5b37406b4"
+      "sha256": "95a962f702707c70bd7a3fe22a30046fa1a4897030aed8bd3112e97f50ca993c"
     },
     {
       "scene": "city-window",
       "variant": "hd",
       "file": "review/images/city-window-hd.png",
       "beforeSha256": "41a2a1bc0bbc4e1e3408da492bb155c5198b6397005d957a35c8e972ed5e2a21",
-      "sha256": "cdab14e477c8cfa46095774010fe19239838beb2538147c1cff319283c32c466"
+      "sha256": "f5e983bff18251cdb140d046fc48210f5e669eb1f90491248b72c1fc30298195"
     },
     {
       "scene": "city-window",
       "variant": "proposed",
       "file": "review/images/city-window-proposed.png",
       "beforeSha256": "98faf7f2ab4fceed1ec10e210085a4d22be7c3750b6daeb488c4b38b86503376",
-      "sha256": "39fc6dfabb7002bd9e831922c39905727fc99f4fbef9293f690896511b82dd10"
+      "sha256": "f46166256b9d8ef1fbf386eb42a21b4087ad9b3916665aa42cdfdfa544ebd12b"
     },
     {
       "scene": "city-window-crowded",
       "variant": "current",
       "file": "review/images/city-window-crowded-current.png",
       "beforeSha256": "d4dcd1587780bb570a82df34fcb0c19d15617f1b0db71665788548e485856d38",
-      "sha256": "b2a5a0615a88e50dce9399433dc9ebeda9e1d745770d79a5ac1a9653fce2d1b8"
+      "sha256": "b000f2591eafcb53ac594a0ad4f858ae9129595b92035d45d54549006afbd4eb"
     },
     {
       "scene": "city-window-crowded",
       "variant": "hd",
       "file": "review/images/city-window-crowded-hd.png",
       "beforeSha256": "e9207a87ffcab38f4d948ae8e4e26aeba37e998d013ac5dce5e00e6e8f155f9f",
-      "sha256": "bb2af5aaf78ff174ca397c714600e747abc38d4f6811bdb523aaf9573a6a9a0a"
+      "sha256": "d8a7647f3499dff282492c8f73032d198ea9c6db3c9370de0fac11b82f5f7c9b"
     },
     {
       "scene": "city-window-crowded",
       "variant": "proposed",
       "file": "review/images/city-window-crowded-proposed.png",
       "beforeSha256": "fe0dba2d0a2b7cccfb960eff5afbdb766663fbad6e677b37136144d9e4f3bf07",
-      "sha256": "642b0022201a59e4cf4f813fd268208402698124ac90e4793cc571509091ed8d"
+      "sha256": "5b9edd900dce27bc406d7962f9465882efb2d303293d0a8713cbdb5d77a42918"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "current",
+      "file": "review/other-windows/images/report-city-status-current.png",
+      "beforeSha256": "46f50a06cdcbb8c96fdef2a07444be8b5bc8150d192644740989d9d6a1318ba1",
+      "sha256": "0aeadd068b8d2b52f23635a50b675bc4a98694f12314ae3da8933d19df1933c1"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "hd",
+      "file": "review/other-windows/images/report-city-status-hd.png",
+      "beforeSha256": "aa3dfbad6fd7826a2fc6c904fabb86787e3e2eafad899aafab6b8f2ca6f38cb7",
+      "sha256": "e541e633d59805558839638432cdebf7cc3c2536ebc9649f0ebf0b946e538200"
+    },
+    {
+      "scene": "report-city-status",
+      "variant": "proposed",
+      "file": "review/other-windows/images/report-city-status-proposed.png",
+      "beforeSha256": "51cdb51897c6e9014f3b8aa8581349a429fe75ece8c03a03570267df2a9654fb",
+      "sha256": "0412a4ce432f61ef5404efa62ac778944b9d7afed8de644b400c0e24eb6379e5"
     },
     {
       "scene": "report-trade",
@@ -95,6 +116,90 @@
       "file": "review/other-windows/images/pedia-advances-proposed.png",
       "beforeSha256": "543a4eb3b974d342c40e00517b63b0423fd16148d03405420959fc1e962ae1f7",
       "sha256": "d8b8ab7de4666dc697d08e9578fb937ce786ff5bea08260bcbac4a86ae8a419f"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-unit-current.png",
+      "beforeSha256": "ade20630b2c6c46793d45c59287fb780139454921e15c09b6684295f06e875b0",
+      "sha256": "81ed10dcb6ae8c5d29ace576a70c54eeefcbee7f383decfd4d615aba13dfac13"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-unit-hd.png",
+      "beforeSha256": "a97993a159ba603cf238719508a999f0ab324935c7ee16317f58edee1aa1c952",
+      "sha256": "1e498960e9f36c11cf52f71f60db68a63204fee02ed46e909d64309427a47d0e"
+    },
+    {
+      "scene": "pedia-unit",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-unit-proposed.png",
+      "beforeSha256": "c655c0ff54173f8214f69292e2f75a8ce939a64504d1715f1c5e560149855966",
+      "sha256": "0aa65f66faa00e0cd9e49163aae7bbd85f239c70590a4c7ecc0c74e7b1e490de"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-improvement-current.png",
+      "beforeSha256": "5cab2fd4ccbd1d61d92166301b46b33b97f15704c7ce7f3591b3104dd0dadf52",
+      "sha256": "09ba219da025700838d74de5dde2b47382ee3a09a5f677730f9a6e43cfee0b03"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-improvement-hd.png",
+      "beforeSha256": "0cfa3064401168d829cc3b1c2aa8a8a47b28c64aa0b5279e12e5481761cb41d0",
+      "sha256": "9deae25ea685d0f5ef58a27ffef72a3956d59158a400077bde8048001e73906a"
+    },
+    {
+      "scene": "pedia-improvement",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-improvement-proposed.png",
+      "beforeSha256": "19e10d154d33f9db9e1d963e2ed6a40137280db10e3661458f95a259deae530b",
+      "sha256": "d82a86b4fcb6079c0920f95fce10750167df1d60e6e773a77457fbe62852e0f4"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-wonder-current.png",
+      "beforeSha256": "f7e1f411f511d22c7abfead32ec99fffbad0a0d3c2d56ef96de363531d43a19b",
+      "sha256": "79b47ce09b2101fadd967e9e2ea3bdabab153ae731f918e83a44ed3bbbad8163"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-wonder-hd.png",
+      "beforeSha256": "47b7d5bc6eca92a2e9cf38a8a0ebb48dc7c3ecebdf8c2362a70e6c64cc5f83f3",
+      "sha256": "4213779ea410e472ed65b88167503da0de7a522e9d4110f9601cb000a06d9427"
+    },
+    {
+      "scene": "pedia-wonder",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-wonder-proposed.png",
+      "beforeSha256": "c4018bbf846aec7c6db2d7f7b4590116432f8f79fa6f62177d569675852b0d15",
+      "sha256": "3a54d0040c73740cd393a256e75214fdba191b6a8a1f90b3ea6217ebed321e0d"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "current",
+      "file": "review/other-windows/images/pedia-terrain-current.png",
+      "beforeSha256": "2094254ac581f45130707a06f03ae486388fe6ecb3dfcfaf2ad730ffd9c49766",
+      "sha256": "cb69200f69d3464d2d2b4890e46167daca6d6b6b1bd67c55b81cf0551c2b9a64"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "hd",
+      "file": "review/other-windows/images/pedia-terrain-hd.png",
+      "beforeSha256": "fd42b545a4e2b17ccfcb67c08d4b2781839cb79e3f40f58e352879757bc5f898",
+      "sha256": "cb4f40b4effab3087f30357982e557f4548e0209e54bcf7edec3e99fe1655da8"
+    },
+    {
+      "scene": "pedia-terrain",
+      "variant": "proposed",
+      "file": "review/other-windows/images/pedia-terrain-proposed.png",
+      "beforeSha256": "39c98e7a9f465cfb82f0a32db32fa683eb9249ef01dfdc0f100500b5bb6179eb",
+      "sha256": "34903195190366280326ed6afc64eadb2d889059d3743718007da3b8da9e6536"
     },
     {
       "scene": "status-panel",

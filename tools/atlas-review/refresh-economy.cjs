@@ -5,7 +5,7 @@ const Other = require('./native-other.cjs'), Enhanced = require('./other-windows
 const Design = require('./report-design.cjs'), assert = require('node:assert/strict');
 const {spawnSync} = require('node:child_process');
 const before = '8fd6e21d';
-const changedFiles = new Set([ 'science', 'luxury' ].map(E.file));
+const changedFiles = new Set([ 'production', 'trade', 'science', 'luxury' ].map(E.file));
 
 function prior(file) {
     const r = spawnSync('git', [ 'show', before + ':assets/atlas-hd/' + file ],
@@ -48,7 +48,8 @@ async function main() {
         const trace =
             C.read(C.path.join(C.pack, 'review/traces/other-' + (report ? s.id.slice(7) : s.id) + '.json'));
         if (report) {
-            const nativeUses = trace.commands.some(c => c.asset === 'sprite' && c.text === '301');
+            const nativeUses = trace.commands.some(c => c.asset === 'sprite' &&
+                                                        changedFiles.has(Reports.sprite(+c.text, false)));
             const enhancedUses =
                 nativeUses || Design.knowledgePlan(trace).some(i => changedFiles.has(i.file));
             if (!enhancedUses)
@@ -60,9 +61,9 @@ async function main() {
                 save(s, mode, await Reports.render(trace, mode, s.id, glyphs));
             }
         } else {
-            const nativeUses =
-                trace.commands.some(c => c.op === 'sprite' && (/^flask\//.test(c.text) ||
-                                                               /^economy\/(science|luxury)$/.test(c.text)));
+            const nativeUses = trace.commands.some(
+                c => c.op === 'sprite' && (/^flask\//.test(c.text) ||
+                                           /^economy\/(production|trade|science|luxury)$/.test(c.text)));
             if (nativeUses)
                 for (const mode of ['current', 'hd'])
                     save(s, mode, await Other.render(trace, mode, s.id));
@@ -71,7 +72,7 @@ async function main() {
                 save(s, 'proposed', await Enhanced.render(layout, 'proposed'));
         }
     }
-    // The gem is an exact catalog reuse; generated flask alpha is retained.
+    // The gem is an exact catalog reuse; generated symbol alpha is retained.
     assert.equal(C.sha(C.fs.readFileSync(C.path.join(C.pack, E.file('luxury')))),
                  C.sha(C.fs.readFileSync(C.path.join(C.pack, 'sprites/ui/luxury.png'))));
     const provenance = C.read(C.path.join(C.pack, 'authoring/economy-painted.json'));
