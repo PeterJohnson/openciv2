@@ -264,6 +264,12 @@ function curve(mask) {
 // center cuts must meet without a cap or a backward spur hiding the other arm.
 function railCurve(mask, armOnly = false) {
     const dirs = ends.map((_, i) => mask & (1 << i) ? i : -1).filter(i => i >= 0);
+    // An isolated railway is a small turnout, with a shared through route.
+    // All three tips stop inside the tile; none advertises a neighbor connection.
+    if (!dirs.length)
+        return [ 0x88, 0x28 ]
+            .flatMap(pair => curve(pair))
+            .map(r => ({...r, points : r.points.map(p => mul(p, .72)), boundary : [ false, false ]}));
     if (armOnly && dirs.length === 1)
         return [ {
             points : [ [ 0, 0 ], add(ends[dirs[0]], mul(norm(ends[dirs[0]]), 1)) ],
@@ -299,15 +305,10 @@ function roadCurve(mask, variant = 0) {
             return add(mul(end, t), mul(normal, bend));
         });
     };
+    // A short crossroads reads at native scale without touching the tile edges.
     if (!dirs.length)
-        return [ {
-            points : Array.from({length : 17},
-                                (_, k) => {
-                                    const t = k / 16;
-                                    return [ -42 + 84 * t, -21 + 42 * t + Math.sin(t * Math.PI * 2) * 8 ];
-                                }),
-            boundary : [ false, false ]
-        } ];
+        return [ 1, 3, 5, 7 ].map(
+            i => ({points : arm(i).map(p => mul(p, .70)), boundary : [ false, false ], junction : true}));
     return dirs.map(i => ({points : arm(i), boundary : [ false, true ], junction : dirs.length > 2}));
 }
 

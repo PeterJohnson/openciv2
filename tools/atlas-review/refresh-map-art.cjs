@@ -9,6 +9,9 @@ async function main() {
     let count = 0, riversChanged = false;
     for (const e of m.entries) {
         let bytes;
+        if (process.argv.includes('--isolated-only') &&
+            (!['road', 'rail'].includes(e.family) || e.mask !== 0))
+            continue;
         if (process.argv.includes('--coasts-only') && !e.id.startsWith('map.coast.'))
             continue;
         if (process.argv.includes('--rivers-only') && !e.id.startsWith('map.networks.river-'))
@@ -41,6 +44,12 @@ async function main() {
             continue;
         C.write(C.path.join(C.pack, e.file), bytes);
         e.sha256 = C.sha(bytes);
+        if ([ 'road', 'rail' ].includes(e.family) && e.mask === 0)
+            C.write(C.path.join(C.pack, `compatibility/${e.family}/0.png`),
+                    await C.sharp(bytes)
+                        .extract({left : 32, top : 32, width : 512, height : 256})
+                        .png()
+                        .toBuffer());
         if (e.family === 'river') {
             C.write(C.path.join(C.pack, 'compatibility/river/' + e.mask + '.png'),
                     await C.sharp(bytes)
@@ -80,11 +89,12 @@ async function main() {
         road : {
             color : 'warm ochre',
             path : 'winding half-arms with fixed endpoints and tangents',
-            isolation : 'short rounded winding track'
+            isolation : 'compact winding crossroads; all four rounded tips stop inside the tile'
         },
         rail : {
             color : 'cool dark ballast with light steel and transverse sleepers',
             path : 'straight approaches; continuous through routes with short junction bends',
+            isolation : 'compact three-way turnout with continuous steel; all tips stop inside the tile',
             nativeArms : 'flush center cuts; no false dead-end caps',
             proposedPasses : [ 'bed', 'sleepers', 'metal' ]
         },

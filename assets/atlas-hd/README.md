@@ -329,6 +329,26 @@ Roads are warm dirt tracks with winding arms; rails retain straight approaches,
 cool ballast, pale steel and transverse sleepers. Shared endpoints remain fixed
 for isolated, connected and junction sprites. Canonical network and coast PNGs
 and SVGs are rebuilt in place, rather than kept as alternate art packs.
+Isolated roads use a short winding crossroads and isolated railways use a
+three-way turnout, with sleepers and continuous steel. Their larger footprints
+stay inside the tile, so they remain distinct from connected arms. The
+[four-stage comparison](review/isolated-networks.html) shows both improvements at
+64px and 128px tile zooms. Native/HD slot selection and connected geometry stay
+unchanged; detailed enhanced views share the new shapes. Enhanced overview line
+symbols remain separate.
+
+To rebuild just this artwork and its affected previews:
+
+```powershell
+node tools/atlas-review/refresh-map-art.cjs --isolated-only
+node tools/atlas-review/refresh-isolated-networks.cjs
+node tools/atlas-review/build-support.cjs --transport-only
+node tools/atlas-review/verify-rail-joins.cjs
+node tools/atlas-review/verify-map-style.cjs
+node tools/atlas-review/verify.cjs
+node tools/atlas-review/build-gallery.cjs
+```
+
 Native rail arms meet with flush center cuts instead of overlapping end caps.
 The proposed renderer draws all ballast, then sleepers, then steel; continuous
 through routes replace radial stubs at rail junctions.

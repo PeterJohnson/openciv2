@@ -13,11 +13,12 @@
   "road": {
     "color": "warm ochre",
     "path": "winding half-arms with fixed endpoints and tangents",
-    "isolation": "short rounded winding track"
+    "isolation": "compact winding crossroads; all four rounded tips stop inside the tile"
   },
   "rail": {
     "color": "cool dark ballast with light steel and transverse sleepers",
     "path": "straight approaches; continuous through routes with short junction bends",
+    "isolation": "compact three-way turnout with continuous steel; all tips stop inside the tile",
     "nativeArms": "flush center cuts; no false dead-end caps",
     "proposedPasses": [
       "bed",

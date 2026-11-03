@@ -82,6 +82,8 @@ async function main() {
         transport[k + 'Size'] = [ v.width, v.height ];
         C.write(C.path.join(C.pack, transport[k]), await C.png(v));
     }
+    if (process.argv.includes('--transport-only'))
+        return;
     scenes.splice(2, 0, transport);
     const w = F.world(40, 40);
     for (const t of w.tiles)

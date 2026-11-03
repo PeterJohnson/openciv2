@@ -1,0 +1,142 @@
+{
+  "status": "pass",
+  "beforeCommit": "2a3189dc",
+  "unchangedConnectedCurveCases": 1530,
+  "unchangedNativeDirectionalSprites": 16,
+  "originalScenesPreserved": 22,
+  "visibility": [
+    {
+      "family": "road",
+      "width": 64,
+      "before": {
+        "area": 56,
+        "box": [
+          25,
+          12,
+          39,
+          20
+        ]
+      },
+      "after": {
+        "area": 192,
+        "box": [
+          19,
+          9,
+          45,
+          23
+        ]
+      }
+    },
+    {
+      "family": "road",
+      "width": 128,
+      "before": {
+        "area": 202,
+        "box": [
+          50,
+          23,
+          78,
+          41
+        ]
+      },
+      "after": {
+        "area": 698,
+        "box": [
+          38,
+          17,
+          90,
+          47
+        ]
+      }
+    },
+    {
+      "family": "road",
+      "width": 256,
+      "before": {
+        "area": 770,
+        "box": [
+          100,
+          47,
+          156,
+          81
+        ]
+      },
+      "after": {
+        "area": 2718,
+        "box": [
+          77,
+          35,
+          179,
+          93
+        ]
+      }
+    },
+    {
+      "family": "rail",
+      "width": 64,
+      "before": {
+        "area": 66,
+        "box": [
+          25,
+          11,
+          39,
+          21
+        ]
+      },
+      "after": {
+        "area": 186,
+        "box": [
+          18,
+          8,
+          46,
+          24
+        ]
+      }
+    },
+    {
+      "family": "rail",
+      "width": 128,
+      "before": {
+        "area": 246,
+        "box": [
+          49,
+          22,
+          79,
+          42
+        ]
+      },
+      "after": {
+        "area": 698,
+        "box": [
+          37,
+          16,
+          92,
+          48
+        ]
+      }
+    },
+    {
+      "family": "rail",
+      "width": 256,
+      "before": {
+        "area": 972,
+        "box": [
+          99,
+          45,
+          157,
+          83
+        ]
+      },
+      "after": {
+        "area": 2717,
+        "box": [
+          73,
+          33,
+          183,
+          96
+        ]
+      }
+    }
+  ],
+  "scope": "Only zero-neighbor road/rail artwork changes. Source selection, geometry for connected masks, game code, fixtures and original-art renders are unchanged."
+}

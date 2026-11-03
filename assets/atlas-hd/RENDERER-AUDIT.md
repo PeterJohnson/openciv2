@@ -461,7 +461,14 @@ source changes are claimed by this artwork work.
 The replacement nine-slot rail bank keeps the native draw trace, slot dimensions
 and endpoints. Directional arms now end flush at the tile center: the previous
 backward spur and rounded end cap obscured the other arm's steel, most visibly
-with the stronger ballast contrast. The isolated slot retains its end treatment.
+with the stronger ballast contrast. The isolated slot is a compact three-way
+turnout with rounded ballast tips, stopping inside the tile. The road isolated
+slot is a winding crossroads. Both retain the same frame, anchor and native
+zero-neighbor selection; connected slots remain byte-identical to `2a3189dc`.
+`refresh-isolated-networks.cjs` checks 1,530 connected curve cases, all sixteen
+native directional PNGs, original scene preservation and the larger isolated
+footprints at three raster scales. Its [comparison](review/isolated-networks.html)
+uses unchanged district and tactical fixtures.
 Native bends retain the source's independent-arm limitations.
 
 The proposal draws rail beds for all visible tiles, then sleepers, then metal.
