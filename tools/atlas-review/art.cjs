@@ -396,9 +396,48 @@ function infrastructure(family, mask, texture, variant = 0, layer = 'all', armOn
     return svg(576, 320, `<g transform="translate(288 160)">${body.join('')}</g>`, defs);
 }
 
+// Native tiles cannot choose a different variant for each occurrence. Keep the
+// two-port bends shallow and asymmetric so an alternating corner chain does not
+// pull the channel back towards every tile centre. Port positions and radial
+// tangents remain shared by all sixteen masks, including mouths and junctions.
+function nativeRiverCurve(mask, steps) {
+    const dirs = [ 1, 3, 5, 7 ].filter((_, i) => mask & (1 << i));
+    const phase = noise(mask * 1.73 + 13, 31);
+    const make = (a, b, boundary, controls, amplitude = 1) => {
+        const normal = norm([ a[1] - b[1], b[0] - a[0] ]);
+        return {
+            boundary,
+            points : Array.from(
+                {length : steps + 1},
+                (_, i) => {
+                    const t = i / steps, q = 1 - t;
+                    const base = add(add(mul(a, q ** 3), mul(controls[0], 3 * q * q * t)),
+                                     add(mul(controls[1], 3 * q * t * t), mul(b, t ** 3)));
+                    const bend =
+                        Math.sin(Math.PI * t) ** 2 * amplitude *
+                        ((phase - .5) * 14 + 7 * Math.sin(2 * Math.PI * t + phase * 6.283185307));
+                    return add(base, mul(normal, bend));
+                })
+        };
+    };
+    if (!dirs.length)
+        return [ make([ -39, -15 ], [ 39, 15 ], [ false, false ], [ [ -12, -28 ], [ 17, 29 ] ]) ];
+    if (dirs.length === 2) {
+        const a = ends[dirs[0]], b = ends[dirs[1]], opposite = (dirs[1] - dirs[0]) === 4;
+        return [ make(a, b, [ true, true ],
+                      opposite ? [ mul(a, .42), mul(b, .58) ]
+                               : [ mul(a, .88 - phase * .08), mul(b, .77 + phase * .12) ],
+                      opposite ? 2.8 : 1) ];
+    }
+    return dirs.map(
+        i => make([ 0, 0 ], ends[i], [ false, true ], [ mul(ends[i], .30), mul(ends[i], .65) ]));
+}
+
 // Four river edges are NE, SE, SW, NW. Broad cubic bends replace the
 // transport compositor's short elbows; endpoint positions and tangents stay fixed.
 function riverCurve(mask, origin = null, steps = 32) {
+    if (!origin)
+        return nativeRiverCurve(mask, steps);
     const dirs = [ 1, 3, 5, 7 ].filter((_, i) => mask & (1 << i));
     const phase = origin ? noise(origin[0] * .37 + 8, origin[1] * .37 - 11) : .72;
     const make = (a, b, boundary, controls) => {
@@ -450,13 +489,15 @@ function river(mask, waterTexture, sandTexture, grassTexture = sandTexture) {
             // All native atlas edges share a width. Variation falls to zero at
             // a boundary with zero derivative, so adjoining masks stay seamless.
             const t = i / (uv.length - 1), pin = Math.sin(Math.PI * t) ** 2;
-            return .058 + (riverWidth(p[0] + 5, p[1] + 7) - .058) * pin;
+            const width = .038 + .048 * noise(p[0] * 5.7 + mask * .81 + 21, p[1] * 5.7 - 8) +
+                          .014 * Math.sin(2 * Math.PI * t + mask * .6);
+            return .058 + (width - .058) * pin;
         });
         return {r, uv, widths};
     });
     for (const [scale, fill, opacity] of [[ 2, 'url(#grass)', .25 ], [ 1.6, 'url(#grass)', .38 ],
-                                          [ 1.35, 'url(#bank)', .28 ], [ 1, 'url(#water)', 1 ],
-                                          [ 1, '#39655e', .12 ]]) {
+                                          [ 1.35, 'url(#bank)', .28 ], [ 1.12, '#789481', .35 ],
+                                          [ 1, 'url(#water)', 1 ], [ .87, '#39655e', .25 ]]) {
         const polygons = [];
         for (const {r, uv, widths} of paths) {
             const sides = [ -1, 1 ].map(side => uv.map((p, i) => {

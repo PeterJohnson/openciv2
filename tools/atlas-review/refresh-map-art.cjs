@@ -89,9 +89,9 @@ async function main() {
             proposedPasses : [ 'bed', 'sleepers', 'metal' ]
         },
         river : {
-            path : 'irregular cubic meanders, fixed connected endpoints and tangents',
+            path : 'shallow asymmetric native corner bends; fixed connected endpoints and tangents; enhanced world-space curves remain separate',
             banks :
-                'six-octave domain-warped bank relief, 257-point native outlines, subdued gravel and vegetation; fixed-width ports with 1.5px overlap',
+                'varied channel widths and a shallow-water fringe; six-octave bank relief, 257-point native outlines, subdued gravel and vegetation; fixed-width ports with 1.5px overlap',
             proposed :
                 'periodic world-space width and fractal bank variation; filtered fine detail; wrapped segment neighborhoods; shared coastal-water blending'
         },

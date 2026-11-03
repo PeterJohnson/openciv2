@@ -478,6 +478,14 @@ shore continuity, ocean-resource centering and preserved unit/city frames.
 steel continuity at native arm centers and proposed shared boundaries in both
 draw orders, plus every rail mask's endpoints.
 
+The [river course comparison](review/river-course.html) shows the district and
+saved river mouth before/after. Native/HD corner sprites now use shallow,
+asymmetric bends, irregular channel widths and a shallow-water fringe. This
+removes the large repeated sawtooth without changing source-selected masks,
+logical ports or endpoint tangents. The separately enhanced curves are unchanged.
+The native renderer still repeats its sixteen masks; long-range variation would
+require a later selector/compositor upgrade.
+
 [River validation](review/river-validation.json) checks all 16 native bindings,
 fixed curve endpoints, continuous water across adjoining masks in both draw
 orders, width variation and hidden-state isolation. The painted bed and water
@@ -485,6 +493,12 @@ overlap by 1.5 canonical pixels at each port to close antialiased butt seams;
 logical endpoints and their tangents remain fixed. To rebuild only river art,
 use `node tools/atlas-review/refresh-map-art.cjs --rivers-only` before rebuilding
 the comparisons. This also refreshes the 16 native crops and four mouth bindings.
+Then run `node tools/atlas-review/refresh-river-review.cjs` to refresh affected
+native/HD main scenes, 4K exports, saved-map survey images and comparison plates.
+It preserves original/enhanced images, checks source D/R traces, and writes the
+[course validation](review/river-course-validation.json). The before/after image
+uses retained commit `66f8560d`. Run `verify-rivers.cjs`, `verify-coast-audit.cjs`
+and `verify.cjs` for join, mouth, zoom and canonical-asset checks.
 [Fractal bank validation](review/riverbank-validation.json) adds detail-scale and
 wrap checks, all 16 enhanced connection masks at 256px and 512px, the saved map's 82 directed river
 ports and 11 mouth ports, and a synthetic wrapped river. It checks connected

@@ -1,0 +1,19 @@
+{
+  "status": "pass",
+  "beforeCommit": "66f8560d",
+  "nativeBends": [
+    {
+      "mask": 3,
+      "beforeExcursion": 84.3715393651141,
+      "afterExcursion": 24.07764167813808
+    },
+    {
+      "mask": 12,
+      "beforeExcursion": 84.3715393651141,
+      "afterExcursion": 11.393687595934182
+    }
+  ],
+  "unchangedEnhancedCurveCases": 48,
+  "originalAndEnhancedImagesPreserved": 92,
+  "scope": "Native/HD sprite artwork only. Source masks, tile ports, draw commands, game code and enhanced world-space curves are unchanged. Sixteen masks still repeat under the original renderer."
+}

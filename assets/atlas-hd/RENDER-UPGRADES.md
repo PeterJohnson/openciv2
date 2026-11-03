@@ -140,7 +140,13 @@ position-dependent modulation makes the two banks asymmetric. Bank textures mix
 subdued gravel and vegetation instead of outlining every bend in pale sand.
 Inland water has finer texture and a subdued
 green tint, fading into the existing coastal water near a mouth. The native/HD
-16-mask bank uses the same curve family with edge widths pinned for compatibility.
+16-mask bank now uses shallower asymmetric corner curves with edge widths and
+tangents pinned for compatibility. This prevents alternating corner masks from
+forming a large sawtooth in the district; [the course review](review/river-course.html)
+separates this artwork-only improvement from the world-space proposal. For later
+variation, select compatible sprites from a stable map-position seed, or fit a
+longer course across connected tiles while retaining the same logical river graph.
+Do not choose different port positions independently per tile.
 The proposal varies width and bend phase in world coordinates, never camera space.
 Add fractal bank relief after this broad shape, with six decreasing, domain-warped
 octaves. The prototype uses dense native bank outlines with smooth falloff only

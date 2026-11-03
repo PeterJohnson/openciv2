@@ -477,7 +477,18 @@ No native game source bodies or original-art bindings change.
 
 ## River artwork and sampler
 
-`riverCurve` supplies irregular cubic meanders for the four NE/SE/SW/NW river ports.
+`riverCurve` supplies curves for the four NE/SE/SW/NW river ports.
+For native sprite authoring, `nativeRiverCurve` uses shallow, asymmetric two-port
+bends instead of returning towards each tile centre. The district's alternating
+masks 3/12 previously made identical 84.37-canonical-pixel excursions from their
+shared port line; these are now 24.08 and 11.39 pixels. Native width variation is
+sampled along each route and falls to the same fixed width with zero slope at
+each port. A shallow-water fringe softens the water/land transition. The original
+16-mask selection and logical sprite frames remain unchanged; repeated patterns
+cannot be eliminated by a fixed mask library alone.
+The [before/after review](review/river-course.html) includes the saved-map mouth.
+Its checks preserve 92 main/survey original and enhanced images and compare 48
+enhanced curve cases against `66f8560d`; enhanced world-space geometry is unchanged.
 Channel widths vary more strongly; each bank has independent erosion offsets.
 `riverbanks.cjs` supplies six domain-warped fractional Brownian noise octaves
 after the macro curve is formed. Native SVG outlines use 257 samples per route
