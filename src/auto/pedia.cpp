@@ -1,6 +1,7 @@
 /* The game, the Civilopedia: functions translated from the original
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
+#include "../game/hd_windows.h"
 
 /* 00451af0 auto */
 void PediaWindow::draw_category_body(i32 category,i32 flags)
@@ -4199,6 +4200,7 @@ void PediaWindow::draw_advance_page()
   row_height = ((GameFont *)((i8 *)&font_size21))->font_cached_height();
   y2 = content_top + 5;
   advance = pedia_advance_ids[resize_border];
+  if(!hd_advance((DibSurface *)(iptr)&pedia_wnd.window,advance,panel_layout.margin_x + x2,y2,36,20))
   ((Sprite *)
              (((i8 *)&government_sprites_block.advance_category_icon_sprites) +
              (char)advances[advance].epoch * 0x3c + (char)advances[advance].category * 0xf0))->draw(

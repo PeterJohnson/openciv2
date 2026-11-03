@@ -8,6 +8,7 @@
 #include <math.h>
 #include "game.h"
 #include "lang.h"
+#include "hd_windows.h"
 
 EXTERN_C int plat_replay;
 
@@ -1065,6 +1066,7 @@ void extras_city_status_draw(void)
     ((FrameWindow *)((i8 *)&advisor_state.window))->layout();
     ((FrameWindow *)((i8 *)&advisor_state.window))->FrameWindow::draw_caption();
     ((PictureWindow *)((i8 *)&advisor_state.window))->blit();
+    hd_report_background();
     top_y = advisor_state.client_y + 2;
     list_bottom = advisor_state.client_y + 0x174;
     line_height = ((GameFont *)((i8 *)&advisor_font_block.advisor_font))->line_spacing();
@@ -1124,6 +1126,7 @@ void extras_city_status_draw(void)
     advisor_state.first_row = int_clamp(advisor_state.first_row, 0, max_row);
     for (row = 0; row < rows_per_page && advisor_state.first_row + row < status_count; row++) {
         int city = status_cities[advisor_state.first_row + row], y = status_list_top + row * 0x18, ty = y + 9;
+        hd_report_row(y + 6, 0x18, row);
         uint cost;
         gfx_draw_city((iptr)&advisor_state.window, city, 0, ((row + 1) & 1) * 0x40 + advisor_state.client_x + 2, y, 0);
         text_set_font((iptr)&advisor_bold_font);

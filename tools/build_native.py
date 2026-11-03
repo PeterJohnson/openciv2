@@ -25,7 +25,7 @@ import sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import paths  # noqa: E402  (the game's directory)
 
-ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__))).replace('\\', '/')
 OUT = os.path.join(ROOT, 'build', 'native')
 GEN = os.path.join(OUT, 'gen')
 
@@ -251,7 +251,7 @@ GAME_DIRS = [os.path.join(ROOT, 'src', d) + os.sep for d in ('auto', 'game', 'da
 
 
 def is_game(src):
-    return any(src.startswith(d) for d in GAME_DIRS)
+    return any(src.startswith(d.replace(chr(92), '/')) for d in GAME_DIRS)
 
 
 def cxx_of(cc):
@@ -328,17 +328,18 @@ def main():
         # The Ogg Vorbis decoder (stb_vorbis, public domain / MIT): the music, which the host plays.
         sources.append(os.path.join(ROOT, 'src', 'third_party', 'stb_vorbis', 'stb_vorbis.c'))
     sources += [os.path.join(ROOT, f) for f in t.get('extra', [])]
+    sources = [s.replace('\\', '/') for s in sources]
     headers = max(os.path.getmtime(h) for h in glob.glob(os.path.join(ROOT, 'src', '*', '*.h')))
     jobs = []
     tflags = t.get('cflags', [])
     for src in sources:
-        o = os.path.join(objdir, os.path.relpath(src, ROOT).replace('/', '_') + '.o')
+        o = os.path.join(objdir, os.path.relpath(src, ROOT).replace(chr(92), '_').replace('/', '_') + '.o')
         newest = max(os.path.getmtime(src), headers)
         if '/tests/' in src:
             newest = max([newest] + [os.path.getmtime(h) for h in glob.glob(os.path.join(ROOT, 'tests', '*.h'))])
         stale = not os.path.exists(o) or os.path.getmtime(o) < newest
         jobs.append((t['cc'], src, o, stale, tflags, t.get('instrument')))
-    with concurrent.futures.ThreadPoolExecutor(os.cpu_count()) as ex:
+    with concurrent.futures.ThreadPoolExecutor(int(os.environ.get('JOBS', min(8, os.cpu_count())))) as ex:
         results = list(ex.map(compile_one, jobs))
     objs = [o for o, err in results if err is None]
     failed = [(o, err) for o, err in results if err is not None]

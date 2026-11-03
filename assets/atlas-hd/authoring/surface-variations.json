@@ -1,0 +1,22 @@
+{
+  "tool": "built-in image_gen",
+  "created": "2026-10-30",
+  "master": "authoring/masters/surface-variations.png",
+  "prompt": "Original 2D painted strategy-game texture atlas, 2048x2048 square, exact FOUR columns FOUR rows of equal square full-bleed panels, no gutters, no text or labels. Every panel is a flat overhead ORTHOGRAPHIC material sample, uniform diffuse light, no vignettes, no raised objects, no isometric slabs, no perspective. Cohesive traditional hand-painted miniature palette: soft moss, ochre and deep muted teal, medium-dark overall, low contrast fine brushwork. ROW ONE: four slightly different variations of meadow grass, subtle moss and grass flecks, no flowers or rocks. ROW TWO: four variations of dry golden prairie soil, muted golden olive, sparse fine short grass. ROW THREE: four variations of ochre sandy desert, subtle fine granular sand and tiny wind texture, no dunes or cracks. ROW FOUR: four variations of calm deep muted blue teal seawater with very subtle broad tonal undulation; NO whitecaps, NO foam, NO bright line ripples. Variants within each row must have the same average color and scale but distinct organic texture. These materials will be blended by world coordinates and reduced to overview mip levels. Avoid high-frequency noise or contrast. Original imagery from this written description only, no game references.",
+  "originalGameInputs": false,
+  "freecivInputs": false,
+  "grid": {
+    "columns": 4,
+    "rows": 4
+  },
+  "rows": [
+    "grassland",
+    "plains",
+    "desert",
+    "ocean"
+  ],
+  "processing": "Inset 10 pixels from each grid cell; native crops retained. Mips at 16, 32, 64 and 128 pixels; world-coordinate blending in standalone proposal renderer.",
+  "width": 1254,
+  "height": 1254,
+  "sha256": "f954b0a99ebd37d4853e10c4ceb2da113234e0e84ce057a1f6d967fb07eb9fde"
+}

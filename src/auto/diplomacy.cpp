@@ -1,6 +1,7 @@
 /* The game, diplomacy and treaties: functions translated from the original
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
+#include "../game/hd_windows.h"
 
 /* 00448cc0 auto */
 void __cdecl diplo_status_icons_global_init(void)
@@ -4672,6 +4673,7 @@ uint DiploLeaderWindow::init_main_art()
 i32 DiploLeaderWindow::init_military()
 
 {
+  if(hd_enabled)return hd_military(this);
   int loaded;
   i8 draw_ctx[16];
   i32 fail_result;
@@ -4767,6 +4769,7 @@ void DiploLeaderWindow::science_rank_top_techs(int (&top_techs)[13],int &tech_co
 /* Part of DiploLeaderWindow::init_science (00494e2a): draw one advance: its category icon and its name on one or two lines. words, aCStack_641 and line2_buf are the caller's buffers (line2_buf is read before it is written, with what the previous advance left). */
 void DiploLeaderWindow::science_draw_tech(iptr advance,GameFont &font2,Sprite (&category_sprites)[5],i8 (&draw_ctx)[16],i32 draw_x,int draw_y,tagRECT &text_rect,int text_width,int (&top_techs)[13],i8 (&text_colors)[4],CHAR (&words)[252],CHAR (&aCStack_641)[53],CHAR (&line2_buf)[51])
 {
+  if(hd_enabled){hd_knowledge(this,advance,draw_y,font2);return;}
   int value;
   iptr label;
   int rect_height2;
@@ -5064,6 +5067,7 @@ i32 DiploLeaderWindow::init_portrait()
 i8 DiploLeaderWindow::init_video()
 
 {
+  if(hd_enabled)return 0;
   i8 result;
   int found;
   i8 file_stem[20];

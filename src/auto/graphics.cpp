@@ -1,6 +1,10 @@
 /* The game, graphics: sprites, surfaces, palettes, fonts: functions translated from the original
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
+#include "../platform/hd.h"
+int hd_load_surface(DibSurface *, int, GamePalette *);
+int hd_encode_sprite(Sprite *, DibSurface *, RECT *,int);
+void hd_bind_map_masks();
 
 /* 00407f90 auto */
 int __cdecl rect_width(RECT *rect)
@@ -769,6 +773,7 @@ void __cdecl gfx_load_terrain_sprites(void)
     base_x += 0x41;
   }
   ((DibSurface *)((i8 *)&gfx_sheet_surface_block.gfx_sheet_surface))->release();
+  if (hd_enabled) hd_bind_map_masks();
   return;
 }
 
@@ -1592,6 +1597,8 @@ GamePalette *GamePalette::get_logpalette()
 int __cdecl gfx_load_bmp_640x480(iptr surface,const char *filename,int first_color,int num_colors,iptr palette)
 
 {
+  if (hd_enabled) return hd_load_surface((DibSurface *)surface,hd_file(filename),(GamePalette *)palette);
+
   char color_base;
   size_t nread;
   GamePalette *logpal;
@@ -6646,6 +6653,8 @@ DibSurface * __thiscall surface_dtor(DibSurface *self)
 i32 DibSurface::load_gif_file(const char *filename,uint first_color,uint color_count,iptr palette)
 
 {
+  if (hd_enabled) return hd_load_surface(this,hd_file(filename),(GamePalette *)palette);
+
   int result;
   i32 ret;
   uint table_size;
@@ -6774,6 +6783,8 @@ i32 DibSurface::load_gif_file(const char *filename,uint first_color,uint color_c
 i32 DibSurface::load_gif_resource(iptr res_id,uint first_color,uint color_count,iptr palette)
 
 {
+  if (hd_enabled) return hd_load_surface(this,hd_resource(res_id),(GamePalette *)palette);
+
   i32 ret;
   int result;
   uint table_size;
@@ -7010,6 +7021,7 @@ void DibSurface::fill_rect(iptr rect,i32 color)
     dib_fill_rect8(bits,color,clipped.left,clipped.top,width2,height2,
                  ((-(uint)(top_down == 0) & 0xfffffffe) + 1) * pitch,surf_height);
   }
+  if (hd_enabled) hd_changed((void *)bits,clipped.left,clipped.top,clipped.right-clipped.left,clipped.bottom-clipped.top);
   return;
 }
 
@@ -7221,6 +7233,7 @@ void DibSurface::set_pixel(i32 x,i32 y,i32 color)
     pixel = (i8 *)pixel_ptr(x,y);
     *pixel = (i8)color;
   }
+  if (hd_enabled) hd_changed((void *)bits,x,y,1,1);
   return;
 }
 
@@ -8336,6 +8349,8 @@ i32 Sprite::create_solid(i32 width,i32 height,uint color)
 void Sprite::free()
 
 {
+  if (hd_enabled) hd_sprite_forget(this);
+
   uptr ptr;
   u32 handle;
   
@@ -8490,6 +8505,8 @@ void Sprite::get_origin(iptr out_x,iptr out_y)
 void Sprite::replace_color(i32 old_color,i32 new_color)
 
 {
+  if (hd_enabled) hd_sprite_tint(this,old_color,new_color);
+
   int rows_left;
   int *len_ptr;
   char had_data;
@@ -8526,6 +8543,9 @@ void Sprite::replace_color(i32 old_color,i32 new_color)
 int Sprite::encode_from_surface(iptr surface,int key_mode,RECT *src_rect)
 
 {
+  if (hd_enabled)
+    return hd_encode_sprite(this,(DibSurface *)surface,src_rect,key_mode);
+
   char locked;
   int rect_h;
   int rect_w;
@@ -8740,6 +8760,20 @@ int Sprite::encode_from_surface(iptr surface,int key_mode,RECT *src_rect)
 int *Sprite::blit_to_surface(int *out_rect,DibSurface *surface,int key_arg,int x, int y)
 
 {
+  int hd_x=0,hd_y=0,hd_w=0,hd_h=0,atlas=0;
+  if (hd_enabled) {
+    hd_x=x+gfx_scale_length(offset_x,0,0);hd_y=y+gfx_scale_length(offset_y,0,0);
+    hd_w=gfx_scale_length(width(),0,0);hd_h=gfx_scale_length(height(),0,0);
+    atlas=hd_sprite_draw(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
+                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,-1);
+  }
+  /* Keep the indexed draw too: map picking and editor color queries consume it.
+     Its bytes must not subsequently replace the true-color presentation. */
+  ON_SCOPE_EXIT(if (hd_enabled) {
+    if(atlas)hd_commit_rect((void *)surface->bits,hd_x,hd_y,hd_w,hd_h);
+    else hd_changed((void *)surface->bits,x,y,width(),height());
+  });
+
   int trim_y;
   int tmp;
   int scaled_trim_x;
@@ -8832,6 +8866,20 @@ int *Sprite::blit_to_surface(int *out_rect,DibSurface *surface,int key_arg,int x
 int *Sprite::blit_silhouette_to_surface(int *out_rect,DibSurface *surface,int key_arg,int x, int y,i32 color)
 
 {
+  int hd_x=0,hd_y=0,hd_w=0,hd_h=0,atlas=0;
+  if (hd_enabled) {
+    hd_x=x+gfx_scale_length(offset_x,0,0);hd_y=y+gfx_scale_length(offset_y,0,0);
+    hd_w=gfx_scale_length(width(),0,0);hd_h=gfx_scale_length(height(),0,0);
+    atlas=hd_sprite_draw(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
+                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,color);
+  }
+  /* Keep the indexed draw too: map picking and editor color queries consume it.
+     Its bytes must not subsequently replace the true-color presentation. */
+  ON_SCOPE_EXIT(if (hd_enabled) {
+    if(atlas)hd_commit_rect((void *)surface->bits,hd_x,hd_y,hd_w,hd_h);
+    else hd_changed((void *)surface->bits,x,y,width(),height());
+  });
+
   int trim_y;
   int tmp;
   int scaled_trim_x;
@@ -8924,6 +8972,11 @@ int *Sprite::blit_silhouette_to_surface(int *out_rect,DibSurface *surface,int ke
 void Sprite::merge_at(Sprite *src,Sprite *dst,i32 unused,int dx, int dy)
 
 {
+  if (hd_enabled) {
+    if(!dst->data_handle && !dx && !dy)hd_sprite_copy(dst,src);
+    else hd_sprite_forget(dst); /* pixel-edited composite uses its new indexed rows */
+  }
+
   byte row_mask;
   LONG width;
   LONG height;
@@ -9975,6 +10028,8 @@ gfx_copy_pixels(int src_bits,int dst_bits,int src_x,int src_y,int dst_x,int dst_
             int height,int src_height,int dst_height,int src_pitch,int dst_pitch)
 
 {
+  if (hd_enabled) hd_copy((void *)dst_bits,(void *)src_bits,dst_x,dst_y,src_x,src_y,width,height);
+
   i8 pixel;
   uint count;
   int abs_pitch;
@@ -10014,6 +10069,7 @@ gfx_copy_pixels(int src_bits,int dst_bits,int src_x,int src_y,int dst_x,int dst_
     dst = (i32 *)((int)dst + (dst_pitch - width));
     rows_left--;
   } while (rows_left != 0);
+  if (hd_enabled) hd_commit((void *)dst_bits);
   return;
 }
 
@@ -10377,6 +10433,7 @@ gdi_blit_transparent(HDC dst_dc,HGDIOBJ bitmap,int dst_x,int dst_y,int width,int
             ,int src_y)
 
 {
+  if (hd_enabled && hd_gdi_bitmap((uintptr_t)dst_dc,(uintptr_t)bitmap,dst_x,dst_y,width,height,src_x,src_y)) return;
   HDC hdc;
   HGDIOBJ h;
   HDC hdc_00;

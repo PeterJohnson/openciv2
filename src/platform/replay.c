@@ -17,6 +17,7 @@
 #include <execinfo.h>
 #endif
 #include "plat.h"
+#include "hd.h"
 
 static char **script;
 static int script_len, script_pos;
@@ -216,9 +217,10 @@ static void ensure_focus(void)
 void plat_screenshot(const char *path)
 {
     FILE *f = fopen(path, "wb");
-    int y, x, stride = (screen_w * 3 + 3) & ~3;
+    int w=screen_w*(hd_enabled?hd_density:1), h=screen_h*(hd_enabled?hd_density:1);
+    int y, x, stride = (w * 3 + 3) & ~3;
     unsigned char hdr[54] = {'B', 'M'}, *row;
-    unsigned size = 54 + (unsigned)(stride * screen_h);
+    unsigned size = 54 + (unsigned)(stride * h);
     if (!f)
         return;
     if (!plat_overlay)          /* (as presenting) a popup menu is on the screen itself */
@@ -226,14 +228,14 @@ void plat_screenshot(const char *path)
     hdr[2] = (unsigned char)size; hdr[3] = (unsigned char)(size >> 8); hdr[4] = (unsigned char)(size >> 16);
     hdr[5] = (unsigned char)(size >> 24);
     hdr[10] = 54; hdr[14] = 40;
-    hdr[18] = (unsigned char)screen_w; hdr[19] = (unsigned char)(screen_w >> 8);
-    hdr[22] = (unsigned char)screen_h; hdr[23] = (unsigned char)(screen_h >> 8);
+    hdr[18] = (unsigned char)w; hdr[19] = (unsigned char)(w >> 8);
+    hdr[22] = (unsigned char)h; hdr[23] = (unsigned char)(h >> 8);
     hdr[26] = 1; hdr[28] = 24;
     fwrite(hdr, 1, 54, f);
     row = calloc((size_t)stride, 1);
-    for (y = screen_h - 1; y >= 0; y--) {
-        const DWORD *p = (const DWORD *)bmp_row(screen, y);
-        for (x = 0; x < screen_w; x++) {
+    for (y = h - 1; y >= 0; y--) {
+        const DWORD *p = hd_enabled ? screen->hd+y*w : (const DWORD *)bmp_row(screen, y);
+        for (x = 0; x < w; x++) {
             row[x * 3] = (unsigned char)p[x];
             row[x * 3 + 1] = (unsigned char)(p[x] >> 8);
             row[x * 3 + 2] = (unsigned char)(p[x] >> 16);

@@ -1,0 +1,51 @@
+{
+  "tool": "built-in image_gen",
+  "entries": [
+    {
+      "id": "features.desert-cacti",
+      "prompt": "Use case: stylized-concept. Asset type: transparent terrain-detail sprite for a painted isometric civilization strategy game. Create ONE compact, sparse desert vegetation cluster: one clearly recognizable tall branching saguaro cactus, a shorter slender cactus, a small rounded barrel cactus and two tiny dry tufts. This is ordinary desert vegetation, not a resource icon or a building. Dusty sage/olive green ribbed cactus bodies, muted warm gold light from upper left, brown-green shadows, restrained fine painted detail, strong readable silhouettes at 10–16 game pixels. Elevated isometric camera compatible with a 2:1 ground plane. All plants upright and based on a small irregular shared footprint, not lined up. Include only faint localized contact shadows immediately beneath the stems, no ground slab, no sand tile, no circular badge, no outline frame. Single isolated cluster centered with 10% transparent margins, no cropping. Painterly naturalistic game illustration, not flat vector, not 3D plastic, not photoreal. Actual transparent background. No labels, text, grids, watermarks, or original-game references. High resolution 1024 square PNG.",
+      "file": "sprites/features/desert-cacti.png",
+      "master": "authoring/masters/desert-cacti.png"
+    },
+    {
+      "id": "features.forest-0",
+      "prompt": "Use case: precise-object-edit. Asset type: high-resolution transparent forest terrain sprite for a painterly isometric civilization strategy game. Input image is our existing replacement forest sprite and is the edit target, not original commercial game art.\nPrimary request: make this dense mixed broadleaf woodland much more identifiable on warm yellow-green grass by using deeper true forest greens and increased tree density within a compact footprint. rounded oak and elm crowns, varied heights, 7 to 9 overlapping mature tree crowns; a broad, compact grove with one taller rear crown and layered smaller front crowns.\nPalette: deep moss and leafy forest green, restrained medium green upper-left highlights, darker green shadows between crowns. Reduce the reference's yellow/ochre cast substantially. A little warm sunlight is fine, but most foliage should read green rather than yellow. Preserve brown or pale trunks. No blue-green neon and no black silhouettes.\nComposition: maintain the reference's elevated isometric viewpoint over a 2:1 ground plane, painterly naturalism, upright trees and upper-left lighting. Make the grove slightly wider relative to its height, to read as a stand of trees rather than a single tall tree. Keep all tree bases within a small softly irregular oval footprint; a few low shrubs immediately at the trunks, no broad ground patch. Overlapping foliage should create density, with several readable individual crowns at small game scale. Entire grove centered, roughly square overall silhouette, with 10 percent transparent margin on every side. No clipped branches.\nConstraints: edit only the forest artwork; no surrounding landscape, square ground slab, tile diamond, frame, text, symbols, snow, people or buildings. Transparent background with soft natural foliage edges and localized contact shadows only. High resolution PNG, approximately 1536 square.",
+      "reference": {
+        "file": "sprites/features/forest-0.png",
+        "commit": "7967bdeb"
+      },
+      "file": "sprites/features/forest-0.png",
+      "master": "authoring/masters/forest-broadleaf-dense.png"
+    },
+    {
+      "id": "features.forest-1",
+      "prompt": "Use case: precise-object-edit. Asset type: high-resolution transparent forest terrain sprite for a painterly isometric civilization strategy game. Input image is our existing replacement forest sprite and is the edit target, not original commercial game art.\nPrimary request: make this birch and deciduous woodland much more identifiable on warm yellow-green grass by using deeper true forest greens and increased tree density within a compact footprint. 5 to 7 leafy broadleaf trees with recognizable pale birch trunks and rounded irregular crowns; asymmetrical grove with glimpses of trunks, but noticeably fuller leaves than the reference.\nPalette: deep moss and leafy forest green, restrained medium green upper-left highlights, darker green shadows between crowns. Reduce the reference's yellow/ochre cast substantially. A little warm sunlight is fine, but most foliage should read green rather than yellow. Preserve brown or pale trunks. No blue-green neon and no black silhouettes.\nComposition: maintain the reference's elevated isometric viewpoint over a 2:1 ground plane, painterly naturalism, upright trees and upper-left lighting. Make the grove slightly wider relative to its height, to read as a stand of trees rather than a single tall tree. Keep all tree bases within a small softly irregular oval footprint; a few low shrubs immediately at the trunks, no broad ground patch. Overlapping foliage should create density, with several readable individual crowns at small game scale. Entire grove centered, roughly square overall silhouette, with 10 percent transparent margin on every side. No clipped branches.\nConstraints: edit only the forest artwork; no surrounding landscape, square ground slab, tile diamond, frame, text, symbols, snow, people or buildings. Transparent background with soft natural foliage edges and localized contact shadows only. High resolution PNG, approximately 1536 square.",
+      "reference": {
+        "file": "sprites/features/forest-1.png",
+        "commit": "7967bdeb"
+      },
+      "file": "sprites/features/forest-1.png",
+      "master": "authoring/masters/forest-birch-dense.png"
+    },
+    {
+      "id": "features.forest-2",
+      "prompt": "Use case: precise-object-edit. Asset type: high-resolution transparent forest terrain sprite for a painterly isometric civilization strategy game. Input image is our existing replacement forest sprite and is the edit target, not original commercial game art.\nPrimary request: make this dense spruce forest much more identifiable on warm yellow-green grass by using deeper true forest greens and increased tree density within a compact footprint. 8 to 10 pointed spruce and fir crowns with clearly layered boughs, taller trees behind shorter trees, one tall central tree, dense triangular evergreen silhouettes.\nPalette: deep moss and leafy forest green, restrained medium green upper-left highlights, darker green shadows between crowns. Reduce the reference's yellow/ochre cast substantially. A little warm sunlight is fine, but most foliage should read green rather than yellow. Preserve brown or pale trunks. No blue-green neon and no black silhouettes.\nComposition: maintain the reference's elevated isometric viewpoint over a 2:1 ground plane, painterly naturalism, upright trees and upper-left lighting. Make the grove slightly wider relative to its height, to read as a stand of trees rather than a single tall tree. Keep all tree bases within a small softly irregular oval footprint; a few low shrubs immediately at the trunks, no broad ground patch. Overlapping foliage should create density, with several readable individual crowns at small game scale. Entire grove centered, roughly square overall silhouette, with 10 percent transparent margin on every side. No clipped branches.\nConstraints: edit only the forest artwork; no surrounding landscape, square ground slab, tile diamond, frame, text, symbols, snow, people or buildings. Transparent background with soft natural foliage edges and localized contact shadows only. High resolution PNG, approximately 1536 square.",
+      "reference": {
+        "file": "sprites/features/forest-2.png",
+        "commit": "7967bdeb"
+      },
+      "file": "sprites/features/forest-2.png",
+      "master": "authoring/masters/forest-conifers-dense.png"
+    },
+    {
+      "id": "features.forest-3",
+      "prompt": "Use case: precise-object-edit. Asset type: high-resolution transparent forest terrain sprite for a painterly isometric civilization strategy game. Input image is our existing replacement forest sprite and is the edit target, not original commercial game art.\nPrimary request: make this asymmetrical pine forest much more identifiable on warm yellow-green grass by using deeper true forest greens and increased tree density within a compact footprint. 6 to 8 pine crowns with irregular branching, tall tree to the right and spreading pine to the left, younger pines overlapping the lower half; retain some visible trunks and an open upper silhouette.\nPalette: deep moss and leafy forest green, restrained medium green upper-left highlights, darker green shadows between crowns. Reduce the reference's yellow/ochre cast substantially. A little warm sunlight is fine, but most foliage should read green rather than yellow. Preserve brown or pale trunks. No blue-green neon and no black silhouettes.\nComposition: maintain the reference's elevated isometric viewpoint over a 2:1 ground plane, painterly naturalism, upright trees and upper-left lighting. Make the grove slightly wider relative to its height, to read as a stand of trees rather than a single tall tree. Keep all tree bases within a small softly irregular oval footprint; a few low shrubs immediately at the trunks, no broad ground patch. Overlapping foliage should create density, with several readable individual crowns at small game scale. Entire grove centered, roughly square overall silhouette, with 10 percent transparent margin on every side. No clipped branches.\nConstraints: edit only the forest artwork; no surrounding landscape, square ground slab, tile diamond, frame, text, symbols, snow, people or buildings. Transparent background with soft natural foliage edges and localized contact shadows only. High resolution PNG, approximately 1536 square.",
+      "reference": {
+        "file": "sprites/features/forest-3.png",
+        "commit": "7967bdeb"
+      },
+      "file": "sprites/features/forest-3.png",
+      "master": "authoring/masters/forest-conifers-open.png"
+    }
+  ]
+}

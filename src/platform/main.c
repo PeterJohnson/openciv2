@@ -8,6 +8,7 @@
  * executable), CIV2_SCALE (window scale), CIV2_SCRIPT etc. (replay.c).
  */
 #include "plat.h"
+#include "hd.h"
 #include "../host/host.h"
 #include <unistd.h>
 
@@ -37,7 +38,8 @@ void plat_present(void)
     last_present = now;
     if (!plat_overlay)
         plat_compose();
-    host_present(screen->bits, screen->stride);
+    if (hd_enabled) host_present_hd(screen->hd, screen_w*hd_density*4, hd_density);
+    else host_present(screen->bits, screen->stride);
     present_cost = host_time_us() - now;
 }
 
@@ -214,6 +216,7 @@ int main(int argc, char **argv)
     if (!host_init(unit_test || (plat_replay && !getenv("CIV2_SHOW"))))
         return 1;
     set_dirs(argv[0], argc > 1 && !unit_test ? argv[1] : NULL);
+    hd_init(classic, unit_test || plat_replay);
     clock_init();
     if (!plat_replay && !unit_test) {
         /* A window with its frame, maximized; CIV2_FULLSCREEN=1 or CIV.INI's

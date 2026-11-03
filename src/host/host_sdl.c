@@ -14,6 +14,7 @@
 static SDL_Window *window;
 static SDL_Renderer *renderer;
 static SDL_Texture *texture;
+static int texture_density = 1;
 static int screen_w, screen_h;
 static int follows_window;      /* the desktop follows the window's size (HOST_EV_RESIZE) */
 static Uint64 perf_start;
@@ -77,7 +78,7 @@ static int make_texture(int w, int h)
 {
     SDL_RenderSetLogicalSize(renderer, w, h);
     fit_desktop();
-    texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, w, h);
+    texture = SDL_CreateTexture(renderer, SDL_PIXELFORMAT_ARGB8888, SDL_TEXTUREACCESS_STREAMING, w*texture_density, h*texture_density);
     return texture != NULL;
 }
 
@@ -285,6 +286,16 @@ int host_usable_size(int32_t *w, int32_t *h)
     *w = r.w;
     *h = r.h;
     return 1;
+}
+
+void host_present_hd(const void *pixels, int stride, int density)
+{
+    if (texture && texture_density != density) {
+        SDL_DestroyTexture(texture);
+        texture_density = density;
+        make_texture(screen_w, screen_h);
+    }
+    host_present(pixels, stride);
 }
 
 void host_present(const void *pixels, int stride)

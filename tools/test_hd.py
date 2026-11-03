@@ -1,0 +1,45 @@
+#!/usr/bin/env python3
+"""Compile and exercise the actual compositor, including malformed-pack rejection."""
+import os
+from pathlib import Path
+import struct
+import subprocess
+import sys
+import zlib
+
+ROOT = Path(__file__).resolve().parents[1]
+
+
+def fixture():
+    def chunk(kind, data):
+        return struct.pack('>I', len(data)) + kind + data + struct.pack('>I', zlib.crc32(kind + data))
+    rows = b''.join(b'\0' + b''.join(bytes((0, 255, 0, 255)) if 0 < x < 3 and 0 < y < 3
+                                  else bytes((255, 0, 255, 0)) for x in range(4)) for y in range(4))
+    png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>2I5B', 4, 4, 8, 6, 0, 0, 0))
+    png += chunk(b'IDAT', zlib.compress(rows)) + chunk(b'IEND', b'')
+    palette = bytearray(768);palette[7] = 255
+    index = b'file/test'.ljust(160, b'\0') + struct.pack('<5I', 4, 4, 960, len(png), 960+len(png))
+    return b'C2ATLAS1' + struct.pack('<I', 1) + palette + index + png + bytes([2]*16)
+
+
+def main():
+    out = ROOT / 'build/hd-unit';out.mkdir(parents=True, exist_ok=True)
+    exe = out / ('hd-test.exe' if os.name == 'nt' else 'hd-test')
+    cc = os.environ.get('CC', 'cc')
+    subprocess.run([cc, '-std=gnu99', '-O1', '-g', str(ROOT/'tests/hd_runtime.c'),
+                    str(ROOT/'src/platform/hd.c'), '-lm', '-o', str(exe)], check=True)
+    pack = out/'atlas-hd.pack';pack.write_bytes(fixture())
+    for density in (1, 2, 3, 4):
+        env = dict(os.environ, GraphicsDensity=str(density))
+        env.pop('CIV2_TEST_HD', None);env.pop('OriginalGraphics', None)
+        subprocess.run([str(exe), str(out)], env=env, check=True)
+    pack.write_bytes(b'not-an-atlas')
+    result = subprocess.run([str(exe), str(out)], capture_output=True)
+    assert result.returncode == 2 and b'Invalid Atlas' in result.stderr, result
+    pack.unlink()
+    subprocess.run([str(exe), str(out)], env=dict(os.environ, OriginalGraphics='1'), check=True)
+    print('Malformed pack rejected; original mode works without an atlas.')
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "logicalFrame": [
+    64,
+    48
+  ],
+  "bannerFrame": [
+    12,
+    20
+  ],
+  "defaultAnchor": [
+    48,
+    4
+  ],
+  "policy": "Art registration consumed by the unchanged source renderer in every replacement stage. Naval banners use transparent upper-left clearance. Original-sheet anchors remain separate; unit sprites and draw order are unchanged.",
+  "overrides": [
+    {
+      "index": 32,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/32.png",
+      "sha256": "7cc8c199f0d908ee36fb82ac2ea3130850b9c010fb552de6972c5ee960185ef6"
+    },
+    {
+      "index": 33,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/33.png",
+      "sha256": "ff84cb3d4c42da3f46c9a821b5d9c8930bbcc2185a2a3828ab3d90ca0cc07e65"
+    },
+    {
+      "index": 34,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/34.png",
+      "sha256": "75a22c909e305cced8b69cc92317ea8076b5d2ee34141795c6df1ea196097a76"
+    },
+    {
+      "index": 35,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/35.png",
+      "sha256": "05b247d37cfe898d324e835a3455998f97e1a64bef60f1a561f012d7d14c1a3c"
+    },
+    {
+      "index": 36,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/36.png",
+      "sha256": "381e4d1c724316564ed72ee8cc16c51b23b6a25a89fefc60f76927e670e22b0a"
+    },
+    {
+      "index": 37,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/37.png",
+      "sha256": "42888a07ced373b3b746750526cbf45e34345c35effe6bb5d38475480228e886"
+    },
+    {
+      "index": 38,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/38.png",
+      "sha256": "cad9b123d0f8505cef702e606f4334531a3d6da505b32a26bc9a6fc6a29a2748"
+    },
+    {
+      "index": 39,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/39.png",
+      "sha256": "eb3cb126eb73b1c0e415c215bde5412432a08eded55e80e366ac092eb5938048"
+    },
+    {
+      "index": 40,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/40.png",
+      "sha256": "ab2391d5812adb68a53926000eca514e22167720971b6b9072773068991ba597"
+    },
+    {
+      "index": 41,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/41.png",
+      "sha256": "79280f78112611a88a42ed7684b1fd6fcb91b42298a8b4d4d58585e0d5e25bd1"
+    },
+    {
+      "index": 42,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/42.png",
+      "sha256": "c4c4415adbe5663da864c7e55b1551461b3f07888d241e0365ef077d3dbe2106"
+    },
+    {
+      "index": 43,
+      "anchor": [
+        2,
+        0
+      ],
+      "file": "compatibility/unit/43.png",
+      "sha256": "7a5c98525f1ad5233fda098a57310478eed9c41bca22291e0985578784970cd2"
+    }
+  ]
+}

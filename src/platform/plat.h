@@ -86,6 +86,8 @@ typedef struct Bitmap {
     int ncolors;
     int is_dib;
     int selected;               /* selected into a DC */
+    uint32_t *hd, *hd_before;    /* physical pixels and indexed-write observation */
+    int hd_image;               /* Atlas source sheet; never stored in saves */
 } Bitmap;
 
 unsigned char *bmp_row(const Bitmap *b, int y);     /* row y, top = 0 */

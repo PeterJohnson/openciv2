@@ -1,0 +1,28 @@
+{
+  "roles": [
+    "food",
+    "production",
+    "trade",
+    "gold",
+    "luxury",
+    "science"
+  ],
+  "nativeRoles": {
+    "1": "food",
+    "2": "production",
+    "3": "gold",
+    "11": "food",
+    "12": "production",
+    "13": "trade"
+  },
+  "files": {
+    "food": "sprites/resources/wheat.png",
+    "production": "interface/economy/production.png",
+    "trade": "interface/economy/trade.png",
+    "gold": "interface/economy/gold.png",
+    "luxury": "interface/economy/luxury.png",
+    "science": "interface/economy/science.png"
+  },
+  "source": "src/auto/graphics.cpp:854–895; src/auto/city.cpp:12599–12699,12821–13419,14186",
+  "yieldFixture": "Supplied worked flags and food/shield/trade values; placement and overlap execute unchanged draw_resource_yields."
+}

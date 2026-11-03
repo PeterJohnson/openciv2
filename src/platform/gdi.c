@@ -8,6 +8,7 @@
  * as Wine's DIB engine does.
  */
 #include "plat.h"
+#include "hd.h"
 
 Bitmap *screen;                 /* the composed desktop: what is shown */
 Bitmap *root;                   /* the desktop background */
@@ -45,6 +46,7 @@ void bmp_destroy(Bitmap *b)
 {
     if (!b)
         return;
+    hd_bitmap_destroy(b);
     if (b->owns_bits)
         free(b->bits);
     free(b);
@@ -101,6 +103,7 @@ void surf_put(Bitmap *b, int x, int y, COLORREF c)
             p[x >> 3] &= (unsigned char)~(0x80 >> (x & 7));
         break;
     }
+    hd_pixel(b, x, y, GetRValue(c)<<16 | GetGValue(c)<<8 | GetBValue(c));
 }
 
 COLORREF surf_get(Bitmap *b, int x, int y)
@@ -289,6 +292,10 @@ void plat_compose(void)
     Window *order[512], *w;
     int n = 0, i, y;
     memcpy(screen->bits, root->bits, (size_t)screen->stride * (size_t)screen->h);
+    if (hd_enabled) {
+        hd_sync(root); hd_sync(screen);
+        memcpy(screen->hd, root->hd, (size_t)screen_w*screen_h*hd_density*hd_density*4);
+    }
     for (w = desktop->children; w && n < 512; w = w->next)
         order[n++] = w;
     for (i = n - 1; i >= 0; i--) {
@@ -305,6 +312,17 @@ void plat_compose(void)
         /* Surface pixel (x, y) shows at screen (rect.left + x + host_dx, ...). */
         dx = w->rect.left + (w->host_clipped ? w->host_dx : 0);
         dy = w->rect.top + (w->host_clipped ? w->host_dy : 0);
+        if (hd_enabled) {
+            int py, d=hd_density;
+            hd_sync(s);
+            for (py=r.top*d;py<r.bottom*d;py++) {
+                int sy=py-dy*d, x0=r.left*d, x1=r.right*d;
+                if(sy<0 || sy>=s->h*d)continue;
+                if(x0<dx*d)x0=dx*d;
+                if(x1>(dx+s->w)*d)x1=(dx+s->w)*d;
+                if(x1>x0)memcpy(screen->hd+py*screen_w*d+x0,s->hd+sy*s->w*d+x0-dx*d,(x1-x0)*4);
+            }
+        }
         for (y = r.top; y < r.bottom; y++) {
             int sy = y - dy, x0 = r.left, x1 = r.right;
             if (sy < 0 || sy >= s->h)
@@ -316,6 +334,14 @@ void plat_compose(void)
         }
     }
     if (plat_color_lut_on) {
+        if (hd_enabled) {
+            size_t i, n=(size_t)screen_w*screen_h*hd_density*hd_density;
+            for(i=0;i<n;i++) {
+                uint32_t c=screen->hd[i];
+                screen->hd[i]=(c&0xff000000u)|((uint32_t)plat_color_lut[(c>>16)&255]<<16)|
+                    ((uint32_t)plat_color_lut[(c>>8)&255]<<8)|plat_color_lut[c&255];
+            }
+        }
         /* X35 (docs/EXTRAS.md): the colour correction, on what is shown */
         for (y = 0; y < screen->h; y++) {
             DWORD *p = (DWORD *)bmp_row(screen, y);
@@ -913,6 +939,7 @@ static void fill_device(Bitmap *b, const Region *clip, const RECT *r, COLORREF r
                 for (x = a.left; x < a.right; x++)
                     surf_put(b, x, y, rop2_xor ? surf_get(b, x, y) ^ 0xffffff : rgb);
         }
+        if (hd_enabled) hd_bitmap_changed(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
     }
 }
 
@@ -1233,6 +1260,8 @@ static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, 
         if (a.top < 0) a.top = 0;
         if (a.right > dst->w) a.right = dst->w;
         if (a.bottom > dst->h) a.bottom = dst->h;
+        if (hd_enabled && rop==SRCCOPY && !flipx && !flipy)
+            hd_transfer(dst,src,x,y,w,h,sx,sy,sw,sh,a.left,a.top,a.right,a.bottom);
         for (row = a.top; row < a.bottom; row++) {
             int ry = row - y, srow, n = 0, col;
             if (flipy)
@@ -1253,6 +1282,10 @@ static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, 
             }
             xfer_row(&xf, srow, row, a.left, n, sxs, rop);
         }
+        if (hd_enabled) {
+            if(rop!=SRCCOPY || flipx || flipy)hd_bitmap_changed(dst,a.left,a.top,a.right-a.left,a.bottom-a.top);
+            hd_bitmap_commit(dst);
+        }
     }
     free(sxs);
     rgn_free(&clip);
@@ -1263,6 +1296,24 @@ WINBOOL WINAPI BitBlt(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy
 {
     API_TRACE();
     return blit(hd, x, y, w, h, hs, sx, sy, w, h, rop);
+}
+
+/* Alpha controls bypass the old color-key/monochrome mask construction. */
+int hd_gdi_bitmap(uintptr_t h,uintptr_t bitmap,int x,int y,int w,int hgt,int sx,int sy)
+{
+    DC *dc=dc_get((HDC)h);
+    Bitmap *src=obj_get((HBITMAP)bitmap,OBJ_BITMAP),*dst;
+    int id,k;
+    if(!dc || !src || !src->hd_image)return 0;
+    dst=dc_target(dc);if(!dst)return 0;
+    id=hd_crop(src->hd_image,sx,sy,w,hgt);
+    x+=dc->origin.x;y+=dc->origin.y;
+    if(dc->is_memory)hd_draw_bitmap(dst,id,x,y,w,hgt,0,0,dst->w,dst->h,-1);
+    else for(k=0;k<dc->clip.n;k++) {
+        RECT *r=dc->clip.r+k;
+        hd_draw_bitmap(dst,id,x,y,w,hgt,r->left,r->top,r->right,r->bottom,-1);
+    }
+    return 1;
 }
 
 /* Only the source-less operations blit() fills itself. */

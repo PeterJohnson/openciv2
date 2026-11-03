@@ -1,6 +1,7 @@
 /* The game, civilizations: advances, research, government, the rules: functions translated from the original
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
+#include "../game/hd_windows.h"
 #include "lang.h"
 #include "rules.h"
 
@@ -1779,6 +1780,7 @@ void __cdecl science_advisor_draw(void)
   ((FrameWindow *)((i8 *)&advisor_state.window))->layout();
   ((FrameWindow *)((i8 *)&advisor_state.window))->FrameWindow::draw_caption();
   ((PictureWindow *)((i8 *)&advisor_state.window))->blit();
+  hd_report_background();
   cur_y = advisor_state.client_y + 2;
   list_bottom = advisor_state.client_y + 0x174;
   line_height = ((GameFont *)((i8 *)&advisor_font_block.advisor_font))->line_spacing();
@@ -1904,6 +1906,7 @@ void __cdecl science_advisor_draw(void)
       draw_y = row * line_height + cur_y;
       item_x = advisor_state.column_width * column + list_left;
       item_index = value;
+      if(!hd_advance((DibSurface *)(iptr)&advisor_state.window,advance,item_x,draw_y,36,20))
       ((Sprite *)
                  (((i8 *)&government_sprites_block.advance_category_icon_sprites) +
                  (char)advances[advance].epoch * 0x3c + (char)advances[advance].category * 0xf0))->draw(
@@ -2333,6 +2336,7 @@ void __cdecl civ_score_window_draw(void)
   ((FrameWindow *)((i8 *)&advisor_state.window))->layout();
   ((FrameWindow *)((i8 *)&advisor_state.window))->FrameWindow::draw_caption();
   ((PictureWindow *)((i8 *)&advisor_state.window))->blit();
+  hd_report_background();
   header_y = advisor_state.client_y + 2;
   list_bottom = advisor_state.client_y + 0x174;
   line_height = ((GameFont *)((i8 *)&advisor_font_block.advisor_font))->line_spacing();
@@ -2519,6 +2523,7 @@ void __cdecl civ_rating_window_draw(void)
   ((FrameWindow *)((i8 *)&advisor_state.window))->layout();
   ((FrameWindow *)((i8 *)&advisor_state.window))->FrameWindow::draw_caption();
   ((PictureWindow *)((i8 *)&advisor_state.window))->blit();
+  hd_report_background();
   cur_y = advisor_state.client_y + 1;
   bottom_y = advisor_state.client_y + 0x174;
   line_height = ((GameFont *)((i8 *)&advisor_font_block.advisor_font))->line_spacing();
@@ -5682,6 +5687,7 @@ research_option_draw_advance(i32 dialog,iptr surface,iptr advance,byte flags,int
   }
   y_offset = (0x14 - height) / 2;
   draw_y = y - y_offset;
+  if(!hd_advance((DibSurface *)surface,advance,draw_x,draw_y,36,20))
   ((Sprite *)
              (((i8 *)&government_sprites_block.advance_category_icon_sprites) +
              (char)advances[advance].category * 0xf0 + (char)advances[advance].epoch * 0x3c))->draw(

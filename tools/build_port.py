@@ -50,7 +50,28 @@ def run(cmd, **kw):
 
 
 def module():
+    atlas()
     run([sys.executable, os.path.join(ROOT, 'tools', 'build_native.py'), '--target', 'wasm'])
+
+
+def atlas():
+    """Build replacement graphics when sources changed; prepared source packages
+    carry the finished pack and need no image tools or original game graphics."""
+    from pathlib import Path
+    root = Path(ROOT)
+    output = root / 'build/data/atlas-hd.pack'
+    if (root / 'assets/atlas-hd/manifest.json').exists() and not os.environ.get('CIV2_ATLAS_PREBUILT'):
+        inputs = [root / 'tools/build_atlas.py', root / 'src/data/gamedata.cpp']
+        inputs += [p for p in (root / 'assets/atlas-hd').rglob('*') if p.is_file()]
+        if not output.exists() or output.stat().st_mtime < max(p.stat().st_mtime for p in inputs):
+            run([sys.executable, str(root / 'tools/build_atlas.py')])
+    if not output.exists():
+        sys.exit('Missing build/data/atlas-hd.pack; run tools/build_atlas.py (requires Pillow).')
+    for name in ('fonts.bin', 'fonts_aa.bin'):
+        src=root / 'data/native' / name
+        dst=output.parent / name
+        if not dst.exists() or dst.stat().st_mtime < src.stat().st_mtime:
+            shutil.copy2(src,dst)
 
 
 def to_c():
@@ -110,8 +131,8 @@ def windows_resources(cc, obj):
     import zlib
     res = os.path.join(obj, 'res')
     os.makedirs(res, exist_ok=True)
-    for name in ('fonts.bin', 'fonts_aa.bin'):
-        src = os.path.join(ROOT, 'data', 'native', name)
+    for name in ('fonts.bin', 'fonts_aa.bin', 'atlas-hd.pack'):
+        src = os.path.join(ROOT, 'build', 'data', name)
         out = os.path.join(res, name + '.z')
         if not os.path.exists(out) or os.path.getmtime(out) < os.path.getmtime(src):
             print('compressing %s' % os.path.relpath(src, ROOT), flush=True)
@@ -134,6 +155,7 @@ def exe(cross_windows=False):
     """build/OpenCiv2: compile the generated C with the host runtime.
     cross_windows: build/OpenCiv2.exe with MinGW-w64 and SDL2's MinGW
     release (tools/fetch-toolchain.sh windows), e.g. on Linux."""
+    atlas()
     windows = cross_windows or on_windows()
     if cross_windows:
         cc = os.environ.get('CC') or 'x86_64-w64-mingw32-gcc'
@@ -235,8 +257,8 @@ def pack():
     with tarfile.open(out, 'w:gz') as t:
         for rel in ('build/wasm/c', 'src/host', 'src/platform/win32_vk.h', 'tools/build_port.py',
                     'tools/paths.py', 'tools/run-civ2.sh', 'tools/toolchain/unshield', 'tools/toolchain/zlib',
-                    'tools/toolchain/libogg', 'tools/toolchain/libvorbis', 'data/native', 'harness/CIV2.DAT',
-                    'README.md', 'THIRD-PARTY.txt'):
+                    'tools/toolchain/libogg', 'tools/toolchain/libvorbis', 'data/native', 'build/data', 'harness/CIV2.DAT',
+                      'README.md', 'docs/HD-GRAPHICS.md', 'assets/atlas-hd/PROVENANCE.md', 'LICENSE', 'THIRD-PARTY.txt'):
             t.add(os.path.join(ROOT, rel), arcname=os.path.join('OpenCiv2', rel))
     print('wrote %s (%d MB)' % (os.path.relpath(out, ROOT), os.path.getsize(out) >> 20))
 
@@ -265,7 +287,7 @@ def main():
     steps = sys.argv[1:] or ['module', 'c', 'exe']
     fetch_toolchain(steps)
     for s in steps:
-        {'module': module, 'c': to_c, 'exe': exe, 'exe-windows': lambda: exe(True), 'pack': pack}[s]()
+        {'atlas': atlas, 'module': module, 'c': to_c, 'exe': exe, 'exe-windows': lambda: exe(True), 'pack': pack}[s]()
 
 
 if __name__ == '__main__':

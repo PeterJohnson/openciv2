@@ -7,6 +7,7 @@
  * blended as its DIB engine does (tools/probe/aaprobe.c checks the model).
  */
 #include "plat.h"
+#include "hd.h"
 
 DC *dc_get(HDC h);
 
@@ -276,6 +277,7 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
     if (!f || n <= 0)
         return;
     b = dc_target(dc);
+    if (hd_enabled && !b->hd) hd_sync(b);
     if (dc->is_memory) {
         RECT all = {0, 0, 0, 0};
         all.right = b->w;
@@ -307,6 +309,39 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
             }
     }
     c = dc_resolve_color(dc, dc->text_color);
+    if (hd_enabled) {
+        int d=hd_density, fh=f->height*d;
+        FontFace *fine;
+        if(fh>MAXH)fh=MAXH;
+        fine=faces[f->face][fh][f->bold][f->italic];
+        if(!aa_data)load_aa();
+        if(!fine || !fine->aa)fine=f;
+        for(i=0;i<n && fine->aa;i++) {
+            unsigned ch=(unsigned char)s[i];
+            AaGlyph *g=&fine->aa[ch];
+            const unsigned char *cov=aa_coverage(g);
+            double scale=(double)f->height*d/fine->height;
+            /* Hinting at the larger size must not widen a glyph beyond the
+               logical advance used by the original layout and hit testing. */
+            double xs=fine->g[ch].adv ? (double)f->g[ch].dadv*d/fine->g[ch].adv : scale;
+            int gx=(x+ox)*d+(int)(g->x*xs),gy=(y+oy)*d+(int)(g->y*scale);
+            int gw=(int)(g->w*xs+.5),gh=(int)(g->h*scale+.5),k,row,col;
+            for(k=0;cov && k<rg.n;k++) {
+                int l=rg.r[k].left*d,t=rg.r[k].top*d,r=rg.r[k].right*d,bot=rg.r[k].bottom*d;
+                if(l<gx)l=gx;if(t<gy)t=gy;if(r>gx+gw)r=gx+gw;if(bot>gy+gh)bot=gy+gh;
+                if(l<0)l=0;if(t<0)t=0;if(r>b->w*d)r=b->w*d;if(bot>b->h*d)bot=b->h*d;
+                for(row=t;row<bot;row++)for(col=l;col<r;col++) {
+                    int v=cov[((row-gy)*g->h/gh)*g->w+(col-gx)*g->w/gw];
+                    uint32_t *dst=b->hd+row*b->w*d+col,z=*dst;
+                    *dst=0xff000000u|aa_blend((z>>16)&255,GetRValue(c),v)<<16|
+                         aa_blend((z>>8)&255,GetGValue(c),v)<<8|aa_blend(z&255,GetBValue(c),v);
+                }
+            }
+            x+=f->g[ch].dadv;
+        }
+        rgn_free(&rg);
+        return;
+    }
     if (b->bpp > 8) {
         /* Antialiased, as Wine draws on deep surfaces. */
         unsigned tr = GetRValue(c), tg = GetGValue(c), tb = GetBValue(c);

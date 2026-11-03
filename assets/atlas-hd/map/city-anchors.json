@@ -1,0 +1,590 @@
+{
+  "schemaVersion": 1,
+  "logicalFrame": [
+    64,
+    48
+  ],
+  "reservedBox": [
+    26,
+    16
+  ],
+  "policy": "Per-variant replacement silhouette footholds, kept above the southern frame edge and left of unit/flag tags. Original anchors remain separate.",
+  "variants": [
+    {
+      "index": 0,
+      "style": 0,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/0.png",
+      "sha256": "390de8e78b6c9dca5cdc6e7a7f927216e43ec8fdcd2f697f5f2c2a12e4d661ea",
+      "sizeBox": [
+        7,
+        17
+      ]
+    },
+    {
+      "index": 1,
+      "style": 0,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/1.png",
+      "sha256": "4033f25b6a534b65ca75acc63b98fbe5a8865604fb72556506c92073d60df849",
+      "sizeBox": [
+        5,
+        18
+      ]
+    },
+    {
+      "index": 2,
+      "style": 0,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/2.png",
+      "sha256": "e8cd63452ff6f004735c0669fb7c5d92eacd9227640ac930e6a5d93c76b8568d",
+      "sizeBox": [
+        5,
+        19
+      ]
+    },
+    {
+      "index": 3,
+      "style": 0,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/3.png",
+      "sha256": "b3891861a21086c16b34e3ba26a36fe3cad1f60e89405e1e0cb60ff3d1dd1db3",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 4,
+      "style": 0,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/4.png",
+      "sha256": "f4799e764a7342ded6817fa84f18f7146066d9a095480f62da212c73ba424d19",
+      "sizeBox": [
+        5,
+        18
+      ]
+    },
+    {
+      "index": 5,
+      "style": 0,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/5.png",
+      "sha256": "6f7fb9f972cde34f467526468ee5f38a603067c929d67e6128457fa68e071fd0",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 6,
+      "style": 0,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/6.png",
+      "sha256": "44c7fefa84739583481aca18c9ff8679914494cf95b3ad6d5653c7409cdb95b1",
+      "sizeBox": [
+        6,
+        19
+      ]
+    },
+    {
+      "index": 7,
+      "style": 0,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/7.png",
+      "sha256": "63b2a6b29081f9230aaa71ae3239aca941c2f2fb4eae78694530673e525d4b34",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 8,
+      "style": 1,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/8.png",
+      "sha256": "1bb71f5d6171332dad5a37f3fb2032c29abe6e28f7972f45b3bca4f43aac35f5",
+      "sizeBox": [
+        7,
+        19
+      ]
+    },
+    {
+      "index": 9,
+      "style": 1,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/9.png",
+      "sha256": "7a03c89a7f36da9bac69cb854191a97f294c9000ad9e9a4a04c9205ee01de49f",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 10,
+      "style": 1,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/10.png",
+      "sha256": "919792f554f86cd0ca2792c708fc5929dc882b920829125756d2e003548ea419",
+      "sizeBox": [
+        7,
+        17
+      ]
+    },
+    {
+      "index": 11,
+      "style": 1,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/11.png",
+      "sha256": "2fd0baa3fa1cb83f338bc499ba14ed5446d4d571d474188bf96c8fda652429c4",
+      "sizeBox": [
+        5,
+        16
+      ]
+    },
+    {
+      "index": 12,
+      "style": 1,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/12.png",
+      "sha256": "30f2e9cc29ae2c5fb6ecca8ccf841dcd9f79c08786e08ea07779780dca99a589",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 13,
+      "style": 1,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/13.png",
+      "sha256": "eed63cfe5d932be56f5d1af8eae6b63bf0559e7674cc19c7c1beb1d2efabe3e8",
+      "sizeBox": [
+        6,
+        16
+      ]
+    },
+    {
+      "index": 14,
+      "style": 1,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/14.png",
+      "sha256": "ec831b2d0c738f2112781af29f46dbbcb4a641dfb35feca443f7df4fe086048d",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 15,
+      "style": 1,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/15.png",
+      "sha256": "79e54ef20be418d7001ec94d4dd3071768405c452f862836dc08b1fffc7188d2",
+      "sizeBox": [
+        5,
+        16
+      ]
+    },
+    {
+      "index": 16,
+      "style": 2,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/16.png",
+      "sha256": "ca5166eb16bc07448f60ca36944a091598e9e5de4f6817e55eaa9232664787fd",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 17,
+      "style": 2,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/17.png",
+      "sha256": "1c8a6accb8f53b174f38740580d3fb52d9dfdab26e13654cb935bfbb340a10c3",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 18,
+      "style": 2,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/18.png",
+      "sha256": "ebf84da1de07047a31fbff15d74ff7bd496b161479bebbbafd158e015065fa5e",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 19,
+      "style": 2,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/19.png",
+      "sha256": "f3ae851da3dab0515e5b277b585def940700ab6feb5824e9c7023ca455652f5c",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 20,
+      "style": 2,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/20.png",
+      "sha256": "06cf14ca0a0eaf177ac4481b8a5cd7b092406c342b4fd8432957f60a64129e5e",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 21,
+      "style": 2,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/21.png",
+      "sha256": "cf782331d06fc9546f836fd60fa699acbdbed660933ad1c0782e4cf39b01a223",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 22,
+      "style": 2,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/22.png",
+      "sha256": "c64b43532960bbc4bc6c6a426594f961ef6d14392b739f4cc29334b9a31dd60b",
+      "sizeBox": [
+        6,
+        19
+      ]
+    },
+    {
+      "index": 23,
+      "style": 2,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/23.png",
+      "sha256": "dcd8324aec23b24f440d4b11db795d5976dd9e2c522abf41f05cb562c97348a6",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 24,
+      "style": 3,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/24.png",
+      "sha256": "21c272d4c3fc905c07ed690e61bb7ea368f05fb02fc7cb931ac892e7acb3c5a3",
+      "sizeBox": [
+        5,
+        21
+      ]
+    },
+    {
+      "index": 25,
+      "style": 3,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/25.png",
+      "sha256": "78e0dfa222dd96d975db24ab6ffd180896360dd28a1d3682dd505cb2ca29cde5",
+      "sizeBox": [
+        7,
+        17
+      ]
+    },
+    {
+      "index": 26,
+      "style": 3,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/26.png",
+      "sha256": "fbcd32b23be4d2a6cf64f53a097faf36af77324675f0343748d0ec2495186f86",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 27,
+      "style": 3,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/27.png",
+      "sha256": "4bcb84a8587c334d4ec203f36812dda96196f4559b0f7accd58aed28df6786f0",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 28,
+      "style": 3,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/28.png",
+      "sha256": "0ef2f64135565b7ee6602e3b34d7cf304521ae7b1838e55332f535b3a3b18e60",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 29,
+      "style": 3,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/29.png",
+      "sha256": "2bc91275b13f9c3920cc8eddcfbf9cf2ea1f0dc537ebdded37fce5a08de0509a",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 30,
+      "style": 3,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/30.png",
+      "sha256": "538d36b7d9ae56e3e30d448e07dae13a9eae00160116eb20c14e1cc1d62036c5",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 31,
+      "style": 3,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/31.png",
+      "sha256": "7cf742f4ddb2e3eeef6e9b14856f06206e7175e5ffd6d05199161c8c5ffd48e1",
+      "sizeBox": [
+        6,
+        17
+      ]
+    },
+    {
+      "index": 32,
+      "style": 4,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/32.png",
+      "sha256": "8d77367890a13945ae322acb3e046a5df74883e275bc157633d34fc3f67463ed",
+      "sizeBox": [
+        5,
+        23
+      ]
+    },
+    {
+      "index": 33,
+      "style": 4,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/33.png",
+      "sha256": "8a5f773baaf4698483f6fe7e396a8c3d1c9491d0b7753294e8e39a31bb7d80da",
+      "sizeBox": [
+        6,
+        21
+      ]
+    },
+    {
+      "index": 34,
+      "style": 4,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/34.png",
+      "sha256": "62aae979f12d19b9568b83403af2e5bd027c5ee72e3c79371c91aa00299a5920",
+      "sizeBox": [
+        5,
+        22
+      ]
+    },
+    {
+      "index": 35,
+      "style": 4,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/35.png",
+      "sha256": "e672c449dbfb46698bffb7031333760172b9bdb1800d20b8bdd5799b9c255870",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 36,
+      "style": 4,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/36.png",
+      "sha256": "caae672df02cbc4c95963338b162bda4c9df5a8feae71a2e8c9154ebd5ad32ff",
+      "sizeBox": [
+        5,
+        22
+      ]
+    },
+    {
+      "index": 37,
+      "style": 4,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/37.png",
+      "sha256": "4fb22a49a9f8101196d2365f6dcc037ba66e63d955b774e1504740ed4df2a7a6",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 38,
+      "style": 4,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/38.png",
+      "sha256": "59530eab43385bd60835bbcccc98405012adcd65ceb708eae223ce410d443f8d",
+      "sizeBox": [
+        6,
+        22
+      ]
+    },
+    {
+      "index": 39,
+      "style": 4,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/39.png",
+      "sha256": "05c819ee25f921ae8567108fec7ae6babb20d52741765796a3fdd7e66de0edc6",
+      "sizeBox": [
+        0,
+        4
+      ]
+    },
+    {
+      "index": 40,
+      "style": 5,
+      "size": 0,
+      "walled": false,
+      "file": "compatibility/city/40.png",
+      "sha256": "60754a684c5f46a18e163d2fcdbccbc2628f6d0b00cf076cb0b946276530aa79",
+      "sizeBox": [
+        4,
+        21
+      ]
+    },
+    {
+      "index": 41,
+      "style": 5,
+      "size": 0,
+      "walled": true,
+      "file": "compatibility/city/41.png",
+      "sha256": "8886cce3c11a83ebf324a9310db21d15803cb1c602e260086a622275e655af34",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 42,
+      "style": 5,
+      "size": 1,
+      "walled": false,
+      "file": "compatibility/city/42.png",
+      "sha256": "8760568b8f9d921bc10a5e979bd9d4f95e020e57e195447149aa1712a230ec0e",
+      "sizeBox": [
+        6,
+        20
+      ]
+    },
+    {
+      "index": 43,
+      "style": 5,
+      "size": 1,
+      "walled": true,
+      "file": "compatibility/city/43.png",
+      "sha256": "2a1be1483ac989260df8cb0e9f97b8499f9c085116acc018dbf6e35daa344c09",
+      "sizeBox": [
+        6,
+        18
+      ]
+    },
+    {
+      "index": 44,
+      "style": 5,
+      "size": 2,
+      "walled": false,
+      "file": "compatibility/city/44.png",
+      "sha256": "fa264332db758b6ee9a31c65f1eb4b8a5e372d4f98f6325fe00fc2395f4fdbd9",
+      "sizeBox": [
+        5,
+        21
+      ]
+    },
+    {
+      "index": 45,
+      "style": 5,
+      "size": 2,
+      "walled": true,
+      "file": "compatibility/city/45.png",
+      "sha256": "cc728b52135d0c29714aeec39b0e8ac8dae1b21153f994e5031b592625172577",
+      "sizeBox": [
+        6,
+        19
+      ]
+    },
+    {
+      "index": 46,
+      "style": 5,
+      "size": 3,
+      "walled": false,
+      "file": "compatibility/city/46.png",
+      "sha256": "cc966bf5ec7d217ded0fe0e2e3d22ca6df419b4ed093367774a6a3d795dbc481",
+      "sizeBox": [
+        6,
+        21
+      ]
+    },
+    {
+      "index": 47,
+      "style": 5,
+      "size": 3,
+      "walled": true,
+      "file": "compatibility/city/47.png",
+      "sha256": "ae88f6f4a2d7474c71b52a49f63a33eb7bfcac6999aaaf602ae7f982d64ae30f",
+      "sizeBox": [
+        5,
+        19
+      ]
+    }
+  ]
+}

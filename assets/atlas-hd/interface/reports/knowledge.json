@@ -1,0 +1,342 @@
+{
+  "scope": "Individual illustrations shared by the saved Science/Intelligence reports, enhanced Civilopedia and research selection; existing independently authored Atlas art. Other advances are not silently assigned repeated fallback symbols.",
+  "source": "src/auto/reports.cpp intel_draw_advances: original selection is category * 4 + epoch. Enhanced trace association validates exact rule name, category/epoch and source label-to-sprite offset.",
+  "advances": [
+    {
+      "id": 0,
+      "name": "Advanced Flight",
+      "file": "sprites/units/bomber.png",
+      "sha256": "ec77e0a8af5e252ca2542e0de1b2090cf39ad443c90b4ddfc3e378da665a7b3b"
+    },
+    {
+      "id": 1,
+      "name": "Alphabet",
+      "file": "sprites/buildings/library.png",
+      "sha256": "dbe9d8ea504299564e9b4334534d94998b9094166ed2f78f0a2a898d9dd99ce4"
+    },
+    {
+      "id": 2,
+      "name": "Amphibious Warfare",
+      "file": "sprites/units/marines.png",
+      "sha256": "71e1f610421869de49747fb86b71443da1da2700e6c83444eccb5412cc89d515"
+    },
+    {
+      "id": 3,
+      "name": "Astronomy",
+      "file": "sprites/wonders/copernicus-observatory.png",
+      "sha256": "318cf9a044949da8218b69b8105b4b72632ba2e2d23317c85dbe43153b0c1649"
+    },
+    {
+      "id": 4,
+      "name": "Atomic Theory",
+      "file": "sprites/buildings/nuclear-plant.png",
+      "sha256": "60710a7ada9a422adefe5ea6f5388014e467fed83bd2d55286821e0ee257a12e"
+    },
+    {
+      "id": 5,
+      "name": "Automobile",
+      "file": "sprites/buildings/superhighways.png",
+      "sha256": "d03b3e708104c96bcbcc648304993b30a82f936e443bf92742dd60454c42b115"
+    },
+    {
+      "id": 6,
+      "name": "Banking",
+      "file": "interface/economy/gold.png",
+      "sha256": "e92ba5f976a69c450ab88042ed697af93e9cbf51cdab64db14f072f35956c812"
+    },
+    {
+      "id": 7,
+      "name": "Bridge Building",
+      "file": "sprites/buildings/aqueduct.png",
+      "sha256": "514f9099720eca32a12ea40876c519babd3aa80aa718b2556c22c6b2415368e7"
+    },
+    {
+      "id": 8,
+      "name": "Bronze Working",
+      "file": "sprites/units/phalanx.png",
+      "sha256": "dce24801e5156a9657cd3ce440573685858c0b36d57031fb2da6dc791d302c3c"
+    },
+    {
+      "id": 9,
+      "name": "Ceremonial Burial",
+      "file": "sprites/buildings/temple.png",
+      "sha256": "f5a8b114da8d1d51a3230e909a133f42e8acc028d80da9cd2a205d8aaa85daaf"
+    },
+    {
+      "id": 10,
+      "name": "Chemistry",
+      "file": "interface/economy/science.png",
+      "sha256": "40247441975f4e2579a13fa8f7966697c101586ee5689c3322f80c72f633f11d"
+    },
+    {
+      "id": 11,
+      "name": "Chivalry",
+      "file": "sprites/units/knights.png",
+      "sha256": "41dc94c62e587bf0db2e78452299fd87c07e4976fd7c93f17ebbc334d8347268"
+    },
+    {
+      "id": 12,
+      "name": "Code of Laws",
+      "file": "sprites/buildings/courthouse.png",
+      "sha256": "e9fff4bebacd48d50d1fa2b40084de4f0c845c75031fcab2828b7a7b9c30744a"
+    },
+    {
+      "id": 13,
+      "name": "Combined Arms",
+      "file": "sprites/units/mechanized-infantry.png",
+      "sha256": "f0b36585fb845435d9f3636a367e3a0878ac832bbb04ae1eca341be5c6f180be"
+    },
+    {
+      "id": 14,
+      "name": "Combustion",
+      "file": "sprites/units/armor.png",
+      "sha256": "f4fd6821f707bfde2e2c06cf1d6820869bec4c7f13745056f95bc57da96a3d24"
+    },
+    {
+      "id": 15,
+      "name": "Communism",
+      "file": "sprites/wonders/womens-suffrage.png",
+      "sha256": "39a8a05f2f0f3d384e0113a21521f75ba8f71ed6dc8e3784c7b97fabd6dc626d"
+    },
+    {
+      "id": 16,
+      "name": "Computers",
+      "file": "sprites/buildings/research-lab.png",
+      "sha256": "095c063936a4c96134212c0b1f906ece4b38ed03786887f604c114c8cf3f6083"
+    },
+    {
+      "id": 17,
+      "name": "Conscription",
+      "file": "sprites/units/riflemen.png",
+      "sha256": "c382b7b91f868729c4b47ff98ccc7cd16ca6084f70d06c59fe3ac665502de6b7"
+    },
+    {
+      "id": 18,
+      "name": "Construction",
+      "file": "sprites/buildings/colosseum.png",
+      "sha256": "b1e6f1f230049386d716ebcf1a50851b2915108be842579a5a57bd868d6cf1e2"
+    },
+    {
+      "id": 20,
+      "name": "Currency",
+      "file": "sprites/buildings/marketplace.png",
+      "sha256": "5d28fc9637c781beb5aa28b3b4f4e5875c599c5a53a323b4157c65b3a3ed5ae8"
+    },
+    {
+      "id": 21,
+      "name": "Democracy",
+      "file": "sprites/wonders/liberty.png",
+      "sha256": "84bd857f068baf008c7e91a81d937f0f00151cf9f5681987039b501bfa496af8"
+    },
+    {
+      "id": 22,
+      "name": "Economics",
+      "file": "sprites/buildings/stock-exchange.png",
+      "sha256": "d86814124779147532d023e31033fa27c70dcb8a1000783bb87c9726d2001154"
+    },
+    {
+      "id": 23,
+      "name": "Electricity",
+      "file": "sprites/knowledge/electricity.png",
+      "sha256": "0781e9c4cf633c1e663f03dccb846c4f13dc8adf999dd9057dbe341c028a2ad6"
+    },
+    {
+      "id": 25,
+      "name": "Engineering",
+      "file": "sprites/units/engineers.png",
+      "sha256": "952355c05c28e16687388c617e35c72a7140e969c0823fe5af8b03964981ec32"
+    },
+    {
+      "id": 27,
+      "name": "Espionage",
+      "file": "sprites/units/spy.png",
+      "sha256": "d7a7ee6be06c3744cb384fb467499f9235f07be3af64b0c1d1241b7d8c2f3e3a"
+    },
+    {
+      "id": 28,
+      "name": "Explosives",
+      "file": "sprites/units/cannon.png",
+      "sha256": "ffc24aa6bb1c8038d4b1ee3fe0e367609ed6e4f3f4372f4ac66fbf172ea2e24e"
+    },
+    {
+      "id": 29,
+      "name": "Feudalism",
+      "file": "sprites/units/pikemen.png",
+      "sha256": "0ee1e0043c06523e30ff10f844f9a4ddc4d67d7df28eb2aa4bf68da85a131db1"
+    },
+    {
+      "id": 31,
+      "name": "Fundamentalism",
+      "file": "sprites/units/fanatics.png",
+      "sha256": "2f2db10d78a9b89274af62ac475296bbc40bd7b9333030d7f3bfbd8368b7d155"
+    },
+    {
+      "id": 35,
+      "name": "Gunpowder",
+      "file": "sprites/units/musketeers.png",
+      "sha256": "a64d74984b9fb640b5008427bcaa33760b7dbd95a166987ae925d134a24e173d"
+    },
+    {
+      "id": 36,
+      "name": "Horseback Riding",
+      "file": "sprites/units/horsemen.png",
+      "sha256": "5b54a22210ec5300e8d409f7e14478bf165448b9b78967c4231e6b6c0a59330f"
+    },
+    {
+      "id": 37,
+      "name": "Industrialization",
+      "file": "sprites/buildings/factory.png",
+      "sha256": "b54e1c5bd6408a770d3dba90807df596b0375308c537c726c51be2ef206720f0"
+    },
+    {
+      "id": 38,
+      "name": "Invention",
+      "file": "sprites/wonders/leonardo-workshop.png",
+      "sha256": "0b73c3734039d30efaaeda713e9f76e422e44d241214de076b96c4be9cb3b6c3"
+    },
+    {
+      "id": 39,
+      "name": "Iron Working",
+      "file": "sprites/units/legion.png",
+      "sha256": "699c7c5388dbaa7fdc2532ce1d7ebc137e7eba7954bf982f2e0d674f4e6fc1d0"
+    },
+    {
+      "id": 42,
+      "name": "Leadership",
+      "file": "sprites/units/dragoons.png",
+      "sha256": "c91ae31bc053ae31ddf0b6a3f511fe6f326b4cd8c859453628bdba06b4a33ea1"
+    },
+    {
+      "id": 43,
+      "name": "Literacy",
+      "file": "sprites/wonders/great-library.png",
+      "sha256": "c97b8393e5731acae720c9a6c43621663e8dc7cd2994bf515f58acd0ad245063"
+    },
+    {
+      "id": 46,
+      "name": "Map Making",
+      "file": "sprites/units/caravel.png",
+      "sha256": "154d82b0e0ae7d4af007482277e785341ff55ea7b5c8b9d41e0dce455a456668"
+    },
+    {
+      "id": 47,
+      "name": "Masonry",
+      "file": "sprites/wonders/pyramids.png",
+      "sha256": "b44158035350b935c24830fdf52ad8efc2a4cfb16b5aaf4e762391b6a76c1892"
+    },
+    {
+      "id": 49,
+      "name": "Mathematics",
+      "file": "sprites/advances/science-ancient.png",
+      "sha256": "8767fdc33ecc50711d70f37c47399b9a872b438b7f4ba83562ef1ad19673c8fb"
+    },
+    {
+      "id": 54,
+      "name": "Monarchy",
+      "file": "sprites/buildings/palace.png",
+      "sha256": "5a257c21df9517e2c6575846cb43062dc7754ee30f073dd63458475cc0398c48"
+    },
+    {
+      "id": 55,
+      "name": "Monotheism",
+      "file": "sprites/buildings/cathedral.png",
+      "sha256": "40e2ce33da3a8195452cd308fc486457a9593c1e070c0c7e89a9527b7561ce0f"
+    },
+    {
+      "id": 56,
+      "name": "Mysticism",
+      "file": "sprites/wonders/oracle.png",
+      "sha256": "381008bb1cf8bd9a60b17a9f5464b53fd3998d3a5217c70ea8d3807f672cc8fa"
+    },
+    {
+      "id": 57,
+      "name": "Navigation",
+      "file": "sprites/advances/science-medieval.png",
+      "sha256": "5c22746e803c7d62c851fb64c9cfe50ea9577e9a60d424420f128fcdef4b01e9"
+    },
+    {
+      "id": 60,
+      "name": "Philosophy",
+      "file": "sprites/advances/society-ancient.png",
+      "sha256": "8313730fc24cb6193bb1570e4126c018511bd896a23a036d7195ec0de40e2738"
+    },
+    {
+      "id": 64,
+      "name": "Polytheism",
+      "file": "sprites/wonders/colossus.png",
+      "sha256": "1d9bc6487dfdcfb6095da165206755cab0cf743d83f7926f6885f7984fca85e4"
+    },
+    {
+      "id": 65,
+      "name": "Pottery",
+      "file": "sprites/buildings/granary.png",
+      "sha256": "1dc2f2f61fcfdc761a8715f4f9d9fd2f1baf578434de651248ff906def923096"
+    },
+    {
+      "id": 67,
+      "name": "Railroad",
+      "file": "interface/symbols/rail.png",
+      "sha256": "9a45e6634b41837708c67ae5c93718d462af76137dc83eeff6ca895a1d51603f"
+    },
+    {
+      "id": 70,
+      "name": "Refrigeration",
+      "file": "sprites/buildings/supermarket.png",
+      "sha256": "46d4bdba9d91dec4a65b42bed96e01c641ceb34e7a9053fa150de9f580e866e9"
+    },
+    {
+      "id": 75,
+      "name": "Seafaring",
+      "file": "sprites/units/trireme.png",
+      "sha256": "20327aaea74f36a1bf6add44cbeaee38e5ea9afb3cb7d092f9c813012ed6591b"
+    },
+    {
+      "id": 78,
+      "name": "Steam Engine",
+      "file": "sprites/units/ironclad.png",
+      "sha256": "846bfb8ab5f4365197862f87ed6b49051a12008ab08f051fe6b370a29668c64e"
+    },
+    {
+      "id": 79,
+      "name": "Steel",
+      "file": "sprites/units/cruiser.png",
+      "sha256": "7c5608c0dc14b968bdcc0a49217de503306658bb4c32ec62366b1b9ebb3e4cf9"
+    },
+    {
+      "id": 19,
+      "name": "The Corporation",
+      "file": "sprites/units/freight.png",
+      "sha256": "3b4a7b85256ccb05cac0117f29d4fc886bb5c8b09e34c604f06778e376fe7457"
+    },
+    {
+      "id": 71,
+      "name": "The Republic",
+      "file": "sprites/wonders/united-nations.png",
+      "sha256": "9a6538b06f5fc4cf4ee4117830ecdddde36aff0c3fcca2dee17e9715302df368"
+    },
+    {
+      "id": 87,
+      "name": "The Wheel",
+      "file": "sprites/units/chariot.png",
+      "sha256": "b3ab42dc55e256f283ada19484efd0298b0a6b6410612a6ec2834b92d1dec9af"
+    },
+    {
+      "id": 83,
+      "name": "Theory of Gravity",
+      "file": "sprites/wonders/newton-college.png",
+      "sha256": "7e674e479406499052074de439b810d307ea6cc733bd7b72a8b91649cb019f1f"
+    },
+    {
+      "id": 84,
+      "name": "Trade",
+      "file": "sprites/units/caravan.png",
+      "sha256": "7520b751caa2af4de9a9596f6a1b818e83598a34c5768587b44f238e3f3a025f"
+    },
+    {
+      "id": 86,
+      "name": "Warrior Code",
+      "file": "sprites/units/archers.png",
+      "sha256": "49d0bba8dce0f9032d2c62f1df9c01acb5ebfd775fe81a2587f61b2f947453bc"
+    }
+  ]
+}

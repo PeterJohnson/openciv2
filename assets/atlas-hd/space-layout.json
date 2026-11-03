@@ -1,0 +1,335 @@
+{
+  "canvas": [
+    640,
+    480
+  ],
+  "background": "backgrounds/space-yard-native.png",
+  "countOrder": [
+    "structural",
+    "propulsion",
+    "fuel",
+    "habitation",
+    "life-support",
+    "solar"
+  ],
+  "maxCounts": [
+    39,
+    8,
+    8,
+    4,
+    4,
+    4
+  ],
+  "policy": "Proposed one-sprite-per-component layout, distinct from native split-crop rows. Structural counts govern truss readiness, not 39 separate ornaments.",
+  "source": "src/game/bigframes.cpp:587–1563; counts supplied by the same review fixture",
+  "slots": [
+    {
+      "kind": "propulsion",
+      "index": 0,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 197,
+      "y": 102,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 1,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 238,
+      "y": 102,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 0,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 284,
+      "y": 102,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 1,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 333,
+      "y": 102,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "solar",
+      "index": 0,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 386,
+      "y": 102,
+      "width": 59,
+      "height": 45,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "habitation",
+      "index": 0,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 450,
+      "y": 102,
+      "width": 63,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "life-support",
+      "index": 0,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 521,
+      "y": 102,
+      "width": 65,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 2,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 197,
+      "y": 174,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 3,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 238,
+      "y": 174,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 2,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 284,
+      "y": 174,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 3,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 333,
+      "y": 174,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "solar",
+      "index": 1,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 386,
+      "y": 174,
+      "width": 59,
+      "height": 45,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "habitation",
+      "index": 1,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 450,
+      "y": 174,
+      "width": 63,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "life-support",
+      "index": 1,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 521,
+      "y": 174,
+      "width": 65,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 4,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 197,
+      "y": 246,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 5,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 238,
+      "y": 246,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 4,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 284,
+      "y": 246,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 5,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 333,
+      "y": 246,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "solar",
+      "index": 2,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 386,
+      "y": 246,
+      "width": 59,
+      "height": 45,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "habitation",
+      "index": 2,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 450,
+      "y": 246,
+      "width": 63,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "life-support",
+      "index": 2,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 521,
+      "y": 246,
+      "width": 65,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 6,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 197,
+      "y": 318,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "propulsion",
+      "index": 7,
+      "asset": "sprites/spaceship/propulsion.png",
+      "x": 238,
+      "y": 318,
+      "width": 41,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 6,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 284,
+      "y": 318,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "fuel",
+      "index": 7,
+      "asset": "sprites/spaceship/fuel.png",
+      "x": 333,
+      "y": 318,
+      "width": 48,
+      "height": 36,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "solar",
+      "index": 3,
+      "asset": "sprites/spaceship/solar.png",
+      "x": 386,
+      "y": 318,
+      "width": 59,
+      "height": 45,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "habitation",
+      "index": 3,
+      "asset": "sprites/spaceship/habitation.png",
+      "x": 450,
+      "y": 318,
+      "width": 63,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    },
+    {
+      "kind": "life-support",
+      "index": 3,
+      "asset": "sprites/spaceship/life-support.png",
+      "x": 521,
+      "y": 318,
+      "width": 65,
+      "height": 40,
+      "anchor": "center-port",
+      "layer": "module"
+    }
+  ]
+}

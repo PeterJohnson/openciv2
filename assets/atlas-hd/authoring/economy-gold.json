@@ -1,0 +1,29 @@
+{
+  "tool": "built-in image_gen",
+  "intent": "Replace the flat gold coin with painted antique gold matching the retained food icon.",
+  "prompt": "Use case: precise-object-edit.\nAsset type: high-resolution transparent PNG sprite for the Atlas HD historical civilization game.\nInput image 1 is the edit target: the existing round gold currency icon. Replace its flat vector styling and modern euro-like mark with a richly painted antique gold coin.\nInput image 2 is STYLE REFERENCE ONLY: our original painted wheat-sheaf food icon. Match its warm ochre/gold palette, hand-painted game illustration, modeled highlights, dark contour definition and dense readable silhouette. Do not include wheat, a sheaf, rope, or any of the reference objects in the output.\nCreate ONE isolated coin, nearly face-on, very slightly irregular hand-struck rim with subtle visible thickness. Antique luminous gold, shallow scuffs and warm patina, raised beaded border and an embossed classical laurel-crowned human profile in bold low relief. Invent the profile and ornament: no existing coin reproduction, identifiable ruler, real inscriptions, modern currency symbol or text. Strong broad masses and clear outer rim must still read as a gold coin at 14 logical pixels; detail enriches the HD version but is not needed to recognize it. Highlights upper left, restrained dark gold edging, no cast shadow outside the object.\nSquare canvas, single centered coin occupying about 90% of the canvas, entire rim visible, small even transparent margins. No background, no checkerboard, no labels, no other objects. Actual transparent alpha. Deliver polished painterly raster art, not vector/flat design, in high resolution.",
+  "inputs": [
+    {
+      "role": "edit target",
+      "file": "interface/economy/gold.png",
+      "revision": "814631d",
+      "description": "Previously authored flat vector currency coin"
+    },
+    {
+      "role": "style reference only",
+      "file": "sprites/resources/wheat.png",
+      "description": "Retained original painted wheat art",
+      "sha256": "f69a73587b8e29d255f15a48c2e1aa36498041c16b432fcdf6e1c13dd06c2ed1"
+    }
+  ],
+  "output": {
+    "file": "interface/economy/gold.png",
+    "transparentBackground": true,
+    "width": 1254,
+    "height": 1254,
+    "sha256": "e92ba5f976a69c450ab88042ed697af93e9cbf51cdab64db14f072f35956c812",
+    "alphaPreserved": true
+  },
+  "originalGameInputs": false,
+  "freecivInputs": false
+}
