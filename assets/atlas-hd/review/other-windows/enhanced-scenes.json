@@ -7,7 +7,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-advances-proposed.png",
     "proposedSize": [
       1280,
@@ -22,7 +22,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-advance-proposed.png",
     "proposedSize": [
       1280,
@@ -37,7 +37,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-tree-proposed.png",
     "proposedSize": [
       1280,
@@ -52,7 +52,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-unit-proposed.png",
     "proposedSize": [
       1280,
@@ -67,7 +67,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-improvement-proposed.png",
     "proposedSize": [
       1280,
@@ -82,7 +82,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-wonder-proposed.png",
     "proposedSize": [
       1280,
@@ -97,7 +97,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/pedia-terrain-proposed.png",
     "proposedSize": [
       1280,
@@ -112,7 +112,7 @@
       "src/auto/reports.cpp",
       "powergraph_show"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/powergraph-proposed.png",
     "proposedSize": [
       1200,
@@ -127,7 +127,7 @@
       "src/auto/reports.cpp",
       "CouncilWindow::init; draw_background; create_buttons; draw_advisor_frames; draw_speech"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Five 90 Ã— 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue.",
     "proposed": "review/other-windows/images/high-council-proposed.png",
     "proposedSize": [
       948,
@@ -142,7 +142,7 @@
       "src/auto/reports.cpp",
       "foreign_minister_show; historian_report_show"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/foreign-minister-proposed.png",
     "proposedSize": [
       960,
@@ -157,7 +157,7 @@
       "src/auto/reports.cpp",
       "foreign_minister_show; historian_report_show"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/historian-proposed.png",
     "proposedSize": [
       960,
@@ -172,7 +172,7 @@
       "src/auto/reports.cpp",
       "casualty_timeline_draw"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/casualty-timeline-proposed.png",
     "proposedSize": [
       1200,
@@ -187,7 +187,7 @@
       "src/auto/reports.cpp",
       "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/destroyed-civilizations-proposed.png",
     "proposedSize": [
       1280,
@@ -202,7 +202,7 @@
       "src/auto/reports.cpp",
       "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/credits-proposed.png",
     "proposedSize": [
       1200,
@@ -217,7 +217,7 @@
       "src/auto/game.cpp",
       "status_draw_info; status_draw_unit_panel; status_redraw"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/status-panel-proposed.png",
     "proposedSize": [
       640,
@@ -232,7 +232,7 @@
       "src/auto/mapview.cpp",
       "minimap_calc_layout; minimap_tile_to_screen; minimap_tile_color; minimap_draw_view_rect; minimap_redraw"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/world-map-proposed.png",
     "proposedSize": [
       608,
@@ -247,7 +247,7 @@
       "src/auto/city.cpp",
       "TaxRateDialog::run; redraw"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/tax-rates-proposed.png",
     "proposedSize": [
       800,
@@ -262,7 +262,7 @@
       "src/auto/civ.cpp",
       "civ_choose_research_dialog; research_option_draw_advance"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-research-proposed.png",
     "proposedSize": [
       860,
@@ -277,7 +277,7 @@
       "src/auto/window.cpp",
       "Dialog option, checkbox, button and text drawing helpers"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-production-proposed.png",
     "proposedSize": [
       860,
@@ -292,7 +292,7 @@
       "src/auto/window.cpp",
       "menu_game_options; Dialog layout and drawing helpers"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-options-proposed.png",
     "proposedSize": [
       960,
@@ -307,7 +307,7 @@
       "src/auto/game.cpp",
       "game_main_menu_loop; SetupPicWindow"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-setup-proposed.png",
     "proposedSize": [
       720,
@@ -322,7 +322,7 @@
       "src/auto/window.cpp",
       "Dialog option, checkbox, button and text drawing helpers"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-confirmation-proposed.png",
     "proposedSize": [
       800,
@@ -337,7 +337,7 @@
       "src/auto/window.cpp",
       "Dialog option, checkbox, button and text drawing helpers"
     ],
-    "note": "Independent enhanced presentation proposal; not current-engine execution.",
+    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
     "proposed": "review/other-windows/images/dialog-information-proposed.png",
     "proposedSize": [
       800,

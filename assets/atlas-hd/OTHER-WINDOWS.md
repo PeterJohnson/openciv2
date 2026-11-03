@@ -3,7 +3,10 @@
 The [four-way review](review/other-windows/index.html) contains **35 scenes / 140 renders**.
 All original-art, replacement-native and HD-only scenes now execute extracted
 game rendering code from `C:/Projects/richardpenman-civ2`. The enhanced proposals
-remain separate and their PNGs are unchanged. No game source or loader is modified.
+remain separate. Report presentation and Civilopedia controls have been refined
+in the enhanced set; no game source or loader is modified.
+The [report refinements](review/other-windows/report-refinements.html) show the
+aligned backgrounds, larger wonders and individual advance illustrations.
 
 The [execution comparison](review/other-windows/runtime-audit.html) compares twelve
 scenes with actual OpenCiv2 execution using the same original artwork and 1788 save.
@@ -101,15 +104,49 @@ Complete original text/media inputs stay ignored. Their hashes are retained.
   run the endgame movie lifecycle. Credits shows the first scroll frame of the
   local CREDITS.TXT with its leading blank lines, not a fabricated credit list.
 
-## Enhanced proposals
+## Report backgrounds and enhanced presentation
 
-`other-windows.cjs` is retained solely for the independent enhanced proposals;
-it cannot write original/native/HD outputs. Its illustrative layouts and values
-are recorded as enhanced metadata. The ordinary baseline refresh preserves
-enhanced PNGs byte-for-byte. The proposals still demonstrate measured columns,
-quieter fills, clearer selection, sprite-based controls and still council
-portraits. See [scoped engine recommendations](RENDER-UPGRADES.md). They make
-no claim about current-engine execution and are not included in runtime parity.
+`report-design.cjs` builds 27 independent PNG/SVG background plates from the
+extracted row positions. City Status, Attitude and Trade bands follow their
+24/32-pixel text rows and connect to the corresponding staggered city. Defense
+and casualties use the same treatment for units. Science and Intelligence use
+22-pixel advance rows. Other report headers and panels fit their actual content,
+replacing the generic oversized title panel and unrelated horizontal divisions.
+
+The native/HD plates change only the background. They demonstrate what a
+background replacement can achieve at the supplied logical size and font metrics.
+City, Attitude and Trade include even/odd scrolling alternatives: the game derives
+the icon column from the absolute list index, so scrolling one row flips the
+stagger. Selecting the matching plate needs a small loader/render change; a
+single static image cannot follow both phases. Resizing or changing font metrics
+also needs matching plates or dynamic bands. Top Cities and Hall of Fame share
+resource 57 and deliberately retain identical native plates. Defense/casualties
+share resource 51 with other history views, requiring per-window selection for
+their specialized patterns. See [plate metadata](interface/reports/layout.json).
+
+The original source selects advance icons with `category * 4 + epoch`: 20
+era/category symbols, not a unique symbol for every advance. The standalone
+report fixture previously omitted `epoch`; supplying the actual RULES.TXT field
+corrects the Science and Intelligence baseline icons without changing source
+layout. These are the only original report PNGs changed by this refinement.
+Enhanced Science and Intelligence instead use 40 distinct existing Atlas
+illustrations for the advances visible in this saved fixture, with exact rule
+IDs and asset hashes in [the mapping](interface/reports/knowledge.json). Unmapped
+advances stop explicitly; this is not yet a complete advance-icon catalog.
+
+Enhanced Defense has larger Active, Building and Abilities headings. Casualties
+labels the civilization columns, centers the counts and widens the primary
+bracket to contain them; these are losses by civilization, not kills or production.
+Top Cities enlarges wonders inside their existing row frames. All seven enhanced
+Civilopedia views now take button labels, rectangles and disabled state from the
+source traces, including the unavailable Description action.
+
+`other-windows.cjs` writes only the 23 separate enhanced proposals; `report-render.cjs`
+owns the twelve report scenes. The ordinary baseline refresh preserves enhanced
+PNGs. Explicit proposal rebuilds are listed below. The proposals make no claim
+about current-engine execution and are not included in runtime parity. See
+[scoped engine recommendations](RENDER-UPGRADES.md) and
+[presentation checks](review/other-windows/presentation-validation.json).
 
 ## Build and verify
 
@@ -129,13 +166,21 @@ python tools/atlas-review/prepare-native-other.py --game C:/Projects/civ2/Civ2 -
 & tools/atlas-review/build-other.ps1 -Configuration Release
 & tools/atlas-review/build-other.ps1 -Configuration Debug
 node tools/atlas-review/build-other-windows.cjs
+node tools/atlas-review/other-windows.cjs
+node tools/atlas-review/report-render.cjs
+node tools/atlas-review/build-other-windows.cjs --gallery-only
+node tools/atlas-review/review-report-design.cjs
 node tools/atlas-review/build-other-runtime-audit.cjs
 node tools/atlas-review/verify-other-windows.cjs
 node tools/atlas-review/verify.cjs
 ```
 
 `build-other-windows.cjs --gallery-only` refreshes indexes without rerendering.
-`node tools/atlas-review/other-windows.cjs` explicitly rebuilds enhanced proposals.
+`other-windows.cjs` rebuilds the 23 enhanced non-report proposals;
+`report-render.cjs` rebuilds all four report variants and their background plates.
+`review-report-design.cjs` rebuilds the focused review and checks row connections,
+source-matched controls, distinct illustration assets and the allowed baseline
+icon corrections against commit `2be877c9`.
 Execution captures are retained evidence, not generated screenshots; the runtime
 audit builder crops them without retouching and rebuilds their comparison page.
 

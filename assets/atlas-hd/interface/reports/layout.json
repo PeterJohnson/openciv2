@@ -1,0 +1,4375 @@
+{
+  "density": 4,
+  "source": "src/auto/reports.cpp",
+  "plates": [
+    {
+      "id": "report-city-status",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-city-status-native.png",
+      "vector": "interface/reports/report-city-status-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            72,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 91,
+          "textY": 100,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            96,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            108
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 115,
+          "textY": 124,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            120,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            132
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 139,
+          "textY": 148,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            144,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            156
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            168,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 187,
+          "textY": 196,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            192,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            204
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 211,
+          "textY": 220,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            216,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            228
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 235,
+          "textY": 244,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            240,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            252
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            264,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 2,
+          "y": 283,
+          "textY": 292,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            288,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            291,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            307,
+            138,
+            300
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 66,
+          "y": 307,
+          "textY": 316,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            312,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            315,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            331,
+            138,
+            324
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Kells",
+          "x": 2,
+          "y": 331,
+          "textY": 340,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            336,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            339,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            355,
+            138,
+            348
+          ]
+        }
+      ],
+      "sha256": "5ae65c74986bfcb138d75a720bdba8dfb9a6caddb1e2009e3633115929d6c756"
+    },
+    {
+      "id": "report-city-status",
+      "enhanced": false,
+      "phase": 1,
+      "file": "interface/reports/report-city-status-native-odd-scroll.png",
+      "vector": "interface/reports/report-city-status-native-odd-scroll.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 2,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            72,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 66,
+          "y": 91,
+          "textY": 100,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            96,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            115,
+            138,
+            108
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 2,
+          "y": 115,
+          "textY": 124,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            120,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            139,
+            138,
+            132
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 66,
+          "y": 139,
+          "textY": 148,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            144,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            163,
+            138,
+            156
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 2,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            168,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 66,
+          "y": 187,
+          "textY": 196,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            192,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            211,
+            138,
+            204
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 2,
+          "y": 211,
+          "textY": 220,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            216,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            235,
+            138,
+            228
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 66,
+          "y": 235,
+          "textY": 244,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            240,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            259,
+            138,
+            252
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 2,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            264,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 66,
+          "y": 283,
+          "textY": 292,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            288,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            291,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            307,
+            138,
+            300
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 2,
+          "y": 307,
+          "textY": 316,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            312,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            315,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            331,
+            138,
+            324
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Kells",
+          "x": 66,
+          "y": 331,
+          "textY": 340,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            336,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            339,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            355,
+            138,
+            348
+          ]
+        }
+      ],
+      "sha256": "68933667ac72ec4ce7b4646b36a7e9c7ca7afee872edd9551d4a4ebe2a04a89a"
+    },
+    {
+      "id": "report-city-status",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-city-status-enhanced.png",
+      "vector": "interface/reports/report-city-status-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            72,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 91,
+          "textY": 100,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            96,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            108
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 115,
+          "textY": 124,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            120,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            132
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 139,
+          "textY": 148,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            144,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            156
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            168,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 187,
+          "textY": 196,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            192,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            204
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 211,
+          "textY": 220,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            216,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            228
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 235,
+          "textY": 244,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            240,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            252
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            264,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 2,
+          "y": 283,
+          "textY": 292,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            288,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            291,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            307,
+            138,
+            300
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 66,
+          "y": 307,
+          "textY": 316,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            312,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            315,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            331,
+            138,
+            324
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Kells",
+          "x": 2,
+          "y": 331,
+          "textY": 340,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            336,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            339,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            355,
+            138,
+            348
+          ]
+        }
+      ],
+      "sha256": "a61393c16a29c0791e1ecf0498fba3867b82a56d0d83b6e2007ff797b4850d1c"
+    },
+    {
+      "id": "report-attitude",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-attitude-native.png",
+      "vector": "interface/reports/report-attitude-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            68,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 99,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            100,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            107,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            123,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 131,
+          "textY": 140,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            132,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            139,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            155,
+            138,
+            148
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            164,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 195,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            196,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            203,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            219,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 227,
+          "textY": 236,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            228,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            235,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            251,
+            138,
+            244
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            260,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 291,
+          "textY": 300,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            292,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            299,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            315,
+            138,
+            308
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 323,
+          "textY": 332,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            324,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            331,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            347,
+            138,
+            340
+          ]
+        }
+      ],
+      "sha256": "3b2aca3a40b2b127ee3a9bf29c72d892b48d637091c2b3b47b83724101998394"
+    },
+    {
+      "id": "report-attitude",
+      "enhanced": false,
+      "phase": 1,
+      "file": "interface/reports/report-attitude-native-odd-scroll.png",
+      "vector": "interface/reports/report-attitude-native-odd-scroll.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 2,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            68,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 66,
+          "y": 99,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            100,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            107,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            123,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 2,
+          "y": 131,
+          "textY": 140,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            132,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            139,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            155,
+            138,
+            148
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 66,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            164,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 2,
+          "y": 195,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            196,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            203,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            219,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 66,
+          "y": 227,
+          "textY": 236,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            228,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            235,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            251,
+            138,
+            244
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 2,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            260,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 66,
+          "y": 291,
+          "textY": 300,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            292,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            299,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            315,
+            138,
+            308
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 2,
+          "y": 323,
+          "textY": 332,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            324,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            331,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            347,
+            138,
+            340
+          ]
+        }
+      ],
+      "sha256": "493f18df9aa93fb6b6bf5bae4113d80222554b739fdf91d235d6a008830db166"
+    },
+    {
+      "id": "report-attitude",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-attitude-enhanced.png",
+      "vector": "interface/reports/report-attitude-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 67,
+          "textY": 76,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            68,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            84
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 99,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            100,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            107,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            123,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 131,
+          "textY": 140,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            132,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            139,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            155,
+            138,
+            148
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 163,
+          "textY": 172,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            164,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            187,
+            138,
+            180
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 195,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            196,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            203,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            219,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 227,
+          "textY": 236,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            228,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            235,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            251,
+            138,
+            244
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 259,
+          "textY": 268,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            260,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            276
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 291,
+          "textY": 300,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            292,
+            444,
+            32
+          ],
+          "icon": [
+            3,
+            299,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            315,
+            138,
+            308
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 323,
+          "textY": 332,
+          "textHeight": 16,
+          "step": 32,
+          "band": [
+            138,
+            324,
+            444,
+            32
+          ],
+          "icon": [
+            67,
+            331,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            347,
+            138,
+            340
+          ]
+        }
+      ],
+      "sha256": "6021489f4721b529a993a94e645c2711231efd142bfd1e4414c82394327d2803"
+    },
+    {
+      "id": "report-trade",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-trade-native.png",
+      "vector": "interface/reports/report-trade-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 93,
+          "textY": 102,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            98,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            101,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            117,
+            138,
+            110
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 117,
+          "textY": 126,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            122,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            125,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            141,
+            138,
+            134
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 141,
+          "textY": 150,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            146,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            149,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            165,
+            138,
+            158
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 165,
+          "textY": 174,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            170,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            173,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            189,
+            138,
+            182
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 189,
+          "textY": 198,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            194,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            197,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            213,
+            138,
+            206
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 213,
+          "textY": 222,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            218,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            221,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            237,
+            138,
+            230
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 237,
+          "textY": 246,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            242,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            245,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            261,
+            138,
+            254
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 261,
+          "textY": 270,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            266,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            269,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            285,
+            138,
+            278
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 285,
+          "textY": 294,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            290,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            293,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            309,
+            138,
+            302
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 2,
+          "y": 309,
+          "textY": 318,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            314,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            317,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            333,
+            138,
+            326
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 66,
+          "y": 333,
+          "textY": 342,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            338,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            341,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            357,
+            138,
+            350
+          ]
+        }
+      ],
+      "sha256": "5412cd9eab425d3e836b9b0fbb16506fc6af31e80a15e14f1e9d54759861650e"
+    },
+    {
+      "id": "report-trade",
+      "enhanced": false,
+      "phase": 1,
+      "file": "interface/reports/report-trade-native-odd-scroll.png",
+      "vector": "interface/reports/report-trade-native-odd-scroll.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 2,
+          "y": 93,
+          "textY": 102,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            98,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            101,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            117,
+            138,
+            110
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 66,
+          "y": 117,
+          "textY": 126,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            122,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            125,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            141,
+            138,
+            134
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 2,
+          "y": 141,
+          "textY": 150,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            146,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            149,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            165,
+            138,
+            158
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 66,
+          "y": 165,
+          "textY": 174,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            170,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            173,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            189,
+            138,
+            182
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 2,
+          "y": 189,
+          "textY": 198,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            194,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            197,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            213,
+            138,
+            206
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 66,
+          "y": 213,
+          "textY": 222,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            218,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            221,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            237,
+            138,
+            230
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 2,
+          "y": 237,
+          "textY": 246,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            242,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            245,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            261,
+            138,
+            254
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 66,
+          "y": 261,
+          "textY": 270,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            266,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            269,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            285,
+            138,
+            278
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 2,
+          "y": 285,
+          "textY": 294,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            290,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            293,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            309,
+            138,
+            302
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 66,
+          "y": 309,
+          "textY": 318,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            314,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            317,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            333,
+            138,
+            326
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 2,
+          "y": 333,
+          "textY": 342,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            338,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            341,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            357,
+            138,
+            350
+          ]
+        }
+      ],
+      "sha256": "69f8601ff7a68e8ebd33ba30af88a38e181ad1caef2620585f86ea9e85d737b1"
+    },
+    {
+      "id": "report-trade",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-trade-enhanced.png",
+      "vector": "interface/reports/report-trade-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Cardiff",
+          "x": 66,
+          "y": 93,
+          "textY": 102,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            98,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            101,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            117,
+            138,
+            110
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Washington",
+          "x": 2,
+          "y": 117,
+          "textY": 126,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            122,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            125,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            141,
+            138,
+            134
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "London",
+          "x": 66,
+          "y": 141,
+          "textY": 150,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            146,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            149,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            165,
+            138,
+            158
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Philadelphia",
+          "x": 2,
+          "y": 165,
+          "textY": 174,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            170,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            173,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            189,
+            138,
+            182
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tlatelolco",
+          "x": 66,
+          "y": 189,
+          "textY": 198,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            194,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            197,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            213,
+            138,
+            206
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Tenochtitlan",
+          "x": 2,
+          "y": 213,
+          "textY": 222,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            218,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            221,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            237,
+            138,
+            230
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Karakorum",
+          "x": 66,
+          "y": 237,
+          "textY": 246,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            242,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            245,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            261,
+            138,
+            254
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "New York",
+          "x": 2,
+          "y": 261,
+          "textY": 270,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            266,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            269,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            285,
+            138,
+            278
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Leipzig",
+          "x": 66,
+          "y": 285,
+          "textY": 294,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            290,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            293,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            309,
+            138,
+            302
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Samarkand",
+          "x": 2,
+          "y": 309,
+          "textY": 318,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            314,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            317,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            333,
+            138,
+            326
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Bokhara",
+          "x": 66,
+          "y": 333,
+          "textY": 342,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            338,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            341,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            357,
+            138,
+            350
+          ]
+        }
+      ],
+      "sha256": "33725d30b8804c7c0213fbdff0e3291a6a394bab6ec6b2f2e631006f96aee9e9"
+    },
+    {
+      "id": "report-science",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-science-native.png",
+      "vector": "interface/reports/report-science-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "advance-row",
+          "y": 157,
+          "height": 22,
+          "names": [
+            "Alphabet",
+            "Code of Laws",
+            "Engineering"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 179,
+          "height": 22,
+          "names": [
+            "Astronomy",
+            "Communism",
+            "Explosives"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 201,
+          "height": 22,
+          "names": [
+            "Banking",
+            "Conscription",
+            "Feudalism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 223,
+          "height": 22,
+          "names": [
+            "Bridge Building",
+            "Construction",
+            "Gunpowder"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 245,
+          "height": 22,
+          "names": [
+            "Bronze Working",
+            "Currency",
+            "Horseback Riding"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 267,
+          "height": 22,
+          "names": [
+            "Ceremonial Burial",
+            "Democracy",
+            "Industrialization"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 289,
+          "height": 22,
+          "names": [
+            "Chemistry",
+            "Economics",
+            "Invention"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 311,
+          "height": 22,
+          "names": [
+            "Chivalry",
+            "Electricity",
+            "Iron Working"
+          ]
+        }
+      ],
+      "sha256": "329a7e75e08e30ef2c13e1958741fdc1ab9c168d9212c781014973c280ea1ba1"
+    },
+    {
+      "id": "report-science",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-science-enhanced.png",
+      "vector": "interface/reports/report-science-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "advance-row",
+          "y": 157,
+          "height": 22,
+          "names": [
+            "Alphabet",
+            "Code of Laws",
+            "Engineering"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 179,
+          "height": 22,
+          "names": [
+            "Astronomy",
+            "Communism",
+            "Explosives"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 201,
+          "height": 22,
+          "names": [
+            "Banking",
+            "Conscription",
+            "Feudalism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 223,
+          "height": 22,
+          "names": [
+            "Bridge Building",
+            "Construction",
+            "Gunpowder"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 245,
+          "height": 22,
+          "names": [
+            "Bronze Working",
+            "Currency",
+            "Horseback Riding"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 267,
+          "height": 22,
+          "names": [
+            "Ceremonial Burial",
+            "Democracy",
+            "Industrialization"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 289,
+          "height": 22,
+          "names": [
+            "Chemistry",
+            "Economics",
+            "Invention"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 311,
+          "height": 22,
+          "names": [
+            "Chivalry",
+            "Electricity",
+            "Iron Working"
+          ]
+        }
+      ],
+      "sha256": "ed2e58ef2306572892e9697d2145c996013b02dbbf91e01e61dc7186e7d48e91"
+    },
+    {
+      "id": "report-defense",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-defense-native.png",
+      "vector": "interface/reports/report-defense-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Engineers",
+          "x": 66,
+          "y": 67,
+          "textY": 84,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            80,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            92
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Riflemen",
+          "x": 2,
+          "y": 91,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            104,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Crusaders",
+          "x": 66,
+          "y": 115,
+          "textY": 132,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            128,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            140
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Knights",
+          "x": 2,
+          "y": 139,
+          "textY": 156,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            152,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            164
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Cannon",
+          "x": 66,
+          "y": 163,
+          "textY": 180,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            176,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            188
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Frigate",
+          "x": 2,
+          "y": 187,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            200,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Destroyer",
+          "x": 66,
+          "y": 211,
+          "textY": 228,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            224,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            236
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Transport",
+          "x": 2,
+          "y": 235,
+          "textY": 252,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            248,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            260
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Caravan",
+          "x": 66,
+          "y": 259,
+          "textY": 276,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            272,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            284
+          ]
+        }
+      ],
+      "sha256": "bbceac3338346d9401f810959c48417f4d8866dba58e0a6198b8196efc5e3dc9"
+    },
+    {
+      "id": "report-defense",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-defense-enhanced.png",
+      "vector": "interface/reports/report-defense-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Engineers",
+          "x": 66,
+          "y": 67,
+          "textY": 84,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            80,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            92
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Riflemen",
+          "x": 2,
+          "y": 91,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            104,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Crusaders",
+          "x": 66,
+          "y": 115,
+          "textY": 132,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            128,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            140
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Knights",
+          "x": 2,
+          "y": 139,
+          "textY": 156,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            152,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            164
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Cannon",
+          "x": 66,
+          "y": 163,
+          "textY": 180,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            176,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            188
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Frigate",
+          "x": 2,
+          "y": 187,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            200,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Destroyer",
+          "x": 66,
+          "y": 211,
+          "textY": 228,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            224,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            236
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Transport",
+          "x": 2,
+          "y": 235,
+          "textY": 252,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            248,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            260
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Caravan",
+          "x": 66,
+          "y": 259,
+          "textY": 276,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            272,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            284
+          ]
+        }
+      ],
+      "sha256": "b4fdd5d823377ed1771d1b268a981d8deee0d5840a011a08eaedf552f4c38b13"
+    },
+    {
+      "id": "report-losses",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-losses-native.png",
+      "vector": "interface/reports/report-losses-native.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Settlers",
+          "x": 66,
+          "y": 67,
+          "textY": 84,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            80,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            92
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Archers",
+          "x": 2,
+          "y": 91,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            104,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Legion",
+          "x": 66,
+          "y": 115,
+          "textY": 132,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            128,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            140
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Musketeers",
+          "x": 2,
+          "y": 139,
+          "textY": 156,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            152,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            164
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Horsemen",
+          "x": 66,
+          "y": 163,
+          "textY": 180,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            176,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            188
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Chariot",
+          "x": 2,
+          "y": 187,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            200,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Crusaders",
+          "x": 66,
+          "y": 211,
+          "textY": 228,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            224,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            236
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Knights",
+          "x": 2,
+          "y": 235,
+          "textY": 252,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            248,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            260
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Catapult",
+          "x": 66,
+          "y": 259,
+          "textY": 276,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            272,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            284
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Cannon",
+          "x": 2,
+          "y": 283,
+          "textY": 300,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            296,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            291,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            307,
+            138,
+            308
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Caravel",
+          "x": 66,
+          "y": 307,
+          "textY": 324,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            320,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            315,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            331,
+            138,
+            332
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Ironclad",
+          "x": 2,
+          "y": 331,
+          "textY": 348,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            344,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            339,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            355,
+            138,
+            356
+          ]
+        }
+      ],
+      "sha256": "3c0756204068d0a41bddcf1cf07379ab1e0c5364e8aa9ab9eac004ad8fa04403"
+    },
+    {
+      "id": "report-losses",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-losses-enhanced.png",
+      "vector": "interface/reports/report-losses-enhanced.svg",
+      "headerHeight": 66,
+      "regions": [
+        {
+          "kind": "staggered-row",
+          "name": "Settlers",
+          "x": 66,
+          "y": 67,
+          "textY": 84,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            80,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            75,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            91,
+            138,
+            92
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Archers",
+          "x": 2,
+          "y": 91,
+          "textY": 108,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            104,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            99,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            115,
+            138,
+            116
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Legion",
+          "x": 66,
+          "y": 115,
+          "textY": 132,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            128,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            123,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            139,
+            138,
+            140
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Musketeers",
+          "x": 2,
+          "y": 139,
+          "textY": 156,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            152,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            147,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            163,
+            138,
+            164
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Horsemen",
+          "x": 66,
+          "y": 163,
+          "textY": 180,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            176,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            171,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            187,
+            138,
+            188
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Chariot",
+          "x": 2,
+          "y": 187,
+          "textY": 204,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            200,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            195,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            211,
+            138,
+            212
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Crusaders",
+          "x": 66,
+          "y": 211,
+          "textY": 228,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            224,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            219,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            235,
+            138,
+            236
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Knights",
+          "x": 2,
+          "y": 235,
+          "textY": 252,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            248,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            243,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            259,
+            138,
+            260
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Catapult",
+          "x": 66,
+          "y": 259,
+          "textY": 276,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            272,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            267,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            283,
+            138,
+            284
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Cannon",
+          "x": 2,
+          "y": 283,
+          "textY": 300,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            296,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            291,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            307,
+            138,
+            308
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Caravel",
+          "x": 66,
+          "y": 307,
+          "textY": 324,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            320,
+            444,
+            24
+          ],
+          "icon": [
+            67,
+            315,
+            62,
+            32
+          ],
+          "connector": [
+            126,
+            331,
+            138,
+            332
+          ]
+        },
+        {
+          "kind": "staggered-row",
+          "name": "Ironclad",
+          "x": 2,
+          "y": 331,
+          "textY": 348,
+          "textHeight": 16,
+          "step": 24,
+          "band": [
+            138,
+            344,
+            444,
+            24
+          ],
+          "icon": [
+            3,
+            339,
+            62,
+            32
+          ],
+          "connector": [
+            62,
+            355,
+            138,
+            356
+          ]
+        }
+      ],
+      "sha256": "b1caf7c9cb197644aa694d16d5887c3b57b8632a636b68d788ec785ef769bc67"
+    },
+    {
+      "id": "report-intelligence",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-intelligence-native.png",
+      "vector": "interface/reports/report-intelligence-native.svg",
+      "headerHeight": 50,
+      "regions": [
+        {
+          "kind": "advance-row",
+          "y": 131,
+          "height": 22,
+          "names": [
+            "Astronomy",
+            "Iron Working",
+            "Polytheism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 153,
+          "height": 22,
+          "names": [
+            "Banking",
+            "Literacy",
+            "Pottery"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 175,
+          "height": 22,
+          "names": [
+            "Bronze Working",
+            "Map Making",
+            "The Republic"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 197,
+          "height": 22,
+          "names": [
+            "Ceremonial Burial",
+            "Masonry",
+            "Seafaring"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 219,
+          "height": 22,
+          "names": [
+            "Code of Laws",
+            "Mathematics",
+            "Trade"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 241,
+          "height": 22,
+          "names": [
+            "Currency",
+            "Monarchy",
+            "Warrior Code"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 263,
+          "height": 22,
+          "names": [
+            "Engineering",
+            "Monotheism",
+            "The Wheel"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 285,
+          "height": 22,
+          "names": [
+            "Gunpowder",
+            "Mysticism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 307,
+          "height": 22,
+          "names": [
+            "Horseback Riding",
+            "Navigation"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 329,
+          "height": 22,
+          "names": [
+            "Invention",
+            "Philosophy"
+          ]
+        }
+      ],
+      "sha256": "4cfd8086b871a660d14237ae5748e8340956736e6b0822a36dcac30a3feade77"
+    },
+    {
+      "id": "report-intelligence",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-intelligence-enhanced.png",
+      "vector": "interface/reports/report-intelligence-enhanced.svg",
+      "headerHeight": 50,
+      "regions": [
+        {
+          "kind": "advance-row",
+          "y": 131,
+          "height": 22,
+          "names": [
+            "Astronomy",
+            "Iron Working",
+            "Polytheism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 153,
+          "height": 22,
+          "names": [
+            "Banking",
+            "Literacy",
+            "Pottery"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 175,
+          "height": 22,
+          "names": [
+            "Bronze Working",
+            "Map Making",
+            "The Republic"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 197,
+          "height": 22,
+          "names": [
+            "Ceremonial Burial",
+            "Masonry",
+            "Seafaring"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 219,
+          "height": 22,
+          "names": [
+            "Code of Laws",
+            "Mathematics",
+            "Trade"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 241,
+          "height": 22,
+          "names": [
+            "Currency",
+            "Monarchy",
+            "Warrior Code"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 263,
+          "height": 22,
+          "names": [
+            "Engineering",
+            "Monotheism",
+            "The Wheel"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 285,
+          "height": 22,
+          "names": [
+            "Gunpowder",
+            "Mysticism"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 307,
+          "height": 22,
+          "names": [
+            "Horseback Riding",
+            "Navigation"
+          ]
+        },
+        {
+          "kind": "advance-row",
+          "y": 329,
+          "height": 22,
+          "names": [
+            "Invention",
+            "Philosophy"
+          ]
+        }
+      ],
+      "sha256": "2a2ccb1516615274aa0841c5d65a86489be4222324b3f8e9ce401cbadd6a2b7a"
+    },
+    {
+      "id": "report-wonders",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-wonders-native.png",
+      "vector": "interface/reports/report-wonders-native.svg",
+      "headerHeight": 42,
+      "regions": [],
+      "sha256": "d74e2b07f4d2727e80b27e63a65fd99d7050c5870c7f7d40c5ac1bcc49445677"
+    },
+    {
+      "id": "report-wonders",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-wonders-enhanced.png",
+      "vector": "interface/reports/report-wonders-enhanced.svg",
+      "headerHeight": 42,
+      "regions": [],
+      "sha256": "2d5babc810d732d68e99d0ad7da9f45eb2859aeb8d637df222f49117bf4aed11"
+    },
+    {
+      "id": "report-top-cities",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-top-cities-native.png",
+      "vector": "interface/reports/report-top-cities-native.svg",
+      "headerHeight": 24,
+      "regions": [],
+      "sha256": "1e97df9598421868029d11c054db32197062f1b5af67b22a36e9a6ceeca0b01a"
+    },
+    {
+      "id": "report-top-cities",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-top-cities-enhanced.png",
+      "vector": "interface/reports/report-top-cities-enhanced.svg",
+      "headerHeight": 28,
+      "regions": [],
+      "sha256": "30786214a1af3641a2b3476e365e3efd0aafe3a18ce7f12990f3e0b43f90189d"
+    },
+    {
+      "id": "report-demographics",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-demographics-native.png",
+      "vector": "interface/reports/report-demographics-native.svg",
+      "headerHeight": 28,
+      "regions": [],
+      "sha256": "b5be73786350093ff6a8362587e97f16529c78a2ac22b60f96a3dee22a06fd34"
+    },
+    {
+      "id": "report-demographics",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-demographics-enhanced.png",
+      "vector": "interface/reports/report-demographics-enhanced.svg",
+      "headerHeight": 28,
+      "regions": [],
+      "sha256": "edcc0ef0b2725fb5daacb47c44f161cb9102376691185776d2ce2bcdccab2135"
+    },
+    {
+      "id": "report-score",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-score-native.png",
+      "vector": "interface/reports/report-score-native.svg",
+      "headerHeight": 41,
+      "regions": [],
+      "sha256": "0010ae8f5b79771382340fa6bdcdff07fc066207eb384cfcd61bfe8524af33e1"
+    },
+    {
+      "id": "report-score",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-score-enhanced.png",
+      "vector": "interface/reports/report-score-enhanced.svg",
+      "headerHeight": 41,
+      "regions": [],
+      "sha256": "693e629fc969d2c2a326dd2717469eed3b920656a6c6daab21e4309f07ede250"
+    },
+    {
+      "id": "report-hall-of-fame",
+      "enhanced": false,
+      "phase": 0,
+      "file": "interface/reports/report-hall-of-fame-native.png",
+      "vector": "interface/reports/report-hall-of-fame-native.svg",
+      "headerHeight": 24,
+      "regions": [],
+      "sha256": "1e97df9598421868029d11c054db32197062f1b5af67b22a36e9a6ceeca0b01a"
+    },
+    {
+      "id": "report-hall-of-fame",
+      "enhanced": true,
+      "phase": 0,
+      "file": "interface/reports/report-hall-of-fame-enhanced.png",
+      "vector": "interface/reports/report-hall-of-fame-enhanced.svg",
+      "headerHeight": 24,
+      "regions": [],
+      "sha256": "7f07c0145e4bc6503fecd36382b3d02317193aeb5172d587146ae55ef6b2bf49"
+    }
+  ],
+  "compatibility": "The native PNG plates can replace report backgrounds at the same logical size. No foreground positions change. Staggered rows repeat at the source row height. City/attitude/trade include even/odd scroll-phase alternatives: the game chooses icon columns from the absolute row index, so one fixed plate cannot track an odd scroll. Selecting the matching plate needs a small loader/render change; the supplied first-page mockups use phase zero. Runtime resizing, alternate fonts or different pagination require matching plates or dynamic bands; do not scale a fixed plate independently of its text.",
+  "sharedSourceResource": "Top Cities and Hall of Fame use tiles.dll/57 and deliberately have identical native plates. Enhanced plates differ. Defense/casualties share resource 51 with other history views, so applying their patterned plates globally needs per-window background selection; their preview plates are not a universal resource replacement."
+}

@@ -46,7 +46,7 @@ def main():
         facts.append(dict(id=c,name=name,adjective=adjective,leader=person,title=title,era=era,populationUnits=pop))
     for i,line in enumerate(section(rules,'CIVILIZE')):
         row=[s.strip() for s in line.split(',')]
-        lines.append(f'advance {i} {int(row[-1]) if row[-1].isdigit() else i%5} {q(row[0])}')
+        lines.append(f'advance {i} {int(row[6])} {int(row[5])} {q(row[0])}')
     for i,line in enumerate(section(rules,'UNITS')):
         r=[s.strip() for s in line.split(',')]
         number=lambda n:int(re.match(r'-?\d+',r[n])[0])

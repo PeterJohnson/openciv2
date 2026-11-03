@@ -544,5 +544,34 @@ selection cues, readable dense military counts, tax-slider fill and an active
 council portrait. Implement measured columns and clipping in shared UI helpers
 before altering report data loops. Preserve the minimap's small, visibility-aware
 projection; support independent still/video media inside council slots.
-[Source coverage and limits](OTHER-WINDOWS.md) distinguish compiled report
-rendering from static layout adapters and missing original council media.
+[Source coverage and limits](OTHER-WINDOWS.md) distinguish extracted baseline
+rendering from enhanced proposals and missing original council media.
+
+The [report refinement review](review/other-windows/report-refinements.html)
+demonstrates smaller, independently scoped changes:
+
+- Draw bands from each report's text-row rectangles, with a connected island
+  behind its staggered city/unit icon. Preserve sprite size and source order.
+  The supplied native/HD background plates show the fixed-size alternative.
+  City-list icon stagger follows the absolute row index, so background-only
+  integration needs even/odd scroll-phase selection. Dynamic bands handle
+  scrolling, window resizing and font changes without a library of sized plates.
+- Choose backgrounds per window, rather than globally replacing shared resource
+  51 or 57. The two resource-57 reports use the same quiet native plate here;
+  their enhanced layouts can have separate row treatments. Derive header height
+  from actual title lines instead of reserving the same tall panel everywhere.
+- Keep military column labels readable and measure the numeric cells. The
+  casualty columns identify civilizations; the primary bracket must contain
+  that civilization's full count. Keep names and counts bound to civilization
+  IDs when sorting or selecting a different player. The current proposal uses
+  the English saved-state fixture, not an interactive civilization selector.
+- Pass the actual advance ID to enhanced icon selection. The current renderer
+  intentionally shares 20 era/category icons; retain those for original/HD-only
+  comparisons. The enhanced mapping demonstrates 40 distinct illustrations for
+  the displayed advances and needs expansion before supporting every ruleset.
+- Enlarge Top Cities wonders within the measured row height, with spacing based
+  on the number of wonders. Preserve Civilopedia's source actions and enabled
+  state when restyling its controls; do not substitute decorative actions.
+
+These changes are implemented only in the standalone proposals and authored
+backgrounds. No production renderer, resource loader or game code is changed.

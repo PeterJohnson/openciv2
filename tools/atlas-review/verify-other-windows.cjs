@@ -20,8 +20,9 @@ async function main() {
             assert(!s[variant].includes('original-local'));
             if (variant === 'original')
                 assert(s[variant].startsWith('review/original-scenes/'));
-            if (variant === 'proposed') {
-                const before = git([ 'show', 'f2fbd852:assets/atlas-hd/' + s[variant] ]);
+            if (variant === 'proposed' &&
+                !require('./report-design.cjs').changedEnhanced.includes(s.id)) {
+                const before = git([ 'show', '2be877c9:assets/atlas-hd/' + s[variant] ]);
                 assert.equal(C.sha(bytes), C.sha(before), s.id + ' enhanced preservation');
                 preservedEnhanced.push({scene : s.id, sha256 : C.sha(bytes)});
             }
@@ -171,7 +172,8 @@ async function main() {
         images : 140,
         reportBodies : 32,
         furtherWindowBodies : 258,
-        enhancedPreservedFrom : 'f2fbd852',
+        enhancedPreservedFrom : '2be877c9',
+        enhancedIntentionallyUpdated : require('./report-design.cjs').changedEnhanced,
         preservedEnhanced,
         sourceUnchanged : true,
         debugRelease : checks,
@@ -186,7 +188,7 @@ async function main() {
         outputs : images
     });
     console.log(
-        'Additional windows: 35 scenes / 140 images; all D/R traces match; 35 enhanced PNGs preserved; 12 runtime comparisons; game source unchanged.');
+        'Additional windows: 35 scenes / 140 images; all D/R traces match; unrelated enhanced PNGs preserved; 12 runtime comparisons; game source unchanged.');
 }
 
 main().catch(e => {

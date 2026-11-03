@@ -3,84 +3,29 @@
   "images": 140,
   "reportBodies": 32,
   "furtherWindowBodies": 258,
-  "enhancedPreservedFrom": "f2fbd852",
+  "enhancedPreservedFrom": "2be877c9",
+  "enhancedIntentionallyUpdated": [
+    "report-city-status",
+    "report-attitude",
+    "report-trade",
+    "report-science",
+    "report-defense",
+    "report-losses",
+    "report-intelligence",
+    "report-wonders",
+    "report-top-cities",
+    "report-demographics",
+    "report-score",
+    "report-hall-of-fame",
+    "pedia-advances",
+    "pedia-advance",
+    "pedia-tree",
+    "pedia-unit",
+    "pedia-improvement",
+    "pedia-wonder",
+    "pedia-terrain"
+  ],
   "preservedEnhanced": [
-    {
-      "scene": "report-city-status",
-      "sha256": "57740b9e4255c89114be4d8a0a76259a3b13d99c0d2bdd7e0370eec51881d597"
-    },
-    {
-      "scene": "report-attitude",
-      "sha256": "51c0b7ef30eef7be3f638eaf3f5a62076dc2bd668b10e04a6302fbb23dc7f253"
-    },
-    {
-      "scene": "report-trade",
-      "sha256": "d1039251a70e3fac7e9bab7383cc0a74e511981ad01f11b148ab608fbe1ad45c"
-    },
-    {
-      "scene": "report-science",
-      "sha256": "f9167fc3498d44610857aed47828295efff24a14c1ee973ff51d488bc849a4eb"
-    },
-    {
-      "scene": "report-defense",
-      "sha256": "55bc6566db3307bf9baec1d19331e04ed9a142552b015b95d97e3b97dea8c97e"
-    },
-    {
-      "scene": "report-losses",
-      "sha256": "0ce60194d0fcbdc5354ae330265d7b05064e7dfcc6bafe738227f650f14385f8"
-    },
-    {
-      "scene": "report-intelligence",
-      "sha256": "e03287f6611367b8e1cbd7d1d1a2e818b45e47dc72e7497ffb479b1340ab8c97"
-    },
-    {
-      "scene": "report-wonders",
-      "sha256": "35e8503031d60c8cd25e5d56710bfa20427aec3c238fdebbe3c2acc7ab53107b"
-    },
-    {
-      "scene": "report-top-cities",
-      "sha256": "c7dcf9b10af145ebf3b75deaf0238dbdb5284180f3935678910e2afb3861e06d"
-    },
-    {
-      "scene": "report-demographics",
-      "sha256": "d907664dd4a02ecec7bbb5484c4e6cb2c1856145fed771fbf09a99023406b34a"
-    },
-    {
-      "scene": "report-score",
-      "sha256": "b5dfa78944f3dd5129ad492ab41a857e4a609863f873b641865d8ff96c346cb7"
-    },
-    {
-      "scene": "report-hall-of-fame",
-      "sha256": "52888ec298ff1563ad461b2e1d310cd45c36413bac2a005c93ec9eb08f692bb2"
-    },
-    {
-      "scene": "pedia-advances",
-      "sha256": "73bfb86d6586166f3710d8df246f4d738329aede3f7af35ecf9b929aa5fca509"
-    },
-    {
-      "scene": "pedia-advance",
-      "sha256": "460f3eed371accc70920431c73d381fd0f745690531ef5eee57ac75daf164ae8"
-    },
-    {
-      "scene": "pedia-tree",
-      "sha256": "67015c26ed47b08f5733a8a7775cd71802603907e9f3dd47461e0ba4f21b217e"
-    },
-    {
-      "scene": "pedia-unit",
-      "sha256": "c617aa749d052abb6e5a3603babcd622f9353b4cb202482fca055ddd5bb673b4"
-    },
-    {
-      "scene": "pedia-improvement",
-      "sha256": "69d0bf0cb00f3f26984969e0991b9c91624718630d83a130f159aa85fd09b4b1"
-    },
-    {
-      "scene": "pedia-wonder",
-      "sha256": "e6e157a3d489f4be87b7ab1841357bb7d670d883c56f7f42af66f61f73eeae13"
-    },
-    {
-      "scene": "pedia-terrain",
-      "sha256": "ffd2028a250365853ce9e8546bcef610db706e3c71af374664988bbe534deb5d"
-    },
     {
       "scene": "powergraph",
       "sha256": "7519f77549f1f01c47fa27d518f68ab1e63d57829951c77e7e09476584c3d004"
@@ -387,7 +332,7 @@
       "file": "review/other-windows/images/report-city-status-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "262b50deadc9bfa7d358f662ee0fbc90e09ab3553961b18ead2671f9621148a8"
+      "sha256": "46f50a06cdcbb8c96fdef2a07444be8b5bc8150d192644740989d9d6a1318ba1"
     },
     {
       "scene": "report-city-status",
@@ -395,7 +340,7 @@
       "file": "review/other-windows/images/report-city-status-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "459b66c59e973a20d3ecde91c49de213a21d0542581bf0df0261c6c5c39daaa7"
+      "sha256": "aa3dfbad6fd7826a2fc6c904fabb86787e3e2eafad899aafab6b8f2ca6f38cb7"
     },
     {
       "scene": "report-city-status",
@@ -403,7 +348,7 @@
       "file": "review/other-windows/images/report-city-status-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "57740b9e4255c89114be4d8a0a76259a3b13d99c0d2bdd7e0370eec51881d597"
+      "sha256": "51cdb51897c6e9014f3b8aa8581349a429fe75ece8c03a03570267df2a9654fb"
     },
     {
       "scene": "report-attitude",
@@ -419,7 +364,7 @@
       "file": "review/other-windows/images/report-attitude-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "a638afc04751e7091f0f927818ae411eb702702e4633acb0c3c541621bb66fc3"
+      "sha256": "abc69aaa747c08280311e3f41256b1753ea649d4045ffbe53174ad2622683f95"
     },
     {
       "scene": "report-attitude",
@@ -427,7 +372,7 @@
       "file": "review/other-windows/images/report-attitude-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "ef231c54be9fa19822660bcac2c9c3b04208b751ea1b395b3f2d3753a598b306"
+      "sha256": "0e508cb314160a8a99d5e69f95cd9fa6888c7a18a9e54543667303f7dff9f402"
     },
     {
       "scene": "report-attitude",
@@ -435,7 +380,7 @@
       "file": "review/other-windows/images/report-attitude-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "51c0b7ef30eef7be3f638eaf3f5a62076dc2bd668b10e04a6302fbb23dc7f253"
+      "sha256": "845c28cc7e9bc7003091f98f8f1a6ef38641a87b9d4bc42036e551d6a5a13357"
     },
     {
       "scene": "report-trade",
@@ -451,7 +396,7 @@
       "file": "review/other-windows/images/report-trade-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "7e5e330314578b325b32538a4228ac35fcf7c2d6690bb6fd4e15b2ade7138a24"
+      "sha256": "cc533e4bb017603250e57e744c42503d8802cd83e3bcbbff877a5ef8a796f77c"
     },
     {
       "scene": "report-trade",
@@ -459,7 +404,7 @@
       "file": "review/other-windows/images/report-trade-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "b15ad73500dc8adf17a08c2bebac3af412ca754fde9d2205e0b500ce3c0b6934"
+      "sha256": "0470568cf96d471f7cfb42126ee04603fc399f728013432a38c7e1c140fb4875"
     },
     {
       "scene": "report-trade",
@@ -467,7 +412,7 @@
       "file": "review/other-windows/images/report-trade-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "d1039251a70e3fac7e9bab7383cc0a74e511981ad01f11b148ab608fbe1ad45c"
+      "sha256": "f9b6d083cd42e22536523692f940ca8222dea3ef4e9e31da37e0f4035601deb6"
     },
     {
       "scene": "report-science",
@@ -475,7 +420,7 @@
       "file": "review/original-scenes/images/report-science.png",
       "width": 600,
       "height": 400,
-      "sha256": "697f1c5c8167212610e748873a27c347782bf6d61bc07766cdcd1f11117cd6f8"
+      "sha256": "e50c3b6677eeb74f1e39865e50394f684f6a5b13db9cb6804a84686eb97d6a23"
     },
     {
       "scene": "report-science",
@@ -483,7 +428,7 @@
       "file": "review/other-windows/images/report-science-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "f59046c2b5639f8af75043ce463b8d063f76a1e8f99ef1851a4f1e83b641d0e1"
+      "sha256": "652ef0b977d0d1ad6b839eb8f773242a6869db3d65819f71fb5242ae35a6da57"
     },
     {
       "scene": "report-science",
@@ -491,7 +436,7 @@
       "file": "review/other-windows/images/report-science-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "d8bf7c3cc5636f3f7389d2d87be51210df37d306d822d6493b0c0b3d9287637e"
+      "sha256": "556fb701aa731747e7af2b2869938432b1cac5933dacd621947c8a65ffe50b94"
     },
     {
       "scene": "report-science",
@@ -499,7 +444,7 @@
       "file": "review/other-windows/images/report-science-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "f9167fc3498d44610857aed47828295efff24a14c1ee973ff51d488bc849a4eb"
+      "sha256": "fe0c2e70057cb9d35752463277480c37d7f4108d8183d397cb25662f127637ab"
     },
     {
       "scene": "report-defense",
@@ -515,7 +460,7 @@
       "file": "review/other-windows/images/report-defense-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "3b11bf1f88d3a8afbff69aa4323727209baf72b4a9251c86ec5ded7ade12509e"
+      "sha256": "265347ae04b1339b4b742fe536b97822ccb9ce6f9d82f1712cc8c2bebf6b2d34"
     },
     {
       "scene": "report-defense",
@@ -523,7 +468,7 @@
       "file": "review/other-windows/images/report-defense-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "454468600d5c8d5c3e55bdefb0f0943a19cd63ae44c324d65827ad2fdba0f5e8"
+      "sha256": "3ac761d6d7241f7f5222536853fe39dc722c9bd44256a946b22bdc5f98747193"
     },
     {
       "scene": "report-defense",
@@ -531,7 +476,7 @@
       "file": "review/other-windows/images/report-defense-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "55bc6566db3307bf9baec1d19331e04ed9a142552b015b95d97e3b97dea8c97e"
+      "sha256": "a541f41f007c84f96a66608eca29d3fa23839f30d3e4c3b4ec5b496590388351"
     },
     {
       "scene": "report-losses",
@@ -547,7 +492,7 @@
       "file": "review/other-windows/images/report-losses-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "c1e96907a5c8403d3d01455f9a0e15fffad37d899daa05c34089012efa543e3e"
+      "sha256": "9939e402686134fb526b4282e8e572e71b1551151c8d1d19d252386e4020a0c6"
     },
     {
       "scene": "report-losses",
@@ -555,7 +500,7 @@
       "file": "review/other-windows/images/report-losses-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "5a1045b4c035add2fbcaabf20205e7734ab3b7b840f5ed2bcf34bdef112dc6d9"
+      "sha256": "4032c6d0bd477b59a0e9d9578d674c581e8087bfc7bf31f4b0449f3af2533726"
     },
     {
       "scene": "report-losses",
@@ -563,7 +508,7 @@
       "file": "review/other-windows/images/report-losses-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "0ce60194d0fcbdc5354ae330265d7b05064e7dfcc6bafe738227f650f14385f8"
+      "sha256": "13f68482acbf0511f52f4915f27e6081842165239270efa40d186e6cbfbe1e08"
     },
     {
       "scene": "report-intelligence",
@@ -571,7 +516,7 @@
       "file": "review/original-scenes/images/report-intelligence.png",
       "width": 600,
       "height": 400,
-      "sha256": "7600a289840fde2890b2d5f538f9e78c282fc506edb6735e6313af1fda68adde"
+      "sha256": "14eb2f1260a0b9caa690d5ff467cc45e94cd485ed6bb8b634fe1a6c3a0d7b246"
     },
     {
       "scene": "report-intelligence",
@@ -579,7 +524,7 @@
       "file": "review/other-windows/images/report-intelligence-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "782bc1adb7c34b1892663e3fed9135da4e1be4363195bb1d1811ed7a63d2b564"
+      "sha256": "b04efeba597824c688a8e24c0d659d4fc7606772374c95be75ed03e2a30268c7"
     },
     {
       "scene": "report-intelligence",
@@ -587,7 +532,7 @@
       "file": "review/other-windows/images/report-intelligence-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "45bba4e9d2648adebb6abfd5717244eb4b5c189eb38f052685573cfbba634d39"
+      "sha256": "4d9a28a947f471ffb0374274ebed9a05d67b1b7491f542c089079ce7ce451e75"
     },
     {
       "scene": "report-intelligence",
@@ -595,7 +540,7 @@
       "file": "review/other-windows/images/report-intelligence-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "e03287f6611367b8e1cbd7d1d1a2e818b45e47dc72e7497ffb479b1340ab8c97"
+      "sha256": "cb0ade57bdb97c799533372005b86cebd331e247fb9c0f931f78f562cc2a7ba6"
     },
     {
       "scene": "report-wonders",
@@ -611,7 +556,7 @@
       "file": "review/other-windows/images/report-wonders-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "7af7440394a8b01736626fa37583e9c557dfd44e64fc5cc7f0a9431727e8bb03"
+      "sha256": "a19a14ece3b6989783044749f84de536820f5bdec41df6b1f48ed06b51a241be"
     },
     {
       "scene": "report-wonders",
@@ -619,7 +564,7 @@
       "file": "review/other-windows/images/report-wonders-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "1f7789dc55d1bac7e004c29573462cbf61ea11ff0e92b967a14fb38f15fbeac0"
+      "sha256": "cf5934a6e4493ed7fb62582f5a22c640de27ac6cdb7a063aabae0f0b63f879f9"
     },
     {
       "scene": "report-wonders",
@@ -627,7 +572,7 @@
       "file": "review/other-windows/images/report-wonders-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "35e8503031d60c8cd25e5d56710bfa20427aec3c238fdebbe3c2acc7ab53107b"
+      "sha256": "4770eb875938da04443633b86aa35f8ba902ecd736ea89c102e2490b378eef42"
     },
     {
       "scene": "report-top-cities",
@@ -643,7 +588,7 @@
       "file": "review/other-windows/images/report-top-cities-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "d5f9a0eebd4e021f19df58025bc7a887bcf3a46acfc4547e709b4d297ccd6457"
+      "sha256": "b699d081cd83b481062b40f1a7f188f554e211e763b834dcaddce940fd7fbde0"
     },
     {
       "scene": "report-top-cities",
@@ -651,7 +596,7 @@
       "file": "review/other-windows/images/report-top-cities-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "4d154ae89f2aeab0f97fdbf97211b99439333324b82fe834f636a618441a9e3c"
+      "sha256": "ea93eaf6098c0ccd312bb9053847d2acfbe74688f0e90c7bbec949f81d2ead9c"
     },
     {
       "scene": "report-top-cities",
@@ -659,7 +604,7 @@
       "file": "review/other-windows/images/report-top-cities-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "c7dcf9b10af145ebf3b75deaf0238dbdb5284180f3935678910e2afb3861e06d"
+      "sha256": "420740dd78313d9c173f8d40e4221a2d81c1891829b2fcb1372137532a739732"
     },
     {
       "scene": "report-demographics",
@@ -675,7 +620,7 @@
       "file": "review/other-windows/images/report-demographics-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "f175946fa471ae79586ae0bc8908b8b593ddb76f0a01388e2f8ab772f89eac86"
+      "sha256": "9f05b8cd22b28d6536e9ef93fd1d185a35c477e9aea6d9ae176ace7093d5bd58"
     },
     {
       "scene": "report-demographics",
@@ -683,7 +628,7 @@
       "file": "review/other-windows/images/report-demographics-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "9016a97c06a7de5a50869936ff0ce02fc86793342ed60da18b2253a4c2dd70d4"
+      "sha256": "3ab97ddb610352b9246554e2508e48ed7f4f499f522ef4744c5e60b6708c3649"
     },
     {
       "scene": "report-demographics",
@@ -691,7 +636,7 @@
       "file": "review/other-windows/images/report-demographics-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "d907664dd4a02ecec7bbb5484c4e6cb2c1856145fed771fbf09a99023406b34a"
+      "sha256": "319e22d20fab571c43733cdee8a82ec9d8f122092d66f553abfca6a3e7337fc5"
     },
     {
       "scene": "report-score",
@@ -707,7 +652,7 @@
       "file": "review/other-windows/images/report-score-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "84b5c7d7b405d14b13a31b25ba05dfa54b50a758b172ad35453086c982ec16ad"
+      "sha256": "402f2f6ef74ec78a8119e3f0cb1406ffa4f52d4c573e3ad036667bebd0c17d35"
     },
     {
       "scene": "report-score",
@@ -715,7 +660,7 @@
       "file": "review/other-windows/images/report-score-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "fd1859152de90bf7fb398b8a097fd5475e76a3c9d74ba1956bab00b9f8b52852"
+      "sha256": "49c5cda2815b01ae2cb1c7130e8fb3b40fb2781cc5d992ccc17f3648cadb4a45"
     },
     {
       "scene": "report-score",
@@ -723,7 +668,7 @@
       "file": "review/other-windows/images/report-score-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "b5dfa78944f3dd5129ad492ab41a857e4a609863f873b641865d8ff96c346cb7"
+      "sha256": "77e2464d37e82d5c22c1b617361313aaecd4d77613865943693f207810f78346"
     },
     {
       "scene": "report-hall-of-fame",
@@ -739,7 +684,7 @@
       "file": "review/other-windows/images/report-hall-of-fame-current.png",
       "width": 600,
       "height": 400,
-      "sha256": "8d3ce97b277d54231230b9028891caea771e8fae0e5c2e1a3fecde660b800d27"
+      "sha256": "b4650a6553cc05f74c68fdac5f9d82143e6567a1f98d32c5c7576cc25e9825fc"
     },
     {
       "scene": "report-hall-of-fame",
@@ -747,7 +692,7 @@
       "file": "review/other-windows/images/report-hall-of-fame-hd.png",
       "width": 1200,
       "height": 800,
-      "sha256": "9d350129df81ccfcd3ea3679c7e602757564b0962a8b3a98532727ddb3f3a02d"
+      "sha256": "a59325ee6d623cb0eeaff996d06dc21ec9e88989475378eb7a9980189485b0ed"
     },
     {
       "scene": "report-hall-of-fame",
@@ -755,7 +700,7 @@
       "file": "review/other-windows/images/report-hall-of-fame-proposed.png",
       "width": 1200,
       "height": 800,
-      "sha256": "52888ec298ff1563ad461b2e1d310cd45c36413bac2a005c93ec9eb08f692bb2"
+      "sha256": "a09c8903ba88f97de3e3df0e467ac545d28dd4fc8a0722510740d05052813e0e"
     },
     {
       "scene": "pedia-advances",
@@ -787,7 +732,7 @@
       "file": "review/other-windows/images/pedia-advances-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "73bfb86d6586166f3710d8df246f4d738329aede3f7af35ecf9b929aa5fca509"
+      "sha256": "5ba2049165995ee55849f725682a8a6d6d953b38c0eb5125d327c528c9fabd66"
     },
     {
       "scene": "pedia-advance",
@@ -819,7 +764,7 @@
       "file": "review/other-windows/images/pedia-advance-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "460f3eed371accc70920431c73d381fd0f745690531ef5eee57ac75daf164ae8"
+      "sha256": "4961be0be3a1c676d5fcdd06c4ee767960f73deaf52a956cb148928037f1287e"
     },
     {
       "scene": "pedia-tree",
@@ -851,7 +796,7 @@
       "file": "review/other-windows/images/pedia-tree-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "67015c26ed47b08f5733a8a7775cd71802603907e9f3dd47461e0ba4f21b217e"
+      "sha256": "09315c0d36d7fbf6edbdbcb6bc45cbaddad7714385ea7173453b473bfa589393"
     },
     {
       "scene": "pedia-unit",
@@ -883,7 +828,7 @@
       "file": "review/other-windows/images/pedia-unit-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "c617aa749d052abb6e5a3603babcd622f9353b4cb202482fca055ddd5bb673b4"
+      "sha256": "c655c0ff54173f8214f69292e2f75a8ce939a64504d1715f1c5e560149855966"
     },
     {
       "scene": "pedia-improvement",
@@ -915,7 +860,7 @@
       "file": "review/other-windows/images/pedia-improvement-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "69d0bf0cb00f3f26984969e0991b9c91624718630d83a130f159aa85fd09b4b1"
+      "sha256": "19e10d154d33f9db9e1d963e2ed6a40137280db10e3661458f95a259deae530b"
     },
     {
       "scene": "pedia-wonder",
@@ -947,7 +892,7 @@
       "file": "review/other-windows/images/pedia-wonder-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "e6e157a3d489f4be87b7ab1841357bb7d670d883c56f7f42af66f61f73eeae13"
+      "sha256": "c4018bbf846aec7c6db2d7f7b4590116432f8f79fa6f62177d569675852b0d15"
     },
     {
       "scene": "pedia-terrain",
@@ -979,7 +924,7 @@
       "file": "review/other-windows/images/pedia-terrain-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "ffd2028a250365853ce9e8546bcef610db706e3c71af374664988bbe534deb5d"
+      "sha256": "ec7d95fac67ce654aa11695cf909bdb6154cb768808ece47d0f49d6713720667"
     },
     {
       "scene": "powergraph",

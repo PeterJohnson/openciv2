@@ -733,3 +733,13 @@ it records source identity and capture scaling/focus/extras differences. This
 does not claim legacy-executable parity or runtime qualification of every scene.
 The existing 80-body
 map/window extraction and its regression checks retain their separate scope.
+
+The [report presentation audit](review/other-windows/presentation-validation.json)
+checks source-aligned background plates, connected staggered rows, casualty
+columns, enlarged Top Cities wonders and source-matched Civilopedia controls.
+The report fixture now supplies each advance's actual epoch as well as category,
+correcting original/HD Science and Intelligence icons. Other original report
+renders and source traces are preserved against `2be877c9`. Enhanced illustrations
+use exact advance IDs; native/HD retain the source's 20 era/category symbols.
+Background phase selection and shared-resource limitations are documented in
+[OTHER-WINDOWS](OTHER-WINDOWS.md#report-backgrounds-and-enhanced-presentation).

@@ -1,5 +1,5 @@
 {
-  "policy": "Independent enhanced presentation proposals only. Original/native/HD baselines use other-window-extraction.json.",
+  "policy": "Independent enhanced presentation proposals only; current-engine baselines use other-window-extraction.json.",
   "sources": {
     "pedia": [
       "src/auto/pedia.cpp",

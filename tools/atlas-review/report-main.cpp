@@ -723,12 +723,15 @@ void loadInputs(const char* path) {
             in >> n >> c;
             game.wonder_city[n] = c;
         } else if (kind == "advance") {
-            int n, cat;
+            int n, cat, epoch;
             std::string name;
-            in >> n >> cat >> std::quoted(name);
+            if (!(in >> n >> cat >> epoch >> std::quoted(name)) || n < 0 || n >= 100 ||
+                cat < 0 || cat >= 5 || epoch < 0 || epoch >= 4)
+                throw std::runtime_error("Advance category/epoch domain");
             stringStore.push_back(name);
             advances[n].name = (iptr)stringStore.back().c_str();
             advances[n].category = cat;
+            advances[n].epoch = epoch;
         } else if (kind == "known") {
             int c, n;
             in >> c >> n;

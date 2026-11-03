@@ -3,6 +3,7 @@ const C = require('./common.cjs'), R = require('./render.cjs');
 const {Painter} = require('./windows.cjs'), T = require('./typography.cjs');
 const Citizens = require('./citizens.cjs'), Native = require('./native-windows.cjs');
 const {spawnSync} = require('node:child_process');
+const Design = require('./report-design.cjs');
 const local = C.read(C.path.join(C.pack, 'review/original-local/bindings.json'));
 const extra = C.read(C.path.join(C.pack, 'review/original-local/other-windows/bindings.json'));
 const compat = C.read(C.path.join(C.pack, 'compatibility/bindings.json')).bindings;
@@ -18,16 +19,17 @@ const modes = [
 ];
 const titles = [
     'City Status', 'Attitude Advisor', 'Trade Advisor', 'Science Advisor', 'Defense Minister',
-    'Military Casualties', 'Intelligence Report', 'Wonders of the World', 'Top Five Cities', 'Demographics',
-    'Civilization Score', 'Hall of Fame'
+    'Military Casualties', 'Intelligence Report', 'Wonders of the World', 'Top Five Cities',
+    'Demographics', 'Civilization Score', 'Hall of Fame'
 ];
 const palette = n => n >= 200 && n < 218
                          ? local.palette[anchors[(n >= 210 ? n - 210 : n - 200)][n >= 210 ? 2 : 0]]
                          : Native.palette(n);
 
 function run(exe, args) {
-    const r = spawnSync(C.path.join(C.root, 'build/atlas-review', process.env.ATLAS_CONFIG || 'Release', exe),
-                        args, {encoding : 'utf8', maxBuffer : 64 * 1024 * 1024});
+    const r = spawnSync(
+        C.path.join(C.root, 'build/atlas-review', process.env.ATLAS_CONFIG || 'Release', exe), args,
+        {encoding : 'utf8', maxBuffer : 64 * 1024 * 1024});
     if (r.error || r.status)
         throw Error(r.error || r.stderr);
     return JSON.parse(r.stdout);
@@ -35,17 +37,21 @@ function run(exe, args) {
 
 function sprite(id, original) {
     if (id < 44)
-        return original ? local.bindings['icon/' + (100 + id)].file : Citizens.binding(100 + id).file;
+        return original ? local.bindings['icon/' + (100 + id)].file
+                        : Citizens.binding(100 + id).file;
     if (id < 128)
         return original
                    ? extra.bindings['wonder-' + (id - 100)].file
-                   : C.entries.find(e => e.mapping?.kind === 'wonder' && e.mapping.index === id - 100).file;
+                   : C.entries
+                         .find(e => e.mapping?.kind === 'wonder' && e.mapping.index === id - 100)
+                         .file;
     if (id < 220) {
         const i = id - 200, cat = Math.floor(i / 4);
-        return original    ? extra.bindings['advance-' + i].file
-               : cat === 4 ? `sprites/diplomacy/exploration-${eras[i % 4]}.png`
-                           : `sprites/advances/${['military', 'economy', 'society', 'science'][cat]}-${
-                                 eras[i % 4]}.png`;
+        return original ? extra.bindings['advance-' + i].file
+               : cat === 4
+                   ? `sprites/diplomacy/exploration-${eras[i % 4]}.png`
+                   : `sprites/advances/${['military', 'economy', 'society', 'science'][cat]}-${
+                         eras[i % 4]}.png`;
     }
     const role = [ 'gold', 'science', 'food', 'production', 'trade' ][id - 300];
     if (!role)
@@ -58,8 +64,8 @@ function glyphs(trace, original, id) {
     if (!list.length)
         return [];
     const base = C.fs.readFileSync(C.path.join(C.pack, 'review/fixtures/saved-close.txt'), 'utf8');
-    const lines = list.map(
-        c => `GLYPH ${c.asset === 'unit-glyph' ? 1 : 0} ${c.text} ${c.height} ${c.x} ${c.y} ${c.width}`);
+    const lines = list.map(c => `GLYPH ${c.asset === 'unit-glyph' ? 1 : 0} ${c.text} ${c.height} ${
+                               c.x} ${c.y} ${c.width}`);
     const fixture = C.path.join(C.root, 'build/atlas-review/generated',
                                 `report-${id}-${original ? 'original' : 'replacement'}.txt`);
     C.write(fixture, base.trim() + '\n' + lines.join('\n') + '\n');
@@ -78,16 +84,7 @@ function glyphs(trace, original, id) {
 }
 
 async function plate(p, trace, enhanced, id) {
-    const w = trace.width, h = trace.height;
-    await p.box(0, 0, w, h, enhanced ? '#172e2c' : '#65776b', '#bba77a');
-    await p.box(3, 3, w - 6, 66, enhanced ? '#263f38' : '#8d9783', enhanced ? '#8a956e' : '#78826e');
-    await p.box(3, 71, w - 6, h - 102, enhanced ? '#213a34' : '#617267', '#7b8a74');
-    if (enhanced) {
-        for (let y = 77, row = 0; y < h - 34; y += 32, row++)
-            if (row % 2 === 0)
-                await p.box(5, y, w - 10, 32, '#29413a', '#29413a');
-        await p.vector(`<path d="M12 68H${w - 12}" stroke="#cfb371" stroke-width="2"/>`);
-    }
+    await p.image(Design.file(id, enhanced), 0, 0, trace.width, trace.height, {contain : false});
 }
 
 async function button(p, c, original, enhanced) {
@@ -96,6 +93,9 @@ async function button(p, c, original, enhanced) {
                 : enhanced ? '#3e5849'
                            : '#8e9984',
                 original ? '#ffffff' : '#b7a67a', enhanced ? 2 : 0);
+    const oldPalette = p.palette;
+    if (c.disabled)
+        p.palette = () => '#89998b';
     await Native.text(p, c.text, c.x + 2, c.y + 2, {
         face : 1,
         size : 12,
@@ -105,6 +105,7 @@ async function button(p, c, original, enhanced) {
         width : c.width - 4,
         height : c.height - 4
     });
+    p.palette = oldPalette;
 }
 
 async function render(trace, mode, id, groups) {
@@ -112,52 +113,57 @@ async function render(trace, mode, id, groups) {
           d = [ 'original', 'current' ].includes(mode) ? 1 : 2;
     const p = new Painter(trace.width, trace.height, d);
     p.originalText = original;
-    const bg = extra.bindings['tiles.dll/' + trace.commands.find(c => c.asset === 'background').text];
-    p.palette = n => original ? (n >= 200 && n < 218 ? palette(n) : local.palette[n & 255]) : palette(n);
+    const bg =
+        extra.bindings['tiles.dll/' + trace.commands.find(c => c.asset === 'background').text];
+    p.palette = n =>
+        original ? (n >= 200 && n < 218 ? palette(n) : local.palette[n & 255]) : palette(n);
+    const knowledge = enhanced ? Design.knowledgePlan(trace) : [];
     let glyphIndex = 0;
     for (let i = 0; i < trace.commands.length; i++) {
         const c = trace.commands[i];
         if (c.asset === 'background') {
             if (original) {
-                const b = await C.sharp(C.path.join(C.pack, bg.file))
-                              .extract({left : 0, top : 0, width : trace.width, height : trace.height})
-                              .png()
-                              .toBuffer();
+                const b =
+                    await C.sharp(C.path.join(C.pack, bg.file))
+                        .extract({left : 0, top : 0, width : trace.width, height : trace.height})
+                        .png()
+                        .toBuffer();
                 C.blit(p.dst, await C.raw(b), 0, 0);
             } else {
                 await plate(p, trace, enhanced, id);
                 if (enhanced && id === 'report-defense') {
-                    await p.text('Active', 323, 68, 60, 9);
-                    await p.text('Building', 384, 68, 65, 9);
-                    await p.text('Abilities', 449, 68, 130, 9);
+                    await p.text('A/D/M', 236, 67, 53, 11);
+                    await p.text('HP/FP', 288, 67, 35, 10);
+                    await p.text('Active', 323, 65, 60, 13);
+                    await p.text('Building', 384, 65, 65, 13);
+                    await p.text('Abilities', 454, 65, 125, 13);
+                }
+                if (enhanced && id === 'report-losses') {
+                    for (const col of Design.lossColumns())
+                        await p.text(col.label, col.x, 67, col.width, 10, '#e5cd8f', 'middle');
                 }
             }
         } else if (c.asset === 'text') {
             const next = trace.commands[i + 1];
-            const isShadow = next?.asset === 'text' && next.text === c.text && Math.abs(next.x - c.x) <= 2 &&
-                             Math.abs(next.y - c.y) <= 2;
+            const isShadow = next?.asset === 'text' && next.text === c.text &&
+                             Math.abs(next.x - c.x) <= 2 && Math.abs(next.y - c.y) <= 2;
             if (enhanced && isShadow)
                 continue;
             const color = original         ? p.palette(c.color)
                           : isShadow       ? '#263c32'
                           : c.color >= 200 ? '#e5c374'
                                            : '#fff2cc';
-            let command = c;
-            if (enhanced && id === 'report-defense' && c.asset === 'text' && c.x >= 323 && c.x < 449) {
-                command = {
-                    ...c,
-                    text : c.text.replace(/ active$/, '').replace(/ in prod$/, ''),
-                    clip : [ c.x, c.y, c.x + (c.x < 384 ? 60 : 65), c.y + c.height + 3 ],
-                    fontHeight : 14
-                };
-            }
+            const command = enhanced ? Design.enhanceText(c, id) : c;
             await T.draw(p.dst, command, d, color, original);
         } else if (c.asset === 'sprite') {
-            const file = sprite(+c.text, original);
-            let b = original
-                        ? await C.raw(C.path.join(C.pack, file), c.width, c.height, 'nearest')
-                        : await C.raw(await C.fit(C.path.join(C.pack, file), c.width * d, c.height * d, 1));
-            C.blit(p.dst, b, c.x * d, c.y * d);
+            const specific = knowledge.find(k => k.sprite === c);
+            const file = specific ? specific.file : sprite(+c.text, original);
+            const item = enhanced ? Design.enlargeWonder(c, trace, id) : c;
+            const b = original ? await C.raw(C.path.join(C.pack, file), item.width, item.height,
+                                             'nearest')
+                               : await C.raw(await C.fit(C.path.join(C.pack, file), item.width * d,
+                                                         item.height * d, 1));
+            C.blit(p.dst, b, item.x * d, item.y * d);
         } else if (c.asset.endsWith('-glyph')) {
             const b = await R.baseline(
                 {width : trace.width, height : trace.height, commands : groups[glyphIndex++]},
@@ -171,12 +177,14 @@ async function render(trace, mode, id, groups) {
             C.blit(p.dst, await C.raw(b), 0, 0);
         } else if (c.asset === 'fill')
             Native.fill(p, c.x, c.y, c.width, c.height, p.palette(c.color));
-        else if (c.asset === 'frame')
-            await p.vector(`<rect x=".5" y=".5" width="${c.width - 1}" height="${
-                               c.height -
-                               1}" fill="none" stroke="${original ? p.palette(c.color) : '#b6a476'}"/>`,
-                           c.x, c.y, c.width, c.height);
-        else if (c.asset === 'button')
+        else if (c.asset === 'frame') {
+            const rect = enhanced && id === 'report-losses' ? {...c, x : 246, width : 48} : c;
+            await p.vector(
+                `<rect x=".5" y=".5" width="${rect.width - 1}" height="${
+                    rect.height -
+                    1}" fill="none" stroke="${original ? p.palette(c.color) : enhanced ? '#809078' : '#b6a476'}"/>`,
+                rect.x, rect.y, rect.width, rect.height);
+        } else if (c.asset === 'button')
             await button(p, c, original, enhanced);
         else if (c.asset === 'scrollbar') {
             await p.box(c.x, c.y, c.width, c.height, original ? '#c0c0c0' : '#364f43', '#c6b98c');
@@ -190,10 +198,14 @@ async function render(trace, mode, id, groups) {
 
 async function build(nativeOnly = false) {
     const scenes = [];
+    const traces = Object.fromEntries(modes.map(
+        mode => ['report-' + mode,
+                 run('atlas-reports.exe',
+                     [ mode, C.path.join(C.pack, 'review/fixtures/other-windows/reports.txt') ])]));
+    await Design.buildPlates(traces);
     for (let i = 0; i < modes.length; i++) {
         const mode = modes[i], id = 'report-' + mode;
-        const trace = run('atlas-reports.exe',
-                          [ mode, C.path.join(C.pack, 'review/fixtures/other-windows/reports.txt') ]);
+        const trace = traces[id];
         C.json(C.path.join(C.pack, 'review/traces/other-' + mode + '.json'), trace);
         const originalGlyphs = glyphs(trace, true, id), newGlyphs = glyphs(trace, false, id);
         const s = {
@@ -201,13 +213,16 @@ async function build(nativeOnly = false) {
             title : titles[i],
             mode : 'report',
             note :
-                'Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.'
+                'Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.'
         };
         for (const variant of ['original', 'current', 'hd', 'proposed']) {
-            const file = variant === 'original' ? `review/original-scenes/images/${id}.png`
-                                                : `review/other-windows/images/${id}-${variant}.png`;
-            if (!(nativeOnly && variant === 'proposed')) C.write(C.path.join(C.pack, file),
-                    await render(trace, variant, id, variant === 'original' ? originalGlyphs : newGlyphs));
+            const file = variant === 'original'
+                             ? `review/original-scenes/images/${id}.png`
+                             : `review/other-windows/images/${id}-${variant}.png`;
+            if (!(nativeOnly && variant === 'proposed'))
+                C.write(C.path.join(C.pack, file),
+                        await render(trace, variant, id,
+                                     variant === 'original' ? originalGlyphs : newGlyphs));
             s[variant] = file;
             s[variant + 'Size'] = [
                 trace.width * (variant === 'hd' || variant === 'proposed' ? 2 : 1),

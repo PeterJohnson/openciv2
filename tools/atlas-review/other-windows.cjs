@@ -205,6 +205,15 @@ function pedia(kind) {
         s.text('Road: faster movement', 326, 211, 18, 292);
         s.footer([ 'Description', 'Terrain', 'Close' ]);
     }
+    // Preserve the actual page's available actions, positions and disabled state.
+    // Proposal styling is independent; button semantics come from the extracted trace.
+    const native = C.read(C.path.join(C.pack, 'review/traces/other-' + s.id + '.json'));
+    s.commands = s.commands.filter(c => c.op !== 'button');
+    for (const c of native.commands.filter(c => c.op === 'button'))
+        s.add('button', {
+            text : c.text, x : c.x, y : c.y, width : c.width, height : c.height,
+            disabled : c.color === 128
+        });
     return s;
 }
 

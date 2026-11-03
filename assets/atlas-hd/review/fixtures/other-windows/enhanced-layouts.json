@@ -410,27 +410,30 @@
       },
       {
         "op": "button",
-        "text": "Cancel",
+        "text": "Info",
         "x": 6,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Help",
+        "text": "Tree",
         "x": 215,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Advances",
-        "x": 425,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "text": "Close",
+        "x": 424,
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -557,35 +560,39 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 154,
-        "height": 26
-      },
-      {
-        "op": "button",
-        "text": "Advances",
-        "x": 163,
-        "y": 368,
-        "width": 154,
-        "height": 26
+        "y": 364,
+        "width": 156,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Tree",
-        "x": 320,
-        "y": 368,
-        "width": 154,
-        "height": 26
+        "x": 162,
+        "y": 364,
+        "width": 156,
+        "height": 32,
+        "disabled": false
+      },
+      {
+        "op": "button",
+        "text": "Description",
+        "x": 318,
+        "y": 364,
+        "width": 156,
+        "height": 32,
+        "disabled": true
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 477,
-        "y": 368,
-        "width": 154,
-        "height": 26
+        "x": 474,
+        "y": 364,
+        "width": 156,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -712,35 +719,21 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 154,
-        "height": 26
-      },
-      {
-        "op": "button",
-        "text": "Advances",
-        "x": 163,
-        "y": 368,
-        "width": 154,
-        "height": 26
-      },
-      {
-        "op": "button",
-        "text": "Tree",
-        "x": 320,
-        "y": 368,
-        "width": 154,
-        "height": 26
+        "y": 364,
+        "width": 313,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 477,
-        "y": 368,
-        "width": 154,
-        "height": 26
+        "x": 319,
+        "y": 364,
+        "width": 313,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -930,27 +923,30 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Units",
+        "text": "Description",
         "x": 215,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 425,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "x": 424,
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -1097,27 +1093,30 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Improvements",
+        "text": "Description",
         "x": 215,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 425,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "x": 424,
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -1264,27 +1263,30 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Wonders",
+        "text": "Description",
         "x": 215,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 425,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "x": 424,
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -1490,27 +1492,30 @@
       },
       {
         "op": "button",
-        "text": "Description",
+        "text": "Go Back",
         "x": 6,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
-        "text": "Terrain",
+        "text": "Description",
         "x": 215,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       },
       {
         "op": "button",
         "text": "Close",
-        "x": 425,
-        "y": 368,
-        "width": 206,
-        "height": 26
+        "x": 424,
+        "y": 364,
+        "width": 209,
+        "height": 32,
+        "disabled": false
       }
     ]
   },
@@ -1867,7 +1872,7 @@
         "height": 24
       }
     ],
-    "note": "Five 90 \u00d7 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue."
+    "note": "Five 90 Ã— 122 advisor slots and native button/speech geometry. Original council AVI files are absent locally: black slots show the unfilled source frame, not original advisor portraits. Replacement uses still portraits; enhanced adds an active-advisor cue."
   },
   {
     "id": "foreign-minister",

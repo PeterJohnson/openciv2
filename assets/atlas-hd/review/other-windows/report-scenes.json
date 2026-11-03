@@ -3,7 +3,7 @@
     "id": "report-city-status",
     "title": "City Status",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-city-status.png",
     "originalSize": [
       600,
@@ -29,7 +29,7 @@
     "id": "report-attitude",
     "title": "Attitude Advisor",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-attitude.png",
     "originalSize": [
       600,
@@ -55,7 +55,7 @@
     "id": "report-trade",
     "title": "Trade Advisor",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-trade.png",
     "originalSize": [
       600,
@@ -81,7 +81,7 @@
     "id": "report-science",
     "title": "Science Advisor",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-science.png",
     "originalSize": [
       600,
@@ -107,7 +107,7 @@
     "id": "report-defense",
     "title": "Defense Minister",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-defense.png",
     "originalSize": [
       600,
@@ -133,7 +133,7 @@
     "id": "report-losses",
     "title": "Military Casualties",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-losses.png",
     "originalSize": [
       600,
@@ -159,7 +159,7 @@
     "id": "report-intelligence",
     "title": "Intelligence Report",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-intelligence.png",
     "originalSize": [
       600,
@@ -185,7 +185,7 @@
     "id": "report-wonders",
     "title": "Wonders of the World",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-wonders.png",
     "originalSize": [
       600,
@@ -211,7 +211,7 @@
     "id": "report-top-cities",
     "title": "Top Five Cities",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-top-cities.png",
     "originalSize": [
       600,
@@ -237,7 +237,7 @@
     "id": "report-demographics",
     "title": "Demographics",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-demographics.png",
     "originalSize": [
       600,
@@ -263,7 +263,7 @@
     "id": "report-score",
     "title": "Civilization Score",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-score.png",
     "originalSize": [
       600,
@@ -289,7 +289,7 @@
     "id": "report-hall-of-fame",
     "title": "Hall of Fame",
     "mode": "report",
-    "note": "Unchanged report drawing functions with the 1788 save records and declared calculation fixtures. Native and HD retain source layout; enhanced adds calmer panels, row guides and reduced text shadow.",
+    "note": "Extracted report drawing with the 1788 save and declared calculation fixtures. Native/HD use source-aligned background plates. Enhanced adds row-to-icon connections, individual knowledge illustrations and labeled military columns.",
     "original": "review/original-scenes/images/report-hall-of-fame.png",
     "originalSize": [
       600,

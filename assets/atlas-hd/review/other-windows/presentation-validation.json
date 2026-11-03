@@ -1,0 +1,104 @@
+{
+  "status": "pass",
+  "beforeCommit": "2be877c9",
+  "gameSourceChanged": false,
+  "backgroundPlates": 27,
+  "advanceIllustrations": 40,
+  "originalChanges": [
+    {
+      "scene": "report-science",
+      "eraIconCorrections": 13
+    },
+    {
+      "scene": "report-intelligence",
+      "eraIconCorrections": 7
+    }
+  ],
+  "originalOtherReportsPreserved": true,
+  "sourceMatchedCivilopediaButtons": [
+    "pedia-advances",
+    "pedia-advance",
+    "pedia-tree",
+    "pedia-unit",
+    "pedia-improvement",
+    "pedia-wonder",
+    "pedia-terrain"
+  ],
+  "pairedCityScrollPhases": 3,
+  "casualtyBracketContainsCounts": true,
+  "topCityWondersEnlargedWithinRows": true,
+  "reports": [
+    {
+      "scene": "report-city-status",
+      "headerHeight": 66,
+      "connectedRows": 12,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-attitude",
+      "headerHeight": 66,
+      "connectedRows": 9,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-trade",
+      "headerHeight": 66,
+      "connectedRows": 11,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-science",
+      "headerHeight": 66,
+      "connectedRows": 0,
+      "advanceRows": 24
+    },
+    {
+      "scene": "report-defense",
+      "headerHeight": 66,
+      "connectedRows": 9,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-losses",
+      "headerHeight": 66,
+      "connectedRows": 12,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-intelligence",
+      "headerHeight": 50,
+      "connectedRows": 0,
+      "advanceRows": 27
+    },
+    {
+      "scene": "report-wonders",
+      "headerHeight": 42,
+      "connectedRows": 0,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-top-cities",
+      "headerHeight": 28,
+      "connectedRows": 0,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-demographics",
+      "headerHeight": 28,
+      "connectedRows": 0,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-score",
+      "headerHeight": 41,
+      "connectedRows": 0,
+      "advanceRows": 0
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "headerHeight": 24,
+      "connectedRows": 0,
+      "advanceRows": 0
+    }
+  ]
+}

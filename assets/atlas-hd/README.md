@@ -28,9 +28,10 @@ The graphics branch contains no game source or loader changes.
 | City panorama wall assembly | 7 | Separate rear and foreground SVG/PNG curtain walls for the three city sites, plus a frontal painted gate |
 | Native window backgrounds | 9 | Source-aligned city, seven government diplomacy and spacecraft SVG/PNG plates |
 | Terrain production marker | 1 | Muted olive/bronze shield for map terrain; city economy shields stay blue |
+| Report backgrounds | 27 | Source-aligned native/enhanced plates, including three odd-scroll alternatives |
 | Renderer bindings | 404 | Derived PNG adapters for the exact native boxes exercised by the review fixtures |
 
-The 2,244 primary entries are indexed in [manifest.json](manifest.json).
+The 2,271 primary entries are indexed in [manifest.json](manifest.json).
 Supporting mip PNGs and overview icons live under `map/variations/mips/` and
 `map/lod/`. The compatibility bank is indexed separately in
 [compatibility/bindings.json](compatibility/bindings.json); it is derived from
@@ -608,6 +609,11 @@ endgame, status/world-map panels, and representative dialogs. They are also
 available in the main scene selector. See [coverage and rebuild instructions](OTHER-WINDOWS.md).
 Twelve report scenes execute 32 extracted C++ bodies; another 258 extracted bodies
 now drive the remaining 23 baseline scenes. Enhanced proposals stay separate.
+The [report refinements](review/other-windows/report-refinements.html) show
+source-aligned background bands, readable military headings, larger Top Cities
+wonders, 40 individual advance illustrations and source-matched Civilopedia
+buttons. Native/HD improvements are confined to background art, plus a corrected
+advance-era fixture field; foreground layout remains extracted game code.
 The [runtime comparison](review/other-windows/runtime-audit.html) includes twelve
 scenes captured from actual OpenCiv2 execution with original artwork. Original council video portraits are unavailable
 locally, so that comparison explicitly leaves its media slots empty.
