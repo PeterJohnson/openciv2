@@ -35,7 +35,7 @@
     ],
     "tax": [
       "src/auto/city.cpp",
-      "TaxRateDialog::run; redraw"
+      "TaxRateDialog::run; paint; calc_totals"
     ],
     "research": [
       "src/auto/civ.cpp",
@@ -63,7 +63,7 @@
     "src/auto/civ.cpp": "cb8a2d599e80b1854196e17982d5a76b43ff0ecdd9a18bc5634f0faf2c8363fb",
     "src/auto/window.cpp": "2aca119a93092984ecda3820e72bf704b29fa4f2ae3afcf3cf16fc9f50d75b42"
   },
-  "fixtures": "Declared report/civilopedia/dialog values; powergraph and casualty history are illustrative, not recovered from the save.",
+  "fixtures": "Enhanced Forest, Foreign Minister, status, tax, research, production and destruction content comes from retained extracted traces. Other illustrative proposals, including powergraph and casualty history, keep their documented boundaries.",
   "missingOriginalMedia": [
     "council0.avi",
     "council1.avi",

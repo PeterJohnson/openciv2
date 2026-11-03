@@ -196,6 +196,22 @@ const mapped = (kind, index) =>
     C.entries.find(e => e.mapping?.kind === kind && e.mapping.index === index).file;
 // Individually selected existing Atlas illustrations, not recolored category icons.
 const knowledge = {
+    'Advanced Flight' : [ 'unit', 28 ],
+    'Amphibious Warfare' : [ 'unit', 12 ],
+    'Atomic Theory' : [ 'improvement', 21 ],
+    'Automobile' : [ 'improvement', 25 ],
+    'Combined Arms' : [ 'unit', 14 ],
+    'Combustion' : [ 'unit', 22 ],
+    'Computers' : [ 'improvement', 26 ],
+    'Railroad' : 'interface/symbols/rail.png',
+    'Steam Engine' : [ 'unit', 36 ],
+    'The Corporation' : [ 'unit', 49 ],
+    'Espionage' : [ 'unit', 47 ],
+    'Fundamentalism' : [ 'unit', 8 ],
+    'Leadership' : [ 'unit', 20 ],
+    'Refrigeration' : [ 'improvement', 24 ],
+    'Steel' : [ 'unit', 38 ],
+    'Theory of Gravity' : [ 'wonder', 16 ],
     'Alphabet' : [ 'improvement', 6 ],
     'Astronomy' : [ 'wonder', 11 ],
     'Banking' : 'interface/economy/gold.png',

@@ -3,29 +3,80 @@
   "images": 140,
   "reportBodies": 32,
   "furtherWindowBodies": 258,
-  "enhancedPreservedFrom": "2be877c9",
+  "enhancedPreservedFrom": "16f21181",
   "enhancedIntentionallyUpdated": [
-    "report-city-status",
-    "report-attitude",
-    "report-trade",
-    "report-science",
-    "report-defense",
-    "report-losses",
-    "report-intelligence",
-    "report-wonders",
-    "report-top-cities",
-    "report-demographics",
-    "report-score",
-    "report-hall-of-fame",
     "pedia-advances",
     "pedia-advance",
     "pedia-tree",
-    "pedia-unit",
-    "pedia-improvement",
-    "pedia-wonder",
-    "pedia-terrain"
+    "pedia-terrain",
+    "foreign-minister",
+    "destroyed-civilizations",
+    "status-panel",
+    "tax-rates",
+    "dialog-research",
+    "dialog-production"
   ],
   "preservedEnhanced": [
+    {
+      "scene": "report-city-status",
+      "sha256": "51cdb51897c6e9014f3b8aa8581349a429fe75ece8c03a03570267df2a9654fb"
+    },
+    {
+      "scene": "report-attitude",
+      "sha256": "845c28cc7e9bc7003091f98f8f1a6ef38641a87b9d4bc42036e551d6a5a13357"
+    },
+    {
+      "scene": "report-trade",
+      "sha256": "f9b6d083cd42e22536523692f940ca8222dea3ef4e9e31da37e0f4035601deb6"
+    },
+    {
+      "scene": "report-science",
+      "sha256": "fe0c2e70057cb9d35752463277480c37d7f4108d8183d397cb25662f127637ab"
+    },
+    {
+      "scene": "report-defense",
+      "sha256": "a541f41f007c84f96a66608eca29d3fa23839f30d3e4c3b4ec5b496590388351"
+    },
+    {
+      "scene": "report-losses",
+      "sha256": "13f68482acbf0511f52f4915f27e6081842165239270efa40d186e6cbfbe1e08"
+    },
+    {
+      "scene": "report-intelligence",
+      "sha256": "cb0ade57bdb97c799533372005b86cebd331e247fb9c0f931f78f562cc2a7ba6"
+    },
+    {
+      "scene": "report-wonders",
+      "sha256": "4770eb875938da04443633b86aa35f8ba902ecd736ea89c102e2490b378eef42"
+    },
+    {
+      "scene": "report-top-cities",
+      "sha256": "420740dd78313d9c173f8d40e4221a2d81c1891829b2fcb1372137532a739732"
+    },
+    {
+      "scene": "report-demographics",
+      "sha256": "319e22d20fab571c43733cdee8a82ec9d8f122092d66f553abfca6a3e7337fc5"
+    },
+    {
+      "scene": "report-score",
+      "sha256": "77e2464d37e82d5c22c1b617361313aaecd4d77613865943693f207810f78346"
+    },
+    {
+      "scene": "report-hall-of-fame",
+      "sha256": "a09c8903ba88f97de3e3df0e467ac545d28dd4fc8a0722510740d05052813e0e"
+    },
+    {
+      "scene": "pedia-unit",
+      "sha256": "c655c0ff54173f8214f69292e2f75a8ce939a64504d1715f1c5e560149855966"
+    },
+    {
+      "scene": "pedia-improvement",
+      "sha256": "19e10d154d33f9db9e1d963e2ed6a40137280db10e3661458f95a259deae530b"
+    },
+    {
+      "scene": "pedia-wonder",
+      "sha256": "c4018bbf846aec7c6db2d7f7b4590116432f8f79fa6f62177d569675852b0d15"
+    },
     {
       "scene": "powergraph",
       "sha256": "7519f77549f1f01c47fa27d518f68ab1e63d57829951c77e7e09476584c3d004"
@@ -33,10 +84,6 @@
     {
       "scene": "high-council",
       "sha256": "2638d630837a6e5dfaa42ce5593b69ae1c2e7a5ff223da0ab9fa5c0e8f4806ed"
-    },
-    {
-      "scene": "foreign-minister",
-      "sha256": "5b65b3620433da5baa1d5f530f7f9209bf7644f6ebe4a2511fd8b1b0c0efd32c"
     },
     {
       "scene": "historian",
@@ -47,32 +94,12 @@
       "sha256": "7474cfbc13db50eff901c1fcc75ef31fbd9cbf5134548cbff62af21c9a2c51f1"
     },
     {
-      "scene": "destroyed-civilizations",
-      "sha256": "da60204c168b65191eab8bd7ff3b1d3d6ed81f99c6917973e3265ef8323eb919"
-    },
-    {
       "scene": "credits",
       "sha256": "5b5805781fd8e4c40a89e4cd61c840a2ecb6e03dfcbc386c6b95f5c107df2d58"
     },
     {
-      "scene": "status-panel",
-      "sha256": "cedb78ac738a7fa0cdd7b2972f7ce7bd094353af7a2e1adfe194876fb395e79a"
-    },
-    {
       "scene": "world-map",
       "sha256": "d97898ddb9b20aa7cb9b8eae1d9146f24e5c40cf2970260846a96646c2a6a876"
-    },
-    {
-      "scene": "tax-rates",
-      "sha256": "8b06b2e3a2e2bff83023ea2c0b8a8f42f81478be85fdbb6f0cccd7ed8638b1ec"
-    },
-    {
-      "scene": "dialog-research",
-      "sha256": "a185bcc725cfabf4557af67f227c8039cc69a721b68de86ef3b51ec5297e87b8"
-    },
-    {
-      "scene": "dialog-production",
-      "sha256": "cff0e4a2982b0a8c8b76d95ca9d9f2315023c80b7783c2c9f59a2dcb33851c9f"
     },
     {
       "scene": "dialog-options",
@@ -732,7 +759,7 @@
       "file": "review/other-windows/images/pedia-advances-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "5ba2049165995ee55849f725682a8a6d6d953b38c0eb5125d327c528c9fabd66"
+      "sha256": "543a4eb3b974d342c40e00517b63b0423fd16148d03405420959fc1e962ae1f7"
     },
     {
       "scene": "pedia-advance",
@@ -764,7 +791,7 @@
       "file": "review/other-windows/images/pedia-advance-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "4961be0be3a1c676d5fcdd06c4ee767960f73deaf52a956cb148928037f1287e"
+      "sha256": "e78bfbf85f981db10426e434a012755ecd0a438ab5867fdf68ea2701e4e38486"
     },
     {
       "scene": "pedia-tree",
@@ -796,7 +823,7 @@
       "file": "review/other-windows/images/pedia-tree-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "09315c0d36d7fbf6edbdbcb6bc45cbaddad7714385ea7173453b473bfa589393"
+      "sha256": "b9ef56f0f7236b704d64607e24551243803a5596379bcf6ec075b8c8da073d0a"
     },
     {
       "scene": "pedia-unit",
@@ -924,7 +951,7 @@
       "file": "review/other-windows/images/pedia-terrain-proposed.png",
       "width": 1280,
       "height": 800,
-      "sha256": "ec7d95fac67ce654aa11695cf909bdb6154cb768808ece47d0f49d6713720667"
+      "sha256": "39c98e7a9f465cfb82f0a32db32fa683eb9249ef01dfdc0f100500b5bb6179eb"
     },
     {
       "scene": "powergraph",
@@ -1018,9 +1045,9 @@
       "scene": "foreign-minister",
       "variant": "proposed",
       "file": "review/other-windows/images/foreign-minister-proposed.png",
-      "width": 960,
+      "width": 1360,
       "height": 640,
-      "sha256": "5b65b3620433da5baa1d5f530f7f9209bf7644f6ebe4a2511fd8b1b0c0efd32c"
+      "sha256": "6eeff0c03510beaa9ed1e2c42645e87fef2f8707c30b625ba0f5cf840467daa0"
     },
     {
       "scene": "historian",
@@ -1116,7 +1143,7 @@
       "file": "review/other-windows/images/destroyed-civilizations-proposed.png",
       "width": 1280,
       "height": 960,
-      "sha256": "da60204c168b65191eab8bd7ff3b1d3d6ed81f99c6917973e3265ef8323eb919"
+      "sha256": "cd3117df8c59aa2e52bb593eda421bdd0c52e6422bc1d44c8339a752660f4bb5"
     },
     {
       "scene": "credits",
@@ -1179,8 +1206,8 @@
       "variant": "proposed",
       "file": "review/other-windows/images/status-panel-proposed.png",
       "width": 640,
-      "height": 880,
-      "sha256": "cedb78ac738a7fa0cdd7b2972f7ce7bd094353af7a2e1adfe194876fb395e79a"
+      "height": 740,
+      "sha256": "382a06b9dac9a02e9700c3b77cf98d0a0f1c4ea957b0c9119604f09d0de3e755"
     },
     {
       "scene": "world-map",
@@ -1242,9 +1269,9 @@
       "scene": "tax-rates",
       "variant": "proposed",
       "file": "review/other-windows/images/tax-rates-proposed.png",
-      "width": 800,
-      "height": 512,
-      "sha256": "8b06b2e3a2e2bff83023ea2c0b8a8f42f81478be85fdbb6f0cccd7ed8638b1ec"
+      "width": 1232,
+      "height": 856,
+      "sha256": "a6d874dbb6e67eef5bbead7c70b6b7967290552903b8a2b47646bda69e4c24de"
     },
     {
       "scene": "dialog-research",
@@ -1274,9 +1301,9 @@
       "scene": "dialog-research",
       "variant": "proposed",
       "file": "review/other-windows/images/dialog-research-proposed.png",
-      "width": 860,
-      "height": 720,
-      "sha256": "a185bcc725cfabf4557af67f227c8039cc69a721b68de86ef3b51ec5297e87b8"
+      "width": 1100,
+      "height": 860,
+      "sha256": "d50e97b43d542a3f88bb4f389f4a38770c69e783bc3a86ac6e1f1801f7c195c1"
     },
     {
       "scene": "dialog-production",
@@ -1306,9 +1333,9 @@
       "scene": "dialog-production",
       "variant": "proposed",
       "file": "review/other-windows/images/dialog-production-proposed.png",
-      "width": 860,
-      "height": 680,
-      "sha256": "cff0e4a2982b0a8c8b76d95ca9d9f2315023c80b7783c2c9f59a2dcb33851c9f"
+      "width": 1520,
+      "height": 1280,
+      "sha256": "661e90eb6d3144d7164f6c2c0c9eacb8bacfe07f2879254d676ddaa69e6bc475"
     },
     {
       "scene": "dialog-options",

@@ -1,0 +1,101 @@
+{
+  "status": "pass",
+  "beforeCommit": "16f21181",
+  "preservedBaselines": 105,
+  "preservedEnhanced": 25,
+  "researchChoices": 7,
+  "productionChoices": 16,
+  "sourceTextAndControlChecks": [
+    {
+      "id": "pedia-advances",
+      "sourceTraceSha256": "a10747a20a940d777aaa8138d0fa7fb4d3adae9c3358bfb1c0b658dfa6b15da8",
+      "buttons": [
+        "Info",
+        "Tree",
+        "Close"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "pedia-advance",
+      "sourceTraceSha256": "85b64ba869441807690321355a0756d2e13f55c1d5ab6a9d478cb4edfb9a9a0f",
+      "buttons": [
+        "Go Back",
+        "Tree",
+        "Description",
+        "Close"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "pedia-tree",
+      "sourceTraceSha256": "c9ebc4ac9321f9fe43bb11839158dd8321241c52289e088704f747f9816c5ece",
+      "buttons": [
+        "Go Back",
+        "Close"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "pedia-terrain",
+      "sourceTraceSha256": "8dae9c66dc992e4014793c060998f3d3be2f0875e4d4fb89c3871f2a45440489",
+      "buttons": [
+        "Go Back",
+        "Description",
+        "Close"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "foreign-minister",
+      "sourceTraceSha256": "3ad98845703aa05c674bf2fd437cc9766b34a95d2392019eb5d1ab093eebee7e",
+      "buttons": [
+        "Check Intelligence",
+        "Send Emissary",
+        "Cancel"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "destroyed-civilizations",
+      "sourceTraceSha256": "6cff50c5d0bb2e110448e79a832044f78ec87ea5449a3d95c88fa79b2d87fa5f",
+      "buttons": [],
+      "textFits": true
+    },
+    {
+      "id": "status-panel",
+      "sourceTraceSha256": "2cfe34e2779304363abb7d9785a3fd767fe86adc103f333a9dd8edfd28e19990",
+      "buttons": [],
+      "textFits": true
+    },
+    {
+      "id": "tax-rates",
+      "sourceTraceSha256": "6a614d453d002373fc78025d957bc7564b695531c7dd40e33ee1d13382608dfb",
+      "buttons": [
+        "OK"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "dialog-research",
+      "sourceTraceSha256": "bcfbc82f56e17dbe0c3ceaaabda8f5e388d6ee4c606abe436830d519e31f71da",
+      "buttons": [
+        "Help",
+        "Goal",
+        "OK"
+      ],
+      "textFits": true
+    },
+    {
+      "id": "dialog-production",
+      "sourceTraceSha256": "455f428882d1d7927f14eaa397f50203f593bd633933f77e19747ffd8bae5983",
+      "buttons": [
+        "Auto",
+        "Help",
+        "OK"
+      ],
+      "textFits": true
+    }
+  ],
+  "scope": "Finite enhanced scene content/layout validation against extracted traces; no interactive-runtime parity claim."
+}

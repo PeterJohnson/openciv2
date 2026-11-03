@@ -99,6 +99,17 @@ async function build() {
                              .map(c => [c.text, c.x, c.y, c.width, c.height, c.color === 128]),
                          s.id + ' source actions');
     }
+    const enhanced =
+        C.read(C.path.join(C.pack, 'review/fixtures/other-windows/enhanced-layouts.json'));
+    const rules =
+        C.read(C.path.join(C.pack, 'review/fixtures/other-windows/catalog.json')).CIVILIZE;
+    for (const s of enhanced)
+        for (const c of s.commands.filter(c => c.binding?.advanceId !== undefined)) {
+            const id = c.binding.advanceId, name = rules[id][0], file = c.binding.new;
+            assert.equal(file, D.knowledgeFile(name));
+            knowledge.set(
+                id, {id, name, file, sha256 : C.sha(C.fs.readFileSync(C.path.join(C.pack, file)))});
+        }
     const items = [...knowledge.values() ].sort((a, b) => a.name.localeCompare(b.name));
     assert.equal(new Set(items.map(i => i.sha256)).size, items.length,
                  'Individual knowledge illustrations');
@@ -117,13 +128,13 @@ async function build() {
     }
     C.json(C.path.join(C.pack, 'interface/reports/knowledge.json'), {
         scope :
-            'Individual illustrations for advances shown in the saved Science and Intelligence reports; existing independently authored Atlas art. Other advances are not silently assigned repeated fallback symbols.',
+            'Individual illustrations shared by the saved Science/Intelligence reports, enhanced Civilopedia and research selection; existing independently authored Atlas art. Other advances are not silently assigned repeated fallback symbols.',
         source :
             'src/auto/reports.cpp intel_draw_advances: original selection is category * 4 + epoch. Enhanced trace association validates exact rule name, category/epoch and source label-to-sprite offset.',
         advances : items
     });
     const p = new Painter(1440, 70 + Math.ceil(items.length / 8) * 140, 1);
-    await p.text('Science & intelligence: individual advance illustrations', 18, 12, 1400, 25);
+    await p.text('Shared advance illustrations: reports, Civilopedia & research', 18, 12, 1400, 25);
     for (const [i, a] of items.entries()) {
         const x = (i % 8) * 180, y = 70 + Math.floor(i / 8) * 140;
         await p.image(a.file, x + 44, y + 4, 92, 80);
@@ -158,7 +169,7 @@ async function build() {
             .join('\n');
     C.write(
         C.path.join(C.pack, 'review/other-windows/report-refinements.html'),
-        `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Report layout refinements</title><style>body{background:#162e28;color:#ede3c8;font:16px/1.6 system-ui;margin:0}main{max-width:1600px;margin:auto;padding:28px}a{color:#dfc489}h1,h2{font-family:Georgia,serif}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{width:100%;height:auto}section{padding:22px 0;border-top:1px solid #566f5a}p{max-width:1100px}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style><main><h1>Report layout refinements</h1><p><a href="index.html">All four variants</a> · <a href="presentation-validation.json">Validation</a> · <a href="../../OTHER-WINDOWS.md">Source and integration limits</a></p><p>Banding follows the source text rows and joins each staggered city/unit illustration. Header depth follows each report. The enhanced military views add readable headings; casualties count losses by civilization. Top Cities enlarges wonders within their existing rows. Civilopedia buttons now retain the source page’s actions and disabled state.</p><p>The original engine reuses 20 era/category icons. Its standalone report fixture now supplies the missing era field. Enhanced Science and Intelligence use ${
+        `<!doctype html><html lang="en"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Report layout refinements</title><style>body{background:#162e28;color:#ede3c8;font:16px/1.6 system-ui;margin:0}main{max-width:1600px;margin:auto;padding:28px}a{color:#dfc489}h1,h2{font-family:Georgia,serif}.grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}figure{margin:0}img{width:100%;height:auto}section{padding:22px 0;border-top:1px solid #566f5a}p{max-width:1100px}@media(max-width:800px){.grid{grid-template-columns:1fr}}</style><main><h1>Report layout refinements</h1><p><a href="index.html">All four variants</a> · <a href="presentation-validation.json">Validation</a> · <a href="../../OTHER-WINDOWS.md">Source and integration limits</a></p><p>Banding follows the source text rows and joins each staggered city/unit illustration. Header depth follows each report. The enhanced military views add readable headings; casualties count losses by civilization. Top Cities enlarges wonders within their existing rows. Civilopedia buttons now retain the source page’s actions and disabled state.</p><p>The original engine reuses 20 era/category icons. Its standalone report fixture now supplies the missing era field. Enhanced reports, Civilopedia and research selection share ${
             items
                 .length} individually selected illustrations. Original and HD-only still follow the source icon selection.</p><img src="advance-illustrations.png" alt="Individual advance illustrations"><p>City, Attitude and Trade patterns are also available as background-only PNGs. Scrolling an odd number of rows flips the source icon columns, so those need <a href="../../interface/reports/layout.json">matching even/odd plates</a>. Selecting the phase, handling arbitrary sizes/fonts, and separating shared report resources requires a small renderer/loader change. No game code was changed here.</p>${
             blocks}</main></html>`);

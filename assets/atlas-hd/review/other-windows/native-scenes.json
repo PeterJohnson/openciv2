@@ -295,7 +295,7 @@
     ],
     "proposed": "review/other-windows/images/foreign-minister-proposed.png",
     "proposedSize": [
-      960,
+      1360,
       640
     ]
   },
@@ -446,7 +446,7 @@
     "proposed": "review/other-windows/images/status-panel-proposed.png",
     "proposedSize": [
       640,
-      880
+      740
     ]
   },
   {
@@ -505,8 +505,8 @@
     ],
     "proposed": "review/other-windows/images/tax-rates-proposed.png",
     "proposedSize": [
-      800,
-      512
+      1232,
+      856
     ]
   },
   {
@@ -535,8 +535,8 @@
     ],
     "proposed": "review/other-windows/images/dialog-research-proposed.png",
     "proposedSize": [
-      860,
-      720
+      1100,
+      860
     ]
   },
   {
@@ -565,8 +565,8 @@
     ],
     "proposed": "review/other-windows/images/dialog-production-proposed.png",
     "proposedSize": [
-      860,
-      680
+      1520,
+      1280
     ]
   },
   {

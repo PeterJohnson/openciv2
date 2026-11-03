@@ -1,7 +1,13 @@
 {
-  "scope": "Individual illustrations for advances shown in the saved Science and Intelligence reports; existing independently authored Atlas art. Other advances are not silently assigned repeated fallback symbols.",
+  "scope": "Individual illustrations shared by the saved Science/Intelligence reports, enhanced Civilopedia and research selection; existing independently authored Atlas art. Other advances are not silently assigned repeated fallback symbols.",
   "source": "src/auto/reports.cpp intel_draw_advances: original selection is category * 4 + epoch. Enhanced trace association validates exact rule name, category/epoch and source label-to-sprite offset.",
   "advances": [
+    {
+      "id": 0,
+      "name": "Advanced Flight",
+      "file": "sprites/units/bomber.png",
+      "sha256": "ec77e0a8af5e252ca2542e0de1b2090cf39ad443c90b4ddfc3e378da665a7b3b"
+    },
     {
       "id": 1,
       "name": "Alphabet",
@@ -9,10 +15,28 @@
       "sha256": "dbe9d8ea504299564e9b4334534d94998b9094166ed2f78f0a2a898d9dd99ce4"
     },
     {
+      "id": 2,
+      "name": "Amphibious Warfare",
+      "file": "sprites/units/marines.png",
+      "sha256": "71e1f610421869de49747fb86b71443da1da2700e6c83444eccb5412cc89d515"
+    },
+    {
       "id": 3,
       "name": "Astronomy",
       "file": "sprites/wonders/copernicus-observatory.png",
       "sha256": "318cf9a044949da8218b69b8105b4b72632ba2e2d23317c85dbe43153b0c1649"
+    },
+    {
+      "id": 4,
+      "name": "Atomic Theory",
+      "file": "sprites/buildings/nuclear-plant.png",
+      "sha256": "60710a7ada9a422adefe5ea6f5388014e467fed83bd2d55286821e0ee257a12e"
+    },
+    {
+      "id": 5,
+      "name": "Automobile",
+      "file": "sprites/buildings/superhighways.png",
+      "sha256": "d03b3e708104c96bcbcc648304993b30a82f936e443bf92742dd60454c42b115"
     },
     {
       "id": 6,
@@ -57,10 +81,28 @@
       "sha256": "e9fff4bebacd48d50d1fa2b40084de4f0c845c75031fcab2828b7a7b9c30744a"
     },
     {
+      "id": 13,
+      "name": "Combined Arms",
+      "file": "sprites/units/mechanized-infantry.png",
+      "sha256": "f0b36585fb845435d9f3636a367e3a0878ac832bbb04ae1eca341be5c6f180be"
+    },
+    {
+      "id": 14,
+      "name": "Combustion",
+      "file": "sprites/units/armor.png",
+      "sha256": "f4fd6821f707bfde2e2c06cf1d6820869bec4c7f13745056f95bc57da96a3d24"
+    },
+    {
       "id": 15,
       "name": "Communism",
       "file": "sprites/wonders/womens-suffrage.png",
       "sha256": "39a8a05f2f0f3d384e0113a21521f75ba8f71ed6dc8e3784c7b97fabd6dc626d"
+    },
+    {
+      "id": 16,
+      "name": "Computers",
+      "file": "sprites/buildings/research-lab.png",
+      "sha256": "095c063936a4c96134212c0b1f906ece4b38ed03786887f604c114c8cf3f6083"
     },
     {
       "id": 17,
@@ -105,6 +147,12 @@
       "sha256": "952355c05c28e16687388c617e35c72a7140e969c0823fe5af8b03964981ec32"
     },
     {
+      "id": 27,
+      "name": "Espionage",
+      "file": "sprites/units/spy.png",
+      "sha256": "d7a7ee6be06c3744cb384fb467499f9235f07be3af64b0c1d1241b7d8c2f3e3a"
+    },
+    {
       "id": 28,
       "name": "Explosives",
       "file": "sprites/units/cannon.png",
@@ -115,6 +163,12 @@
       "name": "Feudalism",
       "file": "sprites/units/pikemen.png",
       "sha256": "0ee1e0043c06523e30ff10f844f9a4ddc4d67d7df28eb2aa4bf68da85a131db1"
+    },
+    {
+      "id": 31,
+      "name": "Fundamentalism",
+      "file": "sprites/units/fanatics.png",
+      "sha256": "2f2db10d78a9b89274af62ac475296bbc40bd7b9333030d7f3bfbd8368b7d155"
     },
     {
       "id": 35,
@@ -145,6 +199,12 @@
       "name": "Iron Working",
       "file": "sprites/units/legion.png",
       "sha256": "699c7c5388dbaa7fdc2532ce1d7ebc137e7eba7954bf982f2e0d674f4e6fc1d0"
+    },
+    {
+      "id": 42,
+      "name": "Leadership",
+      "file": "sprites/units/dragoons.png",
+      "sha256": "c91ae31bc053ae31ddf0b6a3f511fe6f326b4cd8c859453628bdba06b4a33ea1"
     },
     {
       "id": 43,
@@ -213,10 +273,40 @@
       "sha256": "1dc2f2f61fcfdc761a8715f4f9d9fd2f1baf578434de651248ff906def923096"
     },
     {
+      "id": 67,
+      "name": "Railroad",
+      "file": "interface/symbols/rail.png",
+      "sha256": "9a45e6634b41837708c67ae5c93718d462af76137dc83eeff6ca895a1d51603f"
+    },
+    {
+      "id": 70,
+      "name": "Refrigeration",
+      "file": "sprites/buildings/supermarket.png",
+      "sha256": "46d4bdba9d91dec4a65b42bed96e01c641ceb34e7a9053fa150de9f580e866e9"
+    },
+    {
       "id": 75,
       "name": "Seafaring",
       "file": "sprites/units/trireme.png",
       "sha256": "20327aaea74f36a1bf6add44cbeaee38e5ea9afb3cb7d092f9c813012ed6591b"
+    },
+    {
+      "id": 78,
+      "name": "Steam Engine",
+      "file": "sprites/units/ironclad.png",
+      "sha256": "846bfb8ab5f4365197862f87ed6b49051a12008ab08f051fe6b370a29668c64e"
+    },
+    {
+      "id": 79,
+      "name": "Steel",
+      "file": "sprites/units/cruiser.png",
+      "sha256": "7c5608c0dc14b968bdcc0a49217de503306658bb4c32ec62366b1b9ebb3e4cf9"
+    },
+    {
+      "id": 19,
+      "name": "The Corporation",
+      "file": "sprites/units/freight.png",
+      "sha256": "3b4a7b85256ccb05cac0117f29d4fc886bb5c8b09e34c604f06778e376fe7457"
     },
     {
       "id": 71,
@@ -229,6 +319,12 @@
       "name": "The Wheel",
       "file": "sprites/units/chariot.png",
       "sha256": "b3ab42dc55e256f283ada19484efd0298b0a6b6410612a6ec2834b92d1dec9af"
+    },
+    {
+      "id": 83,
+      "name": "Theory of Gravity",
+      "file": "sprites/wonders/newton-college.png",
+      "sha256": "7e674e479406499052074de439b810d307ea6cc733bd7b72a8b91649cb019f1f"
     },
     {
       "id": 84,

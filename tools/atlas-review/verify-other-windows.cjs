@@ -21,8 +21,8 @@ async function main() {
             if (variant === 'original')
                 assert(s[variant].startsWith('review/original-scenes/'));
             if (variant === 'proposed' &&
-                !require('./report-design.cjs').changedEnhanced.includes(s.id)) {
-                const before = git([ 'show', '2be877c9:assets/atlas-hd/' + s[variant] ]);
+                !require('./enhanced-details.cjs').changedScenes.includes(s.id)) {
+                const before = git([ 'show', '16f21181:assets/atlas-hd/' + s[variant] ]);
                 assert.equal(C.sha(bytes), C.sha(before), s.id + ' enhanced preservation');
                 preservedEnhanced.push({scene : s.id, sha256 : C.sha(bytes)});
             }
@@ -172,8 +172,8 @@ async function main() {
         images : 140,
         reportBodies : 32,
         furtherWindowBodies : 258,
-        enhancedPreservedFrom : '2be877c9',
-        enhancedIntentionallyUpdated : require('./report-design.cjs').changedEnhanced,
+        enhancedPreservedFrom : '16f21181',
+        enhancedIntentionallyUpdated : require('./enhanced-details.cjs').changedScenes,
         preservedEnhanced,
         sourceUnchanged : true,
         debugRelease : checks,

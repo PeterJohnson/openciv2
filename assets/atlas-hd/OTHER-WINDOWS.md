@@ -129,9 +129,9 @@ era/category symbols, not a unique symbol for every advance. The standalone
 report fixture previously omitted `epoch`; supplying the actual RULES.TXT field
 corrects the Science and Intelligence baseline icons without changing source
 layout. These are the only original report PNGs changed by this refinement.
-Enhanced Science and Intelligence instead use 40 distinct existing Atlas
-illustrations for the advances visible in this saved fixture, with exact rule
-IDs and asset hashes in [the mapping](interface/reports/knowledge.json). Unmapped
+Enhanced Science and Intelligence, Civilopedia and research selection now share
+56 distinct existing Atlas illustrations for their displayed advances, with exact
+rule IDs and asset hashes in [the mapping](interface/reports/knowledge.json). Unmapped
 advances stop explicitly; this is not yet a complete advance-icon catalog.
 
 Enhanced Defense has larger Active, Building and Abilities headings. Casualties
@@ -147,6 +147,42 @@ PNGs. Explicit proposal rebuilds are listed below. The proposals make no claim
 about current-engine execution and are not included in runtime parity. See
 [scoped engine recommendations](RENDER-UPGRADES.md) and
 [presentation checks](review/other-windows/presentation-validation.json).
+
+## Enhanced content parity
+
+The [content comparison](review/other-windows/content-refinements.html) shows ten
+refined enhanced scenes alongside their original-art baseline. The source-aware
+adapters in `enhanced-details.cjs` consume retained traces; they do not rerun or
+invent game calculations. All 105 original/native/HD PNGs stay byte-for-byte
+unchanged from `16f21181`, as do the other 25 enhanced scenes.
+
+- Civilopedia's index, Railroad detail and focused tree use the shared advance
+  illustrations. The detail restores Banking as the additional prerequisite for
+  Industrialization and uses Darwin's Voyage's actual wonder binding. The tree
+  remains a focused immediate-prerequisite/successor proposal, not the full
+  native ancestry tree. Forest includes every source field: movement, defense,
+  yields, irrigation/mining effects and turns, transformation, roads and resources.
+- Foreign Minister uses the source contact list, power/reputation sentence and
+  Check Intelligence / Send Emissary / Cancel actions. This save exposes one
+  contact; the earlier five invented contact cards are removed.
+- Status shows the actual saved Knights with moves, home city, owner, veteran
+  status and tile, plus the source empire totals. Unit drawing reuses the native
+  saved-unit path, including its display flags; no substitute units or orders.
+- Tax Rates uses the source 40/60/0 allocations, 215 income, 238 cost and 7-turn
+  research estimate. Icons are anchored beside their labels and clear both
+  endpoint text and sliders. The zero-luxury case draws an empty fill correctly.
+- Research displays all seven available source choices with the shared icons
+  and Help / Goal / OK order. Production displays all sixteen visible source
+  choices, their turn estimates, unit attack/defense/move and HP/firepower values,
+  selection and Auto / Help / OK actions. Its taller enhanced table gives those
+  fields space; original and HD geometry remains fixed.
+- Destroyed Civilizations places dark panels behind its portrait and text and
+  uses the source's A.D. 1595 conquest date for the declared Romans fixture.
+
+These are initial-frame content checks, not interactive-runtime qualification.
+The [validation record](review/other-windows/content-validation.json) covers
+source content/control order, text fit, tax-icon clearance, saved glyph D/R
+agreement and unchanged baseline/unrelated image hashes.
 
 ## Build and verify
 
@@ -170,6 +206,7 @@ node tools/atlas-review/other-windows.cjs
 node tools/atlas-review/report-render.cjs
 node tools/atlas-review/build-other-windows.cjs --gallery-only
 node tools/atlas-review/review-report-design.cjs
+node tools/atlas-review/review-window-content.cjs
 node tools/atlas-review/build-other-runtime-audit.cjs
 node tools/atlas-review/verify-other-windows.cjs
 node tools/atlas-review/verify.cjs

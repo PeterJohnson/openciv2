@@ -22,7 +22,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/pedia-advance-proposed.png",
     "proposedSize": [
       1280,
@@ -97,7 +97,7 @@
       "src/auto/pedia.cpp",
       "PediaWindow::create; draw_frame; draw_item_list; draw_advance_page; draw_advance_tree; draw_unit_page; draw_improvement_page; draw_terrain_page"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/pedia-terrain-proposed.png",
     "proposedSize": [
       1280,
@@ -142,10 +142,10 @@
       "src/auto/reports.cpp",
       "foreign_minister_show; historian_report_show"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/foreign-minister-proposed.png",
     "proposedSize": [
-      960,
+      1360,
       640
     ]
   },
@@ -187,7 +187,7 @@
       "src/auto/reports.cpp",
       "DestroyedCivsWindow::create; draw_entry; draw_portrait; credits_draw_scroll"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/destroyed-civilizations-proposed.png",
     "proposedSize": [
       1280,
@@ -217,11 +217,11 @@
       "src/auto/game.cpp",
       "status_draw_info; status_draw_unit_panel; status_redraw"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/status-panel-proposed.png",
     "proposedSize": [
       640,
-      880
+      740
     ]
   },
   {
@@ -245,13 +245,13 @@
     "mode": "enhanced-proposal",
     "source": [
       "src/auto/city.cpp",
-      "TaxRateDialog::run; redraw"
+      "TaxRateDialog::run; paint; calc_totals"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/tax-rates-proposed.png",
     "proposedSize": [
-      800,
-      512
+      1232,
+      856
     ]
   },
   {
@@ -262,26 +262,26 @@
       "src/auto/civ.cpp",
       "civ_choose_research_dialog; research_option_draw_advance"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/dialog-research-proposed.png",
     "proposedSize": [
-      860,
-      720
+      1100,
+      860
     ]
   },
   {
     "id": "dialog-production",
-    "title": "London: Change Production",
+    "title": "What shall we build in London?",
     "mode": "enhanced-proposal",
     "source": [
       "src/auto/window.cpp",
       "Dialog option, checkbox, button and text drawing helpers"
     ],
-    "note": "Independent enhanced presentation proposal with illustrative values; not current-engine execution. See OTHER-WINDOWS.md for boundaries.",
+    "note": "Enhanced reflow of the same extracted source content and saved-state fixture as the original/HD views; no game renderer changes.",
     "proposed": "review/other-windows/images/dialog-production-proposed.png",
     "proposedSize": [
-      860,
-      680
+      1520,
+      1280
     ]
   },
   {

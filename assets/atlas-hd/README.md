@@ -611,8 +611,10 @@ Twelve report scenes execute 32 extracted C++ bodies; another 258 extracted bodi
 now drive the remaining 23 baseline scenes. Enhanced proposals stay separate.
 The [report refinements](review/other-windows/report-refinements.html) show
 source-aligned background bands, readable military headings, larger Top Cities
-wonders, 40 individual advance illustrations and source-matched Civilopedia
-buttons. Native/HD improvements are confined to background art, plus a corrected
+wonders, 56 shared advance illustrations and source-matched Civilopedia
+buttons. [Enhanced content refinements](review/other-windows/content-refinements.html)
+restore Forest fields, diplomacy/status information and complete research/production
+lists, align tax icons, and improve destruction-screen contrast. Native/HD improvements are confined to background art, plus a corrected
 advance-era fixture field; foreground layout remains extracted game code.
 The [runtime comparison](review/other-windows/runtime-audit.html) includes twelve
 scenes captured from actual OpenCiv2 execution with original artwork. Original council video portraits are unavailable

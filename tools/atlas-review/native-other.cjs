@@ -314,6 +314,8 @@ async function build() {
     return rows;
 }
 module.exports = {
+    file,
+    glyphs,
     render,
     ids,
     build

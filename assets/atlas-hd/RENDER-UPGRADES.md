@@ -567,11 +567,19 @@ demonstrates smaller, independently scoped changes:
   the English saved-state fixture, not an interactive civilization selector.
 - Pass the actual advance ID to enhanced icon selection. The current renderer
   intentionally shares 20 era/category icons; retain those for original/HD-only
-  comparisons. The enhanced mapping demonstrates 40 distinct illustrations for
-  the displayed advances and needs expansion before supporting every ruleset.
+  comparisons. The enhanced mapping demonstrates 56 distinct illustrations shared across
+  reports, Civilopedia and research selection for the displayed advances and needs expansion before supporting every ruleset.
 - Enlarge Top Cities wonders within the measured row height, with spacing based
   on the number of wonders. Preserve Civilopedia's source actions and enabled
   state when restyling its controls; do not substitute decorative actions.
+
+Keep enhanced content bound to the same view model as the native renderer.
+The [content refinements](review/other-windows/content-refinements.html) demonstrate
+that boundary with retained traces: include every visible production option and
+its statistics, preserve current selection and action order, and use actual unit
+identity/state and civilization summary values. Size columns from measured text;
+anchor tax symbols to the allocation label rather than the slider's left endpoint.
+Use separate dark contrast panels for portraits and captions over busy artwork.
 
 These changes are implemented only in the standalone proposals and authored
 backgrounds. No production renderer, resource loader or game code is changed.
