@@ -12,6 +12,19 @@ from PIL import Image, ImageChops
 ROOT = Path(__file__).resolve().parents[1]
 
 
+def check_unit_shields(path):
+    # The seed-7 default new game starts with Roman settlers. At density 2 the
+    # shield must contain their ivory faction color in both the map and status
+    # pane. A dark, untinted replacement mask used to pass the general image
+    # checks. Keep the boxes clear of the header/text and check more than one pixel.
+    with Image.open(path) as im:
+        assert im.size == (2048, 1536)
+        for name, box in (('map', (0, 560, 1536, 1150)),
+                          ('status', (1536, 640, 1720, 800))):
+            colors = dict((rgb, n) for n, rgb in im.crop(box).convert('RGB').getcolors(2048*1536))
+            assert colors.get((238, 228, 191), 0) > 100, f'{name}: unit shield lacks faction color'
+
+
 def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game', type=Path, required=True)
@@ -68,6 +81,7 @@ def main():
     city_script.write_text((ROOT/'harness/scripts/newgame.txt').read_text() +
                           (ROOT/'harness/hd/found-city.txt').read_text())
     city = run('new-city', exe, city_script, False)
+    check_unit_shields(city/'12-map.bmp')
     with Image.open(city/'city.bmp') as im:
         assert im.size == (2048, 1536)
     assert 'CreateFont(Arial, -13' in (city/'hooks.log').read_text(), 'Stockpile meters were not drawn'

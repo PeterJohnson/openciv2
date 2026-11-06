@@ -2987,6 +2987,20 @@ void __cdecl gfx_select_zoom_font(i32 zoom)
   return;
 }
 
+/* The replacement shield is an alpha mask, not a sheet of palette markers 5/6.
+   Tint it while drawing so its filtered edge and the indexed copy agree. The
+   original sprite still uses the two replace_color calls at each draw site. */
+static void gfx_draw_unit_shield(iptr clip,iptr surface,int x,int y,int color)
+{
+  Sprite *shield = (Sprite *)&unit_shield_sprite;
+  if (hd_enabled) {
+    shield->draw_silhouette(clip,surface,x,y,color);
+  }
+  else {
+    shield->draw(clip,surface,x,y);
+  }
+}
+
 /* 0056baff auto */
 void __cdecl
 gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int no_fortress)
@@ -3069,26 +3083,25 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
       abs_dx = stack_dx;
     }
     if (2 < (int)abs_dx) {
-      ((Sprite *)((i8 *)&unit_shield_sprite))->draw((iptr)clip_stack_shadow,surface,
-                 side + stack_dx + shield_x,stack_dy + shield_y + 1);
+      gfx_draw_unit_shield((iptr)clip_stack_shadow,surface,
+                 side + stack_dx + shield_x,stack_dy + shield_y + 1,0xf);
       rect_offset((iptr)&shield_rect.left,side,1);
       ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,0xf);
       ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,0xf);
       rect_offset((iptr)&shield_rect.left,-side,0xffffffff);
     }
-    ((Sprite *)((i8 *)&unit_shield_sprite))->draw((iptr)clip_stack,surface,stack_dx + shield_x,
-               stack_dy + shield_y);
+    gfx_draw_unit_shield((iptr)clip_stack,surface,stack_dx + shield_x,
+               stack_dy + shield_y,color_mid);
     ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,color_mid);
     ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,color_mid);
   }
   rect_set_xywh((iptr)&shield_rect.left,shield_x,shield_y,shield_width,shield_height);
-  ((Sprite *)((i8 *)&unit_shield_sprite))->draw((iptr)clip_shield_shadow,surface,side + shield_x,shield_y + 1
-            );
+  gfx_draw_unit_shield((iptr)clip_shield_shadow,surface,side + shield_x,shield_y + 1,0x10);
   rect_offset((iptr)&shield_rect.left,side,1);
   ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,0x10);
   ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,0x10);
   rect_offset((iptr)&shield_rect.left,-side,0xffffffff);
-  ((Sprite *)((i8 *)&unit_shield_sprite))->draw((iptr)clip_shield,surface,shield_x,shield_y);
+  gfx_draw_unit_shield((iptr)clip_shield,surface,shield_x,shield_y,color_primary);
   ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,color_primary);
   ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,color_mid);
   scaled = gfx_zoom_scale(2,zoom);
