@@ -1,7 +1,7 @@
 # Atlas HD runtime graphics
 
 Atlas HD is the default for interactive play. The artwork and non-map presentation
-designs come from `new-graphics` at `8c1fce98`. That branch supplied standalone
+designs come from `new-graphics` through `05d5967d`. That branch supplied standalone
 renderers; this integration connects them to the running game's state and controls.
 
 ## Choosing graphics
@@ -41,6 +41,12 @@ provides true-color surfaces, alpha filtering, sprite bindings, fonts, and outpu
 density. Indexed proxy planes retain the game's color-coded picking masks and
 registration-marker contracts. The enhanced map sampler, terrain edge passes,
 connected overlays and zoom substitutions from the review renderer are excluded.
+
+Unexplored boundaries use the directional feathered masks from `05d5967d`,
+replacing solid diamond notches in both the world map and city resource map.
+The masks fade inward without revealing hidden terrain. Their original 32×16
+logical boxes and the source zoom cutoff (no edge masks at zoom −4 and below)
+are preserved.
 
 Non-map enhancements include:
 

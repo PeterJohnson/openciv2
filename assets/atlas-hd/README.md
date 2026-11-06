@@ -1,6 +1,6 @@
 # Atlas HD runtime assets
 
-This is the runtime subset of `new-graphics` at `8c1fce98`. It contains replacement
+This is the runtime subset of `new-graphics` at `05d5967d`. It contains replacement
 artwork, native crop bindings, layout data and authoring records. Build it with
 `python tools/build_atlas.py`; see [runtime documentation](../../docs/HD-GRAPHICS.md).
 
@@ -14,3 +14,8 @@ references remain on the source branch; they are not part of the runtime package
 [PROVENANCE.md](PROVENANCE.md) preserves the collection's authoring history. Its
 historical references to masters and review tools refer to that source branch.
 No original-game graphics are inputs to the runtime pack builder.
+
+The four directional unexplored-boundary masks are shared by `compatibility/fog`
+and `compatibility/dither/11`. They feather inward within the original 32×16
+quarter-tile boxes, including the city resource map. The runtime retains the
+source renderer's zoom cutoff: edge masks are omitted at zoom −4 and below.

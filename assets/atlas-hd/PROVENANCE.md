@@ -49,6 +49,12 @@ fields, with hashes retained in the fixture. No save file, original rules file
 or image input is included; the renderer still comes from this repository.
 The spacecraft truss/attachment drawing is new vector geometry. No source-game
 window screenshot or resource bitmap was used as a pixel input.
+The unexplored-boundary adapters are deterministic directional alpha masks authored
+in `tools/atlas-review/fog-edges.cjs`. Their native 32×16 boxes follow the four
+slots in `MapView::draw_tile_unexplored_edges`; the fade stays inside the
+terrain footprint. Original imagery is used only in the composed boundary
+comparison renders, never as input to these masks.
+
 The retained SVGs are editable sources. `tools/atlas-review/art.cjs` defines the
 shared terrain and transport geometry. The standalone adapter adds coast
 quarters, dither masks, logical sprite frames and three small overview icons.
