@@ -21,12 +21,17 @@ def fixture():
         return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>2I5B', 4, 4, 8, 6, 0, 0, 0))
                 + chunk(b'IDAT', zlib.compress(rows)) + chunk(b'IEND', b''))
     palette = bytearray(768);palette[7] = 255;palette[9] = 255
+    # A narrow white flagpole between the old bilinear sampler's taps.
+    rows = b''.join(b'\0'+b''.join(bytes((255,255,255,255) if x == 2 else (255,0,255,0))
+                                  for x in range(64)) for y in range(64))
+    pole = (b'\x89PNG\r\n\x1a\n'+chunk(b'IHDR',struct.pack('>2I5B',64,64,8,6,0,0,0))
+            +chunk(b'IDAT',zlib.compress(rows))+chunk(b'IEND',b''))
     index, payload = b'', b''
-    for key, variant in [('file/test', False), ('tint/file/test/2', True)]:
-        data = png(variant);offset = 780+2*180+len(payload)
+    for key, data in sorted([('file/test', png(False)), ('tint/file/test/2', png(True)), ('test/pole', pole)]):
+        offset = 780+3*180+len(payload)
         index += key.encode().ljust(160, b'\0') + struct.pack('<5I', 4, 4, offset, len(data), offset+len(data))
         payload += data+bytes([2]*16)
-    return b'C2ATLAS1' + struct.pack('<I', 2) + palette + index + payload
+    return b'C2ATLAS1' + struct.pack('<I', 3) + palette + index + payload
 
 
 def main():

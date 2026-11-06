@@ -3240,7 +3240,17 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
     tmp = rect_height((RECT *)&shield_rect.left);
     text_y = shield_rect.top + tmp / 2;
     tmp = rect_width((RECT *)&shield_rect.left);
-    ((DibSurface *)surface)->draw_text((iptr)&status_window_block.map_label_font,(const char *)order_text,shield_rect.left + tmp / 2,text_y,value);
+    DibSurface *target = (DibSurface *)surface;
+    RECT saved_clip, order_clip;
+    if (hd_enabled) {
+      /* The smallest font is six logical pixels tall. At low zoom the shield
+         can be smaller; its order glyph must not spill into the HP bar/map. */
+      target->get_clip(&saved_clip);
+      IntersectRect(&order_clip,&saved_clip,&shield_rect);
+      target->set_clip(&order_clip);
+    }
+    target->draw_text((iptr)&status_window_block.map_label_font,(const char *)order_text,shield_rect.left + tmp / 2,text_y,value);
+    if (hd_enabled) target->set_clip(&saved_clip);
   }
   silhouette = (uint)(units[unit2].orders == ORDER_SLEEP);
   if ((((unit_types[units[unit2].type].domain == DOMAIN_AIR) &&
@@ -8830,8 +8840,11 @@ int *Sprite::blit_to_surface(int *out_rect,DibSurface *surface,int key_arg,int x
   /* Keep the indexed draw too: map picking and editor color queries consume it.
      Its bytes must not subsequently replace the true-color presentation. */
   ON_SCOPE_EXIT(if (hd_enabled) {
-    if(atlas)hd_commit_rect((void *)surface->bits,hd_x,hd_y,hd_w,hd_h);
-    else hd_changed((void *)surface->bits,x,y,width(),height());
+    RECT *drawn = (RECT *)out_rect;
+    if(atlas)hd_commit_rect((void *)surface->bits,drawn->left,drawn->top,
+                           drawn->right-drawn->left,drawn->bottom-drawn->top);
+    else hd_changed((void *)surface->bits,drawn->left,drawn->top,
+                    drawn->right-drawn->left,drawn->bottom-drawn->top);
   });
 
   int trim_y;
@@ -8936,8 +8949,11 @@ int *Sprite::blit_silhouette_to_surface(int *out_rect,DibSurface *surface,int ke
   /* Keep the indexed draw too: map picking and editor color queries consume it.
      Its bytes must not subsequently replace the true-color presentation. */
   ON_SCOPE_EXIT(if (hd_enabled) {
-    if(atlas)hd_commit_rect((void *)surface->bits,hd_x,hd_y,hd_w,hd_h);
-    else hd_changed((void *)surface->bits,x,y,width(),height());
+    RECT *drawn = (RECT *)out_rect;
+    if(atlas)hd_commit_rect((void *)surface->bits,drawn->left,drawn->top,
+                           drawn->right-drawn->left,drawn->bottom-drawn->top);
+    else hd_changed((void *)surface->bits,drawn->left,drawn->top,
+                    drawn->right-drawn->left,drawn->bottom-drawn->top);
   });
 
   int trim_y;

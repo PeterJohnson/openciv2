@@ -67,6 +67,14 @@ and red bars. Order glyphs, automation markers and fortification overlays retain
 the game's existing drawing rules. Focus inversion preserves physical pixels,
 and grey-backdrop transitions preserve source colors for fade-in and redraws.
 
+At reduced sizes, atlas images are filtered over each output pixel's source
+area before drawing. This preserves thin flagpoles and unit details that point
+sampling could miss, without bleeding transparent RGB into their edges. The
+filtered image cache follows the existing memory limit. Sprite clipping retains
+the same scale and origin as an unclipped draw. Indexed fallback sprites update
+only their scaled, clipped destination, and unit order glyphs stay inside their
+shield's text area even when the shield is smaller than the minimum font size.
+
 Non-map enhancements include:
 
 - City panorama placement and depth ordering using live selected buildings,
@@ -108,6 +116,11 @@ malformed-pack rejection and original mode without a pack.
 It also checks selective color variants, cloned sprites and silhouette overrides.
 Captured-sprite keys, greyscale alpha composition, reversible inversion and
 non-destructive backdrop greying are covered at every density.
+The compositor also checks thin-detail coverage and clipped/unclipped equality
+for unit, flag and shield dimensions at every map zoom from -7 through +8.
+`python tests/source_probe.py tests/hd_sprite_bounds_test.cpp` runs the actual
+sprite bridge through 13,824 offset, trim, zoom and clipping cases in both debug
+and optimized builds (set `CXX` to a C++ compiler).
 `python tools/test_hd_factions.py` checks all eight colors in the built pack,
 including flag trim, badge details, dark flags and the aircraft footprint, and
 writes `build/hd-factions.png` for visual review.
@@ -122,6 +135,11 @@ against a separately built `main` executable using a common replay.
 `python tools/test_hd_effects.py --game PATH` additionally checks detailed sleeping
 units, grey-backdrop transitions and color restoration in a new-game replay with
 no original image files, plus the built pack's status and shadow colors.
+`python tools/test_hd_zoom.py --game PATH` renders all 16 map zooms at densities
+1–4 around Leipzig in the reference `He_Auto.SAV`, checks that the separate
+status header stays unchanged, and writes an overview for each density. Its `call_sync` replay
+commands wait for finite redraws to return; ordinary `call` remains reentrant
+so subsequent replay input can operate modal dialogs.
 
 Windows verification for this integration includes a built executable running
 without original image files, and pixel/RNG equality with `main` in original

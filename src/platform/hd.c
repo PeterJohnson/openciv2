@@ -16,6 +16,8 @@ typedef struct {
     uint32_t w, h, offset, length, indices;
     unsigned char *indexed, *rgba;
     int pw, ph;
+    unsigned char *small;
+    int small_w, small_h; /* one cached minification size; zoom/density may change */
     int cx, cy, cw, ch; /* dynamic crop, in source logical coordinates */
     uint64_t used;
 } Image;
@@ -161,8 +163,12 @@ static Image *decode(int id)
         if (!old)
             break;
         cache_bytes -= (uint64_t)old->pw * old->ph * 4;
+        cache_bytes -= (uint64_t)old->small_w * old->small_h * 4;
         free(old->rgba);
+        free(old->small);
         old->rgba = NULL;
+        old->small = NULL;
+        old->small_w = old->small_h = 0;
     }
     png = malloc(a->length);
     if (!png)
@@ -256,6 +262,8 @@ int hd_crop(int id, int x, int y, int w, int h)
     images[count] = images[id - 1];
     snprintf(images[count].key, 160, "%s", key);
     images[count].rgba = NULL;
+    images[count].small = NULL;
+    images[count].small_w = images[count].small_h = 0;
     images[count].indexed = NULL;
     images[count].cx = x;
     images[count].cy = y;
@@ -417,6 +425,50 @@ static uint32_t blend(uint32_t dst, unsigned r, unsigned g, unsigned b, unsigned
     return 0xff000000u | ((r + ((dst >> 16) & 255) * ia + 127) / 255) << 16 |
            ((g + ((dst >> 8) & 255) * ia + 127) / 255) << 8 | (b + (dst & 255) * ia + 127) / 255;
 }
+/* Integrate the source footprint before bilinear sampling. Four point samples
+   can miss a flagpole or a thin unit detail entirely at small map zooms. Work
+   in premultiplied color so transparent RGB never creates a fringe. The cache
+   belongs to the decoded atlas image and is included in its eviction budget. */
+static void minify(Image *a, Image *sample, int w, int h)
+{
+    int x, y;
+    if (w > a->pw) w = a->pw;
+    if (h > a->ph) h = a->ph;
+    *sample = *a;
+    if ((w == a->pw && h == a->ph) || !a->length) return;
+    if (a->small_w != w || a->small_h != h) {
+        cache_bytes -= (uint64_t)a->small_w * a->small_h * 4;
+        free(a->small);
+        a->small = malloc((size_t)w * h * 4);
+        if (!a->small) plat_fatal("Out of memory filtering Atlas image");
+        a->small_w = w; a->small_h = h;
+        cache_bytes += (uint64_t)w * h * 4;
+        for (y = 0; y < h; y++) for (x = 0; x < w; x++) {
+            int sx, sy, left = x*a->pw, right = (x+1)*a->pw;
+            int top = y*a->ph, bottom = (y+1)*a->ph;
+            double rr = 0, gg = 0, bb = 0, aa = 0;
+            unsigned char *out = a->small + (y*w+x)*4;
+            for (sy = top/h; sy*h < bottom; sy++) {
+                int t = sy*h > top ? sy*h : top;
+                int b = (sy+1)*h < bottom ? (sy+1)*h : bottom;
+                for (sx = left/w; sx*w < right; sx++) {
+                    int l = sx*w > left ? sx*w : left;
+                    int r = (sx+1)*w < right ? (sx+1)*w : right;
+                    const unsigned char *p = a->rgba + (sy*a->pw+sx)*4;
+                    double alpha = (double)(r-l)*(b-t)*p[3];
+                    aa += alpha;
+                    rr += alpha*p[0]; gg += alpha*p[1]; bb += alpha*p[2];
+                }
+            }
+            out[0] = aa ? (unsigned char)(rr/aa+.5) : 0;
+            out[1] = aa ? (unsigned char)(gg/aa+.5) : 0;
+            out[2] = aa ? (unsigned char)(bb/aa+.5) : 0;
+            out[3] = (unsigned char)(aa/((double)a->pw*a->ph)+.5);
+        }
+    }
+    sample->rgba = a->small;
+    sample->pw = w; sample->ph = h;
+}
 void hd_draw(void *bits, int id, int x, int y, int w, int h, int l, int t, int r, int bot, int tint)
 {
     hd_draw_bitmap(bmp_of_bits(bits), id, x, y, w, h, l, t, r, bot, tint);
@@ -425,6 +477,7 @@ static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t,
                   int grey, int key)
 {
     int px, py, d = hd_density;
+    Image sample;
     if (!b || !a || w <= 0 || h <= 0)
         return;
     if (!b->hd)
@@ -446,6 +499,13 @@ static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t,
         r = b->w;
     if (bot > b->h)
         bot = b->h;
+    if (l >= r || t >= bot) return;
+    /* Dynamic captures retain their indexed key mask; atlas alpha is already
+       authored, so it can be filtered once and reused across clipped draws. */
+    if (key < 0) {
+        minify(a, &sample, w*d, h*d);
+        a = &sample;
+    }
     /* Bilinear filtering in premultiplied color space: RGB never leaks from
        transparent texels. Tint affects color independently of alpha coverage. */
     for (py = t * d; py < bot * d; py++)

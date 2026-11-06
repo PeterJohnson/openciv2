@@ -323,7 +323,7 @@ void replay_run_script(void)
             input_mouse_button(b == 3 ? 2 : b == 2 ? 3 : 1, 0);
             next_action_us = vclock_us + 100 * 1000;
             break;
-        } else if (!strcmp(cmd, "call")) {
+        } else if (!strcmp(cmd, "call") || !strcmp(cmd, "call_sync")) {
             /* call FUNCTION ADDR [ARGS]: run a game function directly (tests
                of screens hard to reach by input); the original's address is
                for hook/replay.c, which runs the same scripts.  The functions
@@ -340,7 +340,10 @@ void replay_run_script(void)
                     ;
                 if (replay_calltable[i].name) {
                     next_action_us = vclock_us + 100 * 1000;
-                    running = 0;        /* the call may run a modal loop that idles */
+                    /* Modal calls need input from subsequent script commands.
+                       Finite redraws use call_sync so a shot cannot interrupt
+                       them at an internal message-pump/idle boundary. */
+                    if (!strcmp(cmd, "call")) running = 0;
                     ((int (*)(int, int, int, int))replay_calltable[i].fn)(args[0], args[1], args[2], args[3]);
                     running = 1;
                 } else

@@ -59,6 +59,29 @@ static Bitmap *bitmap(int index, int bottom)
     bitmaps[index] = b;
     return b;
 }
+static void zoom_clips(Bitmap *a, Bitmap *b, int id)
+{
+    static const int sizes[][2] = {{64,48},{14,22},{12,20}};
+    static const int positions[][2] = {{-5,-3},{0,0},{2,3},{13,9},{18,14}};
+    static const int clips[][4] = {{0,0,16,12},{2,3,13,9},{7,5,7,5}};
+    int z, s, p, c, tint, x, y, d = hd_density;
+    for (z = -7; z <= 8; z++) for (s = 0; s < 3; s++)
+        for (p = 0; p < 5; p++) for (tint = -1; tint <= 3; tint += 4) {
+            int w = sizes[s][0]*(z+8)/8, h = sizes[s][1]*(z+8)/8;
+            memset(a->bits,0,192);hd_changed(a->bits,0,0,16,12);
+            hd_draw(a->bits,id,positions[p][0],positions[p][1],w,h,0,0,16,12,tint);
+            for (c = 0; c < 3; c++) {
+                memset(b->bits,0,192);hd_changed(b->bits,0,0,16,12);
+                hd_draw(b->bits,id,positions[p][0],positions[p][1],w,h,
+                        clips[c][0],clips[c][1],clips[c][2],clips[c][3],tint);
+                for (y = 0; y < 12*d; y++) for (x = 0; x < 16*d; x++) {
+                    int inside = x >= clips[c][0]*d && x < clips[c][2]*d &&
+                                 y >= clips[c][1]*d && y < clips[c][3]*d;
+                    assert(b->hd[y*16*d+x] == (inside ? a->hd[y*16*d+x] : 0xff000000u));
+                }
+            }
+        }
+}
 int main(int argc, char **argv)
 {
     Bitmap *a, *b;
@@ -85,6 +108,28 @@ int main(int argc, char **argv)
     a = bitmap(0, 0);
     b = bitmap(1, 1);
     hd_sync(a);
+    /* Thin flags must retain their alpha coverage when reduced to a tiny
+       map symbol, including when their pole falls between bilinear taps. */
+    hd_draw(a->bits,hd_find("test/pole"),0,0,1,1,0,0,16,12,-1);
+    {
+        unsigned coverage = 0;
+        for (y = 0; y < d; y++) for (x = 0; x < d; x++) {
+            uint32_t c = a->hd[y*16*d+x];
+            assert((c & 255) == ((c >> 8) & 255) && (c & 255) == ((c >> 16) & 255));
+            coverage += c & 255;
+        }
+        assert(coverage >= 3u*d*d && coverage <= 5u*d*d);
+    }
+    hd_changed(a->bits,0,0,16,12);
+    /* Cropping a filtered source must not borrow its resized-pixel cache. */
+    {
+        int crop = hd_crop(hd_find("test/pole"),2,0,2,4);
+        hd_draw(a->bits,crop,0,0,1,1,0,0,16,12,-1);
+        assert(a->hd[0] == 0xff000000u);
+        hd_draw(a->bits,hd_find("test/pole"),0,0,1,1,0,0,16,12,-1);
+        assert((a->hd[0]&255) > 0);
+        hd_changed(a->bits,0,0,16,12);
+    }
     hd_draw(a->bits, id, 2, 2, 8, 8, 4, 4, 9, 9, -1);
     for (y = 0; y < 12 * d; y++)
         for (x = 0; x < 16 * d; x++) {
@@ -203,6 +248,7 @@ int main(int argc, char **argv)
     assert(hd_sprite_draw(&clone,b->bits,0,0,5,3,0,0,16,12,-1));
     for (x = 0; x < 16*12*d*d; x++) assert(b->hd[x] == 0xff000000u);
     hd_sprite_forget(&clone);
+    zoom_clips(a,b,id);
     for (x = 0; x < 2; x++) {
         hd_bitmap_destroy(bitmaps[x]);
         free(bitmaps[x]->bits);
