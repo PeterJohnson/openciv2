@@ -333,6 +333,8 @@ void plat_compose(void)
                 memcpy((DWORD *)bmp_row(screen, y) + x0, (DWORD *)bmp_row(s, sy) + (x0 - dx), (size_t)(x1 - x0) * 4);
         }
     }
+    if (hd_enabled && hd_fade_grey)
+        hd_grey_pixels(screen->hd, (uint64_t)screen_w*screen_h*hd_density*hd_density, hd_fade_grey);
     if (plat_color_lut_on) {
         if (hd_enabled) {
             size_t i, n=(size_t)screen_w*screen_h*hd_density*hd_density;
@@ -917,6 +919,8 @@ static void fill_device(Bitmap *b, const Region *clip, const RECT *r, COLORREF r
         if (a.top < 0) a.top = 0;
         if (a.right > b->w) a.right = b->w;
         if (a.bottom > b->h) a.bottom = b->h;
+        if (hd_enabled && rop2_xor)
+            hd_bitmap_invert(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
         if (b->bpp == 8) {
             int idx = surf_nearest(b, rgb);
             for (y = a.top; y < a.bottom; y++) {
@@ -939,7 +943,10 @@ static void fill_device(Bitmap *b, const Region *clip, const RECT *r, COLORREF r
                 for (x = a.left; x < a.right; x++)
                     surf_put(b, x, y, rop2_xor ? surf_get(b, x, y) ^ 0xffffff : rgb);
         }
-        if (hd_enabled) hd_bitmap_changed(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
+        if (hd_enabled) {
+            if (rop2_xor) hd_commit_rect(b->bits,a.left,a.top,a.right-a.left,a.bottom-a.top);
+            else hd_bitmap_changed(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
+        }
     }
 }
 

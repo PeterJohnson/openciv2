@@ -444,6 +444,12 @@ void extras_draw_grey_sprite(Sprite *sprite, iptr surface, int x, int y)
     int px, py, w, h;
     u8 *keep;
     DibSurface *s = (DibSurface *)surface;
+    if (hd_enabled) {
+        hd_sprite_greyscale(sprite, 1);
+        sprite->draw((iptr)&r, surface, x, y);
+        hd_sprite_greyscale(sprite, 0);
+        return;
+    }
     grey_map_update();
     sprite->draw((iptr)&r, surface, x, y);
     w = r.right - r.left;

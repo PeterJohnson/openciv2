@@ -5,6 +5,7 @@
 int hd_load_surface(DibSurface *, int, GamePalette *);
 int hd_encode_sprite(Sprite *, DibSurface *, RECT *,int);
 void hd_bind_map_masks();
+void hd_game_windows_grey(int);
 
 /* 00407f90 auto */
 int __cdecl rect_width(RECT *rect)
@@ -1484,6 +1485,11 @@ void __cdecl gfx_free_grey_remap(void)
 void __cdecl gfx_grey_out_windows(void)
 
 {
+  if (hd_enabled) {
+    hd_game_windows_grey(1);
+    ui_blit_all_windows();
+    return;
+  }
   int remap_table;
   int view;
   
@@ -1528,6 +1534,15 @@ void __cdecl screen_fade_out(void)
   int step;
   
   blink.unit_active = 0;
+  if (hd_enabled) {
+    for (step = 0; step <= 10; step++) {
+      hd_fade_grey = step * 255 / 10;
+      ui_delay_ticks(1);
+    }
+    gfx_grey_out_windows();
+    hd_fade_grey = 0;
+    return;
+  }
   if (display_palette.palettized != 0) {
     ((GamePalette *)((i8 *)&game_palette_block.game_palette))->fade_begin(10,0xec,10,(iptr)&grey_palette_block.grey_palette);
     ui_blit_all_windows();
@@ -1551,6 +1566,18 @@ void __cdecl screen_fade_in(void)
 {
   int step;
   
+  if (hd_enabled) {
+    hd_fade_grey = 255;
+    hd_game_windows_grey(0);
+    /* The source pixels were retained; restore them without calling inactive
+       windows' paint callbacks (which can start their own modal loops). */
+    ui_blit_all_windows();
+    for (step = 10; step >= 0; step--) {
+      hd_fade_grey = step * 255 / 10;
+      ui_delay_ticks(1);
+    }
+    return;
+  }
   if (display_palette.palettized != 0) {
     ((GamePalette *)((i8 *)&game_palette_block.game_palette))->fade_begin(10,0xec,10,(iptr)&grey_palette_block.grey_palette);
     ((GamePalette *)((i8 *)&game_palette_block.game_palette))->fade_step(0);
@@ -3233,7 +3260,7 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
   }
   else {
     ((Sprite *)(((i8 *)&pollution_sprite_block.unit_sprites) + sprite_type * 0x3c))->draw_silhouette((iptr)clip_silhouette,surface,px,
-               py,0x1a);
+               py,hd_enabled ? 23 : 0x1a);
   }
   if (units[unit2].orders == ORDER_FORTIFIED) {
     ((Sprite *)((i8 *)&fortify_overlay_sprites_block.fortify_overlay_sprites))->draw((iptr)clip_fortify,surface,px,py);
@@ -7511,6 +7538,12 @@ i8 DibSurface::in_clip(int x,int y)
 void DibSurface::remap_colors(iptr remap_table,iptr base_index,i32 unused)
 
 {
+  /* This operation is used by the grey backdrop transition. Keep HD pixels
+     and picking indices intact instead of replacing art with palette blocks. */
+  if (hd_enabled) {
+    hd_surface_grey((void *)bits,1);
+    return;
+  }
   byte *pixel;
   int col;
   int row;
@@ -8791,8 +8824,8 @@ int *Sprite::blit_to_surface(int *out_rect,DibSurface *surface,int key_arg,int x
   if (hd_enabled) {
     hd_x=x+gfx_scale_length(offset_x,0,0);hd_y=y+gfx_scale_length(offset_y,0,0);
     hd_w=gfx_scale_length(width(),0,0);hd_h=gfx_scale_length(height(),0,0);
-    atlas=hd_sprite_draw(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
-                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,-1);
+    atlas=hd_sprite_draw_keyed(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
+                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,-1,key_arg);
   }
   /* Keep the indexed draw too: map picking and editor color queries consume it.
      Its bytes must not subsequently replace the true-color presentation. */
@@ -8897,8 +8930,8 @@ int *Sprite::blit_silhouette_to_surface(int *out_rect,DibSurface *surface,int ke
   if (hd_enabled) {
     hd_x=x+gfx_scale_length(offset_x,0,0);hd_y=y+gfx_scale_length(offset_y,0,0);
     hd_w=gfx_scale_length(width(),0,0);hd_h=gfx_scale_length(height(),0,0);
-    atlas=hd_sprite_draw(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
-                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,color);
+    atlas=hd_sprite_draw_keyed(this,(void *)surface->bits,hd_x,hd_y,hd_w,hd_h,
+                         surface->clip_left,surface->clip_top,surface->clip_right,surface->clip_bottom,color,key_arg);
   }
   /* Keep the indexed draw too: map picking and editor color queries consume it.
      Its bytes must not subsequently replace the true-color presentation. */

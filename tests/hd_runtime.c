@@ -141,6 +141,68 @@ int main(int argc, char **argv)
     assert(hd_sprite_draw(&clone, b->bits, 0, 0, 4, 4, 0, 0, 16, 12, -1));
     assert(!memcmp(a->hd, b->hd, (size_t)16 * 12 * d * d * 4));
     hd_sprite_forget(&clone);
+    /* Greyscale is applied before alpha composition: the colored background
+       stays colored, and transparent magenta never contributes luminance. */
+    memset(b->bits, 3, 192);
+    hd_changed(b->bits, 0, 0, 16, 12);
+    hd_sprite_bind(&token, "file/test");
+    hd_sprite_greyscale(&token, 1);
+    assert(hd_sprite_draw(&token,b->bits,2,2,8,8,0,0,16,12,-1));
+    assert(b->hd[0] == 0xffff0000u);
+    assert(b->hd[6*d*16*d+6*d] == 0xff969696u);
+    hd_sprite_greyscale(&token, 0);
+    assert(hd_sprite_draw(&token,b->bits,2,2,8,8,0,0,16,12,-1));
+    assert(b->hd[6*d*16*d+6*d] == 0xff00ff00u);
+    hd_sprite_forget(&token);
+    /* Inverting a focus region twice must restore every physical pixel. */
+    before = malloc((size_t)16*12*d*d*4);
+    memcpy(before,b->hd,(size_t)16*12*d*d*4);
+    hd_bitmap_invert(b,2,2,8,8);
+    assert(b->hd[6*d*16*d+6*d] == 0xffff00ffu);
+    assert(b->hd[0] == before[0]);
+    hd_bitmap_invert(b,2,2,8,8);
+    assert(!memcmp(before,b->hd,(size_t)16*12*d*d*4));
+    free(before);
+    /* Backdrop greying must survive redraws without destroying source art. */
+    memset(a->bits,3,192);
+    hd_changed(a->bits,0,0,16,12);
+    hd_surface_grey(a->bits,1);
+    hd_copy(a->bits,a->bits,2,2,0,0,10,10);
+    assert(a->hd[2*d*16*d+2*d] == 0xffff0000u);
+    hd_copy(b->bits,a->bits,0,0,0,0,16,12);
+    assert(a->hd[0] == 0xffff0000u && b->hd[0] == 0xff4d4d4du);
+    hd_surface_grey(a->bits,0);
+    hd_copy(b->bits,a->bits,0,0,0,0,16,12);
+    assert(b->hd[0] == 0xffff0000u);
+    {
+        uint32_t ramp[] = {0x80112233u, 0xff00ff00u};
+        hd_grey_pixels(ramp,2,0);
+        assert(ramp[0] == 0x80112233u && ramp[1] == 0xff00ff00u);
+        hd_grey_pixels(ramp,2,255);
+        assert(ramp[0] == 0x801f1f1fu && ramp[1] == 0xff969696u);
+    }
+    /* Custom and automatic capture keys, interior holes, alternate draw keys
+       and key remaps must agree with the indexed row-trimming contract. */
+    memset(a->bits,3,192);
+    bmp_row(a,1)[1] = bmp_row(a,1)[3] = 2;
+    hd_changed(a->bits,0,0,16,12);
+    hd_sprite_capture(&token,a->bits,0,0,5,3,-1);
+    hd_sprite_copy(&clone,&token);
+    hd_sprite_forget(&token);
+    memset(b->bits,0,192);
+    hd_changed(b->bits,0,0,16,12);
+    assert(hd_sprite_draw(&clone,b->bits,0,0,5,3,0,0,16,12,-1));
+    assert(b->hd[0] == 0xff000000u);
+    assert((b->hd[d*16*d+d] & 0xff00u) > 0);
+    hd_changed(b->bits,0,0,16,12);
+    assert(hd_sprite_draw_keyed(&clone,b->bits,0,0,5,3,0,0,16,12,-1,2));
+    assert(b->hd[0] == 0xff000000u); /* discarded outside stays transparent */
+    assert((b->hd[d*16*d+2*d] & 0xff0000u) > 0); /* interior key hole revealed */
+    hd_sprite_tint(&clone,2,3);
+    hd_changed(b->bits,0,0,16,12);
+    assert(hd_sprite_draw(&clone,b->bits,0,0,5,3,0,0,16,12,-1));
+    for (x = 0; x < 16*12*d*d; x++) assert(b->hd[x] == 0xff000000u);
+    hd_sprite_forget(&clone);
     for (x = 0; x < 2; x++) {
         hd_bitmap_destroy(bitmaps[x]);
         free(bitmaps[x]->bits);

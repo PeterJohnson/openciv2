@@ -6,6 +6,7 @@
 extern "C" {
 #endif
 extern int hd_enabled, hd_density;
+extern int hd_fade_grey;
 void hd_init(int classic, int test);
 int hd_find(const char *key);
 int hd_variant(int image, int color);
@@ -32,6 +33,11 @@ void hd_sprite_forget(const void *sprite);
 void hd_sprite_capture(const void *sprite, void *bits, int x, int y, int w, int h, int key);
 int hd_sprite_draw(const void *sprite, void *bits, int x, int y, int w, int h, int left, int top, int right,
                    int bottom, int tint);
+int hd_sprite_draw_keyed(const void *sprite, void *bits, int x, int y, int w, int h, int left, int top,
+                         int right, int bottom, int tint, int key);
+void hd_sprite_greyscale(const void *sprite, int on);
+void hd_surface_grey(void *bits, int on);
+void hd_grey_pixels(uint32_t *pixels, uint64_t count, int strength);
 void hd_sprite_tint(const void *sprite, int old_color, int new_color);
 void hd_sprite_copy(const void *dst, const void *src);
 void hd_sprite_bind(const void *sprite, const char *key);
@@ -42,6 +48,7 @@ void hd_draw_bitmap(struct Bitmap *bitmap, int image, int x, int y, int w, int h
 void hd_bitmap_destroy(struct Bitmap *b);
 void hd_bitmap_commit(struct Bitmap *b);
 void hd_bitmap_changed(struct Bitmap *b, int x, int y, int w, int h);
+void hd_bitmap_invert(struct Bitmap *b, int x, int y, int w, int h);
 void hd_sync(struct Bitmap *b);
 void hd_pixel(struct Bitmap *b, int x, int y, uint32_t rgb);
 void hd_transfer(struct Bitmap *dst, struct Bitmap *src, int x, int y, int w, int h, int sx, int sy, int sw,

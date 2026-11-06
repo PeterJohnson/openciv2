@@ -10,6 +10,7 @@
 #include "../third_party/stb_image/stb_image.h"
 
 int hd_enabled, hd_density = 1;
+int hd_fade_grey;
 typedef struct {
     char key[160];
     uint32_t w, h, offset, length, indices;
@@ -361,6 +362,37 @@ void hd_pixel(Bitmap *b, int x, int y, uint32_t rgb)
     block(b, x, y, 0xff000000u | rgb);
     b->hd_before[y * b->w + x] = raw_pixel(b, x, y);
 }
+void hd_bitmap_invert(Bitmap *b, int x, int y, int w, int h)
+{
+    int px, py, d = hd_density;
+    if (!hd_enabled || !b)
+        return;
+    hd_sync(b);
+    b->hd_image = 0;
+    for (py = (y < 0 ? 0 : y) * d; py < (y + h) * d && py < b->h * d; py++)
+        for (px = (x < 0 ? 0 : x) * d; px < (x + w) * d && px < b->w * d; px++)
+            b->hd[py * b->w * d + px] ^= 0x00ffffffu;
+}
+void hd_grey_pixels(uint32_t *pixels, uint64_t n, int strength)
+{
+    uint64_t i;
+    if (strength < 0) strength = 0;
+    if (strength > 255) strength = 255;
+    for (i = 0; i < n; i++) {
+        uint32_t c = pixels[i];
+        unsigned r = (c >> 16) & 255, g = (c >> 8) & 255, b = c & 255;
+        unsigned grey = (30 * r + 59 * g + 11 * b + 50) / 100;
+        r = (r * (255 - strength) + grey * strength + 127) / 255;
+        g = (g * (255 - strength) + grey * strength + 127) / 255;
+        b = (b * (255 - strength) + grey * strength + 127) / 255;
+        pixels[i] = (c & 0xff000000u) | r << 16 | g << 8 | b;
+    }
+}
+void hd_surface_grey(void *bits, int on)
+{
+    Bitmap *b = bmp_of_bits(bits);
+    if (b) b->hd_grey = on;
+}
 void hd_attach(void *bits, int id)
 {
     Bitmap *b = bmp_of_bits(bits);
@@ -389,7 +421,8 @@ void hd_draw(void *bits, int id, int x, int y, int w, int h, int l, int t, int r
 {
     hd_draw_bitmap(bmp_of_bits(bits), id, x, y, w, h, l, t, r, bot, tint);
 }
-static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t, int r, int bot, int tint)
+static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t, int r, int bot, int tint,
+                  int grey, int key)
 {
     int px, py, d = hd_density;
     if (!b || !a || w <= 0 || h <= 0)
@@ -435,6 +468,9 @@ static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t,
                     if (sy >= a->ph)
                         sy = a->ph - 1;
                     p = a->rgba + 4 * (sy * a->pw + sx);
+                    if (key >= 0 && a->indexed &&
+                        a->indexed[(sy * a->h / a->ph) * a->w + sx * a->w / a->pw] == (unsigned)key)
+                        continue;
                     aa += k * p[3];
                     rr += k * p[0] * p[3];
                     gg += k * p[1] * p[3];
@@ -446,13 +482,16 @@ static void paint(Bitmap *b, Image *a, int x, int y, int w, int h, int l, int t,
                 gg = ((c >> 8) & 255) * aa;
                 bb = (c & 255) * aa;
             }
+            else if (grey) {
+                rr = gg = bb = (30 * rr + 59 * gg + 11 * bb) / 100;
+            }
             b->hd[py * b->w * d + px] = blend(b->hd[py * b->w * d + px], (unsigned)(rr + .5),
                                               (unsigned)(gg + .5), (unsigned)(bb + .5), (unsigned)(aa + .5));
         }
 }
 void hd_draw_bitmap(Bitmap *b, int id, int x, int y, int w, int h, int l, int t, int r, int bot, int tint)
 {
-    paint(b, decode(id), x, y, w, h, l, t, r, bot, tint);
+    paint(b, decode(id), x, y, w, h, l, t, r, bot, tint, 0, -1);
 }
 void hd_transfer(Bitmap *dst, Bitmap *src, int x, int y, int w, int h, int sx, int sy, int sw, int sh, int l,
                  int t, int r, int bot)
@@ -494,8 +533,11 @@ void hd_transfer(Bitmap *dst, Bitmap *src, int x, int y, int w, int h, int sx, i
         for (px = l * d; px < r * d; px++) {
             int ax = sx * d + (int)((int64_t)(px - x * d) * sw / w),
                 ay = sy * d + (int)((int64_t)(py - y * d) * sh / h);
-            if (ax >= 0 && ay >= 0 && ax < src->w * d && ay < src->h * d)
-                dst->hd[py * dst->w * d + px] = pixels[ay * src->w * d + ax];
+            if (ax >= 0 && ay >= 0 && ax < src->w * d && ay < src->h * d) {
+                uint32_t c = pixels[ay * src->w * d + ax];
+                if (src->hd_grey && dst != src) hd_grey_pixels(&c,1,255);
+                dst->hd[py * dst->w * d + px] = c;
+            }
         }
     free(copy);
 }
@@ -512,7 +554,7 @@ const uint32_t *hd_pixels(Bitmap *b)
 
 typedef struct SpriteImage {
     const void *sprite;
-    int image, tint;
+    int image, tint, key, grey;
     Image snapshot;
     struct SpriteImage *next;
 } SpriteImage;
@@ -538,6 +580,7 @@ void hd_sprite_forget(const void *s)
             SpriteImage *old = *p;
             *p = old->next;
             free(old->snapshot.rgba);
+            free(old->snapshot.indexed);
             free(old);
             return;
         }
@@ -547,43 +590,63 @@ void hd_sprite_forget(const void *s)
 void hd_sprite_capture(const void *s, void *bits, int x, int y, int w, int h, int key)
 {
     Bitmap *b = bmp_of_bits(bits);
-    int id = hd_source(bits), crop = hd_crop(id, x, y, w, h), px, py, d = hd_density;
+    int id, crop, px, py, d = hd_density;
     SpriteImage *p;
     hd_sprite_forget(s);
-    if (!b)
+    if (!b || w <= 0 || h <= 0 || x < 0 || y < 0 || x + w > b->w || y + h > b->h)
         return;
+    hd_sync(b);
+    id = hd_source(bits);
+    crop = hd_crop(id, x, y, w, h);
     p = calloc(1, sizeof *p);
     if (!p)
         plat_fatal("Out of memory capturing Atlas sprite");
     p->sprite = s;
+    p->key = key == -1 ? (int)raw_pixel(b, x, y) : key;
     p->image = crop;
     p->tint = -1;
     p->next = sprites;
     sprites = p;
     if (crop)
         return;
-    hd_sync(b);
     p->snapshot.w = w;
     p->snapshot.h = h;
     p->snapshot.pw = w * d;
     p->snapshot.ph = h * d;
     p->snapshot.rgba = malloc((size_t)w * h * d * d * 4);
-    if (!p->snapshot.rgba)
+    p->snapshot.indexed = malloc((size_t)w * h);
+    if (!p->snapshot.rgba || !p->snapshot.indexed)
         plat_fatal("Out of memory capturing Atlas surface");
-    if (key == -1)
-        key = raw_pixel(b, x, y);
+    key = p->key;
+    for (py = 0; py < h; py++)
+        for (px = 0; px < w; px++)
+            p->snapshot.indexed[py * w + px] = raw_pixel(b, x + px, y + py);
     for (py = 0; py < h * d; py++)
+    {
+        int first = 0, last = w;
+        /* The indexed encoder trims each row. Alternate draw keys can reveal
+           holes inside a row, but must not reveal the discarded outside. */
+        if (key >= 0) {
+            while (first < last && p->snapshot.indexed[(py / d) * w + first] == key) first++;
+            while (last > first && p->snapshot.indexed[(py / d) * w + last - 1] == key) last--;
+        }
         for (px = 0; px < w * d; px++) {
             uint32_t c = b->hd[(y * d + py) * b->w * d + x * d + px];
             unsigned char *q = p->snapshot.rgba + (py * w * d + px) * 4;
             q[0] = c >> 16;
             q[1] = c >> 8;
             q[2] = c;
-            q[3] = (key >= 0 && raw_pixel(b, x + px / d, y + py / d) == (unsigned)key) ? 0 : 255;
+            q[3] = px < first * d || px >= last * d ? 0 : 255;
         }
+    }
 }
 int hd_sprite_draw(const void *s, void *bits, int x, int y, int w, int h, int l, int t, int r, int b,
                    int tint)
+{
+    return hd_sprite_draw_keyed(s,bits,x,y,w,h,l,t,r,b,tint,-1);
+}
+int hd_sprite_draw_keyed(const void *s, void *bits, int x, int y, int w, int h, int l, int t, int r, int b,
+                         int tint, int key)
 {
     SpriteImage *p = sprite_image(s);
     int variant;
@@ -592,17 +655,34 @@ int hd_sprite_draw(const void *s, void *bits, int x, int y, int w, int h, int l,
     /* Authored color variants preserve borders and interior detail. Explicit
        silhouette draws (shadows, sleeping units) still tint the entire mask. */
     if (tint < 0 && p->tint >= 0 && (variant = hd_variant(p->image, p->tint))) {
-        paint(bmp_of_bits(bits), decode(variant), x, y, w, h, l, t, r, b, -1);
+        paint(bmp_of_bits(bits), decode(variant), x, y, w, h, l, t, r, b, -1, p->grey, -1);
         return 1;
     }
     paint(bmp_of_bits(bits), p->image ? decode(p->image) : &p->snapshot, x, y, w, h, l, t, r, b,
-          tint < 0 ? p->tint : tint);
+          tint < 0 ? p->tint : tint, p->grey, p->image ? -1 : key < 0 ? p->key : key & 255);
     return 1;
+}
+void hd_sprite_greyscale(const void *s, int on)
+{
+    SpriteImage *p = sprite_image(s);
+    if (p) p->grey = on;
 }
 void hd_sprite_tint(const void *s, int old_color, int new_color)
 {
     SpriteImage *p = sprite_image(s);
-    if (p && old_color == 8)
+    if (p && p->snapshot.indexed) {
+        int x, y;
+        Image *a = &p->snapshot;
+        for (y = 0; y < a->ph; y++)
+            for (x = 0; x < a->pw; x++)
+                if (a->indexed[(y * a->h / a->ph) * a->w + x * a->w / a->pw] == (old_color & 255)) {
+                    unsigned char *c = a->rgba + (y * a->pw + x) * 4;
+                    memcpy(c, palette + (new_color & 255) * 3, 3);
+                }
+        for (x = 0; x < (int)(a->w * a->h); x++)
+            if (a->indexed[x] == (old_color & 255)) a->indexed[x] = new_color;
+    }
+    else if (p && old_color == 8)
         p->tint = new_color;
 }
 void hd_sprite_copy(const void *dst, const void *src)
@@ -620,6 +700,12 @@ void hd_sprite_copy(const void *dst, const void *src)
         if (!q->snapshot.rgba)
             plat_fatal("Out of memory cloning Atlas pixels");
         memcpy(q->snapshot.rgba, p->snapshot.rgba, n);
+    }
+    if (p->snapshot.indexed) {
+        size_t n = (size_t)p->snapshot.w * p->snapshot.h;
+        q->snapshot.indexed = malloc(n);
+        if (!q->snapshot.indexed) plat_fatal("Out of memory cloning Atlas indices");
+        memcpy(q->snapshot.indexed, p->snapshot.indexed, n);
     }
     hd_sprite_forget(dst);
     q->sprite = dst;

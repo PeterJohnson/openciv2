@@ -58,6 +58,15 @@ diplomacy room displays a faction flag in place of its original palette-switched
 banner. The existing indexed fills for city population boxes, map ownership,
 report legends and editor color swatches already receive the civilization colors.
 
+Palette effects also have HD equivalents. Captured sprites retain their automatic
+or explicit transparency keys, interior holes and key replacements; authored
+atlas sprites retain their RGBA alpha. Sleeping units use a neutral silhouette,
+or detailed greyscale with `SentryHalftone`, without changing the background.
+Stack shadows are dark, and the existing health thresholds select green, yellow
+and red bars. Order glyphs, automation markers and fortification overlays retain
+the game's existing drawing rules. Focus inversion preserves physical pixels,
+and grey-backdrop transitions preserve source colors for fade-in and redraws.
+
 Non-map enhancements include:
 
 - City panorama placement and depth ordering using live selected buildings,
@@ -97,6 +106,8 @@ release jobs transfer that pack with the generated C to every target platform.
 clipping, overlapping copies, indexed writes, sprite capture/clone lifetimes,
 malformed-pack rejection and original mode without a pack.
 It also checks selective color variants, cloned sprites and silhouette overrides.
+Captured-sprite keys, greyscale alpha composition, reversible inversion and
+non-destructive backdrop greying are covered at every density.
 `python tools/test_hd_factions.py` checks all eight colors in the built pack,
 including flag trim, badge details, dark flags and the aircraft footprint, and
 writes `build/hd-factions.png` for visual review.
@@ -108,6 +119,9 @@ mode. `harness/hd/windows.txt` exercises live windows with a local `He_Auto.SAV`
 isolated folder, excludes original graphics, runs that replay and checks its
 screenshots. `--baseline EXE` additionally compares original-mode output and RNG
 against a separately built `main` executable using a common replay.
+`python tools/test_hd_effects.py --game PATH` additionally checks detailed sleeping
+units, grey-backdrop transitions and color restoration in a new-game replay with
+no original image files, plus the built pack's status and shadow colors.
 
 Windows verification for this integration includes a built executable running
 without original image files, and pixel/RNG equality with `main` in original
