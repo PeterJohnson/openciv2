@@ -4665,6 +4665,7 @@ uint DiploLeaderWindow::init_main_art()
     ((GamePalette *)leader_palette)->set_rgb(0x6a,0x28,(iptr)rgb_buf)
     ;
     ((DibSurface *)leader_surface)->set_palette((iptr)(leader_palette));
+    if (hd_enabled) hd_diplomacy_flag((DibSurface *)leader_surface,color_index);
   }
   return (uint)(loaded != 0);
 }

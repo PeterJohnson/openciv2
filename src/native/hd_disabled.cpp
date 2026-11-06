@@ -5,6 +5,7 @@
 #include "../platform/hd.h"
 int hd_enabled = 0, hd_density = 1;
 int hd_find(const char *) { return 0; }
+int hd_variant(int, int) { return 0; }
 void hd_size(int, int *w, int *h) { *w = *h = 0; }
 const unsigned char *hd_indices(int) { return 0; }
 const unsigned char *hd_palette() { return 0; }

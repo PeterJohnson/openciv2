@@ -1,6 +1,7 @@
 /* The game, the map windows: drawing, scrolling, the mini map: functions translated from the original
  * (tools/gen_c.py, now edited directly), in address order. */
 #include "auto_common.h"
+#include "../platform/hd.h"
 
 /* 00406a80 auto */
 /* Library Function - Multiple Matches With Different Base Names
@@ -1795,12 +1796,16 @@ void MapView::draw_tile_specials(iptr surface,int screen_x,int screen_y,iptr x,i
         break;
       }
     }
+    if (hd_enabled && variant) {
+      hd_sprite_tint((Sprite *)&airbase_sprites_block.airbase_sprites + variant,8,
+                     civ_color_primary(tile_owner(x,y)));
+    }
     ((Sprite *)(((i8 *)&airbase_sprites_block.airbase_sprites) + variant * 0x3c))->draw((iptr)airbase_rect,surface,screen_x,
                screen_y - half_h);
     rect_set_xywh((iptr)airbase_area,screen_x,screen_y - half_h,tile_w,half_h + tile_h);
     civ = tile_owner(x,y);
     color = civ_color_primary(civ);
-    ((DibSurface *)surface)->replace_color((iptr)airbase_area,0x106,color);
+    if (!hd_enabled) ((DibSurface *)surface)->replace_color((iptr)airbase_area,0x106,color);
   }
 }
 

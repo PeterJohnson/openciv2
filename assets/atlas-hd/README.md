@@ -19,3 +19,8 @@ The four directional unexplored-boundary masks are shared by `compatibility/fog`
 and `compatibility/dither/11`. They feather inward within the original 32×16
 quarter-tile boxes, including the city resource map. The runtime retains the
 source renderer's zoom cutoff: edge masks are omitted at zoom −4 and below.
+
+`tools/build_atlas.py` derives faction-color variants from the retained flag and
+badge artwork, preserving trim and alpha. It also draws a small geometric aircraft
+on the occupied-airbase variant; the runway is the existing replacement artwork.
+These runtime adapters use no original-game image inputs.

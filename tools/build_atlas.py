@@ -22,6 +22,45 @@ OUT = ROOT / 'build/data/atlas-hd.pack'
 INPUTS = set()
 
 
+def faction_color(im, target):
+    """Recolor the red cloth of the authored flag/badge, preserving trim/ink.
+
+    Recover the cloth's coverage in antialiased blends with the two fixed
+    colors. This operates on replacement art only, before any resizing.
+    """
+    cloth = (164, 66, 50)
+    fixed = ((221, 195, 139), (21, 46, 51))
+    pixels = []
+    for *rgb, alpha in im.getdata():
+        best, weight = float('inf'), 0
+        for other in fixed:
+            v = [a-b for a, b in zip(cloth, other)]
+            t = max(0, min(1, sum((a-b)*c for a, b, c in zip(rgb, other, v)) / sum(c*c for c in v)))
+            error = sum((a-b-t*c)**2 for a, b, c in zip(rgb, other, v))
+            if error < best:
+                best, weight = error, t
+        if best <= 12:
+            rgb = [max(0, min(255, round(a+weight*(b-c)))) for a, b, c in zip(rgb, target, cloth)]
+        pixels.append((*rgb, alpha))
+    out = Image.new('RGBA', im.size)
+    out.putdata(pixels)
+    return out
+
+
+def occupied_airbase(im, color):
+    """Owner-colored aircraft over the existing replacement runway."""
+    out = im.copy()
+    d = ImageDraw.Draw(out)
+    sx, sy = im.width/64, im.height/48
+    plane = [(32,22),(34,29),(43,34),(43,36),(34,33),(34,38),
+             (37,40),(37,41),(32,39),(27,41),(27,40),(30,38),
+             (30,33),(21,36),(21,34),(30,29)]
+    d.polygon([(round(x*sx), round(y*sy)) for x, y in plane], fill=tuple(color)+(255,))
+    d.line([(round(x*sx), round(y*sy)) for x, y in plane+[plane[0]]],
+           fill=(30,41,39,255), width=max(1,round(sx*.5)))
+    return out
+
+
 def read(name):
     INPUTS.add(str(name).replace('\\','/'))
     return json.loads((ART / name).read_text(encoding='utf-8'))
@@ -137,6 +176,33 @@ def build():
             crop('file/cities',1+15*i,y,14,22,f'interface/factions/flag-{i}.png')
     for name,x in [('fortified',143),('fortress',208),('airbase',273),('airbase-occupied',338)]:
         crop('file/cities',x,423,64,48,'improvement/'+name)
+
+    # The legacy palette markers are absent from RGBA art. Supply selective
+    # variants keyed by the game's live palette index; runtime tinting chooses
+    # these without flattening gold poles, outlines or runway colors.
+    flag = rgba('interface/factions/flag-0.png')
+    badge = rgba('interface/factions/shield-0.png')
+    airbase = rgba(bindings['improvement/airbase']['file'])
+    add('faction/flag', fit(flag,14,22),14,22)
+    for i in range(8):
+        color = colors[208+i*3]
+        flag_art = fit(faction_color(flag,color),14,22)
+        dark_flag = fit(faction_color(flag,tuple(round(c*.65) for c in color)),14,22)
+        badge_art = fit(faction_color(badge,color),64,64)
+        air_art = occupied_airbase(airbase,color)
+        for index in range(208+i*3,211+i*3):
+            add(f'tint/faction/flag/{index}',flag_art,14,22)
+            add(f'tint/crop/resource/tiles.dll/gifs/86/2,398,64,64/{index}',badge_art,64,64)
+            add(f'tint/crop/file/cities/338,423,64,48/{index}',air_art,64,48)
+            for slot in range(8):
+                for y,art in [(425,flag_art),(448,dark_flag)]:
+                    add(f'tint/crop/file/cities/{1+15*slot},{y},14,22/{index}',art,14,22)
+        # Initial flag sprites also cover the flag chooser and editor. Their
+        # color slots remain the original eight; map draws can select a new
+        # owner color after a tribe's color is changed in a scenario.
+        crop('file/cities',1+15*i,425,14,22,flag_art,False)
+        crop('file/cities',1+15*i,448,14,22,dark_flag,False)
+    crop('file/cities',338,423,64,48,occupied_airbase(airbase,colors[208]),False)
 
     icons='file/icons';sheet(icons)
     economy={}

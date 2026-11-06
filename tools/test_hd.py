@@ -13,13 +13,20 @@ ROOT = Path(__file__).resolve().parents[1]
 def fixture():
     def chunk(kind, data):
         return struct.pack('>I', len(data)) + kind + data + struct.pack('>I', zlib.crc32(kind + data))
-    rows = b''.join(b'\0' + b''.join(bytes((0, 255, 0, 255)) if 0 < x < 3 and 0 < y < 3
-                                  else bytes((255, 0, 255, 0)) for x in range(4)) for y in range(4))
-    png = b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>2I5B', 4, 4, 8, 6, 0, 0, 0))
-    png += chunk(b'IDAT', zlib.compress(rows)) + chunk(b'IEND', b'')
-    palette = bytearray(768);palette[7] = 255
-    index = b'file/test'.ljust(160, b'\0') + struct.pack('<5I', 4, 4, 960, len(png), 960+len(png))
-    return b'C2ATLAS1' + struct.pack('<I', 1) + palette + index + png + bytes([2]*16)
+    def png(variant):
+        rows = b''.join(b'\0' + b''.join(
+            bytes((255, 0, 0, 255) if x == y == 1 else (0, 0, 255, 255)) if variant and 0 < x < 3 and 0 < y < 3
+            else bytes((0, 255, 0, 255)) if 0 < x < 3 and 0 < y < 3
+            else bytes((255, 0, 255, 0)) for x in range(4)) for y in range(4))
+        return (b'\x89PNG\r\n\x1a\n' + chunk(b'IHDR', struct.pack('>2I5B', 4, 4, 8, 6, 0, 0, 0))
+                + chunk(b'IDAT', zlib.compress(rows)) + chunk(b'IEND', b''))
+    palette = bytearray(768);palette[7] = 255;palette[9] = 255
+    index, payload = b'', b''
+    for key, variant in [('file/test', False), ('tint/file/test/2', True)]:
+        data = png(variant);offset = 780+2*180+len(payload)
+        index += key.encode().ljust(160, b'\0') + struct.pack('<5I', 4, 4, offset, len(data), offset+len(data))
+        payload += data+bytes([2]*16)
+    return b'C2ATLAS1' + struct.pack('<I', 2) + palette + index + payload
 
 
 def main():

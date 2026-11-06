@@ -111,6 +111,14 @@ void hd_size(int id, int *w, int *h)
     *w = valid ? images[id - 1].w : 0;
     *h = valid ? images[id - 1].h : 0;
 }
+int hd_variant(int id, int color)
+{
+    char key[220];
+    if (id <= 0 || id > (int)count)
+        return 0;
+    snprintf(key, sizeof key, "tint/%s/%d", images[id - 1].key, color & 255);
+    return hd_find(key);
+}
 const unsigned char *hd_palette(void) { return palette; }
 const unsigned char *hd_indices(int id)
 {
@@ -578,8 +586,15 @@ int hd_sprite_draw(const void *s, void *bits, int x, int y, int w, int h, int l,
                    int tint)
 {
     SpriteImage *p = sprite_image(s);
+    int variant;
     if (!p)
         return 0;
+    /* Authored color variants preserve borders and interior detail. Explicit
+       silhouette draws (shadows, sleeping units) still tint the entire mask. */
+    if (tint < 0 && p->tint >= 0 && (variant = hd_variant(p->image, p->tint))) {
+        paint(bmp_of_bits(bits), decode(variant), x, y, w, h, l, t, r, b, -1);
+        return 1;
+    }
     paint(bmp_of_bits(bits), p->image ? decode(p->image) : &p->snapshot, x, y, w, h, l, t, r, b,
           tint < 0 ? p->tint : tint);
     return 1;

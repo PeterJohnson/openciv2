@@ -117,6 +117,30 @@ int main(int argc, char **argv)
     assert(hd_sprite_draw(&clone, b->bits, 0, 0, 8, 8, 0, 0, 16, 12, -1));
     hd_sprite_forget(&clone);
     assert(!hd_sprite_draw(&clone, b->bits, 0, 0, 8, 8, 0, 0, 16, 12, -1));
+    /* Selective faction variants retain contrasting detail and alpha. They
+       follow cloned sprites; explicit silhouettes override the variant. */
+    memset(a->bits, 0, 192);
+    memset(b->bits, 0, 192);
+    hd_changed(a->bits, 0, 0, 16, 12);
+    hd_changed(b->bits, 0, 0, 16, 12);
+    assert(hd_variant(id, 2) && !hd_variant(id, 3));
+    hd_draw(a->bits, hd_variant(id, 2), 0, 0, 4, 4, 0, 0, 16, 12, -1);
+    hd_sprite_bind(&token, "file/test");
+    hd_sprite_tint(&token, 8, 2);
+    hd_sprite_copy(&clone, &token);
+    hd_sprite_forget(&token);
+    assert(hd_sprite_draw(&clone, b->bits, 0, 0, 4, 4, 0, 0, 16, 12, -1));
+    assert(!memcmp(a->hd, b->hd, (size_t)16 * 12 * d * d * 4));
+    hd_changed(a->bits, 0, 0, 16, 12);
+    hd_changed(b->bits, 0, 0, 16, 12);
+    hd_draw(a->bits, id, 0, 0, 4, 4, 0, 0, 16, 12, 3);
+    assert(hd_sprite_draw(&clone, b->bits, 0, 0, 4, 4, 0, 0, 16, 12, 3));
+    assert(!memcmp(a->hd, b->hd, (size_t)16 * 12 * d * d * 4));
+    hd_sprite_tint(&clone, 8, 3);
+    hd_changed(b->bits, 0, 0, 16, 12);
+    assert(hd_sprite_draw(&clone, b->bits, 0, 0, 4, 4, 0, 0, 16, 12, -1));
+    assert(!memcmp(a->hd, b->hd, (size_t)16 * 12 * d * d * 4));
+    hd_sprite_forget(&clone);
     for (x = 0; x < 2; x++) {
         hd_bitmap_destroy(bitmaps[x]);
         free(bitmaps[x]->bits);

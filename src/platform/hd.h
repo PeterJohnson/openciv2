@@ -8,6 +8,7 @@ extern "C" {
 extern int hd_enabled, hd_density;
 void hd_init(int classic, int test);
 int hd_find(const char *key);
+int hd_variant(int image, int color);
 void hd_size(int image, int *w, int *h);
 const unsigned char *hd_indices(int image);
 const unsigned char *hd_palette(void);

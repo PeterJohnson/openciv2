@@ -36,7 +36,8 @@ The existing installer can copy those from the player's installation or disc.
 ## Renderer scope
 
 The map uses the original tile, coast-quarter, river, road, border, sprite and zoom
-composition. `src/auto/mapview.cpp` and `src/auto/map.cpp` are unchanged. HD support
+composition. `src/auto/map.cpp` is unchanged; `src/auto/mapview.cpp` only adds HD
+ownership coloring to the occupied-airbase sprite. HD support
 provides true-color surfaces, alpha filtering, sprite bindings, fonts, and output
 density. Indexed proxy planes retain the game's color-coded picking masks and
 registration-marker contracts. The enhanced map sampler, terrain edge passes,
@@ -47,6 +48,15 @@ replacing solid diamond notches in both the world map and city resource map.
 The masks fade inward without revealing hidden terrain. Their original 32×16
 logical boxes and the source zoom cutoff (no edge masks at zoom −4 and below)
 are preserved.
+
+Unit shields and disorder markers use the live owner's color. City flags select
+the live civilization's color rather than assuming its slot still matches its
+tribe's color; dark flags retain their darker cloth. Diplomacy badges use selective
+color variants that preserve gold borders and dark details. Occupied airbases
+include an owner-colored aircraft over the unchanged runway artwork. The RGBA
+diplomacy room displays a faction flag in place of its original palette-switched
+banner. The existing indexed fills for city population boxes, map ownership,
+report legends and editor color swatches already receive the civilization colors.
 
 Non-map enhancements include:
 
@@ -86,6 +96,10 @@ release jobs transfer that pack with the generated C to every target platform.
 `CC` (default `cc`). It checks densities 1–4, transparent-edge filtering,
 clipping, overlapping copies, indexed writes, sprite capture/clone lifetimes,
 malformed-pack rejection and original mode without a pack.
+It also checks selective color variants, cloned sprites and silhouette overrides.
+`python tools/test_hd_factions.py` checks all eight colors in the built pack,
+including flag trim, badge details, dark flags and the aircraft footprint, and
+writes `build/hd-factions.png` for visual review.
 
 The reference replay harness defaults to original graphics. `CIV2_TEST_HD=1`
 enables HD for replays, while still respecting `OriginalGraphics=1` and classic

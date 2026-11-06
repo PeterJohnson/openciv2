@@ -29,6 +29,15 @@ static void box(DibSurface *s, int x, int y, int w, int h, int color)
     RECT r = {x, y, x + w, y + h};
     s->fill_rect((iptr)&r, color);
 }
+void hd_diplomacy_flag(DibSurface *s, int color)
+{
+    /* The original audience room changes a palette entry for its banner.
+       RGBA rooms carry the same ownership cue as a separate flag. */
+    int id = hd_variant(hd_find("faction/flag"), color);
+    if (id)
+        hd_draw((void *)s->bits,id,24,16,28,44,
+                s->clip_left,s->clip_top,s->clip_right,s->clip_bottom,-1);
+}
 static void label(DibSurface *s, const char *text, int x, int y, int w, int h, int size = 13)
 {
     GameFont f;

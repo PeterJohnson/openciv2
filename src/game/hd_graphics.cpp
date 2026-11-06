@@ -66,7 +66,7 @@ void hd_bind_map_masks()
 {
     /* These sprites are manufactured from indexed dither masks by the original
        loader. Bind the authored quarter alpha masks after that manufacturing;
-       mapview.cpp, its topology, ordering and zoom gates remain unchanged. */
+       map topology, ordering and zoom gates remain unchanged. */
     for (int t = 0; t < 13; t++)
         for (int q = 0; q < 4; q++) {
             char key[64];

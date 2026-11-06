@@ -3001,6 +3001,16 @@ static void gfx_draw_unit_shield(iptr clip,iptr surface,int x,int y,int color)
   }
 }
 
+static void gfx_recolor_unit_shield(iptr surface,RECT *rect,int primary,int mid)
+{
+  /* HD draws the final colors directly. Its quantized background may also
+     contain indices 5/6, so the legacy marker sweep must not touch it. */
+  if (!hd_enabled) {
+    ((DibSurface *)surface)->replace_color((iptr)rect,0x106,primary);
+    ((DibSurface *)surface)->replace_color((iptr)rect,0x105,mid);
+  }
+}
+
 /* 0056baff auto */
 void __cdecl
 gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int no_fortress)
@@ -3086,24 +3096,20 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
       gfx_draw_unit_shield((iptr)clip_stack_shadow,surface,
                  side + stack_dx + shield_x,stack_dy + shield_y + 1,0xf);
       rect_offset((iptr)&shield_rect.left,side,1);
-      ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,0xf);
-      ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,0xf);
+      gfx_recolor_unit_shield(surface,&shield_rect,0xf,0xf);
       rect_offset((iptr)&shield_rect.left,-side,0xffffffff);
     }
     gfx_draw_unit_shield((iptr)clip_stack,surface,stack_dx + shield_x,
                stack_dy + shield_y,color_mid);
-    ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,color_mid);
-    ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,color_mid);
+    gfx_recolor_unit_shield(surface,&shield_rect,color_mid,color_mid);
   }
   rect_set_xywh((iptr)&shield_rect.left,shield_x,shield_y,shield_width,shield_height);
   gfx_draw_unit_shield((iptr)clip_shield_shadow,surface,side + shield_x,shield_y + 1,0x10);
   rect_offset((iptr)&shield_rect.left,side,1);
-  ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,0x10);
-  ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,0x10);
+  gfx_recolor_unit_shield(surface,&shield_rect,0x10,0x10);
   rect_offset((iptr)&shield_rect.left,-side,0xffffffff);
   gfx_draw_unit_shield((iptr)clip_shield,surface,shield_x,shield_y,color_primary);
-  ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x106,color_primary);
-  ((DibSurface *)surface)->replace_color((iptr)&shield_rect.left,0x105,color_mid);
+  gfx_recolor_unit_shield(surface,&shield_rect,color_primary,color_mid);
   scaled = gfx_zoom_scale(2,zoom);
   rect_set_xywh((iptr)&band_rect.left,shield_x,shield_y,shield_width,scaled);
   gfx_fill_rect(surface,(RECT *)&band_rect.left,10);
@@ -3409,6 +3415,8 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
     flag_y = gfx_zoom_scale(peace_treaty_icon_sprite_block.city_flag_y_offsets[style2 * 8 + walled + size_idx * 2],
                                   zoom);
     flag_y = py + flag_y;
+    if (hd_enabled) hd_sprite_tint((Sprite *)editor_tile_backdrop_sprite_block.civ_flag_sprites + civ * 2,
+                                  8,color_primary);
     ((Sprite *)(((i8 *)&editor_tile_backdrop_sprite_block.civ_flag_sprites) + civ * 0x78))->draw((iptr)clip_flag,surface,flag_x,
                flag_y);
   }
@@ -3446,8 +3454,14 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
       gfx_draw_text((const char *)size_text,label_rect.left + (pad >> 1) + 1,label_rect.top);
     }
     else {
-      ((Sprite *)((i8 *)&fortify_overlay_sprites_block.city_disorder_icon_sprite))->draw((iptr)clip_disorder,surface,px,py);
-      ((DibSurface *)surface)->replace_color((iptr)&label_rect.left,0x106,color_primary);
+      if (hd_enabled) {
+        ((Sprite *)&fortify_overlay_sprites_block.city_disorder_icon_sprite)->draw_silhouette(
+            (iptr)clip_disorder,surface,px,py,color_primary);
+      }
+      else {
+        ((Sprite *)((i8 *)&fortify_overlay_sprites_block.city_disorder_icon_sprite))->draw((iptr)clip_disorder,surface,px,py);
+        ((DibSurface *)surface)->replace_color((iptr)&label_rect.left,0x106,color_primary);
+      }
     }
   }
   gfx_reset_zoom_scale();
