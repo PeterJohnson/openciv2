@@ -86,9 +86,12 @@ typedef struct Bitmap {
     int ncolors;
     int is_dib;
     int selected;               /* selected into a DC */
-    uint32_t *hd, *hd_before;    /* physical pixels and indexed-write observation */
+    uint32_t *hd;
+    void *hd_before;            /* packed 8-bit indices, otherwise 32-bit raw pixels */
     int hd_image;               /* Atlas source sheet; never stored in saves */
     int hd_grey;                /* grey backdrop presentation, pixels retained */
+    int hd_gpu;                 /* optional host render target; HD CPU pixels may be stale */
+    struct HdIndexedCache *hd_indexed_cache;
 } Bitmap;
 
 unsigned char *bmp_row(const Bitmap *b, int y);     /* row y, top = 0 */

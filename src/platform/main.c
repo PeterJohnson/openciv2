@@ -22,12 +22,34 @@ void resources_init(void);
 void sound_poll(void);
 
 static int window_open;
+static int benchmark_offscreen;
 static uint64_t last_present, present_cost;
+int hd_redraw_active;
+static uint64_t redraw_next_poll;
+
+void hd_redraw_begin(void)
+{
+    if(!hd_redraw_active++)redraw_next_poll=host_time_us()+2000;
+}
+void hd_redraw_end(void)
+{
+    if(hd_redraw_active && !--hd_redraw_active)plat_present_now();
+}
+int hd_redraw_poll_due(void)
+{
+    uint64_t now;
+    /* Preserve virtual-clock replay timing outside performance measurements. */
+    if(!hd_redraw_active || (plat_replay && !benchmark_offscreen))return 1;
+    now=host_time_us();
+    if(now<redraw_next_poll)return 0;
+    redraw_next_poll=now+2000;
+    return 1;
+}
 
 void plat_present(void)
 {
     uint64_t now;
-    if (!window_open)
+    if (!window_open || benchmark_offscreen || hd_redraw_active)
         return;
     now = host_time_us();
     /* at most ~66 a second, and no more than a third of the time: where
@@ -38,7 +60,10 @@ void plat_present(void)
     last_present = now;
     if (!plat_overlay)
         plat_compose();
-    if (hd_enabled) host_present_hd(screen->hd, screen_w*hd_density*4, hd_density);
+    if (hd_gpu_active && screen->hd_gpu) {
+        if(!host_gpu_present(screen->hd_gpu))plat_fatal("SDL HD presentation failed");
+    }
+    else if (hd_enabled) host_present_hd(screen->hd, screen_w*hd_density*4, hd_density);
     else host_present(screen->bits, screen->stride);
     present_cost = host_time_us() - now;
 }
@@ -201,6 +226,7 @@ int main(int argc, char **argv)
 #endif
     int classic = getenv("CIV2_CLASSIC") && *getenv("CIV2_CLASSIC");
     plat_replay = !unit_test && getenv("CIV2_SCRIPT") && *getenv("CIV2_SCRIPT");
+    benchmark_offscreen=plat_replay && getenv("CIV2_BENCHMARK") && getenv("CIV2_TEST_GPU");
     /* The original's bugs are fixed (docs/BUGS.md) except with CIV2_CLASSIC=1
        (the original game) and in replays and unit tests, which are compared
        with the original; CIV2_TEST_FIXES=1 fixes them in a replay (tests). */
@@ -213,7 +239,7 @@ int main(int argc, char **argv)
     /* Replays reproduce the reference desktop (Wine without a window
        manager) unless CIV2_NORMAL_DESKTOP is set. */
     plat_normal_desktop = !plat_replay || (getenv("CIV2_NORMAL_DESKTOP") && *getenv("CIV2_NORMAL_DESKTOP"));
-    if (!host_init(unit_test || (plat_replay && !getenv("CIV2_SHOW"))))
+    if (!host_init(unit_test || (plat_replay && !getenv("CIV2_SHOW") && !getenv("CIV2_TEST_GPU"))))
         return 1;
     set_dirs(argv[0], argc > 1 && !unit_test ? argv[1] : NULL);
     hd_init(classic, unit_test || plat_replay);
@@ -273,11 +299,12 @@ int main(int argc, char **argv)
     wnd_init();
     resources_init();
     sound_init();
-    if (!window_open && !unit_test && (!plat_replay || getenv("CIV2_SHOW"))) {
+    if (!window_open && !unit_test && (!plat_replay || getenv("CIV2_SHOW") || getenv("CIV2_TEST_GPU"))) {
         window_open = host_open_window(screen_w, screen_h, full ? -full : scale ? atoi(scale) : 1);
         if (scale && atoi(scale) > 1)
             plat_scale = atoi(scale);
     }
+    hd_start_gpu();
     replay_init();
     extras_load();
     pointer_init(screen_w / 2, screen_h / 2);      /* where the X server puts it */

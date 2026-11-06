@@ -38,13 +38,17 @@ def main():
     out = ROOT / 'build/hd-unit';out.mkdir(parents=True, exist_ok=True)
     exe = out / ('hd-test.exe' if os.name == 'nt' else 'hd-test')
     cc = os.environ.get('CC', 'cc')
-    subprocess.run([cc, '-std=gnu99', '-O1', '-g', str(ROOT/'tests/hd_runtime.c'),
-                    str(ROOT/'src/platform/hd.c'), '-lm', '-o', str(exe)], check=True)
     pack = out/'atlas-hd.pack';pack.write_bytes(fixture())
-    for density in (1, 2, 3, 4):
-        env = dict(os.environ, GraphicsDensity=str(density))
-        env.pop('CIV2_TEST_HD', None);env.pop('OriginalGraphics', None)
-        subprocess.run([str(exe), str(out)], env=env, check=True)
+    # A deliberately small cache also exercises eviction and oversized-entry
+    # fallback against the same reference pixel hashes.
+    for budget in (None,4096):
+        flags = [] if budget is None else [f'-DHD_FILTERED_BUDGET={budget}']
+        subprocess.run([cc, '-std=gnu99', '-O1', '-g', *flags, str(ROOT/'tests/hd_runtime.c'),
+                        str(ROOT/'src/platform/hd.c'), str(ROOT/'tests/hd_gpu_stub.c'), '-lm', '-o', str(exe)], check=True)
+        for density in (1, 2, 3, 4):
+            env = dict(os.environ, GraphicsDensity=str(density))
+            env.pop('CIV2_TEST_HD', None);env.pop('OriginalGraphics', None)
+            subprocess.run([str(exe), str(out)], env=env, check=True)
     pack.write_bytes(b'not-an-atlas')
     result = subprocess.run([str(exe), str(out)], capture_output=True)
     assert result.returncode == 2 and b'Invalid Atlas' in result.stderr, result

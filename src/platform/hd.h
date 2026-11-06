@@ -7,6 +7,16 @@ extern "C" {
 #endif
 extern int hd_enabled, hd_density;
 extern int hd_fade_grey;
+extern int hd_gpu_active;
+extern int hd_redraw_active;
+void hd_redraw_begin(void);
+void hd_redraw_end(void);
+int hd_redraw_poll_due(void);
+/* A flat indexed background: batch writes, reuse its texture if unchanged.
+   Complete the batch before any HD sprite, copy, or message dispatch. */
+void hd_indexed_begin(void *bits);
+void hd_indexed_end(void *bits);
+void hd_start_gpu(void);
 void hd_init(int classic, int test);
 int hd_find(const char *key);
 int hd_variant(int image, int color);
@@ -47,13 +57,23 @@ void hd_draw_bitmap(struct Bitmap *bitmap, int image, int x, int y, int w, int h
                     int right, int bottom, int tint);
 void hd_bitmap_destroy(struct Bitmap *b);
 void hd_bitmap_commit(struct Bitmap *b);
+void hd_bitmap_commit_rect(struct Bitmap *b, int x, int y, int w, int h);
 void hd_bitmap_changed(struct Bitmap *b, int x, int y, int w, int h);
 void hd_bitmap_invert(struct Bitmap *b, int x, int y, int w, int h);
 void hd_sync(struct Bitmap *b);
+void hd_sync_rect(struct Bitmap *b, int x, int y, int w, int h);
 void hd_pixel(struct Bitmap *b, int x, int y, uint32_t rgb);
 void hd_transfer(struct Bitmap *dst, struct Bitmap *src, int x, int y, int w, int h, int sx, int sy, int sw,
                  int sh, int l, int t, int r, int b);
 const uint32_t *hd_pixels(struct Bitmap *b);
+/* Explicit boundaries for rare CPU effects/captures. Physical pixel rectangles. */
+void hd_read_region(struct Bitmap *b, int x, int y, int w, int h);
+void hd_upload_region(struct Bitmap *b, int x, int y, int w, int h);
+void hd_composite(struct Bitmap *dst, struct Bitmap *src, int x, int y, int l, int t, int r, int bot);
+int hd_gpu_text(struct Bitmap *b, const unsigned char *coverage, int sw, int sh,
+                int x, int y, int w, int h, int l, int t, int r, int bot, uint32_t color);
+void hd_gpu_text_begin(void);
+void hd_gpu_text_end(void);
 #ifdef __cplusplus
 }
 #endif

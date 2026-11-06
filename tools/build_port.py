@@ -194,7 +194,7 @@ def exe(cross_windows=False):
     # disc image's music: their sources, from tools/fetch-toolchain.sh;
     # stb_vorbis to play the music)
     host = [os.path.join(ROOT, 'src', 'host', f) for f in
-            ('port_main.c', 'wasi.c', 'host_sdl.c', 'host_net.c', 'setup.c', 'setup_disc.c') +
+            ('port_main.c', 'wasi.c', 'host_sdl.c', 'host_gpu.c', 'host_net.c', 'setup.c', 'setup_disc.c') +
             (('host_menu_win.c', 'setup_win.c') if windows else ('setup_unix.c',)) +
             (('host_menu_mac.m', 'setup_mac.m') if mac else ())]
     third = [os.path.join(ROOT, 'src', 'third_party', 'stb_vorbis', 'stb_vorbis.c')] + \

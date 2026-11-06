@@ -12,11 +12,16 @@ Edit `CIV.INI` in the directory containing the game's rules:
 [OpenCiv2]
 OriginalGraphics=0
 GraphicsDensity=2
+HardwareGraphics=1
 ```
 
 `OriginalGraphics=0` selects Atlas HD (the default). `GraphicsDensity` accepts 1–4
 and controls the backing resolution, independently of the window's logical size
-and mouse coordinates. The default is 2. Restart after changing either option.
+and mouse coordinates. The default is 2. `HardwareGraphics=1` (default) enables
+the SDL GPU compositor when the renderer supports accelerated render targets and
+premultiplied alpha. `HardwareGraphics=0` keeps HD artwork with the optimized CPU
+compositor. Unsupported renderers and headless replays use the CPU automatically.
+Restart after changing these options.
 
 `OriginalGraphics=1` selects the existing indexed renderer and original resource
 loaders. Keep the game's original GIF/BMP sheets, image DLLs and `civ2.exe` for
@@ -94,6 +99,85 @@ Diplomatic portraits are static replacement artwork; original portrait animation
 is used only in original mode. There are no fixture names or statistics baked into
 the live adapters.
 
+## SDL GPU compositor
+
+The game still chooses the same tiles, sprites, coordinates and drawing order.
+The HD platform layer stores surfaces in SDL render-target textures and performs
+sprite blending, enlargement, opaque copies, window composition and presentation
+on the GPU. Indexed planes remain available for legacy game queries. Windows
+prefers SDL's Direct3D 11 driver; other platforms use SDL's selected driver.
+`SDL_RENDER_DRIVER` can override the driver. Command batching stays enabled.
+
+Single-player full redraws poll events about every 2 ms and present once the
+redraw is complete, avoiding partial-frame composition and idle sleeps between
+tiles. Multiplayer retains its existing message-pumping cadence. Deterministic
+correctness replays retain their original virtual-clock polling schedule.
+
+The minimap still evaluates the game's live visibility, ownership and blink
+state. Its indexed background updates are collected into one upload, or a GPU
+copy of the cached background when the resulting indices and palette match.
+The viewport rectangle and caption are drawn afterward. This removes about
+9,000 tiny GPU fills from a reference full redraw without caching game-state
+decisions. The cache is owned by the minimap bitmap and released with it.
+
+Disjoint colored glyphs share the destination snapshot and gamma passes;
+overlapping glyphs retain sequential blending. Each affine gamma branch now
+stores its RGB intercept and alpha-encoded slope in one premultiplied texture,
+combining the former multiply/add pair into one blend. Colored text uses two
+glyph passes instead of four, plus one snapshot and one MAX merge per batch.
+This halves the colored-glyph texture count without a backend-specific shader.
+Drivers without MAX blending keep the existing CPU gamma fallback.
+
+Small immutable sprite and glyph images share a padded 4096×4096 SDL texture,
+clamped to the device limit (at most 64 MiB). Adjacent quads using the same page,
+destination, blend and filter form a geometry batch, up to 2,048 quads. Per-vertex
+colors retain faction tinting. Geometry is clipped with the original sampling
+origin; a one-texel duplicated border prevents interpolation into neighboring
+images. Drawing order is preserved, including overlapping translucent sprites.
+Private textures handle large images, full pages, or unsupported geometry.
+Freed slots coalesce, and an empty page is released. Pending uploads are applied
+before their first geometry submission and their CPU buffers are then freed;
+there is no persistent full-page CPU shadow. The existing image LRU still limits
+logical image storage to 128 MiB; atlas padding/free space can add up to 64 MiB of
+GPU allocation beyond that logical accounting.
+
+SDL queues must drain before changing a shared texture's sampling mode. The
+D3D9 backend also needs its texture binding invalidated to refresh that sampler;
+a zero-area untextured primitive does this without changing pixels. Mixed
+nearest/linear rendering, including clipping and slot reuse, is regression-tested.
+`CIV2_GPU_NO_ATLAS=1` disables packing and geometry batching for diagnosis while
+retaining the two-pass colored-text implementation.
+
+Desktop composition copies only
+visible portions of opaque windows, maintaining the same logical backing pixels
+while avoiding hidden-window overdraw. Packed indexed shadows and host-native
+memory comparisons reduce CPU bookkeeping in the portable wasm2c build; ordinary
+unscaled GDI copies bypass per-pixel sampler/ROP dispatch.
+
+Premultiplied textures prevent transparent-edge color fringes. Tint, silhouette,
+grayscale and text textures are cached in a separate 128 MiB LRU cache. Atlas
+textures survive CPU decoded-image eviction, and one source texture serves every
+enlarged size. Minification retains the CPU's alpha-aware area filter so thin
+flagpoles and status details survive. Hardware blending/filtering and colored
+text gamma passes have small rounding differences from the CPU reference.
+
+Ordinary warm map redraws require no CPU readbacks on the tested D3D11 backend.
+Screenshots, dynamic captures, inversion, backdrop fades, color correction and
+uncommon scaled/grey surface copies retain explicit CPU transfer paths. Drivers
+without the MAX blend operation use one readback per colored text string.
+Texture-allocation failure falls back to CPU storage/drawing where possible.
+Device-reset recovery is not implemented: lost GPU contents cause a rendering
+error requiring restart, rather than silently displaying damaged surfaces.
+`HardwareGraphics=0` is the troubleshooting fallback.
+
+This also reduces first-use cache work: enlarged sprites no longer need CPU
+resampling or a separate allocation for each zoom size. PNG decoding, texture
+uploads and area-filtered reductions still happen on first use. A further option
+is to package precomputed reductions for common zoom sizes; a bounded preload of
+visible-map assets during loading could move the remaining work off the first
+interactive redraw. Neither is implemented here; eagerly warming every asset and
+zoom would increase startup time and evict useful entries from the bounded caches.
+
 ## Building
 
 Install Pillow 11.3.0, then use the normal `make` / `make windows` entry points,
@@ -102,12 +186,85 @@ or `python tools/build_port.py module c exe-windows`. The build generates
 No original graphics are read by that tool. `build/data/atlas-inputs.json` records
 all artwork inputs; `atlas-bindings.json` lists the resulting logical dimensions.
 The artwork's provenance is retained under `assets/atlas-hd`.
+The SDL backend requires SDL 2.0.18 or newer for geometry batching; the bundled
+Windows toolchain uses SDL 2.30.9.
 
 `python tools/build_port.py pack` includes the generated pack in the portable
 source package. `CIV2_ATLAS_PREBUILT=1` uses a prepared pack without Pillow; the
 release jobs transfer that pack with the generated C to every target platform.
 
 ## Verification
+
+HD copies synchronize and commit only the affected logical rectangles. Window
+surfaces commit directly, without relying on a GDI bitmap handle. Unscaled
+transfers use overlap-safe row copies; sprite and bitmap lookups are cached.
+Already resized atlas images bypass bilinear filtering, while enlarged images
+reuse a bounded 64 MiB LRU cache of premultiplied samples. This preserves the
+existing alpha, tint and grayscale rounding. The decoded-image/minification
+cache retains its separate 96 MiB budget; very large stretches use the general
+filtering path rather than evicting the map's enlarged sprites.
+
+`python tools/benchmark_hd.py --game PATH --include-original` measures synchronous
+map redraws at standard, medium-out and maximum-in zoom. It discards one warm-up
+redraw per zoom and reports median and nearest-rank p95 over 21 samples
+(`--samples N` changes that count). `CIV2_BENCHMARK=1` measures wall-clock
+microseconds for `call_sync`; replay's virtual clock is not a performance timer.
+Runs are sequential and save configuration, samples and screenshots in
+`build/hd-benchmark-*`. `--gpu` uses a hidden hardware window, verifies activation,
+drains earlier GPU work before timing and fences completion afterward.
+`--frame` includes desktop/window composition (`CIV2_BENCHMARK_FRAME=1`), and
+rejects older executables that lack that timing support. `--realtime` runs
+the replay with live message-clock timing instead of accelerated virtual time.
+All modes exclude presentation/vsync and are not interactive FPS measurements.
+`CIV2_GPU_STATS=1` logs texture creation, draw and transfer counts at each fence.
+It also reports atlas pages, live entries, geometry submissions, quads, uploads,
+and batch breaks caused by page/state changes. `--no-atlas` measures the private
+texture fallback independently of the reduced text passes.
+Accelerated replay can amplify timer-queue traffic in older builds that polled
+once per tile; use `--realtime` when investigating that effect. The completion
+fence includes its synchronization/readback overhead, not just GPU execution.
+
+On an i5-14500 / Intel UHD Graphics 770, with a 1024×768 logical desktop
+and the reference save centered on Leipzig, the sprite-atlas/two-pass-text
+change measured as follows. Before and after builds used the same sequential
+workload and 21 warm samples per zoom. The baseline already includes the earlier
+CPU, scheduling, minimap and composition optimizations.
+
+| Density / zoom | Before redraw median | Atlas/text median | Atlas/text p95 |
+| --- | ---: | ---: | ---: |
+| 2 / standard | 11.55 ms | 11.57 ms | 13.50 ms |
+| 2 / -3 | 14.52 ms | 12.87 ms | 14.00 ms |
+| 2 / +8 | 8.91 ms | 8.34 ms | 9.12 ms |
+| 4 / standard | 17.19 ms | 15.55 ms | 16.76 ms |
+| 4 / -3 | 18.39 ms | 16.82 ms | 17.85 ms |
+| 4 / +8 | 13.11 ms | 11.37 ms | 12.54 ms |
+
+The first density-4 transitions at standard, -3 and +8 zoom fell from
+44.62/77.75/28.67 ms to 35.69/59.11/21.84 ms. The standard view submits 2,368
+packed sprite/glyph quads in 66 geometry batches; fills, private-texture copies,
+text snapshots and MAX merges are additional operations. Warm redraws allocate
+no image textures and upload no atlas data. The minimap can still upload when
+its blinking indicator changes.
+
+The stricter `--gpu --frame --realtime` run includes desktop composition and
+live-clock message/timer activity, again with 21 warm samples:
+
+| Density / zoom | Before frame median | Atlas/text median | Atlas/text p95 |
+| --- | ---: | ---: | ---: |
+| 2 / standard | 16.97 ms | 15.48 ms | 18.05 ms |
+| 2 / -3 | 18.58 ms | 16.82 ms | 20.69 ms |
+| 2 / +8 | 13.16 ms | 12.98 ms | 16.53 ms |
+| 4 / standard | 30.84 ms | 22.80 ms | 25.97 ms |
+| 4 / -3 | 33.70 ms | 30.15 ms | 32.45 ms |
+| 4 / +8 | 23.46 ms | 22.39 ms | 28.06 ms |
+
+The 10–15 ms target is not met across all densities and zooms. Redraw-only
+numbers should not be used to claim that complete-frame target. Results are
+specific to this scene, hardware and synchronization method; presentation/vsync
+is excluded. Most per-sprite submissions are now batched, but legacy CPU work,
+surface copying, GPU pixel traffic and synchronization still contribute.
+Composed terrain-tile caching was tested earlier and rejected because its
+first-use/zoom latency increased substantially for little density-4 benefit.
 
 `python tools/test_hd.py` compiles the real compositor with the C compiler in
 `CC` (default `cc`). It checks densities 1–4, transparent-edge filtering,
@@ -116,11 +273,37 @@ malformed-pack rejection and original mode without a pack.
 It also checks selective color variants, cloned sprites and silhouette overrides.
 Captured-sprite keys, greyscale alpha composition, reversible inversion and
 non-destructive backdrop greying are covered at every density.
+Reference pixel hashes check filtering across clipping, tint/grayscale and
+cache reuse, with both the normal cache budget and a small budget exercising
+eviction/fallback. Copy tests cover overlap direction, pending indexed writes
+outside the copied region, and window surfaces without bitmap handles.
 The compositor also checks thin-detail coverage and clipped/unclipped equality
 for unit, flag and shield dimensions at every map zoom from -7 through +8.
+`python tools/test_hd_gpu.py` compares the actual SDL backend with CPU pixels at
+densities 1–4, including colored text gamma, source/destination clipping, overlap,
+captures, inversion, input scaling, resize and thin details. It needs an
+accelerated display session. Set `CC` and `SDL2_DIR` for a Windows SDL prefix;
+otherwise it uses `sdl2-config`. Direct3D 11, Direct3D 9 and OpenGL passed on the
+Windows host. CPU tests also verify the capability fallback without SDL.
+The atlas tests compare packed sprites against private textures under clipping,
+enlargement, tinting, alpha and mixed filtering. They cover a full 2,048-quad
+batch, deletion of queued sources, handle reuse, and page lifetime. Add
+`--small-atlas` to force page exhaustion, coalescing and private-texture fallback;
+run with `CIV2_GPU_NO_ATLAS=1` to exercise the complete unpacked path.
 `python tests/source_probe.py tests/hd_sprite_bounds_test.cpp` runs the actual
 sprite bridge through 13,824 offset, trim, zoom and clipping cases in both debug
 and optimized builds (set `CXX` to a C++ compiler).
+`tests/hd_copy_bounds_test.cpp` uses the same source-probe runner to check logical
+copy coordinates on top-down and bottom-up DIBs; `tests/hd_bitmap_lookup_test.cpp`
+checks cached handles through deletion, reuse and storage replacement.
+`tests/hd_gdi_copy_test.cpp` covers unscaled conversion and fallback paths;
+`tests/hd_redraw_schedule_test.cpp` checks event-poll deadlines, nesting and
+replay behavior. `tests/hd_composition_test.cpp` compares 2,000 randomized
+overlapping/clipped window scenes with bottom-to-top composition, checking that
+each visible pixel is copied exactly once. GPU runtime tests also compare batched
+and sequential glyphs and exercise minimap restoration, changed indices and
+palette edits. OpenGL's unsupported colored-text MAX blend uses the CPU fallback,
+also exercised by the full game replay.
 `python tools/test_hd_factions.py` checks all eight colors in the built pack,
 including flag trim, badge details, dark flags and the aircraft footprint, and
 writes `build/hd-factions.png` for visual review.
@@ -140,6 +323,17 @@ no original image files, plus the built pack's status and shadow colors.
 status header stays unchanged, and writes an overview for each density. Its `call_sync` replay
 commands wait for finite redraws to return; ordinary `call` remains reentrant
 so subsequent replay input can operate modal dialogs.
+`--reference PATH` compares every zoom screenshot against an earlier result
+directory. `--max-channel-error` and `--max-mean-error` set the acceptance limits
+(defaults: 8/255 per channel and 0.15/255 scene mean). The atlas/text pass was
+checked against the previous GPU build with tighter limits of 3 and 0.003.
+All three replay tools accept `--gpu` for hidden hardware-window verification;
+the game test additionally exercises `HardwareGraphics=0`. All 64 GPU zoom scenes
+passed. The earlier scheduling/composition pass was pixel-identical to its GPU
+baseline. The subsequent atlas/two-pass text changes differ by at most 3/255 per
+channel and 0.0026/255 scene mean, within the existing hardware-rounding tolerance.
+Compared with CPU screenshots, the largest scene mean channel difference remains
+0.12/255, with no individual channel differing by more than 5/255.
 
 Windows verification for this integration includes a built executable running
 without original image files, and pixel/RNG equality with `main` in original

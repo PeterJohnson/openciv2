@@ -10104,6 +10104,7 @@ gfx_copy_pixels(int src_bits,int dst_bits,int src_x,int src_y,int dst_x,int dst_
             int height,int src_height,int dst_height,int src_pitch,int dst_pitch)
 
 {
+  int hd_dst_y = dst_y; /* logical coordinate, before bottom-up row conversion */
   if (hd_enabled) hd_copy((void *)dst_bits,(void *)src_bits,dst_x,dst_y,src_x,src_y,width,height);
 
   i8 pixel;
@@ -10145,7 +10146,7 @@ gfx_copy_pixels(int src_bits,int dst_bits,int src_x,int src_y,int dst_x,int dst_
     dst = (i32 *)((int)dst + (dst_pitch - width));
     rows_left--;
   } while (rows_left != 0);
-  if (hd_enabled) hd_commit((void *)dst_bits);
+  if (hd_enabled) hd_commit_rect((void *)dst_bits,dst_x,hd_dst_y,width,height);
   return;
 }
 

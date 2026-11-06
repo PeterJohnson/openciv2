@@ -17,6 +17,18 @@
 #define HOST_API(name) name
 #endif
 
+/* Large HD shadow comparisons need the host's vectorized memory routines;
+ * wasm32's libc memcmp otherwise becomes a byte-at-a-time native loop. */
+#ifdef __wasm__
+int HOST_API(host_memory_equal)(const void *a,const void *b,uint32_t bytes);
+#else
+#include <string.h>
+static inline int host_memory_equal(const void *a,const void *b,uint32_t bytes)
+{
+    return !memcmp(a,b,bytes);
+}
+#endif
+
 /* Input events; keys arrive as Windows virtual-key codes. */
 enum {
     HOST_EV_NONE, HOST_EV_QUIT, HOST_EV_KEYDOWN, HOST_EV_KEYUP, HOST_EV_MOTION,
@@ -99,6 +111,34 @@ void HOST_API(host_menu_end)(void);
 void host_modal_tick(void);
 void HOST_API(host_present)(const void *pixels, int stride);
 void HOST_API(host_present_hd)(const void *pixels, int stride, int density);
+/* Optional HD texture compositor. Handles are host-owned; coordinates are
+ * physical pixels. Sources use premultiplied alpha. A zero capability result
+ * keeps the platform on its CPU compositor (including headless replays). */
+typedef struct HostGpuBlit {
+    uint32_t dst, src;
+    int32_t x, y, w, h, sx, sy, sw, sh, l, t, r, b;
+    uint32_t color;
+    int32_t blend, linear;
+} HostGpuBlit;
+typedef struct HostGpuText { HostGpuBlit draw; uint32_t layers[2]; } HostGpuText;
+/* Capability bits: 1 texture compositor, 2 colored-text gamma passes. */
+int HOST_API(host_gpu_available)(void);
+/* kind: 0 render target initialized from ARGB (or black when pixels is NULL),
+ * 1 straight RGBA image, 2 its grayscale variant, 3 its white alpha mask,
+ * 4 already-premultiplied RGBA (affine colored-text branches). */
+int HOST_API(host_gpu_create)(int w, int h, int kind, const void *pixels, int pitch);
+void HOST_API(host_gpu_destroy)(int id);
+int HOST_API(host_gpu_blit)(const HostGpuBlit *draw);
+int HOST_API(host_gpu_text)(const HostGpuText *draw);
+/* Same destination, disjoint clipped glyph rectangles; preserves draw order. */
+int HOST_API(host_gpu_text_batch)(const HostGpuText *draws,int count);
+int HOST_API(host_gpu_fill)(int id, int x, int y, int w, int h, uint32_t color);
+int HOST_API(host_gpu_upload)(int id, int x, int y, int w, int h, const void *pixels, int pitch, int scale);
+int HOST_API(host_gpu_read)(int id, int x, int y, int w, int h, void *pixels, int pitch);
+int HOST_API(host_gpu_present)(int id);
+/* Benchmark fence, never used by ordinary sprite drawing. */
+void HOST_API(host_gpu_fence)(void);
+void HOST_API(host_gpu_finish)(void);
 /* The desktop shown in the window is now w x h (HOST_EV_RESIZE). */
 void HOST_API(host_resize_desktop)(int w, int h);
 /* Minimize the window (the desktop's main window was minimized). */

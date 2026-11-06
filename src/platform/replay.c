@@ -11,6 +11,8 @@
  *   CIV2_HOOK_LOG=FILE   log of script actions (plat_log)
  *   CIV2_CALL_LOG=FILE   log of the sounds played and the videos looked for
  *                        (as hook/stackprobe.c logs the original's)
+ *   CIV2_BENCHMARK=1    log wall-clock microseconds for finite call_sync actions
+ *   CIV2_BENCHMARK_FRAME=1 also compose the desktop before ending that timer
  */
 #ifndef __wasm__
 #include <dlfcn.h>
@@ -18,6 +20,7 @@
 #endif
 #include "plat.h"
 #include "hd.h"
+#include "../host/host.h"
 
 static char **script;
 static int script_len, script_pos;
@@ -225,6 +228,7 @@ void plat_screenshot(const char *path)
         return;
     if (!plat_overlay)          /* (as presenting) a popup menu is on the screen itself */
         plat_compose();
+    if(hd_enabled)hd_read_region(screen,0,0,w,h);
     hdr[2] = (unsigned char)size; hdr[3] = (unsigned char)(size >> 8); hdr[4] = (unsigned char)(size >> 16);
     hdr[5] = (unsigned char)(size >> 24);
     hdr[10] = 54; hdr[14] = 40;
@@ -339,12 +343,22 @@ void replay_run_script(void)
                 for (i = 0; replay_calltable[i].name && strcmp(replay_calltable[i].name, name); i++)
                     ;
                 if (replay_calltable[i].name) {
+                    uint64_t started = 0;
                     next_action_us = vclock_us + 100 * 1000;
                     /* Modal calls need input from subsequent script commands.
                        Finite redraws use call_sync so a shot cannot interrupt
                        them at an internal message-pump/idle boundary. */
                     if (!strcmp(cmd, "call")) running = 0;
+                    if (!strcmp(cmd, "call_sync") && getenv("CIV2_BENCHMARK")) {
+                        /* Do not charge previously queued GPU work to this call. */
+                        if(hd_gpu_active)host_gpu_fence();
+                        started = host_time_us();
+                    }
                     ((int (*)(int, int, int, int))replay_calltable[i].fn)(args[0], args[1], args[2], args[3]);
+                    if(started && getenv("CIV2_BENCHMARK_FRAME"))plat_compose();
+                    if(started && hd_gpu_active)host_gpu_finish();
+                    if (started) plat_log("benchmark: %s %llu us\n",name,
+                                          (unsigned long long)(host_time_us()-started));
                     running = 1;
                 } else
                     plat_log("replay: no function %s (tools/build_native.py gen_calltable)\n", name);
@@ -420,4 +434,6 @@ void replay_init(void)
         snprintf(shot_dir, sizeof shot_dir, "%s", d);
     load_script(getenv("CIV2_SCRIPT"));
     plat_log("replay: %d script lines\n", script_len);
+    if(getenv("CIV2_BENCHMARK") && getenv("CIV2_BENCHMARK_FRAME"))
+        plat_log("benchmark: includes desktop composition\n");
 }

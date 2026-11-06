@@ -16,6 +16,7 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--exe', type=Path, default=ROOT/'build/OpenCiv2.exe' if os.name == 'nt' else ROOT/'build/OpenCiv2')
+    parser.add_argument('--gpu', action='store_true', help='exercise a hidden SDL hardware window')
     args = parser.parse_args()
     work = Path(tempfile.mkdtemp(prefix='hd-effects-', dir=ROOT/'build'))
     print('Results:', work, flush=True)
@@ -30,19 +31,22 @@ def main():
     script.write_text((ROOT/'harness/scripts/newgame.txt').read_text()+
                       (ROOT/'harness/hd/effects.txt').read_text())
     env = dict(os.environ)
-    for key in ('CIV2_DATA', 'CIV2_GAME', 'CIV2_CLASSIC', 'CIV2_TEST_NATIVE', 'CIV2_NORMAL_DESKTOP'):
+    for key in ('CIV2_DATA', 'CIV2_GAME', 'CIV2_CLASSIC', 'CIV2_TEST_NATIVE', 'CIV2_NORMAL_DESKTOP','CIV2_TEST_GPU','CIV2_SHOW'):
         env.pop(key, None)
     env.update(CIV2_TEST_HD='1', CIV2_TEST_EXTRAS='41', CIV2_TEST_FIXES='1',
                CIV2_TEST_FULL='1024x768', CIV2_SEED='7', CIV2_SCRIPT=str(script),
                CIV2_SHOT_DIR=str(work), CIV2_HOOK_LOG=str(work/'hooks.log'),
                SDL_VIDEODRIVER='dummy', SDL_AUDIODRIVER='dummy')
     if os.name != 'nt':env['CIV2_DATA'] = str(ROOT/'build/data')
+    if args.gpu:
+        env.pop('SDL_VIDEODRIVER',None);env['CIV2_TEST_GPU']='1'
     with (work/'output.log').open('wb') as log:
         subprocess.run([str(args.exe.resolve()), str(game)], env=env, stdout=log,
                        stderr=subprocess.STDOUT, timeout=120, check=True)
     hooks = (work/'hooks.log').read_text()
     assert 'script finished' in hooks and 'no function' not in hooks
     assert 'original image loading disabled' in hooks
+    if args.gpu:assert 'HD compositor: SDL GPU' in hooks, 'GPU unavailable'
     with Image.open(work/'sleeping.bmp') as im:
         # The default seed-7 settlers' map position. Detailed greyscale must
         # retain more shades than the old small indexed-grey ramp could hold.

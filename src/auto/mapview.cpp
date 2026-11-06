@@ -249,6 +249,8 @@ void __cdecl minimap_redraw(void)
     ((FrameWindow *)((i8 *)&minimap_state.window))->layout();
     gfx_set_draw_target((iptr)&minimap_state.window);
     minimap_calc_layout();
+    void *hd_bits=(void *)((DibSurface *)&minimap_state.window)->bits;
+    hd_indexed_begin(hd_bits);
     gfx_fill_draw_target(0);
     screen_y = minimap_state.client_y + minimap_state.margin_y;
     for (row = 0; row < minimap_layout.view_rows; row++) {
@@ -277,6 +279,7 @@ void __cdecl minimap_redraw(void)
       }
       screen_y += minimap_layout.tile_height;
     }
+    hd_indexed_end(hd_bits);
     win_flush_pending_msgs();
     minimap_draw_view_rect();
     ((FrameWindow *)((i8 *)&minimap_state.window))->FrameWindow::draw_caption();
@@ -2190,7 +2193,7 @@ void MapView::draw_tile(iptr x,iptr y,int civ)
   tile_to_screen((iptr)&screen_x,(iptr)&screen_y,x,y);
   draw_tile_terrain((iptr)this,screen_x,screen_y,x,y,civ,
                      (int)(short)zoom_u,-1);
-  win_flush_pending_msgs();
+  if (hd_redraw_poll_due()) win_flush_pending_msgs();
   if (2 < game.multiplayer) {
     net.process_messages(1,0);
   }
@@ -2509,6 +2512,9 @@ void MapView::redraw(iptr viewer_civ,int do_blit)
   iptr civ;
   
   if (turn_loop.active != '\0') {
+    const bool batch_hd = hd_gpu_active && game.multiplayer < 3;
+    if (batch_hd) hd_redraw_begin();
+    ON_SCOPE_EXIT(if (batch_hd) hd_redraw_end());
     net.map_redraw_busy = 1;
     layout();
     update_layout();

@@ -30,6 +30,7 @@ def main():
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--exe', type=Path, default=ROOT/'build/OpenCiv2.exe' if os.name == 'nt' else ROOT/'build/OpenCiv2')
     parser.add_argument('--baseline', type=Path)
+    parser.add_argument('--gpu', action='store_true', help='exercise a hidden SDL hardware window')
     args = parser.parse_args()
     ROOT.joinpath('build').mkdir(exist_ok=True)
     work = Path(tempfile.mkdtemp(prefix='hd-game-test-', dir=ROOT/'build'))
@@ -39,7 +40,7 @@ def main():
         if name not in files:
             parser.error(f'--game needs {name}')
 
-    def run(name, exe, script, original):
+    def run(name, exe, script, original, hardware=True):
         out = work/name;out.mkdir()
         game = out/'game';game.mkdir()
         allowed = {'.txt', '.sav', '.dat'}
@@ -48,15 +49,17 @@ def main():
             if p.suffix.lower() in allowed:shutil.copyfile(p, game/p.name)
         shutil.copyfile(ROOT/'harness/CIV2.DAT', game/'CIV2.DAT')
         ini = (ROOT/'harness/CIV.INI').read_text()
-        (game/'CIV.INI').write_text(ini+f'\n[OpenCiv2]\nOriginalGraphics={int(original)}\nGraphicsDensity=2\n')
+        (game/'CIV.INI').write_text(ini+f'\n[OpenCiv2]\nOriginalGraphics={int(original)}\nGraphicsDensity=2\nHardwareGraphics={int(hardware)}\n')
         env = dict(os.environ)
         for key in ('CIV2_CLASSIC', 'CIV2_DATA', 'CIV2_GAME', 'CIV2_TEST_NATIVE',
-                    'CIV2_TEST_FULL', 'CIV2_NORMAL_DESKTOP', 'CIV2_TEST_EXTRAS', 'CIV2_TEST_FIXES'):
+                    'CIV2_TEST_FULL', 'CIV2_NORMAL_DESKTOP', 'CIV2_TEST_EXTRAS', 'CIV2_TEST_FIXES','CIV2_TEST_GPU','CIV2_SHOW'):
             env.pop(key, None)
         env.update(CIV2_TEST_HD='1', CIV2_SCRIPT=str(script), CIV2_SHOT_DIR=str(out),
                    CIV2_HOOK_LOG=str(out/'hooks.log'), CIV2_RAND_LOG=str(out/'rand.log'),
                    SDL_VIDEODRIVER='dummy', SDL_AUDIODRIVER='dummy', CIV2_SEED='7')
         if os.name != 'nt':env['CIV2_DATA'] = str(ROOT/'build/data')
+        if args.gpu:
+            env.pop('SDL_VIDEODRIVER',None);env['CIV2_TEST_GPU']='1'
         if not original:
             env['CIV2_TEST_FULL'] = '1024x768'
             env['CIV2_TEST_FIXES'] = '1'
@@ -64,6 +67,9 @@ def main():
             subprocess.run([str(exe.resolve()), str(game)], env=env, stdout=log,
                            stderr=subprocess.STDOUT, timeout=120, check=True)
         assert 'script finished' in (out/'hooks.log').read_text(), out
+        if args.gpu and not original:
+            expected='HD compositor: SDL GPU' if hardware else 'HD compositor: CPU'
+            assert expected in (out/'hooks.log').read_text(), (out,'wrong compositor')
         return out
 
     # On Windows exercise extraction from the executable in a fresh directory.
@@ -86,6 +92,9 @@ def main():
         assert im.size == (2048, 1536)
     assert 'CreateFont(Arial, -13' in (city/'hooks.log').read_text(), 'Stockpile meters were not drawn'
     print('HD windows rendered without original image files.', flush=True)
+    if args.gpu:
+        run('cpu-fallback',exe,ROOT/'harness/hd/windows.txt',False,hardware=False)
+        print('HardwareGraphics=0 rendered HD windows through the CPU fallback.',flush=True)
     if args.baseline:
         # Use only calls present on main so the same replay works in both builds.
         script = work/'compare.txt'

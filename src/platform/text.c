@@ -8,6 +8,7 @@
  */
 #include "plat.h"
 #include "hd.h"
+#include "../host/host.h"
 
 DC *dc_get(HDC h);
 
@@ -311,11 +312,35 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
     c = dc_resolve_color(dc, dc->text_color);
     if (hd_enabled) {
         int d=hd_density, fh=f->height*d;
+        int cpu_text=0,read_l=b->w*d,read_t=b->h*d,read_r=0,read_b=0;
         FontFace *fine;
         if(fh>MAXH)fh=MAXH;
         fine=faces[f->face][fh][f->bold][f->italic];
         if(!aa_data)load_aa();
         if(!fine || !fine->aa)fine=f;
+        cpu_text=b->hd_gpu && !(host_gpu_available()&2) && c!=RGB(0,0,0) && c!=RGB(255,255,255);
+        hd_gpu_text_begin();
+        if(cpu_text) {
+            int advance=x,k;
+            /* One readback/upload per string, not per glyph. The exact colored
+               text gamma ramp depends on destination RGB. */
+            for(i=0;i<n && fine->aa;i++) {
+                unsigned ch=(unsigned char)s[i];
+                AaGlyph *g=&fine->aa[ch];
+                double scale=(double)f->height*d/fine->height;
+                double xs=fine->g[ch].adv ? (double)f->g[ch].dadv*d/fine->g[ch].adv : scale;
+                int gx=(advance+ox)*d+(int)(g->x*xs),gy=(y+oy)*d+(int)(g->y*scale);
+                int gw=(int)(g->w*xs+.5),gh=(int)(g->h*scale+.5);
+                for(k=0;k<rg.n;k++) {
+                    int l=rg.r[k].left*d,t=rg.r[k].top*d,r=rg.r[k].right*d,bot=rg.r[k].bottom*d;
+                    if(l<gx)l=gx;if(t<gy)t=gy;if(r>gx+gw)r=gx+gw;if(bot>gy+gh)bot=gy+gh;
+                    if(l<0)l=0;if(t<0)t=0;if(r>b->w*d)r=b->w*d;if(bot>b->h*d)bot=b->h*d;
+                    if(l<r && t<bot) { if(l<read_l)read_l=l;if(t<read_t)read_t=t;if(r>read_r)read_r=r;if(bot>read_b)read_b=bot; }
+                }
+                advance+=f->g[ch].dadv;
+            }
+            hd_read_region(b,read_l,read_t,read_r-read_l,read_b-read_t);
+        }
         for(i=0;i<n && fine->aa;i++) {
             unsigned ch=(unsigned char)s[i];
             AaGlyph *g=&fine->aa[ch];
@@ -330,15 +355,21 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
                 int l=rg.r[k].left*d,t=rg.r[k].top*d,r=rg.r[k].right*d,bot=rg.r[k].bottom*d;
                 if(l<gx)l=gx;if(t<gy)t=gy;if(r>gx+gw)r=gx+gw;if(bot>gy+gh)bot=gy+gh;
                 if(l<0)l=0;if(t<0)t=0;if(r>b->w*d)r=b->w*d;if(bot>b->h*d)bot=b->h*d;
+                if(!cpu_text && hd_gpu_text(b,cov,g->w,g->h,gx,gy,gw,gh,l,t,r,bot,
+                               GetRValue(c)<<16|GetGValue(c)<<8|GetBValue(c)))continue;
+                if(!cpu_text)hd_read_region(b,l,t,r-l,bot-t);
                 for(row=t;row<bot;row++)for(col=l;col<r;col++) {
                     int v=cov[((row-gy)*g->h/gh)*g->w+(col-gx)*g->w/gw];
                     uint32_t *dst=b->hd+row*b->w*d+col,z=*dst;
                     *dst=0xff000000u|aa_blend((z>>16)&255,GetRValue(c),v)<<16|
                          aa_blend((z>>8)&255,GetGValue(c),v)<<8|aa_blend(z&255,GetBValue(c),v);
                 }
+                if(!cpu_text)hd_upload_region(b,l,t,r-l,bot-t);
             }
             x+=f->g[ch].dadv;
         }
+        hd_gpu_text_end();
+        if(cpu_text)hd_upload_region(b,read_l,read_t,read_r-read_l,read_b-read_t);
         rgn_free(&rg);
         return;
     }

@@ -287,18 +287,69 @@ Bitmap *dc_target(DC *dc)
 int plat_color_lut_on;
 unsigned char plat_color_lut[256];
 
+static void compose_gpu_piece(Bitmap *src,int dx,int dy,const RECT *rect)
+{
+    RECT r=*rect;
+    int y;
+    if(r.left<dx)r.left=dx;if(r.top<dy)r.top=dy;
+    if(r.right>dx+src->w)r.right=dx+src->w;
+    if(r.bottom>dy+src->h)r.bottom=dy+src->h;
+    if(r.left>=r.right || r.top>=r.bottom)return;
+    hd_composite(screen,src,dx,dy,r.left,r.top,r.right,r.bottom);
+    for(y=r.top;y<r.bottom;y++)
+        memcpy((DWORD *)bmp_row(screen,y)+r.left,(DWORD *)bmp_row(src,y-dy)+r.left-dx,
+               (size_t)(r.right-r.left)*4);
+}
+/* Top-level surfaces are opaque. Copy only the uncovered pieces, so a
+   maximized map does not first copy several density-scaled windows behind it. */
+static void compose_gpu_windows(Window **order,int n)
+{
+    Region uncovered={0},visible={0};
+    RECT all={0,0,screen_w,screen_h};
+    int i,j;
+    rgn_set(&uncovered,&all);
+    for(i=0;i<n && uncovered.n;i++) {
+        Window *w=order[i];
+        Bitmap *s;
+        RECT shown;
+        int dx,dy;
+        if(!(w->style & WS_VISIBLE) || w->minimized)continue;
+        wnd_shown_rect(w,&shown);
+        rgn_copy(&visible,&uncovered);rgn_intersect_rect(&visible,&shown);
+        if(!visible.n)continue;
+        s=wnd_surface(w);
+        dx=w->rect.left+(w->host_clipped ? w->host_dx : 0);
+        dy=w->rect.top+(w->host_clipped ? w->host_dy : 0);
+        /* A stale host clip may extend beyond its backing surface. Keep the
+           exposed part for lower windows, matching the ordinary compositor. */
+        { RECT backing={dx,dy,dx+s->w,dy+s->h};
+          rgn_intersect_rect(&visible,&backing);
+          if(!rect_intersect(&shown,&shown,&backing))continue; }
+        for(j=0;j<visible.n;j++) {
+            RECT *r=visible.r+j;
+            compose_gpu_piece(s,dx,dy,r);
+        }
+        rgn_subtract_rect(&uncovered,&shown);
+    }
+    for(j=0;j<uncovered.n;j++) {
+        RECT *r=uncovered.r+j;
+        compose_gpu_piece(root,0,0,r);
+    }
+    rgn_free(&visible);rgn_free(&uncovered);
+}
 void plat_compose(void)
 {
     Window *order[512], *w;
     int n = 0, i, y;
-    memcpy(screen->bits, root->bits, (size_t)screen->stride * (size_t)screen->h);
-    if (hd_enabled) {
+    if(!hd_gpu_active)memcpy(screen->bits, root->bits, (size_t)screen->stride * (size_t)screen->h);
+    if (hd_enabled && !hd_gpu_active) {
         hd_sync(root); hd_sync(screen);
         memcpy(screen->hd, root->hd, (size_t)screen_w*screen_h*hd_density*hd_density*4);
     }
     for (w = desktop->children; w && n < 512; w = w->next)
         order[n++] = w;
-    for (i = n - 1; i >= 0; i--) {
+    if(hd_gpu_active)compose_gpu_windows(order,n);
+    for (i = hd_gpu_active ? -1 : n - 1; i >= 0; i--) {
         RECT shown, r;
         Bitmap *s;
         int dx, dy;
@@ -312,7 +363,7 @@ void plat_compose(void)
         /* Surface pixel (x, y) shows at screen (rect.left + x + host_dx, ...). */
         dx = w->rect.left + (w->host_clipped ? w->host_dx : 0);
         dy = w->rect.top + (w->host_clipped ? w->host_dy : 0);
-        if (hd_enabled) {
+        if (hd_enabled && !hd_gpu_active) {
             int py, d=hd_density;
             hd_sync(s);
             for (py=r.top*d;py<r.bottom*d;py++) {
@@ -333,6 +384,8 @@ void plat_compose(void)
                 memcpy((DWORD *)bmp_row(screen, y) + x0, (DWORD *)bmp_row(s, sy) + (x0 - dx), (size_t)(x1 - x0) * 4);
         }
     }
+    if(hd_gpu_active && (hd_fade_grey || plat_color_lut_on))
+        hd_read_region(screen,0,0,screen_w*hd_density,screen_h*hd_density);
     if (hd_enabled && hd_fade_grey)
         hd_grey_pixels(screen->hd, (uint64_t)screen_w*screen_h*hd_density*hd_density, hd_fade_grey);
     if (plat_color_lut_on) {
@@ -354,6 +407,11 @@ void plat_compose(void)
                        ((DWORD)plat_color_lut[(c >> 8) & 0xff] << 8) | plat_color_lut[c & 0xff];
             }
         }
+    }
+    if(hd_gpu_active) {
+        if(hd_fade_grey || plat_color_lut_on)
+            hd_upload_region(screen,0,0,screen_w*hd_density,screen_h*hd_density);
+        hd_bitmap_commit(screen);
     }
 }
 
@@ -673,11 +731,24 @@ HBITMAP WINAPI CreateCompatibleBitmap(HDC h, int w, int hgt)
 /* The bitmap whose pixels p points to (start of its rows), or NULL. */
 Bitmap *bmp_of_bits(const void *p)
 {
+    /* Cache handles, not borrowed Bitmap pointers: deletion, handle reuse and
+       DIB storage replacement are validated by obj_get and the bits check. */
+    static struct { const void *bits; Handle handle; } cache[64];
+    unsigned slot = (((uintptr_t)p >> 4) ^ ((uintptr_t)p >> 14)) & 63;
+    Bitmap *b;
     int i;
+    if (!p) return NULL;
+    if (cache[slot].bits == p) {
+        b = obj_get(cache[slot].handle,OBJ_BITMAP);
+        if (b && b->bits == p) return b;
+    }
     for (i = 1; i < 8192; i++) {
-        Bitmap *b = obj_get(((Handle)OBJ_BITMAP << 16) | (Handle)i, OBJ_BITMAP);
-        if (b && b->bits && (const unsigned char *)p == b->bits)
+        Handle handle = ((Handle)OBJ_BITMAP << 16) | (Handle)i;
+        b = obj_get(handle, OBJ_BITMAP);
+        if (b && (const unsigned char *)p == b->bits) {
+            cache[slot].bits = p; cache[slot].handle = handle;
             return b;
+        }
     }
     return NULL;
 }
@@ -944,7 +1015,7 @@ static void fill_device(Bitmap *b, const Region *clip, const RECT *r, COLORREF r
                     surf_put(b, x, y, rop2_xor ? surf_get(b, x, y) ^ 0xffffff : rgb);
         }
         if (hd_enabled) {
-            if (rop2_xor) hd_commit_rect(b->bits,a.left,a.top,a.right-a.left,a.bottom-a.top);
+            if (rop2_xor) hd_bitmap_commit_rect(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
             else hd_bitmap_changed(b,a.left,a.top,a.right-a.left,a.bottom-a.top);
         }
     }
@@ -1208,13 +1279,36 @@ static void xfer_row(Xfer *x, int sy, int dy, int dx0, int n, const int *sxs, DW
     }
 }
 
+/* Unscaled HD presentation still maintains the logical backing pixels. Avoid
+ * sampling and ROP dispatch for every pixel of an ordinary opaque copy. */
+static int xfer_copy_rect(Xfer *xf,const RECT *a,int x,int y,int sx,int sy)
+{
+    Bitmap *src=xf->src,*dst=xf->dst;
+    int row,col,n=a->right-a->left,left=sx+a->left-x,top=sy+a->top-y;
+    if(src==dst || left<0 || top<0 || left+n>src->w || top+a->bottom-a->top>src->h)return 0;
+    if(!(xf->identity && dst->bpp==8) && !(dst->bpp==32 && (src->bpp==8 || src->bpp==32)))return 0;
+    for(row=a->top;row<a->bottom;row++) {
+        const unsigned char *in=bmp_row(src,sy+row-y);
+        unsigned char *out=bmp_row(dst,row);
+        if(dst->bpp==8)memcpy(out+a->left,in+left,(size_t)n);
+        else if(src->bpp==8) {
+            DWORD *p=(DWORD *)out+a->left;
+            for(col=0;col<n;col++)p[col]=xf->map32[in[left+col]];
+        } else {
+            DWORD *p=(DWORD *)out+a->left;
+            const DWORD *q=(const DWORD *)in+left;
+            for(col=0;col<n;col++)p[col]=q[col]&0xffffff;
+        }
+    }
+    return 1;
+}
 static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, int sw, int sh, DWORD rop)
 {
     DC *dd = get_dc(hd), *sd = get_dc(hs);
     Region clip = {0, 0, NULL};
     Bitmap *dst, *src;
     Xfer xf;
-    int i, flipx = 0, flipy = 0, *sxs, row;
+    int i, flipx = 0, flipy = 0, *sxs=NULL, row;
     if (!dd)
         return FALSE;
     if (rop == BLACKNESS || rop == WHITENESS || rop == PATCOPY || rop == DSTINVERT) {
@@ -1257,7 +1351,6 @@ static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, 
             plat_log("trace: blit to %d,%d %dx%d from %s %d,%d rop %06x\n", (int)sr.left, (int)sr.top, w, h,
                      sd->is_memory ? "memory" : "window", sx, sy, (unsigned)rop);
     }
-    sxs = malloc(sizeof(int) * (size_t)w);
     for (i = 0; i < clip.n; i++) {
         RECT a, want;
         want.left = x; want.top = y; want.right = x + w; want.bottom = y + h;
@@ -1269,6 +1362,12 @@ static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, 
         if (a.bottom > dst->h) a.bottom = dst->h;
         if (hd_enabled && rop==SRCCOPY && !flipx && !flipy)
             hd_transfer(dst,src,x,y,w,h,sx,sy,sw,sh,a.left,a.top,a.right,a.bottom);
+        if(hd_enabled && rop==SRCCOPY && !flipx && !flipy && w==sw && h==sh &&
+           xfer_copy_rect(&xf,&a,x,y,sx,sy)) {
+            hd_bitmap_commit_rect(dst,a.left,a.top,a.right-a.left,a.bottom-a.top);
+            continue;
+        }
+        if(!sxs)sxs=malloc(sizeof(int)*(size_t)w);
         for (row = a.top; row < a.bottom; row++) {
             int ry = row - y, srow, n = 0, col;
             if (flipy)
@@ -1291,7 +1390,7 @@ static WINBOOL blit(HDC hd, int x, int y, int w, int h, HDC hs, int sx, int sy, 
         }
         if (hd_enabled) {
             if(rop!=SRCCOPY || flipx || flipy)hd_bitmap_changed(dst,a.left,a.top,a.right-a.left,a.bottom-a.top);
-            hd_bitmap_commit(dst);
+            hd_bitmap_commit_rect(dst,a.left,a.top,a.right-a.left,a.bottom-a.top);
         }
     }
     free(sxs);

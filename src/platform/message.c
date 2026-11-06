@@ -8,6 +8,7 @@
  * With CIV2_SCRIPT set the clock is virtual (see replay.c).
  */
 #include "plat.h"
+#include "hd.h"
 #ifndef __wasm__
 #include <dlfcn.h>
 #include <execinfo.h>
@@ -941,7 +942,7 @@ void plat_idle(void)
          * peek.  A short sleep now and then keeps its idle loop from taking
          * a whole core. */
         static int empty;
-        if (++empty >= 100) {
+        if (!hd_redraw_active && ++empty >= 100) {
             empty = 0;
             host_delay_ms(1);
         }
