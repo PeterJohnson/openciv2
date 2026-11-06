@@ -110,6 +110,7 @@ u32 HOST(gpu_create)(Host *h,u32 w,u32 height,u32 kind,u32 pixels,u32 pitch)
 { (void)h;return host_gpu_create(w,height,kind,pixels ? MEM(pixels) : NULL,pitch); }
 void HOST(gpu_destroy)(Host *h,u32 id) { (void)h;host_gpu_destroy(id); }
 u32 HOST(gpu_blit)(Host *h,u32 draw) { (void)h;return host_gpu_blit(MEM(draw)); }
+u32 HOST(gpu_camera)(Host *h,u32 draw) { (void)h;return host_gpu_camera(MEM(draw)); }
 u32 HOST(gpu_text)(Host *h,u32 draw) { (void)h;return host_gpu_text(MEM(draw)); }
 u32 HOST(gpu_text_batch)(Host *h,u32 draws,u32 count) { (void)h;return host_gpu_text_batch(MEM(draws),count); }
 u32 HOST(gpu_fill)(Host *h,u32 id,u32 x,u32 y,u32 w,u32 height,u32 color)

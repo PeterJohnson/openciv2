@@ -19,6 +19,35 @@ static void compare(Bitmap *actual,Bitmap *expected,int tolerance)
         }
     }
 }
+static void check_camera(void)
+{
+    int d=hd_density,w=64*d,h=48*d,x,y;
+    uint32_t *pixels=malloc((size_t)w*h*4),*result=malloc((size_t)w*h*4);
+    for(y=0;y<h;y++)for(x=0;x<w;x++)pixels[y*w+x]=0xff000000u|((x/d/8)*29)<<16|((y/d/8)*37)<<8|0x55;
+    int src=host_gpu_create(w,h,0,pixels,w*4),dst=host_gpu_create(w,h,0,NULL,0);
+    assert(src && dst);
+    HostGpuCamera camera={dst,src,0,0,w,h,-7.25f*d,-3.125f*d,w*1.375f,h*1.375f,2*d,3*d,61*d,45*d};
+    assert(host_gpu_fill(dst,0,0,w,h,0xffabcdef));
+    assert(host_gpu_camera(&camera));
+    HostGpuBlit nearest={dst,src,0,0,d,d,0,0,w,h,0,0,d,d,0xffffffffu,0,0};
+    assert(host_gpu_blit(&nearest)); /* queued sampler change must not alter the camera */
+    assert(host_gpu_read(dst,0,0,w,h,result,w*4));
+    int interpolated=0;
+    for(y=0;y<h;y++)for(x=0;x<w;x++) {
+        if(x<d && y<d)continue;
+        if(x<camera.l || x>=camera.r || y<camera.t || y>=camera.b)assert(result[y*w+x]==0xffabcdef);
+        else {
+            if(((result[y*w+x]>>16)&255)%29)interpolated++;
+            double sx=(x+.5-camera.x)/1.375,sy=(y+.5-camera.y)/1.375;
+            int ix=(int)sx,iy=(int)sy;
+            // Ignore the one-texel interpolation band between ID-colored tiles.
+            if(ix>0 && iy>0 && ix<w-1 && iy<h-1 && ix%(8*d)>1 && ix%(8*d)<8*d-2 &&
+               iy%(8*d)>1 && iy%(8*d)<8*d-2)assert(result[y*w+x]==pixels[iy*w+ix]);
+        }
+    }
+    assert(interpolated>0);
+    host_gpu_destroy(src);host_gpu_destroy(dst);free(pixels);free(result);
+}
 static int text_channel(int dst,int text,int aa)
 {
     static const unsigned char ramp[17]={0,0x4d,0x68,0x7c,0x8c,0x9a,0xa7,0xb2,0xbd,0xc7,0xd0,0xd9,0xe1,0xe9,0xf0,0xf8,0xff};
@@ -185,6 +214,7 @@ int main(int argc,char **argv)
     snprintf(plat_data_dir,sizeof plat_data_dir,"%s",argv[1]);
     hd_init(0,0);hd_start_gpu();
     assert(hd_gpu_active);d=hd_density;
+    check_camera();
     gpu_bitmap=bitmap(0,0);hd_sync(gpu_bitmap);assert(gpu_bitmap->hd_gpu);
     hd_gpu_active=0;cpu_bitmap=bitmap(1,1);hd_sync(cpu_bitmap);hd_gpu_active=1;
     copy=bitmap(2,1);hd_sync(copy);

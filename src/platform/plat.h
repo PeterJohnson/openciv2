@@ -19,6 +19,7 @@
 #include <strings.h>
 #include <ctype.h>
 #include "win32_api.h"
+#include "../include/map_camera.h"
 #include "plat_files.h"
 
 /* ---- handles ---- */
@@ -227,6 +228,7 @@ void input_key(int vk, int down);
 void input_mouse_move(int x, int y);
 void input_mouse_button(int button, int down);
 void input_mouse_wheel(int notches);       /* WM_MOUSEWHEEL to the focus window */
+void input_mouse_wheel_precise(double notches);
 void pointer_init(int x, int y);
 void pointer_check(void);              /* the pointer's window changed: WM_MOUSEMOVE */
 extern BYTE key_state[256];

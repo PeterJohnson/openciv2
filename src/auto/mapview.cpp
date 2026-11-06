@@ -636,6 +636,7 @@ uint __cdecl mapviews_ensure_visible(i32 x,i32 y,iptr civ)
 int MapView::point_unit_dir(int mouse_x,int mouse_y,i32 unit_x,i32 unit_y)
 
 {
+  if (!map_camera_pick(this,&mouse_x,&mouse_y)) return 8;
   short client_dx;
   short client_dy;
   int dir;
@@ -1035,13 +1036,13 @@ void __cdecl mapview_on_caption_button(i32 button)
       ((SurfaceWindow *)((i8 *)&map_views_block.map_views))->repaint();
       break;
     case 2:
-      if ((short)this2->zoom_u < 8) {
+      if (!map_camera_zoom_step(this2,1) && (short)this2->zoom_u < 8) {
         *(short *)&this2->zoom_u = (short)this2->zoom_u + 1;
         this2->redraw(human_civ[0],1);
       }
       break;
     case 3:
-      if (-7 < (short)this2->zoom_u) {
+      if (!map_camera_zoom_step(this2,-1) && -7 < (short)this2->zoom_u) {
         *(short *)&this2->zoom_u = (short)this2->zoom_u - 1;
         this2->redraw(human_civ[0],1);
       }
@@ -1333,6 +1334,7 @@ void __cdecl mapview_draw_tile_number(i32 x,i32 y,int number,i32 color)
 void MapView::init_state(u32 view_index)
 
 {
+  map_camera_forget(this);
   map_view_index = view_index;
   if (view_index == 0) {
     *(i16 *)((int)&open_u + 2) = 1;
@@ -1446,6 +1448,7 @@ void MapView::update_layout()
     tile_small_font.set(1,font_size);
     tile_small_font_size = font_size;
   }
+  map_camera_layout(this);
   return;
 }
 
@@ -1453,6 +1456,7 @@ void MapView::update_layout()
 i32 MapView::screen_to_tile(iptr out_x,iptr out_y,i32 mouse_x,i32 mouse_y)
 
 {
+  if (!map_camera_pick(this,&mouse_x,&mouse_y)) return 1;
   short px;
   short py;
   i32 result;
@@ -2564,6 +2568,7 @@ MapView * __thiscall mapview_ctor(MapView *self)
 void __thiscall mapview_dtor(MapView *self)
 
 {
+  map_camera_forget(self);
   int eh_state;
   
   eh_state = eh_state & 0xff;

@@ -49,7 +49,7 @@ int hd_redraw_poll_due(void)
 void plat_present(void)
 {
     uint64_t now;
-    if (!window_open || benchmark_offscreen || hd_redraw_active)
+    if (!window_open || benchmark_offscreen || hd_redraw_active || map_camera_busy())
         return;
     now = host_time_us();
     /* at most ~66 a second, and no more than a third of the time: where
@@ -58,6 +58,7 @@ void plat_present(void)
     if (now - last_present < 15000 || now - last_present < 2 * present_cost)
         return;
     last_present = now;
+    if(!plat_overlay)map_camera_tick();
     if (!plat_overlay)
         plat_compose();
     if (hd_gpu_active && screen->hd_gpu) {
@@ -171,7 +172,10 @@ int msg_pump_events(int wait)
             input_mouse_button(e.button, e.type == HOST_EV_BUTTONDOWN);
             break;
         case HOST_EV_WHEEL:
-            input_mouse_wheel(e.button);
+            input_mouse_wheel_precise(e.wheel_y);
+            break;
+        case HOST_EV_FOCUS_LOST:
+            map_camera_cancel();
             break;
         case HOST_EV_EXPOSED:
             last_present = 0;

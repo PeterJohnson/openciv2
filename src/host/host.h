@@ -35,6 +35,7 @@ enum {
     HOST_EV_BUTTONDOWN, HOST_EV_BUTTONUP, HOST_EV_EXPOSED,
     HOST_EV_COMMAND,        /* a native menu's item chosen: vk is its id */
     HOST_EV_WHEEL,          /* the mouse wheel turned: button notches, positive away from the user */
+    HOST_EV_FOCUS_LOST,
     HOST_EV_RESIZE          /* a maximized or native window's size changed (as to full screen and
                                back): x, y its size in pixels; the desktop follows (host_resize_desktop) */
 };
@@ -43,6 +44,7 @@ typedef struct HostEvent {
     int32_t vk;             /* keys */
     int32_t x, y;           /* pointer, desktop coordinates */
     int32_t button;         /* 1 left, 2 right, 3 middle */
+    float wheel_y;         /* fractional wheel notches; other events leave zero */
 } HostEvent;
 
 /* Set-up: headless (no window, no audio device) for replays. */
@@ -121,6 +123,15 @@ typedef struct HostGpuBlit {
     int32_t blend, linear;
 } HostGpuBlit;
 typedef struct HostGpuText { HostGpuBlit draw; uint32_t layers[2]; } HostGpuText;
+/* Map presentation only: fractional destination, integer source and scissor.
+ * This does not change legacy drawing or sprite-cache dimensions. */
+typedef struct HostGpuCamera {
+    uint32_t dst, src;
+    int32_t sx, sy, sw, sh;
+    float x, y, w, h;
+    int32_t l, t, r, b;
+} HostGpuCamera;
+int HOST_API(host_gpu_camera)(const HostGpuCamera *draw);
 /* Capability bits: 1 texture compositor, 2 colored-text gamma passes. */
 int HOST_API(host_gpu_available)(void);
 /* kind: 0 render target initialized from ARGB (or black when pixels is NULL),

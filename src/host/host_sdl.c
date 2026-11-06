@@ -445,12 +445,17 @@ static int convert(const SDL_Event *s, HostEvent *e)
         e->button = s->button.button == SDL_BUTTON_LEFT ? 1 : s->button.button == SDL_BUTTON_RIGHT ? 2 : 3;
         return 1;
     case SDL_MOUSEWHEEL:
-        if (s->wheel.y == 0)
+        if (s->wheel.preciseY == 0 && s->wheel.y == 0)
             return 0;
         e->type = HOST_EV_WHEEL;
         e->button = s->wheel.direction == SDL_MOUSEWHEEL_FLIPPED ? -s->wheel.y : s->wheel.y;
+        e->wheel_y=s->wheel.preciseY ? s->wheel.preciseY : s->wheel.y;
+        if(s->wheel.direction==SDL_MOUSEWHEEL_FLIPPED)e->wheel_y=-e->wheel_y;
         return 1;
     case SDL_WINDOWEVENT:
+        if(s->window.event==SDL_WINDOWEVENT_FOCUS_LOST) {
+            e->type=HOST_EV_FOCUS_LOST;return 1;
+        }
         if (s->window.event == SDL_WINDOWEVENT_SIZE_CHANGED) {
             int w, h;
             fit_desktop();

@@ -302,6 +302,37 @@ static void compose_gpu_piece(Bitmap *src,int dx,int dy,const RECT *rect)
 }
 /* Top-level surfaces are opaque. Copy only the uncovered pieces, so a
    maximized map does not first copy several density-scaled windows behind it. */
+static int compose_camera_piece(Window *w,Bitmap *src,int dx,int dy,const RECT *rect)
+{
+    MapCameraTransform c;
+    Window *map=wnd_get((HWND)map_camera_get(&c));
+    POINT origin={0,0};
+    RECT view,inside,part;
+    int px,py,sx,sy;
+    if(!map || wnd_top(map)!=w || (c.scale==1 && c.x==0 && c.y==0))return 0;
+    wnd_client_screen(map,&origin);
+    view=(RECT){origin.x+c.left,origin.y+c.top,origin.x+c.left+c.width,origin.y+c.top+c.height};
+    if(!rect_intersect(&inside,&view,rect))return 0;
+    sx=view.left-dx;sy=view.top-dy;
+    if(sx<0 || sy<0 || sx+c.width>src->w || sy+c.height>src->h)return 0;
+    /* Preserve normal chrome and occlusion, replacing only the map interior. */
+    part=*rect;part.bottom=inside.top;compose_gpu_piece(src,dx,dy,&part);
+    part=*rect;part.top=inside.bottom;compose_gpu_piece(src,dx,dy,&part);
+    part=*rect;part.top=inside.top;part.bottom=inside.bottom;part.right=inside.left;compose_gpu_piece(src,dx,dy,&part);
+    part.left=inside.right;part.right=rect->right;compose_gpu_piece(src,dx,dy,&part);
+    hd_composite_camera(screen,src,sx,sy,c.width,c.height,
+        view.left+c.x,view.top+c.y,c.width*c.scale,c.height*c.scale,
+        inside.left,inside.top,inside.right,inside.bottom);
+    /* Keep the logical desktop coherent for legacy captures/GetPixel. No HD
+     * readback: map picking itself still reads the original indexed masks. */
+    for(py=inside.top;py<inside.bottom;py++) {
+        int yy=sy+(int)((py-view.top-c.y)/c.scale);
+        DWORD *out=(DWORD *)bmp_row(screen,py),*in=(DWORD *)bmp_row(src,yy);
+        for(px=inside.left;px<inside.right;px++)
+            out[px]=in[sx+(int)((px-view.left-c.x)/c.scale)];
+    }
+    return 1;
+}
 static void compose_gpu_windows(Window **order,int n)
 {
     Region uncovered={0},visible={0};
@@ -327,7 +358,7 @@ static void compose_gpu_windows(Window **order,int n)
           if(!rect_intersect(&shown,&shown,&backing))continue; }
         for(j=0;j<visible.n;j++) {
             RECT *r=visible.r+j;
-            compose_gpu_piece(s,dx,dy,r);
+            if(!compose_camera_piece(w,s,dx,dy,r))compose_gpu_piece(s,dx,dy,r);
         }
         rgn_subtract_rect(&uncovered,&shown);
     }

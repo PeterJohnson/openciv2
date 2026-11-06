@@ -27,6 +27,7 @@ static unsigned copied[48*32];
 static void *bmp_row(Bitmap *b,int y) { return b->pixels+y*b->w; }
 static void wnd_shown_rect(Window *w,RECT *r) { *r=w->shown; }
 static Bitmap *wnd_surface(Window *w) { return w->surface; }
+static int compose_camera_piece(Window *,Bitmap *,int,int,const RECT *) { return 0; }
 static void hd_composite(Bitmap *dst,Bitmap *src,int x,int y,int l,int t,int r,int b)
 {
     assert(dst==screen);

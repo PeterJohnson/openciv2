@@ -1,0 +1,41 @@
+/* Optional presentation camera. Nothing here is part of a save or game struct. */
+#ifndef CIV2_MAP_CAMERA_H
+#define CIV2_MAP_CAMERA_H
+#include <stdint.h>
+typedef struct MapCameraTransform {
+    double scale, x, y; /* viewport-local: displayed = source * scale + offset */
+    int left, top, width, height;
+} MapCameraTransform;
+static inline double camera_source_x(const MapCameraTransform *c,double x)
+{ return c->left+(x-c->left-c->x)/c->scale; }
+static inline double camera_source_y(const MapCameraTransform *c,double y)
+{ return c->top+(y-c->top-c->y)/c->scale; }
+/* Inverse-map a pointer, rejecting the viewport chrome before transforming it.
+ * floor matters at negative offsets and diamond boundaries. */
+static inline int camera_pick(const MapCameraTransform *c,int *x,int *y)
+{
+    double sx,sy;
+    if(*x<c->left || *y<c->top || *x>=c->left+c->width || *y>=c->top+c->height)return 0;
+    sx=camera_source_x(c,*x);sy=camera_source_y(c,*y);
+    if(sx<c->left || sy<c->top || sx>=c->left+c->width || sy>=c->top+c->height)return 0;
+    *x=(int)sx;*y=(int)sy;
+    if(sx<*x)--*x;if(sy<*y)--*y;return 1;
+}
+#ifdef __cplusplus
+extern "C" {
+#endif
+void map_camera_layout(void *view);
+void map_camera_forget(void *view);
+int map_camera_pick(void *view,int *x,int *y);
+int map_camera_input(void *message);
+int map_camera_zoom_step(void *view,int step); /* 0: normal zoom, otherwise +/-1 */
+void map_camera_tick(void);
+int map_camera_busy(void);
+void map_camera_cancel(void);
+void map_camera_probe(int x,int y);
+/* Native window containing the map; the transform is in its client coordinates. */
+uintptr_t map_camera_get(MapCameraTransform *out);
+#ifdef __cplusplus
+}
+#endif
+#endif

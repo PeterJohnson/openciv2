@@ -1,0 +1,260 @@
+/* GPU camera prototype: reuse the live map backing surface between gestures.
+ * Coverage/LOD changes still redraw synchronously; no persistent world cache.
+ * Legacy draw coordinates, picking masks, and animation captures stay intact. */
+#include <math.h>
+#include "game.h"
+#include "../platform/hd.h"
+EXTERN_C void plat_log(const char *,...);
+
+static struct {
+    MapView *view;
+    HWND hwnd;
+    MapCameraTransform transform;
+    double scale,target,cx,cy,anchor_x,anchor_y,world_x,world_y;
+    double drag_x,drag_y;
+    POINT start;
+    DWORD tick;
+    int zoom,center_x,center_y,width,height,map_w,map_h,civ;
+    int button,moved,refreshing,animating,dirty;
+} camera;
+
+static int enabled(void)
+{
+    static int option=-1;
+    if(!hd_gpu_active || !turn_loop.active || map.width<1 || map.height<1)return 0;
+    if(option<0)option=GetPrivateProfileIntA("OpenCiv2","GpuMapCamera",0,"CIV.INI")!=0;
+    return option;
+}
+static HWND view_hwnd(MapView *m)
+{
+    NativeWindow *w=((WndBase *)((i8 *)m+0x48))->native_wnd;
+    return w ? w->hwnd : 0;
+}
+static double clamp(double v,double lo,double hi) { return v<lo ? lo : v>hi ? hi : v; }
+static double source_x(MapView *m,double px)
+{ return m->origin_x+1+(px-m->client_x-m->margin_x)/(double)m->half_tile_width; }
+static double source_y(MapView *m,double py)
+{ return m->origin_y+1+(py-m->client_y-m->margin_y)/(double)m->half_tile_height; }
+
+static void transform(void)
+{
+    MapView *m=camera.view;
+    double base=m->tile_width/64.0,reference=source_x(m,m->client_x+m->client_width*.5);
+    MapCameraTransform *c=&camera.transform;
+    /* Choose the same copy of the cylindrical world as the backing surface. */
+    if(!(game.rules & RULE_FLAT_WORLD) && map.width>0)
+        camera.cx+=floor((reference-camera.cx)/map.width+.5)*map.width;
+    c->left=m->client_x;c->top=m->client_y;c->width=m->client_width;c->height=m->client_height;
+    c->scale=camera.scale/base;
+    c->x=c->width*.5-(m->margin_x+(camera.cx-m->origin_x-1)*m->half_tile_width)*c->scale;
+    c->y=c->height*.5-(m->margin_y+(camera.cy-m->origin_y-1)*m->half_tile_height)*c->scale;
+}
+static void remember(void)
+{
+    MapView *m=camera.view;
+    camera.zoom=m->zoom;camera.center_x=m->center_x;camera.center_y=m->center_y;
+    camera.width=m->client_width;camera.height=m->client_height;
+    camera.map_w=map.width;camera.map_h=map.height;camera.civ=human_civ[0];
+}
+static void cancel_drag(void)
+{
+    camera.button=0;camera.moved=0;
+    if(camera.hwnd && GetCapture()==camera.hwnd)ReleaseCapture();
+}
+void map_camera_cancel(void) { cancel_drag();camera.animating=0;camera.target=camera.scale; }
+int map_camera_busy(void) { return camera.refreshing; }
+void map_camera_forget(void *view)
+{
+    if(camera.view!=view)return;
+    cancel_drag();memset(&camera,0,sizeof camera);
+}
+void map_camera_layout(void *view)
+{
+    MapView *m=(MapView *)view;
+    if(!enabled() || m->map_view_index!=0 || !m->half_tile_width || !m->half_tile_height ||
+       m->client_width<=0 || m->client_height<=0)return;
+    HWND hwnd=view_hwnd(m);
+    if(!hwnd)return;
+    if(!camera.refreshing) {
+        bool fresh=camera.view!=m || camera.hwnd!=hwnd || camera.zoom!=m->zoom ||
+            camera.width!=m->client_width || camera.height!=m->client_height ||
+            camera.map_w!=(int)map.width || camera.map_h!=(int)map.height || camera.civ!=human_civ[0];
+        if(fresh || camera.center_x!=m->center_x || camera.center_y!=m->center_y) {
+            cancel_drag();camera.animating=0;camera.dirty=0;
+            if(fresh)camera.scale=(m->zoom+8)/8.0;
+            camera.target=camera.scale;
+            camera.cx=source_x(m,m->client_x+m->client_width*.5);
+            camera.cy=source_y(m,m->client_y+m->client_height*.5);
+        }
+    }
+    camera.view=m;camera.hwnd=hwnd;remember();transform();
+}
+int map_camera_pick(void *view,int *x,int *y)
+{
+    if(!enabled() || camera.view!=view)return 1;
+    return camera_pick(&camera.transform,x,y);
+}
+uintptr_t map_camera_get(MapCameraTransform *out)
+{
+    if(!enabled() || !camera.view || !IsWindow(camera.hwnd) || !IsWindowVisible(camera.hwnd))return 0;
+    *out=camera.transform;
+    return camera.hwnd;
+}
+
+static void coverage(void)
+{
+    MapView *m=camera.view;
+    MapCameraTransform *c=&camera.transform;
+    const int saved_click=map_click_in_progress;
+    ON_SCOPE_EXIT(camera.refreshing=0;map_click_in_progress=saved_click);
+    /* One lower legacy level supplies a little coverage around the visible
+     * area. Minimum zoom cannot supply overscan and retains aligned panning. */
+    int zoom=(int)floor(camera.scale*8+1e-8)-9;
+    if(zoom<-7)zoom=-7;if(zoom>8)zoom=8;
+    transform();
+    if(m->zoom!=zoom || c->x>0 || c->y>0 || c->x+c->width*c->scale<c->width ||
+       c->y+c->height*c->scale<c->height) {
+        int x=(int)floor(camera.cx),y=(int)floor(camera.cy);
+        y=(int)clamp(y,0,map.height-1);if((x+y)&1)x++;
+        if(game.rules & RULE_FLAT_WORLD)x=(int)clamp(x,0,map.width-1);
+        x=map_wrap_x(x);
+        int keep=map_click_in_progress;
+        camera.refreshing=1;map_click_in_progress=1;
+        m->zoom=(i16)zoom;
+        /* The legacy center is not the exact viewport midpoint: row parity
+         * and ceil(tile counts) shift it by up to two lattice coordinates.
+         * Choose a valid backing center around the desired camera center. */
+        double best=1e30;int best_x=x,best_y=y;
+        for(int yy=y-2;yy<=y+2;yy++)for(int xx=x-2;xx<=x+2;xx++) {
+            if(((xx+yy)&1) || yy<0 || yy>=(int)map.height ||
+               ((game.rules & RULE_FLAT_WORLD) && (xx<0 || xx>=(int)map.width)))continue;
+            m->center_x=(i16)map_wrap_x(xx);m->center_y=(i16)yy;m->update_layout();
+            double ex=source_x(m,m->client_x+m->client_width*.5)-camera.cx;
+            if(!(game.rules & RULE_FLAT_WORLD))ex-=floor(ex/map.width+.5)*map.width;
+            double ey=source_y(m,m->client_y+m->client_height*.5)-camera.cy;
+            double error=ex*ex+ey*ey;
+            if(error<best) { best=error;best_x=m->center_x;best_y=m->center_y; }
+        }
+        m->center_x=(i16)best_x;m->center_y=(i16)best_y;
+        m->redraw(human_civ[0],1);
+        map_click_in_progress=keep;
+        remember();transform();
+    }
+    /* Until overscan exists, never expose pixels outside the live map. This
+     * also respects the original layout's flat-map/pole/small-world bounds. */
+    double nx=clamp(c->x,c->width*(1-c->scale),0),ny=clamp(c->y,c->height*(1-c->scale),0);
+    camera.cx+=(c->x-nx)/(32*camera.scale);
+    camera.cy+=(c->y-ny)/(16*camera.scale);
+    c->x=nx;c->y=ny;
+    camera.refreshing=0;
+}
+void map_camera_tick(void)
+{
+    if(!enabled() || !camera.view || camera.refreshing || net.map_redraw_busy)return;
+    if(!IsWindow(camera.hwnd)) { map_camera_forget(camera.view);return; }
+    if(camera.button && (GetCapture()!=camera.hwnd || !IsWindowEnabled(camera.hwnd)))cancel_drag();
+    if(camera.dirty) { coverage();camera.dirty=0; }
+    if(!camera.animating || !IsWindowEnabled(camera.hwnd))return;
+    DWORD now=timeGetTime(),elapsed=now-camera.tick;
+    if(!elapsed)return;
+    camera.tick=now;
+    /* Time-based easing also runs on idle frames, independent of wheel rate. */
+    double a=1-exp(-clamp(elapsed,0,1000)/35.0);
+    camera.scale+=a*(camera.target-camera.scale);
+    if(fabs(camera.target-camera.scale)<.0001) {
+        camera.scale=camera.target;camera.animating=0;
+    }
+    camera.cx=camera.world_x-(camera.anchor_x-camera.width*.5)/(32*camera.scale);
+    camera.cy=camera.world_y-(camera.anchor_y-camera.height*.5)/(16*camera.scale);
+    coverage();
+}
+int map_camera_zoom_step(void *view,int step)
+{
+    if(!enabled() || camera.view!=view)return 0;
+    camera.anchor_x=camera.width*.5;camera.anchor_y=camera.height*.5;
+    camera.world_x=camera.cx;camera.world_y=camera.cy;
+    camera.target=step ? clamp((step>0 ? floor(camera.target*8+1e-6)+1 :
+                               ceil(camera.target*8-1e-6)-1)/8,.125,2) : 1;
+    camera.tick=timeGetTime();camera.animating=1;return 1;
+}
+int map_camera_input(void *message)
+{
+    MSG *m=(MSG *)message;
+    if(!enabled() || !camera.view || camera.refreshing)return 0;
+    if(m->message==WM_KILLFOCUS || m->message==WM_CAPTURECHANGED || m->message==WM_CANCELMODE) {
+        if(m->hwnd==camera.hwnd)cancel_drag();return 0;
+    }
+    if(m->message!=WM_MOUSEWHEEL && m->message!=WM_LBUTTONDOWN && m->message!=WM_LBUTTONUP &&
+       m->message!=WM_MBUTTONDOWN && m->message!=WM_MBUTTONUP && m->message!=WM_MOUSEMOVE)return 0;
+    if(getenv("CIV2_CAMERA_TRACE"))plat_log("camera input %x hwnd=%x map=%x enabled=%d busy=%d city=%d drop=%d\n",
+        m->message,(unsigned)m->hwnd,(unsigned)camera.hwnd,IsWindowEnabled(camera.hwnd),net.ui_input_busy,
+        city_turn.processing,ui_paradrop_cursor_active());
+    if(camera.button && GetCapture()!=camera.hwnd)cancel_drag();
+    if(!IsWindowEnabled(camera.hwnd) || city_turn.processing || net.ui_input_busy ||
+       ui_paradrop_cursor_active()) { cancel_drag();return 0; }
+    POINT pt;HWND under=plat_window_at_cursor(&pt);
+    ScreenToClient(camera.hwnd,&pt);
+    MapCameraTransform *c=&camera.transform;
+    int inside=under==camera.hwnd && pt.x>=c->left && pt.y>=c->top &&
+        pt.x<c->left+c->width && pt.y<c->top+c->height;
+    if(getenv("CIV2_CAMERA_TRACE"))plat_log("camera under=%x point=%d,%d viewport=%d,%d,%d,%d inside=%d\n",
+        (unsigned)under,pt.x,pt.y,c->left,c->top,c->width,c->height,inside);
+    if(m->message==WM_MOUSEWHEEL && inside) {
+        int delta=(short)HIWORD(m->wParam);
+        if(!delta)return 1;
+        camera.anchor_x=pt.x-c->left;camera.anchor_y=pt.y-c->top;
+        camera.world_x=camera.cx+(camera.anchor_x-camera.width*.5)/(32*camera.scale);
+        camera.world_y=camera.cy+(camera.anchor_y-camera.height*.5)/(16*camera.scale);
+        camera.target=clamp(camera.target*pow(1.15,clamp(delta/120.0,-20,20)),.125,2);
+        camera.tick=timeGetTime();camera.animating=1;
+        return 1;
+    }
+    if(m->message==WM_MBUTTONDOWN && inside && (m->wParam & MK_CONTROL))
+        return map_camera_zoom_step(camera.view,0);
+    if((m->message==WM_LBUTTONDOWN || m->message==WM_MBUTTONDOWN) && inside &&
+       !(m->wParam & (MK_SHIFT|MK_CONTROL))) {
+        camera.animating=0;camera.target=camera.scale;
+        mapview_cancel_drag();
+        camera.button=m->message==WM_LBUTTONDOWN ? 1 : 2;camera.moved=0;
+        camera.start=pt;camera.drag_x=camera.cx;camera.drag_y=camera.cy;
+        SetCapture(camera.hwnd);return 1;
+    }
+    if(m->message==WM_MOUSEMOVE && camera.button) {
+        if(!(m->wParam & (camera.button==1 ? MK_LBUTTON : MK_MBUTTON))) { cancel_drag();return 1; }
+        int dx=pt.x-camera.start.x,dy=pt.y-camera.start.y;
+        if(dx*dx+dy*dy>=36)camera.moved=1;
+        if(camera.moved) {
+            camera.cx=camera.drag_x-dx/(32*camera.scale);
+            camera.cy=camera.drag_y-dy/(16*camera.scale);
+            camera.dirty=1;
+        }
+        return 1;
+    }
+    if((m->message==WM_LBUTTONUP && camera.button==1) ||
+       (m->message==WM_MBUTTONUP && camera.button==2)) {
+        int click=!camera.moved && inside,button=camera.button;
+        cancel_drag();
+        if(click && button==1) {
+            /* The legacy window records button-down before dispatching a
+             * click. Deliver the pair only after we know this wasn't a pan. */
+            LPARAM pos=MAKELPARAM(pt.x,pt.y);
+            SendMessageA(camera.hwnd,WM_LBUTTONDOWN,m->wParam|MK_LBUTTON,pos);
+            SendMessageA(camera.hwnd,WM_LBUTTONUP,m->wParam,pos);
+        }
+        return 1;
+    }
+    return 0;
+}
+
+/* Replay diagnostics use the real game's mask-based picker, without orders. */
+void map_camera_probe(int x,int y)
+{
+    map_camera_tick();
+    MapView *m=(MapView *)&map_views_block.map_views;
+    POINT p={x,y};ScreenToClient(view_hwnd(m),&p);
+    int tx=-1,ty=-1,sx=p.x,sy=p.y;
+    int ok=map_camera_pick(m,&sx,&sy);
+    int result=m->screen_to_tile((iptr)&tx,(iptr)&ty,p.x,p.y);
+    plat_log("camera probe %d %d: result=%d tile=%d,%d source=%d,%d scale=%.6f base=%d mapped=%d cursor=%d,%d\n",
+             x,y,result,tx,ty,sx,sy,camera.scale,m->zoom,ok,(int)map_cursor.x[0],(int)map_cursor.y[0]);
+}

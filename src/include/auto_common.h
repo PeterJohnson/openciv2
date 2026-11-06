@@ -82,6 +82,7 @@ static inline void editor_copy_pool_name(char *dest, const char *src, size_t wid
 }
 /* The interface additions (docs/EXTRAS.md): extra_ui(X_...), marked X<n>. */
 #include "extras.h"
+#include "map_camera.h"
 /* The sounds played and videos looked for, logged in a replay for the
  * comparison with the original (CIV2_CALL_LOG, src/platform/replay.c). */
 EXTERN_C void replay_log_sound(int effect, int mode, int loop);

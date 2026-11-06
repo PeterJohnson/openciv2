@@ -70,6 +70,8 @@ const uint32_t *hd_pixels(struct Bitmap *b);
 void hd_read_region(struct Bitmap *b, int x, int y, int w, int h);
 void hd_upload_region(struct Bitmap *b, int x, int y, int w, int h);
 void hd_composite(struct Bitmap *dst, struct Bitmap *src, int x, int y, int l, int t, int r, int bot);
+void hd_composite_camera(struct Bitmap *dst, struct Bitmap *src,int sx,int sy,int sw,int sh,
+                         double x,double y,double w,double h,int l,int t,int r,int bot);
 int hd_gpu_text(struct Bitmap *b, const unsigned char *coverage, int sw, int sh,
                 int x, int y, int w, int h, int l, int t, int r, int bot, uint32_t color);
 void hd_gpu_text_begin(void);

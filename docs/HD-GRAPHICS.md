@@ -38,15 +38,71 @@ It still needs the original rules/text (including `GAME.TXT`, `RULES.TXT` and
 `LABELS.TXT`), and original sound/music/video files for those optional media.
 The existing installer can copy those from the player's installation or disc.
 
+## GPU camera prototype
+
+Add `GpuMapCamera=1` to `[OpenCiv2]` in `CIV.INI` and restart. This experimental
+option defaults to off and requires the active SDL HD GPU compositor. CPU and
+original-graphics rendering retain their existing controls and fixed zooms.
+It currently applies to the main map window only.
+
+- Wheel over the map zooms toward the pointer, including fractional trackpad
+  input. The displayed scale is continuous from 1/8 to 2 times normal and does
+  not snap to a legacy level when the gesture finishes.
+- Left-drag or middle-drag pans after a six-logical-pixel threshold. A left
+  click without dragging still selects/orders normally. Shift+left retains
+  the original Go To gesture; paradrop mode retains its existing input.
+- Zoom step buttons, View menu steps and X/Z use the displayed zoom. Presets
+  reset to their original fixed scales. Ctrl+middle resets to normal zoom.
+- Captions and the other panels stay at their normal size. Map tile picking
+  and movement-direction masks inverse-transform the pointer into the same
+  backing coordinates used by the GPU presentation. World wrapping stays in
+  the original picker.
+
+`src/game/map_camera.cpp` keeps camera state outside the serialized game
+structures. `MapView` continues drawing at a nearby integer zoom into its live
+surface, so units, flags, text, shadows, blinking and animation captures use
+their existing paths. The desktop compositor scales only the map interior with
+subpixel precision, preserving window occlusion and the logical desktop shadow.
+No map-sized texture copy or GPU readback is added for ordinary camera frames.
+Panning is coalesced at presentation time; zoom easing uses elapsed time.
+
+This is a prototype, not the persistent viewport cache. When the requested view
+leaves the backing surface or needs another source zoom, it redraws that surface
+synchronously. Refreshes can still hitch. Until overscan is implemented, movement
+is clamped to available coverage at map edges and minimum zoom; the pointer's
+world position cannot remain fixed when those bounds intervene. The minimap
+outline still describes the backing view. Saving/loading preserves the legacy
+backing zoom, not the fractional camera state. Resizing and changing zoom presets
+reset the camera; extra map windows retain their existing behavior.
+
+On the i5-14500 / UHD 770 Windows host with Direct3D 11, a settled 1.63x map view
+on the 1024x768 logical desktop took 2.62 ms median / 2.93 ms p95 at density 2,
+and 5.05 ms / 5.80 ms at density 4. These are 31 warm desktop-composition samples
+with GPU completion included. They exclude source refresh, event processing,
+presentation and vsync; they do not establish a 10-15 ms interactive-frame bound.
+The same density-4 view measured 4.89 ms median / 5.60 ms p95 on OpenGL, but
+27.27 ms / 28.05 ms on Direct3D 9 on this host. The faster camera path therefore
+does not remove the need to measure the selected backend.
+
+`python tools/test_map_camera.py --game PATH` runs real-clock input, anchored
+fractional zoom, drag picking, ordinary click selection, zoom limits/presets,
+chrome clipping and composition measurements in isolated game directories at
+densities 1-4. `tests/map_camera_pick_test.cpp` exercises the production picker
+against independent diamond geometry, including the world seam. The SDL GPU
+suite also checks fractional camera placement and clipping. `CIV2_CAMERA_TRACE=1`
+adds gesture-routing diagnostics. The replay's `camera_probe` and
+`camera_benchmark` commands inspect picking and measure settled composition.
+
 ## Renderer scope
 
 The map uses the original tile, coast-quarter, river, road, border, sprite and zoom
-composition. `src/auto/map.cpp` is unchanged; `src/auto/mapview.cpp` only adds HD
-ownership coloring to the occupied-airbase sprite. HD support
+composition. Map hooks add HD ownership coloring, redraw scheduling, and the
+optional presentation camera described below. HD support
 provides true-color surfaces, alpha filtering, sprite bindings, fonts, and output
 density. Indexed proxy planes retain the game's color-coded picking masks and
 registration-marker contracts. The enhanced map sampler, terrain edge passes,
 connected overlays and zoom substitutions from the review renderer are excluded.
+
 
 Unexplored boundaries use the directional feathered masks from `05d5967d`,
 replacing solid diamond notches in both the world map and city resource map.

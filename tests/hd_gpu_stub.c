@@ -7,6 +7,7 @@ int host_gpu_available(void) { return 0; }
 int host_gpu_create(int w,int h,int kind,const void *p,int pitch) { UNAVAILABLE(); }
 void host_gpu_destroy(int id) { assert(!"GPU destruction in CPU-only test"); }
 int host_gpu_blit(const HostGpuBlit *d) { UNAVAILABLE(); }
+int host_gpu_camera(const HostGpuCamera *d) { UNAVAILABLE(); }
 int host_gpu_text(const HostGpuText *d) { UNAVAILABLE(); }
 int host_gpu_text_batch(const HostGpuText *d,int count) { UNAVAILABLE(); }
 int host_gpu_fill(int id,int x,int y,int w,int h,uint32_t c) { UNAVAILABLE(); }

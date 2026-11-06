@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 /* A guillotine tree gives freed slots back to the page and coalesces empty
  * siblings. Live images never move. Oversize/full-page cases use private
@@ -363,6 +364,18 @@ int host_gpu_upload(int id,int x,int y,int w,int h,const void *pixels,int pitch,
     SDL_RenderSetClipRect(gpu,NULL);
     return SDL_RenderCopy(gpu,staging,&sr,&dr)==0;
 }
+static int private_sampling(SDL_Texture *texture,SDL_ScaleMode mode)
+{
+    SDL_ScaleMode previous;
+    if(SDL_GetTextureScaleMode(texture,&previous))return 0;
+    if(previous==mode)return 1;
+    if(SDL_RenderFlush(gpu) || SDL_SetTextureScaleMode(texture,mode))return 0;
+    if(rebind_sampler) {
+        SDL_Vertex v[3]={0};
+        if(SDL_RenderGeometry(gpu,NULL,v,3,NULL,0))return 0;
+    }
+    return 1;
+}
 int host_gpu_blit(const HostGpuBlit *d)
 {
     stat_blits++;
@@ -395,7 +408,10 @@ int host_gpu_blit(const HostGpuBlit *d)
         clip.x+clip.w>=dr.x+dr.w && clip.y+clip.h>=dr.y+dr.h ? NULL : &clip);
     if (SDL_SetTextureBlendMode(image,d->blend ? premultiplied : SDL_BLENDMODE_NONE)) return 0;
     SDL_SetTextureColorMod(image,d->color>>16,d->color>>8,d->color);
-    SDL_SetTextureScaleMode(image,d->linear ? SDL_ScaleModeLinear : SDL_ScaleModeNearest);
+    /* At 1:1, integer copies sample texel centers in either mode. Keep the
+     * sampler stable when copying chrome from the camera's backing surface. */
+    if((sr.w!=dr.w || sr.h!=dr.h) &&
+       !private_sampling(image,d->linear ? SDL_ScaleModeLinear : SDL_ScaleModeNearest))return 0;
     return SDL_RenderCopy(gpu,image,&sr,&dr)==0;
 }
 int host_gpu_read(int id,int x,int y,int w,int h,void *pixels,int pitch)
@@ -460,6 +476,26 @@ int host_gpu_text_batch(const HostGpuText *texts,int count)
     SDL_SetTextureColorMod(snapshot,255,255,255);
     stat_blits+=2+2*count;
     return SDL_RenderCopy(gpu,snapshot,&zero,&bounds)==0;
+}
+int host_gpu_camera(const HostGpuCamera *d)
+{
+    GpuTexture *dst=get(d->dst),*src=get(d->src);
+    SDL_Rect sr={d->sx,d->sy,d->sw,d->sh},clip={d->l,d->t,d->r-d->l,d->b-d->t};
+    SDL_FRect dr={d->x,d->y,d->w,d->h};
+    if(!src || !dst || src==dst || src->page || d->sw<=0 || d->sh<=0 ||
+       !(d->w>0) || !(d->h>0) || !isfinite(d->x) || !isfinite(d->y) ||
+       !isfinite(d->w) || !isfinite(d->h))return 0;
+    if(clip.w<=0 || clip.h<=0)return 1;
+    if(d->sx<0 || d->sy<0 || d->sx>src->w-d->sw || d->sy>src->h-d->sh)return 0;
+    if(!batch_flush() || !target(dst))return 0;
+    SDL_RenderSetClipRect(gpu,&clip);
+    SDL_SetTextureBlendMode(src->texture,SDL_BLENDMODE_NONE);
+    SDL_SetTextureColorMod(src->texture,255,255,255);
+    /* Private render targets can also have queued integer copies. Changing
+     * their sampler requires the same ordering/rebind rules as an atlas. */
+    if(!private_sampling(src->texture,SDL_ScaleModeLinear))return 0;
+    stat_blits++;
+    return SDL_RenderCopyF(gpu,src->texture,&sr,&dr)==0;
 }
 int host_gpu_present(int id)
 {

@@ -371,6 +371,7 @@ LRESULT WINAPI DispatchMessageA(const MSG *m)
     }
     if (!w)
         return 0;
+    if(map_camera_input((void *)m))return 0;
     /* The interface additions (docs/EXTRAS.md) see the mouse first: the
        wheel, the middle button, Shift or Ctrl with the mouse */
     if (plat_extras && ((m->message >= WM_MOUSEFIRST && m->message <= WM_MOUSELAST) ||
@@ -1417,6 +1418,30 @@ void input_mouse_wheel(int notches)
         return;
     msg_post(h, WM_MOUSEWHEEL, MAKEWPARAM(mouse_keys(), (WORD)(short)(notches * 120)),
              MAKELPARAM(cursor.x, cursor.y));
+}
+void input_mouse_wheel_precise(double notches)
+{
+    static double camera_remainder,legacy_remainder;
+    MapCameraTransform transform;
+    POINT pt;
+    HWND under=plat_window_at_cursor(&pt),map=(HWND)map_camera_get(&transform);
+    if(map && under==map) {
+        ScreenToClient(map,&pt);
+        if(pt.x>=transform.left && pt.x<transform.left+transform.width &&
+           pt.y>=transform.top && pt.y<transform.top+transform.height) {
+            camera_remainder+=notches*120;
+            int delta=(int)camera_remainder;
+            camera_remainder-=delta;
+            if(delta)msg_post(map,WM_MOUSEWHEEL,MAKEWPARAM(mouse_keys(),(WORD)(short)delta),
+                              MAKELPARAM(cursor.x,cursor.y));
+            legacy_remainder=0;return;
+        }
+    }
+    /* Existing controls consume whole notches. Accumulate, rather than lose,
+     * small trackpad deltas; never give a list a map gesture's remainder. */
+    camera_remainder=0;legacy_remainder+=notches;
+    int delta=(int)legacy_remainder;legacy_remainder-=delta;
+    if(delta)input_mouse_wheel(delta);
 }
 
 /* ---- cursor ---- */

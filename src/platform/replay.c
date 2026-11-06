@@ -373,6 +373,19 @@ void replay_run_script(void)
                 input_mouse_button(b == 3 ? 2 : b == 2 ? 3 : 1, cmd[5] == 'd');
             next_action_us = vclock_us + 100 * 1000;
             break;
+        } else if (!strcmp(cmd, "camera_probe")) {
+            int x=0,y=0;sscanf(arg,"%d %d",&x,&y);
+            map_camera_probe(x,y);
+        } else if (!strcmp(cmd,"camera_benchmark")) {
+            int count=atoi(arg);
+            if(count<1)count=1;if(count>200)count=200;
+            for(int i=0;i<count+1;i++) {
+                uint64_t start;
+                if(hd_gpu_active)host_gpu_fence();
+                start=host_time_us();plat_compose();
+                if(hd_gpu_active)host_gpu_fence();
+                if(i)plat_log("camera compose: %llu us\n",(unsigned long long)(host_time_us()-start));
+            }
         } else if (!strcmp(cmd, "wheel")) {
             /* wheel X Y N: the wheel turned N notches (positive: away) */
             int x = 0, y = 0, n = 0;
@@ -381,6 +394,10 @@ void replay_run_script(void)
             input_mouse_wheel(n);
             next_action_us = vclock_us + 100 * 1000;
             break;
+        } else if (!strcmp(cmd,"wheel_precise")) {
+            int x=0,y=0;double n=0;sscanf(arg,"%d %d %lf",&x,&y,&n);
+            input_mouse_move(x,y);input_mouse_wheel_precise(n);
+            next_action_us=vclock_us+100*1000;break;
         } else if (!strcmp(cmd, "menu")) {
             /* menu LABEL: the host's menu bar's item so labelled chosen
                (CIV2_TEST_NATIVE), as with the mouse */

@@ -1111,6 +1111,16 @@ const uint32_t *hd_pixels(Bitmap *b)
     hd_read_region(b,0,0,b->w*hd_density,b->h*hd_density);
     return b->hd;
 }
+void hd_composite_camera(Bitmap *dst,Bitmap *src,int sx,int sy,int sw,int sh,
+                         double x,double y,double w,double h,int l,int t,int r,int bot)
+{
+    int d=hd_density;
+    hd_sync_rect(src,sx,sy,sw,sh);
+    if(!dst->hd)hd_sync(dst);
+    HostGpuCamera draw={dst->hd_gpu,src->hd_gpu,sx*d,sy*d,sw*d,sh*d,
+        (float)(x*d),(float)(y*d),(float)(w*d),(float)(h*d),l*d,t*d,r*d,bot*d};
+    gpu_check(host_gpu_camera(&draw));
+}
 
 typedef struct SpriteImage {
     const void *sprite;

@@ -2691,16 +2691,19 @@ static void menu_cmd_view_zoom(int cmd)
 {
   switch(cmd) {
   case CMD_STANDARD_ZOOM:
+    map_camera_forget(&map_views_block.map_views);
     map_views_block.mapview_zoom[0] = 0;
     map_views_block.map_view_center_x[0] = map_cursor.x[0];
     map_views_block.mapview_center_y[0] = map_cursor.y[0];
     ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
     break;
   case CMD_MEDIUM_ZOOM_OUT:
+    map_camera_forget(&map_views_block.map_views);
     map_views_block.mapview_zoom[0] = -3;
     ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
     break;
   case CMD_MAX_ZOOM_OUT:
+    map_camera_forget(&map_views_block.map_views);
     map_views_block.mapview_zoom[0] = -7;
     ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
     break;
@@ -3030,7 +3033,7 @@ void __cdecl menu_command(i32 menu,int cmd)
         }
         else if (cmd < 0x311) {
           if (cmd == CMD_ZOOM_IN) {
-            if (map_views_block.mapview_zoom[0] < 8) {
+            if (!map_camera_zoom_step(&map_views_block.map_views,1) && map_views_block.mapview_zoom[0] < 8) {
               map_views_block.mapview_zoom[0]++;
               ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
             }
@@ -3041,10 +3044,12 @@ void __cdecl menu_command(i32 menu,int cmd)
         }
         else if (cmd < 0x321) {
           if (cmd == CMD_MAX_ZOOM_IN) {
+            map_camera_forget(&map_views_block.map_views);
             map_views_block.mapview_zoom[0] = 8;
             ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
           }
-          else if ((cmd == CMD_ZOOM_OUT) && (-7 < map_views_block.mapview_zoom[0])) {
+          else if ((cmd == CMD_ZOOM_OUT) && !map_camera_zoom_step(&map_views_block.map_views,-1) &&
+                   (-7 < map_views_block.mapview_zoom[0])) {
             map_views_block.mapview_zoom[0]--;
             ((MapView *)((i8 *)&map_views_block.map_views))->redraw(human_civ[0],1);
           }
