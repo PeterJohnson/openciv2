@@ -463,6 +463,13 @@ async function proposedMap(w, scene, trace, bindings, density = 2) {
             }
         }
     }
+    // Apply source-selected edge masks after terrain details and before objects.
+    const fog = trace.commands.filter(c => /^(fog\/[0-3]|dither\/11\/[0-3])$/.test(c.asset));
+    if (fog.length) {
+        const layer = await baseline({...trace, commands : fog}, {mode : 'visibility'}, bindings,
+                                     {density, native : false, transparent : true});
+        blit(dst, await raw(layer), 0, 0);
+    }
     if (logicalTw >= 48) {
         const objects = C.engine('objects', path.join(pack, scene.fixture));
         const layer =

@@ -1,0 +1,95 @@
+{
+  "status": "pass",
+  "source": "src/auto/mapview.cpp:1809",
+  "debugReleaseCases": 4,
+  "cityDrawPlansUnchanged": 4,
+  "updated": [
+    "review/images/city-window-current.png",
+    "review/images/city-window-hd.png",
+    "review/images/city-window-crowded-current.png",
+    "review/images/city-window-crowded-hd.png"
+  ],
+  "scenes": [
+    {
+      "id": "unexplored-128",
+      "mode": "map",
+      "tileWidth": 128,
+      "camera": {
+        "ox": 26,
+        "oy": 28,
+        "cols": 17,
+        "rows": 28,
+        "zoom": 8,
+        "viewer": 1
+      },
+      "fixture": "review/unexplored-edges/unexplored-128.txt",
+      "original": "review/original-scenes/unexplored-edges/unexplored-128-original.png",
+      "current": "review/unexplored-edges/unexplored-128-current.png",
+      "hd": "review/unexplored-edges/unexplored-128-hd.png",
+      "proposed": "review/unexplored-edges/unexplored-128-proposed.png",
+      "fogQuarters": 76,
+      "hiddenTiles": 342
+    },
+    {
+      "id": "unexplored-64",
+      "mode": "map",
+      "tileWidth": 64,
+      "camera": {
+        "ox": 26,
+        "oy": 28,
+        "cols": 17,
+        "rows": 28,
+        "zoom": 0,
+        "viewer": 1
+      },
+      "fixture": "review/unexplored-edges/unexplored-64.txt",
+      "original": "review/original-scenes/unexplored-edges/unexplored-64-original.png",
+      "current": "review/unexplored-edges/unexplored-64-current.png",
+      "hd": "review/unexplored-edges/unexplored-64-hd.png",
+      "proposed": "review/unexplored-edges/unexplored-64-proposed.png",
+      "fogQuarters": 76,
+      "hiddenTiles": 342
+    },
+    {
+      "id": "unexplored-32",
+      "mode": "map",
+      "tileWidth": 32,
+      "camera": {
+        "ox": 26,
+        "oy": 28,
+        "cols": 17,
+        "rows": 28,
+        "zoom": -4,
+        "viewer": 1
+      },
+      "fixture": "review/unexplored-edges/unexplored-32.txt",
+      "original": "review/original-scenes/unexplored-edges/unexplored-32-original.png",
+      "current": "review/unexplored-edges/unexplored-32-current.png",
+      "hd": "review/unexplored-edges/unexplored-32-hd.png",
+      "proposed": "review/unexplored-edges/unexplored-32-proposed.png",
+      "fogQuarters": 0,
+      "hiddenTiles": 342
+    },
+    {
+      "id": "unexplored-16",
+      "mode": "map",
+      "tileWidth": 16,
+      "camera": {
+        "ox": 26,
+        "oy": 28,
+        "cols": 17,
+        "rows": 28,
+        "zoom": -6,
+        "viewer": 1
+      },
+      "fixture": "review/unexplored-edges/unexplored-16.txt",
+      "original": "review/original-scenes/unexplored-edges/unexplored-16-original.png",
+      "current": "review/unexplored-edges/unexplored-16-current.png",
+      "hd": "review/unexplored-edges/unexplored-16-hd.png",
+      "proposed": "review/unexplored-edges/unexplored-16-proposed.png",
+      "fogQuarters": 0,
+      "hiddenTiles": 342
+    }
+  ],
+  "note": "Source suppresses edge quarters at zoom <= -4. Unknown tiles stay opaque at every zoom. Originals are composed review scenes only."
+}

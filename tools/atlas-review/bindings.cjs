@@ -125,9 +125,7 @@ async function buildBindings(traces) {
     }
     for (let q = 0; q < 4; q++) {
         await save(`mouth/${q}`, await Finishing.mouth(q, bank.get(`river/${1 << q}`)));
-        await save(`fog/${q}`,
-                   Buffer.from(svg(256, 128, '<path d="M128 0L256 64L128 128L0 64Z" fill="#0b1516"/>')), 32,
-                   16);
+        await save(`fog/${q}`, await require('./fog-edges.cjs').quarter(q), 32, 16);
     }
     for (const family of ['forest', 'hills', 'mountains'])
         for (let i = 0; i < 16; i++) {

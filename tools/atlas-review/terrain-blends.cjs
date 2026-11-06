@@ -52,6 +52,8 @@ function weights(u, v) {
 }
 
 async function dither(terrain, q, bytes) {
+    if (terrain === 11)
+        return require('./fog-edges.cjs').quarter(q);
     if (terrain === 12)
         return require('./coastal-blends.cjs').quarter(q);
     const C = require('./common.cjs'), tile = await C.raw(bytes), out = C.clear(256, 128);

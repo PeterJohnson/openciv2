@@ -75,6 +75,15 @@ stages. Building the original comparisons adds four corresponding 4K exports.
 These exports preserve aspect ratio and can resample the native art; they do not
 claim additional native 4K detail.
 
+## Unexplored boundaries
+
+[Four-stage boundary review](review/unexplored-edges/index.html) covers 128, 64,
+32 and 16px logical tiles, isolated revealed cells and hidden pockets. Four
+directional alpha masks replace the previous solid diamond notches, including
+the city resource map. Native/HD-only previews retain the source 32×16 mask
+boxes and its zoom cutoff (no edge dithers at zoom −4 and below). The enhanced
+preview applies the same selected masks before its object pass.
+
 ## Native window backgrounds
 
 Replacement-native and HD-only city/diplomacy/spacecraft windows now use
