@@ -302,48 +302,68 @@ static void compose_gpu_piece(Bitmap *src,int dx,int dy,const RECT *rect)
 }
 /* Top-level surfaces are opaque. Copy only the uncovered pieces, so a
    maximized map does not first copy several density-scaled windows behind it. */
-static int compose_camera_piece(Window *w,Bitmap *src,int dx,int dy,const RECT *rect)
+static int compose_camera_piece(Window *w,Bitmap *chrome,int dx,int dy,const RECT *rect)
 {
     MapCameraTransform c;
     Window *map=wnd_get((HWND)map_camera_get(&c));
+    Bitmap *src;
     POINT origin={0,0};
-    RECT view,inside,part;
-    int px,py,sx,sy;
+    RECT view;
+    Region visible={0},normal={0};
+    DWORD palette[256];
+    int i,px,py,sx,sy;
     if(!map || wnd_top(map)!=w)return 0;
     wnd_client_screen(map,&origin);
     view=(RECT){origin.x+c.left,origin.y+c.top,origin.x+c.left+c.width,origin.y+c.top+c.height};
-    if(!rect_intersect(&inside,&view,rect))return 0;
-    sx=view.left-dx;sy=view.top-dy;
+    src=bmp_of_bits(map_camera_pixels());
+    if(!src || (src->bpp!=8 && src->bpp!=32))return 0;
+    sx=c.left;sy=c.top;
     if(sx<0 || sy<0 || sx+c.width>src->w || sy+c.height>src->h)return 0;
-    /* Preserve normal chrome and occlusion, replacing only the map interior. */
-    part=*rect;part.bottom=inside.top;compose_gpu_piece(src,dx,dy,&part);
-    part=*rect;part.top=inside.bottom;compose_gpu_piece(src,dx,dy,&part);
-    part=*rect;part.top=inside.top;part.bottom=inside.bottom;part.right=inside.left;compose_gpu_piece(src,dx,dy,&part);
-    part.left=inside.right;part.right=rect->right;compose_gpu_piece(src,dx,dy,&part);
-    hd_composite_camera(screen,src,sx,sy,c.width,c.height,
-        view.left+c.x,view.top+c.y,c.width*c.scale,c.height*c.scale,
-        inside.left,inside.top,inside.right,inside.bottom);
-    {
-        /* Up to one order and one work counter per unit, without frame allocations. */
-        static MapCameraLabel labels[4096];
-        double height=0;
-        int count=map_camera_labels(labels,256,&height,1);
-        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,1);
-        count=map_camera_unit_labels(labels,4096,&height);
-        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,2);
-        count=map_camera_labels(labels,256,&height,0);
-        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,0);
-        count=extras_camera_messages(labels,4,&height);
-        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,3);
+    /* The map and city/advisor windows are siblings on one top-level surface.
+     * Preserve their occlusion as well as top-level dialogs. Sample the map's
+     * own backing: the shared surface contains foreground-window pixels at
+     * source positions that a fractional camera can move into an exposed area. */
+    wnd_visible_region(map,1,&visible);
+    rgn_intersect_rect(&visible,&view);rgn_intersect_rect(&visible,rect);
+    if(!visible.n) { rgn_free(&visible);return 0; }
+    rgn_set(&normal,rect);
+    for(i=0;i<visible.n;i++)rgn_subtract_rect(&normal,visible.r+i);
+    for(i=0;i<normal.n;i++)compose_gpu_piece(chrome,dx,dy,normal.r+i);
+    if(src->bpp==8)for(i=0;i<256;i++) {
+        RGBQUAD q=src->colors[i];
+        palette[i]=(DWORD)q.rgbRed<<16|(DWORD)q.rgbGreen<<8|q.rgbBlue;
     }
-    /* Keep the logical desktop coherent for legacy captures/GetPixel. No HD
-     * readback: map picking itself still reads the original indexed masks. */
-    for(py=inside.top;py<inside.bottom;py++) {
-        int yy=sy+(int)((py-view.top-c.y)/c.scale);
-        DWORD *out=(DWORD *)bmp_row(screen,py),*in=(DWORD *)bmp_row(src,yy);
-        for(px=inside.left;px<inside.right;px++)
-            out[px]=in[sx+(int)((px-view.left-c.x)/c.scale)];
+    for(i=0;i<visible.n;i++) {
+        RECT inside=visible.r[i];
+        hd_composite_camera(screen,src,sx,sy,c.width,c.height,
+            view.left+c.x,view.top+c.y,c.width*c.scale,c.height*c.scale,
+            inside.left,inside.top,inside.right,inside.bottom);
+        {
+            /* Up to one order and one work counter per unit, without frame allocations. */
+            static MapCameraLabel labels[4096];
+            double height=0;
+            int count=map_camera_labels(labels,256,&height,1);
+            text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,1);
+            count=map_camera_unit_labels(labels,4096,&height);
+            text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,2);
+            count=map_camera_labels(labels,256,&height,0);
+            text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,0);
+            count=extras_camera_messages(labels,4,&height);
+            text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,3);
+        }
+        /* Keep the logical desktop coherent for legacy captures/GetPixel. No HD
+         * readback: map picking itself still reads the original indexed masks. */
+        for(py=inside.top;py<inside.bottom;py++) {
+            int yy=sy+(int)((py-view.top-c.y)/c.scale);
+            DWORD *out=(DWORD *)bmp_row(screen,py);
+            unsigned char *in=bmp_row(src,yy);
+            for(px=inside.left;px<inside.right;px++) {
+                int xx=sx+(int)((px-view.left-c.x)/c.scale);
+                out[px]=src->bpp==8 ? palette[in[xx]] : ((DWORD *)in)[xx];
+            }
+        }
     }
+    rgn_free(&normal);rgn_free(&visible);
     return 1;
 }
 static void compose_gpu_windows(Window **order,int n)

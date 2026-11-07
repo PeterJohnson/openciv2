@@ -64,8 +64,12 @@ It currently applies to the main map window only.
 `src/game/map_camera.cpp` keeps camera state outside the serialized game
 structures. `MapView` keeps a live surface at a nearby integer zoom, so units,
 flags, shadows, blinking and animation captures use their existing paths.
-The desktop compositor scales only the map interior with
-subpixel precision, preserving window occlusion and the logical desktop shadow.
+The desktop compositor samples that dedicated map surface and scales only the
+visible map interior with subpixel precision. Terrain and all map labels use the
+same clipping region, excluding city/advisor windows, child controls and modal
+dialogs. The shared main-window surface supplies foreground windows and chrome;
+it cannot be used as the camera source because it already contains those windows.
+The logical desktop shadow follows the same clipping.
 No map-sized texture copy or GPU readback is added for ordinary camera frames.
 Panning is coalesced at presentation time; zoom easing uses elapsed time.
 Mouse gestures use each queued event's recorded position, including wheel
@@ -173,6 +177,14 @@ measure settled composition; `drag_burst` queues a full drag before dispatch.
 OK/Cancel, restart persistence and CPU fallback at densities 1 and 4, including
 the dialog's 640x480 layout. `tests/map_camera_options_test.cpp` covers defaults,
 nearest fixed zoom, valid map centers and cache/capture cleanup on toggling.
+`python tools/test_map_camera_windows.py --game PATH --density 2` compares the
+city window, idle redraws and nested popups pixel-for-pixel with the camera on
+and off, including fractional zoom. `--density` accepts 1–4.
+`tests/map_camera_composition_test.cpp` exercises the actual compositor and
+window visibility rules in 256 cases: sibling windows, child controls, modal
+dialogs, clipped ancestors, fractional scales and independent indexed/32-bit
+map backing with both row orientations. Foreground pixels stay unchanged and
+each desktop pixel receives exactly one background copy.
 Source probes `map_camera_detail_test.cpp`, `map_camera_input_test.cpp` and
 `map_camera_schedule_test.cpp` cover the shoreline cutoff, event coordinates,
 double-click behavior and refresh pacing.

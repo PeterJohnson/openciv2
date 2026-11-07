@@ -55,6 +55,8 @@ void map_camera_probe(int x,int y);
 void map_camera_boundary_test(int flat);
 /* Native window containing the map; the transform is in its client coordinates. */
 uintptr_t map_camera_get(MapCameraTransform *out);
+/* Unoccluded indexed/HD backing; child windows share the desktop surface. */
+void *map_camera_pixels(void);
 /* Persistent rendered viewport regions; owned outside serialized MapView. */
 int map_view_cache_draw(void *view,int civ);
 void map_view_cache_invalidate(void *view,int x,int y,int radius);

@@ -160,6 +160,10 @@ uintptr_t map_camera_get(MapCameraTransform *out)
     *out=camera.transform;
     return camera.hwnd;
 }
+void *map_camera_pixels(void)
+{
+    return enabled() && camera.view ? (void *)camera.view->bits : 0;
+}
 int map_camera_labels(MapCameraLabel *labels,int capacity,double *height,int sizes)
 {
     if(!enabled() || !camera.view || map_show_hidden_terrain)return 0;
