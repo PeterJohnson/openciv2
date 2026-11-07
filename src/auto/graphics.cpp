@@ -3045,6 +3045,48 @@ static int gfx_show_status_text(iptr surface,int zoom)
   return !hd_enabled || map_camera_detail_zoom((void *)surface,zoom) >= -3;
 }
 
+/* Used by both the indexed painter and the camera's native-size overlay. */
+int gfx_unit_order_char(int unit)
+{
+  uptr order;
+  int civ=units[unit].owner;
+  u8 order_char=0;
+  order = (int)units[unit].orders & 0xf;
+  if (units[unit].orders == ORDER_AI_IDLE) {
+    order = 0xffffffff;
+  }
+  if ((int)order < 1) {
+    order_char = '-';
+    if ((units[unit].flags & UNITF_AUTOMATED) != 0) {
+      order_char = '*';
+    }
+  }
+  else if ((int)order < 0xb) {
+    order_char = order_names[order].key;
+  }
+  else if (order == 0xb) {
+    if ((game.reveal_map == '\0') ||
+       ((1 << ((byte)civ & 0x1f) & (uint)game.human_players) != 0)) {
+      if ((1 << ((byte)civ & 0x1f) & (uint)game.human_players) == 0) {
+        order_char = '-';
+      }
+      else {
+        order_char = order_names[0xb].key;
+      }
+    }
+    else {
+      order_char = units[unit].ai_task;
+    }
+  }
+  else {
+    order_char = '-';
+    if ((units[unit].flags & UNITF_AUTOMATED) != 0) {
+      order_char = '*';
+    }
+  }
+  return order_char;
+}
+
 /* 0056baff auto */
 void __cdecl
 gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int no_fortress)
@@ -3065,7 +3107,6 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
   i8 clip_shield_shadow[16];
   i8 clip_stack[16];
   i8 clip_stack_shadow[16];
-  uptr order;
   iptr civ;
   int shield_x;
   int stack_dy;
@@ -3195,40 +3236,8 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
     band_rect.right = hp_rect.right - (bar_width - hp_width);
     gfx_fill_rect(surface,(RECT *)&band_rect.left,hp_color);
   }
-  order = (int)units[unit2].orders & 0xf;
-  if (units[unit2].orders == ORDER_AI_IDLE) {
-    order = 0xffffffff;
-  }
-  if ((int)order < 1) {
-    order_char = '-';
-    if ((units[unit2].flags & UNITF_AUTOMATED) != 0) {
-      order_char = '*';
-    }
-  }
-  else if ((int)order < 0xb) {
-    order_char = order_names[order].key;
-  }
-  else if (order == 0xb) {
-    if ((game.reveal_map == '\0') ||
-       ((1 << ((byte)civ & 0x1f) & (uint)game.human_players) != 0)) {
-      if ((1 << ((byte)civ & 0x1f) & (uint)game.human_players) == 0) {
-        order_char = '-';
-      }
-      else {
-        order_char = order_names[0xb].key;
-      }
-    }
-    else {
-      order_char = units[unit2].ai_task;
-    }
-  }
-  else {
-    order_char = '-';
-    if ((units[unit2].flags & UNITF_AUTOMATED) != 0) {
-      order_char = '*';
-    }
-  }
-  if (order_char != '\0' && gfx_show_status_text(surface,zoom)) {
+  order_char = (u8)gfx_unit_order_char((int)unit2);
+  if (order_char != '\0' && !map_camera_surface((void *)surface) && gfx_show_status_text(surface,zoom)) {
     order_text[0] = order_char;
     order_text[1] = 0;
     tmp = gfx_zoom_scale(3,zoom);
@@ -3334,49 +3343,13 @@ gfx_copy_rect_clipped(iptr src,iptr dst,int src_x,int src_y,int src_origin_x,int
   return;
 }
 
-/* 0056d289 auto */
-void __cdecl
-gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
-
+/* Share the sprite/offset selection with display-resolution camera badges.
+ * Enemy cities must use the last revealed size, just as the legacy painter does. */
+int gfx_city_sprite_index(int city,uint draw_flags,int *display_size)
 {
-  if (!net.map_redraw_busy && map_camera_owns((void *)surface) && city >= 0 && city < game.num_cities)
-    map_view_cache_invalidate((void *)surface,cities[city].x,cities[city].y,3);
-  char shown_size;
+  int civ=cities[city].owner,tmp,walled,style2,size_idx,city_size;
   short style_id;
-  int tmp;
-  size_t text_len;
-  int box_dx;
-  i8 clip_disorder[16];
-  i8 clip_flag[16];
-  i8 clip_city[16];
-  iptr civ;
-  int style2;
-  int height2;
-  iptr width2;
-  int size_idx;
-  i32 color_mid;
-  int flag_y;
-  i32 color_primary;
-  int scale_factor;
-  int flag_x;
-  int pad;
-  i8 template_text[8];
-  uint occupied;
-  int walled;
-  char size_text[8];
-  struct { int left; iptr top; i32 right; i32 bottom; } label_rect;
-  int city_size;
-  
-  gfx_set_zoom_scale(zoom);
-  width2 = gfx_zoom_scale(0x40,zoom);
-  height2 = gfx_zoom_scale(0x30,zoom);
-  civ = (iptr)cities[city].owner;
-  rect_set_xywh((iptr)&label_rect.left,px,py,width2,height2);
-  gfx_set_draw_target(surface);
-  color_mid = civ_color_mid(civ);
-  color_primary = civ_color_primary(civ);
-  tmp = tile_unit_owner((int)cities[city].x,(int)cities[city].y);
-  occupied = (uint)(-1 < tmp);
+  char shown_size;
   tmp = city_has_improvement(city,IMP_CITY_WALLS);
   if ((tmp == 0) && (tmp = civ_has_wonder(civ,WONDER_GREAT_WALL), tmp == 0)) {
     walled = 0;
@@ -3384,7 +3357,6 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
   else {
     walled = 1;
   }
-  scale_factor = (-1 < zoom) + 1;
   style_id = leaders[civs[civ].tribe].city_style;
   if ((1 << ((byte)civ & 0x1f) & (uint)game.human_players) != 0) {
     style_id = civ_names[civ].city_style;
@@ -3454,6 +3426,52 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
       && (size_idx < 3)))) {
     size_idx++;
   }
+  *display_size=city_size;
+  return style2*8+size_idx*2+walled;
+}
+
+/* 0056d289 auto */
+void __cdecl
+gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
+
+{
+  if (!net.map_redraw_busy && map_camera_owns((void *)surface) && city >= 0 && city < game.num_cities)
+    map_view_cache_invalidate((void *)surface,cities[city].x,cities[city].y,3);
+  int tmp;
+  size_t text_len;
+  int box_dx;
+  i8 clip_disorder[16];
+  i8 clip_flag[16];
+  i8 clip_city[16];
+  iptr civ;
+  int style2;
+  int height2;
+  iptr width2;
+  int size_idx;
+  i32 color_mid;
+  int flag_y;
+  i32 color_primary;
+  int flag_x;
+  int pad;
+  i8 template_text[8];
+  uint occupied;
+  int walled;
+  char size_text[8];
+  struct { int left; iptr top; i32 right; i32 bottom; } label_rect;
+  int city_size;
+
+  gfx_set_zoom_scale(zoom);
+  width2 = gfx_zoom_scale(0x40,zoom);
+  height2 = gfx_zoom_scale(0x30,zoom);
+  civ = (iptr)cities[city].owner;
+  rect_set_xywh((iptr)&label_rect.left,px,py,width2,height2);
+  gfx_set_draw_target(surface);
+  color_mid = civ_color_mid(civ);
+  color_primary = civ_color_primary(civ);
+  tmp = tile_unit_owner((int)cities[city].x,(int)cities[city].y);
+  occupied = (uint)(-1 < tmp);
+  int sprite_index=gfx_city_sprite_index((int)city,draw_flags,&city_size);
+  style2=sprite_index/8;size_idx=(sprite_index%8)/2;walled=sprite_index%2;
   ((Sprite *)(((i8 *)&gfx_sheet_surface_block.city_sprites) + size_idx * 0x78 + walled * 0x3c + style2 * 0x1e0))->draw((iptr)clip_city,surface,px,py);
   tmp = tile_unit_owner((int)cities[city].x,(int)cities[city].y);
   if ((-1 < tmp) && ((draw_flags & 2) == 0)) {
@@ -3470,7 +3488,7 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
   }
   if ((draw_flags & 1) == 0) {
     if ((cities[city].flags & CITYF_DISORDER) == 0) {
-      if (!gfx_show_status_text(surface,zoom)) {
+      if (map_camera_surface((void *)surface) || !gfx_show_status_text(surface,zoom)) {
         gfx_reset_zoom_scale();
         return;
       }

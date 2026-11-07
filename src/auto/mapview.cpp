@@ -2091,11 +2091,13 @@ void MapView::draw_unit_at(iptr unit)
   return;
 }
 
-/* 0047bd04 auto */
-void MapView::draw_stack_unit(iptr unit,i32 screen_x,i32 screen_y)
-
+/* Shared read-only selection keeps overlay text synchronized with visibility,
+ * stacked units, active-unit blinking and combat. */
+int map_stack_unit(int unit,uint *flags)
 {
   int selectable;
+  if(unit<0)return -1;
+  *flags=5;
   
   if ((combat_anim.defender < 0) || (combat_anim.defender != unit)) {
     if ((combat_anim.origin_stack_unit < 0) || (unit != combat_anim.origin_stack_unit)) {
@@ -2103,59 +2105,60 @@ void MapView::draw_stack_unit(iptr unit,i32 screen_x,i32 screen_y)
            (units[game.active_unit].y == units[unit].y)) &&
           (((uint)game.human_players & 1 << (units[game.active_unit].owner & 0x1fU)) != 0)) &&
          (selectable = unit_is_selectable((int)game.active_unit), selectable != 0)) {
-        draw_unit_blinking((int)game.active_unit,screen_x,screen_y);
-        return;
+        unit=(int)game.active_unit;
+        return (!blink.unit_active || !blink.unit_phase || moving_units_mode!=1) ? unit : -1;
       }
-      draw_unit_stacked(unit,4,screen_x,screen_y);
+      *flags=7;
+      return unit;
     }
     else {
-      gfx_draw_unit((iptr)this,unit,5,screen_x,screen_y,(int)(short)zoom_u,0);
+      return unit;
     }
   }
   else {
-    draw_unit_blinking(unit,screen_x,screen_y);
+    return (!blink.unit_active || !blink.unit_phase || moving_units_mode!=1) ? unit : -1;
   }
-  return;
+  return -1;
 }
 
-/* 0047be63 auto */
-void MapView::draw_tile_units(i32 screen_x,int screen_y,int x,int y)
-
+int map_tile_unit(int x,int y,int first)
 {
-  int draw_y;
   int result;
   iptr unit;
   int visible2;
   
-  draw_y = screen_y - half_tile_height_u;
   result = map_in_bounds(x,y);
   if (result != 0) {
-    unit = tile_first_unit(x,y);
+    /* The camera already has each stack head; avoid a unit-table search per
+     * label on every frame. Legacy callers request the normal lookup with -2. */
+    unit = first==-2 ? tile_first_unit(x,y) : first;
+    if(first!=-2 && unit_move_anim_active && tile_unit_owner(x,y)<0)unit=-1;
     if (((combat_anim.defender < 0) || (combat_anim.defender_x != x)) || (combat_anim.defender_y != y)) {
       if (((combat_anim.origin_stack_unit < 0) || (x != combat_anim.origin_x)) || (y != combat_anim.origin_y)) {
+        if(unit<0)return -1;
         result = tile_city_owner(x,y);
         if (-1 < result) {
           if (moving_units_mode != 1) {
-            return;
+            return -1;
           }
           if (blink.unit_active == '\0') {
-            return;
+            return -1;
           }
           for (; (game.active_unit != unit && (-1 < unit));
               unit = unit_next_in_stack(unit)) {
           }
           if (unit < 0) {
-            return;
+            return -1;
           }
           result = unit_is_selectable(unit);
           if (result == 0) {
-            return;
+            return -1;
           }
           if (units[unit].orders == ORDER_FORTIFYING) {
-            return;
+            return -1;
           }
           if (units[unit].orders == ORDER_FORTIFIED) {
-            return;
+            return -1;
           }
         }
         visible2 = tile_visible_to(x,y,(*(i8 *)&human_civ));
@@ -2170,20 +2173,35 @@ void MapView::draw_tile_units(i32 screen_x,int screen_y,int x,int y)
           }
         }
         if ((visible2 != 0) || (game.reveal_map != '\0')) {
-          draw_stack_unit(unit,screen_x,draw_y);
+          return (int)unit;
         }
       }
       else {
-        draw_stack_unit(combat_anim.origin_stack_unit,screen_x,draw_y);
+        return combat_anim.origin_stack_unit;
       }
     }
     else {
       for (; (unit != combat_anim.defender && (-1 < unit)); unit = unit_next_in_stack(unit)) {
       }
-      draw_stack_unit(unit,screen_x,draw_y);
+      return (int)unit;
     }
   }
-  return;
+  return -1;
+}
+
+/* 0047bd04 auto */
+void MapView::draw_stack_unit(iptr unit,i32 screen_x,i32 screen_y)
+{
+  uint flags;
+  int shown=map_stack_unit((int)unit,&flags);
+  if(shown>=0)gfx_draw_unit((iptr)this,shown,flags,screen_x,screen_y,(int)(short)zoom_u,0);
+}
+
+/* 0047be63 auto */
+void MapView::draw_tile_units(i32 screen_x,int screen_y,int x,int y)
+{
+  int unit=map_tile_unit(x,y,-2);
+  if(unit>=0)draw_stack_unit(unit,screen_x,screen_y-half_tile_height_u);
 }
 
 /* 0047c103 auto */

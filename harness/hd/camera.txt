@@ -209,6 +209,19 @@ call_sync menu_command 4e2803 0 801
 wheel 400 400 -4
 wait 600
 shot detail-mid
+# Fractional steps through the last visible status-text band.
+call_sync menu_command 4e2803 0 801
+wheel 400 400 -2
+wait 600
+wheel_precise 400 400 -0.5
+wait 600
+shot status-near
+wheel_precise 400 400 -0.5
+wait 600
+shot status-last
+wheel_precise 400 400 -0.5
+wait 600
+shot status-hidden
 wheel 400 400 -4
 wait 600
 shot detail-low

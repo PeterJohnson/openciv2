@@ -381,6 +381,7 @@ int extras_rich_width(iptr font, const char *text)
    it has done on its terrain order so far, for the player's own units. */
 void extras_draw_work_counter(iptr surface, int unit, int px, int py, int zoom)
 {
+    if(map_camera_surface((void *)surface))return;
     char text[8];
     const Unit *u = &units[unit];
     int x, y;
@@ -1461,9 +1462,25 @@ static void messages_expire(void)
         map_redraw_keep_input();
 }
 
+/* Camera messages are UI: keep their size and position independent of map zoom. */
+int extras_camera_messages(MapCameraLabel *labels,int capacity,double *height)
+{
+    if(!extra_ui(X_SUPPRESS_POPUPS))return 0;
+    int count=0,y=4,spacing=advisor_bold_font.line_spacing();
+    *height=14;
+    for(int i=0;i<4 && count<capacity;i++)if(messages[i].text[0]) {
+        MapCameraLabel &label=labels[count++];
+        label.x=6;label.y=y;label.color=0x29;label.flags=0;
+        snprintf(label.text,sizeof label.text,"%s",messages[i].text);
+        y+=spacing;
+    }
+    return count;
+}
+
 /* The messages over the top of the map (surface: the main map view). */
 void extras_draw_map_messages(iptr surface, int blit)
 {
+    if(map_camera_surface((void *)surface))return;
     MapView *m = (MapView *)surface;
     iptr font = (iptr)&advisor_bold_font;
     int i, y = m->client_y + 4, lh = ((GameFont *)font)->line_spacing(), any = 0;

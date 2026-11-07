@@ -9,7 +9,9 @@ typedef struct MapCameraTransform {
 typedef struct MapCameraLabel {
     double x,y; /* viewport-local display coordinates, before density scaling */
     int color;
-    char text[32];
+    char text[160];
+    int flags; /* 1: clip to shield, 2: shadow (unit work counter) */
+    double left,top,right,bottom;
 } MapCameraLabel;
 static inline double camera_source_x(const MapCameraTransform *c,double x)
 { return c->left+(x-c->left-c->x)/c->scale; }
@@ -41,7 +43,10 @@ int map_camera_owns(void *view);
 int map_camera_surface(void *surface);
 int map_camera_detail_zoom(void *surface,int zoom);
 int map_camera_topology_zoom(void *surface,int zoom);
-int map_camera_labels(MapCameraLabel *labels,int capacity,double *height);
+/* sizes selects population badges instead of city names. */
+int map_camera_labels(MapCameraLabel *labels,int capacity,double *height,int sizes);
+int map_camera_unit_labels(MapCameraLabel *labels,int capacity,double *height);
+int extras_camera_messages(MapCameraLabel *labels,int capacity,double *height);
 int map_camera_backing_zoom(double scale,int width,int height);
 void map_camera_cancel(void);
 void map_camera_probe(int x,int y);

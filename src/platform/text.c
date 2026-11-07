@@ -445,12 +445,33 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
     rgn_free(&rg);
 }
 
-/* Map names are hinted at the final physical size, instead of being enlarged
+/* Coverage quads also draw opaque badge backgrounds through the text batch. */
+static void camera_text_quad(Bitmap *dst,const unsigned char *cov,int sw,int sh,
+                             int gx,int gy,int w,int h,int cl,int ct,int cr,int cb,uint32_t rgb)
+{
+    int l=gx>cl ? gx : cl,t=gy>ct ? gy : ct,r=gx+w<cr ? gx+w : cr,b=gy+h<cb ? gy+h : cb;
+    if(cov && w>0 && h>0 && l<r && t<b &&
+       !hd_gpu_text(dst,cov,sw,sh,gx,gy,w,h,l,t,r,b,rgb)) {
+        int px,py;
+        /* Preserve the colored-text fallback on devices without MAX blend. */
+        hd_read_region(dst,l,t,r-l,b-t);
+        for(py=t;py<b;py++)for(px=l;px<r;px++) {
+            int v=cov[((py-gy)*sh/h)*sw+(px-gx)*sw/w];
+            uint32_t *out=dst->hd+py*dst->w*hd_density+px,z=*out;
+            *out=0xff000000u|aa_blend((z>>16)&255,(rgb>>16)&255,v)<<16|
+                aa_blend((z>>8)&255,(rgb>>8)&255,v)<<8|aa_blend(z&255,rgb&255,v);
+        }
+        hd_upload_region(dst,l,t,r-l,b-t);
+    }
+}
+
+/* Map names and population badges are hinted at the final physical size, instead of being enlarged
  * along with a lower-resolution terrain image. Placement snaps only to physical
  * pixels; it does not jump a whole logical pixel at higher display densities. */
 void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,double height,
-                        int origin_x,int origin_y,const RECT *clip)
+                        int origin_x,int origin_y,const RECT *clip,int kind)
 {
+    int boxed=kind==1;
     int d=hd_density,size=(int)(height*d+.5),face_size,pass,i,ch;
     int cl=clip->left*d,ct=clip->top*d,cr=clip->right*d,cb=clip->bottom*d;
     FontFace *font;
@@ -460,43 +481,56 @@ void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,doubl
     if(!font_data)load_fonts();if(!aa_data)load_aa();
     if(size<MINH)size=MINH;
     face_size=size>MAXH ? MAXH : size;
-    font=faces[0][face_size][0][0];
+    font=faces[kind==1 || kind==2 ? 1 : 0][face_size][kind==3][0];
     if(!font || !font->aa)return;
     scale=(double)size/face_size;
     if(cl<0)cl=0;if(ct<0)ct=0;
     if(cr>dst->w*d)cr=dst->w*d;if(cb>dst->h*d)cb=dst->h*d;
     if(cl>=cr || ct>=cb)return;
     hd_gpu_text_begin();
-    /* Put all shadows below the names, and batch disjoint colored glyphs. */
+    /* Put shadows/backgrounds below the glyphs, retaining atlas batching. */
     for(pass=0;pass<2;pass++)for(i=0;i<count;i++) {
         const MapCameraLabel *label=&labels[i];
+        int ll=cl,tt=ct,rr=cr,bb=cb;
         int width=text_width(font,label->text,(int)strlen(label->text));
-        int shadow=pass ? 0 : (size/10>0 ? size/10 : 1);
-        double x=(origin_x+label->x)*d-width*scale*.5+shadow;
+        int shadow=pass || boxed ? 0 : (size/10>0 ? size/10 : 1);
+        if(kind==2 && !pass && !(label->flags & 2))continue;
+        double x=(origin_x+label->x)*d-(boxed || kind==3 ? 0 : width*scale*.5)+shadow;
         double y=(origin_y+label->y)*d+shadow;
         int color=label->color&255;
-        uint32_t rgb=pass ? palette[color*3]<<16|palette[color*3+1]<<8|palette[color*3+2] : 0;
-        if(x+width*scale<cl || x>=cr || y+font->tm[0]*scale<ct || y>=cb)continue;
+        uint32_t rgb=palette[color*3]<<16|palette[color*3+1]<<8|palette[color*3+2];
+        if(kind==2) {
+            y-=font->tm[0]*scale*.5;
+            if(label->flags & 1) {
+                int l=(int)ceil((origin_x+label->left)*d),t=(int)ceil((origin_y+label->top)*d);
+                int r=(int)floor((origin_x+label->right)*d),b=(int)floor((origin_y+label->bottom)*d);
+                if(ll<l)ll=l;if(tt<t)tt=t;if(rr>r)rr=r;if(bb>b)bb=b;
+                if(ll>=rr || tt>=bb)continue;
+            }
+        }
+        if(boxed) {
+            static const unsigned char solid=16;
+            int pad=(int)(height*d/11+.5),l=(int)floor(x+.5),t=(int)floor(y+.5);
+            int digits=(int)strlen(label->text),template_width=text_width(font,"888",digits>3 ? 3 : digits);
+            int content=width>template_width ? width : template_width;
+            int w,h;
+            if(pad<1)pad=1;
+            w=(int)(content*scale+.5)+4*pad;h=(int)(font->tm[0]*scale+.5)+2*pad;
+            if(!pass) {
+                camera_text_quad(dst,&solid,1,1,l,t,w,h,cl,ct,cr,cb,0);
+                camera_text_quad(dst,&solid,1,1,l+pad,t+pad,w-2*pad,h-2*pad,cl,ct,cr,cb,rgb);
+                continue;
+            }
+            x=l+2*pad+(content-width)*scale*.5;y=t+pad;rgb=0;
+        } else if(!pass)rgb=0;
+        if(x+width*scale<ll || x>=rr || y+font->tm[0]*scale<tt || y>=bb)continue;
         for(ch=0;label->text[ch];ch++) {
             unsigned c=(unsigned char)label->text[ch];
             AaGlyph *g=&font->aa[c];
             const unsigned char *cov=aa_coverage(g);
             int gx=(int)floor(x+g->x*scale+.5),gy=(int)floor(y+g->y*scale+.5);
             int w=(int)(g->w*scale+.5),h=(int)(g->h*scale+.5);
-            int l=gx>cl ? gx : cl,t=gy>ct ? gy : ct,r=gx+w<cr ? gx+w : cr,b=gy+h<cb ? gy+h : cb;
-            if(cov && w>0 && h>0 && l<r && t<b &&
-               !hd_gpu_text(dst,cov,g->w,g->h,gx,gy,w,h,l,t,r,b,rgb)) {
-                int px,py;
-                /* Preserve the colored-text fallback on devices without MAX blend. */
-                hd_read_region(dst,l,t,r-l,b-t);
-                for(py=t;py<b;py++)for(px=l;px<r;px++) {
-                    int v=cov[((py-gy)*g->h/h)*g->w+(px-gx)*g->w/w];
-                    uint32_t *out=dst->hd+py*dst->w*d+px,z=*out;
-                    *out=0xff000000u|aa_blend((z>>16)&255,(rgb>>16)&255,v)<<16|
-                        aa_blend((z>>8)&255,(rgb>>8)&255,v)<<8|aa_blend(z&255,rgb&255,v);
-                }
-                hd_upload_region(dst,l,t,r-l,b-t);
-            }
+            camera_text_quad(dst,cov,g->w,g->h,gx,gy,w,h,ll,tt,rr,bb,rgb);
             x+=font->g[c].dadv*scale;
         }
     }

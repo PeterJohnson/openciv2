@@ -130,25 +130,100 @@ uintptr_t map_camera_get(MapCameraTransform *out)
     *out=camera.transform;
     return camera.hwnd;
 }
-int map_camera_labels(MapCameraLabel *labels,int capacity,double *height)
+int map_camera_labels(MapCameraLabel *labels,int capacity,double *height,int sizes)
 {
     if(!enabled() || !camera.view || map_show_hidden_terrain)return 0;
+    if(sizes && camera.scale<.625)return 0;
     MapView *m=camera.view;
     const MapCameraTransform &c=camera.transform;
     int count=0,civ=human_civ[0];
-    *height=clamp(32*camera.scale*3/5,6,48);
+    *height=sizes ? 11*camera.scale : clamp(32*camera.scale*3/5,6,48);
     for(int city=0;city<game.num_cities && count<capacity;city++) {
         if(!cities[city].id || !m->tile_in_view(cities[city].x,cities[city].y))continue;
         int visible=tile_visible_to(cities[city].x,cities[city].y,civ);
         if(cities[city].owner!=civ)
             visible=visible && (cities[city].known_to & (1<<civ)) && cities[city].revealed_size[civ];
-        if(!visible && !game.reveal_map)continue;
+        int scenario_sizes=sizes && (game.game_flags & GAME_SCENARIO) && (scenario.flags[0] & 8);
+        if(!visible && !game.reveal_map && !scenario_sizes)continue;
+        if(sizes && (cities[city].flags & CITYF_DISORDER))continue;
         int x,y;m->tile_to_screen((iptr)&x,(iptr)&y,cities[city].x,cities[city].y);
         MapCameraLabel &label=labels[count++];
-        label.x=c.x+(x-m->client_x+m->half_tile_width)*c.scale;
-        label.y=c.y+(y-m->client_y+m->tile_height*.75)*c.scale;
-        label.color=civ_color_secondary(cities[city].owner);
-        snprintf(label.text,sizeof label.text,"%s",cities[city].name);
+        label.flags=0;
+        if(sizes) {
+            int size,index=gfx_city_sprite_index(city,0,&size);
+            label.x=c.x+(x-m->client_x)*c.scale+
+                road_sprites_block.city_size_box_x_offsets[index]*camera.scale;
+            label.y=c.y+(y-m->client_y-m->half_tile_height)*c.scale+
+                road_sprites_block.city_label_y_offsets[index]*camera.scale;
+            label.color=civ_color_primary(cities[city].owner);
+            snprintf(label.text,sizeof label.text,"%d",size);
+        } else {
+            label.x=c.x+(x-m->client_x+m->half_tile_width)*c.scale;
+            label.y=c.y+(y-m->client_y+m->tile_height*.75)*c.scale;
+            label.color=civ_color_secondary(cities[city].owner);
+            snprintf(label.text,sizeof label.text,"%s",cities[city].name);
+        }
+    }
+    return count;
+}
+
+int map_camera_unit_labels(MapCameraLabel *labels,int capacity,double *height)
+{
+    if(!enabled() || !camera.view || map_show_hidden_terrain || camera.scale<.625)return 0;
+    MapView *m=camera.view;
+    const MapCameraTransform &c=camera.transform;
+    int count=0;
+    *height=11*camera.scale;
+    for(int i=0;i<=game.num_units && count<capacity;i++) {
+        int tx,ty,first=i;
+        if(i<game.num_units) {
+            if(!units[i].id || units[i].prev_in_stack>=0)continue;
+            tx=units[i].x;ty=units[i].y;
+        } else {
+            /* Combat can retain a sprite at an origin whose unit has moved. */
+            if(combat_anim.origin_stack_unit<0)continue;
+            tx=combat_anim.origin_x;ty=combat_anim.origin_y;
+            first=tile_first_unit(tx,ty);
+            if(first>=0)continue; // Its stack was already visited above.
+        }
+        if(!m->tile_in_view(tx,ty))continue;
+        uint flags;
+        int unit=map_stack_unit(map_tile_unit(tx,ty,first),&flags);
+        if(unit<0)continue;
+        if(flags & 2)unit=(int)unit_stack_pick_display_unit(unit);
+        if(unit<0)continue;
+        int x,y;m->tile_to_screen((iptr)&x,(iptr)&y,tx,ty);
+        y-=m->half_tile_height;
+        int type=units[unit].type;
+        if(type==UNIT_DIPLOMAT && units[unit].owner==0)type=0x3e;
+        int ch=gfx_unit_order_char(unit);
+        if(ch) {
+            /* Match the actual shield rectangle, including backing-grid rounding,
+             * while the glyph's size follows only the displayed camera scale. */
+            int sx=x+gfx_zoom_scale(road_sprites_block.unit_shield_x_offsets[type],m->zoom);
+            int sy=y+gfx_zoom_scale(road_sprites_block.unit_shield_y_offsets[type],m->zoom);
+            int top=sy+2*gfx_zoom_scale(2,m->zoom)+gfx_zoom_scale(3,m->zoom);
+            int bottom=sy+gfx_zoom_scale(20,m->zoom)-gfx_zoom_scale(3,m->zoom);
+            if(crt_toupper(ch)=='M') { top-=gfx_zoom_scale(1,m->zoom);bottom-=gfx_zoom_scale(1,m->zoom); }
+            MapCameraLabel &label=labels[count++];
+            label.flags=1;
+            label.left=c.x+(sx-m->client_x)*c.scale;
+            label.right=label.left+gfx_zoom_scale(12,m->zoom)*c.scale;
+            label.top=c.y+(top-m->client_y)*c.scale;
+            label.bottom=c.y+(bottom-m->client_y)*c.scale;
+            label.x=(label.left+label.right)*.5;label.y=(label.top+label.bottom)*.5;
+            label.color=units[unit].flags & UNITF_AUTOMATED ? 0x1d : 10;
+            label.text[0]=(char)ch;label.text[1]=0;
+        }
+        if(count<capacity && extra_ui(X_WORK_COUNTER) && unit_types[units[unit].type].role==ROLE_SETTLE &&
+           units[unit].counter && (units[unit].owner==human_civ[0] || game.reveal_map)) {
+            MapCameraLabel &label=labels[count++];
+            label.flags=2;
+            label.x=c.x+(x-m->client_x)*c.scale+32*camera.scale;
+            label.y=c.y+(y-m->client_y)*c.scale+40*camera.scale;
+            label.color=0x72;
+            snprintf(label.text,sizeof label.text,"%d",units[unit].counter);
+        }
     }
     return count;
 }

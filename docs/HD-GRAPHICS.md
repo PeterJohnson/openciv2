@@ -60,7 +60,7 @@ It currently applies to the main map window only.
 
 `src/game/map_camera.cpp` keeps camera state outside the serialized game
 structures. `MapView` keeps a live surface at a nearby integer zoom, so units,
-flags, status text, shadows, blinking and animation captures use their existing paths.
+flags, shadows, blinking and animation captures use their existing paths.
 The desktop compositor scales only the map interior with
 subpixel precision, preserving window occlusion and the logical desktop shadow.
 No map-sized texture copy or GPU readback is added for ordinary camera frames.
@@ -85,6 +85,14 @@ City names are drawn after the map is scaled, using glyphs hinted for the final
 physical size and placement rounded to physical pixels. They retain a six-logical-
 pixel minimum size and normal visibility/occlusion rules. This avoids magnifying
 already rasterized names, without changing map picking or creating fonts per frame.
+City population badges, unit orders and settler work counters also use final-size
+glyphs. Their font size follows the displayed scale continuously (rounded only to
+physical pixels), independently of the backing zoom and its legacy font-size steps.
+Population boxes retain civilization colors; order glyphs stay clipped inside the
+actual shield below its health bar. Shared selection helpers preserve city revealed
+sizes and unit visibility, stack selection, blinking and combat rules. All three
+status labels still disappear below 62.5%. Optional map notifications are drawn as
+fixed-size viewport UI, so they no longer move or scale with the terrain.
 CPU HD rendering already draws text directly at its fixed zoom and display density,
 and does not use the GPU camera's viewport cache or extra scaling pass.
 
@@ -136,10 +144,10 @@ and presentation. Cold zooms still produced roughly 40–55 ms spikes; a persist
 viewport cache does not eliminate first-use sprite filtering/decoding or guarantee
 the 10–15 ms target for every interactive frame.
 
-With city names drawn at display resolution, the same settled-camera benchmark
-measured 3.38 ms median / 4.16 ms p95 at density 2 and 7.00 ms / 7.86 ms at density 4.
+With map text drawn at display resolution, the same settled-camera benchmark
+measured 3.62 ms median / 3.99 ms p95 at density 2 and 7.42 ms / 8.65 ms at density 4.
 These composition timings include GPU completion, but exclude source refresh,
-event processing and presentation. Drawing sharp names each frame adds some cost.
+event processing and presentation. Drawing sharp labels each frame adds some cost.
 
 `python tools/test_map_camera.py --game PATH` runs real-clock input, anchored
 fractional zoom, drag picking, ordinary click selection, zoom limits/presets,
@@ -168,6 +176,10 @@ cached fonts on eviction/cleanup.
 cover label visibility/positioning, physical glyph sampling and clipping, text
 fallback, and detail-layer selection. The camera replay also captures intermediate
 zoom-out levels in `detail-mid.bmp`, `detail-low.bmp` and `detail-far.bmp`.
+It captures fractional steps before/after the status-text cutoff in `status-near.bmp`,
+`status-last.bmp` and `status-hidden.bmp`. `map_status_selection_test.cpp`,
+`city_sprite_selection_test.cpp` and `map_camera_unit_labels_test.cpp` exercise shared
+visibility/appearance selection, shield clipping geometry and work-counter privacy.
 `python tools/test_hd_zoom.py --game PATH --cpu-camera-fallback` checks all 16
 fixed zooms at densities 1–4 with `HardwareGraphics=0` and `GpuMapCamera=1`, even
 when an SDL hardware renderer is available. It verifies that the camera stays off.

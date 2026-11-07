@@ -324,10 +324,17 @@ static int compose_camera_piece(Window *w,Bitmap *src,int dx,int dy,const RECT *
         view.left+c.x,view.top+c.y,c.width*c.scale,c.height*c.scale,
         inside.left,inside.top,inside.right,inside.bottom);
     {
-        MapCameraLabel labels[256];
+        /* Up to one order and one work counter per unit, without frame allocations. */
+        static MapCameraLabel labels[4096];
         double height=0;
-        int count=map_camera_labels(labels,256,&height);
-        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside);
+        int count=map_camera_labels(labels,256,&height,1);
+        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,1);
+        count=map_camera_unit_labels(labels,4096,&height);
+        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,2);
+        count=map_camera_labels(labels,256,&height,0);
+        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,0);
+        count=extras_camera_messages(labels,4,&height);
+        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside,3);
     }
     /* Keep the logical desktop coherent for legacy captures/GetPixel. No HD
      * readback: map picking itself still reads the original indexed masks. */
