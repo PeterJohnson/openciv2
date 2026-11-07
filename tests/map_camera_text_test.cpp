@@ -1,5 +1,6 @@
 // SOURCE src/platform/text.c camera_text_quad
 // SOURCE src/platform/text.c text_camera_labels
+#include <algorithm>
 #include <cassert>
 #include <cmath>
 #include <cstdint>
