@@ -1835,15 +1835,17 @@ void WndBase::set_caption_height(i32 height)
 }
 
 /* 004a6b80 auto */
-void __cdecl
-popup_text_with_advance(const char *filename,const char *section,i32 dlg_flags,iptr advance,i32 sprite_flags)
+void __cdecl popup_text_with_advance(const char *filename,const char *section,i32 dlg_flags,iptr advance,i32 sprite_flags)
 
 {
-  popup_text_with_sprite((iptr)filename,section,dlg_flags,
-                     (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                           (char)advances[advance].category * 0xf0 +
-                           (char)advances[advance].epoch * 0x3c),sprite_flags);
-  return;
+  Dialog dialog2;
+  dialog2.Dialog::construct(0x4000);
+  ON_SCOPE_EXIT(dialog2.Dialog::destruct());
+  dialog2.load_text(filename,section,dlg_flags);
+  dialog2.add_advance(advance);
+  dialog2.set_image_zoom(sprite_flags);
+  dialog2.show_modal(0);
+  (*(u32 *)&dlg_input.help_pressed) = dialog2.result_extra;
 }
 
 /* 004a6bdc auto */

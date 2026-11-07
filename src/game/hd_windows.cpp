@@ -75,6 +75,29 @@ bool hd_advance(DibSurface *s, int advance, int x, int y, int w, int h)
     art(s, key, x, y, w, h, true);
     return true;
 }
+
+/* Plain advance dialogs can also contain ordinary sprites (e.g. the obsolete
+ * wonder). Tag only advance entries; keep their layout sprite and public ID. */
+static void dialog_draw_advance_sprite(i32 sprite,iptr surface,i32,i32 data,i32 x,i32 y)
+{
+    Sprite *s=(Sprite *)(iptr)sprite;
+    if (data>0 && data<=100 && hd_advance((DibSurface *)surface,data-1,
+        x+gfx_scale_length(s->offset_x,0,0),y+gfx_scale_length(s->offset_y,0,0),
+        gfx_scale_length(s->width(),0,0),gfx_scale_length(s->height(),0,0)))return;
+    RECT bounds;
+    s->draw((iptr)&bounds,surface,x,y);
+}
+void Dialog::add_advance(int advance,iptr sprite_id)
+{
+    Sprite *s=(Sprite *)government_sprites_block.advance_category_icon_sprites+
+        (int)advances[advance].category*4+(int)advances[advance].epoch;
+    DialogSprite *entry=add_sprite((iptr)s,sprite_id,0);
+    if (hd_enabled) {
+        entry->field_04=advance+1;
+        set_sprite_draw_fn(dialog_draw_advance_sprite);
+    }
+}
+
 int hd_military(DiploLeaderWindow *v)
 {
     DibSurface *s = (DibSurface *)v->leader_surface;

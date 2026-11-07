@@ -255,7 +255,14 @@ Non-map enhancements include:
   statistics and launch controls.
 - Diplomacy military ratings and advance artwork; advance-specific illustrations
   in research, intelligence and the Civilopedia list, detail pages and all four
-  tree levels, with category/era fallbacks when individual artwork is unavailable.
+  tree levels, discovery/acquisition and research-advice popups, obsolescence
+  notices, and multiplayer technology-trade lists. Ordinary advance popups share
+  the same lookup, including stolen technology and terrain-improvement requirements.
+  Category/era sprites remain fallbacks when individual artwork is unavailable;
+  the pack currently supplies individual illustrations for 58 advances. The
+  technology editor retains its category/era preview because it edits that shared
+  sprite. Dialogs preserve their original layout and any accompanying building
+  or wonder sprites.
 - Numerical food and production meters, live report row backgrounds, clearer
   button faces, scalable text and authored interface graphics.
 
@@ -465,6 +472,15 @@ checks cached handles through deletion, reuse and storage replacement.
 `tests/pedia_tree_art_test.cpp` checks advance selection in all four tree tiers
 and scrolled lists, category fallback, and unchanged link/connector geometry.
 `harness/hd/pedia-tree.txt` captures the advance list and tree at 640x480.
+`tests/hd_advance_dialog_test.cpp` checks the actual dialog adapters for per-advance
+art, mixed sprites, public sprite IDs, zoom, offsets, clipping, missing-art and
+original-graphics fallbacks, and popup results. `tests/parley_advance_art_test.cpp`
+checks the trade-list painter in both panes and layouts, including scrolling,
+fallbacks and clip restoration. Both use the source-probe runner.
+`harness/hd/advance-popups.txt` captures a golden-age popup and research completion
+with `He_Auto.SAV`; run it on an isolated save copy because it enables cheat mode
+and grants a technology. GPU and CPU replays run without original image files;
+original-graphics popup screenshots were compared with the prior executable.
 `tests/hd_gdi_copy_test.cpp` covers unscaled conversion and fallback paths;
 `tests/hd_redraw_schedule_test.cpp` checks event-poll deadlines, nesting and
 replay behavior. `tests/hd_composition_test.cpp` compares 2,000 randomized

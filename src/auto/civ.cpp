@@ -5302,10 +5302,7 @@ static void civ_advance_announce(uptr civ,iptr advance,iptr civ2,Dialog &dialog2
   text_append((const char *)&str_empty_119);
   dialog2.add_line((const char *)&textbuf.buf,0xffffffff,0xffffffff,0xffffffff,0);
   if (diplo_meeting.session_active == 0) {
-    dialog2.add_sprite(
-               (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                     (char)advances[advance].epoch * 0x3c +
-                     (char)advances[advance].category * 0xf0),0,0);
+    dialog2.add_advance(advance);
     dialog2.set_image_zoom(8);
   }
   line_width = 0;
@@ -5358,10 +5355,7 @@ static void civ_advance_sell_barracks(uptr civ,iptr advance,Dialog &dialog2)
       text_set_number_arg(0,count);
       dialog2.load_game_text((const char *)&str_barracks);
       if (diplo_meeting.session_active == 0) {
-        dialog2.add_sprite(
-                   (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                         (char)advances[advance].epoch * 0x3c +
-                         (char)advances[advance].category * 0xf0),0,0);
+        dialog2.add_advance(advance);
         dialog2.add_sprite((iptr)&caption_close_button_sprite_block.notify_sprites,0,0);
         dialog2.set_image_zoom(8);
       }
@@ -5399,10 +5393,7 @@ static void civ_advance_first_discovery(uptr civ,iptr advance,iptr civ2,Dialog &
         text_set_label_arg(1,improvements[improvement2].name);
         dialog2.load_game_text((const char *)&str_endwonder_2);
         if (diplo_meeting.session_active == 0) {
-          dialog2.add_sprite(
-                     (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                           (char)advances[advance].epoch * 0x3c +
-                           (char)advances[advance].category * 0xf0),0,0);
+          dialog2.add_advance(advance);
           dialog2.add_sprite((iptr)(((i8 *)&caption_close_button_sprite_block.improvement_icon_sprites) + improvement2 * 0x3c),0,0);
           dialog2.set_image_zoom(8);
         }
@@ -6085,10 +6076,7 @@ iptr __cdecl civ_choose_research_dialog(iptr civ,int forced)
         text_append((const char *)&str_science);
         text_append_int(hint_kind);
         info_dialog.load_text((const char *)&str_advice,(const char *)&textbuf.buf,8);
-        info_dialog.add_sprite(
-                   (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                         (char)advances[advance2].epoch * 0x3c + (char)advances[advance2].category * 0xf0)
-                   ,(ui_metrics.large_screen == 0) - 1 & 8,0);
+        info_dialog.add_advance(advance2,(ui_metrics.large_screen == 0) - 1 & 8);
         if (hint_kind != 0) {
           text_clear();
           for (i = 0; i < count; i++) {
@@ -6231,10 +6219,7 @@ iptr __cdecl civ_research_complete(uptr civ,iptr civ2)
       }
       text_set_string_arg_b(2,(const char *)&textbuf.buf);
       dialog2.load_game_text((const char *)&str_civadvance);
-      dialog2.add_sprite(
-                 (iptr)(((i8 *)&government_sprites_block.advance_category_icon_sprites) +
-                       (char)advances[advance].category * 0xf0 +
-                       (char)advances[advance].epoch * 0x3c),0,0);
+      dialog2.add_advance(advance);
       dialog2.set_image_zoom(8);
       dialog2.show_modal(0);
       if (((*((char *)&game.game_options + 2)) & (OPT_PEDIA_ADVANCES >> 16)) != 0) {
