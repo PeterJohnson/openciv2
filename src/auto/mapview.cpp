@@ -2189,6 +2189,7 @@ void MapView::draw_tile_units(i32 screen_x,int screen_y,int x,int y)
 void MapView::draw_tile(iptr x,iptr y,int civ)
 
 {
+  if (!net.map_redraw_busy) map_view_cache_invalidate(this,x,y,0);
   int result;
   i8 grid_rect[16];
   i8 radius_rect[16];
@@ -2200,8 +2201,8 @@ void MapView::draw_tile(iptr x,iptr y,int civ)
   tile_to_screen((iptr)&screen_x,(iptr)&screen_y,x,y);
   draw_tile_terrain((iptr)this,screen_x,screen_y,x,y,civ,
                      (int)(short)zoom_u,-1);
-  if (hd_redraw_poll_due()) win_flush_pending_msgs();
-  if (2 < game.multiplayer) {
+  if (!map_view_cache_rendering() && hd_redraw_poll_due()) win_flush_pending_msgs();
+  if (!map_view_cache_rendering() && 2 < game.multiplayer) {
     net.process_messages(1,0);
   }
   result = map_in_bounds(x,y);
@@ -2296,6 +2297,15 @@ void MapView::draw_city_names(i32 center_x,i32 center_y,int radius)
             tile_to_screen((iptr)&screen_x,(iptr)&screen_y,x2,y2);
             label_x = half_tile_width_u + screen_x;
             label_y = ((int)(tile_height_u * 3) >> 2) + screen_y;
+            if (map_view_cache_rendering()) {
+              /* The viewport cache paints small regions. Avoid laying out
+               * and submitting every city's text for each dirty rectangle. */
+              if (label_y + (int)tile_height_u + 16 < (int)clip_top ||
+                  label_y - 16 >= (int)clip_bottom) continue;
+              int width = tile_font.text_width((const char *)&cities[city].name);
+              if (label_x + (width >> 1) + 16 < (int)clip_left ||
+                  label_x - (width >> 1) - 16 >= (int)clip_right) continue;
+            }
             text_set_colors(10,0xffffffff,0xffffffff,0xffffffff);
             text_width = zoom_scale(2);
             if (text_width < 3) {
@@ -2351,6 +2361,7 @@ void MapView::tile_radius_rect(i32 tile_x,i32 tile_y,int radius,iptr out_rect)
 void MapView::draw_tile_radius(int center_x,int center_y,int radius,i32 civ)
 
 {
+  if (!net.map_redraw_busy) map_view_cache_invalidate(this,center_x,center_y,radius);
   uint extent;
   uint row_abs;
   i32 x;
@@ -2397,6 +2408,8 @@ void MapView::draw_tile_radius(int center_x,int center_y,int radius,i32 civ)
 void MapView::draw_all_tiles(i32 civ)
 
 {
+  if (map_view_cache_draw(this,civ)) return;
+  map_view_cache_invalidate(this,0,0,-1);
   uptr origin_y;
   uptr origin_x;
   i32 x;
@@ -2465,6 +2478,7 @@ void DibSurface::mapview_blit_with_net_pump()
 void MapView::redraw_area(i32 tile_x,i32 tile_y,i32 radius, iptr viewer_civ,int do_blit)
 
 {
+  map_view_cache_invalidate(this,tile_x,tile_y,radius);
   int in_view;
   iptr civ;
   i8 cursor_rect[16];

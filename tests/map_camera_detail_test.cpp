@@ -8,6 +8,7 @@ using iptr=intptr_t;using i8=signed char;using byte=unsigned char;
 using u32=uint32_t;using uint=unsigned;
 static bool active;
 static int enabled() { return active; }
+static int map_view_cache_surface(void *) { return 0; }
 static struct { void *view; } camera;
 struct Draw { void *sprite; int x,y; };
 static std::vector<Draw> draws;

@@ -204,4 +204,5 @@ camera_probe 160 300
 mouseup 160 300
 call_sync win_dispatch_all_messages 0
 camera_probe 160 300
+call_sync map_view_cache_probe 0
 quit

@@ -1,6 +1,5 @@
-/* GPU camera prototype: reuse the live map backing surface between gestures.
- * Coverage/LOD changes still redraw synchronously; no persistent world cache.
- * Legacy draw coordinates, picking masks, and animation captures stay intact. */
+/* Optional GPU camera. A bounded viewport cache supplies backing refreshes;
+ * legacy draw coordinates, picking masks and animation captures stay intact. */
 #include <math.h>
 #include "game.h"
 #include "../platform/hd.h"
@@ -15,7 +14,7 @@ static struct {
     POINT start;
     DWORD tick;
     int zoom,center_x,center_y,width,height,map_w,map_h,civ;
-    int button,moved,double_click,refreshing,animating,dirty;
+    int button,moved,double_click,refreshing,animating,dirty,prefetch;
 } camera;
 
 static int enabled(void)
@@ -31,11 +30,12 @@ static HWND view_hwnd(MapView *m)
     return w ? w->hwnd : 0;
 }
 int map_camera_active(void) { return enabled() && camera.view!=0; }
+int map_camera_owns(void *view) { return enabled() && camera.view==view; }
 int map_camera_detail_zoom(void *surface,int zoom)
 {
     /* Raster resolution is not a visibility rule for a continuously scaled
      * map. Keep terrain topology and status data across backing-zoom changes. */
-    return enabled() && camera.view==surface && zoom<0 ? 0 : zoom;
+    return enabled() && (camera.view==surface || map_view_cache_surface(surface)) && zoom<0 ? 0 : zoom;
 }
 int map_camera_backing_zoom(double scale,int width,int height)
 {
@@ -82,6 +82,7 @@ int map_camera_busy(void) { return camera.refreshing; }
 void map_camera_forget(void *view)
 {
     if(camera.view!=view)return;
+    map_view_cache_clear();
     cancel_drag();memset(&camera,0,sizeof camera);
 }
 void map_camera_layout(void *view)
@@ -96,8 +97,9 @@ void map_camera_layout(void *view)
             camera.width!=m->client_width || camera.height!=m->client_height ||
             camera.map_w!=(int)map.width || camera.map_h!=(int)map.height || camera.civ!=human_civ[0];
         if(fresh || camera.center_x!=m->center_x || camera.center_y!=m->center_y) {
+            if(fresh)map_view_cache_clear();
             cancel_drag();camera.animating=0;camera.dirty=fresh;
-            if(fresh)camera.scale=(m->zoom+8)/8.0;
+            if(fresh) { camera.scale=(m->zoom+8)/8.0;camera.prefetch=-1; }
             camera.target=camera.scale;
             camera.cx=source_x(m,m->client_x+m->client_width*.5);
             camera.cy=source_y(m,m->client_y+m->client_height*.5);
@@ -154,14 +156,23 @@ static void coverage(void)
             if(error<best) { best=error;best_x=m->center_x;best_y=m->center_y; }
         }
         m->center_x=(i16)best_x;m->center_y=(i16)best_y;
-        m->redraw(human_civ[0],1);
+        m->update_layout();
+        if(map_view_cache_draw(m,game.reveal_map ? -1 : human_civ[0])) {
+            /* A camera refresh changes map pixels and the minimap footprint,
+             * not window layout/captions/buttons. Keep the regular backing
+             * surface current for picking, blinks and animation captures. */
+            m->set_clip((RECT *)&m->client_rect);
+            if(extra_ui(X_SUPPRESS_POPUPS))extras_draw_map_messages((iptr)m,0);
+            m->wnd_blit_surface_rect((iptr)&m->client_rect);
+            minimap_redraw();
+        } else m->redraw(human_civ[0],1);
         map_click_in_progress=keep;
         remember();transform();
         if(getenv("CIV2_CAMERA_TRACE"))plat_log("camera refresh: %u ms base=%d\n",
             (unsigned)(timeGetTime()-started),m->zoom);
     }
-    /* Until overscan exists, never expose pixels outside the live map. This
-     * also respects the original layout's flat-map/pole/small-world bounds. */
+    /* Presentation still samples the live map crop. Respect its coverage and
+     * the original layout's flat-map/pole/small-world bounds. */
     double nx=clamp(c->x,c->width*(1-c->scale),0),ny=clamp(c->y,c->height*(1-c->scale),0);
     if(getenv("CIV2_CAMERA_TRACE") && (fabs(c->x-nx)>.001 || fabs(c->y-ny)>.001))
         plat_log("camera clamp: %.6f,%.6f display pixels\n",c->x-nx,c->y-ny);
@@ -174,6 +185,10 @@ void map_camera_tick(void)
 {
     if(!enabled() || !camera.view || camera.refreshing || net.map_redraw_busy)return;
     if(!IsWindow(camera.hwnd)) { map_camera_forget(camera.view);return; }
+    ON_SCOPE_EXIT(if(IsWindowEnabled(camera.hwnd))
+        map_view_cache_idle(camera.view,camera.animating ?
+            map_camera_backing_zoom(camera.target,camera.width,camera.height) :
+            camera.view->zoom+(camera.button ? 0 : camera.prefetch),camera.animating));
     if(camera.button && (GetCapture()!=camera.hwnd || !IsWindowEnabled(camera.hwnd)))cancel_drag();
     if(camera.dirty) { coverage();camera.dirty=0; }
     if(!camera.animating || !IsWindowEnabled(camera.hwnd))return;
@@ -197,6 +212,7 @@ int map_camera_zoom_step(void *view,int step)
     camera.world_x=camera.cx;camera.world_y=camera.cy;
     camera.target=step ? clamp((step>0 ? floor(camera.target*8+1e-6)+1 :
                                ceil(camera.target*8-1e-6)-1)/8,.125,2) : 1;
+    camera.prefetch=camera.target>camera.scale ? 2 : -1;
     camera.tick=timeGetTime();camera.animating=1;return 1;
 }
 int map_camera_input(void *message)
@@ -236,6 +252,7 @@ int map_camera_input(void *message)
         camera.world_x=camera.cx+(camera.anchor_x-camera.width*.5)/(32*camera.scale);
         camera.world_y=camera.cy+(camera.anchor_y-camera.height*.5)/(16*camera.scale);
         camera.target=clamp(camera.target*pow(1.15,clamp(delta/120.0,-20,20)),.125,2);
+        camera.prefetch=delta>0 ? 2 : -1;
         camera.tick=timeGetTime();camera.animating=1;
         return 1;
     }

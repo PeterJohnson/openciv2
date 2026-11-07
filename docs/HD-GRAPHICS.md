@@ -59,9 +59,9 @@ It currently applies to the main map window only.
   the original picker.
 
 `src/game/map_camera.cpp` keeps camera state outside the serialized game
-structures. `MapView` continues drawing at a nearby integer zoom into its live
-surface, so units, flags, text, shadows, blinking and animation captures use
-their existing paths. The desktop compositor scales only the map interior with
+structures. `MapView` keeps a live surface at a nearby integer zoom, so units,
+flags, text, shadows, blinking and animation captures use their existing paths.
+The desktop compositor scales only the map interior with
 subpixel precision, preserving window occlusion and the logical desktop shadow.
 No map-sized texture copy or GPU readback is added for ordinary camera frames.
 Panning is coalesced at presentation time; zoom easing uses elapsed time.
@@ -77,16 +77,35 @@ unit status data remain enabled across source zooms. Their geometry still uses
 the actual backing scale. Other map windows and fixed-zoom rendering retain the
 original detail thresholds.
 
-This is a prototype, not the persistent viewport cache. When the requested view
-leaves the backing surface or needs another source zoom, it redraws that surface
-synchronously. Refreshes can still hitch. Until overscan is implemented, movement
-is clamped to available coverage at map edges and minimum zoom; the pointer's
+`src/game/map_view_cache.cpp` retains up to three rendered views, with 128 logical
+source pixels of extra coverage on each side. Panning reuses overlapping pixels
+with a GPU copy and repaints invalid regions in the original tile order. Nearby
+zooms survive in an LRU pool; evictions reuse allocations. Camera refreshes copy
+the requested crop into the live map without rebuilding captions or controls.
+Partial map updates invalidate the corresponding cached regions at every zoom;
+full redraws, visibility options, palette changes and viewer changes invalidate
+broader state. Temporary drawing state is restored after background rendering.
+
+Background work has a 2 ms scheduling budget, checked between 128-pixel cells.
+It fills surrounding coverage during drags, prepares the destination zoom during
+zoom animation, and anticipates the next zoom in the last wheel direction when
+idle. This is a soft budget: a cell's first asset decode or a new render-target
+allocation cannot be interrupted. Visible cache misses still finish synchronously,
+so a large jump into uncached content can hitch.
+
+The pool allows at most 128 MiB of GPU targets plus matching CPU HD shadows and
+small indexed planes. Targets are limited to 4096 pixels per dimension. Views
+that exceed these limits and network multiplayer use the existing refresh path.
+Set the diagnostic environment variable `CIV2_CAMERA_CACHE=0` to compare with
+uncached camera rendering.
+
+Camera movement is clamped to available coverage at map edges and minimum zoom; the pointer's
 world position cannot remain fixed when those bounds intervene. The minimap
 outline still describes the backing view. Saving/loading preserves the legacy
 backing zoom, not the fractional camera state. Resizing and changing zoom presets
 reset the camera; extra map windows retain their existing behavior.
 
-On the i5-14500 / UHD 770 Windows host with Direct3D 11, a settled 1.63x map view
+Before viewport caching, on the i5-14500 / UHD 770 Windows host with Direct3D 11, a settled 1.63x map view
 on the 1024x768 logical desktop took 2.62 ms median / 3.88 ms p95 at density 2,
 and 4.90 ms / 5.57 ms at density 4. These are 31 warm desktop-composition samples
 with GPU completion included. They exclude source refresh, event processing,
@@ -94,6 +113,14 @@ presentation and vsync; they do not establish a 10-15 ms interactive-frame bound
 Earlier prototype measurements at density 4 were 4.89 ms median / 5.60 ms p95
 on OpenGL, but 27.27 ms / 28.05 ms on Direct3D 9 on this host. The faster camera path therefore
 does not remove the need to measure the selected backend.
+
+With the viewport cache, copying a warm map crop took about 0.2–0.3 ms on this
+host; complete cache-hit source refreshes, including the live window and minimap,
+took about 2–3 ms. The tested continuous pan had source refreshes of 3–6 ms at
+density 2 and 3–5 ms at density 4. These refresh timings exclude GPU completion
+and presentation. Cold zooms still produced roughly 40–55 ms spikes; a persistent
+viewport cache does not eliminate first-use sprite filtering/decoding or guarantee
+the 10–15 ms target for every interactive frame.
 
 `python tools/test_map_camera.py --game PATH` runs real-clock input, anchored
 fractional zoom, drag picking, ordinary click selection, zoom limits/presets,
@@ -108,6 +135,13 @@ measure settled composition; `drag_burst` queues a full drag before dispatch.
 Source probes `map_camera_detail_test.cpp`, `map_camera_input_test.cpp` and
 `map_camera_schedule_test.cpp` cover the shoreline cutoff, event coordinates,
 double-click behavior and refresh pacing.
+`--verify-cache` also compares cached GPU pixels against the full tile traversal,
+including temporary terrain, fog, unit-damage and city-size changes that are
+restored before the replay exits. It uses the atlas regression's three-level
+channel tolerance for clipped bilinear rounding (exact comparisons with
+`CIV2_GPU_NO_ATLAS=1`). `tests/map_view_cache_test.cpp` compares 1,000
+scrolls against independent fresh pixels, including wrapping, invalidation,
+overlapping copies and budgeted fills.
 
 ## Renderer scope
 

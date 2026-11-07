@@ -3043,6 +3043,8 @@ void __cdecl
 gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int no_fortress)
 
 {
+  if (!net.map_redraw_busy && map_camera_owns((void *)surface) && unit >= 0 && unit < game.num_units)
+    map_view_cache_invalidate((void *)surface,units[unit].x,units[unit].y,0);
   int tmp;
   iptr scaled;
   int text_y;
@@ -3330,6 +3332,8 @@ void __cdecl
 gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
 
 {
+  if (!net.map_redraw_busy && map_camera_owns((void *)surface) && city >= 0 && city < game.num_cities)
+    map_view_cache_invalidate((void *)surface,cities[city].x,cities[city].y,3);
   char shown_size;
   short style_id;
   int tmp;

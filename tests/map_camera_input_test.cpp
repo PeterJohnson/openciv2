@@ -10,7 +10,7 @@
 static struct {
     void *view; HWND hwnd; MapCameraTransform transform;
     double cx,cy,scale,target,anchor_x,anchor_y,world_x,world_y,drag_x,drag_y;
-    int width,height,button,moved,double_click,refreshing,animating,dirty;
+    int width,height,button,moved,double_click,refreshing,animating,dirty,prefetch;
     DWORD tick; POINT start;
 } camera;
 static struct { int ui_input_busy; } net;

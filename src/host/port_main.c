@@ -123,6 +123,7 @@ u32 HOST(gpu_present)(Host *h,u32 id) { (void)h;return host_gpu_present(id); }
 void HOST(gpu_finish)(Host *h) { (void)h;host_gpu_finish(); }
 void HOST(gpu_fence)(Host *h) { (void)h;host_gpu_fence(); }
 u32 HOST(memory_equal)(Host *h,u32 a,u32 b,u32 bytes) { (void)h;return host_memory_equal(MEM(a),MEM(b),bytes); }
+void HOST(memory_move)(Host *h,u32 dst,u32 src,u32 bytes) { (void)h;host_memory_move(MEM(dst),MEM(src),bytes); }
 void HOST(minimize)(Host *h) { (void)h; host_minimize(); }
 void HOST(resize_desktop)(Host *h, u32 w, u32 hh) { (void)h; host_resize_desktop((int)w, (int)hh); }
 

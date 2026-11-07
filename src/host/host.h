@@ -17,15 +17,20 @@
 #define HOST_API(name) name
 #endif
 
-/* Large HD shadow comparisons need the host's vectorized memory routines;
- * wasm32's libc memcmp otherwise becomes a byte-at-a-time native loop. */
+/* HD shadow comparisons and indexed viewport copies use native bulk routines;
+ * translated wasm32 libc otherwise performs slow byte-at-a-time loops. */
 #ifdef __wasm__
 int HOST_API(host_memory_equal)(const void *a,const void *b,uint32_t bytes);
+void HOST_API(host_memory_move)(void *dst,const void *src,uint32_t bytes);
 #else
 #include <string.h>
 static inline int host_memory_equal(const void *a,const void *b,uint32_t bytes)
 {
     return !memcmp(a,b,bytes);
+}
+static inline void host_memory_move(void *dst,const void *src,uint32_t bytes)
+{
+    memmove(dst,src,bytes);
 }
 #endif
 

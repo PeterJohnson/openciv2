@@ -1111,6 +1111,36 @@ const uint32_t *hd_pixels(Bitmap *b)
     hd_read_region(b,0,0,b->w*hd_density,b->h*hd_density);
     return b->hd;
 }
+uint32_t *hd_debug_capture_rect(void *bits,int x,int y,int w,int h)
+{
+    Bitmap *b=bmp_of_bits(bits);
+    int d=hd_density,py;
+    uint32_t *pixels;
+    if(!b || x<0 || y<0 || x+w>b->w || y+h>b->h)return 0;
+    hd_sync_rect(b,x,y,w,h);hd_read_region(b,x*d,y*d,w*d,h*d);
+    pixels=malloc((size_t)w*h*d*d*4);
+    if(!pixels)plat_fatal("Out of memory comparing viewport cache");
+    for(py=0;py<h*d;py++)memcpy(pixels+py*w*d,b->hd+(y*d+py)*b->w*d+x*d,(size_t)w*d*4);
+    return pixels;
+}
+int hd_debug_compare_rect(void *bits,int x,int y,int w,int h,const uint32_t *reference,int tolerance)
+{
+    Bitmap *b=bmp_of_bits(bits);
+    int d=hd_density,px,py,differences=0,worst=0;
+    if(!reference || !b || x<0 || y<0 || x+w>b->w || y+h>b->h)return 0;
+    hd_sync_rect(b,x,y,w,h);hd_read_region(b,x*d,y*d,w*d,h*d);
+    for(py=y*d;py<(y+h)*d;py++)for(px=x*d;px<(x+w)*d;px++) {
+        uint32_t value=b->hd[py*b->w*d+px],old=reference[(py-y*d)*w*d+px-x*d];
+        int channel;
+        if(value!=old)differences++;
+        for(channel=0;channel<32;channel+=8) {
+            int error=abs((int)((value>>channel)&255)-(int)((old>>channel)&255));
+            if(error>worst)worst=error;
+        }
+    }
+    if(differences)plat_log("camera cache comparison: %d differing pixels, max channel error %d\n",differences,worst);
+    return worst<=tolerance;
+}
 void hd_composite_camera(Bitmap *dst,Bitmap *src,int sx,int sy,int sw,int sh,
                          double x,double y,double w,double h,int l,int t,int r,int bot)
 {

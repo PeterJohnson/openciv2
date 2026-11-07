@@ -17,6 +17,7 @@ def main():
     ap.add_argument('--game',type=Path,required=True)
     ap.add_argument('--exe',type=Path,default=ROOT/('build/OpenCiv2.exe' if os.name=='nt' else 'build/OpenCiv2'))
     ap.add_argument('--densities',type=int,nargs='+',choices=range(1,5),default=[1,2,3,4])
+    ap.add_argument('--verify-cache',action='store_true',help='compare cached GPU pixels with fresh draws, including state changes')
     args=ap.parse_args()
     work=Path(tempfile.mkdtemp(prefix='map-camera-',dir=ROOT/'build'))
     print('Results:',work,flush=True)
@@ -30,6 +31,7 @@ def main():
         (game/'CIV.INI').write_text((ROOT/'harness/CIV.INI').read_text()+
             f'\n[OpenCiv2]\nOriginalGraphics=0\nGraphicsDensity={density}\nHardwareGraphics=1\nGpuMapCamera=1\n')
         env=dict(os.environ)
+        if args.verify_cache:env['CIV2_CAMERA_CACHE_VERIFY']='1'
         for k in ('CIV2_CLASSIC','CIV2_DATA','CIV2_GAME','CIV2_TEST_NATIVE','CIV2_NORMAL_DESKTOP',
                   'CIV2_BENCHMARK','CIV2_SHOW','SDL_VIDEODRIVER','CIV2_TEST_SETTINGS','CIV2_TEST_EXTRAS'):
             env.pop(k,None)
@@ -42,6 +44,9 @@ def main():
                            timeout=180,check=True)
         hooks=(out/'hooks.log').read_text()
         assert 'script finished' in hooks and 'HD compositor: SDL GPU' in hooks and 'no function' not in hooks,out
+        if args.verify_cache:
+            assert 'camera cache verified:' in hooks,out
+            assert 'camera cache mutations verified: terrain/fog, 1 unit, 1 city' in hooks,out
         probes=re.findall(r'camera probe (\d+) (\d+): result=(\d+) tile=(-?\d+),(-?\d+) source=(-?\d+),(-?\d+) scale=([\d.]+) base=(-?\d+) mapped=(\d+) cursor=(-?\d+),(-?\d+)',hooks)
         assert len(probes)==55,(out,probes)
         world=[tuple(map(float,p)) for p in re.findall(r'camera world: (-?[\d.]+),(-?[\d.]+)',hooks)]
