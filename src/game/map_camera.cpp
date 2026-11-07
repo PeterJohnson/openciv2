@@ -58,6 +58,14 @@ int map_camera_backing_zoom(double scale,int width,int height)
     return zoom<-7 ? -7 : zoom>8 ? 8 : zoom;
 }
 static double clamp(double v,double lo,double hi) { return v<lo ? lo : v>hi ? hi : v; }
+static double horizontal_center(double center,double scale,int width)
+{
+    if(!(game.rules & RULE_FLAT_WORLD))return center;
+    /* World coordinates run from the left tip of the first diamond to the
+     * right tip of the last. Raster margins are not extra scrollable land. */
+    double extent=map.width+1,half=width/(64*scale);
+    return extent<=2*half ? extent*.5 : clamp(center,half,extent-half);
+}
 static double source_x(MapView *m,double px)
 { return m->origin_x+1+(px-m->client_x-m->margin_x)/(double)m->half_tile_width; }
 static double source_y(MapView *m,double py)
@@ -232,6 +240,7 @@ static void coverage(void)
 {
     MapView *m=camera.view;
     MapCameraTransform *c=&camera.transform;
+    camera.cx=horizontal_center(camera.cx,camera.scale,camera.width);
     const int saved_click=map_click_in_progress;
     ON_SCOPE_EXIT(camera.refreshing=0;map_click_in_progress=saved_click);
     int zoom=map_camera_backing_zoom(camera.scale,camera.width,camera.height);
@@ -410,6 +419,15 @@ int map_camera_input(void *message)
 }
 
 /* Replay diagnostics use the real game's mask-based picker, without orders. */
+void map_camera_boundary_test(int flat)
+{
+    if(!getenv("CIV2_CAMERA_BOUNDARY_TEST"))return;
+    MapView *m=&map_views_block.map_view_recs[0];
+    if(flat)game.rules|=RULE_FLAT_WORLD;else game.rules&=~RULE_FLAT_WORLD;
+    map_camera_forget(m);
+    m->redraw(human_civ[0],1);
+    plat_log("camera boundary mode: flat=%d map=%d,%d\n",flat,map.width,map.height);
+}
 void map_camera_probe(int x,int y)
 {
     map_camera_tick();

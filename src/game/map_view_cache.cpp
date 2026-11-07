@@ -151,15 +151,32 @@ static void recenter(CachedView &e,MapView *m)
 {
     MapView *v=e.view;
     RECT r;crop(m,v,r);
-    if(r.left>=0 && r.top>=0 && r.right<=v->client_width && r.bottom<=v->client_height)return;
+    /* A centered whole-world image has a fixed blank border, not infinite
+     * overscan. Keep its cut at the same world position as the live view. */
+    if(!v->margin_x && !v->margin_y &&
+       r.left>=0 && r.top>=0 && r.right<=v->client_width && r.bottom<=v->client_height)return;
     int ox=v->origin_x,oy=v->origin_y,mx=v->margin_x,my=v->margin_y;
     v->center_x=m->center_x;v->center_y=m->center_y;v->update_layout();
     int dx=wrap_delta(ox-v->origin_x)*v->half_tile_width+v->margin_x-mx;
     int dy=(oy-v->origin_y)*v->half_tile_height+v->margin_y-my;
+    if(!dx && !dy)return;
     unsigned char valid[MAX_CELLS]={0};
     for(int y=0;y<e.rows;y++)for(int x=0;x<e.cols;x++) {
-        RECT old=cell_rect(e,x,y);OffsetRect(&old,-dx,-dy);
+        RECT next=cell_rect(e,x,y),old=next;OffsetRect(&old,-dx,-dy);
         valid[y*e.cols+x]=(unsigned char)valid_rect(e,old);
+        /* Blank margins and the cylinder's cut do not translate with terrain.
+         * Repaint these cells; only reuse pixels safely inside both images.
+         * The guard also covers sprites straddling the edge and repeated edge
+         * tiles in the legacy whole-world traversal. Flat maps use no wrap. */
+        int guard=v->tile_width+32;
+        if((mx || v->margin_x) &&
+           (old.left<mx+guard || old.right>mx+map.width*v->half_tile_width-guard ||
+            next.left<v->margin_x+guard || next.right>v->margin_x+map.width*v->half_tile_width-guard))
+            valid[y*e.cols+x]=0;
+        if((my || v->margin_y) &&
+           (old.top<my+guard || old.bottom>my+map.height*v->half_tile_height-guard ||
+            next.top<v->margin_y+guard || next.bottom>v->margin_y+map.height*v->half_tile_height-guard))
+            valid[y*e.cols+x]=0;
     }
     int x=maximum(dx,0),y=maximum(dy,0),sx=maximum(-dx,0),sy=maximum(-dy,0);
     copy_pixels(v,v,x,y,sx,sy,v->client_width-abs(dx),v->client_height-abs(dy));

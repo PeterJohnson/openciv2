@@ -104,6 +104,13 @@ the requested crop into the live map without rebuilding captions or controls.
 Partial map updates invalidate the corresponding cached regions at every zoom;
 full redraws, visibility options, palette changes and viewer changes invalidate
 broader state. Temporary drawing state is restored after background rendering.
+When the world fits inside a cached image, its blank margins stay fixed while
+terrain moves. The cache aligns that image with the live view and repaints cells
+near the margins and wrap cut instead of shifting blank pixels onto the map.
+Wrapped maps retain horizontal scrolling across the seam; fixed-boundary maps
+clamp at the world's horizontal edges, centering it when it fits, rather than
+allowing scrolling into the backing image's blank margins. Interior terrain
+pixels can still be reused.
 Crossing a detail band invalidates cached pixels while retaining the allocations.
 Each cached view owns its label font. Background painting temporarily binds that
 font and restores the live handle, avoiding font destruction/recreation per cell.
@@ -183,6 +190,10 @@ visibility/appearance selection, shield clipping geometry and work-counter priva
 `python tools/test_hd_zoom.py --game PATH --cpu-camera-fallback` checks all 16
 fixed zooms at densities 1–4 with `HardwareGraphics=0` and `GpuMapCamera=1`, even
 when an SDL hardware renderer is available. It verifies that the camera stays off.
+`python tools/test_map_camera_wrap.py --game PATH` compares cached and uncached
+views during repeated seam/edge drags at minimum and fractional overview zooms,
+with both wrapped and fixed-boundary maps at densities 1 and 4. It also compares
+tile picking and checks that fixed maps stop while wrapped maps keep scrolling.
 
 ## Renderer scope
 
