@@ -17,12 +17,16 @@ static struct {
     int button,moved,double_click,refreshing,animating,dirty,prefetch,detail;
 } camera;
 
+static int camera_option=-1;
+int map_camera_option(void)
+{
+    if(camera_option<0)camera_option=GetPrivateProfileIntA("OpenCiv2","GpuMapCamera",0,"CIV.INI")!=0;
+    return camera_option;
+}
 static int enabled(void)
 {
-    static int option=-1;
     if(!hd_gpu_active || !turn_loop.active || map.width<1 || map.height<1)return 0;
-    if(option<0)option=GetPrivateProfileIntA("OpenCiv2","GpuMapCamera",0,"CIV.INI")!=0;
-    return option;
+    return map_camera_option();
 }
 static HWND view_hwnd(MapView *m)
 {
@@ -104,6 +108,24 @@ void map_camera_forget(void *view)
     if(camera.view!=view)return;
     map_view_cache_clear();
     cancel_drag();memset(&camera,0,sizeof camera);
+}
+/* The options page persists the setting and redraws after applying all changes. */
+void map_camera_set_option(int on)
+{
+    on=on!=0;
+    if(on==map_camera_option())return;
+    if(camera.view) {
+        MapView *m=camera.view;
+        /* Return to the closest fixed zoom, not the camera's coarser backing
+         * zoom. Keep the displayed map center when discarding its transform. */
+        m->zoom=(i16)clamp(floor(camera.scale*8+.5)-8,-7,8);
+        int x=(int)floor(camera.cx),y=(int)clamp(floor(camera.cy),0,map.height-1);
+        if(game.rules & RULE_FLAT_WORLD)x=(int)clamp(x,0,map.width-1);
+        if((x+y)&1)x+=(game.rules & RULE_FLAT_WORLD) && x==map.width-1 ? -1 : 1;
+        m->center_x=(i16)map_wrap_x(x);m->center_y=(i16)y;
+        map_camera_forget(m);
+    }
+    camera_option=on;
 }
 void map_camera_layout(void *view)
 {

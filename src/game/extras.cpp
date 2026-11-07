@@ -241,6 +241,7 @@ static const struct { const char *key, *english; } texts[] = {
     {"option.PathLines", "Path lines with Shift"},
     {"option.SentryHalftone", "Sentries in grey shades"},
     {"option.DefaultZoom1", "New games at zoom 1:1"},
+    {"option.GpuMapCamera", "Map drag and zoom (GPU)"},
     {"option.WorkerHandover", "Workers hand over their work"},
     {"option.GotoNoZocStop", "Go To past foreign units"},
     {"option.UnitRotation", "Units of a stack in turn"},
@@ -1952,6 +1953,22 @@ static int options_checks(const char *title, const char *note, const KeyItem *ke
     return 1;
 }
 
+static int options_interface(void)
+{
+    /* The camera is opt-in and independent of the default-on UI additions.
+     * Borrow a bit only for this dialog; do not change their stored mask. */
+    const uint64_t camera_bit=(uint64_t)1<<63;
+    const int n=(int)(sizeof extra_keys/sizeof extra_keys[0]);
+    KeyItem keys[n+1];
+    memcpy(keys,extra_keys,sizeof extra_keys);
+    keys[n]={63,"GpuMapCamera"};
+    uint64_t bits=(extras_enabled & ~camera_bit) | (map_camera_option() ? camera_bit : 0);
+    if(!options_checks(extras_text("options.interface"),0,keys,n+1,&bits,2))return 0;
+    extras_enabled=(extras_enabled & camera_bit) | (bits & ~camera_bit);
+    map_camera_set_option((bits & camera_bit)!=0);
+    return 1;
+}
+
 /* A page of numbers (and text): keys[n], each shown as shown[i]; those
    changed written.  Returns 1 if OK (value[i]: the numbers, text: the last
    field's text if is_text). */
@@ -2110,8 +2127,7 @@ void extras_options_dialog(void)
         if (choice < 0)
             return;
         if (choice == 0) {
-            if (options_checks(extras_text("options.interface"), 0, extra_keys,
-                               (int)(sizeof extra_keys / sizeof extra_keys[0]), &extras_enabled, 2))
+            if (options_interface())
                 options_apply(before);
         } else if (choice == 1 && !network_game()) {
             options_checks(extras_text("options.rules"), extras_text("options.rules_note"), rule_keys, 5,

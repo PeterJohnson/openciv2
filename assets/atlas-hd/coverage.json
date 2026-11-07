@@ -765,7 +765,7 @@
       "role": "checkbox/radio state",
       "representation": "new artwork",
       "replacements": [
-        "interface/toggles/checkbox-off-focus.png"
+        "interface/toggles/checkbox-on-normal.png"
       ],
       "evidence": [
         "src/auto/controls.cpp:2194",
@@ -786,7 +786,7 @@
       "role": "checkbox/radio state",
       "representation": "new artwork",
       "replacements": [
-        "interface/toggles/checkbox-on-normal.png"
+        "interface/toggles/checkbox-off-normal.png"
       ],
       "evidence": [
         "src/auto/controls.cpp:2194",
@@ -2114,7 +2114,7 @@
       "role": "checkbox/radio state",
       "representation": "new artwork",
       "replacements": [
-        "interface/toggles/checkbox-off-focus.png"
+        "interface/toggles/checkbox-on-normal.png"
       ],
       "evidence": [
         "src/auto/controls.cpp:2194",
@@ -2135,7 +2135,7 @@
       "role": "checkbox/radio state",
       "representation": "new artwork",
       "replacements": [
-        "interface/toggles/checkbox-on-normal.png"
+        "interface/toggles/checkbox-off-normal.png"
       ],
       "evidence": [
         "src/auto/controls.cpp:2194",

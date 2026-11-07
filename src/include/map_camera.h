@@ -39,6 +39,8 @@ int map_camera_zoom_step(void *view,int step); /* 0: normal zoom, otherwise +/-1
 void map_camera_tick(void);
 int map_camera_busy(void);
 int map_camera_active(void);
+int map_camera_option(void);
+void map_camera_set_option(int on);
 int map_camera_owns(void *view);
 int map_camera_surface(void *surface);
 int map_camera_detail_zoom(void *surface,int zoom);

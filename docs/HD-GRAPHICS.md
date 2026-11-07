@@ -40,8 +40,11 @@ The existing installer can copy those from the player's installation or disc.
 
 ## GPU camera prototype
 
-Add `GpuMapCamera=1` to `[OpenCiv2]` in `CIV.INI` and restart. This experimental
-option defaults to off and requires the active SDL HD GPU compositor. CPU and
+Enable **Map drag and zoom (GPU)** in **Game > OpenCiv2 Options > Interface
+additions**. It applies immediately and saves `GpuMapCamera` in `[OpenCiv2]` in
+`CIV.INI`; setting `GpuMapCamera=1` there before launch also works. Turning the
+checkbox off restores the nearest fixed zoom. This experimental option defaults
+to off and requires the active SDL HD GPU compositor. CPU and
 original-graphics rendering retain their existing controls and fixed zooms.
 It currently applies to the main map window only.
 
@@ -166,6 +169,10 @@ suite also checks fractional camera placement and clipping. `CIV2_CAMERA_TRACE=1
 adds gesture routing, source-refresh timing and bounds-clamping diagnostics.
 The replay's `camera_probe` and `camera_benchmark` commands inspect picking and
 measure settled composition; `drag_burst` queues a full drag before dispatch.
+`python tools/test_map_camera_options.py --game PATH` checks the live checkbox,
+OK/Cancel, restart persistence and CPU fallback at densities 1 and 4, including
+the dialog's 640x480 layout. `tests/map_camera_options_test.cpp` covers defaults,
+nearest fixed zoom, valid map centers and cache/capture cleanup on toggling.
 Source probes `map_camera_detail_test.cpp`, `map_camera_input_test.cpp` and
 `map_camera_schedule_test.cpp` cover the shoreline cutoff, event coordinates,
 double-click behavior and refresh pacing.
