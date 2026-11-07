@@ -247,7 +247,8 @@ Non-map enhancements include:
 - Spacecraft assembly bays tied to installed parts, retaining the game's title,
   statistics and launch controls.
 - Diplomacy military ratings and advance artwork; advance-specific illustrations
-  in research, intelligence and Civilopedia windows, with category/era fallbacks.
+  in research, intelligence and the Civilopedia list, detail pages and all four
+  tree levels, with category/era fallbacks when individual artwork is unavailable.
 - Numerical food and production meters, live report row backgrounds, clearer
   button faces, scalable text and authored interface graphics.
 
@@ -454,6 +455,9 @@ and optimized builds (set `CXX` to a C++ compiler).
 `tests/hd_copy_bounds_test.cpp` uses the same source-probe runner to check logical
 copy coordinates on top-down and bottom-up DIBs; `tests/hd_bitmap_lookup_test.cpp`
 checks cached handles through deletion, reuse and storage replacement.
+`tests/pedia_tree_art_test.cpp` checks advance selection in all four tree tiers
+and scrolled lists, category fallback, and unchanged link/connector geometry.
+`harness/hd/pedia-tree.txt` captures the advance list and tree at 640x480.
 `tests/hd_gdi_copy_test.cpp` covers unscaled conversion and fallback paths;
 `tests/hd_redraw_schedule_test.cpp` checks event-poll deadlines, nesting and
 replay behavior. `tests/hd_composition_test.cpp` compares 2,000 randomized
