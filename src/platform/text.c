@@ -447,21 +447,21 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
 
 /* Coverage quads also draw opaque badge backgrounds through the text batch. */
 static void camera_text_quad(Bitmap *dst,const unsigned char *cov,int sw,int sh,
-                             int gx,int gy,int w,int h,int cl,int ct,int cr,int cb,uint32_t rgb)
+                             int gx,int gy,int w,int h,int cl,int ct,int cr,int cb,uint32_t rgb,int cpu_text)
 {
     int l=gx>cl ? gx : cl,t=gy>ct ? gy : ct,r=gx+w<cr ? gx+w : cr,b=gy+h<cb ? gy+h : cb;
     if(cov && w>0 && h>0 && l<r && t<b &&
-       !hd_gpu_text(dst,cov,sw,sh,gx,gy,w,h,l,t,r,b,rgb)) {
+       (cpu_text || !hd_gpu_text(dst,cov,sw,sh,gx,gy,w,h,l,t,r,b,rgb))) {
         int px,py;
         /* Preserve the colored-text fallback on devices without MAX blend. */
-        hd_read_region(dst,l,t,r-l,b-t);
+        if(!cpu_text)hd_read_region(dst,l,t,r-l,b-t);
         for(py=t;py<b;py++)for(px=l;px<r;px++) {
             int v=cov[((py-gy)*sh/h)*sw+(px-gx)*sw/w];
             uint32_t *out=dst->hd+py*dst->w*hd_density+px,z=*out;
             *out=0xff000000u|aa_blend((z>>16)&255,(rgb>>16)&255,v)<<16|
                 aa_blend((z>>8)&255,(rgb>>8)&255,v)<<8|aa_blend(z&255,rgb&255,v);
         }
-        hd_upload_region(dst,l,t,r-l,b-t);
+        if(!cpu_text)hd_upload_region(dst,l,t,r-l,b-t);
     }
 }
 
@@ -474,6 +474,7 @@ void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,doubl
     int boxed=kind==1;
     int d=hd_density,size=(int)(height*d+.5),face_size,pass,i,ch;
     int cl=clip->left*d,ct=clip->top*d,cr=clip->right*d,cb=clip->bottom*d;
+    int cpu_text;
     FontFace *font;
     double scale;
     const unsigned char *palette=hd_palette();
@@ -487,7 +488,13 @@ void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,doubl
     if(cl<0)cl=0;if(ct<0)ct=0;
     if(cr>dst->w*d)cr=dst->w*d;if(cb>dst->h*d)cb=dst->h*d;
     if(cl>=cr || ct>=cb)return;
+    cpu_text=!(host_gpu_available()&2);
     hd_gpu_text_begin();
+    /* Without colored-text gamma blending, compose the complete label layer
+     * in one CPU transfer. A whole-world view can have thousands of glyphs;
+     * synchronizing with the GPU for each one makes blink redraws starve input.
+     * Keep shadows and badges in this same plane so overlaps retain order. */
+    if(cpu_text)hd_read_region(dst,cl,ct,cr-cl,cb-ct);
     /* Put shadows/backgrounds below the glyphs, retaining atlas batching. */
     for(pass=0;pass<2;pass++)for(i=0;i<count;i++) {
         const MapCameraLabel *label=&labels[i];
@@ -517,8 +524,8 @@ void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,doubl
             if(pad<1)pad=1;
             w=(int)(content*scale+.5)+4*pad;h=(int)(font->tm[0]*scale+.5)+2*pad;
             if(!pass) {
-                camera_text_quad(dst,&solid,1,1,l,t,w,h,cl,ct,cr,cb,0);
-                camera_text_quad(dst,&solid,1,1,l+pad,t+pad,w-2*pad,h-2*pad,cl,ct,cr,cb,rgb);
+                camera_text_quad(dst,&solid,1,1,l,t,w,h,cl,ct,cr,cb,0,cpu_text);
+                camera_text_quad(dst,&solid,1,1,l+pad,t+pad,w-2*pad,h-2*pad,cl,ct,cr,cb,rgb,cpu_text);
                 continue;
             }
             x=l+2*pad+(content-width)*scale*.5;y=t+pad;rgb=0;
@@ -530,11 +537,12 @@ void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,doubl
             const unsigned char *cov=aa_coverage(g);
             int gx=(int)floor(x+g->x*scale+.5),gy=(int)floor(y+g->y*scale+.5);
             int w=(int)(g->w*scale+.5),h=(int)(g->h*scale+.5);
-            camera_text_quad(dst,cov,g->w,g->h,gx,gy,w,h,ll,tt,rr,bb,rgb);
+            camera_text_quad(dst,cov,g->w,g->h,gx,gy,w,h,ll,tt,rr,bb,rgb,cpu_text);
             x+=font->g[c].dadv*scale;
         }
     }
     hd_gpu_text_end();
+    if(cpu_text)hd_upload_region(dst,cl,ct,cr-cl,cb-ct);
 }
 
 /* An underline (for & prefixes) under characters [from, from+len) of s. */

@@ -18,7 +18,8 @@ static FontFace font,by_size[MAXH+1];
 static int selected_size;
 static AaGlyph glyphs[256];
 static unsigned char coverage[15],palette[768];
-static int hd_density,font_data=1,aa_data=1,fallback,reads,uploads;
+static int hd_density,font_data=1,aa_data=1,fallback,reads,uploads,capabilities=3;
+static int host_gpu_available() { return capabilities; }
 struct Draw { int x,y,w,h,l,t,r,b;uint32_t color; };
 static std::vector<Draw> draws;
 static void load_fonts() { assert(false); }
@@ -94,6 +95,27 @@ int main()
         // Notifications retain their independent bold UI size and full text.
         text_camera_labels(&dst,&label,1,14,10,0,&clip,3);
         assert(selected_size==(14*hd_density>MAXH ? MAXH : 14*hd_density));
+
+        // A whole-world label layer needs one transfer on GPUs without gamma
+        // blending, including overlapping names, badge backgrounds and shadows.
+        MapCameraLabel crowded[100];
+        for(int i=0;i<100;i++) {
+            crowded[i]=label;crowded[i].x=39+(i%3);crowded[i].y=29+(i%4);
+            crowded[i].color=i%2;
+        }
+        for(int kind=0;kind<4;kind++) {
+            std::fill(pixels.begin(),pixels.end(),0xff111111);
+            capabilities=3;fallback=1;reads=uploads=0;
+            text_camera_labels(&dst,crowded,100,6,10,0,&clip,kind);
+            auto reference=pixels;
+            assert(reads>100 && reads==uploads);
+            std::fill(pixels.begin(),pixels.end(),0xff111111);
+            capabilities=1;reads=uploads=0;draws.clear();
+            text_camera_labels(&dst,crowded,100,6,10,0,&clip,kind);
+            assert(reads==1 && uploads==1 && draws.empty());
+            assert(pixels==reference);
+        }
+        capabilities=3;fallback=0;
     }
     puts("Camera text: native glyph sampling, physical-pixel placement, clipping and fallback at densities 1-4 passed.");
 }

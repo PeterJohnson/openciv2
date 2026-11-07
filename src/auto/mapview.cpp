@@ -2498,6 +2498,12 @@ void MapView::redraw_area(i32 tile_x,i32 tile_y,i32 radius, iptr viewer_civ,int 
   i32 cursor_y;
   
   if (turn_loop.active != '\0') {
+    /* Blink/partial redraws poll messages once per tile too. Present the
+     * finished patch once, as for full redraws, instead of repeatedly
+     * composing all camera labels while the map is still being painted. */
+    const bool batch_hd = hd_gpu_active && game.multiplayer < 3;
+    if (batch_hd) hd_redraw_begin();
+    ON_SCOPE_EXIT(if (batch_hd) hd_redraw_end());
     net.map_redraw_busy = 1;
     if (game.reveal_map == '\0') {
       civ = viewer_civ;
