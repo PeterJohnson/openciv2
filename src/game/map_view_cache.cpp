@@ -13,6 +13,8 @@ EXTERN_C void plat_fatal(const char *,...);
 enum { CELL=128, SLOTS=3, MAX_CELLS=1024, PAD=128 };
 struct CachedView {
     MapView *view;
+    GameFont label_font;
+    int label_font_size;
     int cols,rows,civ;
     unsigned used;
     unsigned char valid[MAX_CELLS];
@@ -22,6 +24,7 @@ static MapView *painting;
 static unsigned clock_used;
 static int key_width,key_height,key_density,key_civ,key_hidden,key_reveal,key_options,key_palette;
 static int key_map_w,key_map_h,key_rules;
+static int key_detail;
 static uint64_t rendered,reused,hits,misses;
 
 int map_view_cache_rendering(void) { return painting!=0; }
@@ -45,6 +48,7 @@ static int wrap_delta(int x)
 static void destroy(CachedView &e)
 {
     if(e.view) {
+        e.label_font.destroy();
         e.view->tile_font.destroy();e.view->tile_small_font.destroy();
         surface_dtor(&e.view->map_surface);surface_dtor(&e.view->overlay_surface);
         surface_dtor(e.view);free(e.view);
@@ -57,6 +61,12 @@ void map_view_cache_clear(void)
 }
 static void check_key(MapView *m,int civ)
 {
+    int detail=map_camera_detail_zoom(m,m->zoom);
+    if(key_detail!=detail) {
+        /* A detail-band change affects pixels, not allocations or geometry. */
+        for(int i=0;i<SLOTS;i++)memset(entries[i].valid,0,sizeof entries[i].valid);
+        key_detail=detail;
+    }
     int palette=((GamePalette *)&game_palette_block.game_palette)->get_version();
     if(key_width!=m->client_width || key_height!=m->client_height || key_density!=hd_density ||
        key_civ!=civ || key_hidden!=map_show_hidden_terrain || key_reveal!=game.reveal_map ||
@@ -121,6 +131,7 @@ static CachedView *acquire(MapView *m,int zoom,int civ)
             v=(MapView *)calloc(1,sizeof(MapView));
             if(!v)return 0;
             e->view=v;e->cols=(w+CELL-1)/CELL;e->rows=(h+CELL-1)/CELL;
+            e->label_font.init_empty();e->label_font_size=-99;
             surface_ctor(v);surface_ctor(&v->map_surface);surface_ctor(&v->overlay_surface);
             v->tile_font.init_empty();v->tile_small_font.init_empty();
             v->DibSurface::create(w,h);v->apply_palette((GamePalette *)&game_palette_block.game_palette);
@@ -154,19 +165,26 @@ static void recenter(CachedView &e,MapView *m)
     copy_pixels(v,v,x,y,sx,sy,v->client_width-abs(dx),v->client_height-abs(dy));
     memcpy(e.valid,valid,sizeof valid);
 }
+/* The legacy unit/city painters use one global label font. Temporarily bind
+ * this view's font without destroying either handle. No events are dispatched
+ * while painting, and the second swap restores the live drawing state. */
+static void swap_label_font(CachedView &e)
+{
+    GameFont *font=&status_window_block.map_label_font[0];
+    GameFont saved=*font;*font=e.label_font;e.label_font=saved;
+    int size=map_label_font_size;map_label_font_size=e.label_font_size;e.label_font_size=size;
+}
 static void paint_rect(CachedView &e,RECT r,int reference=0)
 {
     MapView *v=e.view;
     auto saved_text=text_style;auto saved_draw=draw_target;
     auto saved_scale=gfx_scale;auto saved_target=gfx_draw_target;
-    int saved_color=ctrl_colors.gfx_text,saved_font=map_label_font_size;
+    int saved_color=ctrl_colors.gfx_text;
+    swap_label_font(e);
     painting=v;
     ON_SCOPE_EXIT(
         hd_gpu_text_end();v->reset_clip();painting=0;
-        if(map_label_font_size!=saved_font) {
-            ((GameFont *)&status_window_block.map_label_font)->set(1,saved_font);
-            map_label_font_size=saved_font;
-        }
+        swap_label_font(e);
         text_style=saved_text;draw_target=saved_draw;gfx_draw_target=saved_target;
         ctrl_colors.gfx_text=saved_color;gfx_set_scale_ratio(saved_scale.num,saved_scale.den);
     );

@@ -1514,7 +1514,7 @@ void MapView::tile_to_screen(iptr out_x,iptr out_y,int x,int y)
    far out, else the coast quarters and the river mouths. */
 void MapView::draw_tile_ocean(iptr surface,int screen_x,int screen_y,iptr x,int y,int zoom,u32 half_w,u32 half_h)
 {
-  const int detail_zoom = map_camera_detail_zoom((void *)surface,zoom);
+  const int detail_zoom = map_camera_topology_zoom((void *)surface,zoom);
   int check;
   byte *known;
   i8 mouth_rect[16];
@@ -1558,6 +1558,7 @@ void MapView::draw_tile_ocean(iptr surface,int screen_x,int screen_y,iptr x,int 
 void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y,int zoom,uint terrain2,uint improvements2,uint has_river,u32 half_w,u32 half_h,uint *dither_terrain)
 {
   const int detail_zoom = map_camera_detail_zoom((void *)surface,zoom);
+  const int topology_zoom = map_camera_topology_zoom((void *)surface,zoom);
   byte nbr_raw;
   uint new_flags;
   int check;
@@ -1589,7 +1590,7 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
 
   variant = 0;
   river_mask = 0;
-  if (detail_zoom < -4) {
+  if (topology_zoom < -4) {
     river_mask = 0xf;
   }
   else {
@@ -1657,7 +1658,7 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
   if (((-4 < detail_zoom) && (map_show_hidden_terrain == 0)) && (((byte)improvements2 & 0xc) == 0xc)) {
     ((Sprite *)((i8 *)&land_improvement_sprites_block.farmland_sprite))->draw((iptr)farmland_rect,surface,screen_x,screen_y);
   }
-  if (((-7 < detail_zoom) && (has_river != 0)) && (map_show_hidden_terrain == 0)) {
+  if (((-7 < topology_zoom) && (has_river != 0)) && (map_show_hidden_terrain == 0)) {
     ((Sprite *)(((i8 *)&icon_misc_sprites_block.river_sprites) + river_mask * 0x3c))->draw((iptr)river_rect,surface,screen_x,
                screen_y);
   }
@@ -2018,7 +2019,7 @@ void MapView::draw_tile_terrain(iptr surface,int screen_x,int screen_y,iptr x,in
   if ((-5 < detail_zoom) && (hidden == 0)) {
     draw_tile_specials(surface,screen_x,screen_y,x,y,improvements2,tile_w,tile_h,half_h);
   }
-  if ((-4 < detail_zoom) && (-1 < viewer_civ)) {
+  if ((-4 < map_camera_topology_zoom((void *)surface,zoom)) && (-1 < viewer_civ)) {
     draw_tile_unexplored_edges(surface,screen_x,screen_y,x,y,viewer_civ,city_tile_idx,half_w,half_h);
   }
   gfx_reset_zoom_scale();
@@ -2250,6 +2251,8 @@ i32 MapView::tile_in_view(i32 tile_x,i32 tile_y)
 void MapView::draw_city_names(i32 center_x,i32 center_y,int radius)
 
 {
+  /* Camera labels are drawn at final display resolution, after map scaling. */
+  if (map_camera_surface(this)) return;
   int label_x;
   int text_width;
   i32 shadow_color;
@@ -2297,15 +2300,6 @@ void MapView::draw_city_names(i32 center_x,i32 center_y,int radius)
             tile_to_screen((iptr)&screen_x,(iptr)&screen_y,x2,y2);
             label_x = half_tile_width_u + screen_x;
             label_y = ((int)(tile_height_u * 3) >> 2) + screen_y;
-            if (map_view_cache_rendering()) {
-              /* The viewport cache paints small regions. Avoid laying out
-               * and submitting every city's text for each dirty rectangle. */
-              if (label_y + (int)tile_height_u + 16 < (int)clip_top ||
-                  label_y - 16 >= (int)clip_bottom) continue;
-              int width = tile_font.text_width((const char *)&cities[city].name);
-              if (label_x + (width >> 1) + 16 < (int)clip_left ||
-                  label_x - (width >> 1) - 16 >= (int)clip_right) continue;
-            }
             text_set_colors(10,0xffffffff,0xffffffff,0xffffffff);
             text_width = zoom_scale(2);
             if (text_width < 3) {

@@ -60,7 +60,7 @@ It currently applies to the main map window only.
 
 `src/game/map_camera.cpp` keeps camera state outside the serialized game
 structures. `MapView` keeps a live surface at a nearby integer zoom, so units,
-flags, text, shadows, blinking and animation captures use their existing paths.
+flags, status text, shadows, blinking and animation captures use their existing paths.
 The desktop compositor scales only the map interior with
 subpixel precision, preserving window occlusion and the logical desktop shadow.
 No map-sized texture copy or GPU readback is added for ordinary camera frames.
@@ -71,11 +71,22 @@ the legacy renderer's quantized recentering, with a one-level upgrade hysteresis
 Initial presentation prepares this margin. Camera frames keep the 15 ms cadence
 without the software renderer's cost-based cooldown after a source refresh.
 
-In camera mode, backing resolution does not control terrain visibility:
-coastlines, river mouths, terrain joins, improvements, unexplored boundaries and
-unit status data remain enabled across source zooms. Their geometry still uses
-the actual backing scale. Other map windows and fixed-zoom rendering retain the
-original detail thresholds.
+In camera mode, coastlines, connected rivers, unexplored boundaries and unit health
+remain visible across source zooms. Decorative detail follows the displayed scale,
+independently of the backing resolution or graphics density. Below 62.5%, resources,
+roads, irrigation, mines, grassland shields and tiny status text are omitted. Below
+50%, terrain blending and special overlays are also omitted. Terrain still uses
+filtered atlas textures; these are layer reductions, not a separate set of authored
+low-detail terrain images. Fixed-zoom HD rendering, including the CPU renderer,
+uses the same 62.5% cutoff for tiny unit orders and city-size numbers. Its terrain
+detail thresholds remain unchanged. Original-graphics rendering is unchanged.
+
+City names are drawn after the map is scaled, using glyphs hinted for the final
+physical size and placement rounded to physical pixels. They retain a six-logical-
+pixel minimum size and normal visibility/occlusion rules. This avoids magnifying
+already rasterized names, without changing map picking or creating fonts per frame.
+CPU HD rendering already draws text directly at its fixed zoom and display density,
+and does not use the GPU camera's viewport cache or extra scaling pass.
 
 `src/game/map_view_cache.cpp` retains up to three rendered views, with 128 logical
 source pixels of extra coverage on each side. Panning reuses overlapping pixels
@@ -85,6 +96,9 @@ the requested crop into the live map without rebuilding captions or controls.
 Partial map updates invalidate the corresponding cached regions at every zoom;
 full redraws, visibility options, palette changes and viewer changes invalidate
 broader state. Temporary drawing state is restored after background rendering.
+Crossing a detail band invalidates cached pixels while retaining the allocations.
+Each cached view owns its label font. Background painting temporarily binds that
+font and restores the live handle, avoiding font destruction/recreation per cell.
 
 Background work has a 2 ms scheduling budget, checked between 128-pixel cells.
 It fills surrounding coverage during drags, prepares the destination zoom during
@@ -122,6 +136,11 @@ and presentation. Cold zooms still produced roughly 40–55 ms spikes; a persist
 viewport cache does not eliminate first-use sprite filtering/decoding or guarantee
 the 10–15 ms target for every interactive frame.
 
+With city names drawn at display resolution, the same settled-camera benchmark
+measured 3.38 ms median / 4.16 ms p95 at density 2 and 7.00 ms / 7.86 ms at density 4.
+These composition timings include GPU completion, but exclude source refresh,
+event processing and presentation. Drawing sharp names each frame adds some cost.
+
 `python tools/test_map_camera.py --game PATH` runs real-clock input, anchored
 fractional zoom, drag picking, ordinary click selection, zoom limits/presets,
 chrome clipping and composition measurements in isolated game directories at
@@ -142,6 +161,16 @@ channel tolerance for clipped bilinear rounding (exact comparisons with
 `CIV2_GPU_NO_ATLAS=1`). `tests/map_view_cache_test.cpp` compares 1,000
 scrolls against independent fresh pixels, including wrapping, invalidation,
 overlapping copies and budgeted fills.
+`tests/map_view_cache_font_test.cpp` checks 3,000 paints across cached zooms,
+including the diagnostic traversal, preserving live font handles and releasing
+cached fonts on eviction/cleanup.
+`map_camera_labels_test.cpp`, `map_camera_text_test.cpp` and `map_camera_lod_test.cpp`
+cover label visibility/positioning, physical glyph sampling and clipping, text
+fallback, and detail-layer selection. The camera replay also captures intermediate
+zoom-out levels in `detail-mid.bmp`, `detail-low.bmp` and `detail-far.bmp`.
+`python tools/test_hd_zoom.py --game PATH --cpu-camera-fallback` checks all 16
+fixed zooms at densities 1–4 with `HardwareGraphics=0` and `GpuMapCamera=1`, even
+when an SDL hardware renderer is available. It verifies that the camera stays off.
 
 ## Renderer scope
 

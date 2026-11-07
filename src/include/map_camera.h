@@ -6,6 +6,11 @@ typedef struct MapCameraTransform {
     double scale, x, y; /* viewport-local: displayed = source * scale + offset */
     int left, top, width, height;
 } MapCameraTransform;
+typedef struct MapCameraLabel {
+    double x,y; /* viewport-local display coordinates, before density scaling */
+    int color;
+    char text[32];
+} MapCameraLabel;
 static inline double camera_source_x(const MapCameraTransform *c,double x)
 { return c->left+(x-c->left-c->x)/c->scale; }
 static inline double camera_source_y(const MapCameraTransform *c,double y)
@@ -33,7 +38,10 @@ void map_camera_tick(void);
 int map_camera_busy(void);
 int map_camera_active(void);
 int map_camera_owns(void *view);
+int map_camera_surface(void *surface);
 int map_camera_detail_zoom(void *surface,int zoom);
+int map_camera_topology_zoom(void *surface,int zoom);
+int map_camera_labels(MapCameraLabel *labels,int capacity,double *height);
 int map_camera_backing_zoom(double scale,int width,int height);
 void map_camera_cancel(void);
 void map_camera_probe(int x,int y);

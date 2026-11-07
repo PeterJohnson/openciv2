@@ -3038,6 +3038,13 @@ static void gfx_recolor_unit_shield(iptr surface,RECT *rect,int primary,int mid)
   }
 }
 
+/* Tiny order glyphs and city-size boxes obscure HD overview maps. Apply the
+ * same readability cutoff to fixed CPU/GPU zooms and the smooth camera. */
+static int gfx_show_status_text(iptr surface,int zoom)
+{
+  return !hd_enabled || map_camera_detail_zoom((void *)surface,zoom) >= -3;
+}
+
 /* 0056baff auto */
 void __cdecl
 gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int no_fortress)
@@ -3165,7 +3172,7 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
   if ((draw_flags & 4) == 0) {
     dmg = 0;
   }
-  if (map_camera_detail_zoom((void *)surface,zoom) < -3) {
+  if (map_camera_topology_zoom((void *)surface,zoom) < -3) {
     dmg = 0;
   }
   hp_width = (int)((max_hp - dmg) * bar_width) / max_hp;
@@ -3221,7 +3228,7 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
       order_char = '*';
     }
   }
-  if (order_char != '\0') {
+  if (order_char != '\0' && gfx_show_status_text(surface,zoom)) {
     order_text[0] = order_char;
     order_text[1] = 0;
     tmp = gfx_zoom_scale(3,zoom);
@@ -3463,6 +3470,10 @@ gfx_draw_city(iptr surface,iptr city,uint draw_flags,int px,int py,int zoom)
   }
   if ((draw_flags & 1) == 0) {
     if ((cities[city].flags & CITYF_DISORDER) == 0) {
+      if (!gfx_show_status_text(surface,zoom)) {
+        gfx_reset_zoom_scale();
+        return;
+      }
       gfx_select_zoom_font(zoom);
       text_set_font((iptr)&status_window_block.map_label_font);
       text_set_surface(surface);

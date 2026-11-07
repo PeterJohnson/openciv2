@@ -309,7 +309,7 @@ static int compose_camera_piece(Window *w,Bitmap *src,int dx,int dy,const RECT *
     POINT origin={0,0};
     RECT view,inside,part;
     int px,py,sx,sy;
-    if(!map || wnd_top(map)!=w || (c.scale==1 && c.x==0 && c.y==0))return 0;
+    if(!map || wnd_top(map)!=w)return 0;
     wnd_client_screen(map,&origin);
     view=(RECT){origin.x+c.left,origin.y+c.top,origin.x+c.left+c.width,origin.y+c.top+c.height};
     if(!rect_intersect(&inside,&view,rect))return 0;
@@ -323,6 +323,12 @@ static int compose_camera_piece(Window *w,Bitmap *src,int dx,int dy,const RECT *
     hd_composite_camera(screen,src,sx,sy,c.width,c.height,
         view.left+c.x,view.top+c.y,c.width*c.scale,c.height*c.scale,
         inside.left,inside.top,inside.right,inside.bottom);
+    {
+        MapCameraLabel labels[256];
+        double height=0;
+        int count=map_camera_labels(labels,256,&height);
+        text_camera_labels(screen,labels,count,height,view.left,view.top,&inside);
+    }
     /* Keep the logical desktop coherent for legacy captures/GetPixel. No HD
      * readback: map picking itself still reads the original indexed masks. */
     for(py=inside.top;py<inside.bottom;py++) {

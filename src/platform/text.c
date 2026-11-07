@@ -9,6 +9,7 @@
 #include "plat.h"
 #include "hd.h"
 #include "../host/host.h"
+#include <math.h>
 
 DC *dc_get(HDC h);
 
@@ -442,6 +443,64 @@ void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip)
         }
     }
     rgn_free(&rg);
+}
+
+/* Map names are hinted at the final physical size, instead of being enlarged
+ * along with a lower-resolution terrain image. Placement snaps only to physical
+ * pixels; it does not jump a whole logical pixel at higher display densities. */
+void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,double height,
+                        int origin_x,int origin_y,const RECT *clip)
+{
+    int d=hd_density,size=(int)(height*d+.5),face_size,pass,i,ch;
+    int cl=clip->left*d,ct=clip->top*d,cr=clip->right*d,cb=clip->bottom*d;
+    FontFace *font;
+    double scale;
+    const unsigned char *palette=hd_palette();
+    if(!count || !dst->hd_gpu)return;
+    if(!font_data)load_fonts();if(!aa_data)load_aa();
+    if(size<MINH)size=MINH;
+    face_size=size>MAXH ? MAXH : size;
+    font=faces[0][face_size][0][0];
+    if(!font || !font->aa)return;
+    scale=(double)size/face_size;
+    if(cl<0)cl=0;if(ct<0)ct=0;
+    if(cr>dst->w*d)cr=dst->w*d;if(cb>dst->h*d)cb=dst->h*d;
+    if(cl>=cr || ct>=cb)return;
+    hd_gpu_text_begin();
+    /* Put all shadows below the names, and batch disjoint colored glyphs. */
+    for(pass=0;pass<2;pass++)for(i=0;i<count;i++) {
+        const MapCameraLabel *label=&labels[i];
+        int width=text_width(font,label->text,(int)strlen(label->text));
+        int shadow=pass ? 0 : (size/10>0 ? size/10 : 1);
+        double x=(origin_x+label->x)*d-width*scale*.5+shadow;
+        double y=(origin_y+label->y)*d+shadow;
+        int color=label->color&255;
+        uint32_t rgb=pass ? palette[color*3]<<16|palette[color*3+1]<<8|palette[color*3+2] : 0;
+        if(x+width*scale<cl || x>=cr || y+font->tm[0]*scale<ct || y>=cb)continue;
+        for(ch=0;label->text[ch];ch++) {
+            unsigned c=(unsigned char)label->text[ch];
+            AaGlyph *g=&font->aa[c];
+            const unsigned char *cov=aa_coverage(g);
+            int gx=(int)floor(x+g->x*scale+.5),gy=(int)floor(y+g->y*scale+.5);
+            int w=(int)(g->w*scale+.5),h=(int)(g->h*scale+.5);
+            int l=gx>cl ? gx : cl,t=gy>ct ? gy : ct,r=gx+w<cr ? gx+w : cr,b=gy+h<cb ? gy+h : cb;
+            if(cov && w>0 && h>0 && l<r && t<b &&
+               !hd_gpu_text(dst,cov,g->w,g->h,gx,gy,w,h,l,t,r,b,rgb)) {
+                int px,py;
+                /* Preserve the colored-text fallback on devices without MAX blend. */
+                hd_read_region(dst,l,t,r-l,b-t);
+                for(py=t;py<b;py++)for(px=l;px<r;px++) {
+                    int v=cov[((py-gy)*g->h/h)*g->w+(px-gx)*g->w/w];
+                    uint32_t *out=dst->hd+py*dst->w*d+px,z=*out;
+                    *out=0xff000000u|aa_blend((z>>16)&255,(rgb>>16)&255,v)<<16|
+                        aa_blend((z>>8)&255,(rgb>>8)&255,v)<<8|aa_blend(z&255,rgb&255,v);
+                }
+                hd_upload_region(dst,l,t,r-l,b-t);
+            }
+            x+=font->g[c].dadv*scale;
+        }
+    }
+    hd_gpu_text_end();
 }
 
 /* An underline (for & prefixes) under characters [from, from+len) of s. */

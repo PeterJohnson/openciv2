@@ -14,7 +14,7 @@ static struct {
     POINT start;
     DWORD tick;
     int zoom,center_x,center_y,width,height,map_w,map_h,civ;
-    int button,moved,double_click,refreshing,animating,dirty,prefetch;
+    int button,moved,double_click,refreshing,animating,dirty,prefetch,detail;
 } camera;
 
 static int enabled(void)
@@ -31,11 +31,22 @@ static HWND view_hwnd(MapView *m)
 }
 int map_camera_active(void) { return enabled() && camera.view!=0; }
 int map_camera_owns(void *view) { return enabled() && camera.view==view; }
+int map_camera_surface(void *surface)
+{
+    return enabled() && (camera.view==surface || map_view_cache_surface(surface));
+}
 int map_camera_detail_zoom(void *surface,int zoom)
 {
-    /* Raster resolution is not a visibility rule for a continuously scaled
-     * map. Keep terrain topology and status data across backing-zoom changes. */
-    return enabled() && (camera.view==surface || map_view_cache_surface(surface)) && zoom<0 ? 0 : zoom;
+    if(!map_camera_surface(surface))return zoom;
+    /* Detail depends on the displayed scale, not the deliberately coarser
+     * source image or graphics density. Only these three bands change layers. */
+    return camera.scale>=.625 ? 0 : camera.scale>=.5 ? -4 : -5;
+}
+int map_camera_topology_zoom(void *surface,int zoom)
+{
+    /* Essential geography and health remain visible at low resolution.
+     * Decorative terrain layers use their ordinary detail cutoffs. */
+    return map_camera_surface(surface) && zoom<0 ? 0 : zoom;
 }
 int map_camera_backing_zoom(double scale,int width,int height)
 {
@@ -71,6 +82,7 @@ static void remember(void)
     camera.zoom=m->zoom;camera.center_x=m->center_x;camera.center_y=m->center_y;
     camera.width=m->client_width;camera.height=m->client_height;
     camera.map_w=map.width;camera.map_h=map.height;camera.civ=human_civ[0];
+    camera.detail=map_camera_detail_zoom(m,m->zoom);
 }
 static void cancel_drag(void)
 {
@@ -118,6 +130,28 @@ uintptr_t map_camera_get(MapCameraTransform *out)
     *out=camera.transform;
     return camera.hwnd;
 }
+int map_camera_labels(MapCameraLabel *labels,int capacity,double *height)
+{
+    if(!enabled() || !camera.view || map_show_hidden_terrain)return 0;
+    MapView *m=camera.view;
+    const MapCameraTransform &c=camera.transform;
+    int count=0,civ=human_civ[0];
+    *height=clamp(32*camera.scale*3/5,6,48);
+    for(int city=0;city<game.num_cities && count<capacity;city++) {
+        if(!cities[city].id || !m->tile_in_view(cities[city].x,cities[city].y))continue;
+        int visible=tile_visible_to(cities[city].x,cities[city].y,civ);
+        if(cities[city].owner!=civ)
+            visible=visible && (cities[city].known_to & (1<<civ)) && cities[city].revealed_size[civ];
+        if(!visible && !game.reveal_map)continue;
+        int x,y;m->tile_to_screen((iptr)&x,(iptr)&y,cities[city].x,cities[city].y);
+        MapCameraLabel &label=labels[count++];
+        label.x=c.x+(x-m->client_x+m->half_tile_width)*c.scale;
+        label.y=c.y+(y-m->client_y+m->tile_height*.75)*c.scale;
+        label.color=civ_color_secondary(cities[city].owner);
+        snprintf(label.text,sizeof label.text,"%s",cities[city].name);
+    }
+    return count;
+}
 
 static void coverage(void)
 {
@@ -131,7 +165,8 @@ static void coverage(void)
      * long zoom-in doesn't end with a sudden jump from a very coarse source. */
     if(zoom==m->zoom+1)zoom=m->zoom;
     transform();
-    if(m->zoom!=zoom || c->x>0 || c->y>0 || c->x+c->width*c->scale<c->width ||
+    if(m->zoom!=zoom || camera.detail!=map_camera_detail_zoom(m,m->zoom) ||
+       c->x>0 || c->y>0 || c->x+c->width*c->scale<c->width ||
        c->y+c->height*c->scale<c->height) {
         int x=(int)floor(camera.cx),y=(int)floor(camera.cy);
         y=(int)clamp(y,0,map.height-1);if((x+y)&1)x++;

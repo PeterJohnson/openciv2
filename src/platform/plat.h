@@ -260,6 +260,8 @@ void text_metrics(FontFace *f, TEXTMETRICA *tm);
 int text_width(FontFace *f, const char *s, int n);
 int text_height(FontFace *f);
 void text_draw(DC *dc, int x, int y, const char *s, int n, const RECT *clip);   /* logical coords, top left */
+void text_camera_labels(Bitmap *dst,const MapCameraLabel *labels,int count,double height,
+                        int origin_x,int origin_y,const RECT *clip);
 
 /* ---- presentation ---- */
 

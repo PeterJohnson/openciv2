@@ -205,4 +205,14 @@ mouseup 160 300
 call_sync win_dispatch_all_messages 0
 camera_probe 160 300
 call_sync map_view_cache_probe 0
+call_sync menu_command 4e2803 0 801
+wheel 400 400 -4
+wait 600
+shot detail-mid
+wheel 400 400 -4
+wait 600
+shot detail-low
+wheel 400 400 -4
+wait 600
+shot detail-far
 quit

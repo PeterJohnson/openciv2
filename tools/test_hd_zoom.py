@@ -19,7 +19,10 @@ def main():
     parser.add_argument('--game', type=Path, required=True)
     parser.add_argument('--exe', type=Path, default=ROOT/'build/OpenCiv2.exe' if os.name == 'nt' else ROOT/'build/OpenCiv2')
     parser.add_argument('--densities', type=int, nargs='+', choices=range(1,5), default=[1,2,3,4])
-    parser.add_argument('--gpu', action='store_true', help='exercise a hidden SDL hardware window')
+    renderer = parser.add_mutually_exclusive_group()
+    renderer.add_argument('--gpu', action='store_true', help='exercise a hidden SDL hardware window')
+    renderer.add_argument('--cpu-camera-fallback', action='store_true',
+                          help='force CPU rendering with GpuMapCamera=1 on a hardware-capable hidden window')
     parser.add_argument('--reference',type=Path,help='compare against a previous hd-zoom result directory')
     parser.add_argument('--max-channel-error',type=int,default=8)
     parser.add_argument('--max-mean-error',type=float,default=0.15)
@@ -37,7 +40,8 @@ def main():
             if p.suffix.lower() in ('.txt','.sav'):shutil.copyfile(p,game/p.name)
         shutil.copyfile(ROOT/'harness/CIV2.DAT',game/'CIV2.DAT')
         (game/'CIV.INI').write_text((ROOT/'harness/CIV.INI').read_text()+
-                                  f'\n[OpenCiv2]\nOriginalGraphics=0\nGraphicsDensity={density}\n')
+                                  f'\n[OpenCiv2]\nOriginalGraphics=0\nGraphicsDensity={density}\n'
+                                  f'HardwareGraphics={int(args.gpu)}\nGpuMapCamera={int(args.cpu_camera_fallback)}\n')
         env = dict(os.environ)
         for key in ('CIV2_CLASSIC','CIV2_DATA','CIV2_GAME','CIV2_TEST_NATIVE','CIV2_TEST_EXTRAS','CIV2_NORMAL_DESKTOP','CIV2_TEST_GPU','CIV2_SHOW'):
             env.pop(key,None)
@@ -45,15 +49,19 @@ def main():
                    CIV2_SCRIPT=str(ROOT/'harness/hd/zoom.txt'),CIV2_SHOT_DIR=str(out),
                    CIV2_HOOK_LOG=str(out/'hooks.log'),SDL_VIDEODRIVER='dummy',SDL_AUDIODRIVER='dummy')
         if os.name != 'nt':env['CIV2_DATA']=str(ROOT/'build/data')
-        if args.gpu:
+        if args.gpu or args.cpu_camera_fallback:
             env.pop('SDL_VIDEODRIVER',None);env['CIV2_TEST_GPU']='1'
+        if args.cpu_camera_fallback:env['CIV2_CAMERA_TRACE']='1'
         with (out/'output.log').open('wb') as log:
             subprocess.run([str(args.exe.resolve()),str(game)],env=env,stdout=log,
                            stderr=subprocess.STDOUT,timeout=240,check=True)
         hooks=(out/'hooks.log').read_text()
         assert 'script finished' in hooks and 'no function' not in hooks, out
         assert f'density {density}; original image loading disabled' in hooks
-        if args.gpu:assert 'HD compositor: SDL GPU' in hooks, (out,'GPU unavailable')
+        expected='HD compositor: SDL GPU' if args.gpu else 'HD compositor: CPU'
+        assert expected in hooks,(out,'wrong compositor')
+        if args.cpu_camera_fallback:
+            assert 'camera refresh:' not in hooks and 'camera cache:' not in hooks,(out,'GPU camera ran in CPU mode')
         maps=set();status=None;worst_channel=0;worst_mean=0
         preview=Image.new('RGB',(1280,1056),'#202622');draw=ImageDraw.Draw(preview)
         for i in range(16):

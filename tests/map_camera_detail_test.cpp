@@ -1,4 +1,7 @@
+// SOURCE src/game/map_camera.cpp map_camera_surface
 // SOURCE src/game/map_camera.cpp map_camera_detail_zoom
+// SOURCE src/game/map_camera.cpp map_camera_topology_zoom
+// SOURCE src/auto/graphics.cpp gfx_show_status_text
 // SOURCE src/auto/mapview.cpp MapView::draw_tile_ocean
 #include <cassert>
 #include <cstdint>
@@ -7,9 +10,10 @@
 using iptr=intptr_t;using i8=signed char;using byte=unsigned char;
 using u32=uint32_t;using uint=unsigned;
 static bool active;
+static int hd_enabled=1;
 static int enabled() { return active; }
 static int map_view_cache_surface(void *) { return 0; }
-static struct { void *view; } camera;
+static struct { void *view; double scale=1; } camera;
 struct Draw { void *sprite; int x,y; };
 static std::vector<Draw> draws;
 struct Sprite {
@@ -49,5 +53,21 @@ int main()
             }
         }
     }
-    puts("Camera shorelines and river mouths: retained at every backing zoom; legacy/other surfaces unchanged.");
+    active=1;
+    for(int zoom=-7;zoom<=8;zoom++) {
+        camera.scale=.625;assert(map_camera_detail_zoom(&view,zoom)==0);
+        assert(gfx_show_status_text((iptr)&view,zoom));
+        camera.scale=.624;assert(map_camera_detail_zoom(&view,zoom)==-4);
+        assert(!gfx_show_status_text((iptr)&view,zoom));
+        camera.scale=.5;assert(map_camera_detail_zoom(&view,zoom)==-4);
+        camera.scale=.499;assert(map_camera_detail_zoom(&view,zoom)==-5);
+        assert(map_camera_detail_zoom(&other,zoom)==zoom);
+    }
+    active=0;
+    for(int hd=0;hd<2;hd++)for(int zoom=-7;zoom<=8;zoom++) {
+        hd_enabled=hd;
+        assert(map_camera_detail_zoom(&view,zoom)==zoom);
+        assert(gfx_show_status_text((iptr)&view,zoom)==(!hd || zoom>=-3));
+    }
+    puts("Camera geography/LOD retained; HD status-text cutoffs match CPU fixed zooms; original graphics unchanged.");
 }
