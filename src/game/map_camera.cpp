@@ -15,7 +15,7 @@ static struct {
     POINT start;
     DWORD tick;
     int zoom,center_x,center_y,width,height,map_w,map_h,civ;
-    int button,moved,refreshing,animating,dirty;
+    int button,moved,double_click,refreshing,animating,dirty;
 } camera;
 
 static int enabled(void)
@@ -29,6 +29,22 @@ static HWND view_hwnd(MapView *m)
 {
     NativeWindow *w=((WndBase *)((i8 *)m+0x48))->native_wnd;
     return w ? w->hwnd : 0;
+}
+int map_camera_active(void) { return enabled() && camera.view!=0; }
+int map_camera_detail_zoom(void *surface,int zoom)
+{
+    /* Raster resolution is not a visibility rule for a continuously scaled
+     * map. Keep terrain topology and status data across backing-zoom changes. */
+    return enabled() && camera.view==surface && zoom<0 ? 0 : zoom;
+}
+int map_camera_backing_zoom(double scale,int width,int height)
+{
+    /* Re-centering is quantized to diamond-lattice coordinates. Reserve a
+     * whole lattice step plus 32 display pixels on either side, so choosing
+     * another backing origin cannot force the camera itself to jump. */
+    double rx=1+(64*scale+64)/width,ry=1+(32*scale+64)/height;
+    int zoom=(int)floor(scale*8/(rx>ry ? rx : ry)+1e-8)-8;
+    return zoom<-7 ? -7 : zoom>8 ? 8 : zoom;
 }
 static double clamp(double v,double lo,double hi) { return v<lo ? lo : v>hi ? hi : v; }
 static double source_x(MapView *m,double px)
@@ -80,7 +96,7 @@ void map_camera_layout(void *view)
             camera.width!=m->client_width || camera.height!=m->client_height ||
             camera.map_w!=(int)map.width || camera.map_h!=(int)map.height || camera.civ!=human_civ[0];
         if(fresh || camera.center_x!=m->center_x || camera.center_y!=m->center_y) {
-            cancel_drag();camera.animating=0;camera.dirty=0;
+            cancel_drag();camera.animating=0;camera.dirty=fresh;
             if(fresh)camera.scale=(m->zoom+8)/8.0;
             camera.target=camera.scale;
             camera.cx=source_x(m,m->client_x+m->client_width*.5);
@@ -107,10 +123,11 @@ static void coverage(void)
     MapCameraTransform *c=&camera.transform;
     const int saved_click=map_click_in_progress;
     ON_SCOPE_EXIT(camera.refreshing=0;map_click_in_progress=saved_click);
-    /* One lower legacy level supplies a little coverage around the visible
-     * area. Minimum zoom cannot supply overscan and retains aligned panning. */
-    int zoom=(int)floor(camera.scale*8+1e-8)-9;
-    if(zoom<-7)zoom=-7;if(zoom>8)zoom=8;
+    int zoom=map_camera_backing_zoom(camera.scale,camera.width,camera.height);
+    /* Don't oscillate between adjacent source levels around a wheel
+     * threshold. Larger changes still upgrade during the animation so a
+     * long zoom-in doesn't end with a sudden jump from a very coarse source. */
+    if(zoom==m->zoom+1)zoom=m->zoom;
     transform();
     if(m->zoom!=zoom || c->x>0 || c->y>0 || c->x+c->width*c->scale<c->width ||
        c->y+c->height*c->scale<c->height) {
@@ -119,6 +136,7 @@ static void coverage(void)
         if(game.rules & RULE_FLAT_WORLD)x=(int)clamp(x,0,map.width-1);
         x=map_wrap_x(x);
         int keep=map_click_in_progress;
+        DWORD started=timeGetTime();
         camera.refreshing=1;map_click_in_progress=1;
         m->zoom=(i16)zoom;
         /* The legacy center is not the exact viewport midpoint: row parity
@@ -139,10 +157,14 @@ static void coverage(void)
         m->redraw(human_civ[0],1);
         map_click_in_progress=keep;
         remember();transform();
+        if(getenv("CIV2_CAMERA_TRACE"))plat_log("camera refresh: %u ms base=%d\n",
+            (unsigned)(timeGetTime()-started),m->zoom);
     }
     /* Until overscan exists, never expose pixels outside the live map. This
      * also respects the original layout's flat-map/pole/small-world bounds. */
     double nx=clamp(c->x,c->width*(1-c->scale),0),ny=clamp(c->y,c->height*(1-c->scale),0);
+    if(getenv("CIV2_CAMERA_TRACE") && (fabs(c->x-nx)>.001 || fabs(c->y-ny)>.001))
+        plat_log("camera clamp: %.6f,%.6f display pixels\n",c->x-nx,c->y-ny);
     camera.cx+=(c->x-nx)/(32*camera.scale);
     camera.cy+=(c->y-ny)/(16*camera.scale);
     c->x=nx;c->y=ny;
@@ -185,15 +207,23 @@ int map_camera_input(void *message)
         if(m->hwnd==camera.hwnd)cancel_drag();return 0;
     }
     if(m->message!=WM_MOUSEWHEEL && m->message!=WM_LBUTTONDOWN && m->message!=WM_LBUTTONUP &&
-       m->message!=WM_MBUTTONDOWN && m->message!=WM_MBUTTONUP && m->message!=WM_MOUSEMOVE)return 0;
+       m->message!=WM_MBUTTONDOWN && m->message!=WM_MBUTTONUP && m->message!=WM_MOUSEMOVE &&
+       m->message!=WM_LBUTTONDBLCLK && m->message!=WM_MBUTTONDBLCLK)return 0;
     if(getenv("CIV2_CAMERA_TRACE"))plat_log("camera input %x hwnd=%x map=%x enabled=%d busy=%d city=%d drop=%d\n",
         m->message,(unsigned)m->hwnd,(unsigned)camera.hwnd,IsWindowEnabled(camera.hwnd),net.ui_input_busy,
         city_turn.processing,ui_paradrop_cursor_active());
     if(camera.button && GetCapture()!=camera.hwnd)cancel_drag();
     if(!IsWindowEnabled(camera.hwnd) || city_turn.processing || net.ui_input_busy ||
        ui_paradrop_cursor_active()) { cancel_drag();return 0; }
-    POINT pt;HWND under=plat_window_at_cursor(&pt);
-    ScreenToClient(camera.hwnd,&pt);
+    /* Messages may queue while a source refresh runs. The live cursor can
+     * already be many events ahead of this down/move/up; use the event's
+     * coordinates, especially for the drag origin and zoom anchor. */
+    POINT pt={(short)LOWORD(m->lParam),(short)HIWORD(m->lParam)};
+    HWND under=m->hwnd;
+    if(m->message==WM_MOUSEWHEEL) {
+        under=plat_window_at_point(pt.x,pt.y);
+        ScreenToClient(camera.hwnd,&pt);
+    } else if(m->hwnd!=camera.hwnd)return 0;
     MapCameraTransform *c=&camera.transform;
     int inside=under==camera.hwnd && pt.x>=c->left && pt.y>=c->top &&
         pt.x<c->left+c->width && pt.y<c->top+c->height;
@@ -211,11 +241,17 @@ int map_camera_input(void *message)
     }
     if(m->message==WM_MBUTTONDOWN && inside && (m->wParam & MK_CONTROL))
         return map_camera_zoom_step(camera.view,0);
-    if((m->message==WM_LBUTTONDOWN || m->message==WM_MBUTTONDOWN) && inside &&
+    if((m->message==WM_LBUTTONDOWN || m->message==WM_MBUTTONDOWN ||
+        m->message==WM_LBUTTONDBLCLK || m->message==WM_MBUTTONDBLCLK) && inside &&
        !(m->wParam & (MK_SHIFT|MK_CONTROL))) {
+        /* A quick repeat drag can begin with DBLCLK. Defer its legacy action
+         * until release, just like a single click, so it cannot open a city
+         * while the user is trying to pan again. */
         camera.animating=0;camera.target=camera.scale;
         mapview_cancel_drag();
-        camera.button=m->message==WM_LBUTTONDOWN ? 1 : 2;camera.moved=0;
+        camera.button=(m->message==WM_LBUTTONDOWN || m->message==WM_LBUTTONDBLCLK) ? 1 : 2;
+        camera.double_click=m->message==WM_LBUTTONDBLCLK || m->message==WM_MBUTTONDBLCLK;
+        camera.moved=0;
         camera.start=pt;camera.drag_x=camera.cx;camera.drag_y=camera.cy;
         SetCapture(camera.hwnd);return 1;
     }
@@ -232,13 +268,13 @@ int map_camera_input(void *message)
     }
     if((m->message==WM_LBUTTONUP && camera.button==1) ||
        (m->message==WM_MBUTTONUP && camera.button==2)) {
-        int click=!camera.moved && inside,button=camera.button;
+        int click=!camera.moved && inside,button=camera.button,double_click=camera.double_click;
         cancel_drag();
         if(click && button==1) {
             /* The legacy window records button-down before dispatching a
              * click. Deliver the pair only after we know this wasn't a pan. */
             LPARAM pos=MAKELPARAM(pt.x,pt.y);
-            SendMessageA(camera.hwnd,WM_LBUTTONDOWN,m->wParam|MK_LBUTTON,pos);
+            SendMessageA(camera.hwnd,double_click ? WM_LBUTTONDBLCLK : WM_LBUTTONDOWN,m->wParam|MK_LBUTTON,pos);
             SendMessageA(camera.hwnd,WM_LBUTTONUP,m->wParam,pos);
         }
         return 1;
@@ -257,4 +293,7 @@ void map_camera_probe(int x,int y)
     int result=m->screen_to_tile((iptr)&tx,(iptr)&ty,p.x,p.y);
     plat_log("camera probe %d %d: result=%d tile=%d,%d source=%d,%d scale=%.6f base=%d mapped=%d cursor=%d,%d\n",
              x,y,result,tx,ty,sx,sy,camera.scale,m->zoom,ok,(int)map_cursor.x[0],(int)map_cursor.y[0]);
+    plat_log("camera world: %.9f,%.9f\n",
+        source_x(m,camera_source_x(&camera.transform,p.x)),
+        source_y(m,camera_source_y(&camera.transform,p.y)));
 }

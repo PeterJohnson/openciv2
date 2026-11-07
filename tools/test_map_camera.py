@@ -43,10 +43,19 @@ def main():
         hooks=(out/'hooks.log').read_text()
         assert 'script finished' in hooks and 'HD compositor: SDL GPU' in hooks and 'no function' not in hooks,out
         probes=re.findall(r'camera probe (\d+) (\d+): result=(\d+) tile=(-?\d+),(-?\d+) source=(-?\d+),(-?\d+) scale=([\d.]+) base=(-?\d+) mapped=(\d+) cursor=(-?\d+),(-?\d+)',hooks)
-        assert len(probes)==11,(out,probes)
+        assert len(probes)==55,(out,probes)
+        world=[tuple(map(float,p)) for p in re.findall(r'camera world: (-?[\d.]+),(-?[\d.]+)',hooks)]
+        assert len(world)==len(probes),(out,'missing precise camera probes')
+        for indices in (range(4),range(4,6),range(11,13),range(13,55)):
+            anchor=world[indices.start]
+            error=max(max(abs(p[i]-anchor[i]) for i in (0,1)) for p in (world[j] for j in indices))
+            assert error<1e-6,(out,'world point jumped during zoom/pan',indices,error,world)
         assert all(p[2]=='0' for p in probes[:8]),(out,probes)
-        assert all(p[3:5]==probes[0][3:5] for p in probes[1:6]),(out,'anchor/pan tile changed',probes)
-        assert probes[4][10:12]==probes[4][3:5],(out,'click selected wrong tile',probes[4])
+        assert all(p[3:5]==probes[0][3:5] for p in probes[1:4]),(out,'anchor/pan tile changed',probes)
+        # Selecting can legitimately recenter the map. Check the tile that was
+        # under the pointer before the click, rather than its new contents.
+        assert probes[4][10:12]==probes[3][3:5],(out,'click selected wrong tile',probes[4])
+        assert probes[5][3:5]==probes[4][3:5],(out,'zoom-out anchor tile changed')
         assert 1<float(probes[1][7])<1.15,(out,'fractional wheel lost')
         assert float(probes[6][7])==.125 and float(probes[7][7])==2,(out,'zoom limits')
         assert probes[8][2]=='1',(out,'chrome accepted as map')
@@ -60,6 +69,6 @@ def main():
             with Image.open(out/(name+'.bmp')) as im: current=im.convert('RGB')
             assert not ImageChops.difference(before.crop(header),current.crop(header)).getbbox(),(name,'status rescaled')
             assert ImageChops.difference(before,current).getbbox(),(name,'map unchanged')
-        print(f'Density {density}: anchored zoom, drag picking, limits and stationary chrome passed.',flush=True)
+        print(f'Density {density}: precise anchors, queued drag, repeated recentering, limits and stationary chrome passed.',flush=True)
 
 if __name__=='__main__':main()

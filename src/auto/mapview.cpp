@@ -1514,6 +1514,7 @@ void MapView::tile_to_screen(iptr out_x,iptr out_y,int x,int y)
    far out, else the coast quarters and the river mouths. */
 void MapView::draw_tile_ocean(iptr surface,int screen_x,int screen_y,iptr x,int y,int zoom,u32 half_w,u32 half_h)
 {
+  const int detail_zoom = map_camera_detail_zoom((void *)surface,zoom);
   int check;
   byte *known;
   i8 mouth_rect[16];
@@ -1527,7 +1528,7 @@ void MapView::draw_tile_ocean(iptr surface,int screen_x,int screen_y,iptr x,int 
   int quarter_x;
   iptr quarter;
 
-  if (zoom < -3) {
+  if (detail_zoom < -3) {
     ((Sprite *)((i8 *)&terrain_base_sprites_block.terrain_ocean_sprite))->draw((iptr)ocean_rect,surface,screen_x,screen_y);
   }
   else {
@@ -1556,6 +1557,7 @@ void MapView::draw_tile_ocean(iptr surface,int screen_x,int screen_y,iptr x,int 
    river, irrigation and farmland, the grassland shield. */
 void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y,int zoom,uint terrain2,uint improvements2,uint has_river,u32 half_w,u32 half_h,uint *dither_terrain)
 {
+  const int detail_zoom = map_camera_detail_zoom((void *)surface,zoom);
   byte nbr_raw;
   uint new_flags;
   int check;
@@ -1587,7 +1589,7 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
 
   variant = 0;
   river_mask = 0;
-  if (zoom < -4) {
+  if (detail_zoom < -4) {
     river_mask = 0xf;
   }
   else {
@@ -1617,7 +1619,7 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
   }
   ((Sprite *)(((i8 *)&terrain_base_sprites_block.terrain_base_sprites) + terrain2 * 0x3c))->draw((iptr)base_rect,surface,screen_x,
              screen_y);
-  if (-5 < zoom) {
+  if (-5 < detail_zoom) {
     for (quad = 0; quad < 4; quad++) {
       if (-1 < (int)dither_terrain[quad]) {
         if (quad < 2) {
@@ -1652,14 +1654,14 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
     ((Sprite *)(((i8 *)&hill_sprites_block.hill_sprites) + variant * 0x3c))->draw((iptr)hill_rect,surface,screen_x,
                screen_y);
   }
-  if (((-4 < zoom) && (map_show_hidden_terrain == 0)) && (((byte)improvements2 & 0xc) == 0xc)) {
+  if (((-4 < detail_zoom) && (map_show_hidden_terrain == 0)) && (((byte)improvements2 & 0xc) == 0xc)) {
     ((Sprite *)((i8 *)&land_improvement_sprites_block.farmland_sprite))->draw((iptr)farmland_rect,surface,screen_x,screen_y);
   }
-  if (((-7 < zoom) && (has_river != 0)) && (map_show_hidden_terrain == 0)) {
+  if (((-7 < detail_zoom) && (has_river != 0)) && (map_show_hidden_terrain == 0)) {
     ((Sprite *)(((i8 *)&icon_misc_sprites_block.river_sprites) + river_mask * 0x3c))->draw((iptr)river_rect,surface,screen_x,
                screen_y);
   }
-  if (-4 < zoom) {
+  if (-4 < detail_zoom) {
     irrig_flags = 0;
     if (((byte)improvements2 & 0x42) == 2) {
       for (dir = 2; dir < 5; dir += 2) {
@@ -1684,7 +1686,7 @@ void MapView::draw_tile_land(iptr surface,int screen_x,int screen_y,iptr x,int y
       }
     }
   }
-  if (((-4 < zoom) && (terrain2 == TERRAIN_GRASSLAND)) &&
+  if (((-4 < detail_zoom) && (terrain2 == TERRAIN_GRASSLAND)) &&
      (check = tile_grassland_has_shield(x,y), check != 0)) {
     ((Sprite *)((i8 *)&grassland_shield_sprite))->draw((iptr)shield_rect,surface,screen_x,screen_y);
   }
@@ -1904,6 +1906,7 @@ void MapView::draw_tile_unexplored_edges(iptr surface,int screen_x,int screen_y,
 void MapView::draw_tile_terrain(iptr surface,int screen_x,int screen_y,iptr x,int y, int viewer_civ,int zoom,iptr city_tile_idx)
 
 {
+  const int detail_zoom = map_camera_detail_zoom((void *)surface,zoom);
   int check;
   byte *known;
   i8 mine_rect[16];
@@ -2000,22 +2003,22 @@ void MapView::draw_tile_terrain(iptr surface,int screen_x,int screen_y,iptr x,in
   else {
     draw_tile_land(surface,screen_x,screen_y,x,y,zoom,terrain2,improvements2,has_river,half_w,half_h,dither_terrain);
   }
-  if (((-4 < zoom) && (hidden == 0)) &&
+  if (((-4 < detail_zoom) && (hidden == 0)) &&
      (resource = tile_resource(x,y), resource != 0)) {
     ((Sprite *)(((i8 *)&city_down_arrow_sprite_block.terrain_resource_sprites) + terrain2 * 0x78 + (resource * 4 - 4) * 0xf))->draw(
                (iptr)resource_rect,surface,screen_x,screen_y);
   }
-  if (((-4 < zoom) && (map_show_hidden_terrain == 0)) &&
+  if (((-4 < detail_zoom) && (map_show_hidden_terrain == 0)) &&
      (((improvements2 & 0x10) != 0 || (check = tile_city_owner(x,y), -1 < check)))) {
     draw_tile_roads(surface,screen_x,screen_y,x,y,viewer_civ,improvements2);
   }
-  if (((-4 < zoom) && (map_show_hidden_terrain == 0)) && (((byte)improvements2 & 0xc) == 8)) {
+  if (((-4 < detail_zoom) && (map_show_hidden_terrain == 0)) && (((byte)improvements2 & 0xc) == 8)) {
     ((Sprite *)((i8 *)&land_improvement_sprites_block.mine_sprite))->draw((iptr)mine_rect,surface,screen_x,screen_y);
   }
-  if ((-5 < zoom) && (hidden == 0)) {
+  if ((-5 < detail_zoom) && (hidden == 0)) {
     draw_tile_specials(surface,screen_x,screen_y,x,y,improvements2,tile_w,tile_h,half_h);
   }
-  if ((-4 < zoom) && (-1 < viewer_civ)) {
+  if ((-4 < detail_zoom) && (-1 < viewer_civ)) {
     draw_tile_unexplored_edges(surface,screen_x,screen_y,x,y,viewer_civ,city_tile_idx,half_w,half_h);
   }
   gfx_reset_zoom_scale();

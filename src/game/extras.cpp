@@ -384,7 +384,8 @@ void extras_draw_work_counter(iptr surface, int unit, int px, int py, int zoom)
     char text[8];
     const Unit *u = &units[unit];
     int x, y;
-    if (unit_types[u->type].role != ROLE_SETTLE || u->counter == 0 || zoom < -3)
+    if (unit_types[u->type].role != ROLE_SETTLE || u->counter == 0 ||
+        map_camera_detail_zoom((void *)surface,zoom) < -3)
         return;
     if (u->owner != human_civ[0] && game.reveal_map == '\0')
         return;

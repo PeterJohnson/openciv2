@@ -52,13 +52,15 @@ void plat_present(void)
     if (!window_open || benchmark_offscreen || hd_redraw_active || map_camera_busy())
         return;
     now = host_time_us();
-    /* at most ~66 a second, and no more than a third of the time: where
-       presenting is slow (a software renderer) the game, which retrieves
-       messages between the tiles it draws, would spend its time here */
-    if (now - last_present < 15000 || now - last_present < 2 * present_cost)
+    /* At most ~66 a second. Outside the GPU camera, retain the time-share
+     * limit for slow software presentation during the game's message polls. */
+    if (now - last_present < 15000 || (!map_camera_active() && now - last_present < 2 * present_cost))
         return;
     last_present = now;
     if(!plat_overlay)map_camera_tick();
+    /* Source refresh is occasional work, not the cost of every camera frame.
+     * Don't make one slow refresh impose another two-frame cooldown. */
+    now=host_time_us();
     if (!plat_overlay)
         plat_compose();
     if (hd_gpu_active && screen->hd_gpu) {

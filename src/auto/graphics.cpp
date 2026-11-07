@@ -3163,7 +3163,7 @@ gfx_draw_unit(iptr surface,iptr unit,uint draw_flags,int px,int py,int zoom,int 
   if ((draw_flags & 4) == 0) {
     dmg = 0;
   }
-  if (zoom < -3) {
+  if (map_camera_detail_zoom((void *)surface,zoom) < -3) {
     dmg = 0;
   }
   hp_width = (int)((max_hp - dmg) * bar_width) / max_hp;

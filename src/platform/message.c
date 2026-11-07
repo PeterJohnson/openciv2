@@ -1476,3 +1476,9 @@ HWND plat_window_at_cursor(POINT *pt)
         *pt = cursor;
     return w ? w->hwnd : 0;
 }
+HWND plat_window_at_point(int x,int y)
+{
+    POINT pt={x,y};int hit;
+    Window *w=wnd_from_point(pt,&hit);
+    return w ? w->hwnd : 0;
+}

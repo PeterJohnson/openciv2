@@ -31,6 +31,9 @@ int map_camera_input(void *message);
 int map_camera_zoom_step(void *view,int step); /* 0: normal zoom, otherwise +/-1 */
 void map_camera_tick(void);
 int map_camera_busy(void);
+int map_camera_active(void);
+int map_camera_detail_zoom(void *surface,int zoom);
+int map_camera_backing_zoom(double scale,int width,int height);
 void map_camera_cancel(void);
 void map_camera_probe(int x,int y);
 /* Native window containing the map; the transform is in its client coordinates. */

@@ -65,6 +65,17 @@ their existing paths. The desktop compositor scales only the map interior with
 subpixel precision, preserving window occlusion and the logical desktop shadow.
 No map-sized texture copy or GPU readback is added for ordinary camera frames.
 Panning is coalesced at presentation time; zoom easing uses elapsed time.
+Mouse gestures use each queued event's recorded position, including wheel
+anchors and quick repeat drags. The backing zoom reserves enough coverage for
+the legacy renderer's quantized recentering, with a one-level upgrade hysteresis.
+Initial presentation prepares this margin. Camera frames keep the 15 ms cadence
+without the software renderer's cost-based cooldown after a source refresh.
+
+In camera mode, backing resolution does not control terrain visibility:
+coastlines, river mouths, terrain joins, improvements, unexplored boundaries and
+unit status data remain enabled across source zooms. Their geometry still uses
+the actual backing scale. Other map windows and fixed-zoom rendering retain the
+original detail thresholds.
 
 This is a prototype, not the persistent viewport cache. When the requested view
 leaves the backing surface or needs another source zoom, it redraws that surface
@@ -76,22 +87,27 @@ backing zoom, not the fractional camera state. Resizing and changing zoom preset
 reset the camera; extra map windows retain their existing behavior.
 
 On the i5-14500 / UHD 770 Windows host with Direct3D 11, a settled 1.63x map view
-on the 1024x768 logical desktop took 2.62 ms median / 2.93 ms p95 at density 2,
-and 5.05 ms / 5.80 ms at density 4. These are 31 warm desktop-composition samples
+on the 1024x768 logical desktop took 2.62 ms median / 3.88 ms p95 at density 2,
+and 4.90 ms / 5.57 ms at density 4. These are 31 warm desktop-composition samples
 with GPU completion included. They exclude source refresh, event processing,
 presentation and vsync; they do not establish a 10-15 ms interactive-frame bound.
-The same density-4 view measured 4.89 ms median / 5.60 ms p95 on OpenGL, but
-27.27 ms / 28.05 ms on Direct3D 9 on this host. The faster camera path therefore
+Earlier prototype measurements at density 4 were 4.89 ms median / 5.60 ms p95
+on OpenGL, but 27.27 ms / 28.05 ms on Direct3D 9 on this host. The faster camera path therefore
 does not remove the need to measure the selected backend.
 
 `python tools/test_map_camera.py --game PATH` runs real-clock input, anchored
 fractional zoom, drag picking, ordinary click selection, zoom limits/presets,
 chrome clipping and composition measurements in isolated game directories at
-densities 1-4. `tests/map_camera_pick_test.cpp` exercises the production picker
+densities 1-4. It also checks precise world anchors through queued input and
+repeated recentering in both drag directions. `tests/map_camera_pick_test.cpp` exercises the production picker
 against independent diamond geometry, including the world seam. The SDL GPU
 suite also checks fractional camera placement and clipping. `CIV2_CAMERA_TRACE=1`
-adds gesture-routing diagnostics. The replay's `camera_probe` and
-`camera_benchmark` commands inspect picking and measure settled composition.
+adds gesture routing, source-refresh timing and bounds-clamping diagnostics.
+The replay's `camera_probe` and `camera_benchmark` commands inspect picking and
+measure settled composition; `drag_burst` queues a full drag before dispatch.
+Source probes `map_camera_detail_test.cpp`, `map_camera_input_test.cpp` and
+`map_camera_schedule_test.cpp` cover the shoreline cutoff, event coordinates,
+double-click behavior and refresh pacing.
 
 ## Renderer scope
 

@@ -373,6 +373,15 @@ void replay_run_script(void)
                 input_mouse_button(b == 3 ? 2 : b == 2 ? 3 : 1, cmd[5] == 'd');
             next_action_us = vclock_us + 100 * 1000;
             break;
+        } else if (!strcmp(cmd,"drag_burst")) {
+            /* Queue a complete gesture before dispatch, as when input piles
+             * up during a redraw. Event positions must survive the burst. */
+            int x=0,y=0,dx=0,dy=0;
+            sscanf(arg,"%d %d %d %d",&x,&y,&dx,&dy);
+            input_mouse_move(x,y);input_mouse_button(1,1);
+            for(int i=1;i<=8;i++)input_mouse_move(x+dx*i/8,y+dy*i/8);
+            input_mouse_button(1,0);
+            next_action_us=vclock_us+100*1000;break;
         } else if (!strcmp(cmd, "camera_probe")) {
             int x=0,y=0;sscanf(arg,"%d %d",&x,&y);
             map_camera_probe(x,y);
